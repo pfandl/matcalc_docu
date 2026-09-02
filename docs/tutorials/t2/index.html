@@ -57,6 +57,8 @@
                 </li>
                 <li class="toctree-l2 current"><a class="reference internal current" href="#">Calculating a single equilibrium</a>
     <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#test-category">test category</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#complimentary-files">Complimentary files</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#contents">Contents</a>
@@ -88,6 +90,10 @@
     <li class="toctree-l3"><a class="reference internal" href="#consecutive-articles">Consecutive articles</a>
     </li>
     </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../t3/">Stepped equilibrium calculations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../t4/">Graphical presentation and export of results</a>
                 </li>
     </ul>
                   </li>
@@ -133,13 +139,175 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="t2-calculating-a-single-equilibrium">T2: Calculating a single equilibrium</h1>
-<p><em>This tutorial was tested on <br />
-MatCalc version 6.04 rel 1.001 <br />
-license: free <br />
-database: mc_fe.tdb</em></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MatCalc version</td>
+<td>6.10 rel 1.001</td>
+</tr>
+<tr>
+<td>license</td>
+<td>free</td>
+</tr>
+<tr>
+<td>database</td>
+<td>mc_fe.tdb</td>
+</tr>
+</tbody>
+</table>
+<h3 id="test-category">test category</h3>
+<p>Irgendwas hahaa</p>
 <h3 id="complimentary-files">Complimentary files</h3>
-<p>Click <a href="/tutorials/t2/script/t2_6021003.mcs" title="tutorials/t2/script/t2_6021003.mcs (6.5 KB)">here</a> to view the script for this tutorial.</p>
-<p>This tutorial explains how to determine the equilibrium phases at a given temperature, their phase fractions and compositions.</p>
+<p>Click <a href="/tutorials/t2/script/t2_6021003.mcs" title="tutorials/t2/script/t2_6021003.mcs (6.5 KB)">here</a> to download the script for this tutorial.</p>
+<pre><code class="language-mcs">$$************************************************************************************************** 
+************************************** GENERAL INFORMATION *****************************************
+****************************************************************************************************
+
+Script for calculation of a single equilibrium according to Tutorial 2.
+The following contents will be covered:
+
+ - Opening a database and selecting elements and phases
+ - Entering a composition
+ - Calculating an equilibrium at a given temperature
+ - Interpretation of information displayed in the output, phase summary and phase details windows
+ - Using the 'Options' window to modify the display
+ - Phase status indicators
+ - Calculation states
+
+Database: mc_fe.tdb
+Author: P. Warczok
+Creation date: 20.03.2008
+Last update: 09.05.2019 (P. Warczok, Update for 6.02)
+This is a script for MatCalc version 6.02 (rel 1.003)
+
+
+Known issues:
+- &quot;save-workspace &quot;file-name&quot;=Tutorial_2&quot; is not working properly. Use &quot;save-workspace Tutorial_2&quot; instead.
+
+****************************************************************************************************
+************************************** SETUP INFORMATION *******************************************
+**************************************************************************************************$$
+
+use-module module-name=core                       $ select core module for kinetic simulation
+
+close-workspace options=f                         $ close any open workspace. Option &quot;f&quot; -&gt; &quot;force&quot;, does not ask for saving an open workspace 
+
+new-workspace                                     $ creates a new workspace 
+
+$ Add some information about your Script
+@ echo value=no
+set-workspace-info information=+ This script reproduces all operations performed in Tutorial 2.
+set-workspace-info information=+ I assumed it to be the first MatCalc script you are reading.
+set-workspace-info information=+ Therefore, I tried to explain every new command which is given.
+set-workspace-info information=+ Every line starting with &quot;$&quot; contains a comment to a command.
+set-workspace-info information=+ More information on scripting is given in Tutorial 13.
+set-workspace-info information=+ Do not be afraid of scripting - this is much easier as you may think!
+set-workspace-info This script reproduces all operations performed in Tutorial 2.
+echo value=yes
+
+
+$$************************************************************************************************** 
+**************************************** SYSTEM SETUP **********************************************
+**************************************************************************************************$$
+
+
+$$************************************************************************************************** 
+                          DATABASES, CHEMICAL COMPOSITION, SELECTED PHASES
+**************************************************************************************************$$
+
+$ Open database containing thermodynamic data
+open-thermodynamic-database file-name=mc_fe.tdb 
+$ Select Fe, C and VA (vacancies) as components of the system.
+$ VA is always selected as default, so it is actually not necessary to define it explicitely
+$ FE is always selected as default in mc_fe.tdb, so it is actually not necessary to define it explicitely, either
+select-elements elements=fe c va
+$ Select the phases which will be used in the simulation
+select-phases phases=liquid fcc_a1 bcc_a2 cementite graphite
+$ Read data for the selected phases and elements from the database
+read-thermodynamic-database 
+
+$ Set Fe as reference element 
+set-reference-element element=fe 
+$ Set the content of C to 0,4 wt.%
+enter-composition type=weight-percent composition=c=0,4
+
+
+$$************************************************************************************************** 
+                                      EQUILIBRIUM CALCULATIONS
+**************************************************************************************************$$
+
+$ Set the system temperature to 700�C
+set-temperature-celsius temperature=700
+$ Set the start values - this should prevent from any troubles in the equilibrium calculation
+set-automatic-startvalues
+$ Perform the equilibrium calculation
+calculate-equilibrium                                
+
+$------------------------ Calculation with the suspended graphite phase ---------------------------$
+$ Suspend graphite phase - a 'suspended' flag is set
+change-phase-status phase-name=graphite set-flag=suspended 
+calculate-equilibrium
+
+
+$--------------------- Calculation graphite phase with zero phase fraction ------------------------$
+$ Activate graphite phase - a 'suspended' flag is cleared
+change-phase-status phase-name=graphite clear-flag=suspended 
+$ Fix the phase fraction of graphite - a 'fixed' flag is set
+change-phase-status phase-name=graphite set-flag=fixed 
+$ Set value of graphite phase fraction to '0' (zero)
+change-phase-status phase-name=graphite mole-fraction-of-phase=0
+calculate-equilibrium
+
+$------------------------- Calculation with the graphite phase removed ----------------------------$
+$ Remove graphite phase
+remove-phase phase-name=graphite
+calculate-equilibrium
+
+
+
+$------------------------------ Introducing graphite phase again ----------------------------------$
+$------------------ (requires a renewed selection of the phase in database) -----------------------$
+
+open-thermodynamic-database file-name=mc_fe.tdb 
+select-elements elements=fe c va
+select-phases phases=liquid fcc_a1 bcc_a2 cementite graphite
+read-thermodynamic-database 
+
+set-reference-element element=fe
+enter-composition type=weight-percent composition=c=0,4
+
+set-temperature-celsius temperature=700
+set-automatic-startvalues
+calculate-equilibrium 
+
+
+$$************************************************************************************************** 
+                                         CALCULATION STATES
+**************************************************************************************************$$
+
+$ Create calculation state &quot;Equil@700&quot;
+create-calc-state new-state-name=Equil@700
+
+$ Calculation state for 600C
+set-temperature-celsius temperature=600
+calculate-equilibrium
+create-calc-state new-state-name=Equil@600 
+
+
+$$************************************************************************************************** 
+                                         SAVING WORKSPACE
+**************************************************************************************************$$
+
+$ Save workspace as &quot;Tutorial_2.mcw&quot;
+$save-workspace &quot;file-name&quot;=Tutorial_2 
+save-workspace Tutorial_2 
+</code></pre>
 <h3 id="contents">Contents</h3>
 <ul>
 <li>Opening a database and selecting elements and phases</li>
@@ -259,7 +427,7 @@ LIQUID            - OK -    0.00000+000    dfm: -4.07916e+003
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../t1/" class="btn btn-neutral float-left" title="Introduction to the MatCalc graphical user interface (GUI)"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../../howtosimulate/" class="btn btn-neutral float-right" title="How to ... manual">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../t3/" class="btn btn-neutral float-right" title="Stepped equilibrium calculations">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -285,7 +453,7 @@ LIQUID            - OK -    0.00000+000    dfm: -4.07916e+003
       <span><a href="../t1/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../../howtosimulate/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../t3/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

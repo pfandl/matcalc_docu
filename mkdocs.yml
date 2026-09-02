@@ -11,6 +11,8 @@ nav:
       - tutorials.md
       - Introduction to the MatCalc graphical user interface (GUI): tutorials/t1.md
       - Calculating a single equilibrium: tutorials/t2.md
+      - Stepped equilibrium calculations: tutorials/t3.md
+      - Graphical presentation and export of results: tutorials/t4.md
     - How to ... manual: howtosimulate.md
     - Examples: examples.md
   - References:

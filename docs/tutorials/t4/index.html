@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>T4 - MatCalc Documentation</title>
+    <title>Graphical presentation and export of results - MatCalc Documentation</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "T4";
+        var mkdocs_page_name = "Graphical presentation and export of results";
         var mkdocs_page_input_path = "tutorials/t4.md";
         var mkdocs_page_url = null;
       </script>
@@ -48,14 +48,64 @@
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Guides</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
-    <ul>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" >Tutorials</a>
+    <ul class="current">
                 <li class="toctree-l2"><a class="reference internal" href="../">MatCalc tutorial</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../t2/">Calculating a single equilibrium</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../t3/">Stepped equilibrium calculations</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Graphical presentation and export of results</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#complimentary-files">Complimentary files</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#unterkategorie">unterkategorie</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#contents">Contents</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#before-starting">Before starting...</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#plotting-a-graph">Plotting a graph</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#changing-the-appearance-of-the-plot">Changing the appearance of the plot</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#results-from-different-buffers">Results from different buffers</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#changing-the-format-of-the-temperature-step-plot">Changing the format of the temperature-step plot</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#title">Title</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#legend">Legend</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#axes">Axes</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#grid">Grid</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#series">Series</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#other-plot-operations">Other plot operations</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#zooming-areas-of-the-plot">Zooming areas of the plot</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#displaying-x-and-y-values">Displaying x- and y-values</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#exporting-data-from-the-plot">Exporting data from the plot</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#to-finish">To finish...</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#consecutive-articles">Consecutive articles</a>
+    </li>
+    </ul>
                 </li>
     </ul>
                   </li>
@@ -89,7 +139,9 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">T4</li>
+          <li class="breadcrumb-item">Guides</li>
+          <li class="breadcrumb-item">Tutorials</li>
+      <li class="breadcrumb-item active">Graphical presentation and export of results</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -98,47 +150,15 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h3 id="table-of-contents">Table of Contents</h3>
-<ul>
-<li>
-<p><a href="#t4graphical_presentation_and_export_of_results">T4: Graphical presentation and export of results</a></p>
-</li>
-<li>
-<p><a href="#complimentary_files">Complimentary files</a></p>
-</li>
-<li><a href="#contents">Contents</a></li>
-<li><a href="#before_starting">Before starting...</a></li>
-<li><a href="#plotting_a_graph">Plotting a graph</a></li>
-<li>
-<p><a href="#changing_the_appearance_of_the_plot">Changing the appearance of the plot</a></p>
-</li>
-<li>
-<p><a href="#results_from_different_buffers">Results from different buffers</a></p>
-</li>
-<li><a href="#changing_the_format_of_the_temperature-step_plot">Changing the format of the temperature-step plot</a></li>
-<li><a href="#title">Title</a></li>
-<li><a href="#legend">Legend</a></li>
-<li><a href="#axes">Axes</a></li>
-<li><a href="#grid">Grid</a></li>
-<li><a href="#series">Series</a></li>
-<li>
-<p><a href="#other_plot_operations">Other plot operations</a></p>
-</li>
-<li>
-<p><a href="#zooming_areas_of_the_plot">Zooming areas of the plot</a></p>
-</li>
-<li><a href="#displaying_x-_and_y-values">Displaying x- and y-values</a></li>
-<li><a href="#exporting_data_from_the_plot">Exporting data from the plot</a></li>
-<li><a href="#to_finish">To finish...</a></li>
-<li><a href="#consecutive_articles">Consecutive articles</a></li>
-</ul>
-<h2 id="t4-graphical-presentation-and-export-of-results">T4: Graphical presentation and export of results</h2>
+                <h1 id="t4-graphical-presentation-and-export-of-results-matcalc-documentation">T4: Graphical presentation and export of results [MatCalc Documentation]</h1>
 <p><em>This tutorial was tested on<br />
 MatCalc version 6.04 rel 1.001<br />
 license: free<br />
 database: mc_fe.tdb</em></p>
 <h3 id="complimentary-files">Complimentary files</h3>
 <p>Click <a href="/tutorials/t4/script/t4_6021003.mcs" title="tutorials/t4/script/t4_6021003.mcs (5.8 KB)">here</a> to view the script for this tutorial.</p>
+<h4 id="unterkategorie">unterkategorie</h4>
+<p>untertext</p>
 <h3 id="contents">Contents</h3>
 <ul>
 <li>Creating a new graphical window</li>
@@ -220,6 +240,10 @@ Clicking on the <strong>'Export to file'</strong> will create the file containin
               
             </div>
           </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../t3/" class="btn btn-neutral float-left" title="Stepped equilibrium calculations"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../howtosimulate/" class="btn btn-neutral float-right" title="How to ... manual">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
 
   <hr/>
 
@@ -241,6 +265,10 @@ Clicking on the <strong>'Export to file'</strong> will create the file containin
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
+      <span><a href="../t3/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../howtosimulate/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

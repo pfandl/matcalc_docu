@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>T3 - MatCalc Documentation</title>
+    <title>Stepped equilibrium calculations - MatCalc Documentation</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "T3";
+        var mkdocs_page_name = "Stepped equilibrium calculations";
         var mkdocs_page_input_path = "tutorials/t3.md";
         var mkdocs_page_url = null;
       </script>
@@ -48,14 +48,48 @@
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Guides</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
-    <ul>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" >Tutorials</a>
+    <ul class="current">
                 <li class="toctree-l2"><a class="reference internal" href="../">MatCalc tutorial</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../t2/">Calculating a single equilibrium</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Stepped equilibrium calculations</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#complimentary-files">Complimentary files</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#contents">Contents</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#before-starting">Before starting...</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#stepped-equilibrium-calculation-with-varying-temperature">Stepped equilibrium calculation with varying temperature</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#running-the-stepped-calculation">Running the stepped calculation</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#output">Output</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#buffers">Buffers</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#stepped-equilibrium-calculation-with-varying-carbon-content">Stepped equilibrium calculation with varying carbon content</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#running-the-calculation">Running the calculation</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#edit-buffer-states">Edit buffer states</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#to-finish">To finish...</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#consecutive-articles">Consecutive articles</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../t4/">Graphical presentation and export of results</a>
                 </li>
     </ul>
                   </li>
@@ -89,7 +123,9 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">T3</li>
+          <li class="breadcrumb-item">Guides</li>
+          <li class="breadcrumb-item">Tutorials</li>
+      <li class="breadcrumb-item active">Stepped equilibrium calculations</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -98,35 +134,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h3 id="table-of-contents">Table of Contents</h3>
-<ul>
-<li>
-<p><a href="#t3stepped_equilibrium_calculations">T3: Stepped equilibrium calculations</a></p>
-</li>
-<li>
-<p><a href="#complimentary_files">Complimentary files</a></p>
-</li>
-<li><a href="#contents">Contents</a></li>
-<li><a href="#before_starting">Before starting...</a></li>
-<li>
-<p><a href="#stepped_equilibrium_calculation_with_varying_temperature">Stepped equilibrium calculation with varying temperature</a></p>
-</li>
-<li>
-<p><a href="#running_the_stepped_calculation">Running the stepped calculation</a></p>
-</li>
-<li><a href="#output">Output</a></li>
-<li><a href="#buffers">Buffers</a></li>
-<li>
-<p><a href="#stepped_equilibrium_calculation_with_varying_carbon_content">Stepped equilibrium calculation with varying carbon content</a></p>
-</li>
-<li>
-<p><a href="#running_the_calculation">Running the calculation</a></p>
-</li>
-<li><a href="#edit_buffer_states">Edit buffer states</a></li>
-<li><a href="#to_finish">To finish...</a></li>
-<li><a href="#consecutive_articles">Consecutive articles</a></li>
-</ul>
-<h2 id="t3-stepped-equilibrium-calculations">T3: Stepped equilibrium calculations</h2>
+                <h1 id="t3-stepped-equilibrium-calculations-matcalc-documentation">T3: Stepped equilibrium calculations [MatCalc Documentation]</h1>
 <p><em>This tutorial was tested on <br />
 MatCalc version 6.04 rel 1.001 <br />
 license: free <br />
@@ -346,6 +354,10 @@ AktStepVal: 0,000000
               
             </div>
           </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../t2/" class="btn btn-neutral float-left" title="Calculating a single equilibrium"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../t4/" class="btn btn-neutral float-right" title="Graphical presentation and export of results">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
 
   <hr/>
 
@@ -367,6 +379,10 @@ AktStepVal: 0,000000
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
+      <span><a href="../t2/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../t4/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
