@@ -5,7 +5,7 @@ Stepped equilibrium calculation [MatCalc Documentation]
 Stepped equilibrium calculation
 -------------------------------
 
-[![ Stepped equilibrium calculation](/reference/dialogs/img/stepped/step_equilibrium-ctrl-t.png " Stepped equilibrium calculation")](/reference/dialogs/img/stepped/step_equilibrium-ctrl-t.png "reference/dialogs/img/stepped/step_equilibrium-ctrl-t.png")
+[![ Stepped equilibrium calculation](/matcalc_docu/reference/dialogs/img/stepped/step_equilibrium-ctrl-t.png " Stepped equilibrium calculation")](/matcalc_docu/reference/dialogs/img/stepped/step_equilibrium-ctrl-t.png "reference:dialogs:img:stepped:step_equilibrium-ctrl-t.png")
 
 1. **Type**:
 2. **Start**:

@@ -6,6 +6,6 @@ techpapers:mprops:prec\_strength [MatCalc Documentation]
 
 Related documents !!!
 
-* [The precipitate shape](/techpapers/precipitation/prec_shape "techpapers/precipitation/prec_shape")
+* [The precipitate shape](/matcalc_docu/techpapers/precipitation/prec_shape "techpapers:precipitation:prec_shape")
 
 ![](/wiki/lib/exe/taskrunner.php?id=techpapers%3Amprops%3Aprec_strength&1788353118)

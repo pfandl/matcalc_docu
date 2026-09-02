@@ -4,7 +4,7 @@ Nucleus composition [MatCalc Documentation]
 
 ### Nucleus composition
 
-[![ Nucleus composition](/reference/dialogs/img/phasestatus/phase_status-f8-nucleation-nucleus_composition.png " Nucleus composition")](/reference/dialogs/img/phasestatus/phase_status-f8-nucleation-nucleus_composition.png "reference/dialogs/img/phasestatus/phase_status-f8-nucleation-nucleus_composition.png")
+[![ Nucleus composition](/matcalc_docu/reference/dialogs/img/phasestatus/phase_status-f8-nucleation-nucleus_composition.png " Nucleus composition")](/matcalc_docu/reference/dialogs/img/phasestatus/phase_status-f8-nucleation-nucleus_composition.png "reference:dialogs:img:phasestatus:phase_status-f8-nucleation-nucleus_composition.png")
 
 * ortho-equilibrium:
 * para-equilibrium:

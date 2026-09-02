@@ -5,7 +5,7 @@ Scheil calculation [MatCalc Documentation]
 Scheil calculation
 ------------------
 
-[![ Scheil calculation](/reference/dialogs/img/scheil/scheil_calculation-ctrl-h.png " Scheil calculation")](/reference/dialogs/img/scheil/scheil_calculation-ctrl-h.png "reference/dialogs/img/scheil/scheil_calculation-ctrl-h.png")
+[![ Scheil calculation](/matcalc_docu/reference/dialogs/img/scheil/scheil_calculation-ctrl-h.png " Scheil calculation")](/matcalc_docu/reference/dialogs/img/scheil/scheil_calculation-ctrl-h.png "reference:dialogs:img:scheil:scheil_calculation-ctrl-h.png")
 
 1. **Element back diffusion**:
 2. **Toggle**:

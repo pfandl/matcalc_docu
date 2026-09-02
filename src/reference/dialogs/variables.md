@@ -5,7 +5,7 @@ Variables and functions [MatCalc Documentation]
 Variables and functions
 -----------------------
 
-[![ Variables and functions](/reference/dialogs/img/variables/variables_and_functions-f6.png " Variables and functions")](/reference/dialogs/img/variables/variables_and_functions-f6.png "reference/dialogs/img/variables/variables_and_functions-f6.png")
+[![ Variables and functions](/matcalc_docu/reference/dialogs/img/variables/variables_and_functions-f6.png " Variables and functions")](/matcalc_docu/reference/dialogs/img/variables/variables_and_functions-f6.png "reference:dialogs:img:variables:variables_and_functions-f6.png")
 
 1. **Tabs**:
 

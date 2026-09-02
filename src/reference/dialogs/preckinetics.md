@@ -5,7 +5,7 @@ Precipitation kinetics [MatCalc Documentation]
 Precipitation kinetics
 ----------------------
 
-[![ Precipitation kinetics](/reference/dialogs/img/preckinetics/precipitate_kinetics-ctrl-k.png " Precipitation kinetics")](/reference/dialogs/img/preckinetics/precipitate_kinetics-ctrl-k.png "reference/dialogs/img/preckinetics/precipitate_kinetics-ctrl-k.png")
+[![ Precipitation kinetics](/matcalc_docu/reference/dialogs/img/preckinetics/precipitate_kinetics-ctrl-k.png " Precipitation kinetics")](/matcalc_docu/reference/dialogs/img/preckinetics/precipitate_kinetics-ctrl-k.png "reference:dialogs:img:preckinetics:precipitate_kinetics-ctrl-k.png")
 
 1. **Simulation end time**:
 2. **Simulation end temperature**:

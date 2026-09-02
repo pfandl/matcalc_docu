@@ -5,7 +5,7 @@ Structure [MatCalc Documentation]
 Structure
 ---------
 
-[![ Structure](/reference/dialogs/img/precipitation/precipitation_domain-ctrl-f8-structure.png " Structure")](/reference/dialogs/img/precipitation/precipitation_domain-ctrl-f8-structure.png "reference/dialogs/img/precipitation/precipitation_domain-ctrl-f8-structure.png")
+[![ Structure](/matcalc_docu/reference/dialogs/img/precipitation/precipitation_domain-ctrl-f8-structure.png " Structure")](/matcalc_docu/reference/dialogs/img/precipitation/precipitation_domain-ctrl-f8-structure.png "reference:dialogs:img:precipitation:precipitation_domain-ctrl-f8-structure.png")
 
 1. **Grain diameter**:
 2. **Grain size elongation factor**:

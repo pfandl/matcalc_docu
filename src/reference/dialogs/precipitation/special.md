@@ -7,7 +7,7 @@ Special
 
 ![FIXME](/wiki/lib/images/smileys/fixme.svg) Text ![FIXME](/wiki/lib/images/smileys/fixme.svg)
 
-[![ Special](/reference/dialogs/img/precipitation/precipitation_domain-ctrl-f8-special.png " Special")](/reference/dialogs/img/precipitation/precipitation_domain-ctrl-f8-special.png "reference/dialogs/img/precipitation/precipitation_domain-ctrl-f8-special.png")
+[![ Special](/matcalc_docu/reference/dialogs/img/precipitation/precipitation_domain-ctrl-f8-special.png " Special")](/matcalc_docu/reference/dialogs/img/precipitation/precipitation_domain-ctrl-f8-special.png "reference:dialogs:img:precipitation:precipitation_domain-ctrl-f8-special.png")
 
 1. **Young's modulus**:
 2. **Poisson's ratio**:

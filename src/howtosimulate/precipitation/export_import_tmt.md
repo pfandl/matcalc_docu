@@ -34,7 +34,7 @@ In this document, the procedures for exporting and importing the thermo-mechanic
 Related documents
 -----------------
 
-1. [Thermo-mechanical treatment file structure](/reference/tmt_file "reference/tmt_file")
+1. [Thermo-mechanical treatment file structure](/matcalc_docu/reference/tmt_file "reference:tmt_file")
 
 Main document
 =============
@@ -60,7 +60,7 @@ The text files can be imported into the thermomechanical treatments:
 Preparation of the file for TMT import
 --------------------------------------
 
-The file describing the thermo-mechanical treatment needs to have a specific structure in order to be recognised by MatCalc. An overview of this structure is discussed  [here](/reference/tmt_file "reference/tmt_file")  and can be easily experienced when a treatment defined with GUI editor or script/console commands is exported into the text file. One can notice that such a file contains a comprehensive parameter definition range. The treatment data that the user would like to import need not to contain that amount of information. Still, some structure features must be kept. Let us demonstrate it on a simple example.
+The file describing the thermo-mechanical treatment needs to have a specific structure in order to be recognised by MatCalc. An overview of this structure is discussed  [here](/matcalc_docu/reference/tmt_file "reference:tmt_file")  and can be easily experienced when a treatment defined with GUI editor or script/console commands is exported into the text file. One can notice that such a file contains a comprehensive parameter definition range. The treatment data that the user would like to import need not to contain that amount of information. Still, some structure features must be kept. Let us demonstrate it on a simple example.
 
 The starting point is the data describing the bloom cooling stored at room temperature given in the table below.
 

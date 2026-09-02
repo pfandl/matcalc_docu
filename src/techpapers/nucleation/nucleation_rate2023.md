@@ -35,12 +35,12 @@ This paper discusses the implementation of the multi-component transient nucleat
 Related documents
 -----------------
 
-1. [Heterogeneous nucleation](/techpapers/nucleation/het_nucl_sites "techpapers/nucleation/het_nucl_sites")
+1. [Heterogeneous nucleation](/matcalc_docu/techpapers/nucleation/het_nucl_sites "techpapers:nucleation:het_nucl_sites")
 
 Main document
 =============
 
-Nucleation in *MatCalc* is realized in an extended Classical Nucleation Theory framework, where all input quantities are either given from experimental information (microstructure parameters such as dislocation density and grain size) or from theory (such as chemical driving force and interfacial energy). For details on the theoretical models, see the corresponding section in the list of *MatCalc*-relevant  [publications](http///matcalc.tuwien.ac.at/index.php/about/publications "http///matcalc.tuwien.ac.at/index.php/about/publications").
+Nucleation in *MatCalc* is realized in an extended Classical Nucleation Theory framework, where all input quantities are either given from experimental information (microstructure parameters such as dislocation density and grain size) or from theory (such as chemical driving force and interfacial energy). For details on the theoretical models, see the corresponding section in the list of *MatCalc*-relevant  [publications](http://matcalc.tuwien.ac.at/index.php/about/publications "http://matcalc.tuwien.ac.at/index.php/about/publications").
 
 Energetics of nucleus formation
 -------------------------------
@@ -60,7 +60,7 @@ In case of homogeneous nucleation, the precipitate nuclei appear within regular 
 
 The function $\Delta G\_\text{nucl,hom}$ is shown in the next figure as a function of the nucleus radius.
 
-[![ Total energy change on nucleation](/techpapers/nucleation/img/fig_nucleation_delta_g_of_r.png " Total energy change on nucleation")](/techpapers/nucleation/img/fig_nucleation_delta_g_of_r.png "techpapers/nucleation/img/fig_nucleation_delta_g_of_r.png")
+[![ Total energy change on nucleation](/matcalc_docu/techpapers/nucleation/img/fig_nucleation_delta_g_of_r.png " Total energy change on nucleation")](/matcalc_docu/techpapers/nucleation/img/fig_nucleation_delta_g_of_r.png "techpapers:nucleation:img:fig_nucleation_delta_g_of_r.png")
 
 From this relation, the extremum value for the critical radius $\rho^\*$ can be evaluated after setting the first derivative of $\Delta G\_\text{nucl,hom}$ to zero with
 
@@ -98,9 +98,9 @@ It is important, now, to realize that all quantities in the nucleation rate expr
 | $\rho^\*$ | \[ -\frac{2\gamma}{\left(\Delta G\_\text{chem}+\Delta G\_\text{el} \right)} \] | Critical nucleation radius |
 | $\Delta G\_\text{nucl}$ | \[ \frac{4\pi}{3}\rho^3 \cdot {\left(\Delta G\_\text{chem}+\Delta G\_\text{el} \right)} + 4\pi \rho^2 \cdot \gamma\] | Total energy change on nucleation |
 | $\Delta G\_\text{chem}$ | \[ \sum^n\_{i=1}{X^{\beta}\_i(\frac{\mu^{\beta}\_i}{v^\beta}-\frac{\mu^{\alpha}\_i}{v^\alpha})} \] | Volume free energy change on nucleation (=negative chemical driving force) |
-| $\Delta G\_\text{el}$ | \[ \frac{E}{1-\nu\_\text{P}} \cdot \left( \epsilon^\* \right)^2\] | Elastic strain energy, see also document  [Heterogeneous nucleation](/techpapers/nucleation/het_nucl_sites "techpapers/nucleation/het_nucl_sites") |
-| $\Delta G\_\text{het}$ | depends on structure defect considered | Heterigeneous site nucleation energy, see also document  [Heterogeneous nucleation](/techpapers/nucleation/het_nucl_sites "techpapers/nucleation/het_nucl_sites") |
-| $\gamma$ | \[ \frac{n\_\text{S} \cdot z\_\text{S,eff}}{N\_\text{A} \cdot z\_\text{L,eff}} \cdot \Delta H\] | Interfacial energy, see document  [Evaluation of interfacial energies](/techpapers/nucleation/interfacial_energy "techpapers/nucleation/interfacial_energy") for details |
+| $\Delta G\_\text{el}$ | \[ \frac{E}{1-\nu\_\text{P}} \cdot \left( \epsilon^\* \right)^2\] | Elastic strain energy, see also document  [Heterogeneous nucleation](/matcalc_docu/techpapers/nucleation/het_nucl_sites "techpapers:nucleation:het_nucl_sites") |
+| $\Delta G\_\text{het}$ | depends on structure defect considered | Heterigeneous site nucleation energy, see also document  [Heterogeneous nucleation](/matcalc_docu/techpapers/nucleation/het_nucl_sites "techpapers:nucleation:het_nucl_sites") |
+| $\gamma$ | \[ \frac{n\_\text{S} \cdot z\_\text{S,eff}}{N\_\text{A} \cdot z\_\text{L,eff}} \cdot \Delta H\] | Interfacial energy, see document  [Evaluation of interfacial energies](/matcalc_docu/techpapers/nucleation/interfacial_energy "techpapers:nucleation:interfacial_energy") for details |
 
 The expressions above are valid for spherical precipitates.
 

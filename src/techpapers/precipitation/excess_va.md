@@ -36,8 +36,8 @@ This paper describes the effects of the excess vacancies on the precipitation ki
 Related documents
 -----------------
 
-* [Equilibrium vacancy concentration](/techpapers/equilib/equilib_vac "techpapers/equilib/equilib_vac")
-* [Example P2: Precipitation sequence in Al-Cu](/examples/precipitation/p2 "examples/precipitation/p2")
+* [Equilibrium vacancy concentration](/matcalc_docu/techpapers/equilib/equilib_vac "techpapers:equilib:equilib_vac")
+* [Example P2: Precipitation sequence in Al-Cu](/matcalc_docu/examples/precipitation/p2 "examples:precipitation:p2")
 
 Main document
 =============

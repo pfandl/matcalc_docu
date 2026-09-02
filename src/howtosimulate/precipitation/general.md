@@ -58,7 +58,7 @@ Setup your precipitation simulation as simple as possible in order to avoid unne
 
 The vision of *MatCalc* is to provide a *predictive* framework for precipitation kinetics simulations. In your simulations, identify the relevant physical mechanisms that are responsible for the behavior of the system. Use *MatCalc* as the tool by which you can test your ideas and conceptions.
 
-In the 'How to' manual section on alloy specific issues, you can find tips and tricks that are relevant for the particular system. This will certainly assist you in identifying the important processes that you have to account for. If you still have trouble, see whether you can find an appropriate [example](/examples/index "examples/index"), consult the  [MatCalc forum](http///matcalc.at/CustomerPortal "http///matcalc.at/CustomerPortal"), or contact  [help desk](http///matcalc.at/CustomerPortal "http///matcalc.at/CustomerPortal").
+In the 'How to' manual section on alloy specific issues, you can find tips and tricks that are relevant for the particular system. This will certainly assist you in identifying the important processes that you have to account for. If you still have trouble, see whether you can find an appropriate [example](/matcalc_docu/examples/index "examples:index"), consult the  [MatCalc forum](http://matcalc.at/CustomerPortal "http://matcalc.at/CustomerPortal"), or contact  [help desk](http://matcalc.at/CustomerPortal "http://matcalc.at/CustomerPortal").
 
 The representative volume element (RVE)
 =======================================
@@ -73,7 +73,7 @@ When designing and performing precipitation kinetics simulations, it is importan
 
 The following graphics shows a sketch of the RVE for precipitation kinetics simulations.
 
-[![ //MatCalc// representative RVE](/howtosimulate/precipitation/img/matcalc_rve.png " //MatCalc// representative RVE")](/howtosimulate/precipitation/img/matcalc_rve.png "howtosimulate/precipitation/img/matcalc_rve.png")
+[![ //MatCalc// representative RVE](/matcalc_docu/howtosimulate/precipitation/img/matcalc_rve.png " //MatCalc// representative RVE")](/matcalc_docu/howtosimulate/precipitation/img/matcalc_rve.png "howtosimulate:precipitation:img:matcalc_rve.png")
 
 The RVE in *MatCalc* contains unit volume of matter, with an arbitrary number of different atomic species. The atoms can form precipitates of different type and different chemical composition. The precipitates are considered to be spherical objects,[2)](#fn__2) with a homogenous chemical composition, just like the matrix.
 
@@ -102,8 +102,8 @@ If you want to simulation precipitation, you must provide at least one *containe
   + **Grain size** (important for grain boundary precipitates)
   + **Dislocation density** (important for dislocation precipitates as well as pipe diffusion)
   + **Subgrain size** (important for subgrain boundary precipitates, e.g., in martensitic microstructure)
-* For dislocation density above the equilibrium values ($10^{11}-10^{12}$), enter the **dislocation diffusivity ratio** in the special tab. See article  [Diffusion in heterogenous precipitation](/techpapers/precipitation/diffusion "techpapers/precipitation/diffusion") for details.
-* For grain boundary precipitates, enter the **grain boundary diffusivity ratio** in the special tab. See article  [Diffusion in heterogenous precipitation](/techpapers/precipitation/diffusion "techpapers/precipitation/diffusion") for details.
+* For dislocation density above the equilibrium values ($10^{11}-10^{12}$), enter the **dislocation diffusivity ratio** in the special tab. See article  [Diffusion in heterogenous precipitation](/matcalc_docu/techpapers/precipitation/diffusion "techpapers:precipitation:diffusion") for details.
+* For grain boundary precipitates, enter the **grain boundary diffusivity ratio** in the special tab. See article  [Diffusion in heterogenous precipitation](/matcalc_docu/techpapers/precipitation/diffusion "techpapers:precipitation:diffusion") for details.
 
 Create precipitates
 -------------------
@@ -113,7 +113,7 @@ For each desired precipitate, select the **precipitate parent phase** and create
 * Define the desired **number of size classes** to use in the simulations. This quantity determines, which maximum number of size classes *MatCalc* will maintain during the simulations. Practically, values between 15 and 25 have proven to be reasonable values, if you are interested in the evolution of mean quantities, such as number density or mean radius. A value of 20 delivers a good compromise for calculation speed an accuracy.
 * Attach the precipitate to a **precipitation domain**.
 * Do *not* change the automatic setting for the interfacial energy. The estimates delivered by *MatCalc* have shown to be quite reasonable in the majority of cases, and no significant changes are usually necessary at this stage.
-* On the 'nucleation' tab, select the desired homogeneous of heterogeneous **nucleation site**. See the article on  [Heterogeneous nucleation](/techpapers/nucleation/het_nucl_sites "techpapers/nucleation/het_nucl_sites") for additional information.
+* On the 'nucleation' tab, select the desired homogeneous of heterogeneous **nucleation site**. See the article on  [Heterogeneous nucleation](/matcalc_docu/techpapers/nucleation/het_nucl_sites "techpapers:nucleation:het_nucl_sites") for additional information.
 
 [1)](#fnt__1)
 
@@ -121,6 +121,6 @@ J. **S**voboda, F. D. **F**ischer, P. **F**ratzl and E. **K**ozeschnik, „Model
 
 [2)](#fnt__2)
 
-In reality, the precipitates in *MatCalc* can have non-spherical shapes also. This is described in the article about  [The precipitate shape](/techpapers/precipitation/prec_shape "techpapers/precipitation/prec_shape")
+In reality, the precipitates in *MatCalc* can have non-spherical shapes also. This is described in the article about  [The precipitate shape](/matcalc_docu/techpapers/precipitation/prec_shape "techpapers:precipitation:prec_shape")
 
 ![](/wiki/lib/exe/taskrunner.php?id=howtosimulate%3Aprecipitation%3Ageneral&1788352862)

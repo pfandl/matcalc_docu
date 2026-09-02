@@ -7,7 +7,7 @@ Nominal composition
 
 After setting up the system in the database dialog, the chemical composition is usually entered in the *nominal composition* dialog box. Forgetting to do so represents a common source for strange and unexpected simulation results, simply because the chemical composition is not correctly defined. *MatCalc* tries to remember the chemical composition of precious simulations and initializes the composition values accordingly.
 
-[![ Nominal composition dialog box](/reference/dialogs/img/composition/nominal_composition-chemical_composition_f7.png " Nominal composition dialog box")](/reference/dialogs/img/composition/nominal_composition-chemical_composition_f7.png "reference/dialogs/img/composition/nominal_composition-chemical_composition_f7.png")
+[![ Nominal composition dialog box](/matcalc_docu/reference/dialogs/img/composition/nominal_composition-chemical_composition_f7.png " Nominal composition dialog box")](/matcalc_docu/reference/dialogs/img/composition/nominal_composition-chemical_composition_f7.png "reference:dialogs:img:composition:nominal_composition-chemical_composition_f7.png")
 
 1. **Element**: The element column lists all loaded elements in alphabetical order.
 2. **Reference element**: One element is set as the reference elements. Its chemical composition will automatically be set with the residual value to 100% and can not be set manually. Double click this field to change the reference element.   
@@ -24,24 +24,24 @@ After setting up the system in the database dialog, the chemical composition is 
 5. **Change (F2)**: Alternative method to change the chemical composition of the highlighted item.
 6. **Unit selection**:
 
-   * *mole fraction*: Chemical composition in mole fraction (e.g./ Fe3C/ 0.25C, 0.75Fe).   
+   * *mole fraction*: Chemical composition in mole fraction (e.g.: Fe3C: 0.25C, 0.75Fe).   
 
      ```
      enter-composition x c=0.25  $ Mole fraction
      enter-composition xp c=0.25 $ Mole percent
      ```
-   * *u-fraction*: Chemical composition in the form of substitutional site fractions. Typically used for the setup of para-equilibrium conditions (e.g./ Fe3C/ 0.33C, 1.0Fe).   
+   * *u-fraction*: Chemical composition in the form of substitutional site fractions. Typically used for the setup of para-equilibrium conditions (e.g.: Fe3C: 0.33C, 1.0Fe).   
 
      ```
      enter-composition u c=0.33  $ u-fraction
      enter-composition up c=33 $ u-percent
      ```
-   * *weight fraction*: Chemical composition in weight fraction (e.g./ Fe3C/ 0.067C, 0.933Fe).   
+   * *weight fraction*: Chemical composition in weight fraction (e.g.: Fe3C: 0.067C, 0.933Fe).   
 
      ```
      enter-composition w c=0.067  $ weight fraction
      ```
-   * *weight percent*: Chemical composition as weight percent (e.g./ Fe3C/ 6.7%C, 93.3%Fe).   
+   * *weight percent*: Chemical composition as weight percent (e.g.: Fe3C: 6.7%C, 93.3%Fe).   
 
      ```
      enter-composition wp c=6.67 $ weight percent

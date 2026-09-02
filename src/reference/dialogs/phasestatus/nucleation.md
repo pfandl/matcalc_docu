@@ -7,10 +7,10 @@ Nucleation
 
 This tab contains all options in relation to the nucleation of precipitates.
 
-[![ Nucleation](/reference/dialogs/img/phasestatus/phase_status-f8-nucleation.png " Nucleation")](/reference/dialogs/img/phasestatus/phase_status-f8-nucleation.png "reference/dialogs/img/phasestatus/phase_status-f8-nucleation.png")
+[![ Nucleation](/matcalc_docu/reference/dialogs/img/phasestatus/phase_status-f8-nucleation.png " Nucleation")](/matcalc_docu/reference/dialogs/img/phasestatus/phase_status-f8-nucleation.png "reference:dialogs:img:phasestatus:phase_status-f8-nucleation.png")
 
-1. **[Nucleation model:](/reference/dialogs/phasestatus/nucleation/model "reference/dialogs/phasestatus/nucleation/model")** [1)](#fn__1) Choose the nucleation model from the dropdown box.
-2. **[Nucleus composition:](/reference/dialogs/phasestatus/nucleation/composition "reference/dialogs/phasestatus/nucleation/composition")** [2)](#fn__2) Choose the nucleus composition from the dropdown box.
+1. **[Nucleation model:](/matcalc_docu/reference/dialogs/phasestatus/nucleation/model "reference:dialogs:phasestatus:nucleation:model")** [1)](#fn__1) Choose the nucleation model from the dropdown box.
+2. **[Nucleus composition:](/matcalc_docu/reference/dialogs/phasestatus/nucleation/composition "reference:dialogs:phasestatus:nucleation:composition")** [2)](#fn__2) Choose the nucleus composition from the dropdown box.
 3. **Nucleation constant**: [3)](#fn__3)
 4. **Incubation time constant**: [4)](#fn__4)
 5. **Minimum precipitation radius**: [5)](#fn__5)

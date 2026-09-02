@@ -5,7 +5,7 @@ Special [MatCalc Documentation]
 Special
 -------
 
-[![ Special](/reference/dialogs/img/phasestatus/phase_status-f8-special.png " Special")](/reference/dialogs/img/phasestatus/phase_status-f8-special.png "reference/dialogs/img/phasestatus/phase_status-f8-special.png")
+[![ Special](/matcalc_docu/reference/dialogs/img/phasestatus/phase_status-f8-special.png " Special")](/matcalc_docu/reference/dialogs/img/phasestatus/phase_status-f8-special.png "reference:dialogs:img:phasestatus:phase_status-f8-special.png")
 
 1. **Use nucleation site saturation**:
 2. **Inactive radius factor**:

@@ -5,7 +5,7 @@ Heat Treatment [MatCalc Documentation]
 Heat Treatment
 ==============
 
-[![ Heat treatment main dialog](/reference/dialogs/img/heattreatments/heat_treatment-alt-f8-main.png " Heat treatment main dialog")](/reference/dialogs/img/heattreatments/heat_treatment-alt-f8-main.png "reference/dialogs/img/heattreatments/heat_treatment-alt-f8-main.png")
+[![ Heat treatment main dialog](/matcalc_docu/reference/dialogs/img/heattreatments/heat_treatment-alt-f8-main.png " Heat treatment main dialog")](/matcalc_docu/reference/dialogs/img/heattreatments/heat_treatment-alt-f8-main.png "reference:dialogs:img:heattreatments:heat_treatment-alt-f8-main.png")
 
 1. **List of available treatments**:
 2. **Create new treatment**:
@@ -36,6 +36,6 @@ Heat Treatment
 13. **New segment**:
 14. **Insert segment**:
 15. **Remove**:
-16. **[Edit](/reference/dialogs/heattreatments/edit "reference/dialogs/heattreatments/edit")**: Edit heat treatment segment.
+16. **[Edit](/matcalc_docu/reference/dialogs/heattreatments/edit "reference:dialogs:heattreatments:edit")**: Edit heat treatment segment.
 
 ![](/wiki/lib/exe/taskrunner.php?id=reference%3Adialogs%3Aheattreatments&1788353002)

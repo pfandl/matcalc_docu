@@ -5,7 +5,7 @@ Structure [MatCalc Documentation]
 Structure
 ---------
 
-[![ Structure](/reference/dialogs/img/phasestatus/phase_status-f8-structure.png " Structure")](/reference/dialogs/img/phasestatus/phase_status-f8-structure.png "reference/dialogs/img/phasestatus/phase_status-f8-structure.png")
+[![ Structure](/matcalc_docu/reference/dialogs/img/phasestatus/phase_status-f8-structure.png " Structure")](/matcalc_docu/reference/dialogs/img/phasestatus/phase_status-f8-structure.png "reference:dialogs:img:phasestatus:phase_status-f8-structure.png")
 
 1. **Young's modulus**:
 

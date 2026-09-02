@@ -16,7 +16,7 @@ TechPaper #2016002: Trapping kinetics [MatCalc Documentation]
 
 Section 'Trapping kinetics' is still under construction!!
 
-[![](/wiki/under_construction_icon-yellow.svg.png)](/wiki/under_construction_icon-yellow.svg.png "wiki/under_construction_icon-yellow.svg.png")
+[![](/matcalc_docu/wiki/under_construction_icon-yellow.svg.png)](/wiki/lib/exe/detail.php?id=techpapers%3Aprecipitation%3Atrapping&media=wiki/under_construction_icon-yellow.svg.png "wiki:under_construction_icon-yellow.svg.png")
 
 TechPaper #2016002: Trapping kinetics
 =====================================
@@ -37,9 +37,9 @@ This paper describes how trapping for kinetics is evaluated in *MatCalc*. It ser
 Related documents
 -----------------
 
-* [Equilibrium trapping](/techpapers/equilib/trapping "techpapers/equilib/trapping")
-* [Example E30: Trapping in Fe-C](/examples/equilib/e30 "examples/equilib/e30")
-* [Presentation of trapping model](/techpapers/spec_top_present/trapping.pptx "techpapers/spec_top_present/trapping.pptx (1.9 MB)")
+* [Equilibrium trapping](/matcalc_docu/techpapers/equilib/trapping "techpapers:equilib:trapping")
+* [Example E30: Trapping in Fe-C](/matcalc_docu/examples/equilib/e30 "examples:equilib:e30")
+* [Presentation of trapping model](/matcalc_docu/techpapers/spec_top_present/trapping.pptx "techpapers:spec_top_present:trapping.pptx (1.9 MB)")
 
 Main document
 =============

@@ -18,9 +18,9 @@ This page contains in-depth information on how to use if-conditions, for- and wh
 
 Have a look at the following demonstration examples, which make excessive use of random numbers, conditions and loops:
 
-* Random number generator -  [Random generator script](/reference/syntax/random.mcs "reference/syntax/random.mcs (3 KB)")
-* The*MatCalc*Game -  [The MatCalc game](/reference/syntax/thematcalcgame.mcs "reference/syntax/thematcalcgame.mcs (8.9 KB)")
-* Roulette -  [Casino Royal](/reference/syntax/roulette.mcs "reference/syntax/roulette.mcs (8.8 KB)")
+* Random number generator -  [Random generator script](/matcalc_docu/reference/syntax/random.mcs "reference:syntax:random.mcs (3 KB)")
+* The*MatCalc*Game -  [The MatCalc game](/matcalc_docu/reference/syntax/thematcalcgame.mcs "reference:syntax:thematcalcgame.mcs (8.9 KB)")
+* Roulette -  [Casino Royal](/matcalc_docu/reference/syntax/roulette.mcs "reference:syntax:roulette.mcs (8.8 KB)")
 
 ### IF-condition
 
@@ -30,7 +30,7 @@ if (x>5)
 endif
 ```
 
-An if-condition can be used whenever a condition has to be checked (e.g./ Version number check at the beginning of each MatCalc script). The example above checks if the variable **x** is larger than the arbitrary value of **5**. If the condition is TRUE, the command after the if will be performed. If it is FALSE, it will not be performed. Note that an if-condition is always ended with an **endif**.
+An if-condition can be used whenever a condition has to be checked (e.g.: Version number check at the beginning of each MatCalc script). The example above checks if the variable **x** is larger than the arbitrary value of **5**. If the condition is TRUE, the command after the if will be performed. If it is FALSE, it will not be performed. Note that an if-condition is always ended with an **endif**.
 
 ```
 if (x>5)
@@ -124,10 +124,10 @@ send-console-string #test
 
 This is an easy way of creating many variables automatically. Have a look at the 'Random number generation' script linked above for more information on the automatic creation variables.
 
-There are two ways how the steps of a for-loop can be set: The automatical way has been used already without mentioning it, where the interval from x..y gets split in intervals with stepwidth 1. By adding an additional parameter, the step-width can be controlled by either splitting into intervals ( / ) or by setting a fixed step-width ( ; ).
+There are two ways how the steps of a for-loop can be set: The automatical way has been used already without mentioning it, where the interval from x..y gets split in intervals with stepwidth 1. By adding an additional parameter, the step-width can be controlled by either splitting into intervals ( : ) or by setting a fixed step-width ( ; ).
 
 ```
-for(i;1..100/5)
+for(i;1..100:5)
 $ The interval from 1 to 100 is split into 5 intervals. 
 $ The values for i are therefore: 1, 20, 40, 60, 80, 100.
 

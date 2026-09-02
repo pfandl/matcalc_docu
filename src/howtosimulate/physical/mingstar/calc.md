@@ -35,19 +35,19 @@ Objectives
 
 The minimum nucleation energy is of interest, whenever a nucleation event occurs and has to be calculated (i.e. to calculate P-nucl). It should be understood that the calculated energy, depends on various factors including chemical composition and temperature. Further, the composition which delivers the minimum G\* energy only gives a statistically 'most likely' composition, that is why the calculated nucleation probability is given in percent, depending on the likelihood of the event to occur. Other compositions, mostly close to the calculated one are also possible and have to be considered.
 
-**Note:** This is an advanced example for interested users who want to gain a deep understanding of their material. The whole example will be given in script form, which will be discussed at length. If you feel uneasy about loops and conditions, you may want to check out our explanation on ['Syntax for Conditions, Loops and other commands'](/reference/syntax "reference/syntax") beforehand.
+**Note:** This is an advanced example for interested users who want to gain a deep understanding of their material. The whole example will be given in script form, which will be discussed at length. If you feel uneasy about loops and conditions, you may want to check out our explanation on ['Syntax for Conditions, Loops and other commands'](/matcalc_docu/reference/syntax "reference:syntax") beforehand.
 
 Related documents
 -----------------
 
-* [E10 - 'Most-likely' nucleus composition for bcc-Cu precipitation in bcc-Fe](/examples/equilib/e10 "examples/equilib/e10")
-* [Help-file on Loops and Conditions](/reference/syntax "reference/syntax")
-* [Part II showing how to visualize min G\* and P using GNUPlot](/howtosimulate/physical/mingstar/vis "howtosimulate/physical/mingstar/vis")
+* [E10 - 'Most-likely' nucleus composition for bcc-Cu precipitation in bcc-Fe](/matcalc_docu/examples/equilib/e10 "examples:equilib:e10")
+* [Help-file on Loops and Conditions](/matcalc_docu/reference/syntax "reference:syntax")
+* [Part II showing how to visualize min G\* and P using GNUPlot](/matcalc_docu/howtosimulate/physical/mingstar/vis "howtosimulate:physical:mingstar:vis")
 
 Complementary files
 -------------------
 
-Click [here](/howtosimulate/physical/mingstar/howto_-_g-star_-_vcn.mcs "howtosimulate/physical/mingstar/howto_-_g-star_-_vcn.mcs (9.3 KB)") to view the script for this HowTo manual.
+Click [here](/matcalc_docu/howtosimulate/physical/mingstar/howto_-_g-star_-_vcn.mcs "howtosimulate:physical:mingstar:howto_-_g-star_-_vcn.mcs (9.3 KB)") to view the script for this HowTo manual.
 
 Main document
 =============
@@ -148,10 +148,10 @@ $ make loop for V and N content. Fe will be modified inversely to V, C inversely
 @ set-variable-value row_count 0    $ index variable
 
 $ first loop is for V 
-@ for (i;Vmin..Vmax/Vint)
+@ for (i;Vmin..Vmax:Vint)
 @ $   show-expression i
 @   set-variable-value col_count 0    $ index variable
-@   for (j;Nmin..Nmax/Nint)
+@   for (j;Nmin..Nmax:Nint)
 @ $       show-expression j
 @      $ assign compositions
 @      set-variable-value x_V i
@@ -215,10 +215,10 @@ $ first loop is for V
 
 @ $ finally normalize nucleation probability
 @ set-variable-value row_count 0    $ index variable
-@ for (i;Vmin..Vmax/Vint)
+@ for (i;Vmin..Vmax:Vint)
 @ $   show-expression i
 @   set-variable-value col_count 0    $ index variable
-@   for (j;Nmin..Nmax/Nint)
+@   for (j;Nmin..Nmax:Nint)
 @      $ normalize
 @      set-array-value P_array row_count+1 col_count+1 P_array[row_count+1]....
 ....[col_count+1]/max_P_nucl
@@ -244,10 +244,10 @@ $ make loop for V and N content. Fe will be modified inversely to V, C inversely
 @ set-variable-value row_count 0    $ index variable
 
 $ first loop is for V 
-@ for (i;Vmin..Vmax/Vint)
+@ for (i;Vmin..Vmax:Vint)
 @ $   show-expression i
 @   set-variable-value col_count 0    $ index variable
-@   for (j;Nmin..Nmax/Nint)
+@   for (j;Nmin..Nmax:Nint)
 @ $       show-expression j
 @      $ assign compositions
 @      set-variable-value x_V i
@@ -275,7 +275,7 @@ $ first loop is for V
 @      endif
 ```
 
-This portion of code focuses on the setup of the arrays. It starts by initializing the 'row count' variable (which keeps track of the actual row), and the 'col count' (which does basically the same for the columns). After that, we set the auxiliary variables x\_V and x\_N, which are used in equilibrium calculations. As 'i' and 'j' are the runtime variables, we want to introduce those auxiliary ones to keep the code clean and easily readable! A quick check for plausibility follows (it is not possible for any atom to be negatively existing ![/-D](/wiki/lib/images/smileys/biggrin.svg)). The last two conditions are responsible for naming the x- and y-values of the arrays.
+This portion of code focuses on the setup of the arrays. It starts by initializing the 'row count' variable (which keeps track of the actual row), and the 'col count' (which does basically the same for the columns). After that, we set the auxiliary variables x\_V and x\_N, which are used in equilibrium calculations. As 'i' and 'j' are the runtime variables, we want to introduce those auxiliary ones to keep the code clean and easily readable! A quick check for plausibility follows (it is not possible for any atom to be negatively existing ![:-D](/wiki/lib/images/smileys/biggrin.svg)). The last two conditions are responsible for naming the x- and y-values of the arrays.
 
 **Part 2 - Calculate G\* and P:**
 
@@ -328,10 +328,10 @@ The last two arguments simply increase the column-/row-count by one, for the nex
 ```
 @ $ finally normalize nucleation probability
 @ set-variable-value row_count 0    $ index variable
-@ for (i;Vmin..Vmax/Vint)
+@ for (i;Vmin..Vmax:Vint)
 @ $   show-expression i
 @   set-variable-value col_count 0    $ index variable
-@   for (j;Nmin..Nmax/Nint)
+@   for (j;Nmin..Nmax:Nint)
 @      $ normalize
 @      set-array-value P_array row_count+1 col_count+1 P_array[row_count+1]....
 ....[col_count+1]/max_P_nucl
@@ -350,6 +350,6 @@ In this final part of the script, the whole P-array will be worked through and a
 Consecutive articles
 ====================
 
-In order to visualize the obtained data, either use your own plotting tool of choice, or go to [part II](/howtosimulate/physical/mingstar/vis "howtosimulate/physical/mingstar/vis"), where the procedure of plotting will be shown using opensource software GNUPlot.
+In order to visualize the obtained data, either use your own plotting tool of choice, or go to [part II](/matcalc_docu/howtosimulate/physical/mingstar/vis "howtosimulate:physical:mingstar:vis"), where the procedure of plotting will be shown using opensource software GNUPlot.
 
 ![](/wiki/lib/exe/taskrunner.php?id=howtosimulate%3Aphysical%3Amingstar%3Acalc&1788352992)

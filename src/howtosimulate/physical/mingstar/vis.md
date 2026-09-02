@@ -40,8 +40,8 @@ This second part shows a way to process the data calculated by *MatCalc* and how
 Related documents
 -----------------
 
-* [Part I showing the calculation of min G\* and P](/howtosimulate/physical/mingstar/calc "howtosimulate/physical/mingstar/calc")
-* [http://www.gnuplot.info/](http///www.gnuplot.info/ "http///www.gnuplot.info/") - GNUPlot official Homepage. Download software there, also FAQ and Demos.
+* [Part I showing the calculation of min G\* and P](/matcalc_docu/howtosimulate/physical/mingstar/calc "howtosimulate:physical:mingstar:calc")
+* [http://www.gnuplot.info/](http://www.gnuplot.info/ "http://www.gnuplot.info/") - GNUPlot official Homepage. Download software there, also FAQ and Demos.
 
 Complementary files
 -------------------
@@ -56,15 +56,15 @@ Export data to file
 
 To create a 3-dimensional G\*, respectively P plot, we need to extract the relevant data from *MatCalc*. Open the desired array (either G\* or normalized P) and mark all data, without the axes (values for X and Y). Then press: **Copy selection**. Alternatively open the 'array\_without\_xy' array and press **Copy all**.
 
-[![ Copy data from array](/howtosimulate/physical/mingstar/array-copy.png " Copy data from array")](/howtosimulate/physical/mingstar/array-copy.png "howtosimulate/physical/mingstar/array-copy.png")
+[![ Copy data from array](/matcalc_docu/howtosimulate/physical/mingstar/array-copy.png " Copy data from array")](/matcalc_docu/howtosimulate/physical/mingstar/array-copy.png "howtosimulate:physical:mingstar:array-copy.png")
 
-Next step, paste the values into an editor. Windows users can easily open the command line (Shortcut/ WIN+R) and type 'cmd'.
+Next step, paste the values into an editor. Windows users can easily open the command line (Shortcut: WIN+R) and type 'cmd'.
 
-[![ Run notepad on Windows machines](/howtosimulate/physical/mingstar/run-notepad.png " Run notepad on Windows machines")](/howtosimulate/physical/mingstar/run-notepad.png "howtosimulate/physical/mingstar/run-notepad.png")
+[![ Run notepad on Windows machines](/matcalc_docu/howtosimulate/physical/mingstar/run-notepad.png " Run notepad on Windows machines")](/matcalc_docu/howtosimulate/physical/mingstar/run-notepad.png "howtosimulate:physical:mingstar:run-notepad.png")
 
 The values in the editor should be separated with Tab-stops and have '.' as commas. This is important, because GNUPlot will not process ',' as a comma (This is especially important, if you copy the data to Excel and it changes the comma!).
 
-[![ Correct data in notepad](/howtosimulate/physical/mingstar/array-notepad.png " Correct data in notepad")](/howtosimulate/physical/mingstar/array-notepad.png "howtosimulate/physical/mingstar/array-notepad.png")
+[![ Correct data in notepad](/matcalc_docu/howtosimulate/physical/mingstar/array-notepad.png " Correct data in notepad")](/matcalc_docu/howtosimulate/physical/mingstar/array-notepad.png "howtosimulate:physical:mingstar:array-notepad.png")
 
 Save the file as \*.txt and name it anyway you want.
 
@@ -110,7 +110,7 @@ splot 'VCN-gstar.txt' matrix # splot creates a 3D plot, matrix points to a matri
 
 Click into the plot, and 'rotate' the picture a little bit. This will force the 'wxg graphic output terminal' (which is responsible for plotting data to your screen) to refresh. You can also click the 'Replot' button in the GUI bar on top of the output window. This has to done, whenever you change the size of the output window. If nothing crashed and no power shortages occured, you should have plot similar to this:
 
-[![ Min G* phase field for fixed temperature and carbon content, for varying V and N contents.](/howtosimulate/physical/mingstar/gstar-preversion.png " Min G* phase field for fixed temperature and carbon content, for varying V and N contents.")](/howtosimulate/physical/mingstar/gstar-preversion.png "howtosimulate/physical/mingstar/gstar-preversion.png")
+[![ Min G* phase field for fixed temperature and carbon content, for varying V and N contents.](/matcalc_docu/howtosimulate/physical/mingstar/gstar-preversion.png " Min G* phase field for fixed temperature and carbon content, for varying V and N contents.")](/matcalc_docu/howtosimulate/physical/mingstar/gstar-preversion.png "howtosimulate:physical:mingstar:gstar-preversion.png")
 
 But what does this tell us? Why are the axes numbered from 0 to 35? The next section will handle these topics and refine the results.
 
@@ -151,7 +151,7 @@ The command 'set xtics' lets the user manually set numbers on the axes. The digi
 
 The final version of our min G\* plot should look like this.
 
-[![ Final version of minimum G* field](/howtosimulate/physical/mingstar/gstar-finish.png " Final version of minimum G* field")](/howtosimulate/physical/mingstar/gstar-finish.png "howtosimulate/physical/mingstar/gstar-finish.png")
+[![ Final version of minimum G* field](/matcalc_docu/howtosimulate/physical/mingstar/gstar-finish.png " Final version of minimum G* field")](/matcalc_docu/howtosimulate/physical/mingstar/gstar-finish.png "howtosimulate:physical:mingstar:gstar-finish.png")
 
 However, this is only a plot of energy, and does not represent the nucleation event anywhere as good as a normalized P-array plot. Use the previously gained knowledge, and create the normalized P-array plot now!
 
@@ -183,7 +183,7 @@ splot 'VCN-P.txt' matrix # splot creates a 3D plot, matrix points to a matrix
 
 The careful reader has maybe noticed some missing commands. These are 'set hidden3d'… we are not using this command here, as the resulting mesh would totally cover the contour lines. Further we don't have to set a specific format on z axis.
 
-[![ Normalized nucleation probability surface](/howtosimulate/physical/mingstar/normalized_p.png " Normalized nucleation probability surface")](/howtosimulate/physical/mingstar/normalized_p.png "howtosimulate/physical/mingstar/normalized_p.png")
+[![ Normalized nucleation probability surface](/matcalc_docu/howtosimulate/physical/mingstar/normalized_p.png " Normalized nucleation probability surface")](/matcalc_docu/howtosimulate/physical/mingstar/normalized_p.png "howtosimulate:physical:mingstar:normalized_p.png")
 
 **Note**: It is possible to create directly \*.jpgs or \*.pngs from GNUPlot. However, this is neither trivial nor error-resistant. The easiest way to get images from the plots is to use either print-screen or a snipping tool of your choice,
 
@@ -198,13 +198,13 @@ set hidden3d
 set contour surface
 ```
 
-[![ Colorful surface of normalized nucleation probability P](/howtosimulate/physical/mingstar/normalized_p_pm3d.png " Colorful surface of normalized nucleation probability P")](/howtosimulate/physical/mingstar/normalized_p_pm3d.png "howtosimulate/physical/mingstar/normalized_p_pm3d.png")
+[![ Colorful surface of normalized nucleation probability P](/matcalc_docu/howtosimulate/physical/mingstar/normalized_p_pm3d.png " Colorful surface of normalized nucleation probability P")](/matcalc_docu/howtosimulate/physical/mingstar/normalized_p_pm3d.png "howtosimulate:physical:mingstar:normalized_p_pm3d.png")
 
 Consecutive articles
 ====================
 
-For detailed commands and more information on GNUPlot, please visit their Homepage on demo files: [http://www.gnuplot.info/demo/](http///www.gnuplot.info/demo/ "http///www.gnuplot.info/demo/")
+For detailed commands and more information on GNUPlot, please visit their Homepage on demo files: [http://www.gnuplot.info/demo/](http://www.gnuplot.info/demo/ "http://www.gnuplot.info/demo/")
 
-Other tutorials can be found on: [http://www.gnuplot.info/help.html](http///www.gnuplot.info/help.html "http///www.gnuplot.info/help.html")
+Other tutorials can be found on: [http://www.gnuplot.info/help.html](http://www.gnuplot.info/help.html "http://www.gnuplot.info/help.html")
 
 ![](/wiki/lib/exe/taskrunner.php?id=howtosimulate%3Aphysical%3Amingstar%3Avis&1788352992)

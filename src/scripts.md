@@ -20,44 +20,44 @@ Find a collection of MatCalc scripts for different aspects of material processin
 General
 -------
 
-* [Graphical presentation and export of results](/scripts/t4_6021003_stal.mcs "scripts/t4_6021003_stal.mcs (9.2 KB)")
+* [Graphical presentation and export of results](/matcalc_docu/scripts/t4_6021003_stal.mcs "scripts:t4_6021003_stal.mcs (9.2 KB)")
 
-* [MatCalc built-in variables; graphical output](/scripts/t5_6021003_stal.mcs "scripts/t5_6021003_stal.mcs (9.8 KB)")
+* [MatCalc built-in variables; graphical output](/matcalc_docu/scripts/t5_6021003_stal.mcs "scripts:t5_6021003_stal.mcs (9.8 KB)")
 
-* [Introduction to user-defined functions](/scripts/t6_6021003.mcs "scripts/t6_6021003.mcs (12.4 KB)")
+* [Introduction to user-defined functions](/matcalc_docu/scripts/t6_6021003.mcs "scripts:t6_6021003.mcs (12.4 KB)")
 
-* [Using the MatCalc console](/scripts/t12_6021003.mcs "scripts/t12_6021003.mcs (5.8 KB)")
+* [Using the MatCalc console](/matcalc_docu/scripts/t12_6021003.mcs "scripts:t12_6021003.mcs (5.8 KB)")
 
 Equilibrium and non-equilibrium analysis
 ----------------------------------------
 
-* [Calculating a single equilibrium](/scripts/t2_6021003.mcs "scripts/t2_6021003.mcs (6.5 KB)")
+* [Calculating a single equilibrium](/matcalc_docu/scripts/t2_6021003.mcs "scripts:t2_6021003.mcs (6.5 KB)")
 
-* [Performing a stepped equilibrium calculation](/scripts/t3_6021003_stal.mcs "scripts/t3_6021003_stal.mcs (5.9 KB)")
+* [Performing a stepped equilibrium calculation](/matcalc_docu/scripts/t3_6021003_stal.mcs "scripts:t3_6021003_stal.mcs (5.9 KB)")
 
-* [Calculating transformation temperatures and phase boundaries](/scripts/t7_6021003.mcs "scripts/t7_6021003.mcs (11.8 KB)")
+* [Calculating transformation temperatures and phase boundaries](/matcalc_docu/scripts/t7_6021003.mcs "scripts:t7_6021003.mcs (11.8 KB)")
 
-* [Calculating a phase diagram in a binary system](/scripts/t8_6021003.mcs "scripts/t8_6021003.mcs (27.7 KB)")
+* [Calculating a phase diagram in a binary system](/matcalc_docu/scripts/t8_6021003.mcs "scripts:t8_6021003.mcs (27.7 KB)")
 
-* [Calculating a pseudobinary phase diagram](/scripts/t9_6021003.mcs "scripts/t9_6021003.mcs (46.2 KB)")
+* [Calculating a pseudobinary phase diagram](/matcalc_docu/scripts/t9_6021003.mcs "scripts:t9_6021003.mcs (46.2 KB)")
 
-* [T0- temperature in Fe-Cr-C](/scripts/t10_6021003.mcs "scripts/t10_6021003.mcs (13.4 KB)")
+* [T0- temperature in Fe-Cr-C](/matcalc_docu/scripts/t10_6021003.mcs "scripts:t10_6021003.mcs (13.4 KB)")
 
-* [Simulation of solidification of 0.7C 3Mn steel](/scripts/t11_6021003.mcs "scripts/t11_6021003.mcs (9.7 KB)")
+* [Simulation of solidification of 0.7C 3Mn steel](/matcalc_docu/scripts/t11_6021003.mcs "scripts:t11_6021003.mcs (9.7 KB)")
 
-* [Introduction to scripting - Equilibrium calculations](/scripts/t13_6021003.mcs "scripts/t13_6021003.mcs (7.7 KB)")
+* [Introduction to scripting - Equilibrium calculations](/matcalc_docu/scripts/t13_6021003.mcs "scripts:t13_6021003.mcs (7.7 KB)")
 
 Precipitation kinetics
 ----------------------
 
-* [Introduction to precipitation calculations](/scripts/t14_6021003.mcs "scripts/t14_6021003.mcs (14.1 KB)")
+* [Introduction to precipitation calculations](/matcalc_docu/scripts/t14_6021003.mcs "scripts:t14_6021003.mcs (14.1 KB)")
 
-* [Effect of microstructure and conditions (Part 1)](/scripts/t15_6021003.mcs "scripts/t15_6021003.mcs (18.7 KB)")
+* [Effect of microstructure and conditions (Part 1)](/matcalc_docu/scripts/t15_6021003.mcs "scripts:t15_6021003.mcs (18.7 KB)")
 
-* [Effect of microstructure and conditions (Part 2 - simultaneous precipitation)](/scripts/t16_6021003_stal.mcs "scripts/t16_6021003_stal.mcs (19.6 KB)")
+* [Effect of microstructure and conditions (Part 2 - simultaneous precipitation)](/matcalc_docu/scripts/t16_6021003_stal.mcs "scripts:t16_6021003_stal.mcs (19.6 KB)")
 
-* [Multi-stage heat treatment](/scripts/t17_6021003.mcs "scripts/t17_6021003.mcs (16 KB)")
+* [Multi-stage heat treatment](/matcalc_docu/scripts/t17_6021003.mcs "scripts:t17_6021003.mcs (16 KB)")
 
-* [TTP (time-temperature-precipitation) diagrams](/scripts/t18_6021003.mcs "scripts/t18_6021003.mcs (20.2 KB)")
+* [TTP (time-temperature-precipitation) diagrams](/matcalc_docu/scripts/t18_6021003.mcs "scripts:t18_6021003.mcs (20.2 KB)")
 
 ![](/wiki/lib/exe/taskrunner.php?id=scripts&1788352848)

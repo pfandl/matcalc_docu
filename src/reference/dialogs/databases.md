@@ -7,7 +7,7 @@ Thermodynamic databases
 
 The thermodynamic setup is the starting point of every calculation performed with the GUI. The user has to choose the database, elements and phases. If necessary, a diffusion and physical database can be read as well. Most functions of the MatCalc GUI are not available, until the system is set up.
 
-[![Thermodynamic setup ](/reference/dialogs/img/databases/thermodynamic_setup-f5.png "Thermodynamic setup ")](/reference/dialogs/img/databases/thermodynamic_setup-f5.png "reference/dialogs/img/databases/thermodynamic_setup-f5.png")
+[![Thermodynamic setup ](/matcalc_docu/reference/dialogs/img/databases/thermodynamic_setup-f5.png "Thermodynamic setup ")](/matcalc_docu/reference/dialogs/img/databases/thermodynamic_setup-f5.png "reference:dialogs:img:databases:thermodynamic_setup-f5.png")
 
 1. **Module selection**: Choose one of the three database types to read. The last two options are only available if the thermodynamic database has been read.
 

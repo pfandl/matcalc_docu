@@ -56,7 +56,7 @@ Definition of the shape factor
 
 A simple geometrical object that can be used to represent needle-shaped as well as plate-shaped precipitates with a simple shape factor $h$ is the cylinder defined by a height $H$ and a diameter $D$. This object is shown in the figure below.
 
-[![ Definition of shape factor in MatCalc precipitation simulations](/techpapers/precipitation/img/fig_growth_shape_factor.png " Definition of shape factor in MatCalc precipitation simulations")](/techpapers/precipitation/img/fig_growth_shape_factor.png "techpapers/precipitation/img/fig_growth_shape_factor.png")
+[![ Definition of shape factor in MatCalc precipitation simulations](/matcalc_docu/techpapers/precipitation/img/fig_growth_shape_factor.png " Definition of shape factor in MatCalc precipitation simulations")](/matcalc_docu/techpapers/precipitation/img/fig_growth_shape_factor.png "techpapers:precipitation:img:fig_growth_shape_factor.png")
 Figure 1: Definition of shape factor
 
 With this assumption, a shape factor $h$ can be defined as
@@ -103,18 +103,18 @@ with $R$ being the gas constant, $D\_{0i}$ and $D\_{ki}$ being the diffusion coe
 
 The following figure shows the results of the analysis in graphical form, where the parameters are plotted as a function of the shape factor $h$.
 
-[![ Growth rate correction for non-spherical precipitates](/techpapers/precipitation/img/fig_growth_shape_factor_result.png " Growth rate correction for non-spherical precipitates")](/techpapers/precipitation/img/fig_growth_shape_factor_result.png "techpapers/precipitation/img/fig_growth_shape_factor_result.png")
+[![ Growth rate correction for non-spherical precipitates](/matcalc_docu/techpapers/precipitation/img/fig_growth_shape_factor_result.png " Growth rate correction for non-spherical precipitates")](/matcalc_docu/techpapers/precipitation/img/fig_growth_shape_factor_result.png "techpapers:precipitation:img:fig_growth_shape_factor_result.png")
 Figure 2: Corrections to the growth rate of spherical precipitates that take into accound non-spherical shape (note that 'shape factor' in this figure refers to the values of $S\_k$, $K\_k$, $I\_k$ and $O\_k$)
 
 **Important note:** In the practical implementation of the formulas into *MatCalc*, all quantities are normalized with respect to a sphere instead of the cylinder with $h=1$. This treatment assures that the calculations without shape factor and the simulations using a shape factor with value $h=1$ give identical results.
 
 Finally, when calculating precipitate growth, this treatment delivers the result that growth of plate-shaped precipitates is fastest compared to spherical shape. Needle-shape is least favorable and is characterized by slowest growth rates. This is demonstrated for cementite particles of different shape factor in the figures below for the evolution of the phase fraction $f$, the mean radius $r$ and the number density $N$. In the figures, the red line corresponds to the calculation with $h=1$, the green line to needle shape with $n=10$, and the blue line to plate shape with $n=0.1$.
 
-[![ Evolution of phase fraction for precipitate with shape factor 1](/techpapers/precipitation/img/fig_growth_shape_factor_f.png " Evolution of phase fraction for precipitate with shape factor 1")](/techpapers/precipitation/img/fig_growth_shape_factor_f.png "techpapers/precipitation/img/fig_growth_shape_factor_f.png")
+[![ Evolution of phase fraction for precipitate with shape factor 1](/matcalc_docu/techpapers/precipitation/img/fig_growth_shape_factor_f.png " Evolution of phase fraction for precipitate with shape factor 1")](/matcalc_docu/techpapers/precipitation/img/fig_growth_shape_factor_f.png "techpapers:precipitation:img:fig_growth_shape_factor_f.png")
 
-[![ Evolution of number density for precipitate with shape factor 1](/techpapers/precipitation/img/fig_growth_shape_factor_n.png " Evolution of number density for precipitate with shape factor 1")](/techpapers/precipitation/img/fig_growth_shape_factor_n.png "techpapers/precipitation/img/fig_growth_shape_factor_n.png")
+[![ Evolution of number density for precipitate with shape factor 1](/matcalc_docu/techpapers/precipitation/img/fig_growth_shape_factor_n.png " Evolution of number density for precipitate with shape factor 1")](/matcalc_docu/techpapers/precipitation/img/fig_growth_shape_factor_n.png "techpapers:precipitation:img:fig_growth_shape_factor_n.png")
 
-[![ Evolution of mean radius for precipitate with shape factor 1](/techpapers/precipitation/img/fig_growth_shape_factor_r.png " Evolution of mean radius for precipitate with shape factor 1")](/techpapers/precipitation/img/fig_growth_shape_factor_r.png "techpapers/precipitation/img/fig_growth_shape_factor_r.png")
+[![ Evolution of mean radius for precipitate with shape factor 1](/matcalc_docu/techpapers/precipitation/img/fig_growth_shape_factor_r.png " Evolution of mean radius for precipitate with shape factor 1")](/matcalc_docu/techpapers/precipitation/img/fig_growth_shape_factor_r.png "techpapers:precipitation:img:fig_growth_shape_factor_r.png")
 Figure 3: Evolution of phase fraction, number density and mean radius for different values of $h$.
 
 The figures above emphasize the fastest growth for plate-shaped precipitates, both in the phase fraction diagram as well as the mean radius. The needle-shaped precipitate grows slowest, however, it achieves the highest number density, since more nuclei are formed until supersaturation seizes and nucleation comes to a stop.
@@ -124,7 +124,7 @@ Evaluation of the precipitate geometry
 
 The geometry of non-spherical precipitates is uniquely defined by the combination of mean precipitate radius **`R_MEAN$phase`** and shape factor $h$. For analysis of the actual extension of the non-spherical precipitate, the mean precipitate diameter **`D_MEAN$phase`** and the two variables **`HEQ_MEAN$phase`** and **`DEQ_MEAN$phase`** for the *equivalent* height and *equivalent* diameter can be utilized. The following figure displays these quantities for the simulation of plate-shaped precipitates as performed in the previous section.
 
-[![ Evaluation of equivalent height and equivalent diameter](/techpapers/precipitation/img/fig_growth_shape_factor_d_h.png " Evaluation of equivalent height and equivalent diameter")](/techpapers/precipitation/img/fig_growth_shape_factor_d_h.png "techpapers/precipitation/img/fig_growth_shape_factor_d_h.png")
+[![ Evaluation of equivalent height and equivalent diameter](/matcalc_docu/techpapers/precipitation/img/fig_growth_shape_factor_d_h.png " Evaluation of equivalent height and equivalent diameter")](/matcalc_docu/techpapers/precipitation/img/fig_growth_shape_factor_d_h.png "techpapers:precipitation:img:fig_growth_shape_factor_d_h.png")
 Figure 4: Mean precipitate diameter of the spherical precipitate compared to the *equivalent height* and *equivalent diameter* of non-spherical precipitate. Note the implementation of the minimum precipitate radius for very small precipitates.
 
 For larger precipitate sizes, the ratio between height and diameter corresponds exactly with the shape factor $h=0.1$. These variables can be used for comparison of simulations with experimental information.
@@ -136,13 +136,13 @@ This behavior of *MatCalc* is reflected in the diagram in the horizontal section
 Influence of precipitate shape on precipitation strengthening
 -------------------------------------------------------------
 
-Based on the distribution and the properties of the precipitates, *MatCalc* calculates the amount of precipitation strengthening according to the models discussed in the tech paper on  [precipitation strengthening](/techpapers/mprops/prec_strength "techpapers/mprops/prec_strength"). A major factor in the models underlying these calculations is the mean particle distance $\lambda$ between two precipitates on the glide plane of the dislocation. A classical expression of this kind for non-shearable precipitates is the Orowan strengthening model.
+Based on the distribution and the properties of the precipitates, *MatCalc* calculates the amount of precipitation strengthening according to the models discussed in the tech paper on  [precipitation strengthening](/matcalc_docu/techpapers/mprops/prec_strength "techpapers:mprops:prec_strength"). A major factor in the models underlying these calculations is the mean particle distance $\lambda$ between two precipitates on the glide plane of the dislocation. A classical expression of this kind for non-shearable precipitates is the Orowan strengthening model.
 
 For the case of non-spherical precipitates, the deviation from spherical shape leads to a higher probability of a precipitate intersecting the dislocation glide plane. This reduces the mean distance $\lambda$ and, consequently, leads to a higher strengthening effect. This issue has been investigated in ref.[3)](#fn__3), where a correction factor has been derived based on the definition of shape factor with $h=H/D$.
 
 The basic assumption that has been made in this work is that the probability of finding a precipitate in a dislocation slip plane is given by the following simple model.
 
-[![ Precipitates in the slip plane of a dislocation](/techpapers/precipitation/img/fig_growth_shape_factor_strength_1.png " Precipitates in the slip plane of a dislocation")](/techpapers/precipitation/img/fig_growth_shape_factor_strength_1.png "techpapers/precipitation/img/fig_growth_shape_factor_strength_1.png")
+[![ Precipitates in the slip plane of a dislocation](/matcalc_docu/techpapers/precipitation/img/fig_growth_shape_factor_strength_1.png " Precipitates in the slip plane of a dislocation")](/matcalc_docu/techpapers/precipitation/img/fig_growth_shape_factor_strength_1.png "techpapers:precipitation:img:fig_growth_shape_factor_strength_1.png")
 Figure 5: Sketch for definition of non-spherical precipitates in evaluation of the mean particle distance for strength calculation.
 
 For non-spherical precipitates, the angle between the slip plane of the dislocation and the precipitate orientation must be considered, as well as the precipitate shape factor $h$. Evaluation of these relations leads to a simple correction factor $K$ for the mean particle spacing $\lambda$ as
@@ -155,7 +155,7 @@ The critical yield strength attributable to precipitation strengthening then bec
 
 The following figure, finally, displays the correction factor $K$ as a function of the shape factor $h$.
 
-[![ Correction factor for the mean particle distance of non-spherical precipitates](/techpapers/precipitation/img/fig_growth_shape_factor_strength_2.png " Correction factor for the mean particle distance of non-spherical precipitates")](/techpapers/precipitation/img/fig_growth_shape_factor_strength_2.png "techpapers/precipitation/img/fig_growth_shape_factor_strength_2.png")
+[![ Correction factor for the mean particle distance of non-spherical precipitates](/matcalc_docu/techpapers/precipitation/img/fig_growth_shape_factor_strength_2.png " Correction factor for the mean particle distance of non-spherical precipitates")](/matcalc_docu/techpapers/precipitation/img/fig_growth_shape_factor_strength_2.png "techpapers:precipitation:img:fig_growth_shape_factor_strength_2.png")
 Figure 6: Correction factor for the mean particle distance of non-spherical precipitates
 
 The results suggest that the strengthening effect of non-spherical precipitates is generally more pronounced than the strengthening effect of spherical precipitates. The above relations are used by *MatCalc* as soon as use of the shape factor is selected in the 'precipitate' tab of the 'phase status' dialog.

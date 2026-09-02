@@ -33,10 +33,10 @@ This paper describes how trapping at equilibrium condition is evaluated in *MatC
 Related documents
 -----------------
 
-* [Trapping kinetics](/techpapers/precipitation/trapping "techpapers/precipitation/trapping")
-* [Example E30: Trapping in Fe-C](/examples/equilib/e30 "examples/equilib/e30")
-* [Example E31: Segregation kinetics of P and S at grain boundaries](/examples/equilib/e31 "examples/equilib/e31")
-* [Presentation of trapping model](/techpapers/spec_top_present/trapping.pptx "techpapers/spec_top_present/trapping.pptx (1.9 MB)")
+* [Trapping kinetics](/matcalc_docu/techpapers/precipitation/trapping "techpapers:precipitation:trapping")
+* [Example E30: Trapping in Fe-C](/matcalc_docu/examples/equilib/e30 "examples:equilib:e30")
+* [Example E31: Segregation kinetics of P and S at grain boundaries](/matcalc_docu/examples/equilib/e31 "examples:equilib:e31")
+* [Presentation of trapping model](/matcalc_docu/techpapers/spec_top_present/trapping.pptx "techpapers:spec_top_present:trapping.pptx (1.9 MB)")
 
 Main document
 =============

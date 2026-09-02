@@ -33,14 +33,14 @@ This paper describes how the vacancy concentration at equilibrium condition is e
 Related documents
 -----------------
 
-* [Excess vacancies](/techpapers/precipitation/excess_va "techpapers/precipitation/excess_va")
+* [Excess vacancies](/matcalc_docu/techpapers/precipitation/excess_va "techpapers:precipitation:excess_va")
 
 Main document
 =============
 
 A knowledge of the equilibrium and excess vacancy concentration in metals, and their temperature dependence, is necessary for the fundamental understanding of the atomic processes of mass transport and the more complex diffusion related phenomena important to the technological applications of metals.
 This motivated many people to define thermodynamics properties by measuring and calculating material properties, e.g. the formation energy, $E^f$, and the formation entropy, $ S^f $, which we will deal here with.
-This topic is continued in the discussion of  [the influence of the excess vacancies on the precipitation kinetics](/techpapers/precipitation/excess_va "techpapers/precipitation/excess_va").
+This topic is continued in the discussion of  [the influence of the excess vacancies on the precipitation kinetics](/matcalc_docu/techpapers/precipitation/excess_va "techpapers:precipitation:excess_va").
 
 Thermodynamics
 --------------
@@ -111,8 +111,8 @@ The first conclusion is directly related to the vacancy relaxation as already me
 The equilibrium vacancy concentration can be seen in the figure below for different assumptions on $E^f\_{Va}$ and $S^f\_{Va}$ for aluminium.
 
 [![  
-The equilibrium vacancy concentration in aluminium ](/techpapers/equilib/img/arrheniusformationentropy300-930.png "  
-The equilibrium vacancy concentration in aluminium ")](/techpapers/equilib/img/arrheniusformationentropy300-930.png "techpapers/equilib/img/arrheniusformationentropy300-930.png")
+The equilibrium vacancy concentration in aluminium ](/matcalc_docu/techpapers/equilib/img/arrheniusformationentropy300-930.png "  
+The equilibrium vacancy concentration in aluminium ")](/matcalc_docu/techpapers/equilib/img/arrheniusformationentropy300-930.png "techpapers:equilib:img:arrheniusformationentropy300-930.png")
 
 Figure: The equilibrium vacancy concentration in aluminium
 

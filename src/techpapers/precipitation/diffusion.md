@@ -41,8 +41,8 @@ In this paper, the implementation of diffusion during heterogenous precipitation
 Related documents
 -----------------
 
-1. [Heterogenous nucleation](/techpapers/nucleation/het_nucl_sites "techpapers/nucleation/het_nucl_sites")
-2. [Excess vacancies](/techpapers/precipitation/excess_va "techpapers/precipitation/excess_va")
+1. [Heterogenous nucleation](/matcalc_docu/techpapers/nucleation/het_nucl_sites "techpapers:nucleation:het_nucl_sites")
+2. [Excess vacancies](/matcalc_docu/techpapers/precipitation/excess_va "techpapers:precipitation:excess_va")
 
 Main document
 =============
@@ -117,7 +117,7 @@ Diffusion along grain boundaries
 
 In *MatCalc*, grain boundaries are assumed to be high-angle boundaries, which provide a network of two-dimensional high-speed diffusion paths. In contrast to the pipe diffusion effect, the influence of grain boundary diffusion is *not* explicitely taken into account as a prefactor to the tracer diffusion coefficient. Instead, the influence of grain boundary diffusion on the overall precipitation kinetics must be included manually. See the corresponding section below.
 
-The grain boundary diffusion coefficient is, however, used in the kinetic framework for grain boundary precipitation[2)](#fn__2). The grain boundary diffusivity is explicitely integrated in the evolution equations and must be correctly set, if this type of precipitation geometry is used. For the correct definition of grain boundary nucleation and growth see also the technical paper on  [Heterogenous nucleation](/techpapers/nucleation/het_nucl_sites "techpapers/nucleation/het_nucl_sites").
+The grain boundary diffusion coefficient is, however, used in the kinetic framework for grain boundary precipitation[2)](#fn__2). The grain boundary diffusivity is explicitely integrated in the evolution equations and must be correctly set, if this type of precipitation geometry is used. For the correct definition of grain boundary nucleation and growth see also the technical paper on  [Heterogenous nucleation](/matcalc_docu/techpapers/nucleation/het_nucl_sites "techpapers:nucleation:het_nucl_sites").
 
 ### Recommended values for the grain boundary diffusivity
 
@@ -162,7 +162,7 @@ The following values are recommended for selected cases:
 | Grain boundary edges and corners | 1.0 - 3.0 | Fast gb diffusion not accounted for in the model. Slight acceleration plausible |
 | Subgrain boundaries | 1.0 - 5.0 | Fast sgb diffusion not accounted for in the model. Slight acceleration plausible |
 
-**Note:** In addition to the acceleration of diffusion along grain boundaries and subgrain boundaries, significantly higher diffusion knietics can also be stimulated by the presence of **quenched-in** or **deformation-induced excess vacancies**. See the corresponding article  [Excess vacancies](/techpapers/precipitation/excess_va "techpapers/precipitation/excess_va") for a description of this effect and how to take it into account in your simulations.
+**Note:** In addition to the acceleration of diffusion along grain boundaries and subgrain boundaries, significantly higher diffusion knietics can also be stimulated by the presence of **quenched-in** or **deformation-induced excess vacancies**. See the corresponding article  [Excess vacancies](/matcalc_docu/techpapers/precipitation/excess_va "techpapers:precipitation:excess_va") for a description of this effect and how to take it into account in your simulations.
 
 [1)](#fnt__1)
 

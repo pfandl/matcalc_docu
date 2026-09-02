@@ -5,7 +5,7 @@ SFK-traps [MatCalc Documentation]
 SFK-traps
 ---------
 
-[![ SFK-traps](/reference/dialogs/img/precipitation/precipitation_domain-ctrl-f8-sfk_traps.png " SFK-traps")](/reference/dialogs/img/precipitation/precipitation_domain-ctrl-f8-sfk_traps.png "reference/dialogs/img/precipitation/precipitation_domain-ctrl-f8-sfk_traps.png")
+[![ SFK-traps](/matcalc_docu/reference/dialogs/img/precipitation/precipitation_domain-ctrl-f8-sfk_traps.png " SFK-traps")](/matcalc_docu/reference/dialogs/img/precipitation/precipitation_domain-ctrl-f8-sfk_traps.png "reference:dialogs:img:precipitation:precipitation_domain-ctrl-f8-sfk_traps.png")
 
 1. **Solute trapping data field**:
 

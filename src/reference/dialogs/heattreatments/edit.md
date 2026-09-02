@@ -5,13 +5,13 @@ Edit heat treatment segment [MatCalc Documentation]
 Edit heat treatment segment
 ---------------------------
 
-[![ Edit heat treatment segment](/reference/dialogs/img/heattreatments/heat_treatment-alt-f8-segment.png " Edit heat treatment segment")](/reference/dialogs/img/heattreatments/heat_treatment-alt-f8-segment.png "reference/dialogs/img/heattreatments/heat_treatment-alt-f8-segment.png")
+[![ Edit heat treatment segment](/matcalc_docu/reference/dialogs/img/heattreatments/heat_treatment-alt-f8-segment.png " Edit heat treatment segment")](/matcalc_docu/reference/dialogs/img/heattreatments/heat_treatment-alt-f8-segment.png "reference:dialogs:img:heattreatments:heat_treatment-alt-f8-segment.png")
 
 1. **Previous segment**:
 2. **Actual segment**:
 3. **Next segment**:
 4. **Start temperature**:
-5. **[mode:](/reference/dialogs/heattreatments/edit/mode "reference/dialogs/heattreatments/edit/mode")** Choose on of the modes.
+5. **[mode:](/matcalc_docu/reference/dialogs/heattreatments/edit/mode "reference:dialogs:heattreatments:edit:mode")** Choose on of the modes.
 6. **End temperature**:
 7. **Heat/Cooling rate**:
 8. **Delta-Time**:

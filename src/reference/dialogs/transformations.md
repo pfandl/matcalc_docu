@@ -5,7 +5,7 @@ Transformations [MatCalc Documentation]
 Transformations
 ---------------
 
-The transformation dialog can be used to create 'solid transformations'. These represent recipes for how one phase in a *MatCalc* simulation ought to be transformed into another one. Typical application of transformations are the transformation of delta-ferrite into austenite in the Scheil simulation of peritectic reactions in steel (see, e.g., example *E20-3* -  [Accounting for the peritectic reaction](/examples/equilib/e20/e20_3 "examples/equilib/e20/e20_3")), or the transformation of one matrix phase into another one when evaluating the heat capacity of systems during DSC experiments.
+The transformation dialog can be used to create 'solid transformations'. These represent recipes for how one phase in a *MatCalc* simulation ought to be transformed into another one. Typical application of transformations are the transformation of delta-ferrite into austenite in the Scheil simulation of peritectic reactions in steel (see, e.g., example *E20-3* -  [Accounting for the peritectic reaction](/matcalc_docu/examples/equilib/e20/e20_3 "examples:equilib:e20:e20_3")), or the transformation of one matrix phase into another one when evaluating the heat capacity of systems during DSC experiments.
 
 A transformation is typically applied to phases which have *dormant* phase status. The transformation can occur according to different strategies
 
@@ -20,7 +20,7 @@ A transformation is typically applied to phases which have *dormant* phase statu
 
 Below, the dialog options are described in more detail.
 
-[![ Transformations](/reference/dialogs/img/transformations/transformations.png " Transformations")](/reference/dialogs/img/transformations/transformations.png "reference/dialogs/img/transformations/transformations.png")
+[![ Transformations](/matcalc_docu/reference/dialogs/img/transformations/transformations.png " Transformations")](/matcalc_docu/reference/dialogs/img/transformations/transformations.png "reference:dialogs:img:transformations:transformations.png")
 
 1. **Create new transformation**: Create a new transformation object.
 2. **Remove**: remove existing transformation.

@@ -1,4 +1,5 @@
 site_name: MatCalc Documentation
+site_url: https://pfandl.github.io/matcalc_docu/
 
 docs_dir: src
 site_dir: docs

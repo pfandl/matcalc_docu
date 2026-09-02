@@ -5,7 +5,7 @@ Tables and arrays [MatCalc Documentation]
 Tables and arrays
 -----------------
 
-[![ Tables and arrays](/reference/dialogs/img/tables/tables_and_arrays.png " Tables and arrays")](/reference/dialogs/img/tables/tables_and_arrays.png "reference/dialogs/img/tables/tables_and_arrays.png")
+[![ Tables and arrays](/matcalc_docu/reference/dialogs/img/tables/tables_and_arrays.png " Tables and arrays")](/matcalc_docu/reference/dialogs/img/tables/tables_and_arrays.png "reference:dialogs:img:tables:tables_and_arrays.png")
 
 1. **List of available tables and arrays**:
 2. **Edit**:

@@ -37,7 +37,7 @@ This paper describes the available options for the definition of the precipitate
 Related documents
 -----------------
 
-[The multi-component transient nucleation rate (#2011003)](/techpapers/nucleation/nucleation_rate "techpapers/nucleation/nucleation_rate")
+[The multi-component transient nucleation rate (#2011003)](/matcalc_docu/techpapers/nucleation/nucleation_rate "techpapers:nucleation:nucleation_rate")
 
 Main document
 =============

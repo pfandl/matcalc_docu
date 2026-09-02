@@ -4,7 +4,7 @@ Nucleation model [MatCalc Documentation]
 
 ### Nucleation model
 
-[![ Nucleation model](/reference/dialogs/img/phasestatus/phase_status-f8-nucleation-nucleation_model.png " Nucleation model")](/reference/dialogs/img/phasestatus/phase_status-f8-nucleation-nucleation_model.png "reference/dialogs/img/phasestatus/phase_status-f8-nucleation-nucleation_model.png")
+[![ Nucleation model](/matcalc_docu/reference/dialogs/img/phasestatus/phase_status-f8-nucleation-nucleation_model.png " Nucleation model")](/matcalc_docu/reference/dialogs/img/phasestatus/phase_status-f8-nucleation-nucleation_model.png "reference:dialogs:img:phasestatus:phase_status-f8-nucleation-nucleation_model.png")
 
 * Volmer/Weber:
 * Becker/Doering:

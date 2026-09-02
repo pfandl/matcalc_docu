@@ -19,14 +19,14 @@ Contents of the menu bar [MatCalc Documentation]
 Contents of the menu bar
 ========================
 
-This section contains information on the menu bar and its functions. Detailed information will be provided with a link, or can be found directly in the  [corresponding](/reference/dialogs "reference/dialogs") section.
+This section contains information on the menu bar and its functions. Detailed information will be provided with a link, or can be found directly in the  [corresponding](/matcalc_docu/reference/dialogs "reference:dialogs") section.
 
-[![ MatCalc menu bar](/reference/menu/img/6101002_menubar.png " MatCalc menu bar")](/reference/menu/img/6101002_menubar.png "reference/menu/img/6101002_menubar.png")
+[![ MatCalc menu bar](/matcalc_docu/reference/menu/img/6101002_menubar.png " MatCalc menu bar")](/matcalc_docu/reference/menu/img/6101002_menubar.png "reference:menu:img:6101002_menubar.png")
 
 1. File
 -------
 
-[![ File section](/reference/menu/img/6101002_menu_file.png " File section")](/reference/menu/img/6101002_menu_file.png "reference/menu/img/6101002_menu_file.png")
+[![ File section](/matcalc_docu/reference/menu/img/6101002_menu_file.png " File section")](/matcalc_docu/reference/menu/img/6101002_menu_file.png "reference:menu:img:6101002_menu_file.png")
 
 1. **New** (Ctrl+N): Opens a dialog box which asks for the desired file type (MatCalc workspace, Script file, Text file)
 2. **Open** (Ctrl+O): Loads a previously saved file (workspace, script, …)
@@ -48,7 +48,7 @@ This section contains information on the menu bar and its functions. Detailed in
 
 The following commands only work properly in a script file editor. All their functions are similar to other text editors!
 
-[![ Edit section](/reference/menu/img/6101002_menu_edit.png " Edit section")](/reference/menu/img/6101002_menu_edit.png "reference/menu/img/6101002_menu_edit.png")
+[![ Edit section](/matcalc_docu/reference/menu/img/6101002_menu_edit.png " Edit section")](/matcalc_docu/reference/menu/img/6101002_menu_edit.png "reference:menu:img:6101002_menu_edit.png")
 
 1. **Undo** (Ctrl+Z): Undo your last command.
 2. **Redo** (Ctrl+Y): Redo your last command.
@@ -61,42 +61,42 @@ The following commands only work properly in a script file editor. All their fun
 3. Global
 ---------
 
-[![ Global section](/reference/menu/img/6101002_menu_global.png " Global section")](/reference/menu/img/6101002_menu_global.png "reference/menu/img/6101002_menu_global.png")
+[![ Global section](/matcalc_docu/reference/menu/img/6101002_menu_global.png " Global section")](/matcalc_docu/reference/menu/img/6101002_menu_global.png "reference:menu:img:6101002_menu_global.png")
 
-1. **[Databases ...](/reference/dialogs/databases "reference/dialogs/databases")** (F5): Opens the 'Databases' dialog.
-2. **[Composition ...](/reference/dialogs/composition "reference/dialogs/composition")** (F7): Opens the 'Composition' dialog.
-3. **[Phase status ...](/reference/dialogs/phasestatus "reference/dialogs/phasestatus")** (F8): Opens the 'Phase status' dialog.
-4. **[Precipitation domains ...](/reference/dialogs/precipitation "reference/dialogs/precipitation")** (Ctrl+F8): Opens the 'Precipitation domains' dialog.
-5. **[Thermo-mech. treatments ...](/reference/dialogs/heattreatments "reference/dialogs/heattreatments")** (Alt+F8): Opens the 'Thermo-mechanical treatment' dialog.
-6. **[CalcStates](/reference/menu/calcstates "reference/menu/calcstates")**: Offers a dropout menu to choose options from.
-7. **[Buffers](/reference/menu/buffers "reference/menu/buffers")**: Offers a dropout menu to choose options from.
-8. **[TTP-Buffer](/reference/menu/ttpbuffer "reference/menu/ttpbuffer")**: Offers a dropout menu to choose options from.
-9. **[Tables and Arrays](/reference/dialogs/tables "reference/dialogs/tables")**: Opens the 'Tables and Arrays' dialog.
-10. **[Transformations ...](/reference/dialogs/transformations "reference/dialogs/transformations")**: Opens the 'Transformations' dialog.
+1. **[Databases ...](/matcalc_docu/reference/dialogs/databases "reference:dialogs:databases")** (F5): Opens the 'Databases' dialog.
+2. **[Composition ...](/matcalc_docu/reference/dialogs/composition "reference:dialogs:composition")** (F7): Opens the 'Composition' dialog.
+3. **[Phase status ...](/matcalc_docu/reference/dialogs/phasestatus "reference:dialogs:phasestatus")** (F8): Opens the 'Phase status' dialog.
+4. **[Precipitation domains ...](/matcalc_docu/reference/dialogs/precipitation "reference:dialogs:precipitation")** (Ctrl+F8): Opens the 'Precipitation domains' dialog.
+5. **[Thermo-mech. treatments ...](/matcalc_docu/reference/dialogs/heattreatments "reference:dialogs:heattreatments")** (Alt+F8): Opens the 'Thermo-mechanical treatment' dialog.
+6. **[CalcStates](/matcalc_docu/reference/menu/calcstates "reference:menu:calcstates")**: Offers a dropout menu to choose options from.
+7. **[Buffers](/matcalc_docu/reference/menu/buffers "reference:menu:buffers")**: Offers a dropout menu to choose options from.
+8. **[TTP-Buffer](/matcalc_docu/reference/menu/ttpbuffer "reference:menu:ttpbuffer")**: Offers a dropout menu to choose options from.
+9. **[Tables and Arrays](/matcalc_docu/reference/dialogs/tables "reference:dialogs:tables")**: Opens the 'Tables and Arrays' dialog.
+10. **[Transformations ...](/matcalc_docu/reference/dialogs/transformations "reference:dialogs:transformations")**: Opens the 'Transformations' dialog.
 11. **Conditional commands**: Opens the 'Conditional commands' dialog
-12. **[Variables & Functions](/reference/dialogs/variables "reference/dialogs/variables")** (F6): Opens the 'Variables & Functions' dialog.
+12. **[Variables & Functions](/matcalc_docu/reference/dialogs/variables "reference:dialogs:variables")** (F6): Opens the 'Variables & Functions' dialog.
 
 4. Calc
 -------
 
-[![ Calc section](/reference/menu/img/6101002_menu_calc.png " Calc section")](/reference/menu/img/6101002_menu_calc.png "reference/menu/img/6101002_menu_calc.png")
+[![ Calc section](/matcalc_docu/reference/menu/img/6101002_menu_calc.png " Calc section")](/matcalc_docu/reference/menu/img/6101002_menu_calc.png "reference:menu:img:6101002_menu_calc.png")
 
 1. **Set start values** (Ctrl+Shift+F): Sets automatic start values. All phases are set to their nominal composition according to major constituents. Good method to create a starting point.
 2. **Apply tangent construction** (Ctrl+Shift+A): Applies parallel tangent construction to evaluate data for unstable phases.
 3. **Equilibrium …** (Ctrl+E): Opens the 'Calculate equilibrium' dialog. Enter desired temperature to calculate equilbrium, use 'C ↔ K' to change values from Celsius to Kelvin. Pressure dialog box has no functionality so far.
-4. **[Stepped calculation ...](/reference/dialogs/stepped "reference/dialogs/stepped")** (Ctrl+T): Opens the 'Stepped calculation' dialog.
-5. **[Search phase boundary ...](/reference/dialogs/search "reference/dialogs/search")** (Ctrl+Shift+T): Opens the 'Search phase boundary' dialog.
-6. **[Scheil calculation ...](/reference/dialogs/scheil "reference/dialogs/scheil")** (Ctrl+H): Opens the 'Scheil calculation' dialog.
-7. **[Microstructure simulation ...](/reference/dialogs/preckinetics "reference/dialogs/preckinetics")** (Ctrl+K): Opens the 'Microstructure simulation' dialog.
-8. **[TTP-diagram ...](/reference/dialogs/ttpdiagram "reference/dialogs/ttpdiagram")** (Ctrl+Alt+K): Opens the 'TTP-diagram' dialog.
+4. **[Stepped calculation ...](/matcalc_docu/reference/dialogs/stepped "reference:dialogs:stepped")** (Ctrl+T): Opens the 'Stepped calculation' dialog.
+5. **[Search phase boundary ...](/matcalc_docu/reference/dialogs/search "reference:dialogs:search")** (Ctrl+Shift+T): Opens the 'Search phase boundary' dialog.
+6. **[Scheil calculation ...](/matcalc_docu/reference/dialogs/scheil "reference:dialogs:scheil")** (Ctrl+H): Opens the 'Scheil calculation' dialog.
+7. **[Microstructure simulation ...](/matcalc_docu/reference/dialogs/preckinetics "reference:dialogs:preckinetics")** (Ctrl+K): Opens the 'Microstructure simulation' dialog.
+8. **[TTP-diagram ...](/matcalc_docu/reference/dialogs/ttpdiagram "reference:dialogs:ttpdiagram")** (Ctrl+Alt+K): Opens the 'TTP-diagram' dialog.
 9. **Calc nucleus compositions** (Ctrl+Shift+K): Calculates nucleus compositions for precipitate phase according to their respective model settings.
 10. **Stop current action** (Esc): Stops the current calculation, simulation, …
-11. **[Special](/reference/menu/special "reference/menu/special")**: Shows the special dropout menu.
+11. **[Special](/matcalc_docu/reference/menu/special "reference:menu:special")**: Shows the special dropout menu.
 
 5. Cells
 --------
 
-[![ Simulation section](/reference/menu/img/6101002_menu_cells.png " Simulation section")](/reference/menu/img/6101002_menu_cells.png "reference/menu/img/6101002_menu_cells.png")
+[![ Simulation section](/matcalc_docu/reference/menu/img/6101002_menu_cells.png " Simulation section")](/matcalc_docu/reference/menu/img/6101002_menu_cells.png "reference:menu:img:6101002_menu_cells.png")
 
 1. **Grid …**: Functionality not implemented yet!
 2. **Materials …**: Functionality not implemented yet!
@@ -106,14 +106,14 @@ The following commands only work properly in a script file editor. All their fun
 6. Monte Carlo
 --------------
 
-[![ Monte Carlo section](/reference/menu/img/6101002_menu_monte.png " Monte Carlo section")](/reference/menu/img/6101002_menu_monte.png "reference/menu/img/6101002_menu_monte.png")
+[![ Monte Carlo section](/matcalc_docu/reference/menu/img/6101002_menu_monte.png " Monte Carlo section")](/matcalc_docu/reference/menu/img/6101002_menu_monte.png "reference:menu:img:6101002_menu_monte.png")
 
 1. **Start simulation …** (Ctrl+R): Starts Monte Carlo simulation.
 
 7. Script
 ---------
 
-[![ Script section](/reference/menu/img/6101002_menu_script.png " Script section")](/reference/menu/img/6101002_menu_script.png "reference/menu/img/6101002_menu_script.png")
+[![ Script section](/matcalc_docu/reference/menu/img/6101002_menu_script.png " Script section")](/matcalc_docu/reference/menu/img/6101002_menu_script.png "reference:menu:img:6101002_menu_script.png")
 
 1. **Run script …** (Shift+F2): Opens the 'Run script' dialog. Specify path to run a specific script. Most recent run script will stay in the dialog box.
 2. **Open template …**: Opens a file browser to the template folder of MatCalc.
@@ -125,7 +125,7 @@ The following commands only work properly in a script file editor. All their fun
 8. View
 -------
 
-[![ View section](/reference/menu/img/6101002_menu_view.png " View section")](/reference/menu/img/6101002_menu_view.png "reference/menu/img/6101002_menu_view.png")
+[![ View section](/matcalc_docu/reference/menu/img/6101002_menu_view.png " View section")](/matcalc_docu/reference/menu/img/6101002_menu_view.png "reference:menu:img:6101002_menu_view.png")
 
 1. **Show**: Shows a dropout menu to toggle various GUI function windows (Console, Options, Variables, Nodes).
 2. **Select window font …**: Opens a dialog window to change font, size and other font related settings.
@@ -135,7 +135,7 @@ The following commands only work properly in a script file editor. All their fun
 6. **Display window IDs**: Toggle to show/hide the window IDs in the title bar.
 7. **Restore window positions** (Alt+Shift+R): Restore the position of MatCalc, console, options and variables window.
 8. **Edit series data …** (Ctrl+D): Choose a plot and manually edit the data of a series.
-9. **[Series](/reference/menu/series "reference/menu/series")**: Select a plot an choose one of various functions.
+9. **[Series](/matcalc_docu/reference/menu/series "reference:menu:series")**: Select a plot an choose one of various functions.
 10. **Completer**: Shows a dropout menu to enable/disable the completer. Further the style for commands can be changed: Uppercase/Lowercase letters and Underline/Minus.
 11. **Update all window contents** (Ctrl+U): Manually update all windows.
 12. **Update current window contents** (Ctrl+Shift+U): Manually update the window in focus.
@@ -145,7 +145,7 @@ The following commands only work properly in a script file editor. All their fun
 9. Help
 -------
 
-[![ Help section](/reference/menu/img/6101002_menu_help.png " Help section")](/reference/menu/img/6101002_menu_help.png "reference/menu/img/6101002_menu_help.png")
+[![ Help section](/matcalc_docu/reference/menu/img/6101002_menu_help.png " Help section")](/matcalc_docu/reference/menu/img/6101002_menu_help.png "reference:menu:img:6101002_menu_help.png")
 
 1. **Documentation**: Opens the MatCalc documentation site in the web browser.
 2. **Version Info**: Opens the MatCalc version information site in the web browser.

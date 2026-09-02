@@ -66,7 +66,7 @@ Considering the above, the formula for the planar sharp interface energy can be 
 
 \[\gamma\_{pl,sh}=0.329({N\_A}{V\_m}^2)^{-1/3}\Delta H\_{sol}\]
 
-The values of $\gamma\_{pl,sh}$ are evaluated by MatCalc for every phase (other than the reference phase) relative to the reference phase. These are stored in the variable **`CIE$EP`** (**“state variables GBB”** variables group; **`“EP”`** - equilibrium phase name). Once the precipitate phases are defined, the values for those are also found in the variable **`NUCL_CIE$PP`** (**“kinetics/ nucleation”** variables group; **`“PP”`** - precipitate phase name).
+The values of $\gamma\_{pl,sh}$ are evaluated by MatCalc for every phase (other than the reference phase) relative to the reference phase. These are stored in the variable **`CIE$EP`** (**“state variables GBB”** variables group; **`“EP”`** - equilibrium phase name). Once the precipitate phases are defined, the values for those are also found in the variable **`NUCL_CIE$PP`** (**“kinetics: nucleation”** variables group; **`“PP”`** - precipitate phase name).
 
 The size correction factor
 --------------------------
@@ -79,7 +79,7 @@ Additionally, a lower limit value of $0.743$ is set for $\alpha\_{SCF}(\rho)$. T
 
 \[\gamma\_{sp}=\gamma\_{pl,sh}\alpha\_{SCF}(\rho)\]
 
-Clearly, this crrection factor plays an important role during the nucleation stage, when the nuclei radii are small. The value of $\alpha\_{SCF}$ used for the modeling of the nucleation rate is stored in the variable **`NUCL_CIE_S_CORR$Phasename`** (**“kinetics/ nucleation”** variables group) and is evaluated for the calculated value of the critical radius. Once the precipitate is formed, $\alpha\_{SCF}$ is evaluated for every precipitate size class separately so that the proper size evolution is assured (e.g. coarsening).
+Clearly, this crrection factor plays an important role during the nucleation stage, when the nuclei radii are small. The value of $\alpha\_{SCF}$ used for the modeling of the nucleation rate is stored in the variable **`NUCL_CIE_S_CORR$Phasename`** (**“kinetics: nucleation”** variables group) and is evaluated for the calculated value of the critical radius. Once the precipitate is formed, $\alpha\_{SCF}$ is evaluated for every precipitate size class separately so that the proper size evolution is assured (e.g. coarsening).
 
 The diffuse interface correction factor
 ---------------------------------------
@@ -106,7 +106,7 @@ $T\_{crit}$ needs to be provided by the user. The values can be specified in the
 | Al | $\beta$ (“Mg2Si”) | 2000 |
 | Al | $\beta$' (“beta prime”) | 2200 |
 
-The value of $\beta\_{diff}$ used by MatCalc is stored in the variable **`CIE_DI_CORR$Phasename`** (**“kinetics/ precipitates”** variables group). The value of the diffuse interface energy $\gamma\_{diff}$ is stored in the variable **`EIE$Phasename`** (**“kinetics/ precipitates”** variables group), with
+The value of $\beta\_{diff}$ used by MatCalc is stored in the variable **`CIE_DI_CORR$Phasename`** (**“kinetics: precipitates”** variables group). The value of the diffuse interface energy $\gamma\_{diff}$ is stored in the variable **`EIE$Phasename`** (**“kinetics: precipitates”** variables group), with
 
 \[\gamma\_{diff}=\gamma\_{pl,sh}\beta\_{diff}(T/T\_{crit})\]
 

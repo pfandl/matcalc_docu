@@ -5,7 +5,7 @@ Search phase boundary [MatCalc Documentation]
 Search phase boundary
 ---------------------
 
-[![ Search phase boundary](/reference/dialogs/img/search/search_phase_boundary-ctrl-shift-t.png " Search phase boundary")](/reference/dialogs/img/search/search_phase_boundary-ctrl-shift-t.png "reference/dialogs/img/search/search_phase_boundary-ctrl-shift-t.png")
+[![ Search phase boundary](/matcalc_docu/reference/dialogs/img/search/search_phase_boundary-ctrl-shift-t.png " Search phase boundary")](/matcalc_docu/reference/dialogs/img/search/search_phase_boundary-ctrl-shift-t.png "reference:dialogs:img:search:search_phase_boundary-ctrl-shift-t.png")
 
 1. **Type**:
 2. **Target phase**:

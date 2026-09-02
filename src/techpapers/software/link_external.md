@@ -85,7 +85,7 @@ For using the compiled binary:
 
 Note: you can skip the compiling step if you already possess a compiled mex binary, but this can lead to problems on *MATLAB* versions other than the version which the binary has been compiled on.
 
-For compiling you need a C-compiler. If you don't already have one you can use the [GCC 4.3 compiler](http///ftp.gnu.org/gnu/gcc/ "http///ftp.gnu.org/gnu/gcc/")(warning/ MATLAB does **not support** higher gcc compiler) or find one from this [list](http///www.mathworks.com/support/compilers/previous_releases.html "http///www.mathworks.com/support/compilers/previous_releases.html"). To compile the *MatCalc* mex-files make sure that you have all files in the current working dir on *MATLAB* and type
+For compiling you need a C-compiler. If you don't already have one you can use the [GCC 4.3 compiler](http://ftp.gnu.org/gnu/gcc/ "http://ftp.gnu.org/gnu/gcc/")(warning: MATLAB does **not support** higher gcc compiler) or find one from this [list](http://www.mathworks.com/support/compilers/previous_releases.html "http://www.mathworks.com/support/compilers/previous_releases.html"). To compile the *MatCalc* mex-files make sure that you have all files in the current working dir on *MATLAB* and type
 
 Windows,Linux:
 
@@ -183,7 +183,7 @@ plot(T,F_LIQ,T,F_FCC,T,F_BCC,T,F_CEM,T,F_GRA)
 legend('F$LIQUID','F$FCC_A1','F$BCC_A2','F$CEMENTITE','F$GRAPHITE')
 ```
 
-[![](/techpapers/software/img/mex-test.png)](/techpapers/software/img/mex-test.png "techpapers/software/img/mex-test.png")
+[![](/matcalc_docu/techpapers/software/img/mex-test.png)](/wiki/lib/exe/detail.php?id=techpapers%3Asoftware%3Alink_external&media=techpapers/software/img/mex-test.png "techpapers:software:img:mex-test.png")
 
 ### Using the MatCalc shared libraries directly
 
@@ -283,14 +283,14 @@ External links
 
 ### MATLAB
 
-1. [MATLAB homepage](http///www.mathworks.com/products/matlab/ "http///www.mathworks.com/products/matlab/")
-2. [MATLAB documentation for external interfaces](http///www.mathworks.com/help/pdf_doc/matlab/apiext.pdf "http///www.mathworks.com/help/pdf_doc/matlab/apiext.pdf")
-3. [Information about supported and compatible compilers](http///www.mathworks.com/support/compilers/previous_releases.html "http///www.mathworks.com/support/compilers/previous_releases.html")
-4. [Guide for setting up gcc compiler 4.3 for ubuntu](https///help.ubuntu.com/community/MATLAB#MEX_functions "https///help.ubuntu.com/community/MATLAB#MEX_functions")
+1. [MATLAB homepage](http://www.mathworks.com/products/matlab/ "http://www.mathworks.com/products/matlab/")
+2. [MATLAB documentation for external interfaces](http://www.mathworks.com/help/pdf_doc/matlab/apiext.pdf "http://www.mathworks.com/help/pdf_doc/matlab/apiext.pdf")
+3. [Information about supported and compatible compilers](http://www.mathworks.com/support/compilers/previous_releases.html "http://www.mathworks.com/support/compilers/previous_releases.html")
+4. [Guide for setting up gcc compiler 4.3 for ubuntu](https://help.ubuntu.com/community/MATLAB#MEX_functions "https://help.ubuntu.com/community/MATLAB#MEX_functions")
 
 ### Mathematica
 
-1. [Mathematica homepage](http///www.wolfram.com/mathematica/ "http///www.wolfram.com/mathematica/")
-2. [Mathematica documentation for MathLink](http///reference.wolfram.com/mathematica/tutorial/MathLinkAndExternalProgramCommunicationOverview.html "http///reference.wolfram.com/mathematica/tutorial/MathLinkAndExternalProgramCommunicationOverview.html")
+1. [Mathematica homepage](http://www.wolfram.com/mathematica/ "http://www.wolfram.com/mathematica/")
+2. [Mathematica documentation for MathLink](http://reference.wolfram.com/mathematica/tutorial/MathLinkAndExternalProgramCommunicationOverview.html "http://reference.wolfram.com/mathematica/tutorial/MathLinkAndExternalProgramCommunicationOverview.html")
 
 ![](/wiki/lib/exe/taskrunner.php?id=techpapers%3Asoftware%3Alink_external&1788353010)

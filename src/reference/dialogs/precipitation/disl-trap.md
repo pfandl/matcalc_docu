@@ -5,7 +5,7 @@ Dislocation traps [MatCalc Documentation]
 Dislocation traps
 -----------------
 
-[![ Dislocation traps](/reference/dialogs/img/precipitation/precipitation_domain-ctrl-f8-disl-traps.png " Dislocation traps")](/reference/dialogs/img/precipitation/precipitation_domain-ctrl-f8-disl-traps.png "reference/dialogs/img/precipitation/precipitation_domain-ctrl-f8-disl-traps.png")
+[![ Dislocation traps](/matcalc_docu/reference/dialogs/img/precipitation/precipitation_domain-ctrl-f8-disl-traps.png " Dislocation traps")](/matcalc_docu/reference/dialogs/img/precipitation/precipitation_domain-ctrl-f8-disl-traps.png "reference:dialogs:img:precipitation:precipitation_domain-ctrl-f8-disl-traps.png")
 
 1. **Account for dislocation solute trapping**:
 2. **Only interstitial trapping**:

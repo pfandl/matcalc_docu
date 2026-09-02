@@ -5,7 +5,7 @@ TTP-diagram [MatCalc Documentation]
 TTP-diagram
 -----------
 
-[![ TTP-diagram](/reference/dialogs/img/ttpdiagram/ttp-diagram-ctrl-alt-k.png " TTP-diagram")](/reference/dialogs/img/ttpdiagram/ttp-diagram-ctrl-alt-k.png "reference/dialogs/img/ttpdiagram/ttp-diagram-ctrl-alt-k.png")
+[![ TTP-diagram](/matcalc_docu/reference/dialogs/img/ttpdiagram/ttp-diagram-ctrl-alt-k.png " TTP-diagram")](/matcalc_docu/reference/dialogs/img/ttpdiagram/ttp-diagram-ctrl-alt-k.png "reference:dialogs:img:ttpdiagram:ttp-diagram-ctrl-alt-k.png")
 
 1. **End time**:
 2. **Start temperature**:

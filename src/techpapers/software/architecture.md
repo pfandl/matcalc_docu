@@ -43,18 +43,18 @@ Main document
 Programming environment
 -----------------------
 
-The *MatCalc* software is written in C++. It is developed within the [MS Visual Studio](http///en.wikipedia.org/wiki/Visual_studio "http///en.wikipedia.org/wiki/Visual_studio") environment (Windows platform) and the [Qt Creator](http///en.wikipedia.org/wiki/Qt_Creator "http///en.wikipedia.org/wiki/Qt_Creator") environment (Mac OSX and Linux).
+The *MatCalc* software is written in C++. It is developed within the [MS Visual Studio](http://en.wikipedia.org/wiki/Visual_studio "http://en.wikipedia.org/wiki/Visual_studio") environment (Windows platform) and the [Qt Creator](http://en.wikipedia.org/wiki/Qt_Creator "http://en.wikipedia.org/wiki/Qt_Creator") environment (Mac OSX and Linux).
 
-The window management of the *MatCalc* GUI version, as well as the platform-independent streaming operations of GUI (mcg) and command-line version (mcc), are handled by the ([Qt Developer Framework](http///en.wikipedia.org/wiki/Qt_(framework) "http://en.wikipedia.org/wiki/Qt_(framework)")).
+The window management of the *MatCalc* GUI version, as well as the platform-independent streaming operations of GUI (mcg) and command-line version (mcc), are handled by the ([Qt Developer Framework](http://en.wikipedia.org/wiki/Qt_(framework) "http://en.wikipedia.org/wiki/Qt_(framework)")).
 
-Graphical output of diagrams / plots is realized with the [Qwt graphics library](http///qwt.sourceforge.net/Qwt library "http///qwt.sourceforge.net/Qwt library"). Output of Monte Carlo simulation states is done using the OpenGL language implementation within the Qt libraries.
+Graphical output of diagrams / plots is realized with the [Qwt graphics library](http://qwt.sourceforge.net/Qwt library "http://qwt.sourceforge.net/Qwt library"). Output of Monte Carlo simulation states is done using the OpenGL language implementation within the Qt libraries.
 
 Software architecture
 ---------------------
 
 The *MatCalc* package is designed in the form of modules, with a strict separation between the user interfaces and the core modules. This is sketched in the following diagram.
 
-[![  Software architecture of //MatCalc//](/techpapers/software/img/matcalc_structure.png "  Software architecture of //MatCalc//")](/techpapers/software/img/matcalc_structure.png "techpapers/software/img/matcalc_structure.png")
+[![  Software architecture of //MatCalc//](/matcalc_docu/techpapers/software/img/matcalc_structure.png "  Software architecture of //MatCalc//")](/matcalc_docu/techpapers/software/img/matcalc_structure.png "techpapers:software:img:matcalc_structure.png")
 
 ### User interface
 

@@ -4,7 +4,7 @@ Create new phase [MatCalc Documentation]
 
 ### Create new phase
 
-[![ Create new phase](/reference/dialogs/img/phasestatus/phase_status-f8-general-create_new_phase.png " Create new phase")](/reference/dialogs/img/phasestatus/phase_status-f8-general-create_new_phase.png "reference/dialogs/img/phasestatus/phase_status-f8-general-create_new_phase.png")
+[![ Create new phase](/matcalc_docu/reference/dialogs/img/phasestatus/phase_status-f8-general-create_new_phase.png " Create new phase")](/matcalc_docu/reference/dialogs/img/phasestatus/phase_status-f8-general-create_new_phase.png "reference:dialogs:img:phasestatus:phase_status-f8-general-create_new_phase.png")
 
 * *Equilibrium*: Creates an equilibrium phase with the same constituents and major constituents as its parent phase, denoted as \*#01, \*#02, …   
 

@@ -5,7 +5,7 @@ Phases [MatCalc Documentation]
 Phases
 ------
 
-[![ Phases](/reference/dialogs/img/precipitation/precipitation_domain-ctrl-f8-phases.png " Phases")](/reference/dialogs/img/precipitation/precipitation_domain-ctrl-f8-phases.png "reference/dialogs/img/precipitation/precipitation_domain-ctrl-f8-phases.png")
+[![ Phases](/matcalc_docu/reference/dialogs/img/precipitation/precipitation_domain-ctrl-f8-phases.png " Phases")](/matcalc_docu/reference/dialogs/img/precipitation/precipitation_domain-ctrl-f8-phases.png "reference:dialogs:img:precipitation:precipitation_domain-ctrl-f8-phases.png")
 
 1. **Matrix phase**:
 2. **Attached precipitates**:

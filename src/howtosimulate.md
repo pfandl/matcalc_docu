@@ -20,20 +20,20 @@ How to perform a simulations for …
 Equilibrium and non-equilibrium thermodynamics
 ----------------------------------------------
 
-* [General considerations](/howtosimulate/equilib/general "howtosimulate/equilib/general")
+* [General considerations](/matcalc_docu/howtosimulate/equilib/general "howtosimulate:equilib:general")
 
 Kinetic simulation
 ------------------
 
-* [General considerations](/howtosimulate/precipitation/general "howtosimulate/precipitation/general")
-* [Precipitates at initial state](/howtosimulate/precipitation/initial_precipitates "howtosimulate/precipitation/initial_precipitates") - How to introduce some precipitates into the initial state of the simulation
-* [Primary precipitates](/howtosimulate/precipitation/primary_prec "howtosimulate/precipitation/primary_prec") - Treatment of primary precipitates in precipitation kinetics simulations
-* [Export/import of TMT](/howtosimulate/precipitation/export_import_tmt "howtosimulate/precipitation/export_import_tmt") - Exporting/importing thermo-mechanical treatments
-* [Simulation duration time](/howtosimulate/precipitation/simulation_time "howtosimulate/precipitation/simulation_time") - How to reduce the duration time of this looooong simulation
+* [General considerations](/matcalc_docu/howtosimulate/precipitation/general "howtosimulate:precipitation:general")
+* [Precipitates at initial state](/matcalc_docu/howtosimulate/precipitation/initial_precipitates "howtosimulate:precipitation:initial_precipitates") - How to introduce some precipitates into the initial state of the simulation
+* [Primary precipitates](/matcalc_docu/howtosimulate/precipitation/primary_prec "howtosimulate:precipitation:primary_prec") - Treatment of primary precipitates in precipitation kinetics simulations
+* [Export/import of TMT](/matcalc_docu/howtosimulate/precipitation/export_import_tmt "howtosimulate:precipitation:export_import_tmt") - Exporting/importing thermo-mechanical treatments
+* [Simulation duration time](/matcalc_docu/howtosimulate/precipitation/simulation_time "howtosimulate:precipitation:simulation_time") - How to reduce the duration time of this looooong simulation
 
 Physical parameter calculation
 ------------------------------
 
-* [Calculation and visualization of minimum G\* energies and nucleation probability P](/howtosimulate/physical/mingstar "howtosimulate/physical/mingstar")
+* [Calculation and visualization of minimum G\* energies and nucleation probability P](/matcalc_docu/howtosimulate/physical/mingstar "howtosimulate:physical:mingstar")
 
 ![](/wiki/lib/exe/taskrunner.php?id=howtosimulate&1788352847)
