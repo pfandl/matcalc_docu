@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>E1 - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "E1";
+        var mkdocs_page_input_path = "examples/equilib/e1.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">E1</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>Example E1: Stable and meta-stable phase diagram of Fe-C-Mn [MatCalc Documentation]</p>
+<h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#example_e1stable_and_meta-stable_phase_diagram_of_fe-c-mn">Example E1: Stable and meta-stable phase diagram of Fe-C-Mn</a></p>
+</li>
+<li>
+<p><a href="#compatibility">Compatibility</a></p>
+</li>
+<li><a href="#objectives">Objectives</a></li>
+<li><a href="#related_documents">Related documents</a></li>
+<li><a href="#complementary_files">Complementary files</a></li>
+<li>
+<p><a href="#main_document">Main document</a></p>
+</li>
+<li>
+<p><a href="#setup_thermodynamics">Setup thermodynamics</a></p>
+</li>
+<li><a href="#ortho-equilibrium_vs_para-equilibrium">Ortho-equilibrium vs Para-equilibrium</a></li>
+<li><a href="#calculation_of_phase_diagramortho-equilibrium">Calculation of phase diagram: Ortho-equilibrium</a></li>
+<li><a href="#calculation_of_phase_diagrampara-equilibrium">Calculation of phase diagram: Para-equilibrium</a></li>
+<li><a href="#comparison">Comparison</a></li>
+<li><a href="#consecutive_articles">Consecutive articles</a></li>
+</ul>
+<h1 id="example-e1-stable-and-meta-stable-phase-diagram-of-fe-c-mn">Example E1: Stable and meta-stable phase diagram of Fe-C-Mn</h1>
+<h2 id="compatibility">Compatibility</h2>
+<p>MatCalc version: 5.44.0013 <br />
+Database: mc_sample_fe.tdb<br />
+Author: Georg Stechauner<br />
+Created: 2011-09-29 <br />
+Revisions:</p>
+<h2 id="objectives">Objectives</h2>
+<p>In this example, the basic features of <strong>ortho-</strong> and <strong>para-</strong>equilibrium are explored. This will be done by investigating the influence of Mn on the Fe-C-Mn phase diagram. Moreover the procedure of calculating phase diagrams will be repeated.</p>
+<p>Instructions for how to perform simple equilibrium calculations are shown in the corresponding tutorials.</p>
+<h2 id="related-documents">Related documents</h2>
+<ul>
+<li><a href="/tutorials/t2" title="tutorials/t2">T2: Calculating a single equilibrium</a></li>
+<li><a href="/tutorials/t3" title="tutorials/t3">T3: Performing a stepped equilibrium calculation</a></li>
+<li><a href="/tutorials/t8" title="tutorials/t8">T8: Calculating a phase diagram in a binary system</a></li>
+<li>E. Kozeschnik, J. M. Vitek, “Ortho-equilibrium and para-equilibrium phase diagrams for interstitial / substitutional iron alloys”, Calphad, Volume 24, Issue 4, December 2000, Pages 495-502</li>
+</ul>
+<h2 id="complementary-files">Complementary files</h2>
+<p>Click <a href="/examples/equilib/e1/script/e1_2018.mcs" title="examples/equilib/e1/script/e1_2018.mcs (19.6 KB)">here</a> to view the script for this tutorial.</p>
+<h1 id="main-document">Main document</h1>
+<h2 id="setup-thermodynamics">Setup thermodynamics</h2>
+<p>As usual, start with setting up the thermodynamics. We use the thermodynamic database mc_sample_fe.tdb and select the elements and phases according to the figure below.</p>
+<p><a href="/examples/equilib/e1/img/e1_tdb.png" title="examples/equilib/e1/img/e1_tdb.png"><img alt=" Database dialog for E1" src="/examples/equilib/e1/img/e1_tdb.png" title="Database dialog for E1" /></a></p>
+<p>Open the composition window and define the C and Mn contents (in wt%):</p>
+<table>
+<thead>
+<tr>
+<th>C</th>
+<th>Mn</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.1</td>
+<td>3.0</td>
+</tr>
+</tbody>
+</table>
+<p>Calculate equilibrium at 1500C.</p>
+<h2 id="ortho-equilibrium-vs-para-equilibrium">Ortho-equilibrium vs Para-equilibrium</h2>
+<p>As mentioned before, there are two different equilibria that can easily be evaluated with <em>MatCalc</em>:</p>
+<p><strong><em>Important note…</em></strong></p>
+<ul>
+<li><strong>Ortho-quilibrium:</strong> Ortho-equilibrium is the particular type of equilibrium that is characterized by the absolute minimum of the Gibbs energy. In ortho-equilibrium, all elements and phases have reached their equilibrium state. Typically, the chemical composition of individual phases is different from each other due to <em>partitioning</em> of elements. Partitioning occurs for fast and slow diffusers equally.</li>
+<li><strong>Para-equilibrium:</strong> Para-equilibrium is a (compositionally) <em>constrained equilibrium</em>, where only fast (interstitial) elements like C, N, etc., are sufficiently mobile to reach equilibrium by partitioning between the phases. Para-equilibrium is a typical condition that is observed, e.g., during low-temperature phase transformations in steel. Substitutional elements, such as Mn, Si, Cr, Mo, etc., are too sluggish at temperatures below approx. 500 to 600C to partition between phases. They are 'frozen in' during transformations and the product phase typically inherits the substitutional element content of the parent phase.</li>
+</ul>
+<h2 id="calculation-of-phase-diagram-ortho-equilibrium">Calculation of phase diagram: Ortho-equilibrium</h2>
+<p>Even though we are only interested in the eutectoid area of the phase diagram, we will still calculate the whole diagram to repeat the lesson learned in the tutorial. The experienced user can choose to only calculate the eutectoid area, ranging from 0 to 1% C and from 450 to 900C.</p>
+<p>Start off by plotting the phase fractions over temperature for the given chemical composition. This figure shows where new phases form, hence where searching for a phase boundary will be smart.</p>
+<p><strong><em>Important note …</em></strong></p>
+<p>When searching phase boundaries with <em>MatCalc</em>, it is important to recall that <em>MatCalc</em> uses gradient methods to find equilibria and phase boundaries. The advantage of gradient methods is their computational efficiency. The disadvantage is that the starting point of the iterations should be close to the final solution.</p>
+<p>If you start the search procedure too far away from the phase boundary, <em>MatCalc</em>  might fail to identify the boundary. Start your search by performing an equilibrium simulation somewhere in phase space, which is supposedly close to the phase boundary that you are seeking.</p>
+<p><a href="/examples/equilib/e1/img/phasefraction.png" title="examples/equilib/e1/img/phasefraction.png"><img alt=" Phase fraction of Fe-0.1C-3.0Mn" src="/examples/equilib/e1/img/phasefraction.png" title="Phase fraction of Fe-0.1C-3.0Mn" /></a></p>
+<p>With the help of this figure, the following temperatures to search phase boundaries are chosen:</p>
+<ul>
+<li>bcc_high_1 (upper boundary of delta-ferrite): 1530°C</li>
+<li>liquid (lower boundary of liquid): 1500°C</li>
+<li>bcc_high_2 (lower boundary of delta ferrite): 1400°C</li>
+<li>fcc_1 (upper boundary of austenite): 1500°C</li>
+<li>bcc_low (upper boundary of alpha-ferrite): 900°C</li>
+<li>fcc_2 (lower boundary of austenite): 600°C</li>
+<li>cementite (cementite upper phase boundary): 600°C</li>
+</ul>
+<p>Perform a 'stepped equilibrium' calculation of the 'phase boundary' type for each phase boundary listed above and plot <code>T$C</code> in a xy-plot window. 'Duplicate and lock' the results and rename them accordingly. Consult <a href="/tutorials/t8" title="tutorials/t8">T8</a> if you need help. Start with a step width of 0.02 to ensure both accuracy of calculated curves and fast calculation times.</p>
+<p><strong><em>Important note …</em></strong></p>
+<p>When using the default T-max step of 20, an error will appear when calculating fcc_2.</p>
+<p>There are two approaches to circumvent this error:</p>
+<ul>
+<li>Increase the allowed maximum temperature step to a higher value (e.g./ 200). This will not slow down the calculation and should be the preferred approach.</li>
+<li>Decrease the step width from the initial 0.02 to 0.001. This however WILL increase the calculation time greatly (dependent on your CPU!).</li>
+</ul>
+<p><a href="/examples/equilib/e1/img/ortho-alles.png" title="examples/equilib/e1/img/ortho-alles.png"><img alt=" Full phase diagram for ortho-equilibrium " src="/examples/equilib/e1/img/ortho-alles.png" title="Full phase diagram for ortho-equilibrium" /></a></p>
+<h2 id="calculation-of-phase-diagram-para-equilibrium">Calculation of phase diagram: Para-equilibrium</h2>
+<p>Create a new plot for 'Para-equilibrium Fe-C-Mn'.</p>
+<p>To calculate para-equilibrium instead of full-partitioning ortho-equilibrium, we have to change the compositional constraints in the 'Constraints' tab of the 'Phase status…' dialog. Press 'Set para-equil.' and repeat this for all phases, except for liquid.<a href="#fn__1">1)</a> The figure below shows the correct settings for a para-equilibrium calculation. <strong>Note</strong>: There is no need to set the para-equilibrium constraint to the high temperature region, as the mobility is high enough for all elements to establish equilibrium partitioning. Therefore, calculate the high temperature part of the phase diagram down to about 800C without compositional constraints. Use the para-equilibrium constraint for the phases below 800C, only.</p>
+<p><a href="/examples/equilib/e1/img/constraints.png" title="examples/equilib/e1/img/constraints.png"><img alt=" Setting the para-equilibrium for all phases" src="/examples/equilib/e1/img/constraints.png" title="Setting the para-equilibrium for all phases" /></a></p>
+<p>An alternative route to setting the para-equilibrium constraints can be taken by opening the 'Nominal composition…' (F7) dialog. Change the composition to 'u-fraction', and read the Mn u-fraction for later use in the dialog box or a script.</p>
+<p><a href="/examples/equilib/e1/img/chemical.png" title="examples/equilib/e1/img/chemical.png"><img alt=" Changing composition from weight percent to u-fraction" src="/examples/equilib/e1/img/chemical.png" title="Changing composition from weight percent to u-fraction" /></a></p>
+<p>Use the following commands to set the constraint for temperature region below 800C:</p>
+<pre><code>change-phase-status fcc_a1 c mn u 0.0305117     $ Set constraint for Mn in fcc_a1 phase
+change-phase-status bcc_a2 c mn u 0.0305117     $ Set constraint for Mn in bcc_a2 phase
+change-phase-status cementite c mn u 0.0305117  $ Set constraint for Mn in cementite phase
+</code></pre>
+<p><strong><em>Important note …</em></strong></p>
+<p>As of now, there is NO single console command available, to set the constraints for para-equilibrium. Use the method shown above, when para-equilibrium settings are needed in a script.</p>
+<p>Use the same temperatures as above to find the phase boundaries, and repeat post-processing. After renaming title, axes, series etc., the figure should look like this:</p>
+<p><a href="/examples/equilib/e1/img/para-alles.png" title="examples/equilib/e1/img/para-alles.png"><img alt=" Full phase diagram for para-equilibrium" src="/examples/equilib/e1/img/para-alles.png" title="Full phase diagram for para-equilibrium" /></a></p>
+<h2 id="comparison">Comparison</h2>
+<p>It is interesting to analyze the impact of Mn on the stable and metastable equilibrium phase diagrams. From the following figures, it is observed that para-equilibrium constraints for Mn lower the ferrite transformation start temperature (bcc_low line) by approximately 35 °C. On the other hand, at very
+low carbon contents, the para-equilibrium eutectoid temperature can be significantly higher than the corresponding temperature under full equilibrium conditions.</p>
+<p><a href="/examples/equilib/e1/img/ortho-detail.png" title="examples/equilib/e1/img/ortho-detail.png"><img alt=" Detail view of ortho-equilibrium" src="/examples/equilib/e1/img/ortho-detail.png" title="Detail view of ortho-equilibrium" /></a>
+<a href="/examples/equilib/e1/img/para-detail.png" title="examples/equilib/e1/img/para-detail.png"><img alt=" Detail view of para-equilibrium" src="/examples/equilib/e1/img/para-detail.png" title="Detail view of para-equilibrium" /></a></p>
+<p>One can now conclude that, on quenching, this fact allows for the formation of metastable para-equilibrium cementite that is not stable under full equilibrium conditions. Experimental evidence for the existence of para-equilibrium cementite is described for the tempering of martensite. Another observation from these calculations is that, at very low C content, austenite could transform into 100 percent ferrite, according to the para-equilibrium phase diagram, whereas under ortho-equilibrium conditions the system would still be in the austenite / ferrite two-phase field. Consequently, austenite could completely dissolve by a rapid reaction and subsequently re-precipitate when approaching the full equilibrium state.</p>
+<h1 id="consecutive-articles">Consecutive articles</h1>
+<p>none.</p>
+<p><a href="#fnt__1">1)</a></p>
+<p>In the liquid phase, diffusion of ALL elements is so fast that the para-equilibrium assumption does not hold</p>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=examples%3Aequilib%3Ae1&amp;1788352992" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

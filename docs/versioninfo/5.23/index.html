@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>5.23 - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "5.23";
+        var mkdocs_page_input_path = "versioninfo/5.23.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">5.23</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>MatCalc 5.23 [MatCalc Documentation]</p>
+<h2 id="matcalc-523">MatCalc 5.23</h2>
+<p>See the changes which happened with version 5.23 below</p>
+<hr />
+<p><strong>version 5.23.1036: (snapshot Windows) online 2008-09-04</strong></p>
+<ul>
+<li>There have been some problems on Windows with the Installer. We have moved to another one, which delivers a self extracting executable. Much more transparent now what happens compared to the former Microsoft .msi version.</li>
+<li>The nucleation model has changed and has 75% of the value of the planar interfacial energy now as default. This represents the size correction for small precipitates in the nucleation stage. The value has proven to be a reasonable first estimate. A full derivation of the size correction factor is underway and will be published soon.</li>
+<li>The version is now consistent with the new online help for version 5.23.1024 and up.</li>
+</ul>
+<p><strong>version 5.23.1016: online 2008-06-30</strong></p>
+<ul>
+<li>This version contains numerous bug fixes. I have been rather busy and working a lot on the code.</li>
+<li>The <em>grain boundary diffusion geometry model</em> has been further developed. Grain boundary diffusion is now fully taken into account (see phase status → special tab). Parameter studies are on their way and we will report soon on the results. The grain boundary diffusion coefficient factor has only effect in the new grain boundary diffusion geometry model. Random distribution, classical diffusion geometry is not affected.</li>
+<li><em>Stability improvements</em>. Particularly for long simulation times.</li>
+</ul>
+<p><strong>version 5.23.1002: online 2008-04-23</strong></p>
+<ul>
+<li>MatCalc now comes also with a non-GUI version (mcc in contrast to mcg). This makes it possible to run MatCalc very fast in script mode without extra load of a GUI.</li>
+<li>A new possibility to export variables and buffer content into <em>export files</em> in ascii format has been implemented. The functions are available on the command line level. You can download script files for MatCalc GUI (mcg) and MatCalc command line (mcc).</li>
+<li>MatCalc command line input as well as commands in scripts can now be bracketed with 'text' or “text”. For instance, command could read SHOW_EXPRESSION “ 2 * 23^2 + 4”. Previously, blanks have been interpreted as end of input.</li>
+<li>The heat treatment functionality has been extended. It is possible now to copy heat treatments. Moreover, heat treatments now have variable store intervals for your calculation, which makes it easy to control the density of stored results wherever needed.</li>
+</ul>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=versioninfo%3A5.23&amp;1788352874" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

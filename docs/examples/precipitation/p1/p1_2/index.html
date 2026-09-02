@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>P1 2 - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "P1 2";
+        var mkdocs_page_input_path = "examples/precipitation/p1/p1_2.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">P1 2</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>Example P1: Precipitation of cementite in Fe-0.1%C, Part 2: Setup of simulation for analysis of precipitate distributions [MatCalc Documentation]</p>
+<h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#example_p1precipitation_of_cementite_in_fe-01_c_part_2setup_of_simulation_for_analysis_of_precipitate_distributions">Example P1: Precipitation of cementite in Fe-0.1%C, Part 2: Setup of simulation for analysis of precipitate distributions</a></p>
+</li>
+<li>
+<p><a href="#compatibility">Compatibility</a></p>
+</li>
+<li><a href="#objectives">Objectives</a></li>
+<li><a href="#related_documents">Related documents</a></li>
+<li><a href="#adding_more_size_classes">Adding more size classes</a></li>
+<li><a href="#increasing_accuracy_of_simulation">Increasing accuracy of simulation</a></li>
+<li><a href="#start_precipitation_simulation">Start precipitation simulation</a></li>
+<li><a href="#results">Results</a></li>
+<li><a href="#resultsevolution_of_precipitate_distribution">Results: Evolution of precipitate distribution</a></li>
+</ul>
+<h1 id="example-p1-precipitation-of-cementite-in-fe-01c-part-2-setup-of-simulation-for-analysis-of-precipitate-distributions">Example P1: Precipitation of cementite in Fe-0.1%C, Part 2: Setup of simulation for analysis of precipitate distributions</h1>
+<h2 id="compatibility">Compatibility</h2>
+<p>MatCalc version: 5.44.1002 <br />
+Database: mc_sample_fe.tdb, mc_sample_fe.ddb<br />
+Author: Georg Stechauner<br />
+Created: 2012-02-08 <br />
+Revisions:</p>
+<h2 id="objectives">Objectives</h2>
+<p>This example demonstrates the basics of every precipitation simulation and thoroughly guides through setup and calculation. The precipitation of cementite in ferrite is of special interest in this example. Furthermore will be the grain size, nucleation rate and other general precipitation-related features. A comparison of the numerical simulation with the classical Lifshitz-Slyozov-Wagner (LSW) size distribution is also presented.</p>
+<h2 id="related-documents">Related documents</h2>
+<ul>
+<li><em>P1-2</em> -  <a href="/examples/precipitation/p1/p1_1" title="examples/precipitation/p1/p1_1">A typical setup for a precipitation kinetics simulation</a></li>
+<li>C. Wagner, Theorie der Alterung von Niederschlägen durch Umlösen, Zeitschrift für Elektrochemie, Bd 65 (1961) Nr. 7/8, 581-591.</li>
+<li>I. Lifshitz, V. V. Slyozov, The kinetics of precipitation from supersaturated solid solutions, J. Phys. Chem. Solids 19 (1961) 35-50.</li>
+<li>K. G. F. Janssens, D. Raabe, E. Kozeschnik, M. Miodownik, B. Nestler, Computational Materials Engineering - An Introduction to Microstructure Evolution, Elsevier Inc (2007) 206-209.</li>
+</ul>
+<h2 id="adding-more-size-classes">Adding more size classes</h2>
+<p>In order to smoothen the precipitate distribution curve, more size classes have to be added. Open the 'Phase status' dialog and change the number of size classes in the precipitation tab to #1000.</p>
+<p>If you perform the calculation with the same settings as before, the information in the output window indicates that the nucleation process advances to fast to occupy all available size classes in the simulation. As a result, only 69! size classes from 1000 are filled up with precipitates before the C-supersaturation is so much reduced that nucleation seizes.</p>
+<p>Set the 'update every' frequency in the 'set-simulation-parameter' command menu to 10 and have a close look at the output window:</p>
+<pre><code>After 20 steps:
+CEMENTITE_P0: (12/+.g./4e+008/d) 
+
+After 70 steps:
+CEMENTITE_P0: (62/+.g./4e+020/d) 
+
+After 120 steps:
+CEMENTITE_P0: (64/..g./4e+020/d)
+</code></pre>
+<p>The pasted lines above read as follows: Cementite_p0 has 12 filled size classes after 20 steps; + the number of cementite nuclei is still increasing; The '+' sign indicates that nucleation events occur in the particular iteration, 'g' indicates that at least one size class has grown its particles; '4e+008' is the number density of precipitates; 'd' stands for nucleation site of dislocation.</p>
+<p>Thus, only increasing the 'maximum number of size classes' setting does not change anything in the present case. We need to slow down the nucleation, and this can be done by utilizing the MatCalc 'convergence' parameters.</p>
+<h2 id="increasing-accuracy-of-simulation">Increasing accuracy of simulation</h2>
+<p>The convergence parameter we are about to change regulates how many nuclei are allowed to form within each time step of the numerical integration procedure. Enter into console (there is no GUI implementation for this option as of now):</p>
+<pre><code>set-simulation-parameter C N B 1.03
+</code></pre>
+<p>The corresponding convergence control parameter is called 'nucleation density increase factor' and it has a default value of 2. A factor of 2 means, that within each time step, the number of new nuclei can double compared to the previous step. A value of 1.5 would mean that the number can increase by 50%, hence 1.03 stands for an increase of 3% per iteration. By choking the nucleation speed, <em>MatCalc</em> has enough time to fill all the created size classes with nuclei. A default factor of 2 has resulted in a much faster nucleation, however, also much fewer nuclei.</p>
+<pre><code>After 20 steps:
+CEMENTITE_P0: (12/+.g./1e+006/d)
+
+After 510 steps:
+CEMENTITE_P0: (502/+.g./9e+012/d)
+
+After 1010 steps:
+CEMENTITE_P0: (1000/+.g./2e+019/d)
+</code></pre>
+<p>From the output above, we can see that less nuclei are created untl the limit of size classes is reached. If you compare the number density after 20 steps from before and now, you can see that, without the convergence factor setting, more than 100 times more nuclei are formed. With an increase rate of 3% per iteration for the nucleation rate, nucleation still continues when all size classes are filled. This is not a problem in <em>MatCalc</em>, since the handling of size classes during continued nucleation is carried out by <em>MatCalc</em> automatically. The major effect of the modified convergence parameter is that 1000 size classes could be filled in the nucleation process instead of only 64 when using the default settings.</p>
+<p><strong>Note</strong>: Because of the high amount of size classes, the whole simulation will now take 32 (!) minutes, instead of just 1! Increased accuracy is often achieved only at the cost of computational power. However, a comparison of the precipitate distribution of 25 size classes to 1000 indicates that the additional effort is worth it at least in terms of the obtained size distribution.</p>
+<h2 id="start-precipitation-simulation">Start precipitation simulation</h2>
+<p>Start the simulation like in part 1! <strong>Attention</strong>: This calculation is a bit time demanding due to the high amount of size classes. The calculation will take about 30 minutes on a strong, new computer bought in 2011. So, get yourself a coffee while you wait <img alt=":-)" src="/wiki/lib/images/smileys/smile.svg" /></p>
+<h2 id="results">Results</h2>
+<p>The results concerning phase fraction, number density, nucleation rate and precipitate radius look very alike to the ones of part 1.</p>
+<p><a href="/examples/precipitation/p1/p1-final-fnjr-1000classes.png" title="examples/precipitation/p1/p1-final-fnjr-1000classes.png"><img alt=" Final results with 1000 size classes showing: Phase fraction, number density, nucleation rate and precipitate radius" src="/examples/precipitation/p1/p1-final-fnjr-1000classes.png" title="Final results with 1000 size classes showing/ Phase fraction, number density, nucleation rate and precipitate radius" /></a></p>
+<p>However the precipitate distribution is what really changed due to the increased number of size classes. The figure below shows a diagram with 100 'averaged' size classes evaluated from the 1000 size class calculation. The LSW function is reproduced very accurately and smooth.</p>
+<p><a href="/examples/precipitation/p1/p1_result_distribution-100classesshown.png" title="examples/precipitation/p1/p1_result_distribution-100classesshown.png"><img alt=" Precipitate distribution with 1000 classes calculated, 100 classes shown" src="/examples/precipitation/p1/p1_result_distribution-100classesshown.png" title="Precipitate distribution with 1000 classes calculated, 100 classes shown" /></a></p>
+<h2 id="results-evolution-of-precipitate-distribution">Results: Evolution of precipitate distribution</h2>
+<p>In the initial stages of the precipitation process, the nucleation rate increases steadily due to the transient effect of incubation time. The number of precipitates continuously increases as well as the mean radius of the precipitates. If supersaturation decreases because the matrix is slowly depleted from solute atoms (or if all possible nucleation sites have been used) nucleation of new precipitates comes to a stop. At this point, the nucleation rate drops to zero (green curve)…</p>
+<p><a href="/examples/precipitation/p1/p1_result_nuclrate-buch.png" title="examples/precipitation/p1/p1_result_nuclrate-buch.png"><img alt="Nucleation rate and number density of precipitates" src="/examples/precipitation/p1/p1_result_nuclrate-buch.png" title="Nucleation rate and number density of precipitates" /></a></p>
+<p>… and the mean radius exhibits a linear increase due to the fact that only growth of a constant number of precipitates occurs. Since the growth kinetics are determined by a parabolic law (which is one of the ingredients of the numerical Kampmann-Wagner (NKW) model), the slope of the increase of the mean radius in the figure below is constant and equal to 1/2.</p>
+<p><a href="/examples/precipitation/p1/p1_result_slope_buch_abcd.png" title="examples/precipitation/p1/p1_result_slope_buch_abcd.png"><img alt="Evolution of precipitate size" src="/examples/precipitation/p1/p1_result_slope_buch_abcd.png" title="Evolution of precipitate size" /></a></p>
+<p>Several important features of a solid-state precipitation reaction are readily observed in the calculation results.</p>
+<ul>
+<li><strong>A</strong>: Until approximately point A in the diagram, nucleation dominates the precipitate evolution. The number density of precipitates increases significantly while the other precipitation parameters do not.</li>
+<li>Between points A and B, the number density remains approximately constant, which means that nucleation has seized. in this regime, growth of precipitates dominates the reaction.</li>
+<li><strong>B</strong>: Shortly after point B, the matrix content of solute atoms approaches the equilibrium value, supersaturation approaches one and precipitate growth comes to a stop. At this point, the curve of the mean radius exhibits a plateau.</li>
+</ul>
+<p><a href="/examples/precipitation/p1/p1_result_slope_buch_abcd-ab.png" title="examples/precipitation/p1/p1_result_slope_buch_abcd-ab.png"><img alt="Distribution of precipitates at time A and B" src="/examples/precipitation/p1/p1_result_slope_buch_abcd-ab.png" title="Distribution of precipitates at time A and B" /></a></p>
+<ul>
+<li><strong>C</strong>: Within several orders of magnitude of time, the mean precipitate radius and the number density now remain constant. The major observable change in the precipitate population before coarsening starts is a transition from a left-shifted size distribution to a right-shifted size distribution (points A → B → C).</li>
+<li><strong>D</strong>: In the final stage of the precipitation reaction, the smallest precipitates dissolve in favor of the larger ones (Gibbs-Thomson effect). Consequently, the number density of precipitates slowly decreases. In the double logarithmic number density over time plot of the above shown figure, this decrease is linear with time and the slope of the decrease is equal to one. Simultaneously, it can be seen from the radius over time plot that the mean radius of the precipitate distribution increases continuously with a slope of 1/3. This is consistent with the theoretical value for the coarsening exponent as obtained from the Lifshitz-Slyozov-Wagner (LSW) theory of Ostwald ripening. In the asymptotic limit of coarsening, the precipitate size distribution approaches a stationary state, where the shape of the normalized size distribution is time invariant. In the representative size distribution for the coarsening regime (point D), the distribution obtained with the NKW model is compared to the theoretical distribution of the LSW theory (green line).</li>
+</ul>
+<p><a href="/examples/precipitation/p1/p1_result_slope_buch_abcd-cd.png" title="examples/precipitation/p1/p1_result_slope_buch_abcd-cd.png"><img alt="Distribution of precipitates at time C and D" src="/examples/precipitation/p1/p1_result_slope_buch_abcd-cd.png" title="Distribution of precipitates at time C and D" /></a></p>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=examples%3Aprecipitation%3Ap1%3Ap1_2&amp;1788352995" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

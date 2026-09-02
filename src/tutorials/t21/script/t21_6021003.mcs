@@ -1,0 +1,336 @@
+$$************************************************************************************************** 
+************************************** GENERAL INFORMATION *****************************************
+****************************************************************************************************
+
+Script Strain induced precipitates according to Tutorial 21.
+The following contents will be covered:
+
+ - Introduction of deformation into the thermo-mechanical treatment
+ - Effect of volumetric misfit on precipitation kinetics
+ - Effects of the applied deformation on the precipitation kinetics
+
+Deformation process influences the microstructure of the alloy. One of the effects is the occurence 
+of the strain induced precipitates. This tutorial demonstrates how the deformation processes can be 
+included in the simulation of the processed material. Moreover, the effects of the deformation on the 
+precipitation kinetics are demonstrated and discussed.
+
+Database: mc_fe.tdb, mc_fe.ddb
+Author: M. Lueckl
+Creation date: 17.02.2017
+Last update: 24.06.2019 (P. Warczok, Update for 6.02)
+This is a script for MatCalc version 6.02 (rel 1.003)
+
+Known issues:
+- "save-workspace "file-name"=Tutorial_21" is not working properly. Use "save-workspace Tutorial_21" instead.
+
+
+****************************************************************************************************
+************************************** SETUP INFORMATION *******************************************
+**************************************************************************************************$$
+
+use-module module-name=core                                                                                                              $ Select core module for kinetic simulation
+close-workspace options=f                                                                                                                $ Close any open workspace without asking for save 
+
+new-workspace                                                                                                                            $ Create a new workspace 
+
+$ Add some information about your Script
+@echo value=no
+set-workspace-info information=Script T20
+set-workspace-info information=+Simulating grain growth
+set-workspace-info information=+using the single-class model
+
+echo value=y
+
+$$************************************************************************************************** 
+**************************************** SYSTEM SETUP **********************************************
+**************************************************************************************************$$
+
+
+
+$$************************************************************************************************** 
+                          DATABASES, CHEMICAL COMPOSITION, SELECTED PHASES
+**************************************************************************************************$$
+
+open-thermodynamic-database file-name=mc_fe.tdb                                                                                          $ Thermodynamic database
+select-elements elements=Fe C Nb                                                                                                         $ Elements
+select-phases phases=bcc_a2 fcc_a1 cementite                                                                                             $ Phases
+read-thermodynamic-database  
+
+set-reference-element element=Fe
+enter-composition type=weight-percent composition=c=0.2 nb=0.04
+
+read-mobility-database file-name=mc_fe.ddb                                                                                               $ Mobility database
+
+set-automatic-startvalues 
+set-temperature-celsius temperature=1000                                                                                                 $ Temperature 1000C
+calculate-equilibrium                                                                                                                    $ Initial equilibrium
+
+
+$$**************************************************************************************************
+                                 STEPPED EQUILIBRIUM CALCULATIONS
+**************************************************************************************************$$
+
+set-step-option type=temperature                                                                                                         $ Step equilibrium calculation type
+set-step-option range start=1400 stop=400 scale=lin step-width=10                                                                        $ Define the temperature range and the step
+set-step-option temperature-in-celsius=yes                                                                                               $ Temperature in celsius
+step-equilibrium                                                                                                                         $ Performs stepped equilibrium calculation
+
+
+$$************************************************************************************************** 
+                                       GRAPHICAL OUTPUT
+**************************************************************************************************$$
+
+new-gui-window type-id=p1                                                                                                                $ Create plot window
+move-gui-window displace window-id=. x-origin=150 y-origin=100 width=600 height=500                                                      $ Move and resize plot window
+
+$ define default x-axis properties
+set-gui-window-property window-id=. default-x-axis-title=Temperature / °C                                                                $ Axis title
+set-gui-window-property window-id=. default-x-axis-data=T$c                                                                              $ X-axis data
+
+$ define plot properties: phase fraction
+set-plot-option plot-id=. y-axis-title=Phase fraction                                                                                    $ Axis title
+set-plot-option plot-id=. y-axis-type=log                                                                                                $ Type: log
+set-plot-option plot-id=. series new buffer variable-name=f$*                                                                            $ Add series
+
+update-gui-window window-id=.                                                                                                            $ Update the GUI window
+set-gui-window-property window-id=. duplicate-and-lock-plot-series                                                                       $ Duplicate and lock all series
+
+$ Remove all duplicated series
+set-plot-option plot-id=1 series remove series-index=-1 series-name=f$fcc_a1
+set-plot-option plot-id=1 series remove series-index=-1 series-name=f$fcc_a1#01
+set-plot-option plot-id=1 series remove series-index=-1 series-name=f$bcc_a2
+set-plot-option plot-id=1 series remove series-index=-1 series-name=f$cementite
+
+
+$$************************************************************************************************** 
+                                 PRECIPITATION DOMAIN AND PHASES
+**************************************************************************************************$$
+
+$ ---------------------------------- PRECIPITATION DOMAIN ------------------------------------------
+create-precipitation-domain new-domain-name=austenite                                                                                    $ Creates precipitation domain "austenite"
+set-precipitation-parameter precipitate-or-domain-name=austenite thermodynamic-matrix-phase=fcc_a1                                       $ Austenite domain structure: fcc
+
+$ -------------------------------------- PRECIPITATE -----------------------------------------------
+create-new-phase parent-phase=fcc_a1#01 precipitate                                                                                      $ Creates NbC precipitate
+set-precipitation-parameter precipitate-or-domain-name=fcc_a1#01_p0 nucleation-sites=dislocations                                        $ Nucleation sites at dislocations
+
+
+$$************************************************************************************************** 
+                                    THERMOMECHANICAL TREATMENT
+**************************************************************************************************$$
+
+create-tm-treatment tm-treatment-name=cooling                                                                                            $ Create the heat treatment sequence
+
+append-tmt-segment tm-treatment-name=cooling                                                                                             $ Adding a segment to the heat treatment sequence
+edit-tmt-segment tm-treatment-name=cooling tm-treatment-segment=. segment-start-temperature=1300                                         $ Start temperature is set 1300C
+edit-tmt-segment tm-treatment-name=cooling tm-treatment-segment=. T_end+T_dot segment-end-temperature=750 temperature-gradient=-1        $ End temperature and cooling rate
+edit-tmt-segment tm-treatment-name=cooling tm-treatment-segment=. precipitation-domain=austenite                                         $ Precipitation domain
+
+
+$$************************************************************************************************** 
+                                       GRAPHICAL OUTPUT
+**************************************************************************************************$$
+
+$-------------------------------------------- Setup GUI -------------------------------------------$
+$-- (Following part is copied from /scripts/frame_scripts/03_kinetics_4_frames_T_f_n_r_linX.mcs ) -$
+
+new-gui-window p1                                                                                                                        $ create plot window
+move-gui-window displace . 75 15 880 790                                                                                                 $ move and resize plot window
+
+$ define default x-axis properties
+set-gui-window-property window-id=. default-x-axis-for-all-plots=yes
+set-gui-window-property window-id=. default-x-axis-title="time / s"
+set-gui-window-property window-id=. default-x-axis-type=lin
+
+set-gui-window-property . number-of-plot-columns=auto
+
+$ define plot properties: temperature profile
+set-plot-option . y-axis-title="temperature / C"
+set-plot-option . series new buffer T$C
+
+$ define plot properties: phase fraction
+create-new-plot xy-plot .
+set-plot-option . use-alias-names-in-legend=yes            
+set-plot-option . series new buffer f_prec$*
+set-plot-option . y-axis-title="phase fraction"
+
+$ define plot properties: number density
+create-new-plot xy-plot .
+set-plot-option . use-alias-names-in-legend=yes            
+set-plot-option . series new buffer num_prec$*
+set-plot-option . y-axis-title="number density / m<sup>-3</sup>"
+set-plot-option . y-axis-type=log
+set-plot-option . y-axis-scaling=1e10..
+
+$ define plot properties: mean radius
+create-new-plot xy-plot .
+set-plot-option . use-alias-names-in-legend=yes
+set-plot-option . series new buffer r_mean$*
+set-plot-option . y-axis-title="mean radius / nm"
+set-plot-option . y-axis-type=log
+set-plot-option . y-axis-scaling=1e-1..
+set-plot-option . y-axis-factor=1e9
+
+$---------------------------------- (end of the copied file) --------------------------------------$
+
+$ Modification of temperature plot
+set-plot-option plot-id=2 grid which-grid=major enable-y-axis=yes                                                                        $ Y-Axis major gridlines
+set-plot-option plot-id=2 grid which-grid=major enable-x-axis=yes                                                                        $ X-Axis major gridlines
+
+$ Modification of phase fraction plot
+set-plot-option plot-id=3 y-axis-type=log                                                                                                $ Log scale
+set-plot-option plot-id=3 y-axis-scaling=1e-10..0.001                                                                                    $ Rescale axis
+set-plot-option plot-id=3 grid which-grid=major enable-y-axis=yes                                                                        $ Y-Axis major gridlines
+set-plot-option plot-id=3 grid which-grid=major enable-x-axis=yes                                                                        $ X-Axis major gridlines
+
+$ Modification of number density plot
+set-plot-option plot-id=4 grid which-grid=major enable-y-axis=yes                                                                        $ Y-Axis major gridlines
+set-plot-option plot-id=4 grid which-grid=major enable-x-axis=yes                                                                        $ X-Axis major gridlines
+
+$ Modification of mean radius plot
+set-plot-option plot-id=5 grid which-grid=major enable-y-axis=yes                                                                        $ Y-Axis major gridlines
+set-plot-option plot-id=5 grid which-grid=major enable-x-axis=yes                                                                        $ X-Axis major gridlines
+
+
+$$************************************************************************************************** 
+                                       KINETIC CALCULATION
+**************************************************************************************************$$
+
+set-simulation-parameter tm-treatment-name=cooling                                                                                       $ Define the max. temperature step
+start-precipitate-simulation
+
+set-gui-window-property window-id=3 duplicate-and-lock-plot-series                                                                       $ Duplicate an lock all series
+
+set-plot-option plot-id=2 series rename series-index=-1 series-name=*_T$C new-name=Cooling                                               $ Rename series 
+set-plot-option plot-id=3 series rename series-index=-1 series-name=fcc_a1#01_p0 new-name=NbC                                            $ Rename series 
+set-plot-option plot-id=4 series rename series-index=-1 series-name=fcc_a1#01_p0 new-name=NbC                                            $ Rename series 
+set-plot-option plot-id=5 series rename series-index=-1 series-name=fcc_a1#01_p0 new-name=NbC                                            $ Rename series 
+
+rename-current-buffer new-buffer-name=cooling                                                                                            $ Give the buffer a new name
+
+
+$$************************************************************************************************** 
+                                    EFFECT OF VOLUMETRIC MISFIT
+**************************************************************************************************$$
+
+create-calc-buffer new-buffer-name=Vol_misfit                                                                                            $ Create a new buffer
+set-gui-window-property window-id=3 buffer-name=Vol_misfit                                                                               $ Assign the buffer to the plot 
+
+$ -------------------------------------- PRECIPITATE -----------------------------------------------
+set-precipitation-parameter precipitate-or-domain-name=fcc_a1#01_p0 volumetric-misfit=0,1                                                $ Use volumetric misfit between prec./matrix 
+set-precipitation-parameter precipitate-or-domain-name=fcc_a1#01_p0 use-volumetric-misfit-in-nucleation=yes 	                            $ Take volumetric misfit into account during nucleation 
+
+$ ----------------------------------- KINETIC CALCULATION ------------------------------------------
+set-simulation-parameter tm-treatment-name=cooling                                                                                       $ Define the max. temperature step
+start-precipitate-simulation
+set-gui-window-property window-id=3 duplicate-and-lock-plot-series                                                                       $ Duplicate an lock all series
+
+set-plot-option plot-id=2 series rename series-index=-1 series-name=*_T$C new-name=Cooling                                               $ Rename series 
+set-plot-option plot-id=3 series rename series-index=-1 series-name=fcc_a1#01_p0 new-name=NbC(misfit)                                    $ Rename series 
+set-plot-option plot-id=4 series rename series-index=-1 series-name=fcc_a1#01_p0 new-name=NbC(misfit)                                    $ Rename series 
+set-plot-option plot-id=5 series rename series-index=-1 series-name=fcc_a1#01_p0 new-name=NbC(misfit)                                    $ Rename series 
+
+
+$$************************************************************************************************** 
+                                 SIMULATION OF DEFORMATION PROCESS
+**************************************************************************************************$$
+
+create-calc-buffer new-buffer-name=Deformation                                                                                           $ Create a new buffer
+set-gui-window-property window-id=3 buffer-name=Deformation                                                                              $ Assign the buffer to the plot 
+
+$ ---------------------------------- PRECIPITATION DOMAIN ------------------------------------------
+set-precipitation-parameter precipitate-or-domain-name=austenite subgrain-evolution-model=abc                                            $ Sherstnev-Kozeschnik simple
+
+$ -------------------------------------- PRECIPITATE -----------------------------------------------
+set-precipitation-parameter precipitate-or-domain-name=fcc_a1#01_p0 ignore-volumetric-misfit-during-deformation=yes                      $ Ignore volumetric misfit during deformation 
+
+$ --------------------------------- THERMOMECHNICAL TREATMENT --------------------------------------
+create-tm-treatment tm-treatment-name=deformation                                                                                        $ Create the heat treatment sequence
+
+append-tmt-segment tm-treatment-name=deformation                                                                                         $ Adding a segment to the heat treatment sequence
+edit-tmt-segment tm-treatment-name=deformation tm-treatment-segment=. segment-start-temperature=1300                                     $ Start temperature is set 1300C
+edit-tmt-segment tm-treatment-name=deformation tm-treatment-segment=. T_end+T_dot segment-end-temperature=1000 temperature-gradient=-1   $ End temperature and cooling rate
+edit-tmt-segment tm-treatment-name=deformation tm-treatment-segment=. precipitation-domain=austenite                                     $ Precipitation domain
+
+append-tmt-segment tm-treatment-name=deformation                                                                                         $ Adding a segment to the heat treatment sequence
+$ In the current segment [.], Accumulated strain of 0.7 is set
+edit-tmt-segment tm-treatment-name=deformation tm-treatment-segment=. segment-accumulated-strain=0.7                                     $ Accumulated strain
+$ In the current segment [.], deformation rate of 0.15 s-1 is set
+edit-tmt-segment tm-treatment-name=deformation tm-treatment-segment=. deformation-rate=0.15                                              $ Strain rate
+edit-tmt-segment tm-treatment-name=deformation tm-treatment-segment=. precipitation-domain=austenite                                     $ Precipitation domain
+
+append-tmt-segment tm-treatment-name=deformation                                                                                         $ Adding a segment to the heat treatment sequence
+edit-tmt-segment tm-treatment-name=deformation tm-treatment-segment=. T_end+T_dot segment-end-temperature=950 temperature-gradient=-1    $ End temperature and cooling rate
+edit-tmt-segment tm-treatment-name=deformation tm-treatment-segment=. precipitation-domain=austenite                                     $ Precipitation domain
+
+append-tmt-segment tm-treatment-name=deformation                                                                                         $ Adding a segment to the heat treatment sequence
+$ In the current segment [.], Accumulated strain of 0.7 is set
+edit-tmt-segment tm-treatment-name=deformation tm-treatment-segment=. segment-accumulated-strain=0.7                                     $ Accumulated strain
+$ In the current segment [.], deformation rate of 0.15 s-1 is set
+edit-tmt-segment tm-treatment-name=deformation tm-treatment-segment=. deformation-rate=0.15                                              $ Strain rate
+edit-tmt-segment tm-treatment-name=deformation tm-treatment-segment=. precipitation-domain=austenite                                     $ Precipitation domain
+
+append-tmt-segment tm-treatment-name=deformation                                                                                         $ Adding a segment to the heat treatment sequence
+edit-tmt-segment tm-treatment-name=deformation tm-treatment-segment=. T_end+T_dot segment-end-temperature=900 temperature-gradient=-1    $ End temperature and cooling rate
+edit-tmt-segment tm-treatment-name=deformation tm-treatment-segment=. precipitation-domain=austenite                                     $ Precipitation domain
+
+append-tmt-segment tm-treatment-name=deformation                                                                                         $ Adding a segment to the heat treatment sequence
+$ In the current segment [.], Accumulated strain of 0.7 is set
+edit-tmt-segment tm-treatment-name=deformation tm-treatment-segment=. segment-accumulated-strain=0.7                                     $ Accumulated strain
+$ In the current segment [.], deformation rate of 0.15 s-1 is set
+edit-tmt-segment tm-treatment-name=deformation tm-treatment-segment=. deformation-rate=0.15                                              $ Strain rate
+edit-tmt-segment tm-treatment-name=deformation tm-treatment-segment=. precipitation-domain=austenite                                     $ Precipitation domain
+
+append-tmt-segment tm-treatment-name=deformation                                                                                         $ Adding a segment to the heat treatment sequence
+edit-tmt-segment tm-treatment-name=deformation tm-treatment-segment=. T_end+T_dot segment-end-temperature=750 temperature-gradient=-1    $ End temperature and cooling rate
+edit-tmt-segment tm-treatment-name=deformation tm-treatment-segment=. precipitation-domain=austenite                                     $ Precipitation domain
+
+$ ----------------------------------- KINETIC CALCULATION ------------------------------------------
+set-simulation-parameter tm-treatment-name=deformation                                                                                   $ Define the max. temperature step
+start-precipitate-simulation
+
+set-plot-option plot-id=2 series rename series-index=-1 series-name=T$C new-name=Deformation                                             $ Rename series 
+set-plot-option plot-id=3 series rename series-index=-1 series-name=fcc_a1#01_p0 new-name=NbC(deform)                                    $ Rename series 
+set-plot-option plot-id=4 series rename series-index=-1 series-name=fcc_a1#01_p0 new-name=NbC(deform)                                    $ Rename series 
+set-plot-option plot-id=5 series rename series-index=-1 series-name=fcc_a1#01_p0 new-name=NbC(deform)                                    $ Rename series 
+
+$ ----------------------------------- ADDING FURTHER PLOTS -----------------------------------------
+$ Define plot properties: Strain rate
+create-new-plot plot-type=xy-plot attach-to-window=.                                                                                     $ Create a new plot
+set-plot-option plot-id=. y-axis-title=Strain rate / s<sup>-1</sup>                                                                      $ Axis title
+set-plot-option plot-id=. series new buffer variable-name=eps_dot                                                                        $ Add series
+set-plot-option plot-id=. grid which-grid=major enable-y-axis=yes                                                                        $ Y-Axis major gridlines
+set-plot-option plot-id=. grid which-grid=major enable-x-axis=yes                                                                        $ X-Axis major gridlines
+
+$ Define plot properties: Dislocation density
+create-new-plot plot-type=xy-plot attach-to-window=.                                                                                     $ Create a new plot
+set-plot-option plot-id=. y-axis-title=Dislocation density / m<sup>-2</sup>                                                              $ Axis title
+set-plot-option plot-id=. series new buffer variable-name=dd_tot$austenite                                                               $ Add series
+set-plot-option plot-id=. grid which-grid=major enable-y-axis=yes                                                                        $ Y-Axis major gridlines
+set-plot-option plot-id=. grid which-grid=major enable-x-axis=yes                                                                        $ X-Axis major gridlines
+
+$ Define plot properties: Nucleation rate
+create-new-plot plot-type=xy-plot attach-to-window=.                                                                                     $ Create a new plot
+set-plot-option plot-id=. y-axis-title=NbC nucleation rate / m<sup>-3</sup>s<sup>-1</sup>                                                $ Axis title
+set-plot-option plot-id=. y-axis-type=log                                                                                                $ Axis scaling type
+set-plot-option plot-id=. y-axis-scaling=1..                                                                                             $ Axis scaling range
+set-plot-option plot-id=. series new buffer variable-name=nucl_rate$fcc_a1#01_p0                                                         $ Add series
+set-plot-option plot-id=. grid which-grid=major enable-y-axis=yes                                                                        $ Y-Axis major gridlines
+set-plot-option plot-id=. grid which-grid=major enable-x-axis=yes                                                                        $ X-Axis major gridlines
+
+$ Define plot properties: Pipe diffusion enhancement
+create-new-plot plot-type=xy-plot attach-to-window=.                                                                                     $ Create a new plot
+set-plot-option plot-id=. y-axis-title=Pipe diffusion correction factor                                                                  $ Axis title
+set-plot-option plot-id=. series new buffer variable-name=Pipe_dcf$austenite$*                                                           $ Add series
+set-plot-option plot-id=. grid which-grid=major enable-y-axis=yes                                                                        $ Y-Axis major gridlines
+set-plot-option plot-id=. grid which-grid=major enable-x-axis=yes                                                                        $ X-Axis major gridlines
+
+
+
+
+$$************************************************************************************************** 
+                                         SAVING WORKSPACE
+**************************************************************************************************$$
+
+$save-workspace "file-name"=Tutorial_21
+save-workspace Tutorial_21                              

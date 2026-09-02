@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Prec objects - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Prec objects";
+        var mkdocs_page_input_path = "techpapers/precipitation/prec_objects.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Prec objects</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>TechPaper #2011001: Object hierarchy and interconnectivity in precipitation kinetics simulations [MatCalc Documentation]</p>
+<h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#techpaper_2011001object_hierarchy_and_interconnectivity_in_precipitation_kinetics_simulations">TechPaper #2011001: Object hierarchy and interconnectivity in precipitation kinetics simulations</a></p>
+</li>
+<li>
+<p><a href="#compatibility">Compatibility</a></p>
+</li>
+<li><a href="#objectives">Objectives</a></li>
+<li><a href="#related_documents">Related documents</a></li>
+<li>
+<p><a href="#main_document">Main document</a></p>
+</li>
+<li>
+<p><a href="#object_hierarchy">Object hierarchy</a></p>
+</li>
+<li><a href="#equilibrium_phases">Equilibrium phases</a></li>
+<li><a href="#precipitation_domains">Precipitation domains</a></li>
+<li><a href="#precipitate_phases">Precipitate phases</a></li>
+</ul>
+<h1 id="techpaper-2011001-object-hierarchy-and-interconnectivity-in-precipitation-kinetics-simulations">TechPaper #2011001: Object hierarchy and interconnectivity in precipitation kinetics simulations</h1>
+<h2 id="compatibility">Compatibility</h2>
+<p>MatCalc version: 4.0 - … <br />
+Author: E. Kozeschnik <br />
+Created: 2011-06-23 <br />
+Revisions:</p>
+<h2 id="objectives">Objectives</h2>
+<p>This paper describes the object hierarchy implemented in MatCalc for precipitation kinetics simulations. It sketches the interconnections between the simulation control module, the equilibrium phases with precipitation domains and precipitate parent phases, as well as the precipitate phase objects.</p>
+<h2 id="related-documents">Related documents</h2>
+<p>None</p>
+<h1 id="main-document">Main document</h1>
+<p>The precipitation simulations in MatCalc are controlled by the kinetic calculation algorithms of the mc_core module. The foundation of the object structure is given by the setup of the thermodynamic equilibrium system, which defines the possible thermodynamic matrix phase(s) as well as the parent phases for the precipitate(s).</p>
+<h2 id="object-hierarchy">Object hierarchy</h2>
+<p>Based on the selection of equilibrium phases, the user defines precipitation domains, which are the containers for the precipitates, as well as the precipitate phase objects. Each precipitate must be created manually by the user, based on a particular precipitate parent phase, to which the precipitate remains connected to. The following figure illustrates these interconnections.</p>
+<p><a href="/techpapers/precipitation/img/precipitation_object_hierarchy.png" title="techpapers/precipitation/img/precipitation_object_hierarchy.png"><img alt=" Object hierarchy for precipitation kinetics simulations" src="/techpapers/precipitation/img/precipitation_object_hierarchy.png" title="Object hierarchy for precipitation kinetics simulations" /></a>
+Figure 1: Object hierarchy for precipitation kinetics simulations in <em>MatCalc</em></p>
+<p>The figure shows the two major controlling objects for calculations in the top row, connected with a line to indicate the direct link between the two. The first object is the 'Gibbs' class from within the 'mc_core' module, which is the class that handles thermodynamic calculations, evaluation of chemical potentials and driving forces, etc., and manages the phase objects. The second class is the 'kinetic control' class, also in the 'mc_core' module of MatCalc. This class is responsible for all kinetic simulations related to the precipitation kinetics functionality. It manages the precipitation domain functions and the link between the parent phase and precipitate phase objects.</p>
+<p>Below the 'Gibbs' class, directly linked to this object, are the equilibrium phases. This is the list of phases just as they are created when the user reads the thermodynamic database. In the precipitation kinetics simulations, these phases act as parent objects to the precipitate phases. This link is indicated by the lines between the equilibrium phases and the precipitates.</p>
+<p>The last group of objects relates to the precipitation domains. These are linked to the 'kinetic control' class, which handles all kinetic calculations and finally links the precipitates to the corresponding precipitation domains.</p>
+<h2 id="equilibrium-phases">Equilibrium phases</h2>
+<p>The equilibrium phases in precipitation kinetics simulations play the important role of handling the <em>nucleation</em> properties of the precipitate. Depending on the choice of nucleation model, these phases always contain the selected (or calculated) chemical composition of the precipitate nucleus.</p>
+<p>These phases are denoted as <em>precipitate parent phases</em> and they are initialized with a 'fixed' phase flag <a href="#fn__1">1)</a> and a phase amount set to zero. This phase flag setting allows for the calculation of the appropriate chemical composition for the ortho- or para-equilibrium nucleus. These settings also ensure that the precipitate parent phases do not participate in any kind of equilibrium calculation or evaluation of mass balances, since they have zero phase fraction and, thus, contain no actual mass. Still, they are very closely linked to the precipitates and must not be suspended, made dormant or changed in any other way.</p>
+<p><strong>Important note:</strong> The precipitate parent phases contain all information that are needed to evaluate the nucleation rate for the precipitate. This includes the nucleus composition, but also the chemical driving force, chemical potentials or sublattice site fractions. The properties of the precipitate parent phase can be evaluated in addition to the corresponding variables for nucleation provided for the precipitate phase.</p>
+<p>In the equilibrium phases group of Figure 1, the phases named A and B are phases that are attached to the two precipitation domains. The phases named a, b and c are precipitate parent phases. Phase c#01 is a <em>composition set</em>, which is a phase with the identical phase description and identical thermodynamic parameters as phase c, however, it usually has different major constituents defined. Since this phase is the <em>first</em> composition set of phase c, it has the index 1 given after a hash '#' sign to indicate composition sets. In all other aspects, this phase behaves like any other equilibrium phase.</p>
+<h2 id="precipitation-domains">Precipitation domains</h2>
+<p>A precipitation domain represents a <em>container</em>, in which precipitates can nucleate and grow. The most important property of a precipitation domain is the attached <em>thermodynamic matrix phase</em>. The type of equilibrium phase uniquely <em>determines the thermodynamic properties of the precipitation domain</em>. For instance, in steel, the 'ferrite' precipitation domain is usually linked to the BCC_A2 phase. In Al or Ni alloys, the precipitation domain commonly links to the FCC_A1 phase.</p>
+<p>In figure 1, each of the two precipitation domains I and II are linked to one single equilibrium phase A or B. This is indicated by thin solid lines connecting the precipitation domains with the matrix phases. Note that it is not possible that two precipitation domains share the same matrix phase, since the equilibrium phase object holds many of the properties of the precipitation domain.</p>
+<p>In the precipitation kinetics simulation, one of the existing precipitation domains is made active. The existing precipitates are automatically assigned to this domain. In practice, this is a representation of the situation that the precipitation domain acts as a representative volume element. The available precipitates can, thus, only be within this RVE, or not exist at all <a href="#fn__2">2)</a>.</p>
+<p>It is not possible that one precipitate shares multiple precipitation domains. It is, however, possible that a precipitate nucleates in one precipitation domain and continues to grow in another one after the active domain has been switched from one to the other precipitation domain. This situation corresponds, for instance, to cases, where the matrix phase of the RVE changes due to a matrix phase transformation in the course of a complex heat treatment.</p>
+<p><strong>Important note:</strong> The precipitation domain contains all information about the microstructure of your precipitation system, including dislocation density and grain size (determining the number of potential nucleation sites for heterogeneous nucleation), grain boundary energies, settings for the treatment of excess vacancies, and many more. The properties of the precipitation domain thus strongly affect the precipitation process.</p>
+<h2 id="precipitate-phases">Precipitate phases</h2>
+<p>In the bottom right group box of figure 1, an ensemble of precipitate phases is displayed. Each precipitate phase object must be created manually by the user and linked to a precipitate parent phase. The precipitate phases generally carry the suffix '_Pn', where <em>n</em> stands for a number &gt;= 0. The letter 'P' indicates that this phase is a precipitate. The index n refers to the index of the precipitate population, which is assigned to the precipitate parent phase.</p>
+<p>The precipitate phase contains all information of the precipitate, including the distribution of size classes and each corresponding chemical composition, the mean driving force for precipitation, the number density, etc., etc. The precipitate phase object also <em>contains all settings that control the nucleation and growth</em> characteristics of the precipitate.</p>
+<p><strong>Note:</strong> Each precipitate is linked to one single precipitate parent phase. The precipitate phase contains all information on the constitution of the precipitate, the parent phase all properties related to nucleation.</p>
+<p>Figure 1 shows this requirement clearly on a few examples. The precipitates a and b
+are linked to one parent phase each and the phase names are a_p0 and b_p0. Phase c has three precipitate populations defined and linked to one single parent phase. This is possible (and reasonable), if all three precipitate populations rely on the same model for the nucleus composition. In this case, the composition of the nucleus, and, thus, all nucleation properties, are identical for all three populations and one can rely on only one parent phase. The three precipitate populations are named c_p0, c_p1 and c_p2.</p>
+<p>Multiple precipitate populations are useful if you analyze, for instance, simultaneous nucleation of precipitates on either dislocations and grain boundaries. In this case, the nucleation model is the same, and the same parent phase can be used.</p>
+<p>Another example, where selection of only one parent phase is incorrect, is the analysis of simultaneous precipitation of para-equilibrium and ortho-equilibrium precipitates. In this case, each of the two precipitates has different settings for the nucleus composition and ,thus, two separate composition sets of the same thermodynamic phase are required for a correct simulations. This situation applies, for instance, to the last two precipitates in figure 1. These are attached to the composition set phase c#01 with the names c#01_p0 and c#01_p1. The precipitates based on the two different parent phases can have different settings for the nucleus composition, without causing a conflict in the simulation. The two precipitate populations of the c#01 phase, i.e. c#01_p0 and c#01_p1, could, for instance, represent precipitate populations nucleating with para-equilibrium composition on dislocations or grain boundaries. The three phases belonging to the c phase could represent precipitates with ortho-equilibrium nucleus composition nucleating in the bulk, on dislocations and on grain boundaries, respectively.</p>
+<p><a href="#fnt__1">1)</a></p>
+<p>flags |= FLAG_PHASEISFIXED</p>
+<p><a href="#fnt__2">2)</a></p>
+<p>If you want to suppress a precipitate from being formed in your simulation, uncheck all possible nucleation sites. This is the safest way of ignoring a certain phase</p>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=techpapers%3Aprecipitation%3Aprec_objects&amp;1788353011" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

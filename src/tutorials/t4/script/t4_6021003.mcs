@@ -1,0 +1,103 @@
+$$************************************************************************************************** 
+************************************** GENERAL INFORMATION *****************************************
+****************************************************************************************************
+
+Script for graphical presentation and export of results according to Tutorial 4.
+The following contents will be covered:
+
+ - Creating a new graphical window
+ - Introduction to the variables window
+ - Modifying the appearance of a plot using 'options'
+ - Zooming in and displaying x- and y-values
+ - Exporting a plot as an image and as numerical data
+
+Database: mc_fe.tdb
+Author: P. Warczok
+Creation date: 20.03.2008
+Last update: 10.05.2019 (P. Warczok, Update for 6.02)
+This is a script for MatCalc version 6.02 (rel 1.003)
+
+Known issues:
+- "save-workspace "file-name"=Tutorial_4" is not working properly. --> Use "save-workspace Tutorial_4" instead.
+
+
+
+**************************************************************************************************** 
+************************************** SETUP INFORMATION *******************************************
+**************************************************************************************************$$
+
+use-module module-name=core                                         $ Use "core" module (MatCalc uses "core" module by default anyway) 
+
+read-workspace file-name=Tutorial_3.mcw                             $ Loads the workspace "Tutorial_3.mcw"
+
+select-calc-buffer buffer-name="T=400 to 1600°C" 
+$select-calc-buffer T=400_to_1600°C                                 $ Selects the buffer state to edit
+
+$$************************************************************************************************** 
+                                       PLOTTING A GRAPH
+**************************************************************************************************$$
+
+new-gui-window type-id=p1                                           $ Creating a new window of 'p1' type (XY-diagram)
+$ In plot no. 1, new series with buffer result for "f$*"-variables are plotted
+set-plot-option plot-id=1 series new buffer variable-name=f$*
+
+$------------------------------- Results from different buffers -----------------------------------$
+$ In the GUI window with id=2 (plot window), the content of the buffer "C=0 to 1.5 at 500°C" is plotted
+set-gui-window-property window-id=2 buffer-name="C=0 to 1.5 at 500°C"
+
+$ In the current window (described with "."), the content of the buffer "C=0 to 1.5 at 800°C" is plotted
+set-gui-window-property window-id=. buffer-name="C=0 to 1.5 at 800°C"
+
+
+$----------------------- Changing the format of the temperature-step plot -------------------------$
+set-gui-window-property window-id=. buffer-name="T=400 to 1600°C"   $ Back to "T=400_to_1600C" buffer
+set-gui-window-property window-id=. default-x-axis-data=t$c         $ Setting x-axis variable to temperature in "°C" (T$C)
+set-gui-window-property window-id=. style-sheet=b/w                 $ Changing the plot style to black and white (b/w)
+set-gui-window-property window-id=. style-sheet=col_no_symb         $ ... and back to colour
+
+
+$------------------------------------- Setting title ----------------------------------------------$
+$ Plot no.1 receives title "Phase fraction versus temperature for Fe-0.4 wt.%C"
+set-plot-option plot-id=1 plot-title=Phase fraction versus temperature for Fe-0.4 wt.%C
+
+$-------------------------------- Options for the plot legend -------------------------------------$
+$ For the current plot, the legend box is put on the bottom of the plot
+set-plot-option plot-id=. legend-alignment=bottom 
+$ For the current plot, the style of the legend frames is set to "none" (no frames displayed)
+set-plot-option plot-id=. style=none 
+
+$------------------------------------ Options for the axes ----------------------------------------$
+$ For the current plot, the x-axis becomes a title "Temperature [°C]"
+set-plot-option plot-id=. x-axis-title=Temperature [°C]
+$ For the current plot, the y-axis becomes a title "Phase fraction"
+set-plot-option plot-id=. y-axis-title=Phase fraction
+$ For the current plot, the y-axis scale type is set to logarithmic
+set-plot-option plot-id=. y-axis-type=log 
+$ ... and the scale range will start from 0.01
+set-plot-option plot-id=. y-axis-scaling=0,01..
+$ To see the changes on the x-axis, the option of default x-axis usage for all plots is deactivated
+set-gui-window-property window-id=. default-x-axis-for-all-plots=no 
+
+$---------------------------------- Options for the gridlines -------------------------------------$
+$ For the current plot, the major grids for the x-axis are enabled
+set-plot-option plot-id=. grid which-grid=major enable-x-axis=yes 
+$ ... together with the ones for the y-axis
+set-plot-option plot-id=. grid which-grid=major enable-y-axis=yes 
+
+$----------------------------------- Options for the series ---------------------------------------$
+$ The series no.0 of the current plot is renamed to "Liquid"
+set-plot-option plot-id=. series rename series-index=0 new-name=Liquid
+$ The series no.1 of the current plot is renamed to "Austenite"
+set-plot-option plot-id=. series rename series-index=1 new-name=Austenite
+$ The series no.2 of the current plot is renamed to "Ferrite"
+set-plot-option plot-id=. series rename series-index=2 new-name=Ferrite
+$ The series no.3 of the current plot is renamed to "Cementite"
+set-plot-option plot-id=. series rename series-index=3 new-name=Cementite
+
+$$************************************************************************************************** 
+                                        SAVING WORKSPACE
+**************************************************************************************************$$
+
+$save-workspace "file-name"=Tutorial_4                              $ Saves workspace as "Tutorial_4.mcw"
+save-workspace Tutorial_4
+

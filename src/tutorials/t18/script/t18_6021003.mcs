@@ -1,0 +1,308 @@
+$$************************************************************************************************** 
+************************************** GENERAL INFORMATION *****************************************
+****************************************************************************************************
+
+Script for plotting a TTP diagram according to Tutorial 18.
+The following contents will be covered:
+
+ - Calculating a TTP diagram for isothermal treatments
+ - Calculating a TTP diagram for continuous cooling
+ - Plotting the diagram
+ - Display options: absolute, relative or relative to maximum phase fraction
+
+A time-temperature-precipitation diagram is a plot consisting of contours characterising the extent 
+of a precipitation reaction on axes of temperature versus time. In this tutorial, a TTP diagram 
+will be calculated for the precipitation of NbC in the austenite single-phase region.
+
+Database: mc_fe.tdb, mc_fe.ddb
+Author: P. Warczok
+Creation date: 10.11.2008
+Last update: 01.08.2019 (P. Warczok, Update for 6.02)
+This is a script for MatCalc version 6.02 (rel 1.003)
+
+Known issues:
+- "save-workspace "file-name"=Tutorial_18" is not working properly. --> Use "save-workspace Tutorial_18" instead.
+- "set-gui-window-property window-id=. default-x-axis-legend=none" is not working unless updated (with 
+  "set-gui-window-property window-id=. default-x-axis-for-all-plots=yes". If needed, update or address directly
+  with "set-plot-option plot-id=. legend-alignment="
+
+**************************************************************************************************** 
+************************************** SETUP INFORMATION *******************************************
+**************************************************************************************************$$
+
+use-module module-name=core                                                                          $ Use "core" module (MatCalc uses "core" module by default anyway) 
+
+new-workspace                                                                                        $ creates a new workspace 
+
+
+$$************************************************************************************************** 
+**************************************** SYSTEM SETUP **********************************************
+**************************************************************************************************$$
+
+
+
+$$************************************************************************************************** 
+                        DATABASES, CHEMICAL COMPOSITION, PHASE SELECTION
+**************************************************************************************************$$
+
+open-thermodynamic-database file-name=mc_fe.tdb                                                      $ Thermodynamic database: mc_fe.tdb 
+select-elements elements=FE C NB VA                                                                  $ Components: Fe, C, Nb
+select-phases phases=BCC_A2 FCC_A1                                                                   $ Phases: bcc, fcc
+read-thermodynamic-database  
+
+set-reference-element element=FE
+enter-composition type=weight-percent composition=C=0,1 NB=0,7                                       $ Composition: 0.1 wt.% C, 0.7 wt.% Nb
+
+set-automatic-startvalues 
+set-temperature-celsius temperature=1000                                                             $ Temperature 1000C
+calculate-equilibrium 
+
+
+$$************************************************************************************************** 
+                         EQUILIBRIUM PHASE FRACTION OF NBC IN AUSTENITE
+**************************************************************************************************$$
+
+$ Finding temperature range of pure austenite
+search-phase-boundary phase-name=BCC_A2 temperature                                                  $ Varying temperature for the bcc phase boundary search
+
+set-temperature-celsius temperature=1200                                                             $ Temperature 1000C
+calculate-equilibrium 
+search-phase-boundary phase-name=BCC_A2 temperature                                                  $ Varying temperature for the bcc phase boundary search
+
+$ Plot setup for fcc_a1#01 phase fraction
+new-gui-window type-id=p1
+set-gui-window-property window-id=. default-x-axis-data=T$C                                          $ Temperature in Celsius set as variable on x-axis			
+set-gui-window-property window-id=. default-x-axis-title=Temperature [°C]                            $ x-axis title
+set-gui-window-property window-id=. default-x-axis-legend=none                                       $ No legend
+set-plot-option plot-id=. y-axis-title=Equilibrium phase fraction of NbC                             $ y-axis title
+set-plot-option plot-id=. series new buffer variable-name=F$FCC_A1#01                                $ Plotting the fraction of NbC phase
+set-plot-option plot-id=. grid which-grid=major enable-x-axis=yes                                    $ Grid for x-axis                          
+set-plot-option plot-id=. grid which-grid=major enable-y-axis=yes                                    $ Grid for y-axis
+
+$ Stepped calculation within identified pure austenite matrix range (roughly)
+set-step-option type=temperature                                                                     $ "Temperature" type
+set-step-option range start=1400 stop=900 scale=lin step-width=10                                    $ Range 920 - 1420; linear step of 10
+set-step-option temperature-in-celsius=yes                                                           $ Temperature in Celsius
+step-equilibrium 
+
+set-plot-option plot-id=. series lock series-index=* do-lock=yes                                     $ Lock all series in plot
+
+
+
+$$************************************************************************************************** 
+                                     DOMAINS & PRECIPITATES
+**************************************************************************************************$$
+
+$ Austenite domain
+create-precipitation-domain new-domain-name=austenite                                                $ Domain name
+set-precipitation-parameter precipitate-or-domain-name=austenite thermodynamic-matrix-phase=FCC_A1   $ Thermodynamic parameter prototype
+
+$ NbC precipitate
+create-new-phase parent-phase=FCC_A1#01 precipitate                         
+set-precipitation-parameter precipitate-or-domain-name=FCC_A1#01_P0 number-of-size-classes=25        $ Number of classes
+set-precipitation-parameter precipitate-or-domain-name=FCC_A1#01_P0 nucleation-sites=dislocations    $ Nucleation sites
+
+$ Reading diffusion database
+read-mobility-database file-name=mc_fe.ddb
+
+
+$$************************************************************************************************** 
+                        SERIES OF PRECIPITATION KINETICS CALCULATION
+**************************************************************************************************$$
+
+$ -------------------------------- Kinetic simulation - 925°C --------------------------------------
+
+$ Simulation setup
+set-simulation-parameter end-time=1e5                                                                $ End time
+set-simulation-parameter isothermal-temperature=925                                                  $ Isothermal temperature
+
+start-precipitate-simulation
+
+$ Plot setup for precipitate phase fraction
+new-gui-window type-id=p1                                                                                                                                         
+set-gui-window-property window-id=. default-x-axis-title=Time [s]                                    $ Default x-axis title
+set-gui-window-property window-id=. default-x-axis-type=log                                          $ Default x-axis type
+set-gui-window-property window-id=. default-x-axis-scaling=1..                                       $ Default x-axis scaling
+set-gui-window-property window-id=. default-x-axis-legend=right                                      $ Default legend setting
+set-plot-option plot-id=. y-axis-title=NbC phase fraction                                            $ y-axis title
+set-plot-option plot-id=. series new buffer variable-name=F$FCC_A1#01_P0                             $ Plot series
+set-plot-option plot-id=. grid which-grid=major enable-x-axis=yes                                    $ Grid for x-axis                          
+set-plot-option plot-id=. grid which-grid=major enable-y-axis=yes                                    $ Grid for y-axis
+
+$ Series processing: duplicate, lock, rename...
+set-gui-window-property window-id=. duplicate-and-lock-plot-series                                   $ Duplicate and lock series
+set-plot-option plot-id=. series rename series-index=-1 series-name=*_F$FCC_A1#01_P0 new-name=925C   $ Rename series
+
+$ -------------------------------- Kinetic simulation - 1025°C -------------------------------------
+set-simulation-parameter end-time=1e5
+set-simulation-parameter isothermal-temperature=1025
+
+start-precipitate-simulation
+
+set-gui-window-property window-id=. duplicate-and-lock-plot-series 
+set-plot-option plot-id=. series rename series-index=-1 series-name=*_F$FCC_A1#01_P0 new-name=1025C
+
+$ -------------------------------- Kinetic simulation - 1125°C -------------------------------------
+set-simulation-parameter end-time=1e5
+set-simulation-parameter isothermal-temperature=1125
+
+start-precipitate-simulation
+
+set-gui-window-property window-id=. duplicate-and-lock-plot-series 
+set-plot-option plot-id=. series rename series-index=-1 series-name=*_F$FCC_A1#01_P0 new-name=1125C
+
+$ -------------------------------- Kinetic simulation - 1175°C -------------------------------------
+set-simulation-parameter end-time=1e5
+set-simulation-parameter isothermal-temperature=1175
+
+start-precipitate-simulation
+
+set-gui-window-property window-id=. duplicate-and-lock-plot-series 
+set-plot-option plot-id=. series rename series-index=-1 series-name=*_F$FCC_A1#01_P0 new-name=1175C
+
+$ -------------------------------- Kinetic simulation - 1225°C -------------------------------------
+set-simulation-parameter end-time=1e5
+set-simulation-parameter isothermal-temperature=1225
+
+start-precipitate-simulation
+
+set-gui-window-property window-id=. duplicate-and-lock-plot-series 
+set-plot-option plot-id=. series rename series-index=-1 series-name=*_F$FCC_A1#01_P0 new-name=1225C
+
+$ -------------------------------- Kinetic simulation - 1250°C -------------------------------------
+set-simulation-parameter end-time=1e5
+set-simulation-parameter isothermal-temperature=1250
+
+start-precipitate-simulation
+
+set-gui-window-property window-id=. duplicate-and-lock-plot-series 
+set-plot-option plot-id=. series rename series-index=-1 series-name=*_F$FCC_A1#01_P0 new-name=1250C
+
+$ -------------------------------- Kinetic simulation - 1275°C -------------------------------------
+set-simulation-parameter end-time=1e5
+set-simulation-parameter isothermal-temperature=1275
+
+start-precipitate-simulation 
+
+set-plot-option plot-id=. series lock series-index=-1 series-name=F$FCC_A1#01_P0 do-lock=yes         $ Lock series
+set-plot-option plot-id=. series rename series-index=-1 series-name=*_F$FCC_A1#01_P0 new-name=1275C 
+
+
+$$************************************************************************************************** 
+                                   PLOTTING THE TTP DIAGRAMS
+**************************************************************************************************$$
+
+$ ------------------------------------- TTP-calculation setup --------------------------------------
+
+$ TTP-simulation end time set to 1e5 seconds
+set-ttp-parameter end-time=1e5
+$ TTP-simulation is performed in range from 1375 degC...
+set-ttp-parameter start-temperature=1375
+$ ...to 925 degC...
+set-ttp-parameter stop-temperature=925
+$ ... with interval of 25 degC
+set-ttp-parameter delta-T=25  
+$ Once precipitate number density decreases below 0,1 of highest amount found for given temperature,
+$ MatCalc skips to next temperature 
+set-ttp-parameter stop-if-(N)-decreased-to-fraction=0.1
+
+start-ttp-simulation 
+
+$ -----------------------------Plot setup - Relative phase fractions -------------------------------
+new-gui-window type-id=p6
+set-plot-option plot-id=. plot-title=Relative phase fractions                                        $ Plot title
+set-plot-option plot-id=. x-axis-title=Time [s]                                                      $ x-axis title
+set-plot-option plot-id=. x-axis-scaling=1..1e5                                                      $ x-axis scaling
+set-plot-option plot-id=. y-axis-title=Temperature [°C]                                              $ y-axis title
+$ Curves represent the given fraction of the maximal phase fraction obtained at repsective temperatures  
+set-plot-option plot-id=. ttp-refer-to=relative
+$ Adding a series representing 5% of the maximal phase fraction obtained at repsective temperatures                                                       
+set-plot-option plot-id=. series new ttp-diagram phase-name=FCC_A1#01_P0 phase-fraction-value=0,05
+$ Adding a series representing 50% of the maximal phase fraction obtained at repsective temperatures
+set-plot-option plot-id=. series new ttp-diagram phase-name=FCC_A1#01_P0 phase-fraction-value=0.5
+$ Adding a series representing 95% of the maximal phase fraction obtained at repsective temperatures
+set-plot-option plot-id=. series new ttp-diagram phase-name=FCC_A1#01_P0 phase-fraction-value=0.95
+set-plot-option plot-id=. series rename series-index=0 new-name=0.05                                 $ Rename series
+set-plot-option plot-id=. series rename series-index=1 new-name=0.5
+set-plot-option plot-id=. series rename series-index=2 new-name=0.95
+set-plot-option plot-id=. grid which-grid=major enable-x-axis=yes                                    $ Grid for x-axis                          
+set-plot-option plot-id=. grid which-grid=major enable-y-axis=yes                                    $ Grid for y-axis
+
+$ ---------------------------- Plot setup - Absolute phase fractions -------------------------------
+new-gui-window type-id=p6
+set-plot-option plot-id=. plot-title=Absolute phase fractions                                        $ Plot title
+set-plot-option plot-id=. x-axis-title=Time [s]                                                      $ x-axis title
+set-plot-option plot-id=. x-axis-scaling=1..1e5                                                      $ x-axis scaling
+set-plot-option plot-id=. y-axis-title=Temperature [°C]                                              $ y-axis title
+$ Curves represent the given phase fraction obtained at repsective temperatures  
+set-plot-option plot-id=. ttp-refer-to=absolute 
+$ Adding a series representing the phase fraction of 0,001 obtained at repsective temperatures
+set-plot-option plot-id=. series new ttp-diagram phase-name=FCC_A1#01_P0 phase-fraction-value=1e-3
+$ Adding a series representing the phase fraction of 0,002 obtained at repsective temperatures
+set-plot-option plot-id=. series new ttp-diagram phase-name=FCC_A1#01_P0 phase-fraction-value=2e-3
+$ Adding a series representing the phase fraction of 0,003 obtained at repsective temperatures
+set-plot-option plot-id=. series new ttp-diagram phase-name=FCC_A1#01_P0 phase-fraction-value=3e-3
+$ Adding a series representing the phase fraction of 0,004 obtained at repsective temperatures
+set-plot-option plot-id=. series new ttp-diagram phase-name=FCC_A1#01_P0 phase-fraction-value=4e-3
+$ Adding a series representing the phase fraction of 0,005 obtained at repsective temperatures
+set-plot-option plot-id=. series new ttp-diagram phase-name=FCC_A1#01_P0 phase-fraction-value=5e-3
+$ Adding a series representing the phase fraction of 0,006 obtained at repsective temperatures
+set-plot-option plot-id=. series new ttp-diagram phase-name=FCC_A1#01_P0 phase-fraction-value=6e-3
+$ Adding a series representing the phase fraction of 0,007 obtained at repsective temperatures
+set-plot-option plot-id=. series new ttp-diagram phase-name=FCC_A1#01_P0 phase-fraction-value=7e-3
+set-plot-option plot-id=. series rename series-index=0 new-name=1e-3                                 $ Rename series
+set-plot-option plot-id=. series rename series-index=1 new-name=2e-3
+set-plot-option plot-id=. series rename series-index=2 new-name=3e-3
+set-plot-option plot-id=. series rename series-index=3 new-name=4e-3
+set-plot-option plot-id=. series rename series-index=4 new-name=5e-3
+set-plot-option plot-id=. series rename series-index=5 new-name=6e-3
+set-plot-option plot-id=. series rename series-index=6 new-name=7e-3
+set-plot-option plot-id=. grid which-grid=major enable-x-axis=yes  
+set-plot-option plot-id=. grid which-grid=major enable-y-axis=yes 
+
+$ ----------------- Plot setup - Phase fractions related to maximal value found --------------------
+new-gui-window type-id=p6
+set-plot-option plot-id=. plot-title=Referred to maximal phase fractions                             $ Plot title
+set-plot-option plot-id=. x-axis-title=Time [s]                                                      $ x-axis title
+set-plot-option plot-id=. x-axis-scaling=1..1e5                                                      $ x-axis scaling
+set-plot-option plot-id=. y-axis-title=Temperature [°C]                                              $ y-axis title
+$ Curves represent the given fraction of the maximal precipitate phase fraction obtained within
+$ the examined temperature range 
+set-plot-option plot-id=. ttp-refer-to=max-fraction 
+$ Adding a series representing 10% of the maximal phase fraction obtained within temperature range 
+set-plot-option plot-id=. series new ttp-diagram phase-name=FCC_A1#01_P0 phase-fraction-value=0,1
+$ Adding a series representing 20% of the maximal phase fraction obtained within temperature range 
+set-plot-option plot-id=. series new ttp-diagram phase-name=FCC_A1#01_P0 phase-fraction-value=0,2
+$ Adding a series representing 30% of the maximal phase fraction obtained within temperature range 
+set-plot-option plot-id=. series new ttp-diagram phase-name=FCC_A1#01_P0 phase-fraction-value=0,3
+$ Adding a series representing 40% of the maximal phase fraction obtained within temperature range 
+set-plot-option plot-id=. series new ttp-diagram phase-name=FCC_A1#01_P0 phase-fraction-value=0,4
+$ Adding a series representing 50% of the maximal phase fraction obtained within temperature range 
+set-plot-option plot-id=. series new ttp-diagram phase-name=FCC_A1#01_P0 phase-fraction-value=0,5
+$ Adding a series representing 60% of the maximal phase fraction obtained within temperature range 
+set-plot-option plot-id=. series new ttp-diagram phase-name=FCC_A1#01_P0 phase-fraction-value=0,6
+$ Adding a series representing 70% of the maximal phase fraction obtained within temperature range 
+set-plot-option plot-id=. series new ttp-diagram phase-name=FCC_A1#01_P0 phase-fraction-value=0,7
+$ Adding a series representing 80% of the maximal phase fraction obtained within temperature range 
+set-plot-option plot-id=. series new ttp-diagram phase-name=FCC_A1#01_P0 phase-fraction-value=0,8
+$ Adding a series representing 90% of the maximal phase fraction obtained within temperature range 
+set-plot-option plot-id=. series new ttp-diagram phase-name=FCC_A1#01_P0 phase-fraction-value=0,9
+set-plot-option plot-id=. series rename series-index=0 new-name=0.1                                  $ Rename series
+set-plot-option plot-id=. series rename series-index=1 new-name=0.2
+set-plot-option plot-id=. series rename series-index=2 new-name=0.3
+set-plot-option plot-id=. series rename series-index=3 new-name=0.4
+set-plot-option plot-id=. series rename series-index=4 new-name=0.5
+set-plot-option plot-id=. series rename series-index=5 new-name=0.6
+set-plot-option plot-id=. series rename series-index=6 new-name=0.7
+set-plot-option plot-id=. series rename series-index=7 new-name=0.8
+set-plot-option plot-id=. series rename series-index=8 new-name=0.9
+set-plot-option plot-id=. grid which-grid=major enable-x-axis=yes                                    $ Grid for x-axis
+set-plot-option plot-id=. grid which-grid=major enable-y-axis=yes                                    $ Grid for y-axis
+
+
+$$************************************************************************************************** 
+                                        SAVING WORKSPACE
+**************************************************************************************************$$
+
+$save-workspace "file-name"=Tutorial_18
+save-workspace Tutorial_18

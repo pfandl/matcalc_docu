@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>P80 2 - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "P80 2";
+        var mkdocs_page_input_path = "examples/precipitation/p80/p80_2.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">P80 2</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>Example P80: Part 2: Precipitation of Cu in Fe-Cu [MatCalc Documentation]</p>
+<h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#example_p80part_2precipitation_of_cu_in_fe-cu">Example P80: Part 2: Precipitation of Cu in Fe-Cu</a></p>
+</li>
+<li>
+<p><a href="#compatibility">Compatibility</a></p>
+</li>
+<li><a href="#objectives">Objectives</a></li>
+<li><a href="#related_documents">Related documents</a></li>
+<li><a href="#complementary_files">Complementary files</a></li>
+<li>
+<p><a href="#main_document">Main document</a></p>
+</li>
+<li>
+<p><a href="#setup_thermodynamics">Setup thermodynamics</a></p>
+</li>
+<li><a href="#experimental_data">Experimental data</a></li>
+<li><a href="#precipitation_domain_and_precipitates">Precipitation domain and precipitates</a></li>
+<li><a href="#start_precipitation_simulation">Start precipitation simulation</a></li>
+<li><a href="#plotting_the_results">Plotting the results</a></li>
+<li><a href="#consecutive_articles">Consecutive articles</a></li>
+</ul>
+<h1 id="example-p80-part-2-precipitation-of-cu-in-fe-cu">Example P80: Part 2: Precipitation of Cu in Fe-Cu</h1>
+<h2 id="compatibility">Compatibility</h2>
+<p>MatCalc version: 5.52.0038 <br />
+Database: mc_fe.tdb, mc_sample_fe.ddb<br />
+Author: Georg Stechauner<br />
+Created: 2013-07-02 <br />
+Revisions:</p>
+<h2 id="objectives">Objectives</h2>
+<p>Following Part 1, where the corresponding models and parameters were discussed, we will show in Part 2 on the basis of the data of Goodman et al. (1973) the precipitation of Cu in Fe-cu. We start off with the nucleation of coherent bcc-Cu and let it evolve with the transformation to the semi-coherent 9R structure and the incoherent fcc-Cu. Many attempts on this simulation have already been published, although without fully satisfying the simulators wishes. A direct-particle transformation will be used for the evolution of Cu-precipitates.</p>
+<p><strong>Note:</strong> This is an advanced example and will not cover basics like “How to create a plot”, etc… . Please consider earlier P-examples for instructional purpose.</p>
+<p><strong>Note 2:</strong> The results below can only be reproduced by using both, the newest version of MatCalc as well as the newest thermodynamic database. Using sample databases can result in slightly different results due to dissimilar values in the databases.</p>
+<h2 id="related-documents">Related documents</h2>
+<ul>
+<li>P80-1 -  <a href="/examples/precipitation/p80/p80_1" title="examples/precipitation/p80/p80_1">Models and parameters for Fe-Cu simulation</a></li>
+<li>P80-3 -  <a href="/examples/precipitation/p80/p80_3" title="examples/precipitation/p80/p80_3">TTP plot in Fe-Cu system</a></li>
+<li><a href="/howtosimulate/physical/mingstar/calc" title="howtosimulate/physical/mingstar/calc">Calculation of G* and nucleation probability</a></li>
+<li>S. R. Goodman, S. S. Brenner, An FIM-Atom Probe Study of the Precipitation of Copper from Iron-1.4 at. pct Copper, Part I: Field-Ion Microscopy, Metall. Trans. 4 (1973) 2363-2369.</li>
+<li>T. Jourdan, J.-L. Bocquet, F. Soisson, Modeling homogeneous precipitation with an event-based Monte Carlo method: Application to the case of Fe-Cu, Acta Mater. 58 (2010) 3295-3302.</li>
+</ul>
+<p>If you are interested in some further information on G* calculation, please consider:</p>
+<h2 id="complementary-files">Complementary files</h2>
+<p>Click <a href="/examples/precipitation/p80/p80_script_2018.mcs" title="examples/precipitation/p80/p80_script_2018.mcs (15.8 KB)">here</a> to view the script for this example.</p>
+<h1 id="main-document">Main document</h1>
+<h2 id="setup-thermodynamics">Setup thermodynamics</h2>
+<p>Set up the thermodynamics by either loading the mc_fe database.</p>
+<p>Select the following phases, elements and enter the chemical composition in wt-%:</p>
+<table>
+<thead>
+<tr>
+<th>Elements</th>
+<th>Chemical composition</th>
+<th>Phases</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cu</td>
+<td>1.4</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>Set Fe to reference element.</p>
+<p><strong>Note</strong>: We do not need to load any phases as we will work solely with composition sets created in the following section.</p>
+<p>Conclude the thermodynamic setup by loading the diffusion database for Fe.</p>
+<h2 id="experimental-data">Experimental data</h2>
+<p>The following tables of phase fraction, radius and number density are taken from Goodman et al. Feel free to enter your own data as well, but don't forget to change the chemical composition respectively. Internal testing with in-house atom probe results, showed a qualitative good result for values from 0.5 to 1.5 at.-%.</p>
+<p>Create three new tables for phase fraction, radius and number density and enter the following values:</p>
+<table>
+<thead>
+<tr>
+<th>x-Value:  time / s</th>
+<th>y-value:  phase fraction</th>
+<th>y-value:  radius / m</th>
+<th>y-value:  number density</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1e3</td>
+<td>0.08e-2</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>4e3</td>
+<td>0.23e-2</td>
+<td>0.8e-9</td>
+<td>1.2e24</td>
+</tr>
+<tr>
+<td>1e4</td>
+<td>0.72e-2</td>
+<td>1.4e-9</td>
+<td>1e24</td>
+</tr>
+<tr>
+<td>4e4</td>
+<td>1.04e-2</td>
+<td>3.0e-9</td>
+<td>1e23</td>
+</tr>
+<tr>
+<td>1.5e5</td>
+<td>1.28e-2</td>
+<td>4.8e-9</td>
+<td>3e22</td>
+</tr>
+<tr>
+<td>5e5</td>
+<td>1.30e-2</td>
+<td>7.0e-9</td>
+<td>8e21</td>
+</tr>
+</tbody>
+</table>
+<h2 id="precipitation-domain-and-precipitates">Precipitation domain and precipitates</h2>
+<p>Next we enter the data for the precipitation domain. To do so, open the precipitation domain dialog and create a new domain. Select bcc_a2 as its matrix phase. Enter the following data in the corresponding tabs:</p>
+<p><a href="/examples/precipitation/p80/p80_prec_domain.png" title="examples/precipitation/p80/p80_prec_domain.png"><img alt=" Precipitation domain dialog" src="/examples/precipitation/p80/p80_prec_domain.png" title="Precipitation domain dialog" /></a></p>
+<table>
+<thead>
+<tr>
+<th>Tab</th>
+<th>Option</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Microstructure</td>
+<td>Grain diameter</td>
+<td>100e-6</td>
+</tr>
+<tr>
+<td>Dislocation density</td>
+<td>1e12</td>
+<td></td>
+</tr>
+<tr>
+<td>Special</td>
+<td>Substitutional matrix  diffusion enhancement</td>
+<td>10.0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note:</strong> In the newest <em>MatCalc</em> version, it is not necessary to set the diffusion enhancements due to grain-boundary and dislocation pipes anymore. An assessment was performed on those parameters and the values are directly read for Fe, Ni and Al from the software.</p>
+<p>It was shown by Jourdan et al. (2010) that the cluster mobility is responsible for an acceleration of the kinetics of around two orders of magnitude. This is considered with a MDEF of 10.</p>
+<p>Follow by setting up the precipitates. Bring up the phase status dialog window and select the FCC_A1 phase. Click 'Create…' and select 'composition set'. Set the following settings as shown in the pictures and repeat it twice for BCC_A2 (create CU_BCC_1 and _2). These phases will serve as parent phases for the coherent bcc-Cu (CU_BCC_1), semi-coherent 9R-Cu (CU_BCC_2) and incoherent fcc-Cu (CU_FCC).</p>
+<p><a href="/examples/precipitation/p80/p80_composition_set.png" title="examples/precipitation/p80/p80_composition_set.png"><img alt=" Create composition sets for CU_FCC and CU_BCC" src="/examples/precipitation/p80/p80_composition_set.png" title="Create composition sets for CU_FCC and CU_BCC" /></a></p>
+<p>Your phase status dialog should look like this after correct setup and creation of precipitates (CU_BCC_1_P0, CU_BCC_2_P0 and CU_FCC_P0):</p>
+<p><a href="/examples/precipitation/p80/p80_phase_status_dialog.png" title="examples/precipitation/p80/p80_phase_status_dialog.png"><img alt=" Phase status dialog for Fe-Cu precipitates" src="/examples/precipitation/p80/p80_phase_status_dialog.png" title="Phase status dialog for Fe-Cu precipitates" /></a></p>
+<p>Configure the phases according to the following table to complete the setup:</p>
+<table>
+<thead>
+<tr>
+<th>Precipitate</th>
+<th>Tab</th>
+<th>Option</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CU_BCC_1_p0</td>
+<td>Precipitate</td>
+<td>Kinetic alias name</td>
+<td>Cu(bcc)</td>
+</tr>
+<tr>
+<td>CU_BCC_1_p0</td>
+<td>Interfacial energy</td>
+<td>0.95*CIE$CU_BCC_1</td>
+<td></td>
+</tr>
+<tr>
+<td>CU_BCC_1_p0</td>
+<td>Diffuse interface correction</td>
+<td>✔, T_crit = 1860</td>
+<td></td>
+</tr>
+<tr>
+<td>CU_BCC_1_p0</td>
+<td>Nucleation</td>
+<td>Nucleation model</td>
+<td>Becker/Doering time-dep.</td>
+</tr>
+<tr>
+<td>CU_BCC_1_p0</td>
+<td>Nucleus composition</td>
+<td>minimum G* (press Calc)</td>
+<td></td>
+</tr>
+<tr>
+<td>CU_BCC_1_p0</td>
+<td>Restrict nucleation to prec domain</td>
+<td>✔, select domain_bcc</td>
+<td></td>
+</tr>
+<tr>
+<td>CU_BCC_1_p0</td>
+<td>Nucl. sites</td>
+<td>Nucleation sites</td>
+<td>bulk</td>
+</tr>
+<tr>
+<td>CU_BCC_1_p0</td>
+<td>Special</td>
+<td>Binder-Staufer exponent</td>
+<td>-3/4</td>
+</tr>
+<tr>
+<td>CU_BCC_1_p0</td>
+<td>Coalescence factor</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>CU_BCC_1_p0</td>
+<td>Diff. in prec. (subst)</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>CU_BCC_1_p0</td>
+<td>Diff. in prec. (inter)</td>
+<td>1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Precipitate</th>
+<th>Tab</th>
+<th>Option</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CU_BCC_2_p0</td>
+<td>Precipitate</td>
+<td>Kinetic alias name</td>
+<td>Cu(9R)</td>
+</tr>
+<tr>
+<td>CU_BCC_2_p0</td>
+<td>Nucleation</td>
+<td>Nucleation model</td>
+<td>direct particle transformation</td>
+</tr>
+<tr>
+<td>CU_BCC_2_p0</td>
+<td>Nucleus composition</td>
+<td>ortho-equilibrium</td>
+<td></td>
+</tr>
+<tr>
+<td>CU_BCC_2_p0</td>
+<td>Restrict nucleation to prec domain</td>
+<td>✔, select domain_bcc</td>
+<td></td>
+</tr>
+<tr>
+<td>CU_BCC_2_p0</td>
+<td>Nucl. sites</td>
+<td>other precipitates</td>
+<td>Add: CU_BCC_1_P0</td>
+</tr>
+<tr>
+<td>CU_BCC_2_p0</td>
+<td>transform. radius</td>
+<td>min. 2.0e-9  max. 3.0e-9</td>
+<td></td>
+</tr>
+<tr>
+<td>CU_BCC_2_p0</td>
+<td>Special</td>
+<td>Binder-Staufer exponent</td>
+<td>-3/4</td>
+</tr>
+<tr>
+<td>CU_BCC_2_p0</td>
+<td>Coalescence factor</td>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td>CU_BCC_2_p0</td>
+<td>Diff. in prec. (subst)</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>CU_BCC_2_p0</td>
+<td>Diff. in prec. (inter)</td>
+<td>1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Precipitate</th>
+<th>Tab</th>
+<th>Option</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CU_FCC_p0</td>
+<td>Precipitate</td>
+<td>Kinetic alias name</td>
+<td>Cu(fcc)</td>
+</tr>
+<tr>
+<td>CU_FCC_p0</td>
+<td>Nucleation</td>
+<td>Nucleation model</td>
+<td>direct particle transformation</td>
+</tr>
+<tr>
+<td>CU_FCC_p0</td>
+<td>Nucleus composition</td>
+<td>ortho-equilibrium</td>
+<td></td>
+</tr>
+<tr>
+<td>CU_FCC_p0</td>
+<td>Restrict nucleation to prec domain</td>
+<td>✔, select domain_bcc</td>
+<td></td>
+</tr>
+<tr>
+<td>CU_FCC_p0</td>
+<td>Nucl. sites</td>
+<td>other precipitates</td>
+<td>Add: CU_BCC_2_P0</td>
+</tr>
+<tr>
+<td>CU_FCC_p0</td>
+<td>transform. radius</td>
+<td>min. 4.0e-9  max. 8.0e-9</td>
+<td></td>
+</tr>
+<tr>
+<td>CU_FCC_p0</td>
+<td>Special</td>
+<td>Binder-Staufer exponent</td>
+<td>-3/4</td>
+</tr>
+<tr>
+<td>CU_FCC_p0</td>
+<td>Coalescence factor</td>
+<td>4</td>
+<td></td>
+</tr>
+<tr>
+<td>CU_FCC_p0</td>
+<td>Diff. in prec. (subst)</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>CU_FCC_p0</td>
+<td>Diff. in prec. (inter)</td>
+<td>1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>The interfacial energy correction has to be performed due to the diffuse conditions present at the interface.</p>
+<h2 id="start-precipitation-simulation">Start precipitation simulation</h2>
+<p>To ensure correct thermodynamic values and no driving force errors (DFM-errors), set automatic start values and calculate an equilibrium at 500C.</p>
+<p>Perform an isothermal kinetic simulation at 500°C</p>
+<h2 id="plotting-the-results">Plotting the results</h2>
+<p>Open the <strong>Create new window</strong> dialog box, an switch to the <strong>user-defined</strong> tab. Select the variable <strong>03_kinetics_4_frames_T_f_n_r_logX</strong>. Automatically the relevant plots will be created. Go to the options menu and select in the <code>defaul x-axis</code> the scaling section and scale to <strong>1..1e10</strong>.</p>
+<p>Now add a sum-phase fraction to the phase fraction plot. Select the correct plot in the options window, right-click it and select (as shown) buffer results.</p>
+<p><a href="/examples/precipitation/p80/p80_add-series.png" title="examples/precipitation/p80/p80_add-series.png"><img alt=" Add series to MatCalc" src="/examples/precipitation/p80/p80_add-series.png" title="Add series to MatCalc" /></a></p>
+<p>In the pop-up window, enter:</p>
+<p><a href="/examples/precipitation/p80/p80_change_series.png" title="examples/precipitation/p80/p80_change_series.png"><img alt=" Change data of added series in MatCalc" src="/examples/precipitation/p80/p80_change_series.png" title="Change data of added series in MatCalc" /></a></p>
+<p>As a last step, select the plots in the options menu and right-click them as before, to add the experimental tables.</p>
+<p>The final result should look like this:</p>
+<p><a href="/examples/precipitation/p80/p80_phasefraction.png" title="examples/precipitation/p80/p80_phasefraction.png"><img alt=" Phasefraction of Fe-Cu precipitates" src="/examples/precipitation/p80/p80_phasefraction.png" title="Phasefraction of Fe-Cu precipitates" /></a></p>
+<p><a href="/examples/precipitation/p80/p80_radius.png" title="examples/precipitation/p80/p80_radius.png"><img alt=" Radius of Fe-Cu precipitates" src="/examples/precipitation/p80/p80_radius.png" title="Radius of Fe-Cu precipitates" /></a></p>
+<p><a href="/examples/precipitation/p80/p80_numberdens.png" title="examples/precipitation/p80/p80_numberdens.png"><img alt=" Number density of Fe-Cu precipitates" src="/examples/precipitation/p80/p80_numberdens.png" title="Number density of Fe-Cu precipitates" /></a></p>
+<h1 id="consecutive-articles">Consecutive articles</h1>
+<p>Save your workspace, if you plan on performing the TTP simulation in the following  <a href="/examples/precipitation/p80/p80_3" title="examples/precipitation/p80/p80_3">article</a> .</p>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=examples%3Aprecipitation%3Ap80%3Ap80_2&amp;1788352998" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

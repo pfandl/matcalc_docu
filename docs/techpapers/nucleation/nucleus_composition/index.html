@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Nucleus composition - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Nucleus composition";
+        var mkdocs_page_input_path = "techpapers/nucleation/nucleus_composition.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Nucleus composition</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>TechPaper #2018001: Nucleus composition [MatCalc Documentation]</p>
+<h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#techpaper_2018001nucleus_composition">TechPaper #2018001: Nucleus composition</a></p>
+</li>
+<li>
+<p><a href="#compatibility">Compatibility</a></p>
+</li>
+<li><a href="#objectives">Objectives</a></li>
+<li><a href="#related_documents">Related documents</a></li>
+<li>
+<p><a href="#main_document">Main document</a></p>
+</li>
+<li>
+<p><a href="#ortho-equilibrium">Ortho-equilibrium</a></p>
+</li>
+<li><a href="#para-equilibrium">Para-equilibrium</a></li>
+<li><a href="#constrained_equilibrium">Constrained equilibrium</a></li>
+<li><a href="#fixed_molar_site_fractions">Fixed molar site fractions</a></li>
+<li><a href="#minimum_critical_nucleation_energy_g">Minimum critical nucleation energy (G*)</a></li>
+<li><a href="#maximum_nucleation_rate_j">Maximum nucleation rate (J)</a></li>
+</ul>
+<h1 id="techpaper-2018001-nucleus-composition">TechPaper #2018001: Nucleus composition</h1>
+<h2 id="compatibility">Compatibility</h2>
+<p>MatCalc version: 6.01 - … <br />
+Author: P. Warczok <br />
+Created: 2018-12-19 <br />
+Revisions:</p>
+<h2 id="objectives">Objectives</h2>
+<p>This paper describes the available options for the definition of the precipitate nucleus composition. Depending on the chosen option, the relevant nucleation rate is calculated by MatCalc.</p>
+<h2 id="related-documents">Related documents</h2>
+<p><a href="/techpapers/nucleation/nucleation_rate" title="techpapers/nucleation/nucleation_rate">The multi-component transient nucleation rate (#2011003)</a></p>
+<h1 id="main-document">Main document</h1>
+<p>Nucleus composition of the given precipitate phase is one of the parameters that determine the value of the nucleation driving force (<span class="arithmatex">\(-\Delta G\_\text{chem}\)</span>) and the precipitate/matrix interface energy <span class="arithmatex">\(\gamma\)</span>. Hence, various nucleus compositions will result in different critical nucleation energy <span class="arithmatex">\(G^\*\)</span> the nucleation rate <span class="arithmatex">\(J\)</span> values.  </p>
+<p>[J=N_0Z\beta^*\exp\left({-\frac{G^*}{k_\text{B}T}}\right)\exp\left({-\frac{\tau}{t}}\right)]
+[ G^*=-\frac{2\gamma}{\left(\Delta G_\text{chem}+\Delta G_\text{el} \right)} ]</p>
+<p>MatCalc gives the following options for the nucleus composition assumption:</p>
+<ul>
+<li>Ortho-equilibrium</li>
+<li>Para-equilibrium</li>
+<li>Constrained equilibrium</li>
+<li>Fixed molar site fractions</li>
+<li>Minimum critical nucleation energy (<span class="arithmatex">\(G^\*\)</span>)</li>
+<li>Maxmium nucleation rate (<span class="arithmatex">\(J\)</span>)</li>
+</ul>
+<p>In many cases, the “ortho-equilibrium”, “minimum critical nucleation energy” and “maximum nucleation rate” result in almost identical values of nucleus composition.</p>
+<h2 id="ortho-equilibrium">Ortho-equilibrium</h2>
+<p>Nucleus composition is evaluated by MatCalc which results in the highest value of the nucleation driving force (<span class="arithmatex">\(-\Delta G\_\text{chem}\)</span>) for the precipitate phase at the given system state.</p>
+<h2 id="para-equilibrium">Para-equilibrium</h2>
+<p>Nucleus composition is taken as close to the matrix composition as possible. This is realized with identical u-fraction values of substitutional elements for matrix and precipitate phase.</p>
+<h2 id="constrained-equilibrium">Constrained equilibrium</h2>
+<p>Nucleus composition resulting in the highest driving force is taken, considering the composition constraints defined for the parent equilibrium phase.</p>
+<h2 id="fixed-molar-site-fractions">Fixed molar site fractions</h2>
+<p>The site fractions of various elements in the nucleus are to be defined by the user.</p>
+<h2 id="minimum-critical-nucleation-energy-g">Minimum critical nucleation energy (G*)</h2>
+<p>Nucleus composition which yields the minimal value of <span class="arithmatex">\(G^\*\)</span> is evaluated and taken for the nuclei.</p>
+<h2 id="maximum-nucleation-rate-j">Maximum nucleation rate (J)</h2>
+<p>Nucleus composition appears in the nucleation rate formula at the critical nucleation energy (<span class="arithmatex">\(G^\*\)</span>) and atomic attachment rate (<span class="arithmatex">\(ß^\*\)</span>). With this option, the composition which yields the maximal value of <span class="arithmatex">\(J\)</span> is evaluated and taken for the nucleus.</p>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=techpapers%3Anucleation%3Anucleus_composition&amp;1788353012" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

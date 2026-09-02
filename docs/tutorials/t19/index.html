@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>T19 - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "T19";
+        var mkdocs_page_input_path = "tutorials/t19.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">T19</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#t19scripting_precipitation_calculations">T19: Scripting precipitation calculations</a></p>
+</li>
+<li>
+<p><a href="#complimentary_files">Complimentary files</a></p>
+</li>
+<li><a href="#contents">Contents</a></li>
+<li><a href="#setting_up_the_system_and_thermodynamics">Setting up the system and thermodynamics</a></li>
+<li><a href="#setting_up_the_precipitation_domains">Setting up the precipitation domains</a></li>
+<li><a href="#setting_up_the_precipitate_phases">Setting up the precipitate phases</a></li>
+<li>
+<p><a href="#heat-treatment">Heat-treatment</a></p>
+</li>
+<li>
+<p><a href="#austenitisation_and_quenching_treatment">Austenitisation and quenching treatment</a></p>
+</li>
+<li><a href="#tempering_treatment">Tempering treatment</a></li>
+<li><a href="#plots">Plots</a></li>
+<li><a href="#running_the_calculation">Running the calculation</a></li>
+<li><a href="#subsequent_articles">Subsequent articles</a></li>
+</ul>
+<h2 id="t19-scripting-precipitation-calculations">T19: Scripting precipitation calculations</h2>
+<p><em>This tutorial was tested on <br />
+MatCalc version 6.04 rel 1.001 <br />
+license: free <br />
+database: mc_fe.tdb, mc_fe.ddb</em></p>
+<p>The use of <strong>scripting</strong> to help ensure repeatability of calculations and to simplify repetitive operations has been introduced for the equilibrium calculations <a href="/tutorials/t13" title="tutorials/t13">Tutorial 13</a>. The present tutorial describes how scripting can be used for precipitation calculations.</p>
+<h3 id="complimentary-files">Complimentary files</h3>
+<p>Click <a href="/tutorials/t19/script/t19_6021003.mcs" title="tutorials/t19/script/t19_6021003.mcs (28.1 KB)">here</a> to view the (slightly reordered) script for this tutorial</p>
+<h3 id="contents">Contents</h3>
+<ul>
+<li>Setting up precipitation domains</li>
+<li>Setting up precipitate phases</li>
+<li>Scripting a complex heat-treatment</li>
+<li>Modifying precipiation parameters during heat-treatment</li>
+<li>Plotting using scripts</li>
+</ul>
+<p>The example used here uses the already familiar Fe-Nb-C system and considers a heat-treatment of an initially well-annealed ferritic microstructure with no primary precipitates. Cementite is initially allowed to nucleate on dislocations, and NbC on grain boundaries. The microstructure is heated into the austenite phase stability region, held isothermally and then cooled quickly (quenched). On quenching, a martensitic transformation occurs. This is modelled in MatCalc by a modification of the ferrite precipitation domain to increase the dislocation density as well as the addition of subgrains as possible nucleation sites for the NbC phase. The system is then subjected to a tempering heat treatment consisting of heating, isothermal hold and cooling stages.</p>
+<h2 id="setting-up-the-system-and-thermodynamics">Setting up the system and thermodynamics</h2>
+<p>Start the script by with two lines to make sure the right module (the core module) is used, and to create a new workspace:</p>
+<pre><code>use-module core
+new-workspace
+</code></pre>
+<p>The following code can be used to check that the correct version of MatCalc is being used. This is useful when scripts rely on functionality that is only available in newer versions of the software. The code <code>send-dialog-string</code> sends a message to the user in the form of a dialogue box, and <code>stop-run-script</code> prevents any further commands from being executed.</p>
+<pre><code>if (matcalc_version&lt;6000000)
+    send-dialog-string &quot;MatCalc version must be 6.00.0000 or higher to run this script. Stopping.&quot;
+    stop-run-script
+endif
+</code></pre>
+<p>Scripts should be well commented to ensure that they can be easily understood later. See <a href="/tutorials/t13#comments" title="tutorials/t13">Tutorial 13</a> for a reminder of how comments are inserted.</p>
+<p>Some information on the physical situation to be modelled and the assumptions made can be inserted into the MatCalc workspace for future reference.</p>
+<pre><code>@$************************************
+$ enter workspace info
+@$************************************
+
+@ set-workspace-info Script T19
+@ set-workspace-info +Calculation of precipitation
+@ set-workspace-info +in Fe-0.1C-0,7Nb wt.% system
+@ set-workspace-info +during a complex heat treatment
+@ set-workspace-info +with phases BCC_A2, FCC_A1 and CEMENTITE.
+</code></pre>
+<p>The thermodynamic setup is then carried out. Firstly, the database is chosen and the selements and phases are selected. The database is then read.</p>
+<pre><code>open-thermodynamic-database mc_fe.tdb             
+select-elements FE C NB VA                            
+select-phases BCC_A2 FCC_A1 CEMENTITE                  
+read-thermodynamic-database
+</code></pre>
+<p>Also, the mobility database is read in:</p>
+<pre><code>read-mobility-database mc_fe.ddb
+</code></pre>
+<p>The composition is entered:</p>
+<pre><code>set-reference-element FE
+enter-composition weight-percent C=0.1 NB=0.7
+</code></pre>
+<p>and an equilibrium is calculated, after setting automatic start values.</p>
+<pre><code>set-automatic-startvalues
+set-temperature-celsius 1000                           
+calculate-equilibrium
+</code></pre>
+<h2 id="setting-up-the-precipitation-domains">Setting up the precipitation domains</h2>
+<p>We proceed by creating the precipitation domains. The calculation involves heat-treatment in both ferrite (BCC_A2) and austenite (FCC_A1) phase stability regions, so we start by creating these two domains.</p>
+<pre><code>create-precipitation-domain ferrite
+create-precipitation-domain austenite
+</code></pre>
+<p>We must then tell MatCalc with which matrix phases to associate these domains:</p>
+<pre><code>set-precipitation-parameter ferrite thermodynamic-matrix-phase=BCC_A2
+set-precipitation-parameter austenite thermodynamic-matrix-phase=FCC_A1
+</code></pre>
+<p>Structural parameters are then defined for ferrite (note comments describing the meanings of the commands):</p>
+<pre><code>set-precipitation-parameter ferrite equilibrium-dislocation-density=1e12
+set-precipitation-parameter ferrite initial-grain-diameter=100e-6 
+set-precipitation-parameter ferrite initial-subgrain-diameter=10e-6
+set-precipitation-parameter ferrite subgrain-elongation-factor=10
+</code></pre>
+<p>and for austenite. Note that for ferrite, parameters characterising the subgrains are included because subgrain boundaries will be used as nucleation sites later in the calculation. In austenite, this is not the case so the parameters for this domain are not relevant and need not be set.</p>
+<pre><code>set-precipitation-parameter austenite equilibrium-dislocation-density=1e12
+set-precipitation-parameter austenite initial-grain-diameter=100e-6
+</code></pre>
+<h2 id="setting-up-the-precipitate-phases">Setting up the precipitate phases</h2>
+<p>The next stage in the script is to set up the precipitates. Firstly, we need to create precipitate phases from the equilibrium phases. As two nucleation sites are to be used for FCC_A1#01-precipitates, two precipitate phases are created.</p>
+<pre><code>create-new-phase CEMENTITE precipitate
+create-new-phase FCC_A1#01 precipitate
+create-new-phase FCC_A1#01 precipitate
+</code></pre>
+<p>Note that this latter phase is derived from the second FCC_A1 phase, FCC_A1#01, which is automatically generated by MatCalc, based on a command in the database, as a result of the presence of the MX carbonitride former, Nb, in the system.</p>
+<p>The precipitate phase are initialised with 100 size classes each.</p>
+<pre><code>set-precipitation-parameter CEMENTITE_P0 number-of-size-classes=100
+set-precipitation-parameter FCC_A1#01_P0 number-of-size-classes=100
+set-precipitation-parameter FCC_A1#01_P1 number-of-size-classes=100
+</code></pre>
+<p>Then the nucleation sites are defined:</p>
+<pre><code>set-precipitation-parameter CEMENTITE_P0 nucleation-sites=dislocations
+set-precipitation-parameter FCC_A1#01_P0 nucleation-sites=grain-boundaries
+set-precipitation-parameter FCC_A1#01_P1 nucleation-sites=none
+</code></pre>
+<p>The nucleation sites for FCC_A1#01_P1 phase are set to 'none', so that this phase is not going to appear at the start of the simulation. However, this setting will be changed in the heat treatment setup.<br />
+The nucleus composition of the iron-rich cementite precipitate phase is set to para-equilibrium, and that of NbC is set to ortho-equilibrium.</p>
+<pre><code>set-precipitation-parameter CEMENTITE_P0 nucleus-composition-model=para-composition
+set-precipitation-parameter FCC_A1#01_P0 nucleus-composition-model=ortho-composition
+set-precipitation-parameter FCC_A1#01_P1 nucleus-composition-model=ortho-composition
+</code></pre>
+<h2 id="heat-treatment">Heat-treatment</h2>
+<p>For an isothermal precipitation simulation, we would now simply need to set the temperature and time and start the simulation. This procedure is described briefly <a href="/tutorials/t19#running_the_calculation" title="tutorials/t19">below</a>. However, we will here instead look at how to use a script to create a heat-treatment.</p>
+<p>The heat-treatment consists of two sections:</p>
+<p>An <strong>austenitisation and quenching</strong> treatment consisting of:</p>
+<ul>
+<li>heating from room temperature to the austenitisation temperature; since this heating step involves a phase transformation from ferrite to austenite, this must be specified in two stages - heating up to the transformation temperature with a ferrite precipitation domain, and then heating from the transformation temperature with an austenite precipitation domain.</li>
+<li>an isothermal hold at the austenitisation temperature</li>
+<li>quenching to room temperature; again, this is separated into two stages, the first of which has an austenite precipitation domain, and the second, a ferrite precipitation domain.</li>
+</ul>
+<p>A <strong>tempering</strong> treatment consisting of:</p>
+<ul>
+<li>heating from room temperature to the tempering temperature</li>
+<li>an isothermal hold at the tempering temperature</li>
+<li>cooling to room temperature</li>
+</ul>
+<p>The tempering treatment is carried out entirely in the ferrite phase stability region, so no change of precipitation domain is necessary.</p>
+<p>Start by creating a heat treatment sequence called <code>sample_ht</code>.</p>
+<pre><code>create-tm-treatment sample_ht
+</code></pre>
+<p>Heat- or thermomechanical treatments can consist of different types of segments. In this tutorial, we will use two of these:</p>
+<ul>
+<li>Definition with segment end temperature and a heating/cooling rate</li>
+<li>Definition with segment end temperature and a duration time.</li>
+</ul>
+<p>We saw in <a href="/tutorials/t6" title="tutorials/t6">Tutorial 6</a> that it is possible to define our own variables. Here, we use this functionality to define a very general script consisting of an austenitisation and a tempering step.</p>
+<pre><code>set-variable-value f_a_temp 850 $ferrite-&gt; austenite transformation temp. in C
+set-variable-value a_f_temp 600 $austenite-&gt; ferrite transformation temp. in C
+set-variable-value aus_temp 1100 $austenitisation temp. in C
+set-variable-value temp_temp 600 $tempering temp. in C
+set-variable-value rate_heat_to_aus 1 $rate of heating to aus_temp in K/s
+set-variable-value rate_cool_from_aus -10 $rate of cooling from aus_temp in K/s
+set-variable-value rate_heat_to_temp 1 $rate of heating to temp_temp in K/s
+set-variable-value rate_cool_from_temp -1 $rate of cooling from temp_temp in K/s
+set-variable-value aus_time 3600 $austenitisation time in seconds
+set-variable-value temp_time 7200 $tempering time in seconds
+</code></pre>
+<h3 id="austenitisation-and-quenching-treatment">Austenitisation and quenching treatment</h3>
+<p>Start by adding the <strong>first segment</strong>, using the command</p>
+<pre><code>append-tmt-segment sample_ht
+</code></pre>
+<p>Then specify the [s]tart temperature. The notation [.] means <strong>the current segment</strong>. It is also possible to refer to the segments by number.</p>
+<pre><code>edit-tmt-segment sample_ht . segment-start-temperature=20
+</code></pre>
+<p>This first segment consists of heating, at a rate <strong>rate_heat_to_aus</strong> up to the temperature <strong>f_a_temp</strong> at which the ferrite-austenite phase transformation takes place.</p>
+<pre><code>edit-tmt-segment sample_ht . T_end+T_dot f_a_temp rate_heat_to_aus
+</code></pre>
+<p>The precipitation domain associated with this segment must now be set.</p>
+<pre><code>edit-tmt-segment sample_ht . precipitation-domain=ferrite
+</code></pre>
+<p>We then append a <strong>new segment</strong> to accommodate the remainder of the heating ramp to the austenitisation temperature.</p>
+<pre><code>append-tmt-segment sample_ht
+</code></pre>
+<p>This new segment now becomes the current segment, so we can modify <em>its</em> parameters using the [.] notation. The end temperature <strong>aus_temp</strong> and the same heating rate as before, <strong>rate_heat_to_aus</strong>, are chosen.</p>
+<pre><code>edit-tmt-segment sample_ht . T_end+T_dot aus_temp rate_heat_to_aus
+</code></pre>
+<p>We also need to change the precipitation domain to austenite:</p>
+<pre><code>edit-tmt-segment sample_ht . precipitation-domain=austenite
+</code></pre>
+<p>The next stage is the isothermal hold. Add a <strong>new segment</strong>.</p>
+<pre><code>append-tmt-segment sample_ht
+</code></pre>
+<p>The isothermal hold is specified with end temperature aus_temp and hold time aus_time.</p>
+<pre><code>edit-tmt-segment sample_ht . T_end+delta_t aus_temp aus_time
+</code></pre>
+<p>The precipitation domain remains austenite.</p>
+<pre><code>edit-tmt-segment sample_ht . precipitation-domain=austenite
+</code></pre>
+<p>We next add two segments for cooling down from the austenitisation domain to room temperature. Add a <strong>new segment</strong> for the austenite domain part. Set the end temperature to the austenite-ferrite transformation temperature <strong>a_f_temp</strong> and the cooling rate to <strong>rate_cool_from_aus</strong>. Set the precipitation domain to austenite.</p>
+<pre><code>append-tmt-segment sample_ht 
+edit-tmt-segment sample_ht . T_end+T_dot a_f_temp rate_cool_from_aus 
+edit-tmt-segment sample_ht . precipitation-domain=austenite
+</code></pre>
+<p>Add a further <strong>new segment</strong> for the ferrite domain part. In this case, we set the end temperature to 20 and the cooling rate, as before, to <strong>rate_cool_from_aus</strong>. This time, the precipitation domain is set to <strong>ferrite</strong>.</p>
+<pre><code>append-tmt-segment sample_ht
+edit-tmt-segment sample_ht . T_end+T_dot 20 rate_cool_from_aus    
+edit-tmt-segment sample_ht . precipitation-domain=ferrite
+</code></pre>
+<p>In addition, since this ferrite is now quenched martensite, we make some modifications to the properties of the precipitation domain. As we saw in <a href="/tutorials/t17" title="tutorials/t17">Tutorial 17</a>, pre- and post-segment scripts can be appended to segments of a thermomechanical treatment. The syntax for these scripts is illustrated by the following line of code, which sets the equilibrium dislocation density in the ferrite domain to 1e14:</p>
+<pre><code>edit-tmt-segment sample_ht . pre-segment-command=set-precipitation-parameter ferrite equilibrium-dislocation-density=1e14
+</code></pre>
+<p>Similarly, in the following line, the nucleation sites of FCC_A1#01_P1 are set to subgrains, replacing the previous 'none' setting. The <code>+</code>-sign means that the following piece of script is added to any existing commands. An existing command can be removed by prepending a <code>-</code>-sign.</p>
+<pre><code>edit-tmt-segment sample_ht . pre-segment-command=+set-precipitation-parameter FCC_A1#01_p1 nucleation-sites=subgrain-boundaries
+</code></pre>
+<h3 id="tempering-treatment">Tempering treatment</h3>
+<p>The structure of the tempering treatment is similar to that of the austenitisation treatment, but somewhat simpler, since no phase transformation needs to be considered.</p>
+<p>The first part of this treatment is a heating segment with an end temperature of temp_temp and a heating rate of <strong>rate_heat_to_temp</strong>. The precipitation domain is left the same as in the previous segment.</p>
+<pre><code>append-tmt-segment sample_ht
+edit-tmt-segment sample_ht . T_end+T_dot temp_temp rate_heat_to_temp
+edit-tmt-segment sample_ht . precipitation-domain=ferrite
+</code></pre>
+<p>This is followed by an isothermal hold for <strong>temp_time</strong> at the tempering temperature <strong>temp_temp</strong>; the precipitation domain remains unchanged:</p>
+<pre><code>append-tmt-segment sample_ht 
+edit-tmt-segment sample_ht . T_end+delta_t temp_temp temp_time
+edit-tmt-segment sample_ht . precipitation-domain=ferrite
+</code></pre>
+<p>Finally, a cooling segment returns the system to room temperature with a rate of <strong>rate_cool_from_temp</strong>. The precipitation domain is still ferrite.</p>
+<pre><code>append-tmt-segment sample_ht
+edit-tmt-segment sample_ht . T_end+T_dot 20 rate_cool_from_temp
+edit-tmt-segment sample_ht . precipitation-domain=ferrite
+</code></pre>
+<h2 id="plots">Plots</h2>
+<p>The final part of the setup before the calculation is run consists of setting up the plots. We will create four X-Y plots in a single plot window as well as a histogram of precipitate size distribution for each of the precipitate phases.</p>
+<p>Start by creating a GUI window of type <strong>p1</strong> (X-Y plot)</p>
+<pre><code>new-gui-window p1
+</code></pre>
+<p>Then set up the default x-axis so that it is used for all the plots in this windows, and has the properties specified below:</p>
+<pre><code>set-gui-window-property . default-x-axis-for-all-plots=yes 
+set-gui-window-property . default-x-axis-title=Time [h]
+set-gui-window-property . default-x-axis-type=lin 
+set-gui-window-property . default-x-axis-factor=1/3600
+</code></pre>
+<p>The first plot will contain the temperature profile as determined by the heat-treatment. The y-axis is labeelled accordingly.</p>
+<pre><code>set-plot-option . series new buffer t$c
+set-plot-option . y-axis-title=Temperature [°C]
+</code></pre>
+<p>The legend box is removed because it is not necessary when only one series is plotted:</p>
+<pre><code>set-plot-option . legend-alignment=none
+</code></pre>
+<p>Major gridlines are switched on for both x- and y-axes.</p>
+<pre><code>set-plot-option . grid major enable-x-axis=yes 
+set-plot-option . grid major enable-y-axis=yes
+</code></pre>
+<p>A new plot is then created in the existing plot window [.] using the command:</p>
+<pre><code>create-new-plot xy-plot .
+</code></pre>
+<p>This is set up to show the phase fractions of the two precipitate phases. (See <a href="/tutorials/t5" title="tutorials/t5">Tutorial 5</a>)</p>
+<pre><code>set-plot-option . y-axis-title=Phase fraction
+set-plot-option . grid major enable-x-axis=yes 
+set-plot-option . grid major enable-y-axis=yes 
+set-plot-option . series new buffer f$cementite_p0
+set-plot-option . series new buffer f$fcc_a1#01_p0
+set-plot-option . series new buffer f$fcc_a1#01_p1
+</code></pre>
+<p>There are three series in this plot, so we label them. The three series here are referred to by number. The ordering number corresponds to the order in which they appear <strong>in the plot</strong>, not in the plot window, and begins at 0.</p>
+<pre><code>set-plot-option . series rename 0 Cementite
+set-plot-option . series rename 1 NbC(gb)
+set-plot-option . series rename 2 NbC(sgb)
+</code></pre>
+<p>A further new plot is created, to plot the number density of precipitates. The series are renamed; note that the numbering starts at 0 again because we are now in a new plot.</p>
+<pre><code>create-new-plot xy-plot . 
+set-plot-option . y-axis-title=N&lt;sub&gt;ppt&lt;/sub&gt; [m&lt;sup&gt;-3&lt;/sup&gt;]
+set-plot-option . y-axis-type=log 
+set-plot-option . grid major enable-x-axis=yes 
+set-plot-option . grid major enable-y-axis=yes 
+set-plot-option . series new buffer num_prec$cementite_p0
+set-plot-option . series new buffer num_prec$fcc_a1#01_p0
+set-plot-option . series new buffer num_prec$fcc_a1#01_p1
+set-plot-option . series rename 0 Cementite
+set-plot-option . series rename 1 NbC(gb)
+set-plot-option . series rename 2 NbC(sgb)
+</code></pre>
+<p>The final of the four plots shows the mean precipitate radius.</p>
+<pre><code>create-new-plot xy-plot . 
+set-plot-option . y-axis-title=R&lt;sub&gt;mean&lt;/sub&gt; [m]
+set-plot-option . y-axis-type=log 
+set-plot-option . grid major enable-x-axis=yes 
+set-plot-option . grid major enable-y-axis=yes 
+set-plot-option . series new buffer r_mean$cementite_p0
+set-plot-option . series new buffer r_mean$fcc_a1#01_p0
+set-plot-option . series new buffer r_mean$fcc_a1#01_p1
+set-plot-option . series rename 0 Cementite
+set-plot-option . series rename 1 NbC(gb)
+set-plot-option . series rename 2 NbC(sgb)
+</code></pre>
+<p>The plots are arranged so that they occupy two columns:</p>
+<pre><code>set-gui-window-property . number-of-plot-columns=2
+</code></pre>
+<p>A new GUI window of type p5 is created for the first histogram:</p>
+<pre><code>new-gui-window p5
+</code></pre>
+<p>The default x-axis is set up, with the scaling factor used to give plotting in nanometres rather than metres.</p>
+<pre><code>set-gui-window-property . default-x-axis-for-all-plots=yes 
+set-gui-window-property . default-x-axis-title=Precipitate radius [nm]
+set-gui-window-property . default-x-axis-factor=1e9
+</code></pre>
+<p>Options controlling the histogram are then set.</p>
+<pre><code>set-plot-option . number-of-size-classes=20
+set-plot-option . plot-title=Precipitate distributions
+set-plot-option . y-axis-title=Number density of precipitates [m&lt;sup&gt;-3&lt;/sup&gt;]
+</code></pre>
+<p>New series showing the precipitate distribution of the precipitate phases are plotted:</p>
+<pre><code>set-plot-option . series new precipitate-distribution CEMENTITE_P0 
+set-plot-option . series new precipitate-distribution FCC_A1#01_P0 
+set-plot-option . series new precipitate-distribution FCC_A1#01_P1
+</code></pre>
+<h2 id="running-the-calculation">Running the calculation</h2>
+<p>We first save the workspace setup as it before the calculation. This enables us to easily revert to this pre-calculation state if necessary.</p>
+<pre><code>save-workspace Tutorial_19_setup
+</code></pre>
+<p>An isothermal calculation can be carried out as follows. This can be useful as a preliminary calculation to check that everything is working.</p>
+<p>An end-time (in seconds) for the simulation is first set:</p>
+<pre><code>set-simulation-parameter end-time=7200
+</code></pre>
+<p>Then, the temperature control of the simulation is set to be isothermal and the required temperature specified.</p>
+<pre><code>set-simulation-parameter isothermal-temperature=600
+</code></pre>
+<p>A further line is added to specify that this temperature is in Celsius.</p>
+<pre><code>set-simulation-parameter temperature-in-C=yes
+</code></pre>
+<p>The calculation can then be executed using:</p>
+<pre><code>start-precipitate-simulation
+</code></pre>
+<p>When this has been successfully carried out, the line specifying isothermal temperature control should be commented out by prepending a dollar sign so that it looks as shown:</p>
+<pre><code>$set-simulation-parameter isothermal-temperature=600
+</code></pre>
+<p>The temperature control is instead set to be governed by the [h]eat treatment “sample_ht” with a maximum temperature step of 10:</p>
+<pre><code>set-simulation-parameter tm-treatment-name=sample_ht
+</code></pre>
+<p>Again, the simulation is started using:</p>
+<pre><code>start-precipitate-simulation
+</code></pre>
+<p>When the calculation is over, the workspace can be saved using:</p>
+<pre><code>save-workspace Tutorial_19
+</code></pre>
+<p>In addition, we can export whole frames or individual plots:</p>
+<pre><code>export-frame-to-file 2 png t19_xy_plots
+export-frame-to-file 3 png t19_histo_cementite
+export-plot-to-file 4 png t19_r_mean
+</code></pre>
+<p>The x-y plot window should look as follows after the calculation:</p>
+<p><a href="/tutorials/t19/img/t19_xy_plots.png" title="tutorials/t19/img/t19_xy_plots.png"><img alt="T19 xy plots" src="/tutorials/t19/img/t19_xy_plots.png" title="T19 xy plots" /></a></p>
+<h2 id="subsequent-articles">Subsequent articles</h2>
+<p>The tutorial is continued in  <a href="/tutorials/t20" title="tutorials/t20">Tutorial 20 - Simulating grain growth</a></p>
+<p>Go to the <a href="/tutorials" title="tutorials">MatCalc tutorial index</a>.</p>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=tutorials%3At19&amp;1788352860" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

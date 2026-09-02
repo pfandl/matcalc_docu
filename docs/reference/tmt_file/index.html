@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Tmt file - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Tmt file";
+        var mkdocs_page_input_path = "reference/tmt_file.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Tmt file</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>Thermo-mechanical treatment file structure [MatCalc Documentation]</p>
+<h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#thermo-mechanical_treatment_file_structure">Thermo-mechanical treatment file structure</a></p>
+</li>
+<li>
+<p><a href="#data_section">'Data' section</a></p>
+</li>
+<li><a href="#format_section">'Format' section</a></li>
+<li><a href="#variables_section">'Variables' section</a></li>
+<li><a href="#global_section">'Global' section</a></li>
+<li><a href="#comments">Comments</a></li>
+<li><a href="#example">Example</a></li>
+</ul>
+<h1 id="thermo-mechanical-treatment-file-structure">Thermo-mechanical treatment file structure</h1>
+<p>MatCalc has the functionality of exporting and importing the thermo-mechanical treatments via a text file. This file has a specific structure and consists of the following sections:</p>
+<ul>
+<li><strong>'Data'</strong> section</li>
+<li><strong>'Format'</strong> section</li>
+<li><strong>'Variables'</strong> section</li>
+<li><strong>'Global'</strong> section</li>
+</ul>
+<p>The features of these sections are discussed below:</p>
+<h2 id="data-section">'Data' section</h2>
+<p>This section consist of lines, with each line consisting of a bunch of separated number/text values. Each line corresponds to a single segment. The order of the lines corresponds to the segment order, i.e. the first line describes the first segment, the second line describes the second segment, etc. Each value corresponds to a specific parameter, as described in <strong>'Format'</strong> section. Alternatively, one could describe this section as a bunch of separated columns, each column consisting of number/text values. Each column describes the evolution of the given parameter (defined in <strong>'Format'</strong> section) through the subsequent segments. This section is delimited with <strong>'<em>[data]</em>'</strong> and <strong>'<em>[/data]</em>'</strong> tags.</p>
+<h2 id="format-section">'Format' section</h2>
+<p>This section consists of the list of parameters defined in <strong>'Data'</strong> section. It allows MatCalc to interpret and address the values given there. It means that the number of lines (each starting with <strong>'<em>column=</em>'</strong> string) should match the number of parameters defined in each line of <strong>'Data'</strong> section. In other words, the number of lines in <strong>'Format'</strong> section should match the number of columns in <strong>'Data'</strong> section. Furthermore, the order of the lines in <strong>'Format'</strong> section should correspond with the order the columns in the <strong>'Data'</strong> section, as it tells MatCalc what parameter the column values refer to. Hence, any changes in the order or number of the lines in this section should be reflected in the corresponding modifications in the <strong>'Data'</strong> section. This section is delimited with <strong>'<em>[format]</em>'</strong> and <strong>'<em>[/format]</em>'</strong> tags.</p>
+<h2 id="variables-section">'Variables' section</h2>
+<p>This section consists of the default parameter value definitions. The values defined here are used in every segment if there is no other definition in <strong>'Data'</strong> section. This means that the values given here are overwritten by the relevant values in <strong>'Data'</strong> section. Please, note that MatCalc always has a default value for the segment parameters, so this section actually allows to modify these. Currently, this section has to include the definition of the default segment code (starting with <strong>'<em>segment-code=</em>'</strong> string) - accepted values for this parameter are:</p>
+<ul>
+<li><strong>'1'</strong> for segment end temperature and cooling/heating rate</li>
+<li><strong>'2'</strong> for cooling/heating rate and segment duration time</li>
+<li><strong>'3'</strong> for segment end temperature and duration time</li>
+<li><strong>'4'</strong> for accumulated strain</li>
+</ul>
+<p>This section is delimited with <strong>'<em>[variables]</em>'</strong> and <strong>'<em>[/variables]</em>'</strong> tags.</p>
+<h2 id="global-section">'Global' section</h2>
+<p>This section contains the parameter values which have the global meaning - it means that this are relevant for the whole treatment rather than for the segments. An example of the parameters defined here are treatment name or treatment start temperature. The values given here overwrite parameter values defined in any other section, e.g. the treatment start temperature given here defines the start temperature of the very first segment, regardless of the definitions included in <strong>'Variables'</strong> or <strong>'Data'</strong> section. These two definitions: tmt name (<strong>'<em>tmt-name=</em>'</strong>) and tmt start temperature (<strong>'<em>start-temperature=</em>'</strong>) are mandatory. The global section is delimited with <strong>'[global]'</strong> and <strong>'[/global]'</strong> tabs.</p>
+<p><strong><em>NOTE</em></strong></p>
+<p>The sections can be ordered at will, so that the above given order needs not to be maintained. In fact, files exported by MatCalc have a reversed order.</p>
+<h2 id="comments">Comments</h2>
+<p>Besides these sections, comments can be also added anywhere in the file. As usual, these lines serve the communication with user and may contain some useful information (e.g. explanations for various lines). Every comment has to start with a dollar symbol (**'<span class="arithmatex">\('**). Comments can be put in separate lines or added at the end of any command line - in the latter case, some blanks should introduced before '\)</span>'-sign.</p>
+<h2 id="example">Example</h2>
+<p>Below, an example of the file describing the thermomechanical treatment from Tutorial 17 is presented.</p>
+<pre><code>$**********************************************************************
+$ this file contains heat treatment data information for MatCalc 6.01
+$ and higher.$ 
+$ description:
+$ 
+$ - segment code (1 ... use T_end and T_dot)
+$                    (2 ... use T_dot and delta_time)
+$                    (3 ... use T_end and delta_time)
+$                    (4 ... use accumulated strain)
+$**********************************************************************
+
+[global]
+    file-version=2.0
+    tmt-name=&quot;sample_ht&quot;
+    start-temperature=1400
+    field-separator=\\t
+[/global]
+
+[variables]
+    segment-code=1
+    segment-start-temperature=1000
+    end-temperature=1000
+    heating-cooling-rate=0
+    delta-time=1
+    absolute-time=-1
+    accumulated-strain=0
+    strain-rate=0
+    stress-load=0
+    deformation-control-mode=1
+    load-control-mode=1
+    eps-dot-axis=0
+    store-intervals=25
+    increment-for-store-intervals=1.1
+    use-logarithmic-store-intervals=1
+    initialize-microstructure-data=0
+    reset-excess-vacancy-fraction=0
+    reset-recrystallized-fraction=0
+    break-up-precipitates=0
+    release-gb-precipitates=0
+    reset-trap-partitioning-ratio=0
+    reset-store-counter=0
+    log-scale-factor=1.1
+    inherit-prec-domain=1
+    precipitation-domain=
+    beta-scale-for-store=0
+    pre-segment-script=
+    post-segment-script=
+    segment-comment=
+[/variables]
+[format]
+    column=segment-code
+    column=segment-start-temperature
+    column=end-temperature
+    column=heating-cooling-rate
+    column=delta-time
+    column=absolute-time
+    column=accumulated-strain
+    column=strain-rate
+    column=stress-load
+    column=deformation-control-mode
+    column=load-control-mode
+    column=eps-dot-axis
+    column=store-intervals
+    column=increment-for-store-intervals
+    column=use-logarithmic-store-intervals
+    column=initialize-microstructure-data
+    column=reset-excess-vacancy-fraction
+    column=reset-recrystallized-fraction
+    column=break-up-precipitates
+    column=release-gb-precipitates
+    column=reset-trap-partitioning-ratio
+    column=reset-store-counter
+    column=log-scale-factor
+    column=inherit-prec-domain
+    column=precipitation-domain
+    column=beta-scale-for-store
+    column=pre-segment-script
+    column=post-segment-script
+    column=segment-comment
+[/format]
+[data]
+1   1400    600 -1  800 0   0   &quot;0.0&quot;   &quot;0.0&quot;   1   1   0   25  0   1   0   0   0   0   0   0   0   1.1 0   &quot;austenite&quot; 98.3471 &quot;\nset-precipitation-parameter precipitate-or-domain-name = FCC_A1#01_P0 nucleation-sites = grain-boundaries\nset-precipitation-parameter precipitate-or-domain-name = FCC_A1#01_P1 nucleation-sites = none&quot;    &quot;\nset-precipitation-parameter precipitate-or-domain-name = FCC_A1#01_P1 nucleation-sites = dislocations&quot;   &quot;&quot;  
+1   600 25  -1  575 800 0   &quot;0.0&quot;   &quot;0.0&quot;   1   1   0   25  0   1   0   0   0   0   0   0   0   1.1 0   &quot;ferrite&quot;   98.3471 &quot;&quot;  &quot;&quot;  &quot;&quot;  
+1   25  850 1   825 1375    0   &quot;0.0&quot;   &quot;0.0&quot;   1   1   0   25  0   1   0   0   0   0   0   0   0   1.1 0   &quot;ferrite&quot;   98.3471 &quot;&quot;  &quot;&quot;  &quot;&quot;  
+1   850 1100    1   250 2200    0   &quot;0.0&quot;   &quot;0.0&quot;   1   1   0   25  0   1   0   0   0   0   0   0   0   1.1 0   &quot;austenite&quot; 98.3471 &quot;&quot;  &quot;&quot;  &quot;&quot;  
+3   1100    1100    0   7200    2450    0   &quot;0.0&quot;   &quot;0.0&quot;   1   1   0   25  0   1   0   0   0   0   0   0   0   1.1 0   &quot;austenite&quot; 98.3471 &quot;&quot;  &quot;&quot;  &quot;&quot;  
+1   1100    600 -1  500 9650    0   &quot;0.0&quot;   &quot;0.0&quot;   1   1   0   25  0   1   0   0   0   0   0   0   0   1.1 0   &quot;austenite&quot; 98.3471 &quot;&quot;  &quot;&quot;  &quot;&quot;  
+1   600 25  -1  575 10150   0   &quot;0.0&quot;   &quot;0.0&quot;   1   1   0   25  0   1   0   0   0   0   0   0   0   1.1 0   &quot;ferrite&quot;   98.3471 &quot;&quot;  &quot;&quot;  &quot;&quot;  
+[/data]
+</code></pre>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=reference%3Atmt_file&amp;1788352869" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

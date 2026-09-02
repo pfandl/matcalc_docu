@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Internal - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Internal";
+        var mkdocs_page_input_path = "reference/internal.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Internal</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>MatCalc internal variables [MatCalc Documentation]</p>
+<h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#matcalc_internal_variables">MatCalc internal variables</a></p>
+</li>
+<li>
+<p><a href="#test_result">test_result</a></p>
+</li>
+<li><a href="#is_td_database_open">is_td_database_open</a></li>
+<li><a href="#is_td_database_read">is_td_database_read</a></li>
+<li><a href="#is_diff_database_read">is_diff_database_read</a></li>
+<li><a href="#is_phys_database_read">is_phys_database_read</a></li>
+<li><a href="#active_frame_id">active_frame_id</a></li>
+<li><a href="#last_plot_id">last_plot_id</a></li>
+<li><a href="#last_bc_index">last_bc_index</a></li>
+</ul>
+<h1 id="matcalc-internal-variables">MatCalc internal variables</h1>
+<p><em>MatCalc</em> uses a list of internal variables, which can be accessed at any time to check for various states. A list of them, and their use, is presented below:</p>
+<h2 id="test_result">test_result</h2>
+<p>Gets a boolean value of 0 or 1, depending on the result of one of the following commands:</p>
+<pre><code>test-exist-td-database
+test-exist-mob-database 
+test-exist-ph-database
+</code></pre>
+<p>These commands access the internal variables below, and save the return value to the *test_result* variable. Can be used to test for the existence of a database, and automatically selecting a different one if the preferred one can not be found:</p>
+<pre><code>test-exist-td-database mc_fe.tdb $ Check if database is present
+if (test_result==1)
+   open-thermodyn-database mc_fe.tdb $ Thermodynamic database
+else
+   test-exist-td-database mc_x_FeAlCCrMnMoNNbSiVW.tdb 
+   if (test_result==1)
+      open-thermodyn-database mc_x_FeAlCCrMnMoNNbSiVW.tdb $ Thermodynamic database
+   else
+      send-dialog-string &quot;No valid database found. Visit matcalc website and download
+       the free 'mc_x_FeAlCNNbTi' database.&quot;
+      stop_run_script
+   endif
+endif
+</code></pre>
+<h2 id="is_td_database_open">is_td_database_open</h2>
+<p>Has a value of 1 if the thermodynamic database has been opened. Not necessarily read yet!</p>
+<h2 id="is_td_database_read">is_td_database_read</h2>
+<p>Has a value of 1 if the thermodynamic database has been read.</p>
+<h2 id="is_diff_database_read">is_diff_database_read</h2>
+<p>Has a value of 1 it the diffusion/mobility database has been read.</p>
+<h2 id="is_phys_database_read">is_phys_database_read</h2>
+<p>Has a value of 1 if the physical database has been read.</p>
+<h2 id="active_frame_id">active_frame_id</h2>
+<p>This variable refers to the most actual frame. The *most actual* is always the one which has been accessed recently, or in the case of a new frame creation, the newly created one. Using the following code, a variable can be assigned to the actual frame, in order to address it by a name instead of a number:</p>
+<pre><code>set-variable-value histogram_frame active_frame_id
+</code></pre>
+<p>You can now use 'histogram_frame' whenever you want to access and interact with the frame, instead of having to use the number which is assigned to the frame automatically. This approach is especially recommended when more frames are used and manipulated alternately.</p>
+<pre><code>$ Instead of...
+move-gui-window 3 x-pos y-pos x-size y-size
+$ ... you can use:
+move-gui-window histogram_frame x-pos y-pos x-size y-size
+</code></pre>
+<p>This leads to easier-to-read scripts and minimizes errors due to erroneous numbering.</p>
+<h2 id="last_plot_id">last_plot_id</h2>
+<p>This variable is comparable to the '.' (Period-sign) used in the scripting to address the most recent plot. By using this internal variable, a plot can be assigned a unique name, which makes modifying and editing this plot easier compared to the oftentimes misleading numbers assigned by <em>MatCalc</em>. These errors root in the difference of numberation from plots and frames. While plots are continuously numbered throughout all frames, and always start with #0, a user-created frame starts with number #3, as #0 through #2 are occupied by 'Output', 'Phase details' and 'Phase summary', respectively. <br />
+Use the internal variable in the same way as the active_frame_id above:</p>
+<pre><code>set-variable-value phasefraction-plot last_plot_id
+</code></pre>
+<p>Instead of using the plot's number, you can now always use 'phasefraction-plot'.</p>
+<h2 id="last_bc_index">last_bc_index</h2>
+<p>Comparable to 'last_plot_id', this variable represents the most recent boundary-condition index. Can be used in MC simulations, in a similar way as shown above.</p>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=reference%3Ainternal&amp;1788352869" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

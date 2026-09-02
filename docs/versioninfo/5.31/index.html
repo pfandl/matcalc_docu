@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>5.31 - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "5.31";
+        var mkdocs_page_input_path = "versioninfo/5.31.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">5.31</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>MatCalc 5.31 [MatCalc Documentation]</p>
+<h2 id="matcalc-531">MatCalc 5.31</h2>
+<p>See the changes which happened with version 5.31 below</p>
+<hr />
+<p><strong>version 5.31.1005: online 2009-09-25</strong></p>
+<ul>
+<li>This version represents a <em>major version change from 5.30.xxxx to 5.31.xxxx</em>. The most important changes are listed below.</li>
+<li>A new category of variables has been introduced denoted as GBB variables (Generalized (nearest-neighbor) Broken Bond) from the model published in [B. Sonderegger and E. Kozeschnik, „Generalized nearest neighbor – broken bond analysis of randomly oriented coherent interfaces in multi-component fcc and bcc structures“, Metall. Mater. Trans., 40A (2009) 499-510]. The most important of those is the <em>Calculated Interfacial Energy (CIE)</em> for planar, sharp interfaces and the <em>atomic pair interaction parameters</em> LIJ_INTER<span class="arithmatex">\(El1\)</span>El2.</li>
+<li>The GBB variables can now be used without taking magnetic interactions into account. In order to conserve compatibility with previous version, a new phase flag has been introduced which takes into account magnetic effects in GBB quantities just as before: By default, Phase status→ flags → GBB variables without magnetic contribution is not set.  <strong>* WARNING *</strong>  use this feature with some caution!</li>
+<li>There was some <em>restructuring in the variables categories</em> in general.</li>
+<li>The evaluation of <em>precipitation strengthening</em> has been improved by taking into account a <em>critical coherency radius</em> under which precipitates are cut and above which precipitates are bypassed by dislocations. <em>New variables</em> are available to facilitate evaluation of strengthening based on user-defined functions incuding the total number and mean radius of precipitates above and below the critical coherency radius.</li>
+<li><em>Plots</em> can now be exported into <em>pdf files</em> as they are, that means with correct font sizes etc.</li>
+<li>It is possible now to define a <em>log file</em>, which traces the output window during your calculation and operation. Use the command SET_LOG_FILE with enabled/disabled.</li>
+<li>The <em>script menu</em> has been extended and modified. It is possible now to quickly access <em>user-defined and pre-defined scripts</em>, which appear in the new 'script' menu. This menu displays scripts that are placed in the scripts/script_menu folder. These options are helpful, for instance, for quickly creating and arranging windows that are frequently used.</li>
+<li>The RMB menu options <em>'Copy &amp; close'</em> and <em>'Execute &amp; close'</em> are now working correctly in the <em>command-history window</em>. These functions are convenient for developing scripts or execute commands from the command history.</li>
+<li>A bug in the <em>execution of post-segment-scripts</em> in the heat treatments has been corrected.</li>
+<li>The <em>output message during precipitation calculations</em> for '*** warning: *** error calculating maximum driving force (22x)' and '*** info: performed growth correction (17x) ***' are now displayed in grouped manner to increase readability of precipitation simulation output.</li>
+<li>The commands for defining stepped calculations for <em>T0-calculus</em> in the MatCalc <em>console</em> are implemented now.</li>
+<li>The treatment of <em>interfacial energies</em> has been slightly modified to eliminate the influence of the precipitate phase fraction.</li>
+<li>…</li>
+<li>This version contains <em>several bug fixes</em> from previous versions.</li>
+</ul>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=versioninfo%3A5.31&amp;1788352874" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,189 @@
+$ **************************************************************************************************
+$ ************************************** GENERAL INFORMATION ***************************************
+$ **************************************************************************************************
+
+$ In this script, the precipitation kinetics of an Ni-based-superalloy is simulated for differential
+$ scanning analysis with a mean cooling rate 
+
+$ Creation date: 2011-09-04, for MatCalc version 5.43 (rel. 1.016 or higher)
+$ Author: Markus Kozeschnik, Peter Lang
+$ last update:
+
+$ **************************************************************************************************
+$ ************************************* SETUP INFORMATION ******************************************
+$ **************************************************************************************************
+use_module core                                             $ use core module for kinetic simulation
+
+
+close_workspace f                                           $ close workspace without asking to save
+                                       
+new_workspace                                               $ create new workspace                                              
+
+set_workspace_info workspace-info Simulation of precipitation in PWA 1480  $ information about script
+set_workspace_info +
+set_workspace_info + Matrix phases: Ni-matrix (fcc_a1)
+set_workspace_info + Precipitate phases: gamma_prime
+set_workspace_info + 
+set_workspace_info + script composition PWA 1480 standard
+set_workspace_info +                                       
+
+$ **************************************************************************************************
+$ ***************************************** SYSTEM SETUP *******************************************
+$ **************************************************************************************************
+
+$ verify correct MatCalc version (is accessible as internal variable)
+if (matcalc_version<5431016)
+   send_dialog_string "MatCalc version must be 5.43.1016 or higher to run this script. Stopping."
+   stop_run_script                                         $ stop script
+endif
+
+$ **************************************************************************************************
+$                                         GLOBAL VARIABLES
+$ **************************************************************************************************
+
+set_variable_value npc 40                                  $ number of precipitate size classes
+set_variable_value cohe_radi  30e-9                        $ value for coherency radius of prec.
+set_variable_value grain_size 500e-4                       
+
+$ ************** Misfit for gamma prime ****************************
+
+$ Referenz volume misfit: Funktionsverlauf aus Disseration Steffen Neumeier und Biermann 
+$ (taken from MC script by T. Maiwald-Immer; 2011-01-05) 
+set_function_expression misfit ((-5.3e-13)*T$C^4+(6.43e-10)*T$C^3-(2.04e-7)*T$C^2-(9.29e-5)*T$C+0.632)/100   
+
+$ ********************* E-Modul ************************************
+
+$ Referenz E-modul: [Haz96]  Hazotte et al. „internal Mismatch…“ 1996
+
+$ mean E-modul: Matrix
+set_function_expression y_modul_matrix (-0.112*T$C+231.3)*1e9
+
+$ mean E-modul: gamma Prime
+set_function_expression y_modul_gamP (-0.052*T$C+189)*1e9
+
+$ ******************Dislocation density *****************************
+set_variable_value dd_equil   1e11                          $ dislocation density: equilbirium
+
+$ ***************************************************************************************************
+$                         DATABASES; CHEMICAL COMPOSITION; SELECTED PHASES
+$ ***************************************************************************************************
+
+$ open the thermodynamic MatCalc database for Ni-based alloys
+open_thermo_database mc_ni.tdb
+
+$ select elements and phases
+select_elements Al Cr Co W Ti Ni Ta 
+select_phase fcc_a1 liquid gamma_p  
+set_reference_element Ni
+
+$ read thermodynamic data
+read_thermodyn_database
+
+$ define composition (weight percent of elements)
+enter_composition wp al=5.0 cr=10.0 co=5.0 ta=12.0 w=4.0 ti=1.5 $ chemical comp. in mol fraction
+
+read_mobility_database mc_ni.ddb                       $ read diffusion data
+
+$ initialize with some equilibrium
+
+set_automatic_startvalues                                     $ initiate equilibrium calculation 
+calc_equilibrium                                              $ calculate equilibrium state
+
+s-r-s
+$ ***************************************************************************************************
+$                                      MATRIX  
+$ ***************************************************************************************************
+
+create_precipitation_domain ni_matrix                               $ new domain: ni-matrix
+set_precipitation_parameter ni_matrix x fcc_a1                      $ matrix structure: fcc_a1
+set_precipitation_parameter ni_matrix t d e dd_equil                $ disl.density austenite [m/m]
+set_precipitation_parameter ni_matrix t g grain_size                $ ni-matrix grain size [m] 
+set_precipitation_parameter ni_matrix m g m y_modul_matrix          $ temp. dep.E-modulus: Matrix
+set_precipitation_parameter ni_matrix S G S Y 10^(11-0,005*T$C)     $ substitutional diffusion in gb
+set_precipitation_parameter ni_matrix S G I Y 10^(11-0,005*T$C)     $ interstitional diffusion in gb
+set_precipitation_parameter ni_matrix s d s y 10^(7-0.0025*t$c)     $ pipe diffusion ratio subst.
+set_precipitation_parameter ni_matrix s d i y 10^(7-0.0025*t$c)     $ pipe diffusion ratio interst.
+
+$ ***************************************************************************************************
+$                                     GAMMA PRIME
+$ ***************************************************************************************************
+
+create_new_phase gamma_prime p gam'                          	    $ gamma_prime @ homogeneous
+set_precipitation_parameter gamma_prime_p0 c npc                    $ initialize size classes		
+set_precipitation_parameter gamma_prime_p0 n s b                    $ nucleation site: bulk
+set_precipitation_parameter gamma_prime_p0 t m n misfit             $ volume misfit
+set_precipitation_parameter gamma_prime_p0 T d y_modul_gamP         $ temperature dependent E-modulus
+set_precipitation_parameter gamma_prime_p0 T s o cohe_radi          $ coherency radius
+set_precipitation_parameter gamma_prime_p0 n f y                    $ consider vol. misfit in 
+set_precipitation_parameter gamma_prime_p0 z y                      $ ie size correction 
+
+$ ***************************************************************************************************
+$ reference phase for heat flow calculation
+$ ***************************************************************************************************
+
+$***********************************
+$ create equilibrium phase: fcc_a1
+create_new_phase fcc_a1 e                                           $ create equilibrium phase
+
+change-phase-status fcc_a1#01 f f	s									$ Set FCC_A1#01 to fixed phase fraction
+set-temperature-celsius 1280											$ Set temperature to 1280C
+calculate-equilibrium 													$ Calculate equilibrium in the on phase field
+change-phase-status fcc_a1#01 f d	s 									$ Set FCC_A1#01 to dormant
+change-phase-status liquid f s s 										$ Set Liquid phase to suspended
+
+
+$ ***************************************************************************************************
+$                                          HISTOGRAM
+$ ***************************************************************************************************
+
+new_gui_window p5                                                  $ precipitate distribution
+set_gui_window_property . s l b                                    $ legend position: bottom
+
+set_plot_option . s n p gamma_prime_p0                             $ new series: 
+set_plot_option . s m -1 gamma_prime_p0 gam´_size_distribution
+set_plot_option . a x 1 f 1e9                                      $ factor for x-axis 
+set_plot_option . a x 1 t radius / nm                              $ x-axis title
+set_plot_option . a x 1 y log                                      $ x-axis type: log
+set_plot_option . a x 1 s 0.1..                                    $ scale x-axis
+set_plot_option . a y 1 s 10..                                     $ scale y-axis
+set_plot_option . a y 1 y log                                      $ y-axis type: log
+set_plot_option . a y 1 t number density  [m<sup>-3</sup>]         $ y-axis title
+
+move_gui_window . 648 135 348 543                                  $ move and resize gui window
+update_gui_window .                                                $ update gui window
+
+$******************************************************************************************************
+$                                          OUTPUT - WINDOW
+$******************************************************************************************************
+
+new_gui_window p1                                                  $ create plot window
+move_gui_window . 4 136 647 544                                    $ move plot window
+set_gui_window_property . n 2                                      $ numbers of plot_columns
+
+$ define default x-axis properties
+set_gui_window_property . x T$C                                    $ use default x-axis 
+set_gui_window_property . s T temperature / C                      $ axis title  
+set_gui_window_property . s u y                                    $ use for all plots
+
+$ define plot properties: phase fractions
+set_plot_option . a y 1 t Phase fraction                           $ title
+set_plot_option . s n b f_prec$gamma_prime_p0                      $ new series from buffer 
+
+create_new_plot x .
+
+$ new series - heat flow
+set_plot_option . s n b (HM$k-HMp$fcc_a1#01$k)/1000*(-50/60)      $ define function
+set_plot_option . s v -1 (HM$k-HMp$fcc_a1#01$k)/1000*(-50/60) 1   $ 1st derivative
+set_plot_option . s m -1 (HM$k-HMp$fcc_a1#01$k)/1000*(-50/60) simulated_values $ title
+set_plot_option . a y 1 t heat flow  [W/g]                         $ y axis titel: heat flow / W/g
+
+$******************************************************************************************************
+$                                          SIMULATION
+$******************************************************************************************************
+SET_SIMULATION_PARAMETER I A 1e-10 1e+024 							$ Set initial time step to 1e-10, so that no vertical line forms
+SET_SIMULATION_PARAMETER M 25 										$ Set end temperature to 25C
+SET_SIMULATION_PARAMETER T C 1280 -0,83333 10 						$ Set to continuous cooling, start temp: 1280C, cooling rate 50K/min, max T step: 10K
+
+
+$ let's go ...
+start_precipitate_simulation

@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>T12 - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "T12";
+        var mkdocs_page_input_path = "tutorials/t12.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">T12</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#t12using_the_matcalc_console">T12: Using the MatCalc console</a></p>
+</li>
+<li>
+<p><a href="#complimentary_files">Complimentary files</a></p>
+</li>
+<li><a href="#contents">Contents:</a></li>
+<li><a href="#general_remark_to_6000100_version">General remark to 6.00.0100 version</a></li>
+<li><a href="#console">Console</a></li>
+<li>
+<p><a href="#basics">Basics</a></p>
+</li>
+<li>
+<p><a href="#getting_help_and_listing_available_commands">Getting help and listing available commands</a></p>
+</li>
+<li><a href="#notes_on_syntax">Notes on syntax</a></li>
+<li><a href="#examplecalculating_an_equilibrium_using_the_command-line">Example: calculating an equilibrium using the command-line</a></li>
+<li>
+<p><a href="#evaluating_expressions">Evaluating expressions</a></p>
+</li>
+<li>
+<p><a href="#numerical_expressions">Numerical expressions</a></p>
+</li>
+<li><a href="#expressions_in_x">Expressions in x</a></li>
+<li><a href="#expressions_using_matcalc_variables">Expressions using MatCalc variables</a></li>
+<li><a href="#command_history_window">Command history window</a></li>
+<li><a href="#consecutive_articles">Consecutive articles</a></li>
+</ul>
+<h2 id="t12-using-the-matcalc-console">T12: Using the MatCalc console</h2>
+<p><em>This tutorial was tested on<br />
+MatCalc version 6.00 rel 0.100<br />
+license: free<br />
+database: mc_fe.tdb</em></p>
+<h3 id="complimentary-files">Complimentary files</h3>
+<p>Click <a href="/tutorials/t12/script/t12_6021003.mcs" title="tutorials/t12/script/t12_6021003.mcs (5.8 KB)">here</a> to view the script for this tutorial</p>
+<h3 id="contents">Contents:</h3>
+<ul>
+<li>Getting help in the MatCalc console</li>
+<li>Obtaining lists of available commands for different modules</li>
+<li>Command syntax and abbreviations</li>
+<li>Example: calculating an equilibrium using the command-line</li>
+<li>Evaluating numerical expressions and variables</li>
+<li>Defining, using and plotting functions</li>
+<li>Access to history of typed-in commands</li>
+</ul>
+<h3 id="general-remark-to-6000100-version">General remark to 6.00.0100 version</h3>
+<p>Due to some development activities, the commands are to be typed into the 'MatCalc 5 console' window - this are the lines begining here with 'MCORE:'. The output messages are displayed in the 'console' window, as always.</p>
+<h2 id="console">Console</h2>
+<p>This window allows command-line input, as an alternative to using the graphical controls. Commands can also be grouped into script files, for easier and more rapid execution of repetitive or complex tasks. The console can be shown or hidden with one of the following alternatives:</p>
+<ul>
+<li>using <strong>View &gt; Show &gt; Show console</strong></li>
+</ul>
+<p><a href="/tutorials/t1/img/t1_menu_show_console_6031000.png" title="tutorials/t1/img/t1_menu_show_console_6031000.png"><img alt=" Show console in MatCalc menu" src="/tutorials/t1/img/t1_menu_show_console_6031000.png" title="Show console in MatCalc menu" /></a></p>
+<ul>
+<li>pressing the <strong>'F4'</strong> key</li>
+<li>clicking on the <a href="/tutorials/t1/img/t1_icon_show_console.png" title="tutorials/t1/img/t1_icon_show_console.png"><img alt=" MatCalc Icon show console" src="/tutorials/t1/img/t1_icon_show_console.png" title="MatCalc Icon show console" /></a> icon in Toolbar.</li>
+</ul>
+<p>MatCalc 6 uses a new formalism for the command-line input. While commands used in the scripts for the older versions are recognized by the current version, the old command formalism is to be typed in <strong>'MatCalc 5 console'</strong> window.</p>
+<h2 id="basics">Basics</h2>
+<h3 id="getting-help-and-listing-available-commands">Getting help and listing available commands</h3>
+<p>Typing <strong>'?'</strong> or <strong>'HELP_WORKSPACE'</strong> in the <strong>'MatCalc 5 console' window</strong> shows a list of available commands.</p>
+<pre><code>MCORE: ?
+
+-------------------------------------------------------------------------
+available commands in workspace module:
+-------------------------------------------------------------------------
+?                            HELP_WORKSPACE               HELP_MODULE
+ECHO                         !                            EXIT
+USE_MODULE                   BACK_TO_MODULE               NEW_WORKSPACE
+READ_WORKSPACE               SAVE_WORKSPACE               CLOSE_WORKSPACE
+SET_WORKSPACE_PROPERTY       SET_WORKSPACE_INFO           LIST_WORKSPACE_INFO
+RUN_SCRIPT_FILE              TEST_COMMAND                 STOP_CURRENT_ACTION
+STOP_RUN_SCRIPT              NEW_GUI_WINDOW               REMOVE_GUI_WINDOW
+MOVE_GUI_WINDOW              SET_GUI_WINDOW_PROPERTY      UPDATE_GUI_WINDOWS
+LIST_GUI_WINDOW_PROPS        LIST_ALL_GUI_WINDOWS         ALLOW_WINDOW_UPDATE
+SET_PROGRESS_INDICATOR       CREATE_NEW_PLOT              SET_PLOT_OPTION
+LIST_PLOT_OPTIONS            REMOVE_PLOT                  LIST_ALL_PLOTS
+COPY_PLOT_TO_CLIPBOARD       COPY_FRAME_TO_CLIPBOARD      EXPORT_PLOT_TO_FILE
+EXPORT_FRAME_TO_FILE         LIST_CURRENT_DIRECTORIES     SET_APPLICATION_DIRECTORY
+SET_WORKING_DIRECTORY        SET_LICENSE_FILEPATH
+SHOW_EXPRESSION
+SET_VARIABLE_VALUE           INPUT_VARIABLE_VALUE         REMOVE_VARIABLE
+LIST_ALL_VARIABLES           LIST_INTERNAL_VARIABLES      SET_VARIABLE_STRING
+INPUT_VARIABLE_STRING        FORMAT_VARIABLE_STRING       REMOVE_STRING_VARIABLE
+LIST_ALL_STRING_VARIABLES    SEND_OUTPUT_STRING           SEND_CONSOLE_STRING
+SEND_DIALOG_STRING           SET_FUNCTION_EXPRESSION      LIST_ALL_FUNCTIONS
+REMOVE_FUNCTION              EDIT_SYMBOL                  EDIT_PARAMETER
+LIST_SYMBOLS                 LIST_PARAMETERS 
+-------------------------------------------------------------------------
+use HELP_MODULE for module specific commands
+-------------------------------------------------------------------------
+</code></pre>
+<p>The commands listed above are part of the <strong>'workspace'</strong> module of MatCalc and relate to creating and modifying workspaces and windows within workspaces. As can be seen from the last line of the above transcript, <strong>'HELP_MODULE'</strong> gives access to another series of commands relating to the current module of the program (<strong>'core'</strong>), i.e. the calculations themselves:</p>
+<pre><code>MCORE: help_module
+
+-------------------------------------------------------------------------
+available commands in mc_core module: 
+-------------------------------------------------------------------------
+
+RESTART                      LICENSE_INFO                 GIBBS_CALC_STATUS
+LIST_DATABASE_CONTENTS       SELECT_ELEMENTS              SELECT_PHASES
+SET_REFERENCE_ELEMENT        ENTER_COMPOSITION            SET_TEMPERATURE_CELSIUS 
+SET_TEMPERATURE_KELVIN       SET_PRESSURE                 SET_AUTOMATIC_STARTVALUES
+APPLY_TANGENT_CONSTRUCTION   CALCULATE_EQUILIBRIUM        SEARCH_PHASE_BOUNDARY
+STEP_EQUILIBRIUM             LIST_EQUILIBRIUM             LIST_CORE_STATUS
+SET_STEP_OPTION              LIST_STEP_OPTIONS            CHANGE_PHASE_STATUS
+LIST_PHASE_STATUS            CREATE_NEW_PHASE             REMOVE_PHASE
+CALC_PARTITION_RATIO         &lt;&lt;CORE&gt;&gt;                     &lt;&lt;NODES&gt;&gt;                    
+&lt;&lt;SYMBOLIC&gt;&gt;                 &lt;&lt;IO&gt;&gt;                       &lt;&lt;PRECIPITATION&gt;&gt;            
+&lt;&lt;STATE&gt;&gt;                    &lt;&lt;BUFFER&gt;&gt;                   &lt;&lt;TABLES/ARRAYS&gt;&gt;            
+&lt;&lt;TRANSFORMATIONS&gt;&gt;          &lt;&lt;HEAT_TREATMENTS&gt;&gt;          &lt;&lt;EXPORT&gt;&gt;
+</code></pre>
+<p>The <strong>'mcore'</strong> module contains several subsections, given in triangular brackets below the list of commands. These can be opened by typing in <strong>'HELP_MODULE'</strong> again with the name of the subsection. For example <strong>'HELP_MODULE IO'</strong> lists the input/output commands.</p>
+<pre><code>MCORE: help-module io
+
+-------------------------------------------------------------------------
+available commands in mc_core module: IO
+-------------------------------------------------------------------------
+OPEN_THERMODYN_DATABASE      TEST_EXIST_TD_DATABASE       READ_THERMODYN_DATABASE
+READ_MOBILITY_DATABASE       TEST_EXIST_MOB_DATABASE      READ_PHYSICAL_DATABASE
+TEST_EXIST_PH_DATABASE       SET_LOG_FILE                 WRITE_BINARY_FILE
+READ_BINARY_FILE             SET_AUTOSAVE_FILENAME        TEST_EXIST_FILE
+</code></pre>
+<h3 id="notes-on-syntax">Notes on syntax</h3>
+<ol>
+<li>Although the commands listed above contain underscores <strong>'_'</strong>, the hyphen <strong>'-'</strong> can be used interchangeably with the underscore when typing <strong>commands</strong>. Note, however, that this is not the case in names of phases such as <strong>'BCC_A2'</strong>, which require the underscore.</li>
+<li>Commands are case-insensitive.</li>
+<li>Any unambiguous abbreviations of the commands are allowed. For example, <strong>'open_th'</strong> or even <strong>'o_t'</strong> are acceptable abbreviations of <strong>'open_thermodyn_database'</strong>. Using an ambiguous abbreviation, such as <strong>'read'</strong>, gives a list of all possible commands with that abbreviation, together with a message indicating that the command was ambiguous:</li>
+</ol>
+<pre><code>MCORE: read
+
+READ_WORKSPACE
+READ_THERMODYN_DATABASE
+READ_MOBILITY_DATABASE
+READ_PHYSICAL_DATABASE
+READ_BINARY_FILE
+*** error *** ambiguous command
+_mcore:
+</code></pre>
+<h2 id="example-calculating-an-equilibrium-using-the-command-line">Example: calculating an equilibrium using the command-line</h2>
+<p>The use of command-lines will be illustrated with a simple example: setting up a workspace and calculating an equilibrium at a single temperature. This is the same calculation as in  <a href="/tutorials/t2" title="tutorials/t2">Tutorial 2</a>: an equilibrium at 700°C in a Fe-0.4 wt.% C system containing the phases LIQUID, FCC_A1, BCC_A2 and CEMENTITE.<br />
+Start with a new workspace. (Warning! Using the <strong>'new_workspace'</strong> command does not prompt the user to save any previously open workspace files, so make sure any necessary changes are saved first.)</p>
+<pre><code>MCORE: new_workspace
+
+&lt;script(0/core)&gt; $ phase details: create and move
+&lt;script(0/core)&gt; new-gui-window a6
+&lt;script(0/core)&gt; move-gui-window . 500 0 500 450move-gui-window window-id=. x-axis=500 y-axis=0 width=500 height=450
+
+&lt;script(0/core)&gt; $ phase summary: create and move
+&lt;script(0/core)&gt; new-gui-window a5
+&lt;script(0/core)&gt; move-gui-window . 0 0 450 300move-gui-window window-id=. x-axis=0 y-axis=0 width=450 height=300
+
+&lt;script(0/core)&gt; $ clear modified-flag
+&lt;script(0/core)&gt; set-workspace-property m n
+&lt;script(0/core)&gt; $ ready ...
+</code></pre>
+<p>Open the thermodynamic database. This is equivalent to clicking <strong>'Open'</strong> in the <strong>'Global &gt; Databases'</strong> dialogue box.</p>
+<pre><code>MCORE: open_thermodyn_database
+name for thermodynamic database ('*' for list) /mc_sample_fe.tdb/:
+</code></pre>
+<p>The console prompts the user for the name of a database. The default option is given between slashes <strong>'/../'</strong> (By typing <strong>'*'</strong> and pressing <strong>'enter'</strong>, the content of the <strong>…\MatCalc\database</strong> directory is shown). Type <strong>'mc_fe.tdb'</strong> to select the improved database.</p>
+<pre><code>MCORE: open_thermodyn_database
+name for thermodynamic database ('*' for list) /mc_sample_fe.tdb/:
+
+opening database 'mc_fe.tdb' ...
+</code></pre>
+<p>Find out which elements and phases are in the database using <strong>'list_database_contents'</strong>:</p>
+<pre><code>MCORE: list_database_contents
+(e)quilib/(d)iffusion/(p)hysical /e/:
+</code></pre>
+<p>Type in <strong>'e'</strong>, to show the content of the opened equilibrium database</p>
+<pre><code>MCORE: list_database_contents
+(e)quilib/(d)iffusion/(p)hysical /e/:
+
+equilibrium database file: mc_fe.tdb
+
+# of elements in database: 25
+    VA, AL, B, C, CO, CR, CU, FE, H, HF, LA, MN, MO, N, NB, NI, O, P, PD, S, SI, TI, V, W, Y
+
+# of phases in database: 122
+LIQUID                    FCC_A1                    BCC_A2                    
+H_BCC                     BCC_DISL                  HCP_A3                    
+ALPHA_MN                  BETA_MN                   BETA_RHOMBO_B             
+DIAMOND_A4                GRAPHITE                  BCC_B2                    
+CHI_A12                   CO3MO                     CO3V                      
+COV3                      CR3MN5                    G_PHASE                   
+LAVES_PHASE               MNNI                      MNNI2                     
+MNNI_T3                   MU_PHASE                  MU_PHASE_I                
+ETA                       NITI2                     PI_PHASE                  
+R_PHASE                   SIGMA                     FE17Y2                    
+NI5Y                      PDFE_L12                  PDMN_AF                   
+PDMN_P                    PDMN_B2                   PD2MN                     
+PD3MN                     PD5MN3                    PD6FE5MN2                 
+CEMENTITE                 CR2VC2                    K_CARB                    
+KSI_CARBIDE               M3C2                      M6C                       
+M7C3                      M12C                      M23C6                     
+MOC_ETA                   V3C2                      WC                        
+EPS_CARB                  ETA_CARB                  FE24C10                   
+KSI_FE5C2                 ALN                       ALN_EQU                   
+BN_HP4                    CR3NI2SIN                 FE4N                      
+MN6N4                     MN6N5                     MNSIN2                    
+SI3N4                     ZET                       CRB                       
+CR2B                      CR5B3                     FEB                       
+FENBB                     FE3NB3B4                  M2B                       
+MNB2                      MNB4                      O_MN2B                    
+MN3B4                     MOB                       MOB2                      
+MO2M1B2                   NBB                       NB3B2                     
+M5B6                      TIB                       TIB2                      
+TI3B4                     A_CHALC                   ANILITE                   
+B_CHALC                   COVELLITE                 CU2S                      
+DIGENITE                  DISULF                    DJURLEITE                 
+FC_MONO                   FC_ORTHO                  FES_P                     
+MNS_Q                     PYRR                      TIS                       
+TI4C2S2                   CORUND                    HALITE                    
+HF1O2_M                   HF1O2_T                   HF1O2_C                   
+LA2O3_A                   LA2O3_H                   LA2O3_C                   
+SIO2                      SPINEL                    TIO2                      
+TI2O3                     TRID                      Y2O3_C                    
+Y2O3_H                    YALO3                     Y4AL2O9                   
+Y2TIO5                    Y2TI2O7                   O1_GAS                    
+M2P                       M3P
+</code></pre>
+<p>Select the required elements using <strong>'select_elements c fe'</strong>. A message appears to indicate that C has been selected, and Fe has been ignored because it was already selected by default.</p>
+<pre><code>MCORE: select_elements c fe
+
+element 'C' selected
+element 'FE' ignored
+</code></pre>
+<p>Next select the phases. Any unambiguous abbreviation is acceptable for the phase names. Messages appear to confirm that these phases have been selected.</p>
+<pre><code>MCORE: select_phases liq bcc_a2 fcc cem
+
+phase 'LIQUID' selected
+phase 'BCC_A2' selected
+phase 'FCC_A1' selected
+phase 'CEMENTITE' selected
+</code></pre>
+<p>Read in the thermodynamic data. This is equivalent to clicking <strong>'read'</strong> in the 'Databases' dialogue box.</p>
+<pre><code>MCORE: read_thermodyn_database
+
+reading thermodynamic data 'mc_fe.tdb' ...
+
+collecting symbols 'mc_fe.tdb' ...
+
+elements: VA C FEhases: LIQUID FCC_A1 BCC_A2 CEMENTITE
+
+Gibbs: 4 Phases / 0 Composition-Set(s) created
+Gibbs: 30 functions linked ...
+Gibbs: T = 1273.160000 K, P = 101325.000000 Pa, moles = 1
+</code></pre>
+<p>Enter the composition. There are three available unit qualifiers: x (mole fraction), u (u-fraction) and w (weight fraction). In addition, appending <strong>'p'</strong> to any of these gives the unit in percent. See the example below, in which the composition is specified in weight percent.</p>
+<pre><code>MCORE: enter_composition
+unit qualifier (X/U/W + P) /x/: wp
+enter amount (e.g. Mn=0.32 C=0.01): c=0.4
+</code></pre>
+<p>Open <strong>'Databases'</strong>, <strong>'Composition'</strong> and <strong>'Phase Status'</strong> from the <strong>'Global'</strong> menu and note that the system setup entered using the command-line is shown in the GUI windows. Console and GUI versions of commands can be used completely interchangeably.<br />
+Set the temperature to 700°C. Note that there are two commands for temperature, <strong>'set_temperature_celsius'</strong> and <strong>'set_temperature_kelvin'</strong>, depending on the units of interest.</p>
+<pre><code>MCORE: set_temperature_celsius 700
+</code></pre>
+<p>Impose automatic start-values and calculate an equilibrium.</p>
+<pre><code>MCORE: set_automatic_startvalues
+MCORE: calculate_equilibrium
+
+iter: 13, time used: 0,02 s
+T: 700 C (973,16 K), GibbsEnergy: -39934,665 J
+- OK -
+</code></pre>
+<p>Note the results in <strong>'phase summary'</strong> window: the stable phases are BCC_A2 and CEMENTITE as expected.</p>
+<h2 id="evaluating-expressions">Evaluating expressions</h2>
+<p>As well as entering commands, the console can be used to evaluate numerical expressions, MatCalc variables and user-defined expressions and functions.</p>
+<h3 id="numerical-expressions">Numerical expressions</h3>
+<p>Any numerical expression can be evaluated using the command <strong>'SHOW_EXPRESSION'</strong> (<strong>'show'</strong> or <strong>'sh'</strong> are acceptable abbreviations):</p>
+<pre><code>MCORE: show 4/5
+
+4/5 = 
+            0.8
+
+MCORE: show pi
+pi = 
+   3.14159265359
+</code></pre>
+<p>Note the priority rules and the use of parentheses to override these, e.g.:</p>
+<pre><code>MCORE: show 4/5*3
+
+4/5*3 = 
+            2.4
+
+MCORE: show 4/(5*3)
+
+4/(5*3) = 
+   0.266666666667
+
+MCORE: show 4+4*2
+
+4+4*2 = 
+             12
+
+MCORE: show (4+4)*2
+
+(4+4)*2 = 
+             16
+</code></pre>
+<h3 id="expressions-in-x">Expressions in x</h3>
+<p>Expressions in terms of the current value of the stepped variable, x, can be evaluated using <strong>'show_expression'</strong>, as shown below. (The value of x is currently zero because no stepped calculation has so far been performed in this workspace.)</p>
+<pre><code>MCORE: show 3*x
+
+3*x = 
+                    0
+</code></pre>
+<p>Functions in x can be defined and then evaluated.</p>
+<pre><code>MCORE: set-function-expression
+which function: function1
+enter expression: 3*x
+
+MCORE: show function1
+
+function1 = 
+              0
+</code></pre>
+<p>Pressing the up-arrow recalls the latest command to be entered. Further use of this up-arrow scrolls through the command history in reverse chronological order. Commands are given with the full names and chosen options, e.g.:</p>
+<pre><code>_mcore: SET_FUNCTION_EXPRESSION function1 3*x
+</code></pre>
+<p>The command-line can then be edited, e.g. replace <strong>'function1'</strong> by <strong>'function2'</strong>:</p>
+<pre><code>MCORE: SET_FUNCTION_EXPRESSION function2
+enter expression: x**2
+</code></pre>
+<p>This is the expression for <strong>x2</strong>. The syntax <strong>'x^2'</strong> can also be used for the same purpose:</p>
+<pre><code>MCORE: SET_FUNCTION_EXPRESSION
+which function /function2/: function3
+enter expression: x^2
+</code></pre>
+<p>The functions just defined can now be found by opening the <strong>'Functions'</strong> tab in <strong>'Global &gt; Variables &amp; functions'</strong>, and in the <strong>'variables'</strong> window under <strong>'functions'</strong>. They can be plotted in a new window as follows:<br />
+Firstly, create a new window and enter the window-type code. These codes can be found under <strong>'View &gt; Create new window'</strong>. The standard x-y plot is <strong>'p1'</strong>.</p>
+<pre><code>MCORE: new_gui_window
+enter window-type code: p1
+</code></pre>
+<p>Next, add a new series using set-plot-option and choosing the following options (press Enter, if there is no sign behind the colon):</p>
+<pre><code>MCORE: set-plot-option
+enter plot ID /1/: 
+(t)itle/(a)xis/(l)egend/(g)rid/(h)istogram/tt(p)/(s)eries: s
+(n)ew/(e)dit/(r)emove/rena(m)e/(l)ock/(d)uplicate and lock
+deri(v)e/(c)onvert to table: n
+(b)uffer results/(t)able/experimental data/(f)unction/expression: f
+expression in variable 'x': function1
+definition range /auto/: -10..10
+</code></pre>
+<p>Finally, add the other two series by recalling and editing the previously used command.</p>
+<pre><code>MCORE: SET_PLOT_OPTION 1 S N F function2 -10..10 
+MCORE: SET_PLOT_OPTION 1 S N F function3 -10..10
+</code></pre>
+<p>The resulting plot should look like this:</p>
+<p><a href="/tutorials/t12/img/t12_plot1_functions_plotted_2016.png" title="tutorials/t12/img/t12_plot1_functions_plotted_2016.png"><img alt=" MatCalc plot" src="/tutorials/t12/img/t12_plot1_functions_plotted_2016.png" title="MatCalc plot" /></a></p>
+<h3 id="expressions-using-matcalc-variables">Expressions using MatCalc variables</h3>
+<p>It is also possible to define functions made up of MatCalc variables. Here, two functions similar to those discussed in  <a href="/tutorials/t6" title="tutorials/t6">Tutorial 6</a> are defined. The built-in variables can be copied and pasted from the <strong>'variables'</strong> window to the console using the right-click menus or Ctrl+C and Ctrl+V.</p>
+<pre><code>MCORE: SET_FUNCTION_EXPRESSION function4 F$BCC_A2*X$BCC_A2$C
+MCORE: SET_FUNCTION_EXPRESSION function5 F$CEMENTITE*X$CEMENTITE$C
+</code></pre>
+<p>These new functions can then be evaluated using <strong>'show'</strong>:</p>
+<pre><code>MCORE: show function4
+
+function4 = 
+   0,000628639871334
+
+MCORE: sh function5
+
+function5 = 
+   0,0177023706434
+</code></pre>
+<p>Expressions can be built up from existing functions and variables:</p>
+<pre><code>MCORE: show function4+function5
+
+function4+function5 = 
+   0.0183310105147
+</code></pre>
+<p>Below, it is confirmed that, at 700°C, function4 + function5 = XS$C i.e. all the carbon in the system is in the form of either BCC_A2 or cementite, since these are the only two phases to be stable at this temperature.</p>
+<pre><code>MCORE: show XS$C-(function4+function5)
+
+xs$C-(function4+function5) = 
+              0
+</code></pre>
+<p>The next tutorial discusses the use of command-lines in scripts to facilitate repetitive or complex tasks.</p>
+<h2 id="command-history-window">Command history window</h2>
+<p>The command history window can be made to appear by selecting the console window and either clicking on the up-arrow icon or pressing <strong>Ctrl + up-arrow</strong>. This window gives a chronological list of all the commands entered in the console.</p>
+<p><a href="/tutorials/t1/img/t1_command_history_window_2016.png" title="tutorials/t1/img/t1_command_history_window_2016.png"><img alt=" MatCalc command history window" src="/tutorials/t1/img/t1_command_history_window_2016.png" title="MatCalc command history window" /></a></p>
+<p>A command can be selected using the mouse pointer or arrow keys. Right-clicking on the command displays the following menu. On the right-hand side of the menus in MatCalc are keyboard shortcuts for the more commonly used commands. It can be seen from the image below that it is sufficient to press the <strong>Enter</strong> key to execute the selected command.</p>
+<p><a href="/tutorials/t1/img/t1_command_history_menu_2013.png" title="tutorials/t1/img/t1_command_history_menu_2013.png"><img alt=" MatCalc command history menu" src="/tutorials/t1/img/t1_command_history_menu_2013.png" title="MatCalc command history menu" /></a></p>
+<p>Previously used commands can also be accessed in the Console window itself; pressing the up-arrow key displays the most recently entered command, and pressing it repeatedly scrolls through recent commands in reverse chronological order. The command displayed can be edited then executed by pressing the <strong>Enter</strong> key.</p>
+<h2 id="consecutive-articles">Consecutive articles</h2>
+<p>The tutorial is continued in article  <a href="/tutorials/t13" title="tutorials/t13">T13 - Introduction to scripting (1/ Equilibrium calculations)</a></p>
+<p>Go to <a href="/tutorials" title="tutorials">MatCalc tutorial index</a>.</p>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=tutorials%3At12&amp;1788352859" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

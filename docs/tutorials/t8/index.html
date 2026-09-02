@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>T8 - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "T8";
+        var mkdocs_page_input_path = "tutorials/t8.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">T8</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#t8calculating_a_phase_diagram_in_a_binary_system">T8: Calculating a phase diagram in a binary system</a></p>
+</li>
+<li>
+<p><a href="#complimentary_files">Complimentary files</a></p>
+</li>
+<li><a href="#contents">Contents:</a></li>
+<li><a href="#setting_up_the_system">Setting up the system</a></li>
+<li>
+<p><a href="#fe-fe3c_phase_diagram">Fe-Fe3C phase diagram</a></p>
+</li>
+<li>
+<p><a href="#upper_boundary_of_delta-ferrite_bcc_a2">Upper boundary of delta-ferrite, BCC_A2</a></p>
+</li>
+<li><a href="#lower_boundary_of_liquid">Lower boundary of liquid</a></li>
+<li><a href="#lower_boundary_of_delta-ferrite_bcc_a2">Lower boundary of delta-ferrite (BCC_A2)</a></li>
+<li><a href="#upper_boundary_of_austenite_gamma_fcc_a1">Upper boundary of austenite (gamma, FCC_A1)</a></li>
+<li><a href="#upper_boundary_of_low-temperature_alpha_ferrite_bcc_a2">Upper boundary of low-temperature ('alpha') ferrite, BCC_A2</a></li>
+<li><a href="#lower_boundary_of_austenite_gamma_fcc_a1">Lower boundary of austenite (gamma, FCC_A1)</a></li>
+<li><a href="#upper_boundary_of_cementite">Upper boundary of cementite</a></li>
+<li><a href="#a_few_words_on_the_max_t-step_parameter">A few words on the 'max. T-step' parameter</a></li>
+<li><a href="#the_finished_diagram">The finished diagram</a></li>
+<li>
+<p><a href="#fe-c_phase_diagram">Fe-C phase diagram</a></p>
+</li>
+<li>
+<p><a href="#suggested_parameters_for_calculation_of_fe-c_phase_diagram">Suggested parameters for calculation of Fe-C phase diagram</a></p>
+</li>
+<li><a href="#consecutive_articles">Consecutive articles</a></li>
+</ul>
+<h2 id="t8-calculating-a-phase-diagram-in-a-binary-system">T8: Calculating a phase diagram in a binary system</h2>
+<p><em>This tutorial was tested on<br />
+MatCalc version 6.04 rel 1.001<br />
+license: free<br />
+database: mc_fe.tdb</em></p>
+<h3 id="complimentary-files">Complimentary files</h3>
+<p>Click <a href="/tutorials/t8/script/t8_6021003.mcs" title="tutorials/t8/script/t8_6021003.mcs (27.7 KB)">here</a> to view the script for this tutorial.</p>
+<p>This tutorial introduces the calculation of phase diagrams with an example featuring the well-known Fe-C binary system.</p>
+<h3 id="contents">Contents:</h3>
+<ul>
+<li>Calculating phase boundaries</li>
+<li>Building up the phase diagram from the calculated boundaries</li>
+<li>Choosing appropriate calculation parameters</li>
+<li>Phase diagrams using stable and metastable equilibria</li>
+</ul>
+<p>A phase diagram consists of a number of phase-boundaries separating regions of temperature- and composition-space in which different phases are stable at equilibrium. Published equilibrium diagrams for the Fe-C system often show equilibria between Fe-rich phases and both C (in the form of graphite) and cementite (Fe3C). Graphite is the more stable of these two phases, and forms readily in cast irons (2-4 wt.% C), but usually with great difficulty in steels (up to 1.5 wt.% C). In the latter, it is more practically useful to consider metastable equilibria involving Fe3C. In this tutorial, phase diagrams for both Fe-C and Fe-Fe3C will be calculated.</p>
+<h2 id="setting-up-the-system">Setting up the system</h2>
+<p>Create a new workspace file. From the <strong>'mc_fe.tdb'</strong> database, select the elements FE and C and the phases LIQUID, BCC_A2, FCC_A1, CEMENTITE and GRAPHITE. Enter the composition 0.05 wt.% C. Create a new plot window of type p1 (X-Y data).<br />
+The phase diagrams will be calculated from 0 to 5 wt.% C, but the low carbon content of 0.05 wt.% C is chosen so that the lines bounding the high-temperature ('delta') ferrite phase, which is only stable at relatively low carbon contents, can be found.<br />
+Firstly, the Fe-Fe3C diagram will be calculated, so it is necessary to suspend graphite, since it is more stable than Fe3C. Open <strong>'Global &gt; Phase status'</strong>. In the <strong>'General'</strong> tab, put a tick-mark in the box beside <strong>'suspended'</strong>:</p>
+<p><a href="/tutorials/t8/img/t8_phase_status_2016.png" title="tutorials/t8/img/t8_phase_status_2016.png"><img alt=" MatCalc phase status" src="/tutorials/t8/img/t8_phase_status_2016.png" title="MatCalc phase status" /></a></p>
+<h2 id="fe-fe3c-phase-diagram">Fe-Fe3C phase diagram</h2>
+<p><img alt="FIXME" src="/wiki/lib/images/smileys/fixme.svg" /></p>
+<p>The phase diagram is made up of a number of phase boundaries. As was have seen in the last part of  <a href="/tutorials/t7" title="tutorials/t7">Tutorial 7</a>, these boundaries can be found by finding a point on the boundary, then tracing the boundary as a function of element content. The method for tracing a boundary for phase <strong>'X'</strong> is as follows:</p>
+<ol>
+<li>Calculate an equilibrium at an appropriate temperature, near to the expected boundary temperature</li>
+<li>Find the 'X'-phase boundary by varying the temperature with 'X' as the target phase</li>
+<li>Perform a stepped calculation, varying the element content between selected limits, with 'X' as the target phase</li>
+</ol>
+<h3 id="upper-boundary-of-delta-ferrite-bcc_a2">Upper boundary of delta-ferrite, BCC_A2</h3>
+<p>Beginning at the high-temperature end of the diagram, the uppermost phase boundary at a composition of 0.05 wt.% C is between a single-phase liquid region and a liquid and delta-ferrite (BCC_A2) region. The first boundary which must be found is, therefore, a BCC_A2 phase boundary.<br />
+To locate the boundary, an equilibrium must first be calculated reasonably close to the expected boundary temperature. It can be seen that the line lies somewhere between 1538°C (the melting temperature of pure iron) and 1500°C. Click on the <a href="/tutorials/t8/img/icon_equilibrium.png" title="tutorials/t8/img/icon_equilibrium.png"><img alt=" MatCalc icon" src="/tutorials/t8/img/icon_equilibrium.png" title="MatCalc icon" /></a> icon and enter the temperature <strong>'1530'</strong>. (If this gives an error message, select <strong>'Calc &gt; Set start values'</strong> then repeat the equilibrium calculation.) Then click on <a href="/tutorials/t8/img/search_phase_boundary.png" title="tutorials/t8/img/search_phase_boundary.png"><img alt=" MatCalc icon" src="/tutorials/t8/img/search_phase_boundary.png" title="MatCalc icon" /></a> to open the <strong>'Search phase boundary'</strong> window. Select <strong>'Temperature'</strong> in the left-hand column and <strong>'BCC_A2'</strong> as the target phase. The 'Output' window should show the following message:</p>
+<pre><code>Tsol 'BCC_A2': 1533.99 C (1807.14 K) iter: 8, time used: 0.03 s
+</code></pre>
+<p>This shows that a point on the boundary has been found successfully. The next step is to trace this boundary using the stepped equilibrium function to vary the carbon content. Click on <a href="/tutorials/t8/img/icon_calc_stepped.png" title="tutorials/t8/img/icon_calc_stepped.png"><img alt=" MatCalc" src="/tutorials/t8/img/icon_calc_stepped.png" title="MatCalc" /></a> and choose <strong>'Phase boundary'</strong> from the left-hand column. Enter the range: <strong>'0'</strong> to <strong>'5'</strong>, in intervals of <strong>'0.01'</strong>. Select <strong>'C'</strong> as the varying element and <strong>'BCC_A2'</strong> as the target phase. Leave the <strong>'Max T-step'</strong> value at its default value of <strong>'20'</strong>. In the <strong>'Options'</strong> section of this window, check that <strong>'Temperature in Celsius'</strong> and <strong>'Composition in weight percent'</strong> are both selected. Click on <strong>'Go'</strong> to launch the calculation.</p>
+<p><a href="/tutorials/t8/img/t8_step_equilibrium_2016.png" title="tutorials/t8/img/t8_step_equilibrium_2016.png"><img alt=" MatCalc step equilibrium" src="/tutorials/t8/img/t8_step_equilibrium_2016.png" title="MatCalc step equilibrium" /></a></p>
+<p>The following message appears ; accept it with <strong>'Yes'</strong>.</p>
+<p><a href="/tutorials/t8/img/t8_other_direction_2016.png" title="tutorials/t8/img/t8_other_direction_2016.png"><img alt=" MatCalc warning" src="/tutorials/t8/img/t8_other_direction_2016.png" title="MatCalc warning" /></a></p>
+<p>Now that the first phase boundary has been calculated, drag and drop <strong>'T$C'</strong> from the <strong>'Variables'</strong> window (where it can be found under <strong>'favorites'</strong>) to the plot. It is useful to add gridlines to the plot (With plot window selected, go to 'Options' window and in 'plots'&gt;'plot#0'&gt;'grid' select 'enabled' for 'major-x' and 'major-y'). Note that the x-axis currently only runs from zero to just over 0.5 wt.% C. From the point identified on the phase boundary, the calculation first proceeds in a direction of increasing carbon content. However, the BCC_A2 phase is not stable beyond approx 0.53 wt.% C, so the calculation (which cannot reach the stop limit of 5 wt.% C) stops and the <strong>'Continue in other direction?'</strong> message shown above is displayed to ask whether the user wishes to complete the rest of the calculation, in which the carbon content is decreased from the point identified at 0.05 wt.% C to zero.</p>
+<p><a href="/tutorials/t8/img/t8_plot_first_line_2016.png" title="tutorials/t8/img/t8_plot_first_line_2016.png"><img alt=" MatCalc plot" src="/tutorials/t8/img/t8_plot_first_line_2016.png" title="MatCalc plot" /></a></p>
+<p>Right-click in the plot window outside the plot area itself, and select <strong>'Duplicate and lock series'</strong> from the menu displayed. Select the name of the series and click <strong>'Duplicate'</strong> to produce a copy of the series. In the <strong>'options'</strong> window, rename the first series <strong>'bcc_high_1'</strong>.</p>
+<h3 id="lower-boundary-of-liquid">Lower boundary of liquid</h3>
+<p>The next phase boundary encountered on decreasing the temperature is between the LIQUID + BCC_A2 region and the BCC_A2 single-phase region, so this is a LIQUID-phase boundary. 1500°C would appear to be a suitable temperature for the starting equilibrium to find this line. In the <strong>'search phase boundary'</strong> box, select <strong>'LIQUID'</strong>. The following line of output should appear:</p>
+<pre><code>Tsol 'LIQUID': 1515.44 C (1788.59 K) iter: 4, time used: 0.03 s
+</code></pre>
+<p>Then make a stepped calculation with the same start, stop and interval values and the target phase set to <strong>'LIQUID'</strong>. (A start-value of zero is automatically changed by the program to <strong>'1e-12'</strong> to facilitate the calculation.) The diagram should now look like this:</p>
+<p><a href="/tutorials/t8/img/t8_plot_second_line_2016.png" title="tutorials/t8/img/t8_plot_second_line_2016.png"><img alt=" MatCalc plot" src="/tutorials/t8/img/t8_plot_second_line_2016.png" title="MatCalc plot" /></a></p>
+<p>Don't forget to duplicate and lock this new series!</p>
+<h3 id="lower-boundary-of-delta-ferrite-bcc_a2">Lower boundary of delta-ferrite (BCC_A2)</h3>
+<p>Calculate an equilibrium at 1400°C, search for BCC_A2 (the boundary temperature should be 1429.61 C (1702.76 K)), step from 0 to 5 wt.% C with an interval of 0.01 wt.% C. Accept the <strong>'Continue in other direction'</strong> message (the calculation could not reach 5 wt.% C limit, again) with <strong>'Yes'</strong>.</p>
+<h3 id="upper-boundary-of-austenite-gamma-fcc_a1">Upper boundary of austenite (gamma, FCC_A1)</h3>
+<p>Calculate an equilibrium at 1500°C, search for FCC_A1, step from 0 to 5 wt.% C with an interval of 0.01 wt.% C. The boundary temperature should be 1460.19 C (1733.34 K).</p>
+<h3 id="upper-boundary-of-low-temperature-alpha-ferrite-bcc_a2">Upper boundary of low-temperature ('alpha') ferrite, BCC_A2</h3>
+<p>Calculate an equilibrium at 900°C, search for BCC_A2, step from 0 to 5 wt.% C with an interval of 0.01 wt.% C. The boundary temperature should be 888.65 C (1161.80 K). The image below shows how the diagram should look, with appropriate labels for the lines:</p>
+<p><a href="/tutorials/t8/img/t8_plot_diagram_half_done_2016.png" title="tutorials/t8/img/t8_plot_diagram_half_done_2016.png"><img alt=" MatCalc plot" src="/tutorials/t8/img/t8_plot_diagram_half_done_2016.png" title="MatCalc plot" /></a></p>
+<p>The most of the upper section is now done, with the exception of the phase boundary between LIQUID and LIQUID + CEMENTITE for hypereutectic compositions. This line is continuous with the cementite line between the FCC_A1 and FCC_A1 + CEMENTITE regions and the horizontal line between BCC_A2 + FCC_A1 and BCC_A2 + CEMENTITE regions, so it will appear when this line is calculated.<br />
+In the lower section, there is a very narrow alpha-ferrite single-phase region at low carbon contents. The upper part of this region is bounded by an FCC_A1 boundary, and the lower part of the region by a CEMENTITE boundary. Since these two boundaries are very steep, it is necessary to modify the calculation parameters. Failure to do this can lead to incorrectly calculated boundaries.</p>
+<h3 id="lower-boundary-of-austenite-gamma-fcc_a1">Lower boundary of austenite (gamma, FCC_A1)</h3>
+<p>Calculate an equilibrium at 600°C then search for the FCC_A1 phase boundary, which should be at 726.53°C. Step from 0 to 5, with an increment of 0.001 instead of 0.01. This reduced increment makes the calculation rather more time-consuming; on a slow machine, it may be better to divide it into two parts: step from 0 to 0.02 with an increment of 0.001, duplicate and lock, step from 0.02 to 5 with an increment of 0.01.</p>
+<h3 id="upper-boundary-of-cementite">Upper boundary of cementite</h3>
+<p>Calculate an equilibrium at 800°C. Search for the CEMENTITE phase boundary; this also should be at 726.53°C. Using the same settings as for the previous stepped calculation, the phase boundary is calculated correctly, but might extend in the negative temperature direction beyond physically reasonable values. This occurs because the calculated boundary becomes increasingly steep as the carbon content approaches zero.<br />
+One way of removing the unwanted line portion is simply to modify the scaling of the y-axis. (The minimum temperatures given on equilibrium diagrams are typically 400-500°C, because it becomes difficult to attain equilibrium over practical timescales at low temperatures.) Another solution is to remove unwanted data points using 'Edit series data' from the right-click menu of the plot.<br />
+Alternatively, the <strong>'overshoot'</strong> can be avoided by modifying the parameters of the stepped calculation. Increasing the <strong>'max T-step'</strong> allows greater steps in temperature, enabling the program to cope with very steep boundaries. A suitable value is 100 or 200. Additionally, setting the starting value of the stepped calculation to a slightly higher value, for example 0.0005 instead of 1e-12, avoids the calculation of the steepest parts of the phase boundary. With these modified settings, a satisfactory appearance is obtained without the need to change the axis scalings or delete any points.</p>
+<h3 id="a-few-words-on-the-max-t-step-parameter">A few words on the 'max. T-step' parameter</h3>
+<p>Following a phase boundary in the stepped calculation is performed by a simple procedure. Once an initial point is found with <strong>'Search phase boundary'</strong> operation, the composition of the system is changed by a value specified as a step in the <strong>'Range'</strong> section of <strong>'Stepped equilibrium'</strong> window. For this new composition, MatCalc search a phase boundary in a temperature range <strong>(Told - 'max T-step' ; Told + 'max T-step')</strong>, where <strong>Told</strong> is a temperature of a phase boundary at a previous composition. If the phase boundary is too steep, no phase boundary would be found. In such a case MatCalc changes a variable from the element content to the temperature (this is indicated by the message <strong>'changing independent variable to temperature'</strong> in the <strong>'Output'</strong> window). In effect, the temperature will be varied by a step equal to the value of <strong>'max T-step'</strong> parameter and MatCalc will look for the phase boundary at that temperature. In some cases, this might result with the wrong equilibria, especially when the stoichiometric compounds are the equlibrium phases (due to the undefined chemical potentials for these phases)</p>
+<h3 id="the-finished-diagram">The finished diagram</h3>
+<p>Do not forget to lock the last series to be added, so that it is not modified when another calculation is performed. Add axis labels and a title <strong>'Fe-Fe3C phase diagram'</strong>. The subscript can be obtained using HTML tags:</p>
+<p><code>Fe-Fe&lt;sub&gt;3&lt;/sub&gt;C phase diagram</code></p>
+<p>The finished phase diagram should look like this; compare with the sketch below to verify that all the lines have been calculated correctly.</p>
+<p><a href="/tutorials/t8/img/t8_plot_fe-cem_finished_2016.png" title="tutorials/t8/img/t8_plot_fe-cem_finished_2016.png"><img alt=" MatCalc plot" src="/tutorials/t8/img/t8_plot_fe-cem_finished_2016.png" title="MatCalc plot" /></a></p>
+<p>The image below shows an expanded version of the low-C region presenting the phase solubility of alpha-ferrite.</p>
+<p><a href="/tutorials/t8/img/t8_plot_fe-cem_finished_expanded_2016.png" title="tutorials/t8/img/t8_plot_fe-cem_finished_expanded_2016.png"><img alt=" MatCalc plot" src="/tutorials/t8/img/t8_plot_fe-cem_finished_expanded_2016.png" title="MatCalc plot" /></a></p>
+<h2 id="fe-c-phase-diagram">Fe-C phase diagram</h2>
+<p>Set up this system by removing the <strong>'suspended'</strong> flag for GRAPHITE under <strong>'Global &gt; Phase status &gt; General'</strong>.<br />
+The calculation of the Fe-C diagram is left as an exercise to allow the user to familiarise him- or herself with the method, including the choice of appropriate values for the starting equilibrium calculation temperatures and the calculation parameters. However, suggestions are given at the foot of the page. The diagram below shows how the finished diagram should look. (Alternatively, the phase boundaries from the Fe-C calculations can be superposed on the Fe-Fe3C phase diagram for comparison.)</p>
+<p><a href="/tutorials/t8/img/t8_plot_fe-c_finished_2016.png" title="tutorials/t8/img/t8_plot_fe-c_finished_2016.png"><img alt=" MatCalc plot" src="/tutorials/t8/img/t8_plot_fe-c_finished_2016.png" title="MatCalc plot" /></a></p>
+<h3 id="suggested-parameters-for-calculation-of-fe-c-phase-diagram">Suggested parameters for calculation of Fe-C phase diagram</h3>
+<ul>
+<li>
+<p><strong>Upper boundary of high-T bcc</strong>: Equilibrium at 1550°C (Tsol 'BCC_A2'/ 1533.99°C); step from 0 to 5 with interval of 0.01, max T-step 20</p>
+</li>
+<li>
+<p><strong>Lower boundary of liquid</strong>: Equilibrium at 1500°C (Tsol 'LIQUID'/ 1515.44°C); step with same parameters</p>
+</li>
+<li><strong>Lower boundary of high-T bcc</strong>: Equilibrium at 1400°C (Tsol 'BCC_A2'/ 1429.61°C); same parameters</li>
+<li><strong>Upper boundary of fcc</strong>: Equilibrium at 1500°C (Tsol 'FCC_A1'/ 1460.19°C); same parameters</li>
+<li><strong>Upper boundary of low-T bcc</strong>: Equilibrium at 900°C (Tsol 'BCC_A2'/ 888.65°C); same parameters</li>
+<li><strong>Lower boundary of fcc</strong>: Equilibrium at 700°C (Tsol 'FCC_A1'/ 738.03°C). For this line, the parameters must be modified: decrease the interval to 0.001 or increase the T-step to 200. The latter solution (an interval of 0.01 and a T-step of 200) is acceptable because this boundary is a straight line so is correctly defined despite there being only a few points in this region. An error message (max no of iterations reached) may appear, but the line is calculated successfully.</li>
+<li><strong>Upper boundary of graphite</strong>: Equilibrium at 800°C (Tsol 'GRAPHITE'/ 738.03°C). If problems occur, decrease the interval to 0.001 as well as increasing the T-step to 100 to obtain better resolution of the phase boundary curvature. This boundary, like the cementite boundary discussed above, tends to 'overshoot' to very low temperature values. This can be prevented by setting the minimum carbon content for the stepped calculation to 0.0005 instead of 1e-12.</li>
+</ul>
+<h2 id="consecutive-articles">Consecutive articles</h2>
+<p>The tutorial is continued in article  <a href="/tutorials/t9" title="tutorials/t9">T9 - Calculating a pseudobinary phase diagram</a></p>
+<p>Go to <a href="/tutorials" title="tutorials">MatCalc tutorial index</a>.</p>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=tutorials%3At8&amp;1788352859" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

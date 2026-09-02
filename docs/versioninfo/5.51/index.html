@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>5.51 - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "5.51";
+        var mkdocs_page_input_path = "versioninfo/5.51.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">5.51</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>MatCalc 5.51 [MatCalc Documentation]</p>
+<h2 id="matcalc-551">MatCalc 5.51</h2>
+<p>The following new features will appear in <em>MatCalc</em> versions 5.51.nnnn:</p>
+<ul>
+<li>Implementation of a new model for <strong>trapping of atoms/vacancies</strong> on point traps. These can be solute atoms as well as dislocations and grain boundaries. Trapping affects both the thermodynamic functions (phase equilibria) as well as the diffusion characteristics of elements.</li>
+<li>The <strong>default settings</strong> of MatCalc are moved into a file <em>defaults.txt</em> in the <em>path_to_matcalc/preset</em> directory. These settings are now depending on the choice of reference element as well as the particular phase (e.g., bcc or fcc in Fe-base system).</li>
+<li>Improved <strong>heat treatment</strong> functionality for <strong>deformation handling</strong>. Export and import of heat treatment schedules.</li>
+</ul>
+<p>Below are details describing the various changes and new features of the MatCalc versions 5.51.xxxx.</p>
+<h4 id="version-5511011-released-2013-03-12">version 5.51.1011: released 2013-03-12</h4>
+<ul>
+<li>Updates for <strong>default settings</strong>.</li>
+<li>Temperature control for kinetic calc: Temperature profiles 'from table' are obsolete now, use heat treatments instead.</li>
+<li>Removed filename from window titles. Makes titles much shorter and 'readable'.</li>
+<li><strong>Excess dislocation</strong> can now be set in Precipitation Domains dialog.</li>
+<li>Fixed a bug related to the <strong>Clemm-Fisher implementation</strong> of the <strong>influence of grain boundary energy on nucleation</strong>. This contribution was not taken into account if the interfacial energy was entered manually.</li>
+<li>Fixed bug in treatment of phases with similar name (same starting letters).</li>
+<li>Fixed rename bug in Precipitation Domains dialog.</li>
+<li>Implemented <strong>Binder-Staufer</strong> coefficient into treatment of coalescence. This seems to be an essential feature for Cu-precipitates in steel. Details and publication will follow.</li>
+<li><strong>Executable</strong> now accepts more than one command line switch.</li>
+<li>Fixed problem in <strong>treatment of coherency radius and strengthening</strong>.</li>
+<li>Window sizes are adjusted to fit into the viewport when opening workspaces that have been saved from desktop with higher screen resolution.</li>
+<li>Fixed Radiobutton bug in Phase Status dialog. Radiobuttons were erroneously reset during multiple selection of phases.</li>
+<li>Series can now be accessed by variables in <code>SET_PLOT_OPTION</code>.</li>
+<li><strong>5 new marker styles</strong> for plots (HLine, VLine, Star1, Star2, Hexagon).</li>
+<li>Various bugfixes for version 5.51.1004.</li>
+</ul>
+<h4 id="version-5511004-released-2013-01-07">version 5.51.1004: released 2013-01-07</h4>
+<ul>
+<li><strong>Misfit stress</strong> can now be <strong>ignored</strong> during nucleation. Use the command <code>SET_PRECIPITATION_PARAMETER n i</code> to activate/deactivate.</li>
+<li><strong>Hall petch coefficient</strong> for <strong>subgrain boundaries</strong> introduced.</li>
+<li><strong>Coherency radius</strong> for precipitation strengthening introduced. This feature will be described in future MatCalc versions.</li>
+<li>New phases in phase dialog are now automatically selected after creation.</li>
+<li>New precipitates are initialized with 25 size classes by default. This feature makes it possible to omit the initialize line in script setup of precipitates. It is also obsolete to define the attached precipitation domain in setting up precipitate phases.</li>
+<li>Export commands can now be accessed from all modules.</li>
+<li>Fixed bug, that allowed variables, functions or string variables to have identical names.</li>
+</ul>
+<h4 id="version-5510005-released-2012-09-13">version 5.51.0005: released 2012-09-13</h4>
+<ul>
+<li>Updated precipitation <strong>script templates</strong>: It is no longer necessary to make explicit settings for pipe diffusion along dislocations and grain boundaries when setting up precipitation domains. Moreover, values for Youngs module have been removed because they are now consistently available in the <strong>defaults.txt</strong> implementation.</li>
+<li>Added possibility for <strong>import and export of heat treatment segments</strong>. This is particularly interesting for data exchange of complex heat treatment profiles. Create heat treatment and export it to file to view the corresponding format. Just like in scripts, the '$' sign starts comments. Command line access is possible via <code>EXPORT_HEAT_TREATMENT</code> and <code>IMPORT_HEAT_TREATMENT</code>.</li>
+<li>Control of heat treatment segments can now also be done with corresponding setting of a <strong>maximum accumulated strain</strong>.</li>
+<li>Completed <strong>grain growth evolution</strong> model. Behavior can be controlled in the grain growth evolution settings of the <em>precipitation domain</em> dialog as well as the parameters for the grain growth pinning factor and exponent in the <em>phase status</em> dialog.</li>
+<li>Fixed a problem in temperature dependence of dislocation density evolution and interaction with excess vacancies.</li>
+</ul>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=versioninfo%3A5.51&amp;1788352872" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

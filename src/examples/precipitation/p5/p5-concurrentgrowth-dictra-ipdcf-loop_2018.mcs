@@ -1,0 +1,248 @@
+$$************************************************************************************************** 
+************************************** GENERAL INFORMATION *****************************************
+****************************************************************************************************
+
+Paper Simulation of the kinetics of precipitation reactions in ferritic steels. Concurrent growth of
+precipitates in Fe-12%Cr-0.1%C. Evaluation of concurrent growth of M3C, M7C3 and M23C6. Evolution of
+precipitate Cr-content.
+This simulation defines three precipitates (M23C6, M7C3 and Cementite) with composition Fe=12, 
+C=0.1 wt%. Only one particle class is used to only simulate growth of one single precipitate in 
+Ferrite. This is the same situation DICTRA can handle in their cell simulation mode. Finally compare 
+the precipitation sequence. The resuls are very similar, if the diffusion coefficient in MatCalc is
+set to one times the diffusivity of the matrix. 
+
+A. Schneider, G. Inden, Acta Materialia 53 (2005) 519-531
+
+Database: mc_sample_fe.tdb, mc_sample_fe.ddb
+Author: E. Kozeschnik
+Creation date: 2005-05-10
+Revision: 2012-02-07 (G. Stechauner - Update to newest version)
+This is a script for MatCalc version 5.44 (rel 1.010)
+
+
+**************************************************************************************************** 
+************************************** SETUP INFORMATION *******************************************
+**************************************************************************************************$$
+
+$ make sure we work in the correct module
+use-module core 
+
+$ creates a new workspace 
+new-workspace 
+
+@ echo n
+set-workspace-info + This simulation defines three precipitates (M23C6, M7C3 and Cementite) with composition
+set-workspace-info + Fe=12, C=0.1 wt%. Only one particle class is used to only simulate growth of one single
+set-workspace-info + precipitate in Ferrite. This is the same situation DICTRA can handle in their cell simulation 
+set-workspace-info + mode.
+set-workspace-info + Finally compare the precipitation sequence
+set-workspace-info +
+set-workspace-info + The resuls are very similar, if the diffusion coefficient in MatCalc ist set to one
+set-workspace-info + times the diffusivity of the matrix. 
+set-workspace-info +
+set-workspace-info + Phases: BCC_A2, Cementite, M23C6, M7C3
+set-workspace-info + Chemical components: Fe, C, Cr
+set-workspace-info + 
+set-workspace-info + For further information visit www.matcalc.at
+set-workspace-info +
+echo y
+
+
+$$************************************************************************************************** 
+**************************************** SYSTEM SETUP **********************************************
+**************************************************************************************************$$
+
+$ verify correct MatCalc version (is accessible as internal variable) 
+if (matcalc_version<5441010)
+   send-dialog-string "MatCalc version must be 5.44.1010 or higher to run this script. Stopping."
+   stop_run_script                              $ stop script
+endif
+
+
+$$************************************************************************************************** 
+                        DATABASES, CHEMICAL COMPOSITION, SELECTED PHASES
+**************************************************************************************************$$
+
+open-thermo-database mc_fe.tdb
+
+$ select elements and phases 
+select-elements C Cr Fe 
+select-phase bcc_a2 cementite m23c6 m7c3 
+set-reference-element fe
+
+read-thermodyn-database
+
+enter-composition wp c=0.1 cr=12                $ composition in weigth-%
+
+read-mobility-database mc_fe.ddb
+
+
+$$**************************************************************************************************
+                                     DEFINE VARIABLES
+**************************************************************************************************$$
+
+set-variable-value end_time 5e5
+set-variable-value x_scale 10
+set-variable-value ipdcf 1                      $ inner particle diffusion coefficient factor
+set-variable-value npc 1                        $ number of particle classes: only one for this type of simulation
+set-variable-value temp 780                     $ Temperatur in C
+set-variable-value particle_number 1.35083e15   $ Amount of particles
+set-variable-value incr 1                       $ some random variable 
+set-variable-value i 0                          $ some random variable 
+
+set-automatic-startvalues
+set-temperature-celsius temp
+calc-equilibrium
+
+
+$$**************************************************************************************************
+                             SETUP PRECIPITATION SIMULATION
+**************************************************************************************************$$
+
+create-precipitation-domain Ferrite                  $ Austenit as precipitation domain = matrix
+set-precipitation-parameter Ferrite x bcc_a2         $ Attach the BCC_A2 phase as matrix to the domain
+
+create-new-phase m23c6 p 
+
+create-new-phase m7c3 p 
+
+create-new-phase cementite p 
+
+for(i;0..2)
+  
+set-variable-value ipdcf 10^(-i)                     $ Change ipdcf to values: 1, 0.1, 0.01 
+format-variable-string ipdcfstring %.2f ipdcf        $ Create an ipdcf string (copy ipdcf as float variable to ipdcfstring)
+set-variable-value incr i*30
+
+set-precipitation-parameter m23c6_p0 c 0             $ delete the old distribution particle classes
+set-precipitation-parameter m23c6_p0 c npc           $ particle classes
+set-precipitation-parameter m23c6_p0 s d r ipdcf     $ diffusion in precipitate: fixed ratio (default: 0.01)
+set-precipitation-parameter m23c6_p0 s i r ipdcf     $ interstitial diffusion in precipitate: fixed ratio (default: 0.01)
+
+set-precipitation-parameter m7c3_p0 c 0              $ delete the old distribution particle classes
+set-precipitation-parameter m7c3_p0 c npc            $ particle classes
+set-precipitation-parameter m7c3_p0 s d r ipdcf      $ diffusion in precipitate: fixed ratio
+set-precipitation-parameter m7c3_p0 s i r ipdcf      $ interstitial diffusion in precipitate: fixed ratio
+
+set-precipitation-parameter cementite_p0 c 0         $ delete the old distribution particle classes
+set-precipitation-parameter cementite_p0 c npc       $ particle classes
+set-precipitation-parameter cementite_p0 s d r ipdcf $ diffusion in precipitate: fixed ratio
+set-precipitation-parameter cementite_p0 s i r ipdcf $ interstitial diffusion in precipitate: fixed ratio
+
+
+$ Enter initial values for precipitate distribution
+calc-nucleus-compositions                            $ must start with this :-)
+set-precipitation-parameter M23C6_p0 p a 1e-9 particle_number YX$M23C6$Cr$0 YX$M23C6$FE$0 YX$M23C6$Cr$1 YX$M23C6$FE$1 YX$M23C6$C$2
+set-precipitation-parameter M7C3_p0 p a 1e-9 particle_number YX$M7C3$Cr$0 YX$M7C3$Fe$0 YX$M7C3$C$1
+set-precipitation-parameter cementite_p0 p a 1e-9 particle_number YX$cementite$Cr$0 YX$cementite$Fe$0 YX$cementite$c$1
+
+
+$$**************************************************************************************************
+                                SETUP SIMULATION PARAMETERS
+**************************************************************************************************$$
+
+set-simulation-parameter e end_time    $ simulation end time
+set-simulation-parameter t i temp      $ T-control: isothermal
+set-simulation-parameter s n           $ simulation starting conditions: do nothing
+
+
+$$**************************************************************************************************
+                                    START SIMULATION
+**************************************************************************************************$$
+
+start-precipitate-simulation
+
+
+$$**************************************************************************************************
+                              CREATE OUTPUT WINDOWS AND PLOTS
+**************************************************************************************************$$
+
+new-gui-window p1                           $ create window for XY-plots
+
+$ define values for default x-axis (will be used by all plots)
+set-gui-window-property . s u y             $ use default x-axis for all plots: yes
+set-gui-window-property . s t t[s]          $ default x-axis title
+set-gui-window-property . s y log           $ default x-axis type: logarithmic scaling
+set-gui-window-property . s s x_scale..     $ default x-axis scaling: range from x_scale ..
+
+$ First plot (Temperature)
+set-plot-option . s n b t$c                 $ add series
+set-plot-option . s m -1 t$c T              $ define series legend
+set-plot-option . a y 1 t T[C]              $ y-axis title
+set-plot-option . a y 1 s 500..1000
+set-plot-option . t ipdcf: #ipdcfstring     $ Name the plot
+set-plot-option . s l * y                   $ Lock all plots
+
+$ Second plot (Phase fractions)
+create-new-plot x .                         $ New (x)y-plot
+set-plot-option . s n b f$m23c6_p0
+set-plot-option . s m -1 f$m23c6_p0 M23C6
+set-plot-option . s n b f$m7c3_p0
+set-plot-option . s m -1 f$m7c3_p0 M7C3
+set-plot-option . s n b f$cementite_p0
+set-plot-option . s m -1 f$cementite_p0 CEM
+set-plot-option . a y 1 t f[%]
+set-plot-option . a y 1 f 100   $ multiply with 100 to show phase fractions in percent 
+set-plot-option . s l * y                   $ Lock all plots
+
+$ Third plot (Mean Radius)
+create-new-plot x .
+set-plot-option . s n b r_mean$m23c6_p0*1e9
+set-plot-option . s m -1 r_mean$m23c6_p0*1e9 M23C6
+set-plot-option . s n b r_mean$m7c3_p0*1e9
+set-plot-option . s m -1 r_mean$m7c3_p0*1e9 M7C3
+set-plot-option . s n b r_mean$cementite_p0*1e9
+set-plot-option . s m -1 r_mean$cementite_p0*1e9 CEM
+
+set-plot-option . a y 1 t R[nm]
+set-plot-option . a y 1 y log
+set-plot-option . a y 1 s 10..
+set-plot-option . s l * y                   $ Lock all plots
+
+$ move window to new position and resize
+move-gui-window . 0+incr 30+incr 500 900 
+update-gui-window .  $ Update the GUI window
+
+
+$ finally the windows with chemical composition of precipitates
+new-gui-window p1
+set-gui-window-property . m y                     $ Manual window update
+set-gui-window-property . x r_mean$M7C3_P0*1e9
+set-plot-option . s n b X$M7C3_P0$Cr$wp
+set-plot-option . a x 1 t R M7C3 [nm]
+set-plot-option . a y 1 t Cr[wt%]
+set-plot-option . t ipdcf: #ipdcfstring           $ Name the plot
+set-gui-window-property . m n                     $ Disable the GUI window manual update.
+update-gui-window .                               $ Update the GUI window
+move-gui-window . 500+incr 10+incr 400 500 
+set-plot-option . s l * y                   $ Lock all plots
+
+new-gui-window p1
+set-gui-window-property . m y
+set-gui-window-property . x r_mean$M23C6_P0*1e9
+set-plot-option . s n b X$M23C6_P0$Cr$wp
+set-plot-option . a x 1 t R M23C6 [nm]
+set-plot-option . a y 1 t Cr[wt%]
+set-plot-option . t ipdcf: #ipdcfstring           $ Name the plot
+set-gui-window-property . m n                     $ Disable the GUI window manual update.
+update-gui-window .                               $ Update the GUI window
+move-gui-window . 500+incr 25+incr 400 500
+set-plot-option . s l * y                   $ Lock all plots
+
+new-gui-window p1
+set-gui-window-property . m y
+set-gui-window-property . x r_mean$cementite_P0*1e9
+set-plot-option . s n b X$cementite_P0$Cr$wp
+set-plot-option . a x 1 t R CEM [nm]
+set-plot-option . a y 1 t Cr[wt%]
+set-plot-option . t ipdcf: #ipdcfstring           $ Name the plot
+set-gui-window-property . m n                     $ Disable the GUI window manual update.
+update-gui-window .                               $ Update the GUI window
+move-gui-window . 500+incr 40+incr 400 500
+set-plot-option . s l * y                   $ Lock all plots
+
+$ move output window to new position and resize
+move-gui-window 0 0 700 900 270 
+move-gui-window 0 show  $ make output window the active foreground window 
+
+endfor

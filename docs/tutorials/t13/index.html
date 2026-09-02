@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>T13 - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "T13";
+        var mkdocs_page_input_path = "tutorials/t13.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">T13</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#t13introduction_to_scripting_-_equilibrium_calculations">T13: Introduction to scripting - Equilibrium calculations</a></p>
+</li>
+<li>
+<p><a href="#complimentary_files">Complimentary files</a></p>
+</li>
+<li><a href="#contents">Contents:</a></li>
+<li>
+<p><a href="#introduction">Introduction</a></p>
+</li>
+<li>
+<p><a href="#utility_of_scripts">Utility of scripts</a></p>
+</li>
+<li><a href="#creating_a_script">Creating a script</a></li>
+<li><a href="#writing_a_script">Writing a script</a></li>
+<li><a href="#editing_a_script">Editing a script</a></li>
+<li><a href="#executing_a_script">Executing a script</a></li>
+<li>
+<p><a href="#examplea_stepped_equilibrium">Example: a stepped equilibrium</a></p>
+</li>
+<li>
+<p><a href="#comments">Comments</a></p>
+</li>
+<li><a href="#calculating_an_equilibrium">Calculating an equilibrium</a></li>
+<li><a href="#stepped_calculation">Stepped calculation</a></li>
+<li><a href="#graphical_output">Graphical output</a></li>
+<li><a href="#consecutive_articles">Consecutive articles</a></li>
+</ul>
+<h2 id="t13-introduction-to-scripting-equilibrium-calculations">T13: Introduction to scripting - Equilibrium calculations</h2>
+<p><em>This tutorial was tested on<br />
+MatCalc version 6.03 rel 1.000<br />
+license: free<br />
+database: mc_fe.tdb</em></p>
+<h3 id="complimentary-files">Complimentary files</h3>
+<p>Click <a href="/tutorials/t13/script/t13_6021003.mcs" title="tutorials/t13/script/t13_6021003.mcs (7.7 KB)">here</a> to view the script for this tutorial</p>
+<h3 id="contents">Contents:</h3>
+<ul>
+<li>Purpose of scripts</li>
+<li>Writing a script to perform a stepped calculation and display the results</li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<h3 id="utility-of-scripts">Utility of scripts</h3>
+<p>A script is a text file, containing a list of commands to be executed in order from top to bottom. They are particularly useful to speed up routine or repetitive operations. Once a script file has been created, it can easily be modified to serve a new purpose, for example by changing the elements or phases in the system. Script files, consisting only of text, are also much smaller in size than MatCalc workspace files, especially those resulting from precipitation calculations.<br />
+Individual scripts can also be grouped into master-scripts; this facilitates, for example, calculations involving multi-stage heat treatments. Some sample scripts are provided with MatCalc. You will find them in the subdirectories of <strong>'MatCalc/scripts/script_menu/templates'</strong>. Of course, you can also edit them in MatCalc by clicking on <strong>'Open template…'</strong> in <strong>'Script'</strong> menu.</p>
+<h3 id="creating-a-script">Creating a script</h3>
+<p>There are two ways of creating a script:</p>
+<ol>
+<li>In MatCalc, choose <strong>'New'</strong> from the <strong>'File'</strong> menu and select <strong>'Script file'</strong> from the drop-box. Note that it is possible to have any number of script files open simultaneously with a MatCalc workspace file. <strong>'Save'</strong> or <strong>'Save as'</strong> will save the script file if its window is highlighted, otherwise the workspace will be saved. Recently used script files can be found in a list under <strong>'File → Recent files'</strong>.</li>
+<li>Alternatively, create the new script in any text editor (which saves files as plain text), such as notepad, emacs, vi or any of the many text editors available in different Linux distributions.</li>
+</ol>
+<p><strong>N.B.- The MatCalc scripts have '.mcs' extension so it is important to set (or change) the extension of the created file!</strong></p>
+<h3 id="writing-a-script">Writing a script</h3>
+<p>The scripts are written by typing in the commands used in the console. Similar as in the console, a suggester functionality is present in the script window which improves the script writing process. Each line might contain only one command. Empty lines will improve the readability of the script file in an editor, otherwise these do not influence the execution of the script. A <strong>'<span class="arithmatex">\('**-sign that is not a part of the command (i.e. there is at least one blank space between the command and the **'\)</span>'</strong> -sign) is interpreted as a beginning of the comment, so that everything that follows the **'<span class="arithmatex">\('** within this line will be ignored during script execution. The comments can be introduced both in separate lines and in the lines containing the MatCalc commands. In the latter case, the comment is to be put after a command. To mark many lines as a comment, a '\)</span>$'-sign can be used at the beginning and the end of the commented text.</p>
+<h3 id="editing-a-script">Editing a script</h3>
+<p>There are also two ways of editing an existing script:</p>
+<ol>
+<li>In MatCalc, using <strong>'File → Open'</strong> or clicking on <a href="/tutorials/t13/img/icon_open_file_2.png" title="tutorials/t13/img/icon_open_file_2.png"><img alt=" MatCalc icon" src="/tutorials/t13/img/icon_open_file_2.png" title="MatCalc icon" /></a> icon in the toolbar (keyboard shortcut <strong>'Ctrl + O'</strong>). Select the filter to <strong>'MatCalc script (*.mcs)'</strong> files</li>
+<li>Alternatively, you can use any text editor (which saves files as plain text).</li>
+</ol>
+<h3 id="executing-a-script">Executing a script</h3>
+<p>And again, there are two ways of executing a script in MatCalc:</p>
+<ol>
+<li>Using <strong>'Script → Run script'</strong> or clicking on <a href="/tutorials/t13/img/icon_run_script.png" title="tutorials/t13/img/icon_run_script.png"><img alt=" MatCalc icon" src="/tutorials/t13/img/icon_run_script.png" title="MatCalc icon" /></a> icon in the toolbar (keyboard shortcut <strong>'Shift + F2'</strong>)</li>
+<li>Double-clicking on the <strong>'.mcs'</strong> file icon</li>
+</ol>
+<h2 id="example-a-stepped-equilibrium">Example: a stepped equilibrium</h2>
+<p>This example will show how to write a script to perform the stepped calculation in  <a href="/tutorials/t3" title="tutorials/t3">Tutorial 3</a> and display the results.</p>
+<h3 id="comments">Comments</h3>
+<p>It is always advisable to comment the script extensively so as to help other users (or oneself several months later!) to understand the aim of the calculation, assumptions, etc.
+Any line prefixed with a <strong>'<span class="arithmatex">\('**-sign will not be interpreted as a command. The **'\)</span>'</strong>-sign can also be inserted part-way through a line; the rest of the line will be treated as a comment.</p>
+<pre><code>$ This whole line is a comment.
+new-workspace   $ The rest of this line is a comment.
+</code></pre>
+<p>Both comments and commands are shown line-by-line in the console when the script is executed, but prefixing a comment or a command with the <strong>'@'</strong>-sign hides the line so that it does not appear in the console output.<br />
+At the beginning of the script, enter some preliminary comments, containing such information as: the name of the file, the current version of MatCalc (available from Help &gt; About), the current version of the scripting language and a brief summary of the purpose of the script.</p>
+<pre><code>$ Script T13
+$ This is a script for MatCalc version 5.41
+$ MatCalc script version 1 
+$ Calculating equilibrium phase stability in Fe-0.4C wt.%
+</code></pre>
+<p>Save the file as <strong>'T13.mcs'</strong></p>
+<h3 id="calculating-an-equilibrium">Calculating an equilibrium</h3>
+<p>The first executable line in the script creates a new workspace (<strong>N.B.- Any previously open workspace will be closed without warning.</strong>)</p>
+<p><code>@$************************************  
+$ Create a new workspace file  
+@$************************************  
+new-workspace $this executes 'autonew.mcs' script</code></p>
+<p>The next lines are to enter some workspace information to describe the ideas, assumptions etc. used in the calculation. This information can be found in <strong>'File &gt; Workspace info'</strong>. The <strong>'+'</strong>-sign continues the text on a new line.</p>
+<p><code>@$************************************  
+$ enter workspace info  
+@$************************************  
+@ set-workspace-info Script T13  
+@ set-workspace-info +Calculation of equilibrium phase stability  
+@ set-workspace-info +in Fe-0.4C wt.% system  
+@ set-workspace-info +with phases LIQUID, BCC_A2, FCC_A1 and CEMENTITE.</code></p>
+<p>Next, add the command-line to open the thermodynamic database.</p>
+<p><code>@$************************************  
+$ open the thermodynamic database  
+@$************************************  
+open-thermodyn-database</code></p>
+<p>If the line is put in as above, the script will stop at this point and prompt the user for the name of a thermodynamic database. The output in the console window is as follows:</p>
+<p><code>&lt;script(0)&gt; $ open the thermodynamic database  
+&lt;script(0)&gt; open_thermodyn_database  
+name for thermodynamic database /mc_sample_fe/:</code></p>
+<p>(Press <strong>'enter'</strong> to select the default option.) Leaving out the arguments of the command in this way allows for interactivity in scripts. If, instead, the script is intended to be fully automatic, the argument should be put after the command on the same line. Replace the above line with the following:</p>
+<p><code>open-thermodyn-database mc_fe.tdb</code></p>
+<p>The next parts of the script are to set up the system, set the temperature and calculate an equilibrium. These commands have already been seen in <a href="/tutorials/t12" title="tutorials/t12">Tutorial 12</a>.</p>
+<p><code>@$************************************  
+$ select elements and phases  
+@$************************************  
+select-elements c fe  
+select-phases liq bcc_a2 fcc cem  
+@$************************************  
+$ read in the thermodynamic data  
+@$************************************  
+read-thermodynamic-database  
+@$************************************  
+$ enter the composition  
+@$************************************  
+enter-composition weight-percent c=0.4  
+@$************************************  
+$ set the temperature and calculate an equilibrium  
+@$************************************  
+set_automatic_startvalues  
+set_temperature_celsius 700  
+calculate_equilibrium</code></p>
+<h3 id="stepped-calculation">Stepped calculation</h3>
+<p>In the line below, after the argument <strong>'range'</strong>, the numerical values are the start, end, step type (linear) and step interval.<br />
+<code>@$************************************  
+$ define step parameters and make stepped calculation  
+@$************************************  
+set-step-option range 400 1600 lin 25  
+step-equilibrium</code></p>
+<h3 id="graphical-output">Graphical output</h3>
+<p>The final part of the script is concerned with graphical presentation of results. The following line creates a new GUI window to contain the plot. As was seen in  <a href="/tutorials/t12" title="tutorials/t12">Tutorial 12</a>, the code <strong>'p1'</strong> is used to open an XY-plot.</p>
+<p><code>@$************************************  
+$ graphical output  
+@$************************************  
+new-gui-window p1</code></p>
+<p>The following three lines change the default x-data from <strong>'StepValue'</strong> to temperature in Celsius, set a default x-axis to be used for all plots, and provide a title for this axis. The <strong>'.'</strong> in these lines refers to the ID of the last-used window, which in this case is the p1 window which has just been created.</p>
+<p><code>set-gui-window-property . default-x-axis-data=t$c  
+set-gui-window-property . default-x-axis-for-all-plots=yes  
+set-gui-window-property . default-x-axis-title=Temperature [°C]</code></p>
+<p>The line below adds a title to the diagram. This first diagram is to be a plot of phase fraction versus temperature.</p>
+<p><code>set-plot-option . plot-title=Phase stability in Fe-0.4 wt.% C</code></p>
+<p>The following lines label the y-axis, change the 'factor' of the y-axis from 1 to 100 to display the calculated phase fraction directly in percent, set the axis type to logarithmic and modify the axis scaling.</p>
+<p><code>set-plot-option . y-axis-title=Phase fraction [%]  
+set-plot-option . y-axis-factor=100  
+set-plot-option . y-axis-type=log  
+set-plot-option . y-axis-scaling=1..100</code></p>
+<p>Next, the first series <strong>'f<span class="arithmatex">\(liquid'** is inserted; this is the phase fraction of liquid. The name of the series, as it will appear on the legend, is then edited, changing the name from its automatic value (f\)</span>liquid) to </strong>'Liquid'**.</p>
+<p><code>set-plot-option . series new buffer f$liquid   
+set-plot-option . series rename -1 f$liquid Liquid</code></p>
+<p>These commands are repeated for the other phases. Note the use of the HTML markup tags to give the subscript in <strong>'Fe3C'</strong>.</p>
+<p><code>set-plot-option . series new buffer f$bcc_a2   
+set-plot-option . series rename -1 f$bcc_a2 Ferrite   
+set-plot-option . series new buffer f$fcc_a1   
+set-plot-option . series rename -1 f$fcc_a1 Austenite   
+set-plot-option . series new buffer f$cementite   
+set-plot-option . series rename -1 f$cementite Fe&lt;sub&gt;3&lt;/sub&gt;C</code></p>
+<p>The major grid lines for x- and y-axis are displayed by these commands:</p>
+<p><code>set-plot-option . grid major enable-x-axis=yes  
+set-plot-option . grid major enable-y-axis=yes</code></p>
+<p>The three lines below move and resize the window, update its contents and set the style-sheet to coloured with no symbols. In the first of these lines, the first two numbers define the position of the window, the second two define the width and height.</p>
+<p><code>move-gui-window displace . 20 20 800 1000  
+update-gui-window .  
+set-gui-window-property . style-sheet=col_no_symb</code></p>
+<p>Another plot can be added in the current window as shown below</p>
+<p><code>create-new-plot xy-plot .</code></p>
+<p>The newly created plot now becomes the <strong>'current'</strong> plot and can be referred to as <strong>'.'</strong> when it is being modified with set_plot_option:</p>
+<p><code>set-plot-option . plot-title=Composition of phases   
+set-plot-option . y-axis-title=Carbon content [wt.%]   
+set-plot-option . series new buffer x$liquid$c$wp   
+set-plot-option . series rename -1 x$liquid$c$wp Liquid   
+set-plot-option . series new buffer x$bcc_a2$c$wp   
+set-plot-option . series rename -1 x$bcc_a2$c$wp Ferrite   
+set-plot-option . series new buffer x$fcc_a1$c$wp   
+set-plot-option . series rename -1 x$fcc_a1$c$wp Austenite   
+set-plot-option . series new buffer x$cementite$c$wp   
+set-plot-option . series rename -1 x$cementite$c$wp Fe&lt;sub&gt;3&lt;/sub&gt;C   
+set-plot-option . grid major enable-x-axis=yes   
+set-plot-option . grid major enable-y-axis=yes</code></p>
+<p>The script can be concluded with the following line, which should appear in the console when the script has been executed without any errors.</p>
+<p><code>$ *** DONE ***</code></p>
+<p>The final diagrams should look like this:</p>
+<p><a href="/tutorials/t13/img/t13_plot1_phase_stability_6011003.png" title="tutorials/t13/img/t13_plot1_phase_stability_6011003.png"><img alt=" MatCalc plot" src="/tutorials/t13/img/t13_plot1_phase_stability_6011003.png" title="MatCalc plot" /></a></p>
+<p><a href="/tutorials/t13/img/t13_plot2_phase_composition_6011003.png" title="tutorials/t13/img/t13_plot2_phase_composition_6011003.png"><img alt=" MatCalc plot" src="/tutorials/t13/img/t13_plot2_phase_composition_6011003.png" title="MatCalc plot" /></a></p>
+<h2 id="consecutive-articles">Consecutive articles</h2>
+<p>The tutorial is continued in article  <a href="/tutorials/t14" title="tutorials/t14">T14 - Introduction to precipitation calculations</a></p>
+<p>Go to <a href="/tutorials" title="tutorials">MatCalc tutorial index</a>.</p>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=tutorials%3At13&amp;1788352859" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

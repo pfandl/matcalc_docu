@@ -1,0 +1,356 @@
+$ **************************************************************************************************
+$ *********************************** GENERAL INFORMATION ******************************************
+$ **************************************************************************************************
+$ 
+$ P13: NbC and AlN precipitation in the deformed steel
+$ Database: mc_sample_fe2.tdb, mc_sample_fe.ddb
+$ Author: R. Radis (modified by P. Warczok)
+$ Creation date: 2012-10-15
+$ Last revision: 2017-05-17
+$ Reason for update: update for rel. 5.62
+$ This is a script for MatCalc version 5.62.1004
+
+$ **************************************************************************************************
+$ ************************************ SETUP INFORMATION *******************************************
+$ **************************************************************************************************
+
+$ make sure we work in the correct module
+use-module core                                                 $ select core module for kinetic simulation
+
+$ close any open workspace without asking for save
+close-workspace f
+
+new-workspace                                                   $ open new workspace
+
+set-workspace-info +System composition (in wt.%)                $ gives some information about the script
+set-workspace-info +C = 0,2; N = 0,005; Al = 0,05; Nb = 0.04
+set-workspace-info +
+set-workspace-info +Matrix phases: Austenite (FCC_A1), Ferrite (BCC_A2)
+set-workspace-info +Precipitate phase: NbC, AlN, cementite
+set-workspace-info +
+set-workspace-info +Strain rate: 0.15 (deformation: 70%)
+set-workspace-info +3 rolling charges
+set-workspace-info +Cooling rates usually as 1 K/s
+set-workspace-info +Results in 2 buffers:
+set-workspace-info +'normal' - no strain rate defined
+set-workspace-info +'epsdot' - with strain rate defined
+set-workspace-info +
+set-workspace-info +---------------------------------
+set-workspace-info +More information about MatCalc on
+set-workspace-info +     http://www.matcalc.at
+set-workspace-info +---------------------------------
+
+$ **************************************************************************************************
+$ ************************************** SYSTEM SETUP **********************************************
+$ **************************************************************************************************
+
+$ verify correct MatCalc version (is accessible as internal variable)
+if (matcalc_version<5510007)
+   send-dialog-string "MatCalc version must be 5.51.0007 or higher to run this script. Stopping."
+   stop_run_script                                         $ stop script
+endif
+
+
+$ ***************************************************************************************************
+$                                    GLOBAL VARIABLES
+$ ***************************************************************************************************
+
+set-variable-value npc 25                                  $ number of precipitate classes
+set-variable-value acc_strain 0.7                          $ accumulated strain
+set-variable-value strain_rate 0.15                        $ strain rate
+
+
+$ ***************************************************************************************************
+$                       DATABASES, CHEMICAL COMPOSITION, SELECTED PHASES
+$ ***************************************************************************************************
+
+$ if you receive an error when executing the next line, please make sure you have the database
+$ in your MatCalc/database folder. The mc_steel database can be obtained for free when sending a
+$ corresponding request to support@matcalc.at
+open-thermo-database mc_x_fealcnnbti.tdb                     $ open thermodynamic database
+select-elements C N Al Nb Fe                               $ select elements
+select-phase fcc_a1 bcc_a2 liquid cementite aln            $ select phases
+
+read-thermodyn-database                                    $ read thermodynamic database
+read-mobility-database mc_fe.ddb                    $ read diffusion data
+
+enter-composition wp al=0,05 c=0,2 n=0,005 nb=0,04         $ chemical composition
+set-automatic-startvalues                                  $ automatic startvalues for initial equilibrium
+calculate-equilibrium                                      $ initial equilibrium (deafult at 1000°C)
+
+
+$ ***************************************************************************************************
+$                               PRECIPITATION DOMAINS, PRECIPITATES
+$ ***************************************************************************************************
+
+                                
+
+$ --------------------------------- PRECIPITATION DOMAINS -------------------------------------------
+
+create-precipitation-domain austenite                      $ austenite is precipitation domain = matrix
+set-precipitation-parameter austenite x fcc_a1             $ matrix phase of domain austenite
+SET_PRECIPITATION_PARAMETER austenite e s m s              $ Dislocation evolution model switched on
+
+create-precipitation-domain ferrite                        $ ferrite is precipitation domain = matrix
+set-precipitation-parameter ferrite x bcc_a2               $ matrix phase of domain ferrite
+
+
+$ ----------------------- PRECIPITATE PHASES IN MATRIX (Ferrite or Austenite)---------------------------
+
+create-new-phase cementite p cementite                     $ new precipitate phase
+set-precipitation-parameter cementite_p0 c npc             $ use variable npc for # of prec. classes
+set-precipitation-parameter cementite_p0 n s d             $ nucleation sites at dislocations
+
+create-new-phase fcc_a1#01 p NbC(aust,d)                   $ new precipitate phase					
+set-precipitation-parameter fcc_a1#01_p0 c npc             $ use variable npc for # of prec. classes		
+set-precipitation-parameter fcc_a1#01_p0 n s d             $ nucleation site at dislocations
+set-precipitation-parameter fcc_a1#01_p0 n p y austenite   $ restrict nucleation to precipitation domain
+
+create-new-phase fcc_a1#01 p NbC(ferr,d)                   $ new precipitate phase in matrix						
+set-precipitation-parameter fcc_a1#01_p1 c npc             $ use variable npc for # of prec. classes	
+set-precipitation-parameter fcc_a1#01_p1 n s d             $ nucleation site at dislocations
+set-precipitation-parameter fcc_a1#01_p1 n p y ferrite     $ restrict nucleation to precipitation domain
+
+
+create-new-phase aln p AlN(aust,d)                         $ new precipitate phase in austenite
+set-precipitation-parameter aln_p0 c npc                   $ use variable npc for # of prec. classes
+set-precipitation-parameter aln_p0 n s d                   $ nucleation sites at dislocations
+set-precipitation-parameter aln_p0 n p y austenite         $ restrict nucleation to precipitation domain
+set-precipitation-parameter aln_p0 n f y                   $ account for volume misfit in nucleation
+set-precipitation-parameter aln_p0 t m n 0,27              $ use volumetric misfit between prec./matrix
+                                                           $ use this value instead of 0.19 (Radis et al.
+                                                           $ MSMSE 2010) in versions 5.41. Fixed bug in
+                                                           $ in earlier MatCalc versions.
+
+create-new-phase aln p AlN(aust,gb)                        $ new precipitate phase in austenite						
+set-precipitation-parameter aln_p1 c npc                   $ use variable npc for # of prec. classes
+set-precipitation-parameter aln_p1 n s g                   $ nucleation site at grain boundaries
+set-precipitation-parameter aln_p1 n p y austenite         $ restrict nucleation to precipitation domain
+
+create-new-phase aln p AlN(ferr,d)                         $ new precipitate phase in austenite
+set-precipitation-parameter aln_p2 c npc                   $ use variable npc for # of prec. classes
+set-precipitation-parameter aln_p2 n s d                   $ nucleation sites at dislocations
+set-precipitation-parameter aln_p2 n p y ferrite           $ restrict nucleation to precipitation domain
+set-precipitation-parameter aln_p2 n f y                   $ account for volume misfit in nucleation
+set-precipitation-parameter aln_p2 t m n 0,27              $ use volumetric misfit between prec./matrix
+                                                           $ use this value instead of 0.19 (Radis et al.
+                                                           $ MSMSE 2010) in versions 5.41. Fixed bug in
+                                                           $ in earlier MatCalc versions.
+
+create-new-phase aln p AlN(ferr,gb)                        $ new precipitate phase in austenite						
+set-precipitation-parameter aln_p3 c npc                   $ use variable npc for # of prec. classes
+set-precipitation-parameter aln_p3 n s g                   $ nucleation site at grain boundaries
+set-precipitation-parameter aln_p3 n p y ferrite           $ restrict nucleation to precipitation domain
+
+
+$ ***************************************************************************************************
+$                                     HEAT TREATMENT
+$ ***************************************************************************************************
+
+create-heat-treatment hot_rolling                          $ Creates the heat treatment sequence
+
+append-ht-segment hot_rolling                              $ New segment
+edit-ht-segment hot_rolling . S 1500                       $ Start temperature is 1500°C
+edit-ht-segment hot_rolling . 1 1200 -1                    $ End temperature, cooling rate
+edit-ht-segment hot_rolling . D N austenite                $ Precipitation domain austenite
+
+append-ht-segment hot_rolling                              $ New segment
+edit-ht-segment hot_rolling . 3 1200 30*60                 $ End temperature, time
+edit-ht-segment hot_rolling . D Y                          $ Inherit precipitation domain
+
+append-ht-segment hot_rolling                              $ New segment
+edit-ht-segment hot_rolling . 1 1000 -1                    $ End temperature, cooling rate
+edit-ht-segment hot_rolling . D Y                          $ Inherit precipitation domain
+
+append-ht-segment hot_rolling                              $ New segment
+edit-ht-segment hot_rolling . E strain_rate                $ Strain_rate 
+edit-ht-segment hot_rolling . 4 acc_strain                 $ Accumulated strain (in this segment)
+edit-ht-segment hot_rolling . D Y                          $ Inherit precipitation domain
+
+append-ht-segment hot_rolling                              $ New segment
+edit-ht-segment hot_rolling . 1 950 1                      $ End temperature, cooling rate
+edit-ht-segment hot_rolling . D Y                          $ Inherit precipitation domain
+
+append-ht-segment hot_rolling                              $ New segment
+edit-ht-segment hot_rolling . E strain_rate                $ Strain_rate 
+edit-ht-segment hot_rolling . 4 acc_strain                 $ Accumulated strain (in this segment)
+edit-ht-segment hot_rolling . D Y                          $ Inherit precipitation domain
+
+append-ht-segment hot_rolling                              $ New segment
+edit-ht-segment hot_rolling . 1 900 1                      $ End temperature, cooling rate
+edit-ht-segment hot_rolling . D Y                          $ Inherit precipitation domain
+
+append-ht-segment hot_rolling                              $ New segment
+edit-ht-segment hot_rolling . E strain_rate                $ Strain_rate
+edit-ht-segment hot_rolling . 4 acc_strain                 $ Accumulated strain (in this segment)
+edit-ht-segment hot_rolling . D Y                          $ Inherit precipitation domain
+
+append-ht-segment hot_rolling                              $ New segment
+edit-ht-segment hot_rolling . 1 750 -1                     $ End temperature, cooling rate
+edit-ht-segment hot_rolling . D Y                          $ Inherit precipitation domain
+
+append-ht-segment hot_rolling                              $ New segment
+edit-ht-segment hot_rolling . 1 650 -1                     $ End temperature, cooling rate
+edit-ht-segment hot_rolling . D N ferrite                  $ Precipitation domain ferrite
+
+append-ht-segment hot_rolling                              $ New segment
+edit-ht-segment hot_rolling . 1 400 -0,25/36               $ End temperature, cooling rate
+edit-ht-segment hot_rolling . D Y                          $ Inherit precipitation domain
+
+
+$ ***************************************************************************************************
+$ ******************************** OUTPUT WINDOWS, PLOTS, ETC. **************************************
+$ ***************************************************************************************************
+
+new-gui-window p1                                          $ generate plot window
+
+set-gui-window-property . x stepvalue                      $ default x-axis variable (time)
+set-gui-window-property . s u y                            $ use default x-axis for all plots: yes
+set-gui-window-property . s t time / s                     $ default x-axis title                    
+set-gui-window-property . s f 1                            $ scaling factor is 1
+set-gui-window-property . s y lin                          $ use linear scale for x-axis
+set-gui-window-property . n 2                              $ two plot columns
+
+set-plot-option . s n b t$c                                $ add series: temperature in °C
+set-plot-option . a y 1 t temperature                      $ change y-axis title
+set-plot-option . a y 1 y lin                              $ use linear scale for y-axis
+set-plot-option . l n                                      $ don't show legend
+ 
+create-new-plot x .                                        $ create new plot: phase fraction
+set-plot-option . l a y                                    $ replace variable names by kinetic alias
+set-plot-option . s n b f_prec$*                           $ add all series: phase fractions of prec.
+set-plot-option . a y 1 t phase fraction                   $ change y-axis title
+set-plot-option . a y 1 y lin                              $ use linear scale for y-axis
+set-plot-option . a y 1 s 1e-5..                           $ scale the y-axis from 1e-5..
+set-plot-option . l b                                      $ show legend at the bottom of the figure
+
+create-new-plot x .                                        $ create new plot: mean radii
+set-plot-option . l a y                                    $ replace variable names by kinetic alias 
+set-plot-option . s n b r_mean$*                           $ add all series: mean radii of precipitates
+set-plot-option . a y 1 t mean radius / nm                 $ change y-axis title
+set-plot-option . a y 1 y log                              $ use logarithmic scale for y-axis
+set-plot-option . a y 1 f 1e9                              $ scaling factor is 1e9
+set-plot-option . l b                                      $ show legend at the bottom of the figure
+
+create-new-plot x .                                        $ create new plot: number densities
+set-plot-option . l a y                                    $ replace all variable names by kinetic alias
+set-plot-option . s n b num_part$*                         $ add all series: number densities of precipitates
+set-plot-option . a y 1 t number density / m<sup>-3</sup>  $ change y-axis title
+set-plot-option . a y 1 y log                              $ use logarithmic scale for y-axis
+set-plot-option . a y 1 s 1e10..                           $ scale the y-axis from 1e10..
+set-plot-option . l b                                      $ show legend at the bottom of the figure
+
+move-gui-window . 50 10 700 950                            $ move window to new position and resize
+
+new-gui-window p1                                          $ generate new plot window
+
+set-gui-window-property . x stepvalue                      $ default x-axis variable (time)
+set-gui-window-property . s u y                            $ use default x-axis for all plots: yes
+set-gui-window-property . s t time / s                     $ default x-axis title                    
+set-gui-window-property . s f 1                            $ scaling factor is 1
+set-gui-window-property . s y lin                          $ use linear scale for x-axis
+set-gui-window-property . s s 2200..2600                   $ scale the x-axis from 2200..2600
+set-gui-window-property . n 2                              $ two plot columns
+   
+set-plot-option . l a y                                    $ replace all variable names by kinetic alias
+set-plot-option . s n b eps_dot                            $ add series: strain rate
+set-plot-option . a y 1 t Strain rate / s<sup>-1           $ change y-axis title
+set-plot-option . a y 1 y lin                              $ use linear scale for y-axis
+set-plot-option . l b                                      $ show legend at the bottom of the figure
+
+create-new-plot x .                                        $ create new plot: Accumulated strain
+set-plot-option . l a y                                    $ replace all variable names by kinetic alias
+set-plot-option . s n b acc_eps                            $ add series: accumulated strain
+set-plot-option . a y 1 t Accumulated strain               $ change y-axis title
+set-plot-option . a y 1 y lin                              $ use linear scale for y-axis
+set-plot-option . l b                                      $ show legend at the bottom of the figure
+
+create-new-plot x .                                        $ create new plot: Dislocation density
+set-plot-option . l a y                                    $ replace all variable names by kinetic alias
+set-plot-option . s n b dd_tot$austenite                      $ add series: total dislocation density in austenite
+set-plot-option . a y 1 t dislocation density / m<sup>-2   $ change y-axis title
+set-plot-option . a y 1 y log                              $ use logarithmic scale for y-axis
+set-plot-option . l b                                      $ show legend at the bottom of the figure
+
+create-new-plot x .                                        $ create new plot: Pipe diffusion correction factor
+set-plot-option . l a y                                    $ replace all variable names by kinetic alias
+set-plot-option . s n b pipe_dcf$austenite$al              $ add series: pipe diffusion correction factor for 
+                                                           $ Al in austenite (same value for all elements)
+set-plot-option . a y 1 t Pipe diffusion correction factor $ change y-axis title
+set-plot-option . s m 0 pipe_dcf$austenite                 $ rename series
+set-plot-option . a y 1 y lin                              $ use linear scale for y-axis
+set-plot-option . l b                                      $ show legend at the bottom of the figure
+
+create-new-plot x .                                        $ create new plot: number densities
+set-plot-option . l a y                                    $ replace all variable names by kinetic alias
+set-plot-option . s n b num_part$fcc_a1#01_p0              $ add series: number density of NbC on austenite dislocations
+set-plot-option . s n b num_part$aln_p0                    $ add series: number density of AlN on austenite dislocations
+set-plot-option . a y 1 t number density / m<sup>-3 >      $ change y-axis title
+set-plot-option . a y 1 y log                              $ use logarithmic scale for y-axis
+set-plot-option . a y 1 s 1e10..                           $ scale the y-axis from 1e10..
+set-plot-option . l b                                      $ show legend at the bottom of the figure
+
+create-new-plot x .                                        $ create new plot: mean radii
+set-plot-option . l a y                                    $ replace variable names by kinetic alias 
+set-plot-option . s n b r_mean$fcc_a1#01_p0                $ add all series: mean radius of NbC on austenite dislocations
+set-plot-option . s n b r_mean$aln_p0                      $ add all series: mean radius of AlN on austenite dislocations
+set-plot-option . a y 1 t mean radius / nm                 $ change y-axis title
+set-plot-option . a y 1 y log                              $ use logarithmic scale for y-axis
+set-plot-option . a y 1 f 1e9                              $ scaling factor is 1e9
+set-plot-option . l b                                      $ show legend at the bottom of the figure
+
+set-variable-value second_plot_window active_frame_id
+
+move-gui-window . 100 20 700 950                           $ move window to new position and resize
+update-gui-window -1                                       $ update the GUI window
+
+$ ***************************************************************************************************
+$ **************************** START PRECIPITATE SIMULATION *****************************************
+$ ***************************************************************************************************
+
+set-simulation-parameter t H hot_rolling 10                $ Temperature profile from heat treatment
+
+$ speed up simulations, modify numerical parameters
+$ set-simulation-parameter c n f 1.0                      $ maximum radius growth from 0.2 to 1.0
+
+$ modify the dfm-compensation rate to minimize numerical oscillations during coarsening
+$ use with care because it does influence accuracy
+$ if you switch this parameter off (set to 0.0, default is 0.03), you best results for the mean 
+$ radius and number density, however, you will obsereve oscillations in the phase fraction.
+$set-simulation-parameter c d 0.001                      $ modify dfm-compensation rate
+
+$ ---------------------------- START PRECIPITATE SIMULATION ----------------------------------
+
+start-precipitate-simulation                               $ let's go
+
+rename-current-buffer w_deform
+set-gui-window-property second_plot_window L               $ duplicate and lock all series 
+
+$ ***************************************************************************************************
+$ ****************************** PRECIPITATE SIMULATION FINISHED ************************************
+$ ***************************************************************************************************
+
+
+
+$ ***************************************************************************************************
+$                                 SIMULATION WITH STRAIN RATE
+$ ***************************************************************************************************
+
+create-calc-buffer no_deform
+set-gui-window-property . b no_deform
+
+edit-ht-segment hot_rolling 3 e 0            $ Strain_rate
+edit-ht-segment hot_rolling 3 1 1000 0       $ End temperature, cooling rate
+
+edit-ht-segment hot_rolling 5 e 0            $ Strain_rate 
+edit-ht-segment hot_rolling 5 1 950 0        $ End temperature, cooling rate
+
+edit-ht-segment hot_rolling 7 e 0            $ Strain_rate 
+edit-ht-segment hot_rolling 7 1 900 0        $ End temperature, cooling rate
+
+$send-dialog-string "Performing the simulation WITH deformation. Results are stored in 'epsdot' bufer"
+start-precipitate-simulation                            $ let's go
+
+$ ***************************************************************************************************
+$ ****************************** PRECIPITATE SIMULATION FINISHED ************************************
+$ ***************************************************************************************************

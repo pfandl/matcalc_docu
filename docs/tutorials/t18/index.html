@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>T18 - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "T18";
+        var mkdocs_page_input_path = "tutorials/t18.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">T18</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#t18plotting_a_ttp_diagram">T18: Plotting a TTP diagram</a></p>
+</li>
+<li>
+<p><a href="#complimentary_files">Complimentary files</a></p>
+</li>
+<li><a href="#contents">Contents:</a></li>
+<li><a href="#setting_up_the_system">Setting up the system</a></li>
+<li>
+<p><a href="#ttp_diagrams_for_isothermal_heat_treatments">TTP diagrams for isothermal heat treatments</a></p>
+</li>
+<li>
+<p><a href="#calculations_of_phase_fraction_for_isothermal_treatments">Calculations of phase fraction for isothermal treatments</a></p>
+</li>
+<li><a href="#automatic_calculation_of_ttp_diagrams">Automatic calculation of TTP diagrams</a></li>
+<li><a href="#plotting_the_results">Plotting the results</a></li>
+<li><a href="#absolute">Absolute</a></li>
+<li><a href="#relative_max_f">Relative max f</a></li>
+<li><a href="#consecutive_articles">Consecutive articles</a></li>
+</ul>
+<h2 id="t18-plotting-a-ttp-diagram">T18: Plotting a TTP diagram</h2>
+<p><em>This tutorial was tested on<br />
+MatCalc version 6.04 rel 1.001<br />
+license: free<br />
+database: mc_fe.tdb; mc_fe.ddb</em></p>
+<h3 id="complimentary-files">Complimentary files</h3>
+<p>Click <a href="/tutorials/t18/script/t18_6021003.mcs" title="tutorials/t18/script/t18_6021003.mcs (20.2 KB)">here</a> to view the script for this tutorial</p>
+<h3 id="contents">Contents:</h3>
+<ul>
+<li>Calculating a TTP diagram for isothermal treatments</li>
+<li>Calculating a TTP diagram for continuous cooling</li>
+<li>Plotting the diagram</li>
+<li>Display options: absolute, relative or relative to maximum phase fraction</li>
+</ul>
+<p>A time-temperature-precipitation diagram is a plot consisting of contours characterising the extent of a precipitation reaction on axes of temperature versus time. In this tutorial, a TTP diagram will be calculated for the precipitation of NbC in the austenite single-phase region.</p>
+<h2 id="setting-up-the-system">Setting up the system</h2>
+<p>Create a workspace with the elements Fe, Nb and C and the phases BCC_A2 and FCC_A1. Enter the composition 0.1 wt.% C, 0.7 wt.% Nb.
+Firstly, it is necessary to determine the extent of the austenite single-phase region in which the TTP diagram is to be calculated. To do this, first calculate an equilibrium at 1000°C and then search for the BCC_A2 phase boundary (referring to  <a href="/tutorials/t7" title="tutorials/t7">Tutorial 7</a> if necessary). This gives a temperature of 905.25°C for the zero-phase-fraction boundary of BCC_A2. This is the upper boundary of the low-temperature <strong>'alpha'</strong> form of ferrite. Next, calculate another equilibrium at 1200°C and repeat the procedure. This time, the temperature value found is 1397.69°C, which is the lower boundary of the high-temperature <strong>'delta'</strong>-ferrite. Between these two limits, the only stable matrix phase is austenite (FCC_A1). Perform a stepped equilibrium calculation between 900°C and 1400°C with 10°C step and plot the phase fraction of FCC_A1#01 phase depending on the temperature.<br />
+Create a precipitation domain named <strong>'austenite'</strong> with the phase FCC_A1 as its matrix, and a precipitate phase FCC_A1#01_P0. Its precipitation sites should be dislocations. Leave all the other settings at their default values. Read in the mobility data.</p>
+<h2 id="ttp-diagrams-for-isothermal-heat-treatments">TTP diagrams for isothermal heat treatments</h2>
+<h3 id="calculations-of-phase-fraction-for-isothermal-treatments">Calculations of phase fraction for isothermal treatments</h3>
+<p>The plot below, obtained using a stepped equilibrium calculation, shows the equilibrium phase fraction of NbC between 900 and 1400°C:</p>
+<p><a href="/tutorials/t18/img/t18_phase_fraction_6021003.png" title="tutorials/t18/img/t18_phase_fraction_6021003.png"><img alt=" MatCalc plot" src="/tutorials/t18/img/t18_phase_fraction_6021003.png" title="MatCalc plot" /></a></p>
+<p>The plot below illustrates the origin of the typical C-shaped curves of TTP plots. It was obtained using <strong>'Calc &gt; Precipitation kinetics'</strong> to simulate an isothermal heat treatment at 925°C, plotting the series <strong>F$FCC_A1#01_P0</strong> on a logarithmic x-axis, then duplicating and locking this series before making further calculations in the same way at a selection of other temperatures. At each value of temperature, the phase fraction of NbC increases with time before reaching a plateau when the equilibrium phase fraction of NbC at that temperature is attained. It can be seen that, between 1100 and 1200°C, the rate of reaction first increases (characterised by a shift of the curve towards the left), goes through a maximum, then decreases again. TTP diagrams plot the time taken to reach a particular point in a reaction at different temperature values. It can be seen from the plot below that if, for example, the time taken to reach 90% of the plateau value were plotted for each temperature on axes of temperature versus time, the resulting curve would be C-shaped. The TTP diagram calculation function of MatCalc allows automatic calculation of curves of this type.</p>
+<p><a href="/tutorials/t18/img/t18_comparison_temperature_6021003.png" title="tutorials/t18/img/t18_comparison_temperature_6021003.png"><img alt=" MatCalc" src="/tutorials/t18/img/t18_comparison_temperature_6021003.png" title="MatCalc" /></a></p>
+<h3 id="automatic-calculation-of-ttp-diagrams">Automatic calculation of TTP diagrams</h3>
+<p>Open <strong>'Calc &gt; TTP-diagram'</strong> and enter <strong>'1375'</strong> as the start temperature and <strong>'925'</strong> as the stop temperature. The end time should be sufficient for the phase fraction to reach a plateau at all temperatures under consideration (This can be verified by creating an XY-plot of F$FCC_A1#01_P0 versus time and monitoring this during the TTP diagram calculation). In this case, 1e5 seconds are good enough. <br />
+In the <strong>'Calculation method'</strong> area, select <strong>'isothermal'</strong> and enter a value of 25 for <strong>'delta T'</strong>. Calculations will now be performed every 25 degrees between 1375 and 925°C.<br />
+<strong>Note:</strong> The calculation in the whole range may take more than 30 minutes (depending on your PC capacity). In case you would not spend so much time on this tutorial constrain the temperature range (e.g. 925°C - 1225°C)</p>
+<p><a href="/tutorials/t18/img/t18_ttp_settings_6021003.png" title="tutorials/t18/img/t18_ttp_settings_6021003.png"><img alt=" MatCalc calc TTP" src="/tutorials/t18/img/t18_ttp_settings_6021003.png" title="MatCalc calc TTP" /></a></p>
+<h3 id="plotting-the-results">Plotting the results</h3>
+<p>When the calculation has finished, create a new window of type <strong>'(p6) Plot: TTP-diagram'</strong>. In the <strong>'options'</strong> window, expand the <strong>'plots'</strong> section and right-click in the area under <strong>'plot#0'</strong> to show the context menu. Select <strong>'new series'</strong> and choose <strong>'ttp-curve'</strong> from the sub-menu on the right. Next, it is necessary to decide on the type of TTP contours required. The three options are:</p>
+<ul>
+<li>Absolute: the contours correspond to different values of the phase fraction F$FCC_A1#01_P0.</li>
+<li>Relative: a contour with a value of <strong>'x'</strong> for a particular temperature denotes the time at which the ratio of F<span class="arithmatex">\(FCC\_A1#01\_P0 to its maximum value at that temperature is equal to **'x'**. The maximum values of F\$FCC\_A1#01\_P0 are approximately equal to the equilibrium phase fractions F\)</span>FCC_A1#01 shown above.</li>
+<li>Relative max f: in this case, contour values represent ratios of F$FCC_A1#01_P0 to its maximum value overall. These contours have a similar form to the <strong>'absolute'</strong> contours, but different numerical values.</li>
+</ul>
+<p>Select <strong>'relative'</strong> from the <strong>'refer to f'</strong> drop-box at the top of the <strong>'options'</strong> window.</p>
+<p><a href="/tutorials/t18/img/t18_ttp_plot_refer_to_f_6041004.png" title="tutorials/t18/img/t18_ttp_plot_refer_to_f_6041004.png"><img alt=" MatCalc option window" src="/tutorials/t18/img/t18_ttp_plot_refer_to_f_6041004.png" title="MatCalc option window" /></a></p>
+<p>Then expand the <strong>'series'</strong> section of <strong>'options'</strong>, which should look as shown in the image below. Select the phase <strong>'FCC_A1#01_P0'</strong> from the <strong>'phase'</strong> drop-box and enter <strong>'0.05'</strong> into the <strong>'y-data'</strong> line.</p>
+<p><a href="/tutorials/t18/img/t18_options_for_ttp_6050006.png" title="tutorials/t18/img/t18_options_for_ttp_6050006.png"><img alt=" MatCalc option window" src="/tutorials/t18/img/t18_options_for_ttp_6050006.png" title="MatCalc option window" /></a></p>
+<p>Add two more series to show the contours for ratios of 0.5 and 0.95 on the same diagram. The resulting diagram should look like this:</p>
+<p><a href="/tutorials/t18/img/t18_ttp_isothermal_relative_6021003.png" title="tutorials/t18/img/t18_ttp_isothermal_relative_6021003.png"><img alt=" MatCalc plot" src="/tutorials/t18/img/t18_ttp_isothermal_relative_6021003.png" title="MatCalc plot" /></a></p>
+<p>The following two plots are examples of the other types of TTP diagram. (TIP - to create more than one type of TTP diagram in the same plot window, lock all the series in the first diagram, then change the diagram type in the <strong>'refer to f'</strong> drop-box to plot the next diagram.)</p>
+<h3 id="absolute">Absolute</h3>
+<p>In the plot below, the contours correspond to different values of the phase fraction F$FCC_A1#01_P0. Note that the higher values are only attained at lower temperatures, because the equilibrium value of F$FCC_A1#01 decreases with increasing temperature. The maximum value of F$FCC_A1#01_P0 is around 7.8e-3.</p>
+<p><a href="/tutorials/t18/img/t18_ttp_isothermal_absolute_6021003.png" title="tutorials/t18/img/t18_ttp_isothermal_absolute_6021003.png"><img alt=" MatCalc plot" src="/tutorials/t18/img/t18_ttp_isothermal_absolute_6021003.png" title="MatCalc plot" /></a></p>
+<h3 id="relative-max-f">Relative max f</h3>
+<p>This diagram has a similar appearance to the <strong>'absolute'</strong> diagram above, but the contours now represent different ratios of F$FCC_A1#01_P0 to its maximum value.</p>
+<p><a href="/tutorials/t18/img/t18_ttp_isothermal_relative_max_f_6021003.png" title="tutorials/t18/img/t18_ttp_isothermal_relative_max_f_6021003.png"><img alt=" MatCalc plot" src="/tutorials/t18/img/t18_ttp_isothermal_relative_max_f_6021003.png" title="MatCalc plot" /></a></p>
+<h2 id="consecutive-articles">Consecutive articles</h2>
+<p>Go to <a href="/tutorials" title="tutorials">MatCalc tutorial index</a>.</p>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=tutorials%3At18&amp;1788352860" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

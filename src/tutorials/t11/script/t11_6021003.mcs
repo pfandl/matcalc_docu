@@ -1,0 +1,150 @@
+$$************************************************************************************************** 
+************************************** GENERAL INFORMATION *****************************************
+****************************************************************************************************
+
+Script for simulation of solidification of 0.7C 3Mn steel according to Tutorial 11.
+The following contents will be covered:
+
+ - Scheil calculation
+ - Back-Diffusion
+ - Composition set
+ - Solid-solid transformation
+
+The Scheil-Gulliver method allows calculating the fraction and composition of all phases during 
+solidification step by step from the liquidus temperature to the temperature where solidification 
+of the residual liquid phase occurs. The particular residual fraction at final solidification 
+is dependent on the cooling rate. Generally, the fraction is higher, the higher the cooling rate is. 
+At slow cooling rates, the liquid film can become very thin and the residual liquid enriches more 
+than in the case of higher fraction residual liquid at solidification.
+
+Database: mc_fe.tdb
+Author: P. Warczok
+Creation date: 10.11.2008
+Last update: 31.05.2019 (P. Warczok, Update for 6.02)
+This is a script for MatCalc version 6.02 (rel 1.003)
+
+Known issues:
+- "save-workspace "file-name"=Tutorial_11" is not working properly. --> Use "save-workspace Tutorial_11" instead.
+
+
+**************************************************************************************************** 
+************************************** SETUP INFORMATION *******************************************
+**************************************************************************************************$$
+
+use-module module-name=core                                                                             $ Use "core" module (MatCalc uses "core" module by default anyway) 
+
+new-workspace                                                                                           $ creates a new workspace 
+
+
+$$************************************************************************************************** 
+**************************************** SYSTEM SETUP **********************************************
+**************************************************************************************************$$
+
+
+$$************************************************************************************************** 
+                      DATABASES, CHEMICAL COMPOSITION, SELECTED PHASES
+**************************************************************************************************$$
+
+open-thermodynamic-database file-name=mc_fe.tdb                                                         $ Thermodynamic database: mc_fe.tdb 
+select-elements elements=FE C MN VA                                                                     $ Components: Fe, C, Mn
+select-phases phases=LIQUID FCC_A1 BCC_A2 CEMENTITE                                                     $ Phases: Liquid, fcc, bcc, cementite
+read-thermodynamic-database
+
+set-reference-element element=FE
+enter-composition type=weight-percent composition=C=0,7 MN=3                                            $ Composition: 0.7 wt.% C, 3 wt.% Mn
+
+set-automatic-startvalues
+set-temperature-celsius temperature=1600                                                                $ Temperature 1600C
+calculate-equilibrium                                                                                   $ Initial equilibrium
+
+
+$$************************************************************************************************** 
+                                 CARRY OUT A SCHEIL CALCULATION
+**************************************************************************************************$$
+
+search-phase-boundary phase-name=FCC_A1 temperature                                                     $ Varying temperature for the fcc phase boundary search
+
+set-step-option type=scheil                                                                             $ Selects the type of calculation: "Scheil"
+$ Defines the range of the calculation: from 1500 to 1000 with linear step of 10
+set-step-option range start=1500 stop=1000 step-width=10
+set-step-option temperature-in-celsius=yes                                                              $ Temperature in Celsius
+set-step-option scheil-dependent-phase=LIQUID                                                           $ The dependent phase is liquid
+set-step-option scheil-minimum-liquid-fraction=1e-06                                                    $ The minimum liquid fraction is set to 1e-6
+
+step-equilibrium
+
+
+$--------------------------------------- Creating a plot ------------------------------------------$
+new-gui-window type-id=p1 
+
+set-gui-window-property window-id=. default-x-axis-data=T$C                                             $ Temperature in Celsius on x-axis. 
+set-gui-window-property window-id=. default-x-axis-title=T [C]                                          $ x-axis title 
+set-gui-window-property window-id=. default-x-axis-scaling=1100..                                       $ Scaling on the y-axis starts from 1100
+set-plot-option plot-id=. y-axis-title=Liquid fraction                                                  $ y-axis title
+set-plot-option plot-id=. legend-alignment=right                                                        $ Legend on the right
+set-plot-option plot-id=. grid which-grid=major enable-x-axis=yes                                       $ Switching on the major gridlines for x-axis
+set-plot-option plot-id=. grid which-grid=major enable-y-axis=yes                                       $ Switching on the major gridlines for y-axis
+set-plot-option plot-id=. series new buffer variable-name=F$LIQUID                                      $ Plotting the fraction of the liquid phase
+
+rename-current-buffer new-buffer-name=Scheil
+
+ 
+$$************************************************************************************************** 
+                        ADD A SCHEIL CALCULATION WITH BACK-DIFFUSION OF CARBON
+**************************************************************************************************$$
+
+create-calc-buffer new-buffer-name=Scheil_with_BD_of_C
+
+set-step-option type=scheil                                                                             $ Selects the type of calculation: "Scheil"
+$ Defines the range of the calculation: from 1500 to 1000 with linear step of 10
+set-step-option range start=1500 stop=1000 step-width=10
+set-step-option temperature-in-celsius=yes                                                              $ Temperature in Celsius
+set-step-option scheil-dependent-phase=LIQUID                                                           $ The dependent phase is liquid
+set-step-option scheil-minimum-liquid-fraction=1e-06                                                    $ The minimum liquid fraction is set to 1e-6
+$ Back diffusion for carbon is allowed (set to "yes")
+set-step-option scheil-back-diffusion element=C back-diffusion-yes/no=yes 
+
+step-equilibrium
+
+set-gui-window-property window-id=. duplicate-and-lock-plot-series                                      $ Locking all unlocked series
+set-plot-option plot-id=. series rename series-index=-1 series-name=*_F$LIQUID new-name=Scheil          $ Renaming series: "*_F$LIQUID" --> "Scheil"
+$ Data from buffer "Scheil_with_BD_of_C" are chosen for the display
+set-gui-window-property window-id=. buffer-name="scheil_with_bd_of_c" 
+set-gui-window-property window-id=. duplicate-and-lock-plot-series                                      $ Locking all unlocked series
+$ Renaming series: "*_F$LIQUID" --> "Scheil with BD of C"
+set-plot-option plot-id=. series rename series-index=-1 series-name=*_F$LIQUID new-name="Scheil with BD of C"
+
+
+$$************************************************************************************************** 
+                              ADD THE EQUILIBRIUM SOLIDIFICATION PATH
+**************************************************************************************************$$
+
+change-phase-status phase-name=FCC_A1_S set-flag=suspended                                              $ Suspending phase "FCC_A1_S"
+change-phase-status phase-name=BCC_A2_S set-flag=suspended                                              $ Suspending phase "BCC_A2_S"
+change-phase-status phase-name=CEMENTITE_S set-flag=suspended                                           $ Suspending phase "CEMENTITE_S"
+
+create-calc-buffer new-buffer-name=Equilibrium
+
+set-step-option type=temperature                                                                        $ "Temperature" type
+set-step-option range start=1500 stop=1350 scale=lin step-width=5                                       $ Range 1500 - 1350; linear step of 5
+set-step-option temperature-in-celsius=yes                                                              $ Temperature in Celsius
+
+step-equilibrium
+
+$ Data from buffer "Equilibrium" are chosen for the display
+set-gui-window-property window-id=. buffer-name="Equilibrium"
+set-plot-option plot-id=. series lock series-index=-1 series-name=F$LIQUID do-lock=yes                  $ Locking the series "F$LIQUID"
+set-plot-option plot-id=. series rename series-index=-1 series-name=*_F$LIQUID new-name="Equilibrium"   $ Renaming series: "*_F$LIQUID" --> "Equilibrium"
+
+$ y-axis scaling type is set to logarithmic
+set-plot-option plot-id=. y-axis-type=log 
+set-plot-option plot-id=. y-axis-scaling=0,01..                                                         $ Scaling on the y-axis starts from 0.01
+
+
+$$************************************************************************************************** 
+                                         SAVING WORKSPACE
+**************************************************************************************************$$
+
+$save-workspace "file-name"=Tutorial_11
+save-workspace Tutorial_11 
+

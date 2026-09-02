@@ -1,0 +1,188 @@
+$$************************************************************************************************** 
+************************************** GENERAL INFORMATION *****************************************
+****************************************************************************************************
+
+Script for MatCalc built-in variables and graphical output according to Tutorial 5.
+The following contents will be covered:
+
+ - Adding further plots to a plot window
+ - Using the built-in variables
+ - Defining a default x-axis
+ - Modifying the series
+ - Adding a new series to a plot
+ - Removing a series from a plot
+ - Duplicating and locking series
+ - Editing series data
+ - Converting series to tables
+
+Database: mc_fe.tdb
+Author: P. Warczok
+Creation date: 20.03.2008
+Last update: 10.05.2019 (P. Warczok, Update for 6.02)
+This is a script for MatCalc version 6.02 (rel 1.003)
+
+Known issues:
+- "save-workspace "file-name"=Tutorial_5" is not working properly. --> Use "save-workspace Tutorial_5" instead.
+
+
+**************************************************************************************************** 
+************************************** SETUP INFORMATION *******************************************
+**************************************************************************************************$$
+
+use-module module-name=core                                         $ Use "core" module (MatCalc uses "core" module by default anyway) 
+
+new-workspace 
+
+open-thermodynamic-database file-name=mc_fe.tdb 
+select-elements elements=fe c va
+select-phases phases=liquid fcc_a1 bcc_a2 cementite
+read-thermodynamic-database 
+
+calculate-equilibrium 
+
+set-reference-element element=fe                          $ Fe is set as a reference element
+enter-composition type=weight-percent composition=c=0,4   $ Sets the content of C to 0.4 wt.% 	
+
+
+
+set-temperature-celsius temperature=600                   $ Sets the system temperature to 700C
+$ Sets the start values - this should prevent from any troubles in the equilibrium calculation
+set-automatic-startvalues                               
+calculate-equilibrium                                     $ Performs the equilibrium calculation
+
+
+$$**************************************************************************************************
+                                 STEPPED EQUILIBRIUM CALCULATIONS
+**************************************************************************************************$$
+
+$------------------ Stepped equilibrium calculation with varying of temperature -------------------$
+
+$ Select the type of calculation: Temperature variation 
+set-step-option type=temperature            
+$ Define the range of the calculation: from 1600 to 400 with linear step of 25
+set-step-option range start=1600 stop=400 scale=lin step-width=25
+$ Set the temperature unit to degree Celsius (instead of default Kelvin)
+set-step-option temperature-in-celsius=yes 
+
+$ Perform stepped equilibrium calculation
+step-equilibrium                            
+
+$ Rename the current buffer to "T=400_to_1600°C"
+rename-current-buffer new-buffer-name="T=400 to 1600°C"
+
+
+$$************************************************************************************************** 
+                                       PLOTTING A GRAPH
+**************************************************************************************************$$
+
+new-gui-window type-id=p1                                           $ Creating a new window of 'p1' type (XY-diagram)
+$ In plot no. 1, new series with buffer result for "f$*"-variables are plotted
+set-plot-option plot-id=1 series new buffer variable-name=f$*
+
+$----------------------- Changing the format of the temperature-step plot -------------------------$
+set-gui-window-property window-id=. buffer-name="T=400 to 1600°C"   $ Back to "T=400_to_1600C" buffer
+set-gui-window-property window-id=. default-x-axis-data=t$c         $ Setting x-axis variable to temperature in "°C" (T$C)
+set-gui-window-property window-id=. style-sheet=b/w                 $ Changing the plot style to black and white (b/w)
+set-gui-window-property window-id=. style-sheet=col_no_symb         $ ... and back to colour
+
+
+$------------------------------------- Setting title ----------------------------------------------$
+$ Plot no.1 receives title "Phase fraction versus temperature for Fe-0.4 wt.%C"
+set-plot-option plot-id=1 plot-title=Phase fraction versus temperature for Fe-0.4 wt.%C
+
+$-------------------------------- Options for the plot legend -------------------------------------$
+$ For the current plot, the legend box is put on the bottom of the plot
+set-plot-option plot-id=. legend-alignment=bottom 
+$ For the current plot, the style of the legend frames is set to "none" (no frames displayed)
+set-plot-option plot-id=. style=none 
+
+$------------------------------------ Options for the axes ----------------------------------------$
+$ For the current plot, the x-axis becomes a title "Temperature [°C]"
+set-plot-option plot-id=. x-axis-title=Temperature [°C]
+$ For the current plot, the y-axis becomes a title "Phase fraction"
+set-plot-option plot-id=. y-axis-title=Phase fraction
+$ For the current plot, the y-axis scale type is set to logarithmic
+set-plot-option plot-id=. y-axis-type=log 
+$ ... and the scale range will start from 0.01
+set-plot-option plot-id=. y-axis-scaling=0,01..
+$ To see the changes on the x-axis, the option of default x-axis usage for all plots is deactivated
+set-gui-window-property window-id=. default-x-axis-for-all-plots=no 
+
+$---------------------------------- Options for the gridlines -------------------------------------$
+$ For the current plot, the major grids for the x-axis are enabled
+set-plot-option plot-id=. grid which-grid=major enable-x-axis=yes 
+$ ... together with the ones for the y-axis
+set-plot-option plot-id=. grid which-grid=major enable-y-axis=yes 
+
+$----------------------------------- Options for the series ---------------------------------------$
+$ The series no.0 of the current plot is renamed to "Liquid"
+set-plot-option plot-id=. series rename series-index=0 new-name=Liquid
+$ The series no.1 of the current plot is renamed to "Austenite"
+set-plot-option plot-id=. series rename series-index=1 new-name=Austenite
+$ The series no.2 of the current plot is renamed to "Ferrite"
+set-plot-option plot-id=. series rename series-index=2 new-name=Ferrite
+$ The series no.3 of the current plot is renamed to "Cementite"
+set-plot-option plot-id=. series rename series-index=3 new-name=Cementite
+
+
+  
+
+$$************************************************************************************************** 
+                              ADDING PLOTS OF DIFFERENT VARIABLES
+**************************************************************************************************$$
+
+$ Creating new x-y plot in GUI-window no.2 (the number can read on the window bar)
+create-new-plot plot-type=xy-plot attach-to-window=2 
+
+$ For current ("." stands for "last used") plot a new series for buffer stored values of variable "dfm$*" is plotted
+set-plot-option plot-id=. series new buffer variable-name=dfm$*
+
+
+$-------------- Examples of other plots (every plot is plotted in a separate window) --------------$
+create-new-plot plot-type=xy-plot attach-to-window=.                $ Creating new x-y plot in current GUI-window ("." stands for "last used")
+set-plot-option plot-id=. series new buffer variable-name=gmp$*     $ "gmp$*" -Molar Gibbs energy of various phases
+
+$ Chemical potential of carbon
+create-new-plot plot-type=xy-plot attach-to-window=.                $ Creating new x-y plot in current GUI-window
+set-plot-option plot-id=. series new buffer variable-name=mup$*$c   $ "mup$*$c" - Chemical potential of carbon in various phases
+
+$ Molar heat capacity
+create-new-plot plot-type=xy-plot attach-to-window=.
+set-plot-option plot-id=. series new buffer variable-name=cpp$*     $ "cpp$*" - Molar heat capacity of various phases
+
+$ Arranging plots in two columns
+set-gui-window-property window-id=. number-of-plot-columns=2 
+
+$------------------------------- Changing standard x-axis settings --------------------------------$
+$ Default x-axis is to be used for all plots
+set-gui-window-property window-id=. default-x-axis-for-all-plots=yes 
+$ Temperature in °C will be shown on the default x-axis
+set-gui-window-property window-id=. default-x-axis-data=t$c
+$ Setting the title for the default x-axis
+set-gui-window-property window-id=. default-x-axis-title=Temperature [°C]
+
+
+$$************************************************************************************************** 
+                                  MODIFYING THE SERIES IN PLOTS
+**************************************************************************************************$$
+
+$------------------------- Carbon concentration in the different phases ---------------------------$
+create-new-plot plot-type=xy-plot attach-to-window=.
+set-plot-option plot-id=. series new buffer variable-name=x$*$c	    $ "x$*$c" - mole fraction of C in various phases
+
+
+$$ -------------- The modification of carbon concentration from mole fractions ---------------------
+-------------- to weight percent - removing the old series and adding the new ones ---------------$$
+$ Remove all series (all series meant with "*") in plot no.6	
+set-plot-option plot-id=6 series remove *
+$ Plot "x$*$c$wp" - weight percent of C in various phases
+set-plot-option plot-id=. series new buffer variable-name=x$*$c$wp
+$ Y-axis gets the title "Carbon content of phase [wt.%]"
+set-plot-option plot-id=. y-axis-title=Carbon content of phase [wt.%]
+
+$$************************************************************************************************** 
+                                        SAVING WORKSPACE
+**************************************************************************************************$$
+
+$save-workspace "file-name"=Tutorial_5                              $ Saves workspace as "Tutorial_5.mcw"
+save-workspace Tutorial_5 

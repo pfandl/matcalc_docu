@@ -1,0 +1,175 @@
+$$************************************************************************************************** 
+************************************* GENERAL INFORMATION ******************************************
+****************************************************************************************************
+
+The block (20 cm x 20 cm) is simulated as two dimensional problem. This means that there is only 
+one cell used, for calculation, in the third dimension. The dimensions are twice as big in reality 
+as in the simulation, since only a fourth of the block needs to be simulated, because symmetric 
+boundary conditions are used. The heating process is done in an oven, therefore the oven-temperature
+is a time-dependent. The heating process starts a bit higher than room temperature (300 K), takes 
+approximately 20 minutes, and the block is heated up to 750 K. Convection heats the block, so that 
+is the boundary condition used in MatCalc.
+ 
+The questions that should be answered are:
+ 
+- What is the temperature distribution in the block, after 20 minutes of heating? 
+- How fast does the temperature rise in dependence of the oven temperature?
+ 
+A practical case could be that each cell of the block has to reach a required minimum temperature. 
+This can help to decide if the heating time of 20 minutes is enough.
+
+This example uses only the simulation module and no databases are needed, because only temperature 
+field simulation is used. However, currently not all functions of MatCalc are available if no 
+database is loaded, so if some of these functions are needed, databases have to be loaded.
+
+Database: none
+Author: M. Oschgan
+Last revision: G. Stechauner (27.10.2011, Update for new version)
+This is a script for MatCalc version 5.44.0015
+
+
+****************************************************************************************************
+************************************** SETUP INFORMATION *******************************************
+**************************************************************************************************$$
+
+use-module simulation                  $ Select simulation for thermal simulation
+
+close-workspace f                      $ close any open workspace without asking for save
+
+new-workspace 
+ 
+$$************************************************************************************************** 
+**************************************** SYSTEM SETUP **********************************************
+**************************************************************************************************$$
+
+$ verify correct MatCalc version (is accessible as internal variable) 
+if (matcalc_version<5440015)
+   send-dialog-string "MatCalc version must be 5.44.0015 or higher to run this script. Stopping."
+   stop_run_script $ stop script
+endif
+
+
+$$************************************************************************************************** 
+                                SIMULATE COOLING OF THE BLOCK
+**************************************************************************************************$$ 
+ 
+new-gui-window g5
+set-variable-value paint_window_id active_frame_id
+move-gui-window paint_window_id 0 100 300 450
+
+set-variable-value gsize 10
+set-variable-value hgsize (gsize+1)/2
+
+set-variable-value min_trange 200
+set-variable-value max_trange 1000
+
+create-simulation-grid gsize gsize 1   $ Number of cells in X- /Y- /Z- direction
+set-grid-coordinates 0.2 0.2 1         $ Extension of cells in X- /Y- /Z- direction
+
+set-variable-value gsize gsize-1
+set-variable-value hgsize hgsize-1 
+
+create-material ferrite
+set-material-property ferrite T D 7890    $ density
+set-material-property ferrite T C 500     $ heat capacity
+set-material-property ferrite T N 50      $ thermal conductivity
+set-material-property ferrite T E 10000   $ thermal grain boundary diffusion enhancement
+
+set-simulation-parameter N N              $ Temperature i(n) Celsius? (N)o
+
+set-gui-window-property paint_window_id i Z 100     $ zoom 100%
+set-gui-window-property paint_window_id i W V       $ display cell variable
+set-gui-window-property paint_window_id i V _ct     $ set which variable
+set-gui-window-property paint_window_id I R min_trange..max_trange
+
+new-gui-window g1
+set-variable-value profile_window_id active_frame_id   $ remember window id
+set-variable-value profile_plot_id last_plot_id        $ remember plotid
+set-plot-option profile_plot_id S N S _ct              $ Set variable describtor to _ct
+create-new-plot 1 profile_window_id                    $ Add Plot to Profile Window
+set-variable-value profile_plot2_id last_plot_id
+set-plot-option profile_plot2_id S N S _ct_dot
+
+set-gui-window-property profile_window_id I T 0.hgsize.0      $ Set start coordinates
+set-gui-window-property profile_window_id I o gsize.hgsize.0  $ Set stop coordinates
+move-gui-window profile_window_id 530 100 460 800
+
+new-gui-window g2
+set-variable-value history_window_id active_frame_id          $ remember window id
+set-variable-value history_plot_id last_plot_id               $ remember plotid
+set-plot-option history_plot_id A X 1 T time - s
+set-plot-option history_plot_id A Y 1 T temperature - K
+set-plot-option history_plot_id A X 1 S 0..sim_time
+set-plot-option history_plot_id A Y 1 S min_trange..max_trange
+set-variable-value fact gsize/4
+set-plot-option history_plot_id S N S _ct{0.fact-1}
+set-plot-option history_plot_id S N S _ct{0.fact*4-2}
+set-plot-option history_plot_id S N S _ct{fact*2.fact-1}
+set-plot-option history_plot_id S N S _ct{fact*2.fact*4-2}
+set-plot-option history_plot_id S N S _ct{fact*4-1.fact-1}
+set-plot-option history_plot_id S N S _ct{fact*4-1.fact*4-2}
+ 
+set-cell-property A V T 300      $ set selected cells to 300 K
+set-cell-property A M ferrite    $ attach material to those cells
+ 
+set-simulation-parameter u 10    $ update every
+set-simulation-parameter T F
+ 
+set-plot-option profile_plot_id A Y 1 S min_trange..max_trange
+set-plot-option profile_plot2_id A Y 1 S -0.5..1
+
+set-plot-option profile_plot_id l N
+set-plot-option profile_plot2_id l N
+set-plot-option profile_plot_id A Y 1 T T - K
+set-plot-option profile_plot2_id A Y 1 T dT/dt - K/s
+set-plot-option profile_plot_id A X 1 T distance - m
+set-plot-option profile_plot2_id A X 1 T distance - m
+
+create-boundary-condition T C 3000
+set-cell-property 0.gsize..gsize.gsize B A 0 U
+set-cell-property 0.gsize..c0.0 B A 0 L
+ 
+create-global-table oventemp
+add-table-entry oventemp 0 300
+add-table-entry oventemp 10 400
+add-table-entry oventemp 100 500   $ 1,6 min
+add-table-entry oventemp 200 550   $ 3 min
+add-table-entry oventemp 300 600   $ 5 min
+add-table-entry oventemp 500 700   $ 8,3 min
+add-table-entry oventemp 600 800   $ 10 min
+add-table-entry oventemp 1200 800  $ 20 min
+add-table-entry oventemp 1202 300  $ 20 min
+add-table-entry oventemp 1210 300  $ 20 min
+set-default-boundary-cond T oventemp(_ctime)
+
+
+set-simulation-parameter E 0.001    $ Set End-Time
+set-simulation-parameter A Y        $ Append data to buffer
+start-cell-simulation
+set-plot-option profile_plot_id S D * Y 
+set-plot-option profile_plot2_id S D * Y 
+
+set-simulation-parameter E 100      $ Set End-Time
+start-cell-simulation
+set-plot-option profile_plot_id S D * Y 
+set-plot-option profile_plot2_id S D * Y 
+
+set-simulation-parameter E 300      $ Set End-Time
+start-cell-simulation
+set-plot-option profile_plot_id S D * Y 
+set-plot-option profile_plot2_id S D * Y 
+
+set-simulation-parameter E 600      $ Set End-Time
+start-cell-simulation
+set-plot-option profile_plot_id S D * Y 
+set-plot-option profile_plot2_id S D * Y 
+
+set-simulation-parameter E 1210     $ Set End-Time
+start-cell-simulation
+set-plot-option profile_plot_id S l * Y 
+set-plot-option profile_plot2_id S l * Y 
+
+
+$$**************************************************************************************************
+********************************* THERMAL SIMULATION 1 FINISHED ************************************
+**************************************************************************************************$$

@@ -1,0 +1,107 @@
+$$************************************************************************************************** 
+************************************** GENERAL INFORMATION *****************************************
+****************************************************************************************************
+
+In this example, the basic features of trapping kinetics will be demonstrated. In a simple setup the
+site competition between sulphur and phosphor at grain boundaries will be highlighted.
+
+Database: mc_sample_fe.tdb
+Author: Y. Shan
+Creation date: 2016/09/29
+This is a script for MatCalc version 6.00 (rel 0.137)
+Last update: -
+
+
+**************************************************************************************************** 
+************************************** SETUP INFORMATION *******************************************
+**************************************************************************************************$$
+
+use-module core $ Use "core" module (MatCalc uses "core" module by default anyway) 
+
+new-workspace $ creates a new workspace 
+
+
+$$************************************************************************************************** 
+**************************************** SYSTEM SETUP **********************************************
+**************************************************************************************************$$
+
+$ verify correct MatCalc version (is accessible as internal variable) 
+if (matcalc_version<6000137)
+   send-dialog-string "MatCalc version must be 6.00.0137 or higher to run this script. Stopping."
+   stop_run_script $ stop script
+endif
+
+
+$$************************************************************************************************** 
+                        DATABASES, CHEMICAL COMPOSITION, SELECTED PHASES
+**************************************************************************************************$$
+
+open-thermodyn-database mc_fe.tdb                       $ Thermodynamic database: mc_sample_fe.tdb                    
+select-elements FE S P                                  $ Components: Fe, S, P
+select-phases BCC_A2                                    $ Phaseselection
+read-thermodyn-database
+
+set-reference-element FE
+enter-composition WP S=0.5 P=0.5                        $ Composition
+
+set-temperature-celsius 600                             $ Temperature 600C
+set-automatic-startvalues
+calculate-equilibrium                                   $ Initial equilibrium
+
+read-mobility-database mc_fe.ddb
+
+
+$$**************************************************************************************************
+                                   Heat treatment
+**************************************************************************************************$$
+
+$ this section still uses MatCalc 5 commands
+
+create-tm-treatment sample_tm
+append-tmt-segment sample_tm
+edit-ht-segment sample_tm 0 s 600                      $ set start temperature to 600C
+edit-ht-segment sample_tm 0 3 600 1e7                  $ set end temperature 600C and delta time to 1e7
+edit-ht-segment sample_tm 0 p y                        $ reset trap partitioning
+edit-ht-segment sample_tm 0 d n matrix                 $ precipitation domain: matrix
+
+$$**************************************************************************************************
+                                   Trap configuration
+**************************************************************************************************$$
+
+$ this section still uses MatCalc 5 commands
+create-precipitation-domain matrix
+set-precipitation-parameter matrix X bcc_a2
+set-precipitation-parameter matrix R S e D             $ set type to dynamic
+
+set-precipitation-parameter matrix R S C               $ create new trap
+set-precipitation-parameter matrix R S s 0 d p         $ set P as trapped element
+set-precipitation-parameter matrix R S s 0 t g         $ set grain boundary as trap
+set-precipitation-parameter matrix R S s 0 e 30000     $ set trap enthalpy to 30000 J/mol
+set-precipitation-parameter matrix R S s 0 c 1e4       $ set coordination number to 1e4
+
+set-precipitation-parameter matrix R S C               $ create new trap
+set-precipitation-parameter matrix R S s 1 d s         $ set S as trapped element
+set-precipitation-parameter matrix R S s 1 t g         $ set grain boundary as trap
+set-precipitation-parameter matrix R S s 1 e 10000     $ set trap enthalpy to 10000 J/mol
+set-precipitation-parameter matrix R S s 1 c 1e4       $ set coordination number to 1e4
+
+$$**************************************************************************************************
+                                   Plots
+**************************************************************************************************$$
+
+new-gui-window p1                                       $ generate new plot
+
+set-gui-window-property window-id=. default-x-axis-type=log
+set-plot-option . s n b XT_TK_FSK$matrix$0              $ add series for P
+set-plot-option . s n b XT_TK_FSK$matrix$1              $ add series for S
+
+
+
+$$**************************************************************************************************
+                                   Simulation Setup
+**************************************************************************************************$$
+
+set-simulation-parameter starting-conditions=none
+set-simulation-parameter temperature-control tm-treatment-name=sample_tm
+ 
+start-precipitate-simulation

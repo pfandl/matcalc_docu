@@ -1,0 +1,276 @@
+$$************************************************************************************************** 
+************************************** GENERAL INFORMATION *****************************************
+****************************************************************************************************
+
+Script for effect of microstructure and conditions (Part 1) according to Tutorial 15.
+The following contents will be covered:
+
+ - Choice of nucleation model
+ - Diffusivity in precipitates
+ - Nucleation sites for the precipitate phase
+ - Microstructural parameters of the precipitation domain 
+
+The Fe-Cr-C system forms the basis of many industrially useful alloys. The aim of this and Tutorial 
+16 is to produce a simulation of the precipitation behaviour in a Fe-10Cr-0.1C (wt.%) alloy during 
+heat-treatment at 600C. This involves considering several aspects, such as the chemical 
+compositions of nuclei, the microstructural sites on which nuclei form, and the density of these 
+sites in the microstructure under consideration. This first of two tutorials will focus on modelling 
+the formation of the metastable cementite (Fe3C) phase, and Tutorial 16 will consider the 
+interaction between this and the more stable phase M23C6.
+
+Database: mc_fe.tdb, mc_fe.ddb
+Author: P. Warczok
+Creation date: 10.11.2008
+Last update: 12.06.2019 (P. Warczok, Update for 6.02)
+This is a script for MatCalc version 6.02 (rel 1.003)
+
+Known issues:
+- "save-workspace "file-name"=Tutorial_15" is not working properly. --> Use "save-workspace Tutorial_15" instead.
+
+
+**************************************************************************************************** 
+************************************** SETUP INFORMATION *******************************************
+**************************************************************************************************$$
+
+use-module module-name=core                                                     $ Use "core" module (MatCalc uses "core" module by default anyway) 
+
+new-workspace                                                                   $ creates a new workspace 
+
+
+$$************************************************************************************************** 
+**************************************** SYSTEM SETUP **********************************************
+**************************************************************************************************$$
+
+
+
+$$************************************************************************************************** 
+                       DATABASES, CHEMICAL COMPOSITION, SELECTED PHASES
+**************************************************************************************************$$
+
+open-thermodynamic-database file-name=mc_fe.tdb                                 $ Thermodynamic database: mc_fe.tdb 
+select-elements elements=FE C CR VA                                             $ Components: Fe, C, Cr
+select-phases phases=BCC_A2 CEMENTITE M23C6                                     $ Phases: bcc, cementite, M23C6
+read-thermodynamic-database 
+
+set-reference-element element=FE
+enter-composition type=weight-percent composition=C=0,1 CR=10                   $ Composition: 0.1 wt.% C, 10 wt.% Cr
+
+set-automatic-startvalues
+set-temperature-celsius temperature=600                                         $ Temperature 600C
+calculate-equilibrium                                                           $ Initial equilibrium
+
+change-phase-status phase-name=M23C6 set-flag=suspended                         $ M23C6 phase suspended
+calculate-equilibrium
+change-phase-status phase-name=M23C6 clear-flag=suspended                       $ M23C6 phase activated
+calculate-equilibrium
+
+
+$$************************************************************************************************** 
+                                NUCLEATION MODEL FOR CEMENTITE
+**************************************************************************************************$$
+
+$-------------------------------- Setting up the simulation ---------------------------------------$
+create-new-phase parent-phase=CEMENTITE precipitate                             $ Cementite is defined as a precipitate phase
+$ Initializes the precipitate phase cementite_p0 with 25 classes
+set-precipitation-parameter precipitate-or-domain-name=CEMENTITE_P0  number-of-size-classes=25
+$ Dislocations are set as nucleation sites
+set-precipitation-parameter precipitate-or-domain-name=CEMENTITE_P0 nucleation-sites=dislocations 
+$ Nucleus composition taken as para-equilibrium composition
+set-precipitation-parameter precipitate-or-domain-name=CEMENTITE_P0 nucleus-composition-model=para-composition 
+
+
+create-precipitation-domain new-domain-name=ferrite                             $ Creates precipitation domain "ferrite"
+$ Thermodynamic model of bcc_a2 phase is taken for "ferrite"
+set-precipitation-parameter precipitate-or-domain-name=ferrite thermodynamic-matrix-phase=BCC_A2 
+
+read-mobility-database file-name=mc_fe.ddb                                      $ Mobility (diffusion) database: mc_fe.ddb	
+
+
+$------------------------------- Graphical display of results -------------------------------------$
+new-gui-window type-id=p1
+set-gui-window-property window-id=. default-x-axis-title=Time [h]               $ Default x-axis title
+set-gui-window-property window-id=. default-x-axis-type=log                     $ Logarithmic scale on default x-axis
+set-gui-window-property window-id=. default-x-axis-scaling=1e-10..              $ Scaling limit for the default x-axis
+set-gui-window-property window-id=. default-x-axis-factor=1/3600                $ Multiplication factor for the default x-axis
+
+set-plot-option plot-id=. series new buffer variable-name=F$CEMENTITE_P0        $ Plotting the fraction of cementite phase
+set-plot-option plot-id=. y-axis-title=f<sub>CEM</sub>                          $ y-axis title
+
+create-new-plot plot-type=xy-plot attach-to-window=.
+$ Plotting the chromium content in the cementite precipitate
+set-plot-option plot-id=. series new buffer variable-name=X$CEMENTITE_P0$CR
+$ Plotting the chromium content in the cementite precipitate nucleus
+set-plot-option plot-id=. series new buffer variable-name=X_NUCL$CEMENTITE_P0$CR
+set-plot-option plot-id=. y-axis-title=x<sub>Cr</sub>                           $ y-axis title
+
+create-new-plot plot-type=xy-plot attach-to-window=.
+set-plot-option plot-id=. series new buffer variable-name=X$BCC_A2$C            $ Plotting the carbon content in the bcc phase
+set-plot-option plot-id=. y-axis-title=x<sub>BCC_A2, C</sub>                    $ y-axis title
+
+create-new-plot plot-type=xy-plot attach-to-window=.
+$ Plotting the number of particles of cementite precipitate
+set-plot-option plot-id=. series new buffer variable-name=NUM_PREC$CEMENTITE_P0
+set-plot-option plot-id=. y-axis-title=N<sub>ppt</sub> [m<sup>-3</sup>]         $ y-axis title
+
+create-new-plot plot-type=xy-plot attach-to-window=.
+set-plot-option plot-id=. series new buffer variable-name=R_MEAN$CEMENTITE_P0   $ Plotting the mean radius of cementite precipitate
+set-plot-option plot-id=. y-axis-title=R<sub>mean</sub> [m]                     $ y-axis title
+set-plot-option plot-id=. y-axis-type=log                                       $ Logarithmic scale on y-axis
+
+set-plot-option plot-id=1 grid which-grid=major enable-x-axis=yes               $ Switching on the major gridlines for x-axis for plot no. 1
+set-plot-option plot-id=1 grid which-grid=major enable-y-axis=yes               $ Switching on the major gridlines for y-axis for plot no. 1
+set-plot-option plot-id=2 grid which-grid=major enable-x-axis=yes               $ Switching on the major gridlines for x-axis for plot no. 2
+set-plot-option plot-id=2 grid which-grid=major enable-y-axis=yes               $ Switching on the major gridlines for y-axis for plot no. 2
+set-plot-option plot-id=3 grid which-grid=major enable-x-axis=yes               $ Switching on the major gridlines for x-axis for plot no. 3
+set-plot-option plot-id=3 grid which-grid=major enable-y-axis=yes               $ Switching on the major gridlines for y-axis for plot no. 3
+set-plot-option plot-id=4 grid which-grid=major enable-x-axis=yes               $ Switching on the major gridlines for x-axis for plot no. 4
+set-plot-option plot-id=4 grid which-grid=major enable-y-axis=yes               $ Switching on the major gridlines for y-axis for plot no. 4
+set-plot-option plot-id=5 grid which-grid=major enable-x-axis=yes               $ Switching on the major gridlines for x-axis for plot no. 5
+set-plot-option plot-id=5 grid which-grid=major enable-y-axis=yes               $ Switching on the major gridlines for y-axis for plot no. 5
+$ Arranging plots in the columns with the number of columns of "2"
+set-gui-window-property window-id=. number-of-plot-columns=2 
+
+save-workspace Tutorial_15_setup
+
+
+$$************************************************************************************************** 
+                                           CALCULATION
+**************************************************************************************************$$
+
+$-------------------------------------- Para-equilibrium ------------------------------------------$
+set-simulation-parameter end-time=3,6e13                                        $ Simulation end time is set to 3.6e13 seconds
+
+$ Simulation will be performed at 600 degC (isothermal condition)
+set-simulation-parameter isothermal-temperature=600
+set-simulation-parameter temperature-in-C=yes                                   $ Temperature in Celsius
+set-simulation-parameter minimum-dfm-for-matrix-compensation=0,25               $ Minimum value for "maximal drving force"-limit changed for smooth calculation run 
+start-precipitate-simulation                                                    $ Starts kinetic simulation
+ 
+set-gui-window-property window-id=. duplicate-and-lock-plot-series              $ Locking all unlocked series
+set-plot-option plot-id=1 series rename series-index=0 new-name="Para"          $ Renaming series in plot #1: #0 --> "Para"
+$ Renaming series in plot #2: #0 --> "X<sub>CEM</sub>, Para"
+set-plot-option plot-id=2 series rename series-index=0 new-name="X<sub>CEM</sub>, Para"
+$ Renaming series in plot #2: #1 --> "X<sub>NUCL,CEM</sub>, Para"
+set-plot-option plot-id=2 series rename series-index=1 new-name="X<sub>NUCL,CEM</sub>, Para"
+set-plot-option plot-id=3 series rename series-index=0 new-name="Para"          $ Renaming series in plot #3: #0 --> "Para"
+set-plot-option plot-id=4 series rename series-index=0 new-name="Para"          $ Renaming series in plot #4: #0 --> "Para"
+set-plot-option plot-id=5 series rename series-index=0 new-name="Para"          $ Renaming series in plot #5: #0 --> "Para"
+
+
+$-------------------------------------- Ortho-equilibrium -----------------------------------------$
+$ Nucleus composition taken as ortho-equilibrium composition
+set-precipitation-parameter precipitate-or-domain-name=CEMENTITE_P0 nucleus-composition-model=ortho-composition 
+start-precipitate-simulation 
+
+set-plot-option plot-id=1 series rename series-index=1 new-name="Ortho"         $ Renaming series in plot #1: #1 --> "Ortho"
+$ Renaming series in plot #2: #2 --> "X<sub>CEM</sub>, Ortho"
+set-plot-option plot-id=2 series rename series-index=2 new-name="X<sub>CEM</sub>, Ortho"
+$ Renaming series in plot #2: #3 --> "X<sub>NUCL,CEM</sub>, Ortho"
+set-plot-option plot-id=2 series rename series-index=3 new-name="X<sub>NUCL,CEM</sub>, Ortho"
+set-plot-option plot-id=3 series rename series-index=1 new-name="Ortho"         $ Renaming series in plot #3: #1 --> "Ortho"
+set-plot-option plot-id=4 series rename series-index=1 new-name="Ortho"         $ Renaming series in plot #4: #1 --> "Ortho"
+set-plot-option plot-id=5 series rename series-index=1 new-name="Ortho"         $ Renaming series in plot #5: #1 --> "Ortho"
+
+
+$$************************************************************************************************** 
+                                   DIFFUSIVITY IN PRECIPITATES
+**************************************************************************************************$$
+
+set-gui-window-property window-id=. duplicate-and-lock-plot-series              $ Locking all unlocked series
+$ Renaming series in plot #1: #2 --> "Para, faster diffusion in ppt"
+set-plot-option plot-id=1 series rename series-index=2 new-name="Para, faster diffusion in ppt"
+$ Renaming series in plot #2: #4 --> "X<sub>CEM</sub>, Para, faster diffusion in ppt"
+set-plot-option plot-id=2 series rename series-index=4 new-name="X<sub>CEM</sub>, Para, faster diffusion in ppt"
+$ Renaming series in plot #2: #5 --> "X<sub>NUCL,CEM</sub>, Para, faster diffusion in ppt"
+set-plot-option plot-id=2 series rename series-index=5 new-name="X<sub>NUCL,CEM</sub>, Para, faster diffusion in ppt"
+$ Renaming series in plot #3: #2 --> "Para, faster diffusion in ppt"
+set-plot-option plot-id=3 series rename series-index=2 new-name="Para, faster diffusion in ppt"
+$ Renaming series in plot #4: #2 --> "Para, faster diffusion in ppt"
+set-plot-option plot-id=4 series rename series-index=2 new-name="Para, faster diffusion in ppt"
+$ Renaming series in plot #5: #2 --> "Para, faster diffusion in ppt"
+set-plot-option plot-id=5 series rename series-index=2 new-name="Para, faster diffusion in ppt"
+
+$ Para-composition for cementite precipitate nucleus 
+set-precipitation-parameter precipitate-or-domain-name=CEMENTITE_P0 nucleus-composition-model=para-composition 
+$ Diffusion in cementite precipiate is calculated from matrix diffusion with ratio of 0.25
+set-precipitation-parameter precipitate-or-domain-name=CEMENTITE_P0 substitutional-diffusion-in-precipitate-factor=0,25
+ 
+start-precipitate-simulation 
+
+
+$$************************************************************************************************** 
+                          MICROSTRUCTURAL PARAMETERS AND NUCLEATION SITES
+**************************************************************************************************$$
+
+set-plot-option plot-id=1 series remove series-index=-1 series-name="Ortho"     $ Removing "Ortho" series in plot #1
+$ Removing "X<sub>CEM</sub>, Ortho" series in plot #2
+set-plot-option plot-id=2 series remove series-index=-1 series-name="X<sub>CEM</sub>, Ortho" 
+$ Removing "X<sub>NUCL,CEM</sub>, Ortho" series in plot #2
+set-plot-option plot-id=2 series remove series-index=-1 series-name="X<sub>NUCL,CEM</sub>, Ortho"
+set-plot-option plot-id=3 series remove series-index=-1 series-name="Ortho"     $ Removing "Ortho" series in plot #3
+set-plot-option plot-id=4 series remove series-index=-1 series-name="Ortho"     $ Removing "Ortho" series in plot #4
+set-plot-option plot-id=5 series remove series-index=-1 series-name="Ortho"     $ Removing "Ortho" series in plot #5
+ 
+$ Renaming series in plot #1: #0 --> "10<sup>-12</sup>m<sup>2</sup>"
+set-plot-option plot-id=1 series rename series-index=0 new-name="10<sup>-12</sup>m<sup>2</sup>"
+$ Renaming series in plot #2: #0 --> "10<sup>-12</sup>m<sup>2</sup>"
+set-plot-option plot-id=2 series rename series-index=0 new-name="10<sup>-12</sup>m<sup>2</sup>"
+$ Renaming series in plot #2: #1 --> "nucl_10<sup>-12</sup>m<sup>2</sup>"
+set-plot-option plot-id=2 series rename series-index=1 new-name="nucl_10<sup>-12</sup>m<sup>2</sup>"
+$ Renaming series in plot #3: #0 --> "10<sup>-12</sup>m<sup>2</sup>"
+set-plot-option plot-id=3 series rename series-index=0 new-name="10<sup>-12</sup>m<sup>2</sup>"
+$ Renaming series in plot #4: #0 --> "10<sup>-12</sup>m<sup>2</sup>"
+set-plot-option plot-id=4 series rename series-index=0 new-name="10<sup>-12</sup>m<sup>2</sup>"
+$ Renaming series in plot #5: #0 --> "10<sup>-12</sup>m<sup>2</sup>"
+set-plot-option plot-id=5 series rename series-index=0 new-name="10<sup>-12</sup>m<sup>2</sup>"
+
+
+$---------------------------------- Dislocation density 1e14 --------------------------------------$
+$ Renaming series in plot #1: #1 --> "10<sup>-14</sup>m<sup>2</sup>"
+set-plot-option plot-id=1 series rename series-index=1 new-name="10<sup>-14</sup>m<sup>2</sup>"
+$ Renaming series in plot #2: #2 --> "10<sup>-14</sup>m<sup>2</sup>"
+set-plot-option plot-id=2 series rename series-index=2 new-name="10<sup>-14</sup>m<sup>2</sup>"
+$ Renaming series in plot #2: #3 --> "nucl_10<sup>-14</sup>m<sup>2</sup>"
+set-plot-option plot-id=2 series rename series-index=3 new-name="nucl_10<sup>-14</sup>m<sup>2</sup>"
+$ Renaming series in plot #3: #1 --> "10<sup>-14</sup>m<sup>2</sup>"
+set-plot-option plot-id=3 series rename series-index=1 new-name="10<sup>-14</sup>m<sup>2</sup>"
+$ Renaming series in plot #4: #1 --> "10<sup>-14</sup>m<sup>2</sup>"
+set-plot-option plot-id=4 series rename series-index=1 new-name="10<sup>-14</sup>m<sup>2</sup>"
+$ Renaming series in plot #5: #1 --> "10<sup>-14</sup>m<sup>2</sup>"
+set-plot-option plot-id=5 series rename series-index=1 new-name="10<sup>-14</sup>m<sup>2</sup>"
+
+$ Diffusion in cementite precipitate is calculated from matrix diffusion with ratio of 0.01 (default)
+set-precipitation-parameter precipitate-or-domain-name=CEMENTITE_P0 substitutional-diffusion-in-precipitate-factor=0,01
+$ Equilibrium dislocation density in ferrite domain set to 1e14 m-2
+set-precipitation-parameter precipitate-or-domain-name=ferrite equilibrium-dislocation-density=1e14 
+start-precipitate-simulation 
+
+set-gui-window-property window-id=. duplicate-and-lock-plot-series
+
+
+$---------------------------------- Dislocation density 1e16 --------------------------------------$
+$ Renaming series in plot #1: #2 --> "10<sup>-16</sup>m<sup>2</sup>"
+set-plot-option plot-id=1 series rename series-index=2 new-name="10<sup>-16</sup>m<sup>2</sup>"
+$ Renaming series in plot #2: #4 --> "10<sup>-16</sup>m<sup>2</sup>"
+set-plot-option plot-id=2 series rename series-index=4 new-name="10<sup>-16</sup>m<sup>2</sup>"
+$ Renaming series in plot #2: #5 --> "10<sup>-16</sup>m<sup>2</sup>"
+set-plot-option plot-id=2 series rename series-index=5 new-name="nucl_10<sup>-16</sup>m<sup>2</sup>"
+$ Renaming series in plot #3: #2 --> "10<sup>-16</sup>m<sup>2</sup>"
+set-plot-option plot-id=3 series rename series-index=2 new-name="10<sup>-16</sup>m<sup>2</sup>"
+$ Renaming series in plot #4: #2 --> "10<sup>-16</sup>m<sup>2</sup>"
+set-plot-option plot-id=4 series rename series-index=2 new-name="10<sup>-16</sup>m<sup>2</sup>"
+set-plot-option plot-id=4 y-axis-type=log                                       $ Logarithmic scale on y-axis
+$ Renaming series in plot #5: #2 --> "10<sup>-16</sup>m<sup>2</sup>"
+set-plot-option plot-id=5 series rename series-index=2 new-name="10<sup>-16</sup>m<sup>2</sup>"
+
+$ Equilibrium dislocation density in ferrite domain set to 1e16 m-2
+set-precipitation-parameter precipitate-or-domain-name=ferrite equilibrium-dislocation-density=1e16 
+start-precipitate-simulation 
+
+
+$$************************************************************************************************** 
+                                       SAVING WORKSPACE
+**************************************************************************************************$$
+
+$save-workspace "file-name"=Tutorial_15
+save-workspace Tutorial_15

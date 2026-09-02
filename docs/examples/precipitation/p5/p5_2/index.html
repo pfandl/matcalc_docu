@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>P5 2 - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "P5 2";
+        var mkdocs_page_input_path = "examples/precipitation/p5/p5_2.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">P5 2</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>Example P5: Concurrent growth of precipitates in Fe-12%Cr-0.1%C, part 2: Evaluation of inner particle diffusion coefficient [MatCalc Documentation]</p>
+<h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#example_p5concurrent_growth_of_precipitates_in_fe-12_cr-01_c_part_2evaluation_of_inner_particle_diffusion_coefficient">Example P5: Concurrent growth of precipitates in Fe-12%Cr-0.1%C, part 2: Evaluation of inner particle diffusion coefficient</a></p>
+</li>
+<li>
+<p><a href="#compatibility">Compatibility</a></p>
+</li>
+<li><a href="#objectives">Objectives</a></li>
+<li><a href="#related_documents">Related documents</a></li>
+<li><a href="#complementary_files">Complementary files</a></li>
+<li>
+<p><a href="#main_document">Main document</a></p>
+</li>
+<li>
+<p><a href="#understanding_the_script">Understanding the script</a></p>
+</li>
+<li><a href="#manually_change_the_ipdcf">Manually change the ipdcf</a></li>
+<li><a href="#determining_stable_phases">Determining stable phases</a></li>
+<li><a href="#influence_of_ipdcf_on_the_12_cr-01_c_system">Influence of IPDCF on the 12%Cr-0.1%C system</a></li>
+<li><a href="#influence_of_ipdcf_on_the_7_cr-01_c_system">Influence of IPDCF on the 7%Cr-0.1%C system</a></li>
+<li><a href="#comparison_to_results_from_dictra">Comparison to results from DICTRA</a></li>
+<li><a href="#consecutive_articles">Consecutive articles</a></li>
+</ul>
+<h1 id="example-p5-concurrent-growth-of-precipitates-in-fe-12cr-01c-part-2-evaluation-of-inner-particle-diffusion-coefficient">Example P5: Concurrent growth of precipitates in Fe-12%Cr-0.1%C, part 2: Evaluation of inner particle diffusion coefficient</h1>
+<h2 id="compatibility">Compatibility</h2>
+<p>MatCalc version: 5.44.1010 <br />
+Database: mc_sample_fe.tdb, mc_sample_fe.ddb<br />
+Author: Georg Stechauner<br />
+Created: 2012-02-16 <br />
+Revisions:</p>
+<h2 id="objectives">Objectives</h2>
+<p>Part two of this example elaborates the influence of variations of the inner particle diffusion coefficient factor (ipdcf) on the evolution of phase fraction and chromium content of the precipitates as a function of radius.</p>
+<p>Values for ipdcf range from 1, which represents equal diffusion rates both inside and outside of the precipitate, to 0.01, which is the default value and correlates with real observations, where diffusion inside the precipitate is much slower than outside.</p>
+<h2 id="related-documents">Related documents</h2>
+<ul>
+<li><em>P5-1</em> -  <a href="/examples/precipitation/p5/p5_1" title="examples/precipitation/p5/p5_1">Simulating growth of precipitates</a></li>
+<li>A. Schneider, G. Inden, Simulation of the kinetics of precipitation reactions in ferritic steels, Acta Materialia 53 (2005) 519-531</li>
+</ul>
+<h2 id="complementary-files">Complementary files</h2>
+<p>Click <a href="/examples/precipitation/p5/p5-concurrentgrowth-dictra-ipdcf-loop_2018.mcs" title="examples/precipitation/p5/p5-concurrentgrowth-dictra-ipdcf-loop_2018.mcs (11.6 KB)">here</a> to view the script for this example.</p>
+<h1 id="main-document">Main document</h1>
+<h2 id="understanding-the-script">Understanding the script</h2>
+<p>The script contains two pieces of interest, which are responsible for the variation in ipdcf without having to copy&amp;paste the same portion of code over and over again.</p>
+<p>We'll start of by discussing the for loop:</p>
+<pre><code>for(i;0..2)
+
+   $ Change ipdcf to values: 1, 0.1, 0.01 
+   set-variable-value ipdcf 10^(-i)                     
+   $ Create an ipdcf string (copy ipdcf as float variable to ipdcfstring)
+   format-variable-string ipdcfstring %.2f ipdcf       
+   set-variable-value incr i*30
+
+   ...
+   remaining code
+   ...
+
+endfor
+</code></pre>
+<p>As the values of i change with each iteration from 0 to 2, the values of ipdcf change from 100 (→ 1), 10^-1 (→0.1) to 10-2 (→0.01).</p>
+<p>When having a look at the script, you'll notice that the ipdcf is set anew with each iteration, thus every iteration uses different values. <strong>Note</strong>: It is necessary to delete the size classes prior to filling them again, as this would result in an error.</p>
+<p>The next code portion of interest is the <code>format-variable-string</code> used in the script. By using the aforementioned command, you can save a numerical value as ipdcf is, to a string value, which can be used in titles. The parameter <code>%.2f</code> reads as:</p>
+<ul>
+<li>%f → save as a float variable.</li>
+<li>.2 → No reserved space in front of the number, two digits behind the comma.</li>
+<li>%.2f → Save the numerical value ipdcf to the string ipdcfstring with two digits after the comma.</li>
+</ul>
+<p><strong>Note</strong>: Using <code>%d</code> as we did in other examples would result in the values 1, 0, 0 as the parameter <code>d</code> converts only integer, full numbers!</p>
+<h2 id="manually-change-the-ipdcf">Manually change the ipdcf</h2>
+<p>It is highly recommended to use the script for this second part, as many windows have to be created. Apart from that, use the same settings as in part one and simply change the 'Diffusion in precipitate as ration from matrix' values for both substitutional and interstitial from 1 to 0.1 and 0.01. The value which is set to 'ipdcf' in the figure below can be found in the Phase status dialog at the Special tab.</p>
+<p><a href="/examples/precipitation/p5/p5_ipdcfchange.png" title="examples/precipitation/p5/p5_ipdcfchange.png"><img alt=" Inner particle diffusion coefficient factor" src="/examples/precipitation/p5/p5_ipdcfchange.png" title="Inner particle diffusion coefficient factor" /></a></p>
+<p>After changing the factor, be sure to perform one of the following steps:</p>
+<ul>
+<li>Either lock the series of the plotted results, set up new output windows, rename and change their appearance correspondingly, and plot the data anew. This approach was used in the script.</li>
+<li>Duplicate and lock, and simply perform the precipitation kinetic simulation. Keep in mind that this will probably lead to confusing and overloaded plots.</li>
+<li>Simply perform the precipitation kinetic simulation. Keep in mind that this will overwrite your actual results, not enabling you to compare the results.</li>
+</ul>
+<h2 id="determining-stable-phases">Determining stable phases</h2>
+<p>As a pre-simulation we can perform a stepped calculation varying the chromium content in order to find the stable phases as a function of chromium. Variation of temperature is not of interest, as all the precipitation simulations are performed isothermally at 780C. When plotting the phase fractions over temperature, the following figure can be established:</p>
+<p><a href="/examples/precipitation/p5/p5_2_stabilityofprecs.png" title="examples/precipitation/p5/p5_2_stabilityofprecs.png"><img alt=" Phase fraction of precipitates and matrix phase" src="/examples/precipitation/p5/p5_2_stabilityofprecs.png" title="Phase fraction of precipitates and matrix phase" /></a></p>
+<p>For high chromium content both ferrite and M23C6 are stable. Upon decreasing the chromium amount, a transition area is reached at about 8% Cr where M7C3 becomes the stable phase. This region lasts until the chromium content reaches 2%, where all precipitates become unstable and only the matrix phases BCC_A2 (ferrite) and FCC_A1 (austenite) are stable. As <em>MatCalc</em> cannot consider two matrix phases during a precipitation calculation at once, the problem was dodged by assuming FCC_A1 to be a precipitate. Creating the FCC_A1_p0 exactly as the other precipitates and setting its nuclei starting size to 1nm as well, results in the figure found below. The phase fraction of 20% is very close to the results of the equilibrium calculation. Further it is shown that the other precipitates grow at first, and dissolve later on as the carbon diffuses to the FCC_A1 <em>precipitate</em>.</p>
+<p><a href="/examples/precipitation/p5/p5_2_fcca1stablephase.png" title="examples/precipitation/p5/p5_2_fcca1stablephase.png"><img alt=" FCC_A1 proved to be the stable phase" src="/examples/precipitation/p5/p5_2_fcca1stablephase.png" title="FCC_A1 proved to be the stable phase" /></a></p>
+<h2 id="influence-of-ipdcf-on-the-12cr-01c-system">Influence of IPDCF on the 12%Cr-0.1%C system</h2>
+<p><strong><em>Important note …</em></strong></p>
+<p>The <strong>IPDCF</strong> is the abbreviation for 'inner particle diffusion coefficient factor'. <em>MatCalc</em> describes the diffusion within a particle as a factor from the surrounding matrix' diffusion factor. The default value is 0.01 which implies a sluggish diffusion rate compared to the enclosing matrix.</p>
+<p>The following table shows figures including the results of a variation of the ipdcf. The left figure shows the phase fraction of the precipitates, while the right one shows the chromium content of 'cementite' as a function of its radius. For a high ipdcf, the precipitates' chemical composition changes drastically compared to the results gained at a low ipdcf.</p>
+<p>The phase fraction figure show a time shift from early values to later ones as the ipdcf decreases. This happens due to the slower movement of atoms within the precipitate. For an ipdcf of 1 it is easily possible to quickly build the thermodynamically most stable state. This process takes more and more time as the ipdcf decreases to 0.01.</p>
+<table>
+<thead>
+<tr>
+<th>IPDCF</th>
+<th>Results - 12% Cr</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0</td>
+<td><a href="/examples/precipitation/p5/p5_12_ipdcf_1.png" title="examples/precipitation/p5/p5_12_ipdcf_1.png">Results of example P5 with inner particle diffusion coefficient factor of 1</a></td>
+</tr>
+<tr>
+<td>0.1</td>
+<td><a href="/examples/precipitation/p5/p5_12_ipdcf_0.1.png" title="examples/precipitation/p5/p5_12_ipdcf_0.1.png">Results of example P5 with inner particle diffusion coefficient factor of 0.1</a></td>
+</tr>
+<tr>
+<td>0.01</td>
+<td><a href="/examples/precipitation/p5/p5_12_ipdcf_0.01.png" title="examples/precipitation/p5/p5_12_ipdcf_0.01.png">Results of example P5 with inner particle diffusion coefficient factor of 0.01</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="influence-of-ipdcf-on-the-7cr-01c-system">Influence of IPDCF on the 7%Cr-0.1%C system</h2>
+<p>A similar survey was performed on a different alloy containing less chromium. It can be seen from the phase fraction over chromium content figure above, that M7C3 is expected to be the stable phase compared to M23C7 before.</p>
+<p>An ipdcf of 1.0 shows to be to high for this composition, as the radius and phase fraction of cementite is too high due to amazingly fast diffusion speeds. Upon slowing the diffusion down by decreasing the ipdcf, the phase fraction figures resemble the results from above. A time shift can be seen as well.</p>
+<table>
+<thead>
+<tr>
+<th>IPDCF</th>
+<th>Results - 7% Cr</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0</td>
+<td><a href="/examples/precipitation/p5/p5_7.3_ipdcf_1.png" title="examples/precipitation/p5/p5_7.3_ipdcf_1.png">Results of example P5 with inner particle diffusion coefficient factor of 1</a></td>
+</tr>
+<tr>
+<td>0.1</td>
+<td><a href="/examples/precipitation/p5/p5_7.3_ipdcf_0.1.png" title="examples/precipitation/p5/p5_7.3_ipdcf_0.1.png">Results of example P5 with inner particle diffusion coefficient factor of 0.1</a></td>
+</tr>
+<tr>
+<td>0.01</td>
+<td><a href="/examples/precipitation/p5/p5_7.3_ipdcf_0.01.png" title="examples/precipitation/p5/p5_7.3_ipdcf_0.01.png">Results of example P5 with inner particle diffusion coefficient factor of 0.01</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="comparison-to-results-from-dictra">Comparison to results from DICTRA</h2>
+<p>Both sections above have shown to reproduce the values of Schneider and Inden very good. However, <em>MatCalc</em> has to vary the ipdcf in order to achieve the exact same result, as the simulation background of both programs are completely different.</p>
+<h1 id="consecutive-articles">Consecutive articles</h1>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=examples%3Aprecipitation%3Ap5%3Ap5_2&amp;1788352996" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

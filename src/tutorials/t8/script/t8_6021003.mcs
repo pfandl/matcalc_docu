@@ -1,0 +1,373 @@
+$$************************************************************************************************** 
+************************************** GENERAL INFORMATION *****************************************
+****************************************************************************************************
+
+Script for calculating a phase diagram in a binary system according to Tutorial 8.
+The following contents will be covered:
+
+ - Calculating phase boundaries
+ - Building up the phase diagram from the calculated boundaries
+ - Choosing appropriate calculation parameters
+ - Phase diagrams using stable and metastable equilibria
+
+A phase diagram consists of a number of phase-boundaries separating regions of temperature- and 
+composition-space in which different phases are stable at equilibrium. Published equilibrium 
+diagrams for the Fe-C system often show equilibria between Fe-rich phases and both C (in the form
+of graphite) and cementite (Fe3C). Graphite is the more stable of these two phases, and forms 
+readily in cast irons (2-4 wt.% C), but usually with great difficulty in steels (up to 1.5 wt.% C).
+In the latter, it is more practically useful to consider metastable equilibria involving Fe3C. 
+In this tutorial, phase diagrams for both Fe-C and Fe-Fe3C will be calculated.
+
+Database: mc_fe.tdb
+Author: P. Warczok
+Creation date: 10.11.2008
+Last update: 15.05.2019 (P. Warczok, Update for 6.02)
+This is a script for MatCalc version 6.02 (rel 1.003)
+
+Known issues:
+- "save-workspace "file-name"=Tutorial_8" is not working properly. Use "save-workspace Tutorial_8" instead.
+- Dependent phase for the stepped calculation of "phase boundary" type can be defined either by 
+  "set-step-option scheil-dependent-phase=" or by "set-step-option T0-dependent-phase=", though this is not
+  "Scheil" or "T0" calculation... Still, both of these seem to work fine in this role as well. 
+
+
+
+**************************************************************************************************** 
+************************************** SETUP INFORMATION *******************************************
+**************************************************************************************************$$
+
+use-module module-name=core  $ Use "core" module (MatCalc uses "core" module by default anyway) 
+
+new-workspace $ creates a new workspace 
+
+
+$$************************************************************************************************** 
+**************************************** SYSTEM SETUP **********************************************
+**************************************************************************************************$$
+
+
+
+$$************************************************************************************************** 
+                        DATABASES, CHEMICAL COMPOSITION, SELECTED PHASES
+**************************************************************************************************$$
+
+open-thermodynamic-database file-name=mc_fe.tdb                                                $ Thermodynamic database: mc_fe.tdb
+select-elements elements=FE C VA                                                               $ Components: Fe, C
+select-phases phases=LIQUID FCC_A1 BCC_A2 CEMENTITE GRAPHITE                                   $ Phase selection
+read-thermodynamic-database 
+
+set-reference-element element=FE
+enter-composition type=weight-percent composition=C=0,05                                       $ Composition: 0.05 wt.% C
+
+set-automatic-startvalues
+set-temperature-celsius temperature=1000                                                       $ Temperature 1000C
+calculate-equilibrium                                                                          $ Initial equilibrium
+
+new-gui-window type-id=p1                                                                      $ Plot of the phase diagram
+
+$ Suspend graphite phase
+change-phase-status phase-name=graphite set-flag=suspended 
+
+
+$$************************************************************************************************** 
+                                       FE-FE3C PHASE DIAGRAM
+**************************************************************************************************$$
+
+$-------------------------------- Upper boundary of delta-ferrite ---------------------------------$
+set-temperature-celsius temperature=1530                                                       $ Temperature 1530C
+calculate-equilibrium
+search-phase-boundary phase-name=BCC_A2 temperature                                            $ Varying temperature for the phase boundary search		
+
+set-step-option type=phase-boundary                                                            $ "Phase boundary" type
+set-step-option scheil-dependent-phase=BCC_A2                                                  $ Phase boundary of bcc phase field
+set-step-option element=C                                                                      $ Carbon content varied
+set-step-option range start=0 stop=5 scale=lin step-width=0.01                                 $ Range 0 - 5; linear step of 0,01
+set-step-option element-content-in-wt%=yes                                                     $ Composition in wt.%
+set-step-option temperature-in-celsius=yes                                                     $ Temperature in Celsius
+set-step-option maximum-temperature-step=20                                                    $ Setting the max. T-step to 20
+step-equilibrium
+
+set-plot-option plot-id=. series new buffer variable-name=T$C                                  $ Plotting the phase boundary
+$ Display major grid lines for x-axis
+set-plot-option plot-id=. grid which-grid=major enable-x-axis=yes 
+$ Display major grid lines for y-axis
+set-plot-option plot-id=. grid which-grid=major enable-y-axis=yes 
+$ Duplicate and lock all (unlocked) series 
+set-gui-window-property window-id=. duplicate-and-lock-plot-series 
+$ Renaming series: "*_T$C" --> "bcc_high_1"
+set-plot-option plot-id=. series rename series-index=-1 series-name=*_T$C new-name=bcc_high_1
+
+
+$---------------------------------- Lower boundary of liquid --------------------------------------$
+set-temperature-celsius temperature=1500                                                        $ Temperature 1500C
+calculate-equilibrium 
+search-phase-boundary phase-name=LIQUID temperature                                             $ Varying temperature for the phase boundary search
+
+set-step-option type=phase-boundary                                                             $ "Phase boundary" type
+set-step-option scheil-dependent-phase=LIQUID                                                   $ Phase boundary of liquid phase field
+set-step-option element=C                                                                       $ Carbon content varied
+set-step-option range start=0 stop=5 scale=lin step-width=0.01                                  $ Range 0 - 5; linear step of 0,01
+set-step-option element-content-in-wt%=yes                                                      $ Composition in wt.%
+set-step-option temperature-in-celsius=yes                                                      $ Temperature in C
+set-step-option maximum-temperature-step=20                                                     $ Setting the max. T-step to 20
+step-equilibrium
+
+$ Duplicate and lock all unlocked series 
+set-gui-window-property window-id=. duplicate-and-lock-plot-series
+set-plot-option plot-id=. series rename series-index=-1 series-name=*_T$C new-name=liquid       $ Renaming series: "*_T$C" --> "liquid"
+
+
+$------------------------------- Lower boundary of delta-ferrite ----------------------------------$
+set-temperature-celsius temperature=1400                                                        $ Temperature 1400C
+calculate-equilibrium
+search-phase-boundary phase-name=BCC_A2 temperature                                             $ Varying temperature for the phase boundary search
+
+set-step-option type=phase-boundary                                                             $ "Phase boundary" type
+set-step-option scheil-dependent-phase=BCC_A2                                                   $ Phase boundary of bcc phase field
+set-step-option element=C                                                                       $ Carbon content varied
+set-step-option range start=0 stop=5 scale=lin step-width=0.01                                  $ Range 0 - 5; linear step of 0,01
+set-step-option element-content-in-wt%=yes                                                      $ Composition in wt.%
+set-step-option temperature-in-celsius=yes                                                      $ Temperature in Celsius
+set-step-option maximum-temperature-step=20                                                     $ Setting the max. T-step to 20
+step-equilibrium  
+
+set-gui-window-property window-id=. duplicate-and-lock-plot-series                              $ Locking all unlocked series
+set-plot-option plot-id=. series rename series-index=-1 series-name=*_T$C new-name=bcc_high_2   $ Renaming series: "*_T$C" --> "bcc_high_2"
+
+
+$---------------------------------- Upper boundary of austenite -----------------------------------$
+set-temperature-celsius temperature=1500                                                        $ Temperature 1500C
+calculate-equilibrium
+search-phase-boundary phase-name=FCC_A1 temperature                                             $ Varying temperature for the phase boundary search
+
+set-step-option type=phase-boundary                                                             $ "Phase boundary" type
+set-step-option scheil-dependent-phase=FCC_A1                                                   $ Phase boundary of fcc phase field
+set-step-option element=C                                                                       $ Carbon content varied
+set-step-option range start=0 stop=5 scale=lin step-width=0.01                                  $ Range 0 - 5; linear step of 0,01
+set-step-option element-content-in-wt%=yes                                                      $ Composition in wt.%
+set-step-option temperature-in-celsius=yes                                                      $ Temperature in Celsius
+set-step-option maximum-temperature-step=20                                                     $ Setting the max. T-step to 20
+step-equilibrium
+
+set-gui-window-property window-id=. duplicate-and-lock-plot-series                              $ Locking all unlocked series
+set-plot-option plot-id=. series rename series-index=-1 series-name=*_T$C new-name=fcc_1        $ Renaming series: "*_T$C" --> "fcc_1"
+
+
+$-------------------------------- Upper boundary of alpha-ferrite ---------------------------------$
+set-temperature-celsius temperature=900                                                         $ Temperature 900C
+calculate-equilibrium
+search-phase-boundary phase-name=BCC_A2 temperature                                             $ Varying temperature for the phase boundary search
+
+set-step-option type=phase-boundary                                                             $ "Phase boundary" type
+set-step-option scheil-dependent-phase=BCC_A2                                                   $ Phase boundary of bcc phase field
+set-step-option element=C                                                                       $ Carbon content varied
+set-step-option range start=0 stop=5 scale=lin step-width=0.01                                  $ Range 0 - 5; linear step of 0,01
+set-step-option element-content-in-wt%=yes                                                      $ Composition in wt.%
+set-step-option temperature-in-celsius=yes                                                      $ Temperature in Celsius
+set-step-option maximum-temperature-step=20                                                     $ Setting the max. T-step to 20
+step-equilibrium
+
+set-gui-window-property window-id=. duplicate-and-lock-plot-series                              $ Locking all unlocked series
+set-plot-option plot-id=. series rename series-index=-1 series-name=*_T$C new-name=bcc_low      $ Renaming series: "*_T$C" --> "bcc_low"
+
+
+$--------------------------------- Lower boundary of austenite ------------------------------------$
+set-temperature-celsius temperature=600                                                         $ Temperature 600C
+calculate-equilibrium
+search-phase-boundary phase-name=FCC_A1 temperature                                             $ Varying temperature for the phase boundary search
+
+set-step-option type=phase-boundary                                                             $ "Phase boundary" type
+set-step-option scheil-dependent-phase=FCC_A1                                                   $ Phase boundary of fcc phase field
+set-step-option element=C                                                                       $ Carbon content varied
+set-step-option range start=0 stop=5 scale=lin step-width=0.001                                 $ Range 0 - 5; linear step of 0,001
+set-step-option element-content-in-wt%=yes                                                      $ Composition in wt.%
+set-step-option temperature-in-celsius=yes                                                      $ Temperature in Celsius
+set-step-option maximum-temperature-step=20                                                     $ Setting the max. T-step to 20
+step-equilibrium
+
+set-gui-window-property window-id=. duplicate-and-lock-plot-series                              $ Locking all unlocked series
+set-plot-option plot-id=. series rename series-index=-1 series-name=*_T$C new-name=fcc_2        $ Renaming series: "*_T$C" --> "fcc_2"
+
+
+$-------------------------------- Cementite upper phase boundary ----------------------------------$
+set-temperature-celsius temperature=800                                                         $ Temperature 800C
+calculate-equilibrium
+search-phase-boundary phase-name=CEMENTITE temperature                                          $ Varying temperature for the phase boundary search
+
+set-step-option type=phase-boundary                                                             $ "Phase boundary" type
+set-step-option scheil-dependent-phase=CEMENTITE                                                $ Phase boundary of cementite phase field
+set-step-option element=C                                                                       $ Carbon content varied
+set-step-option range start=0 stop=5 scale=lin step-width=0.01                                  $ Range 0 - 5; linear step of 0,01
+set-step-option element-content-in-wt%=yes                                                      $ Composition in wt.%
+set-step-option temperature-in-celsius=yes                                                      $ Temperature in Celsius
+set-step-option maximum-temperature-step=200                                                    $ Setting the max. T-step to 200
+step-equilibrium
+
+$ lock series "T$C"
+set-plot-option plot-id=. series lock series-index=-1 series-name=T$C do-lock=yes 
+set-plot-option plot-id=. series rename series-index=-1 series-name=*_T$C new-name=cementite    $ Renaming series: "*_T$C" --> "cementite"
+
+
+$------------------------------------- The finished diagram ---------------------------------------$
+$ Plot title. "<sub>" and "</sub>" are used to mark the text which should be written as a subscript
+set-plot-option plot-id=. plot-title=Fe-Fe<sub>3</sub>C phase diagram
+set-gui-window-property window-id=. default-x-axis-title=Carbon content [wt.%]                  $ x-axis title 
+set-plot-option plot-id=. y-axis-title=Temperature [C]                                          $ y-axis title
+$ Scaling of y-axis starts from "400"
+set-plot-option plot-id=. y-axis-scaling=400..
+
+
+$$************************************************************************************************** 
+                                        FE-C PHASE DIAGRAM
+**************************************************************************************************$$
+
+$ Activate graphite again - remove "suspended" flag
+change-phase-status phase-name=GRAPHITE clear-flag=suspended 
+set-temperature-celsius temperature=1600                                                        $ Temperature 1600C
+calculate-equilibrium
+
+create-new-plot plot-type=xy-plot attach-to-window=.                                            $ Fe-C phase diagram will be drawn on the new plot
+set-plot-option plot-id=. grid which-grid=major enable-x-axis=yes                               $ Switching on the major gridlines for x-axis
+set-plot-option plot-id=. grid which-grid=major enable-y-axis=yes                               $ Switching on the major gridlines for y-axis
+
+$------------------------------- Upper boundary of delta-ferrite ----------------------------------$
+search-phase-boundary phase-name=BCC_A2 temperature                                             $ Varying temperature for the phase boundary search
+
+set-step-option type=phase-boundary                                                             $ "Phase boundary" type
+set-step-option scheil-dependent-phase=BCC_A2                                                   $ Phase boundary of bcc phase field
+set-step-option element=C                                                                       $ Carbon content varied
+set-step-option range start=0 stop=5 scale=lin step-width=0.01                                  $ Range 0 - 5; linear step of 0,01
+set-step-option element-content-in-wt%=yes                                                      $ Composition in wt.%
+set-step-option temperature-in-celsius=yes                                                      $ Temperature in Celsius
+set-step-option maximum-temperature-step=20                                                     $ Setting the max. T-step to 20
+step-equilibrium
+
+set-plot-option plot-id=. series new buffer variable-name=T$C                                   $ Drawing the phase boundary in the new plot
+set-gui-window-property window-id=. duplicate-and-lock-plot-series                              $ Locking all unlocked series
+set-plot-option plot-id=. series rename series-index=-1 series-name=*_T$C new-name=bcc_high_1   $ Renaming series: "*_T$C" --> "bcc_high_1"
+
+
+$----------------------------------- Lower boundary of liquid -------------------------------------$
+set-temperature-celsius temperature=1500                                                        $ Temperature 1500C
+calculate-equilibrium 
+search-phase-boundary phase-name=LIQUID temperature                                             $ Varying temperature for the phase boundary search
+
+set-step-option type=phase-boundary                                                             $ "Phase boundary" type
+set-step-option scheil-dependent-phase=LIQUID                                                   $ Phase boundary of liquid phase field
+set-step-option element=C                                                                       $ Carbon content varied
+set-step-option range start=0 stop=5 scale=lin step-width=0.01                                  $ Range 0 - 5; linear step of 0,01
+set-step-option element-content-in-wt%=yes                                                      $ Composition in wt.%
+set-step-option temperature-in-celsius=yes                                                      $ Temperature in Celsius
+set-step-option maximum-temperature-step=20                                                     $ Setting the max. T-step to 20
+step-equilibrium
+
+set-gui-window-property window-id=. duplicate-and-lock-plot-series                              $ Locking all unlocked series
+set-plot-option plot-id=. series rename series-index=-1 series-name=*_T$C new-name=liquid       $ Renaming series: "*_T$C" --> "liquid"
+
+
+$-------------------------------- Lower boundary of delta-ferrite ---------------------------------$
+set-temperature-celsius temperature=1400                                                        $ Temperature 1400C
+calculate-equilibrium
+search-phase-boundary phase-name=BCC_A2 temperature                                             $ Varying temperature for the phase boundary search
+
+set-step-option type=phase-boundary                                                             $ "Phase boundary" type
+set-step-option scheil-dependent-phase=BCC_A2                                                   $ Phase boundary of bcc phase field
+set-step-option element=C                                                                       $ Carbon content varied
+set-step-option range start=0 stop=5 scale=lin step-width=0.01                                  $ Range 0 - 5; linear step of 0,01
+set-step-option element-content-in-wt%=yes                                                      $ Composition in wt.%
+set-step-option temperature-in-celsius=yes                                                      $ Temperature in Celsius
+set-step-option maximum-temperature-step=20                                                     $ Setting the max. T-step to 20
+step-equilibrium
+
+set-gui-window-property window-id=. duplicate-and-lock-plot-series                              $ Locking all unlocked series
+set-plot-option plot-id=. series rename series-index=-1 series-name=*_T$C new-name=bcc_high_2   $ Renaming series: "*_T$C" --> "bcc_high_2"
+
+
+$---------------------------------- Upper boundary of austenite -----------------------------------$
+set-temperature-celsius temperature=1500                                                        $ Temperature 1500C
+calculate-equilibrium
+search-phase-boundary phase-name=FCC_A1 temperature                                             $ Varying temperature for the phase boundary search
+
+set-step-option type=phase-boundary                                                             $ "Phase boundary" type
+set-step-option scheil-dependent-phase=FCC_A1                                                   $ Phase boundary of fcc phase field
+set-step-option element=C                                                                       $ Carbon content varied
+set-step-option range start=0 stop=5 scale=lin step-width=0.01                                  $ Range 0 - 5; linear step of 0,01
+set-step-option element-content-in-wt%=yes                                                      $ Composition in wt.%
+set-step-option temperature-in-celsius=yes                                                      $ Temperature in Celsius
+set-step-option maximum-temperature-step=20                                                     $ Setting the max. T-step to 20
+step-equilibrium
+
+set-gui-window-property window-id=. duplicate-and-lock-plot-series                              $ Locking all unlocked series
+set-plot-option plot-id=. series rename series-index=-1 series-name=*_T$C new-name=fcc_1        $ Renaming series: "*_T$C" --> "fcc_1"
+
+
+$-------------------------------- Upper boundary of alpha-ferrite ---------------------------------$
+set-temperature-celsius temperature=900                                                         $ Temperature 900C
+calculate-equilibrium 
+search-phase-boundary phase-name=BCC_A2 temperature                                             $ Varying temperature for the phase boundary search
+
+set-step-option type=phase-boundary                                                             $ "Phase boundary" type
+set-step-option scheil-dependent-phase=BCC_A2                                                   $ Phase boundary of bcc phase field
+set-step-option element=C                                                                       $ Carbon content varied
+set-step-option range start=0 stop=5 scale=lin step-width=0.01                                  $ Range 0 - 5; linear step of 0,01
+set-step-option element-content-in-wt%=yes                                                      $ Composition in wt.%
+set-step-option temperature-in-celsius=yes                                                      $ Temperature in Celsius
+set-step-option maximum-temperature-step=20                                                     $ Setting the max. T-step to 20
+step-equilibrium
+
+set-gui-window-property window-id=. duplicate-and-lock-plot-series                              $ Locking all unlocked series
+set-plot-option plot-id=. series rename series-index=-1 series-name=*_T$C new-name=bcc_low      $ Renaming series: "*_T$C" --> "bcc_low"
+
+
+$--------------------------------- Lower boundary of austenite ------------------------------------$
+set-temperature-celsius temperature=700                                                         $ Temperature 700C
+calculate-equilibrium
+search-phase-boundary phase-name=FCC_A1 temperature                                             $ Varying temperature for the phase boundary search
+
+set-step-option type=phase-boundary                                                             $ "Phase boundary" type
+set-step-option scheil-dependent-phase=FCC_A1                                                   $ Phase boundary of fcc phase field
+set-step-option element=C                                                                       $ Carbon content varied
+set-step-option range start=0 stop=5 scale=lin step-width=0.01                                  $ Range 0 - 5; linear step of 0,01
+set-step-option element-content-in-wt%=yes                                                      $ Composition in wt.%
+set-step-option temperature-in-celsius=yes                                                      $ Temperature in Celsius
+set-step-option maximum-temperature-step=200                                                    $ Setting the max. T-step to 200
+step-equilibrium
+
+set-gui-window-property window-id=. duplicate-and-lock-plot-series                              $ Locking all unlocked series
+set-plot-option plot-id=. series rename series-index=-1 series-name=*_T$C new-name=fcc2         $ Renaming series: "*_T$C" --> "fcc2"
+
+
+$-------------------------------- Graphite upper phase boundary -----------------------------------$
+set-temperature-celsius temperature=800                                                         $ Temperature 800C
+calculate-equilibrium
+search-phase-boundary phase-name=GRAPHITE temperature                                           $ Varying temperature for the phase boundary search
+
+set-step-option type=phase-boundary                                                             $ "Phase boundary" type
+set-step-option scheil-dependent-phase=GRAPHITE                                                 $ Phase boundary of graphite phase field
+set-step-option element=C                                                                       $ Carbon content varied
+set-step-option range start=0 stop=5 scale=lin step-width=0.01                                  $ Range 0 - 5; linear step of 0,01
+set-step-option element-content-in-wt%=yes                                                      $ Composition in wt.%
+set-step-option temperature-in-celsius=yes                                                      $ Temperature in Celsius
+set-step-option maximum-temperature-step=20                                                     $ Setting the max. T-step to 20
+step-equilibrium
+
+set-plot-option plot-id=. series lock series-index=-1 series-name=T$C do-lock=yes               $ Locking the last series
+set-plot-option plot-id=. series rename series-index=-1 series-name=*_T$C new-name=graphite     $ Renaming series: "*_T$C" --> "graphite"
+
+
+$------------------------------------- The finished diagram ---------------------------------------$
+set-plot-option plot-id=. plot-title=Fe-C phase diagram                                         $ Plot title
+set-plot-option plot-id=. y-axis-title=Temperature [C]                                          $ y-axis title
+$ Scaling of y-axis starts from "400"
+set-plot-option plot-id=. y-axis-scaling=400..
+
+
+$$************************************************************************************************** 
+                                       SAVING WORKSPACE
+**************************************************************************************************$$
+
+$save-workspace "file-name"=Tutorial_8
+save-workspace Tutorial_8
+
+
+

@@ -1,0 +1,152 @@
+$$************************************************************************************************** 
+************************************** GENERAL INFORMATION *****************************************
+****************************************************************************************************
+
+This example describes a strategy for evaluation of primary solidification microstructures based on 
+purely thermodynamic grounds. This analysis can be utilized for a prediction of primary 
+precipitation and microsegregation during casting. The results can serve as a basis for defining 
+representative compositions in subsequent precipitation kinetics simulations of enriched and 
+depleted regions in a (micro)segregated microstructure.
+
+Part I discusses the thermodynamic equilibrium analysis, which provides information on the expected 
+phases occurring during cooling after solidification. It emphasizes the importance of composition 
+sets in order to correctly capture complex miscibility gaps. The results of the equilibrium analysis 
+are directly applicable for the correct setup of subsequent precipitation kinetics simulations.
+
+Database: mc_fe.tdb, mc_x_FeAlCNNbTi.tdb
+Author: G. Stechauner
+Creation date: 2011-11-02
+This is a script for MatCalc version 5.44 (rel 0.017)
+
+
+**************************************************************************************************** 
+************************************** SETUP INFORMATION *******************************************
+**************************************************************************************************$$
+
+$ make sure we work in the correct module
+use-module core 
+
+$ creates a new workspace 
+new-workspace 
+
+@ echo n
+set-workspace-info + Thermodynamic equilibrium analysis
+set-workspace-info +
+set-workspace-info + Phases: Liquid, FCC_A1, BCC_A2, Cementite, AlN
+set-workspace-info + Chemical components: Fe, C, Al, N, Nb, Ti
+set-workspace-info + 
+set-workspace-info + For further information visit www.matcalc.at
+set-workspace-info +
+echo y
+
+
+$$************************************************************************************************** 
+**************************************** SYSTEM SETUP **********************************************
+**************************************************************************************************$$
+
+$ verify correct MatCalc version (is accessible as internal variable) 
+if (matcalc_version<5440017)
+   send-dialog-string "MatCalc version must be 5.44.0017 or higher to run this script. Stopping."
+   stop_run_script                                      $ stop script
+endif
+
+test-exist-td-database mc_fe.tdb                        $ Check if database is present
+if (test_result==1)
+   open-thermodyn-database mc_fe.tdb                    $ Thermodynamic database
+else
+   test-exist-td-database mc_x_FeAlCNNbTi.tdb 
+   if (test_result==1)
+      open-thermodyn-database mc_x_FeAlCNNbTi.tdb       $ Thermodynamic database
+   else
+      send-dialog-string "No valid database found. Visit matcalc website and download the free 'mc_x_FeAlCNNbTi' database."
+      stop_run_script
+   endif
+endif
+
+
+$$************************************************************************************************** 
+                        DATABASES, CHEMICAL COMPOSITION, SELECTED PHASES
+**************************************************************************************************$$
+
+select-elements FE C AL N NB TI VA                      
+select-phases LIQUID FCC_A1 BCC_A2 CEMENTITE ALN        
+read-thermodyn-database
+
+set-reference-element FE
+enter-composition WP C=0.22 AL=0.025 N=0.0061 NB=0.036 TI=0.0081
+
+set-automatic-startvalues
+set-temperature-celsius 1000                            $ Temperature 
+calculate-equilibrium                                   $ Initial equilibrium
+
+
+$$**************************************************************************************************
+                           EVALUATE PHASE FRACTIONS VERSUS TEMPERATURE
+**************************************************************************************************$$
+
+set-step-option Y T                                     $ Set to temperature type
+set-step-option R 1600 400 L 10                         $ Set range for stepped calculation
+step-equilibrium
+
+
+$-------------------------------- Plotting phase fractions ----------------------------------------$
+new-gui-window p1                                       $ Plot of the phase diagram
+move-gui-window . 60 60 450 900
+set-plot-option . S N B F$*                             $ Plotting the phase boundary
+set-plot-option 1 A Y 1 S ..1                           $ Scale y-axis 
+set-plot-option 1 A Y 1 Y log                           $ Set y-axis to logarithmic 
+set-plot-option 1 A Y 1 T phase fraction                $ y-axis title
+set-plot-option 1 L B                                   $ Legend on the bottom
+set-gui-window-property . s u y                         $ use default x-axis for all plots
+set-gui-window-property . x T$c                         $ x-axis data
+set-gui-window-property 3 S T Temperature [C]           $ x-axis title
+set-plot-option . s l * y                               $ Lock all series
+
+create-new-plot x .                                     $ Create new (x)-y-plot in active window
+set-plot-option . s n b X$FCC_A1#01$*                   $ Add chemical composition
+set-plot-option . a y 1 t phase fraction                $ change y-axis title
+set-plot-option . s l * y                               $ Lock all series
+
+$----------------------------- Test for potential miscibility Gaps --------------------------------$
+$ Change major constituents for existing composition set to NbC
+change-phase-status fcc_a1#01 m Nb:C
+$ Add new equilibrium composition set...
+create-new-phase fcc_a1 e 
+$ ... and change its major constituents to TiN
+change-phase-status fcc_a1#02 m Ti:N
+
+set-temperature-celsius 1000
+calculate-equilibrium
+
+set-step-option Y T                                     $ Set to temperature type
+set-step-option R 1600 400 L 25                         $ Set range for stepped calculation
+step-equilibrium
+
+new-gui-window p1
+move-gui-window . 80 80 450 900
+
+set-plot-option . S N B F$*                             $ Plotting the phase boundary
+set-plot-option . A Y 1 S ..1                           $ Scale y-axis 
+set-plot-option . A Y 1 Y log                           $ Set y-axis to logarithmic 
+set-plot-option . A X 1 T Temperature [C]               $ x-axis title 
+set-plot-option . A Y 1 T phase fraction                $ y-axis title
+set-plot-option . L B                                   $ Legend on the bottom
+set-gui-window-property . s u y                         $ use default x-axis for all plots
+set-gui-window-property . x T$c                         $ x-axis data
+set-gui-window-property . S T Temperature [C]           $ x-axis title
+set-plot-option . s l * y                               $ Lock all series
+
+create-new-plot x .                                     $ Create new (x)-y-plot in active window
+set-plot-option . s n b X$FCC_A1#01$*                   $ Add chemical composition
+set-plot-option . a y 1 t phase fraction                $ change y-axis title
+set-plot-option . s l * y                               $ Lock all series
+
+create-new-plot x .                                     $ Create new (x)-y-plot in active window
+set-plot-option . s n b X$FCC_A1#02$*                   $ Add chemical composition
+set-plot-option . a y 1 t phase fraction                $ change y-axis title
+set-plot-option . s l * y                               $ Lock all series
+
+
+$$**************************************************************************************************
+************************************ EXAMPLE 20-1 FINISHED *****************************************
+**************************************************************************************************$$

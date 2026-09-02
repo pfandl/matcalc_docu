@@ -1,0 +1,197 @@
+$$************************************************************************************************** 
+************************************** GENERAL INFORMATION *****************************************
+****************************************************************************************************
+
+Script for Introduction to user-defined functions and variables according to Tutorial 6.
+The following contents will be covered:
+
+ - Expressions using built-in variables
+ - Creating a new function
+ - Using functions
+ - Defining and using variables
+
+Database: mc_fe.tdb
+Author: P. Warczok
+Creation date: 20.03.2008
+Last update: 13.05.2019 (P. Warczok, Update for 6.02)
+This is a script for MatCalc version 6.02 (rel 1.003)
+
+Known issues:
+- "save-workspace "file-name"=Tutorial_6" is not working properly. Use "save-workspace Tutorial_6" instead.
+- "set-gui-window-property window-id=. default-x-axis-legend=right" is not working for the plots created
+  afterwards. If needed, use it after all plots are created in the given GUI-window. 
+ 
+**************************************************************************************************** 
+************************************** SETUP INFORMATION *******************************************
+**************************************************************************************************$$
+
+use-module module-name=core                                                         $ Use "core" module (MatCalc uses "core" module by default anyway) 
+
+new-workspace                                                                       $ creates a new workspace 
+
+
+$$************************************************************************************************** 
+**************************************** SYSTEM SETUP **********************************************
+**************************************************************************************************$$
+
+
+
+$$************************************************************************************************** 
+                        DATABASES, CHEMICAL COMPOSITION, SELECTED PHASES
+**************************************************************************************************$$
+
+open-thermodynamic-database file-name=mc_fe.tdb                                     $ Opens thermodynamic database mc_fe.tdb
+select-elements elements=FE C VA                                                    $ Selects Fe and C as components of the system.
+$ Select the phases which will be used in the simulation
+select-phases phases=LIQUID FCC_A1 BCC_A2 CEMENTITE
+$ Read data for the selected phases and elements from the database
+read-thermodynamic-database
+
+set-reference-element element=FE                                                    $ Fe is set as a reference element
+enter-composition type=weight-percent composition=C=0,1                             $ Sets the content of C to 0.1 wt.% 			
+
+
+
+$$************************************************************************************************** 
+                                       EQUILIBRIUM CALCULATIONS
+**************************************************************************************************$$
+
+set-temperature-celsius temperature=1000                                            $ Sets the system temperature to 1000C
+$ Set the start values - this should prevent from any troubles in the equilibrium calculation
+set-automatic-startvalues
+calculate-equilibrium                                                               $ Performs the equilibrium calculation
+
+ 
+set-step-option type=temperature                                                    $ Selects the type of calculation (temperature as step-variable)
+set-step-option range start=400 stop=1600 scale=lin step-width=25                   $ The calculation range: 400 - 1600; linear step 25
+set-step-option temperature-in-celsius=yes                                          $ Temperature in Celsius
+
+step-equilibrium			
+
+ 
+
+$$************************************************************************************************** 
+                                           CREATING PLOTS
+**************************************************************************************************$$
+
+new-gui-window type-id=p1                                                           $ Creating a new window of 'p1' type (XY-diagram)
+
+set-plot-option plot-id=. series new buffer variable-name=F$*                       $ Plotting phase fractions
+set-gui-window-property window-id=. default-x-axis-data=t$c                         $ Temperature in Celsius on x-axis
+set-gui-window-property window-id=. default-x-axis-title=Temperature [°C]           $ Title of x-axis
+$set-gui-window-property window-id=. default-x-axis-legend=right                    $ the legend box is put on the right side
+
+
+$$************************************************************************************************** 
+                            COMBINING BUILT-IN VARIABLES IN NEW EXPRESSIONS
+**************************************************************************************************$$
+
+create-new-plot plot-type=xy-plot attach-to-window=.                                $ new plot
+
+$ The product of carbon content in liquid and phase fraction of liquid is plotted
+set-plot-option plot-id=. series new buffer variable-name=X$LIQUID$C*F$LIQUID
+$ The product of carbon content in bcc and phase fraction of bcc is plotted
+set-plot-option plot-id=. series new buffer variable-name=X$BCC_A2$C*F$BCC_A2
+$ The product of carbon content in fcc and phase fraction of fcc is plotted
+set-plot-option plot-id=. series new buffer variable-name=X$FCC_A1$C*F$FCC_A1
+$ The product of carbon content in cementite and phase fraction of cementite is plotted
+set-plot-option plot-id=. series new buffer variable-name=X$CEMENTITE$C*F$CEMENTITE
+$ The carbon content in the system is plotted
+set-plot-option plot-id=. series new buffer variable-name=XS$C
+
+
+$$************************************************************************************************** 
+                                        DEFINING FUNCTIONS
+**************************************************************************************************$$
+
+$ Defining function "C_in_liquid" as a product of carbon content in liquid and phase fraction of liquid 
+set-function-expression function=C_in_liquid expression=X$LIQUID$C*F$LIQUID
+$ Defining function "C_in_bcc" as a product of carbon content in bcc and phase fraction of bcc
+set-function-expression function=C_in_bcc expression=X$BCC_A2$C*F$BCC_A2
+$ Defining function "C_in_fcc" as a product of carbon content in fcc and phase fraction of fcc
+set-function-expression function=C_in_fcc expression=X$FCC_A1$C*F$FCC_A1
+$ Defining function "C_in_cementite" as a product of carbon content in cementite and phase fraction of cementite
+set-function-expression function=C_in_cementite expression=X$CEMENTITE$C*F$CEMENTITE
+
+$------------------- Plotting new functions instead of "X$...*F$..." products ---------------------$
+$ Remove all (all is denoted with "*") series in the current plot
+set-plot-option plot-id=. series remove series-index=*
+set-plot-option plot-id=. series new buffer variable-name=C_in_liquid               $ Plotting "C_in_liquid"
+set-plot-option plot-id=. series new buffer variable-name=C_in_bcc                  $ Plotting "C_in_bcc"
+set-plot-option plot-id=. series new buffer variable-name=C_in_fcc                  $ Plotting "C_in_fcc"
+set-plot-option plot-id=. series new buffer variable-name=C_in_cementite            $ Plotting "C_in_cementite"
+set-plot-option plot-id=. series new buffer variable-name=XS$C                      $ Plotting carbon content in the system
+
+
+$----------------- Defining and plotting new expressions using existing functions -----------------$
+$ Defining a function "Fraction_C_in_liquid" as C_in_liquid divided by molar fraction of carbon
+set-function-expression function=Fraction_C_in_liquid expression=C_in_liquid/XS$C
+$ Defining a function "Fraction_C_in_bcc" as C_in_bcc divided by molar fraction of carbon
+set-function-expression function=Fraction_C_in_bcc expression=C_in_bcc/XS$C
+$ Defining a function "Fraction_C_in_fcc" as C_in_fcc divided by molar fraction of carbon
+set-function-expression function=Fraction_C_in_fcc expression=C_in_fcc/XS$C
+$ Defining function "Fraction_C_in_cementite" as C_in_cementite divided by molar fraction of carbon
+set-function-expression function=Fraction_C_in_cementite expression=C_in_cementite/XS$C
+
+create-new-plot plot-type=xy-plot attach-to-window=.
+set-plot-option plot-id=. series new buffer variable-name=Fraction_C_in_liquid      $ Plotting "Fraction_C_in_liquid"
+set-plot-option plot-id=. series new buffer variable-name=Fraction_C_in_bcc         $ Plotting "Fraction_C_in_bcc"
+set-plot-option plot-id=. series new buffer variable-name=Fraction_C_in_fcc         $ Plotting "Fraction_C_in_fcc"
+set-plot-option plot-id=. series new buffer variable-name=Fraction_C_in_cementite   $ Plotting "Fraction_C_in_cementite"
+
+
+$----------- Displaying the results of the stepped calculation varying carbon content -------------$
+set-gui-window-property window-id=. default-x-axis-data=Stepvalue                   $ Stepvalue on x-axis
+set-gui-window-property window-id=. default-x-axis-title=C content [wt.%]           $ Changing the title of x-axis
+
+
+set-step-option type=element-content                                                $ Varying element content
+set-step-option range start=0 stop=0,5 scale=lin step-width=0,005                   $ in range 0 - 0.5; linear step 0.005
+set-step-option element=C                                                           $ The element is carbon
+set-step-option temperature=1475                                                    $ at 1475
+set-step-option temperature-in-celsius=yes                                          $ in Celsius
+set-step-option element-content-in-wt%=yes                                          $ and carbon content in wt.%
+step-equilibrium
+
+
+$$************************************************************************************************** 
+                                      USER-DEFINED VARIABLES
+**************************************************************************************************$$
+
+
+set-variable-value variable=x1 value=0,27813585                                     $ Setting x1 = 0,27813585
+set-variable-value variable=y1 value=0                                              $ Setting y1 = 0
+set-variable-value variable=x2 value=0.5                                            $ Setting x2 = 0.5
+
+
+$--------------------------------- Finding the value of "y2"-variable -----------------------------$
+enter-composition type=weight-percent composition=C=0,5                             $ Carbon content = 0.5 wt.%
+set-temperature-celsius temperature=1475                                            $ Temperature = 1475C
+calculate-equilibrium                                                               $ Equilibrium calculation
+set-variable-value variable=y2 value=C_in_liquid                                    $ Setting y2 = C_in_liquid
+
+
+$ Defining the parameters of the function approximating the amount of carbon present in liquid phase
+set-variable-value variable=a value=(y2-y1)/(x2-x1)                                 $ setting a (slope)
+set-variable-value variable=b value=((x2*y1)-(x1*y2))/(x2-x1)                       $ setting b (intersection)
+set-function-expression function=Liquid_line expression=(a*x)+b                     $ defining "Liquid_line"
+set-plot-option plot-id=2 series new buffer variable-name=Liquid_line               $ Plotting "Liquid_line" in plot no.2
+
+
+$ Cutting off negative values of "Liquid_line" by setting the curve as a function/expression plot 
+
+$ For plot no.2, series "Liquid_line" is removed. In order to specify the series by its name, series index
+$ is set fiorst to "-1" (otherwise, one would have to type in the value of the index for this series)
+set-plot-option plot-id=2 series remove series-index=-1 series-name=Liquid_line
+$ New series of "function/expression"-type is plotted in plot no.2 in the range of x1 - 0.5
+set-plot-option plot-id=2 series new functional-expression expression-in-variable-x=Liquid_line definition-range=x1..0,5
+
+set-gui-window-property window-id=. default-x-axis-legend=right                     $ the legend box is put on the right side
+
+
+$$************************************************************************************************** 
+                                        SAVING WORKSPACE
+**************************************************************************************************$$
+
+$save-workspace "file-name"=Tutorial_6
+save-workspace Tutorial_6

@@ -1,0 +1,211 @@
+$ **************************************************************************************************
+$ *********************************** GENERAL INFORMATION ******************************************
+$ **************************************************************************************************
+$ 
+$ Template script for mapping of the nucleation barrier as a function of chemical composition of a
+$ precipitate in a ternary/quaternary system.
+$
+$ In the script, the thermodynamic system is setup for precipitation of V-C-N precipitates in the
+$ quaternary Fe-V-C-N system with ferritic matrix. 
+$
+$ 
+$ Database: mc_sample_fe.tdb
+$ Author: G. Stechauner, E. Kozeschnik
+$ Creation date: 2010-12-28 (koze)
+$ Last revision: 2013-03-05 (Stechauner)
+$ This is a script for MatCalc version 5.50.0036
+
+
+$ **************************************************************************************************
+$ ************************************ SETUP INFORMATION *******************************************
+$ **************************************************************************************************
+
+$ make sure we work in the correct module
+use-module core                                        $ select core module for kinetic simulation
+
+$ close any open workspace without asking for save
+close-workspace f
+
+new-workspace                                          $ open new workspace
+
+set-workspace-info +Selected elements:                 $ give some information about the script
+set-workspace-info +C, Fe, N, V
+set-workspace-info +
+set-workspace-info +Matrix phases: Ferrite (BCC_A2)
+set-workspace-info +Precipitate phases: (V,Fe)(CN) (fcc_a1 composition set)
+set-workspace-info +
+set-workspace-info +mapping of nucleation barrier for various compositions of the MX nucleus
+
+
+$ **************************************************************************************************
+$ ************************************** SYSTEM SETUP **********************************************
+$ **************************************************************************************************
+
+$ verify correct MatCalc version (is accessible as internal variable)
+if (matcalc_version<5501000)
+   send-dialog-string "MatCalc version must be 5.50.1000 or higher to run this script. Stopping."
+   stop_run_script                                     $ stop script
+endif
+
+
+$ ***************************************************************************************************
+$                                    GLOBAL VARIABLES
+$ ***************************************************************************************************
+
+set-variable-value num_step_intervals   25             $ step size
+
+set-variable-value test_temp            400            $ test temperature 
+
+$ ***************************************************************************************************
+$                       DATABASES, CHEMICAL COMPOSITION, SELECTED PHASES
+$ ***************************************************************************************************
+
+$ if you receive an error when executing the next line, please make sure you have the database
+$ in your MatCalc/database folder. The mc_steel database can be obtained for free when sending a
+$ corresponding request to support@matcalc.at
+open-thermo-database mc_fe.tdb                         $ open thermodynamic database
+
+select-elements C N V                                  $ select elements
+select-phase fcc_a1 bcc_a2                             $ select phases
+
+read-thermodyn-database                                $ read thermodynamic database
+
+$ steel composition ...
+enter-composition wp c=0.2 n=0.01 v=0.145
+
+read-mobility-database mc_sample_fe.ddb                       $ read diffusion data
+
+$ ***************************************************************************************************
+$                                 CHANGE PHASE STATUS ETC.
+$ ***************************************************************************************************
+
+$ modify phase status of nucleation phase
+change-phase-status fcc_a1 f s s                       $ suspend austenite
+change-phase-status fcc_a1#01 f s s                    $ set fixed phase fraction
+
+create-new-phase fcc_a1 c :Fe,V%:C%,N%: VCN
+Change-phase-status VCN f e s                          $ set enforce major constituents flag!!!
+change-phase-status VCN f f s                          $ set fixed phase fraction
+change-phase-status VCN p 0.0                          $ set phase fraction to zero   
+
+$ ***************************************************************************************************
+$                      HEAT TREATMENTS, VARIABLES, TABLES & FUNCTIONS (1)
+$ ***************************************************************************************************
+
+$ create a global array to store results
+create-global-array G_star_array
+create-global-array G_star_array_no_xy
+create-global-array P_array
+create-global-array P_array_no_xy
+
+$ define function for G_star
+set-function-expression G_star 16*pi/3*(cie$VCN)^3/(dfm$VCN/vm)^2
+set-function-expression P_nucl exp(-G_star/(kB*T))
+
+
+$ ***************************************************************************************************
+$ *********************** Start evaluation of nucleation barrier ************************************
+$ ***************************************************************************************************
+
+set-temperature-celsius test_temp             $ set temperature
+set-automatic-startvalues                     $ initialize variables
+calculate-equilibrium                         $ calculate equilibrium at test temperature
+
+$ Define variables
+set-variable-value Vmin 0.10                  $ lower boundary for V
+set-variable-value Vmax 0.50                  $ upper boundary for V
+set-variable-value Vint 35                    $ Steps in the loop
+set-variable-value Nmin 0.0                   $ lower boundary for N
+set-variable-value Nmax 0.50                  $ upper boundary for V
+set-variable-value Nint 15                    $ Steps in the loop
+set-variable-value max_P_nucl 0               $ Define max Nucleation probability
+
+$ make loop for V and N content. Fe will be modified inversely to V, C inversely to N
+@set-variable-value row_count 0    $ index variable
+
+$ first loop is for V 
+@for (i;Vmin..Vmax:Vint)
+@$   show-expression i
+@   set-variable-value col_count 0    $ index variable
+@   for (j;Nmin..Nmax:Nint)
+@$       show-expression j
+@      $ assign compositions
+@      set-variable-value x_V i
+@      set-variable-value x_N  j
+@      
+@      $ check plausibility
+@      if (x_V<=0)
+@         set-variable-value x_V 1e-6
+@      endif
+@      if (x_N<=0)
+@         set-variable-value x_N 1e-6
+@      endif
+@      
+       show-expression x_V x_N
+@
+@      $ fill first line (header)
+@      if (row_count==0)
+@         set-array-value G_star_array 0 col_count+1 x_N
+@         set-array-value P_array 0 col_count+1 x_N
+@      endif 
+@      $set first column value
+@      if (col_count==0)
+@         set-array-value G_star_array row_count+1 0 x_V 
+@         set-array-value P_array row_count+1 0 x_V
+@      endif 
+@      
+@      $ set u-fraction constraint in nucleation phase
+@      change-phase-status VCN c V x x_V   
+@      change-phase-status VCN c N x x_N   
+       
+@      $ calculate equilibrium to determine the chemical driving force
+@      calculate-equilibrium
+       
+@      $ store in array
+@      if ((dfm$VCN>0.0)&(cie$VCN>0.0))
+@         set-array-value G_star_array row_count+1 col_count+1 G_star
+@         set-array-value G_star_array_no_xy row_count col_count G_star
+@         set-array-value P_array row_count+1 col_count+1 P_nucl
+@         set-array-value P_array_no_xy row_count col_count P_nucl
+@ $         show-expression row_count col_count
+@      else
+@         set-array-value G_star_array row_count+1 col_count+1 0.0
+@         set-array-value G_star_array_no_xy row_count col_count 0.0
+@         set-array-value P_array row_count+1 col_count+1 0.0
+@         set-array-value P_array_no_xy row_count col_count 0.0
+@      endif
+@      
+@      $ remember maximum P_nucl
+@      if (P_nucl>max_P_nucl)
+@         set-variable-value max_P_nucl P_nucl
+@      endif
+@
+@      $ increment counter
+@      set-variable-value col_count col_count+1
+@  endfor
+   
+@  $ increment counter
+@  set-variable-value row_count row_count+1
+@ endfor
+
+
+@ $ finally normalize nucleation probability
+@ set-variable-value row_count 0    $ index variable
+@ for (i;Vmin..Vmax:Vint)
+@ $   show-expression i
+@   set-variable-value col_count 0    $ index variable
+@   for (j;Nmin..Nmax:Nint)
+@      $ normalize
+@      set-array-value P_array row_count+1 col_count+1 P_array[row_count+1][col_count+1]/max_P_nucl
+@      set-array-value P_array_no_xy row_count col_count P_array_no_xy[row_count][col_count]/max_P_nucl
+@      $ increment counter
+@      set-variable-value col_count col_count+1
+@  endfor
+@  $ increment counter
+@  set-variable-value row_count row_count+1
+@ endfor
+
+$ ***************************************************************************************************
+$ *********************** Evaluation of nucleation barrier finished *********************************
+$ ***************************************************************************************************
+

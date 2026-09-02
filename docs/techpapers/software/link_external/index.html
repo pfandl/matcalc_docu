@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Link external - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Link external";
+        var mkdocs_page_input_path = "techpapers/software/link_external.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Link external</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>TechPaper #2011006: Linking MatCalc with third-party software [MatCalc Documentation]</p>
+<h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#techpaper_2011006linking_matcalc_with_third-party_software">TechPaper #2011006: Linking MatCalc with third-party software</a></p>
+</li>
+<li>
+<p><a href="#compatibility">Compatibility</a></p>
+</li>
+<li><a href="#objectives">Objectives</a></li>
+<li><a href="#related_documents">Related documents</a></li>
+<li>
+<p><a href="#main_document">Main document</a></p>
+</li>
+<li>
+<p><a href="#matlab">MATLAB</a></p>
+<ul>
+<li><a href="#choosing_the_right_libraries">Choosing the right libraries</a></li>
+<li><a href="#using_the_mex-compiled_version">Using the mex-compiled version</a></li>
+<li><a href="#using_the_matcalc_shared_libraries_directly">Using the MatCalc shared libraries directly</a></li>
+<li>
+<p><a href="#mathematica">Mathematica</a></p>
+</li>
+<li>
+<p><a href="#preparations">Preparations</a></p>
+</li>
+<li><a href="#installing_the_port">Installing the port</a></li>
+<li><a href="#using_the_port">Using the port</a></li>
+<li><a href="#example">Example</a></li>
+<li>
+<p><a href="#external_links">External links</a></p>
+</li>
+<li>
+<p><a href="#matlab1">MATLAB</a></p>
+</li>
+<li><a href="#mathematica1">Mathematica</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="techpaper-2011006-linking-matcalc-with-third-party-software">TechPaper #2011006: Linking MatCalc with third-party software</h1>
+<h2 id="compatibility">Compatibility</h2>
+<p>MatCalc version: 5.43 - … <br />
+Author: Y. Shan <br />
+Created: 2011-08-24 <br />
+Revisions: 2017-03-21, updated MATLAB port for MatCalc 6</p>
+<h2 id="objectives">Objectives</h2>
+<p>This paper provides information on using <em>MatCalc</em> libraries with third-party softwares such as <em>MATLAB</em>, <em>Mathematica</em>,…</p>
+<h2 id="related-documents">Related documents</h2>
+<p>None</p>
+<h1 id="main-document">Main document</h1>
+<h2 id="matlab">MATLAB</h2>
+<h3 id="choosing-the-right-libraries">Choosing the right libraries</h3>
+<p>First of all, make sure which <strong>MATLAB architecture</strong> is used (whether <strong>32-bit</strong> or <strong>64-bit</strong>). This can be seen on the <em>About MATLAB</em> page. The libraries used must be the <strong>same</strong> as the MATLAB architecture!</p>
+<p>Furthermore there will be <strong>shared libraries</strong> and <strong>static libraries</strong> depending on the method chosen. The library extensions are as followed:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td><strong>Windows</strong></td>
+<td><strong>Mac</strong></td>
+<td><strong>Linux</strong></td>
+</tr>
+<tr>
+<td>shared</td>
+<td>*.dll</td>
+<td>*.dylib</td>
+<td>*.so</td>
+</tr>
+<tr>
+<td>static</td>
+<td>*.lib</td>
+<td>*.a</td>
+<td>*.lib</td>
+</tr>
+</tbody>
+</table>
+<h3 id="using-the-mex-compiled-version">Using the mex-compiled version</h3>
+<h4 id="compiling-in-matcalc-5">Compiling in MatCalc 5</h4>
+<p>For this method you <strong>need</strong>:</p>
+<p>For compiling:</p>
+<ol>
+<li>the mex-source files from <em>MatCalc</em>: <strong>mc.h</strong> and <strong>mc.cpp</strong></li>
+<li>the static <strong>mc_core</strong> library</li>
+<li>the static QtCore and QtGui libraries (<strong>QtGui4.</strong>* and <strong>QtCore4.</strong>*)</li>
+</ol>
+<p>For using the compiled binary:</p>
+<ol>
+<li>the compiled binary (more details below)</li>
+<li>the shared QtCore and QtGui libraries</li>
+</ol>
+<p>Note: you can skip the compiling step if you already possess a compiled mex binary, but this can lead to problems on <em>MATLAB</em> versions other than the version which the binary has been compiled on.</p>
+<p>For compiling you need a C-compiler. If you don't already have one you can use the <a href="http///ftp.gnu.org/gnu/gcc/" title="http///ftp.gnu.org/gnu/gcc/">GCC 4.3 compiler</a>(warning/ MATLAB does <strong>not support</strong> higher gcc compiler) or find one from this <a href="http///www.mathworks.com/support/compilers/previous_releases.html" title="http///www.mathworks.com/support/compilers/previous_releases.html">list</a>. To compile the <em>MatCalc</em> mex-files make sure that you have all files in the current working dir on <em>MATLAB</em> and type</p>
+<p>Windows,Linux:</p>
+<pre><code>mex mc.cpp mc_core.lib QtCore4.lib QtGui4.lib
+</code></pre>
+<p>Mac:</p>
+<pre><code>mex mc.cpp mc_core.a QtCore4.a QtGui4.a
+</code></pre>
+<p>This should generate a mc-mex binary for your system which you can use like a normal MATLAB function. Depending on your system it can have following extensions:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td><strong>Windows</strong></td>
+<td><strong>Mac(Intel)</strong></td>
+<td><strong>Linux</strong></td>
+</tr>
+<tr>
+<td>32bit</td>
+<td>mc.mexw32</td>
+<td>mc.mexmaci</td>
+<td>mc.mexglx</td>
+</tr>
+<tr>
+<td>64bit</td>
+<td>mc.mexw64</td>
+<td>mc.mexmaci64</td>
+<td>mc.mexa64</td>
+</tr>
+</tbody>
+</table>
+<p>Note: Older <em>MATLAB</em> versions only use the *.mex extension.</p>
+<h4 id="compiling-in-matcalc-6">Compiling in MatCalc 6</h4>
+<p>In Matlab find the folder, in which MatCalc 6 is installed, and browse to /external/matlab. Here you can find the two files <strong>mc.cpp</strong> and <strong>mc.h</strong>. Type</p>
+<pre><code>mex mc.cpp ../../libmc_core.a
+</code></pre>
+<p>Note: You may need administrator rights in Matlab for generating the mex file. Alternatively you can move the 3 files (<strong>mc.cpp</strong>,<strong>mc.h</strong> and <strong>libmc_core.a</strong>) into a seperate folder and compile there.</p>
+<h4 id="using-the-compiled-mex-binary">Using the compiled mex binary</h4>
+<p>The mex binary can be used like a normal <strong><em>MATLAB</em> function</strong> which takes one <strong><em>input_string</em></strong> and returns a <strong><em>result</em></strong>:</p>
+<pre><code> [result] = mc(input_string)
+</code></pre>
+<p>The <em>input_string</em> is a <strong><em>MatCalc</em> command</strong> which you would also use in the console in <em>MatCalc</em>. The <em>result</em> is a number indicating errors. If <em>result</em> is 0 everything was ok (see MCM_ERRORS… (missing link)).</p>
+<p>You don't have to type the options or parameters of a command. If not given, <em>MATLAB</em> will ask for the necessary input in a same manner as in the console version of <em>MatCalc</em>.</p>
+<p>You can <strong>access <em>MatCalc</em> variables</strong> with the command</p>
+<pre><code> my_variable = mc(1,'variable_name');
+</code></pre>
+<p>which stores the <em>MatCalc</em> <em>variable_name</em> (e.g. F$*, T,…) into <em>my_variable</em>.</p>
+<p>For example if you want to run your script in <em>MATLAB</em> just wrap every line of your script with a mc('…').</p>
+<p>Note: the GUI commands of <em>MatCalc</em> are disabled.</p>
+<p>Note2: if you run the mex file from a different folder than the standard MatCalc installation folder, you have to specify the MatCalc folder in order to read your license, databases, etc. properly. To do this, use the <code>SET_APPLICATION_DIRECTORY</code> command.</p>
+<h5 id="example-for-a-simple-m-script">Example for a simple *.m script</h5>
+<pre><code>% this is a simple MATLAB script demonstrating the usage of the MatCalc mex binary
+
+mc('USE_MODULE core')                                       % switch module to core
+
+mc('OPEN_THERMODYN_DATABASE mc_sample_fe.tdb')              % open the steel database
+mc('SELECT_ELEMENTS C FE VA')                               % select elements
+mc('SELECT_PHASES BCC_A2 CEMENTITE FCC_A1 GRAPHITE LIQUID') % select phases
+mc('READ_THERMODYN_DATABASE')                               % read the database
+
+mc('ENTER_COMPOSITION wp C=0.4')                            % set the composition
+
+mc('SET_TEMPERATURE_CELSIUS 700')                           % set the temperature
+mc('SET_AUTOMATIC_STARTVALUES')                             % and
+mc('CALCULATE_EQUILIBRIUM')                                 % calculate equilibrium
+
+mc('SET_STEP_OPTION R 400 1600 L 25')                       % define step parameters
+mc('STEP_EQUILIBRIUM')                                      % and do step calculation
+
+% get phase data
+i = 0;                                                      % iterator for buffer data
+while (mc(['LOAD_BUFFER_STATE ' int2str(i)]) == 0)          % iterate until buffer end
+    i = i+1;                                                % increase iterator
+    T(i) = mc(1,'T');                                       % get data...
+    F_LIQ(i) = mc(1,'F$LIQUID');
+    F_FCC(i) = mc(1,'F$FCC_A1');
+    F_BCC(i) = mc(1,'F$BCC_A2');
+    F_CEM(i) = mc(1,'F$CEMENTITE');
+    F_GRA(i) = mc(1,'F$GRAPHITE');
+end
+
+% plot in MATLAB
+plot(T,F_LIQ,T,F_FCC,T,F_BCC,T,F_CEM,T,F_GRA)
+legend('F$LIQUID','F$FCC_A1','F$BCC_A2','F$CEMENTITE','F$GRAPHITE')
+</code></pre>
+<p><a href="/techpapers/software/img/mex-test.png" title="techpapers/software/img/mex-test.png"><img alt="" src="/techpapers/software/img/mex-test.png" /></a></p>
+<h3 id="using-the-matcalc-shared-libraries-directly">Using the MatCalc shared libraries directly</h3>
+<p>For this method you <strong>need</strong>:</p>
+<ol>
+<li>the shared <em>MatCalc</em> and QtGui,QtCore (only in MatCalc 5) libraries</li>
+<li>a header file containing the functions you want to use (in MatCalc 6 found in /external/api)</li>
+</ol>
+<p>To load the shared library into <em>MATLAB</em> simply use</p>
+<pre><code>loadlibrary('mc_core.dll','my_header.h')
+</code></pre>
+<p>To call a function use</p>
+<pre><code>calllib('mc_core','function_name',input parameters...)
+</code></pre>
+<p>for example:</p>
+<pre><code>calllib('mc_core','MCC_InitializeKernelPath','./')
+</code></pre>
+<h2 id="mathematica">Mathematica</h2>
+<h3 id="preparations">Preparations</h3>
+<p>Before using the MatCalc port for Mathematica, you should make sure, that you have a Mathematica with working MathLink installed. The port for mathematica can be found in the installation dir of MatCalc and is called <strong>mc_command.exe</strong>.</p>
+<h3 id="installing-the-port">Installing the port</h3>
+<p>Start Mathematica and set the working directory to the MatCalc installation dir. Alternatively you can copy the <strong>mc_command.exe</strong> in a folder of your choice and set the directory to this folder instead. If you have installed Matcalc in <strong>C:/Program Files/MatCalc</strong> then the command in Mathematica is</p>
+<pre><code> SetDirectory[&quot;C:/Program Files/MatCalc&quot;]
+</code></pre>
+<p>The next step is to install the MatCalc port. This is done with</p>
+<pre><code> link = Install[&quot;mc_command.exe&quot;]
+</code></pre>
+<p>A command prompt should now pop up, which is the output window for MatCalc. If you close this, the link is automatically separated and you have to install MatCalc again.</p>
+<p>To uninstall the MatCalc port use</p>
+<pre><code> Uninstall[link]
+</code></pre>
+<h3 id="using-the-port">Using the port</h3>
+<p>The MatCalc port comes with three functions:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MCInit[path]</td>
+<td>Initializes MatCalc in 'path'</td>
+</tr>
+<tr>
+<td>MCCommand[command]</td>
+<td>Process 'command' as a MatCalc console command</td>
+</tr>
+<tr>
+<td>MCGetVariable[variable]</td>
+<td>Returns the current value of 'variable'</td>
+</tr>
+</tbody>
+</table>
+<p>You should always call the <strong>MCInit</strong> function before using the other functions. This initializes MatCalc in the given 'path', reads the license in 'path' and also the preset defaults located in 'path'/preset (if you use your standard MatCalc installation dir everything should be ok). This function only needs to be run once.</p>
+<p>Now you can use <strong>MCCommand</strong> to process the standard MatCalc commands as in the console, like calling scripts or setting up a simulation. For example</p>
+<pre><code> MCCommand[&quot;run-script-file ./scripts/script_menu/templates/miscellaneous/file_export/file_export.mcs&quot;]
+</code></pre>
+<p>To get MatCalc variables, use the <strong>MCGetVariable</strong> function, e.g.</p>
+<pre><code> temperature = MCGetVariable[&quot;T&quot;]
+</code></pre>
+<p>Note: The output of <strong>MCInit</strong>, <strong>MCReadLicense</strong> and <strong>MCCommand</strong> is an integer indicating the result of the process. If the integer is zero an error occured.</p>
+<h3 id="example">Example</h3>
+<p>The following example shows how to install the MatCalc port, run the file_export script and extracting variables into Mathematica</p>
+<pre><code>SetDirectory[&quot;C:/Program Files/MatCalc&quot;]
+link = Install[&quot;mc_command.exe&quot;]
+MCInit[&quot;/.&quot;]
+MCCommand[&quot;run-script-file ./scripts/script_menu/templates/miscellaneous/file_export/file_export.mcs&quot;]
+temperature = MCGetVariable[&quot;T&quot;]
+phase_fraction_cementite = MCGetVariable[&quot;F$CEM&quot;]
+</code></pre>
+<h2 id="external-links">External links</h2>
+<h3 id="matlab_1">MATLAB</h3>
+<ol>
+<li><a href="http///www.mathworks.com/products/matlab/" title="http///www.mathworks.com/products/matlab/">MATLAB homepage</a></li>
+<li><a href="http///www.mathworks.com/help/pdf_doc/matlab/apiext.pdf" title="http///www.mathworks.com/help/pdf_doc/matlab/apiext.pdf">MATLAB documentation for external interfaces</a></li>
+<li><a href="http///www.mathworks.com/support/compilers/previous_releases.html" title="http///www.mathworks.com/support/compilers/previous_releases.html">Information about supported and compatible compilers</a></li>
+<li><a href="https///help.ubuntu.com/community/MATLAB#MEX_functions" title="https///help.ubuntu.com/community/MATLAB#MEX_functions">Guide for setting up gcc compiler 4.3 for ubuntu</a></li>
+</ol>
+<h3 id="mathematica_1">Mathematica</h3>
+<ol>
+<li><a href="http///www.wolfram.com/mathematica/" title="http///www.wolfram.com/mathematica/">Mathematica homepage</a></li>
+<li><a href="http///reference.wolfram.com/mathematica/tutorial/MathLinkAndExternalProgramCommunicationOverview.html" title="http///reference.wolfram.com/mathematica/tutorial/MathLinkAndExternalProgramCommunicationOverview.html">Mathematica documentation for MathLink</a></li>
+</ol>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=techpapers%3Asoftware%3Alink_external&amp;1788353010" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

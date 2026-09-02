@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>P2 1 - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "P2 1";
+        var mkdocs_page_input_path = "examples/precipitation/p2/p2_1.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">P2 1</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>Example P2: Precipitation sequence in Al-Cu, Part 1: Isothermal treatment of Al-Cu [MatCalc Documentation]</p>
+<h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#example_p2precipitation_sequence_in_al-cu_part_1isothermal_treatment_of_al-cu">Example P2: Precipitation sequence in Al-Cu, Part 1: Isothermal treatment of Al-Cu</a></p>
+</li>
+<li>
+<p><a href="#compatibility">Compatibility</a></p>
+</li>
+<li><a href="#objectives">Objectives</a></li>
+<li><a href="#related_documents">Related documents</a></li>
+<li><a href="#complementary_files">Complementary files</a></li>
+<li>
+<p><a href="#main_document">Main document</a></p>
+</li>
+<li>
+<p><a href="#setup_thermodynamics">Setup thermodynamics</a></p>
+</li>
+<li><a href="#precipitation_domain_and_precipitates">Precipitation domain and precipitates</a></li>
+<li><a href="#plots_and_diagrams">Plots and diagrams</a></li>
+<li><a href="#defining_the_heat_treatment">Defining the heat treatment</a></li>
+<li><a href="#starting_the_calculation">Starting the calculation</a></li>
+<li><a href="#resultsgeneral">Results: General</a></li>
+<li><a href="#resultsinfluence_of_vacancy_model_on_phase_fractions">Results: Influence of vacancy model on phase fractions</a></li>
+<li><a href="#consecutive_articles">Consecutive articles</a></li>
+</ul>
+<h1 id="example-p2-precipitation-sequence-in-al-cu-part-1-isothermal-treatment-of-al-cu">Example P2: Precipitation sequence in Al-Cu, Part 1: Isothermal treatment of Al-Cu</h1>
+<h2 id="compatibility">Compatibility</h2>
+<p>MatCalc version: 5.50.0022 <br />
+Database: mc_sample_al.tdb, mc_sample_al.ddb<br />
+Author: Georg Stechauner<br />
+Created: 2012-02-28 <br />
+Revisions: Updated for 5.62.1000</p>
+<h2 id="objectives">Objectives</h2>
+<p>This example script simulates a technical Al-Cu alloy with 4.3 wt-% Cu. The script begins at high temperatures in the solution annealed condition where only the FCC_A1 matrix is present. Upon quenching to room temperature, precipitates form. Consequently the alloy is annealed at various
+temperatures isothermically. The size and phase fraction of precipitates will be plotted and discussed.</p>
+<h2 id="related-documents">Related documents</h2>
+<ul>
+<li><a href="/examples/precipitation/p2/p2_1" title="examples/precipitation/p2/p2_1">Part 1: Isothermal treatment of Al-Cu</a></li>
+<li><a href="/examples/precipitation/p2/p2_2" title="examples/precipitation/p2/p2_2">Part 2: Evolution of excess vacancies</a></li>
+</ul>
+<h2 id="complementary-files">Complementary files</h2>
+<p>Click <a href="/examples/precipitation/p2/scripts/p2_1_isothermal_5621000.mcs" title="examples/precipitation/p2/scripts/p2_1_isothermal_5621000.mcs (11 KB)">here</a> to view the script for this example for Version 5.62.1000 and newer. If it does not work with your MatCalc Version, check the <a href="/examples/precipitation/p2/scripts/p2_1_isothermal.mcs" title="examples/precipitation/p2/scripts/p2_1_isothermal.mcs (10.4 KB)">older version of this script</a> .</p>
+<h1 id="main-document">Main document</h1>
+<h2 id="setup-thermodynamics">Setup thermodynamics</h2>
+<p>Use the mc_sample_al.tdb database for this example with the following elements, phases and chemical composition (given in wt-%):</p>
+<table>
+<thead>
+<tr>
+<th>Elements</th>
+<th>Composition</th>
+<th>Phases</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Al</td>
+<td>ref.</td>
+<td>FCC_A1</td>
+</tr>
+<tr>
+<td>Cu</td>
+<td>4.3</td>
+<td>THETA_AL2CU</td>
+</tr>
+<tr>
+<td>-</td>
+<td>-</td>
+<td>THETA_PRIME</td>
+</tr>
+<tr>
+<td>-</td>
+<td>-</td>
+<td>TH_DP_GPB</td>
+</tr>
+</tbody>
+</table>
+<p>Conclude the thermodynamic setup by reading the mc_sample_al.ddb diffusion database.</p>
+<h2 id="precipitation-domain-and-precipitates">Precipitation domain and precipitates</h2>
+<p>The parameter set used in this example has shown to reproduce experiments considerably well. Feel free to use these values for your own simulations!</p>
+<p>Open the precipitation domain window and create a new precipitation domain called 'almatrix'. <strong>Attach</strong> it to <strong>fcc_a1</strong> phase. Enter the following value for shown settings:</p>
+<table>
+<thead>
+<tr>
+<th>Tab</th>
+<th>Option</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Structure</td>
+<td>Grain diameter</td>
+<td>200e-6</td>
+</tr>
+<tr>
+<td>Dislocation density</td>
+<td>1e11</td>
+<td></td>
+</tr>
+<tr>
+<td>Vacancies</td>
+<td>Consider excess vacancies</td>
+<td>✔, Enter 1</td>
+</tr>
+<tr>
+<td>Vacancy evolution model</td>
+<td>FSK vacancy dynamics</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Be aware that the change performed at vacancies is of utmost importance. The FSK model is necessary for a more realistic vacancy dynamic. More on this factor and its influence later.</p>
+<p>Follow by setting up the precipitates. Bring up the phase status dialog window and select the three Theta phases. Click 'Create new phase' and select 'precipitate'. This produces one precipitate phase for each of the selected phases. Enter the following commands to complete the system setup:</p>
+<table>
+<thead>
+<tr>
+<th>Precipitate</th>
+<th>Tab</th>
+<th>Option</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>THETA_AL2CU_p0</td>
+<td>Precipitate</td>
+<td>#size classes</td>
+<td>25</td>
+</tr>
+<tr>
+<td>Shape factor</td>
+<td>✔, 0.1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Nucleation</td>
+<td>Nucleation sites</td>
+<td>dislocations</td>
+<td></td>
+</tr>
+<tr>
+<td>Nucleation constant</td>
+<td>0.01</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Special</td>
+<td>Substitutional diffusion in precipitate  as ratio from matrix</td>
+<td>0.1</td>
+<td></td>
+</tr>
+<tr>
+<td>Precipitate</td>
+<td>Tab</td>
+<td>Option</td>
+<td>Value</td>
+</tr>
+<tr>
+<td>THETA_PRIME_P0</td>
+<td>Precipitate</td>
+<td>#size classes</td>
+<td>25</td>
+</tr>
+<tr>
+<td>Shape factor</td>
+<td>✔, 0.1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Interfacial energy correction</td>
+<td>0.95*CIE$THETA_PRIME</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Nucleation</td>
+<td>Nucleation sites</td>
+<td>dislocations</td>
+<td></td>
+</tr>
+<tr>
+<td>Special</td>
+<td>Substitutional diffusion in precipitate  as ratio from matrix</td>
+<td>0.1</td>
+<td></td>
+</tr>
+<tr>
+<td>Precipitate</td>
+<td>Tab</td>
+<td>Option</td>
+<td>Value</td>
+</tr>
+<tr>
+<td>TH_DP_GPB_P0</td>
+<td>Precipitate</td>
+<td>#size classes</td>
+<td>25</td>
+</tr>
+<tr>
+<td>Shape factor</td>
+<td>✔, 0.1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Nucleation</td>
+<td>Nucleation sites</td>
+<td>bulk</td>
+<td></td>
+</tr>
+<tr>
+<td>account for coherent misfit stress</td>
+<td>✔</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Structure</td>
+<td>volumetric misfit</td>
+<td>No flag, enter 0.03</td>
+<td></td>
+</tr>
+<tr>
+<td>Special</td>
+<td>Substitutional diffusion in precipitate  as ratio from matrix</td>
+<td>0.1</td>
+<td></td>
+</tr>
+<tr>
+<td>Excess vacancy trapping fraction</td>
+<td>0.002</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="plots-and-diagrams">Plots and diagrams</h2>
+<p>Proceed by setting up the output windows. Create a <strong>p1</strong> plot and activate the default x-axis for all plots. Further change the title to 'Time [s]', scale the axis from '0.1..' and set its type to 'log'. Display the window in 2 columns.</p>
+<p>Now create three new plots so you have four in total. Plot…</p>
+<ul>
+<li>…<code>T$C</code> in the first one. Change y-axis title to 'Temperature [°C]'</li>
+<li>…<code>f_prec$*</code> in the second one. Change y-axis type and title to logarithmic and 'Phase fraction', respectively.</li>
+<li>…<code>r_mean$*</code> in the third one. Change y-axis type and title to logarithmic and 'Mean radius [nm]', respectively. Change the factor on the y-axis to 1e9 to convert meters to nano-meters.</li>
+<li>…<code>Num_prec$*</code> in the fourth one. Change y-axis type and title to logarithmic and 'Number density [m-3]', respectively.</li>
+</ul>
+<h2 id="defining-the-heat-treatment">Defining the heat treatment</h2>
+<p>Even tough we are performing an isothermal heat treatment in this example, we need to start with rapid quenching, in order to nucleate the precipitates and to quench in excess vacancies. The influence of quenched in excess vacancies will be shown in this example, while the influence of quenching rate and other parameters will be shown in Part 2.</p>
+<p>Open the 'Edit heat treatments…' dialog window and create a new heat treatment. Add a new segment and enter the following settings. Choose a starting temperature of 550°C and select 'almatrix' as the precipitation domain. Select 'inherit' for all following segments.</p>
+<table>
+<thead>
+<tr>
+<th>Segment</th>
+<th>Ramp control</th>
+<th>End Temp. [C]</th>
+<th>Cool. Rate [K/s]</th>
+<th>Delta-Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>End Temp. &amp; H/C Rate</td>
+<td>200</td>
+<td>50</td>
+<td>-</td>
+</tr>
+<tr>
+<td>1</td>
+<td>H/C Rate &amp; Delta Time</td>
+<td>-</td>
+<td>0</td>
+<td>1e9</td>
+</tr>
+</tbody>
+</table>
+<h2 id="starting-the-calculation">Starting the calculation</h2>
+<p>Start the simulation by opening the 'Precipitation simulation…' window and selecting the recently created heat treatment as 'Temperatur control'. Press Go to start the simulation.</p>
+<p><a href="/examples/precipitation/p2/p2_1_preckin.png" title="examples/precipitation/p2/p2_1_preckin.png"><img alt=" Precipitation kinetics dialog window" src="/examples/precipitation/p2/p2_1_preckin.png" title="Precipitation kinetics dialog window" /></a></p>
+<p>In order to plot isothermal treatments at other temperatures as well, change the heat treatment and cool to other temperatures. Repeat the simulation then again.</p>
+<h2 id="results-general">Results: General</h2>
+<p>The result for an isothermal treatment at 150°C is shown below.</p>
+<p><a href="/examples/precipitation/p2/p2_1-150results-small.png" title="examples/precipitation/p2/p2_1-150results-small.png"><img alt=" Results for isothermal treatment at 150C" src="/examples/precipitation/p2/p2_1-150results-small.png" title="Results for isothermal treatment at 150C" /></a></p>
+<p>The results show a typical sequence for the given alloy. Upon cooling, at first the stable Theta phase nucleates, followed by the meta stable Theta_prime and Theta_double-prime. The influence of mean radius and number density on the evolution of phase fraction can clearly be seen. Only Theta_double-prime experiences an increase in number density after the nucleation, thus its increase in the phase fraction at about 10.000 seconds does not only root in the mean radius increase as for the other precipitates.</p>
+<p>At about 1e7 seconds the meta-stable Theta_double-prime dissolves in favor of the stable Theta phase, which experiences another growth in mean radius after the small precipitates dissolved. The second meta-stable phase, Theta_prime does not dissolve in this example, as the annealing time is not long enough.</p>
+<p>The next section will deal with different isothermal, annealing temperatures.</p>
+<h2 id="results-influence-of-vacancy-model-on-phase-fractions">Results: Influence of vacancy model on phase fractions</h2>
+<p>The figures below show the phase fractions and have been calculated with both the activated FSK model as well as no model. In order to deactivate the FSK model open the Precipitation domain window and switch to the vacancies tab. Select 'no vacancy annihilation/generation' instead of the FSK model and set 'no flag' at consider excess vacancies.</p>
+<table>
+<thead>
+<tr>
+<th>Temp. / °C</th>
+<th>FSK model</th>
+<th>no model</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>200</td>
+<td><a href="/examples/precipitation/p2/p2_1-phasefraction200.png" title="examples/precipitation/p2/p2_1-phasefraction200.png">Phase fraction of precipitates at 200C isothermal annealing with FSK-model</a></td>
+<td><a href="/examples/precipitation/p2/p2_1-phasefraction200-nofsk.png" title="examples/precipitation/p2/p2_1-phasefraction200-nofsk.png">Phase fraction of precipitates at 200C isothermal annealing without FSK-model</a></td>
+</tr>
+<tr>
+<td>150</td>
+<td><a href="/examples/precipitation/p2/p2_1-phasefraction150.png" title="examples/precipitation/p2/p2_1-phasefraction150.png">Phase fraction of precipitates at 150C isothermal annealing with FSK-model</a></td>
+<td><a href="/examples/precipitation/p2/p2_1-phasefraction150-nofsk.png" title="examples/precipitation/p2/p2_1-phasefraction150-nofsk.png">Phase fraction of precipitates at 150C isothermal annealing without FSK-model</a></td>
+</tr>
+<tr>
+<td>100</td>
+<td><a href="/examples/precipitation/p2/p2_1-phasefraction100.png" title="examples/precipitation/p2/p2_1-phasefraction100.png">Phase fraction of precipitates at 100C isothermal annealing with FSK-model</a></td>
+<td><a href="/examples/precipitation/p2/p2_1-phasefraction100-nofsk.png" title="examples/precipitation/p2/p2_1-phasefraction100-nofsk.png">Phase fraction of precipitates at 100C isothermal annealing without FSK-model</a></td>
+</tr>
+</tbody>
+</table>
+<p>From the figures above the enormous influence of the FSK model on the precipitation behavior can easily be seen.</p>
+<p>All temperatures show a difference in diffusion behavior, which gets more pronounced as the temperature of isothermal treatment decreases. While the curve progression of the 200°C figures is only slightly different when considering FSK-model compared to no vacancy annihilation/creation, a clear difference can be seen for the 100°C curve. A phase fraction of the first plateau of Theta_double-prime is obtained when considering the FSK-model about 3 orders of magnitude earlier than without the vacancy dynamics model.</p>
+<p>The main reason for this temperature dependence is that the diffusion rate is still high at 200°C and therefore more or less independent of the excess vacancies. Moreover the diffusion correction factor due to non-equilibrium vacancy site fraction (XSV_DCF<code>$</code>almatrix) reaches its maximum at 20 and decreases in a few seconds to 1, where all the excess vacancies are annihilated again. For the 100°C the diffusion rate is slower overall. The correction factor raises to 1600 and needs 1000 seconds to reach unity again.</p>
+<p><strong><em>Note …</em></strong></p>
+<p>Variable <strong>XSV_DCF<span class="arithmatex">\(almatrix** was named **XVA\_DCF\)</span>almatrix</strong> in the older MatCalc versions</p>
+<h1 id="consecutive-articles">Consecutive articles</h1>
+<p>The analysis of this example will be continued in  <a href="/examples/precipitation/p2/p2_2" title="examples/precipitation/p2/p2_2">Part 2: Evolution of excess vacancies</a>.</p>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=examples%3Aprecipitation%3Ap2%3Ap2_1&amp;1788352995" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

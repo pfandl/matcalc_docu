@@ -1,0 +1,228 @@
+$$************************************************************************************************** 
+************************************* GENERAL INFORMATION ******************************************
+****************************************************************************************************
+
+This example script simulates a technical Al-Cu alloy with 4.3 wt-% Cu. The script begins at high 
+temperatures in the solution annealed condition where only the FCC_A1 matrix is present. Different 
+quenching rates are applied to show their influence on the amount of quenched in vacancies.
+Difference between no and FSK-model will be shown.
+
+Database: mc_sample_al.tdb, mc_sample_al.ddb
+Author: G. Stechauner
+Creation date: 2012-02-24
+This is a script for MatCalc version 5.50 (rel 0.007)
+Last update: 2013-12-09 (variable names updated for 5.53.0027, removed precipitate parameter defintions which are default anyway)
+
+
+
+**************************************************************************************************** 
+************************************** SETUP INFORMATION *******************************************
+**************************************************************************************************$$
+
+$ make sure we work in the correct module
+use-module core 
+
+$ close any open workspace without asking for save
+close-workspace f
+
+$ Create a new workspace.
+new-workspace
+
+$ Enter workspace info.
+set-workspace-info +Example P2_2: Effect of quenching rates on vacancy evolution
+set-workspace-info +
+set-workspace-info +Elements: Al, Cu
+set-workspace-info +Phases: FCC_A1, TH_DP, THETA_PRIME, THETA_AL2CU
+set-workspace-info +
+set-workspace-info +Example script for isothermal simulation of Al-Cu alloy.
+set-workspace-info +Refer to www.matcalc.at for further information.
+
+
+$$************************************************************************************************** 
+**************************************** SYSTEM SETUP **********************************************
+**************************************************************************************************$$
+
+$ verify correct MatCalc version (is accessible as internal variable)
+if (matcalc_version<5500007)
+   send-dialog-string "MatCalc version must be 5.50.0007 or higher to run this script. Stopping."
+   stop-run-script                                  $ stop script
+endif
+
+set-variable-value temp 25                          $ Select annealing temperature
+set-variable-value quench 100                       $ Enter quenching rate in K/s
+
+
+$$*************************************************************************************************** 
+                       DATABASES, CHEMICAL COMPOSITION, SELECTED PHASES
+***************************************************************************************************$$
+
+open-thermodyn-database mc_al.tdb
+
+select-elements Al Cu 
+select-phases FCC_A1 TH_DP THETA_PRIME THETA_AL2CU
+
+read-thermodyn-database 
+
+$ Read the diffusion database for Al-based alloys.
+read-mobility-database mc_al.ddb
+
+$ enter chemical composition
+enter-composition wp Cu=4.3
+
+$calculate some initial equilibrium
+set-temperature-celsius 650
+set-automatic-startvalues
+calculate-equilibrium 
+
+
+$$***************************************************************************************************
+                                  SET UP PRECIPITATION DOMAIN
+***************************************************************************************************$$
+
+create-precipitation-domain almatrix
+
+$ set precipitation domain properties 
+set-precipitation-parameter almatrix x fcc_a1                  $ define thermodynamic matric phase
+set-precipitation-parameter almatrix t d e 1e11                $ set equilibrium dislocation density
+set-precipitation-parameter almatrix e v m f                   $ define vacancy model (FSK dynamics)
+set-precipitation-parameter almatrix e v f y 1                   $ consider excess vacancy concentration
+set-precipitation-parameter almatrix t g 200e-6                $ define grain size
+
+
+$$***************************************************************************************************
+                                      SET UP PRECIPITATES
+***************************************************************************************************$$
+
+$ create precipitates: Theta double prime
+create-new-phase TH_DP p
+
+set-precipitation-parameter TH_DP_GPB_p0 H Y 0,1               $ shape factor
+set-precipitation-parameter TH_DP_GPB_P0 N S B                 $ Nucleation site: Bulk
+set-precipitation-parameter TH_DP_GPB_P0 F N                   $ No automatic value for diffuse interface energy correction                                     
+set-precipitation-parameter TH_DP_GPB_P0 t M N 0.03            $ No automatic value for volumetric misfit. Use 0.03
+set-precipitation-parameter TH_DP_GPB_P0 N F Y                 $ Take volumetric misfit into account
+set-precipitation-parameter TH_DP_GPB_p0 s D R 0.1             $ Diffusion as ration from matrix (default: 0.01)
+$set-precipitation-parameter TH_DP_GPB_p0 s c 0.75              $ Coalescence factor (default: 0.00)
+$set-precipitation-parameter TH_DP_GPB_p0 s t 0.002             $ Excess vacancy trapping coefficient (default: 0.00)
+
+
+$ create precipitates: Theta prime 
+create-new-phase THETA_PRIME p
+
+set-precipitation-parameter THETA_PRIME_P0 H Y 0.1             $ Shape factor
+set-precipitation-parameter THETA_PRIME_P0 I N 0.95*CIE$THETA_PRIME $Interfacial energy correction
+set-precipitation-parameter THETA_PRIME_P0 N S D               $ Nucleation site: Dislocation 
+set-precipitation-parameter THETA_PRIME_P0 s D R 0.1           $ Diffusion as ration from matrix (default: 0.01)
+set-precipitation-parameter THETA_PRIME_P0 F N                                                        
+set-precipitation-parameter THETA_PRIME_P0 N F Y
+
+
+$ create precipitates: Theta
+create-new-phase THETA_AL2CU p
+
+set-precipitation-parameter THETA_AL2CU_P0 H Y 0.1             $ Shape factor
+set-precipitation-parameter THETA_AL2CU_P0 N S D    
+set-precipitation-parameter THETA_AL2CU_P0 s D R 0.1           $ Diffusion as ration from matrix (default: 0.01)
+set-precipitation-parameter THETA_AL2CU_P0 N U 0.01            $ Nucleation constant
+set-precipitation-parameter THETA_AL2CU_P0 F N                                                        
+set-precipitation-parameter THETA_AL2CU_P0 N F Y
+
+
+$$***************************************************************************************************
+                                    PLOTS AND OUTPUT WINDOWS
+***************************************************************************************************$$
+
+$ Values over temperature
+new-gui-window p1
+set-gui-window-property . x t$c
+set-gui-window-property . s u y                                      $ Window ID (.), default x-axis (s), use for all plots (u), yes (y).
+set-gui-window-property . s y lin                                    $ Window ID (.), default x-axis (s), type (y), enter type.
+set-gui-window-property . n 2                                        $ Set window to x columns
+set-gui-window-property . s t Temperature [C]
+
+set-plot-option . a y 1 t Vacancy site fraction
+
+$$***************************************************************************************************
+**********    An error occuring after the execution of the following line might be due     **********
+**********        to the usage of the older MatCalc version. Renaming all 'PX_SV_*'        **********
+**********     variables in this script to the 'PX_VA_*' ones should solve the problem.    **********
+***************************************************************************************************$$
+
+set-plot-option . s n b PX_SV_EQUIL$almatrix                         $ Plot the equilibrium vacancy site fraction
+set-plot-option . s n b PX_SV_CURR$almatrix                          $ Plot the current vacancy site fraction
+
+set-plot-option . a y 1 y log                                        $ Plot ID (.), axis (a), y-axis (y), first y-axis (1), type (y), enter type.
+
+move-gui-window . 10 10 500 750
+
+create-new-plot x .
+set-plot-option . s n b X$FCC_A1$CU
+set-plot-option . a y 1 t Cu in Al-matrix
+
+create-new-plot x .
+set-plot-option . s n b f_prec$TH_DP_GPB_P0
+set-plot-option . a y 1 t Phase frac. of prec.
+
+create-new-plot x .
+set-plot-option . a y 1 t Mean radius / m
+set-plot-option . a y 1 y log                                        $ Plot ID (.), axis (a), y-axis (y), first y-axis (1), type (y), enter type.
+set-plot-option . s n b r_mean$TH_DP_GPB_P0
+set-plot-option . a x 1 s 25..200
+
+create-new-plot x .
+set-plot-option . s n b num_prec$TH_DP_GPB_P0
+set-plot-option . a y 1 y log                                        $ Plot ID (.), axis (a), y-axis (y), first y-axis (1), type (y), enter type.
+set-plot-option . a y 1 t Number density 
+
+
+$$***************************************************************************************************
+                                        HEAT TREATMENT
+***************************************************************************************************$$
+
+create-heat-treatment iso                                        $ Create new heat treatment   
+append-ht-segment iso                                            $ create a heat treatment segment			                                         
+edit-ht-segment iso . s 600                                      $ set start temperature 
+edit-ht-segment iso . 1 temp quench                              $ set segment end temperature and quenching rate
+edit-ht-segment iso . D N almatrix                               $ precipitation domain
+append-ht-segment iso
+edit-ht-segment iso . 2 0 1                                      $ set heating-rate and time
+append-ht-segment iso 
+edit-ht-segment iso . 1 260 10/60                                $ set end-temperature and heating rate
+append-ht-segment iso 
+edit-ht-segment iso . 2 0 3e2                                    
+
+set_simulation_parameter t h iso 4
+set-variable-value foo 0                                         $ Help-variable to modify something
+
+for(i;2..6)
+set-variable-value exponent i
+format-variable-string expstring %d exponent
+set-variable-value annealtime 1e#expstring 
+edit-ht-segment iso 1 2 0 annealtime                             $ set heating-rate and time
+start-precipitate-simulation
+
+   $ If condition to only lock PX_VA_Equil once.
+   if(foo==0)
+   set-variable-value foo 1
+   set-plot-option 1 s l -1 PX_SV_EQUIL$almatrix y
+   endif
+
+set-plot-option 1 s d -1 PX_SV_CURR$almatrix y
+set-plot-option 1 s m -1 *_PX_SV_CURR$almatrix 1e#expstring 
+set-plot-option 2 s d -1 X$FCC_A1$CU
+set-plot-option 2 s m -1 *_X$FCC_A1$CU 1e#expstring 
+set-plot-option 3 s d -1 f_prec$TH_DP_GPB_P0
+set-plot-option 3 s m -1 *_f_prec$TH_DP_GPB_P0 Theta''_1e#expstring 
+set-plot-option 4 s d -1 r_mean$TH_DP_GPB_P0
+set-plot-option 4 s m -1 *_r_mean$TH_DP_GPB_P0 Theta''_1e#expstring 
+set-plot-option 5 s d -1 num_prec$TH_DP_GPB_P0
+set-plot-option 5 s m -1 *_num_prec$TH_DP_GPB_P0 Theta''_1e#expstring 
+endfor
+
+set-plot-option 1 s r -1 PX_SV_CURR$almatrix 
+set-plot-option 1 s m -1 *_PX_SV_EQUIL$almatrix Equil.
+
+set-plot-option 2 s r -1 X$FCC_A1$CU
+set-plot-option 3 s r -1 f_prec$TH_DP_GPB_P0
+set-plot-option 4 s r -1 r_mean$TH_DP_GPB_P0
+set-plot-option 5 s r -1 num_prec$TH_DP_GPB_P0

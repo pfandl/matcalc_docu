@@ -1,0 +1,242 @@
+$$************************************************************************************************** 
+************************************** GENERAL INFORMATION *****************************************
+****************************************************************************************************
+
+Script cell simulations: long-range diffusion according to Tutorial 22.
+The following contents will be covered:
+
+ - setting up a simulation grid
+ - assigning properties to cells
+ - setting up display of cell simulation results
+ - setting up simulation parameters
+ - boundary conditions
+ 
+Database: mc_fe.tdb, mc_fe.ddb
+Author: V. Yardley
+Creation date: 14.02.2017
+Last update: 25.06.2019 (P. Warczok, Update for 6.02)
+This is a script for MatCalc version 6.02 (rel 1.003)
+
+Known issues:
+- "save-workspace "file-name"=Tutorial_23" is not working properly. --> Use "save-workspace Tutorial_23" instead.
+- "add-cell-selection" - this MatCalc 5 command is not yet implemented in MatCalc 6
+- "set-default-boundary-cond" - this MatCalc 5 command is not yet implemented in MatCalc 6
+- "start-cell-simulation" - this MatCalc 5 command is not yet implemented in MatCalc 6
+- "set-function-expression function=analytical_expr expression=Bval*term_1*term_2" is not working in "sim"-module -->
+  --> use "set-function-expression analytical_expr Bval*term_1*term_2" instead.
+- "set-grid-geometry geometry=planar" is not working. --> Use "set-grid-geometry geometry=p" instead.
+- "set-cell-property cell-range=all materials material-name-for-cell=aus_material" is not working -->
+  --> use "set-cell-property cell-range=a materials material-name-for-cell=aus_material" instead.
+- "update-gui-window window-id=4" needed, otherwise the curves on the cell history plot are not shown.
+
+
+****************************************************************************************************
+************************************** SETUP INFORMATION *******************************************
+**************************************************************************************************$$       
+
+use-module module-name=core                                                                                                                             $ Select core module for kinetic simulation
+close-workspace options=f                                                                                                                               $ Close any open workspace without asking for save 
+
+new-workspace                                                                                                                                           $ Create a new workspace 
+
+$ Add some information about your Script
+@echo value=no
+set-workspace-info information=Script T23
+set-workspace-info information=+Simulation of long-range diffusion of C
+set-workspace-info information=+out of thin film
+set-workspace-info information=+with matrix phase FCC_A1
+
+echo value=yes
+
+
+$$************************************************************************************************** 
+**************************************** SYSTEM SETUP **********************************************
+**************************************************************************************************$$
+
+
+
+
+$$************************************************************************************************** 
+                          DATABASES, CHEMICAL COMPOSITION, SELECTED PHASES
+**************************************************************************************************$$
+
+open-thermodynamic-database file-name=mc_fe.tdb                                                                                                         $ Open thermodynamic database mc_fe.tdb
+$ Select Fe and C as components of the system. VA (vacancies) is not necessary
+select-elements elements=FE C 
+$ Select the phases which will be used in the simulation
+select-phases phases=FCC_A1	
+$ Read data for the selected phases and elements from the database
+read-thermodynamic-database    
+read-mobility-database file-name=mc_fe.ddb                                                                                                              $ Mobility database
+
+$ Define the variables that will specify the initial carbon content in the bar and the thin layer
+set-variable-value variable=c_comp_bar_wp value=1e-10
+set-variable-value variable=c_comp_layer_wp value=0.8
+$ In the cell simulation, compositions must be entered in molar notation un$c
+enter-composition type=weight-percent composition=c=c_comp_bar_wp                                                                                       $ Enter composition in weight percent
+set-variable-value variable=c_comp_bar value=un$c                                                                                                       $ Save the composition in mole fraction
+enter-composition type=weight-percent composition=c=c_comp_layer_wp                                                                                     $ Enter composition in weight percent
+set-variable-value variable=c_comp_layer value=un$c                                                                                                     $ Save the composition in mole fraction
+
+
+$$************************************************************************************************** 
+                                      EQUILIBRIUM CALCULATIONS
+**************************************************************************************************$$
+
+$ Set the start values - this should prevent from any troubles in the equilibrium calculation
+set-automatic-startvalues
+set-temperature-celsius temperature=1000                                                                                                                $ Set the system temperature to 1000C
+calculate-equilibrium                                                                                                                                   $ Perform the equilibrium calculation
+
+
+$$************************************************************************************************** 
+                                     PRECIPITATION DOMAIN SETUP
+**************************************************************************************************$$
+
+create-precipitation-domain new-domain-name=aus_domain                                                                                                  $ Create precipitation domain
+set-precipitation-parameter precipitate-or-domain-name=aus_domain thermodynamic-matrix-phase=FCC_A1                                                     $ Link precipitation domain with phase
+
+
+$$************************************************************************************************** 
+                                          SIMULATION GRID
+**************************************************************************************************$$
+
+use-module module-name=sim                                                                                                                              $ Select simulation module for cell simulation
+
+set-variable-value variable=num_cells_x value=99                                                                                                        $ Define a variable representing the number of cells
+$ Create a simulation grid
+create-simulation-grid number-of-cells-in-x-direction=num_cells_x 1 1                                                                                   $ Number of cells in x-, y- and z-directions
+set-variable-value variable=barlength value=0.099                                                                                                       $ Define a variable representing the length of the bar
+set-grid-coordinates extension-of-cells-in-x-direction=barlength 1 1                                                                                    $ Dimensions in x-, y- and z-directions (in m)
+$set-grid-geometry geometry=planar                                                                                                                      $ Geometry: [p]lanar, [c]ylindrical, [s]pherical
+set-grid-geometry geometry=p
+
+new-gui-window type-id=g5                                                                                                                               $ Create a new window - 2D cells
+set-variable-value variable=paint_window_id value=active_frame_id                                                                                       $ Internal variable refers to the most actual frame
+$ Modify position, size and zoom level
+move-gui-window displace window-id=paint_window_id x-origin=0 y-origin=50 width=750 height=160                                                          $ change position and size
+set-gui-window-property window-id=paint_window_id simulation-properties-zoom-factor=200                                                                 $ zoom 200%
+
+
+$$************************************************************************************************** 
+                                           CELL PROPERTIES
+**************************************************************************************************$$
+
+create-material name-for-new-material=aus_material                                                                                                      $ Create material for diffusion simulation
+set-material-property name-for-material=aus_material general precipitate-domain precipitate-domain-name=aus_domain                                      $ Link material with precipitate domain
+set-cell-property cell-range=a materials material-name-for-cell=aus_material                                                                            $ Assign material to [a]ll cells
+
+set-variable-value variable=diffCoeff value=1e-12                                                                                                       $ Set the diffusion coefficient - user-specified value
+set-material-property name-for-material=aus_material diffusion diffusion-coefficient-(D=RT.M) element-name=C function-expression expression=diffCoeff   $ Set the specific value for diffusion coefficient (m2s-1)
+
+set-simulation-parameter temp-in-C in-C=yes                                                                                                             $ Temperature in celsius
+
+set-variable-value variable=sim_temp value=1000                                                                                                         $ Define a variable representing the simulation temperature
+$ Attach temperature to all cells
+set-cell-property cell-range=a variables temperature new-temperature-for-cell=sim_temp                                                                  $ cell-range=a -> all cells
+$ Assign the lower carbon content, c_comp_bar, to all cells
+set-cell-property cell-range=a variables composition set-composition-for-element=c set-composition-in-u-fraction=c_comp_bar                             $ cell-range=a -> all cells
+
+$ Select the cell in the middle - note: first cell has index 0
+set-variable-value variable=max_cell_index value=num_cells_x-1
+set-variable-value variable=middle_cell_index value=max_cell_index/2
+$ Select the single c[e]ll in the centre
+add-cell-selection E middle_cell_index 
+$ Assign the higher carbon content, c_comp_layer, to the selected ([*]) cell
+set-cell-property cell-range=* variables composition set-composition-for-element=c set-composition-in-u-fraction=c_comp_layer
+
+
+$$************************************************************************************************** 
+                                         GRAPHICAL DISPLAY
+**************************************************************************************************$$
+
+$ display cell variable
+set-gui-window-property window-id=paint_window_id simulation-properties-show-what=cell-variable                                                         $ Show cell variable
+set-gui-window-property window-id=paint_window_id simulation-properties-variable=_cwp$c                                                                 $ Shown variable is specified
+set-gui-window-property window-id=paint_window_id simulation-properties-range=0..1                                                                      $ Shown variable value range is specified
+
+
+new-gui-window type-id=g1                                                                                                                               $ Create new window: plot grid - 1D profile
+$ Assign a name to both the plot window and the plot itself
+set-variable-value variable=profile_window_id value=active_frame_id 
+set-variable-value variable=profile_plot_id value=last_plot_id
+
+set-plot-option plot-id=profile_plot_id series new simulation-variable variable-descriptor=_cwp$c                                                       $ Add new series of the simulation variable
+set-gui-window-property window-id=profile_window_id default-x-axis-for-all-plots=yes                                                                    $ Use default x-axis
+set-gui-window-property window-id=profile_window_id default-x-axis-title=Position [m]                                                                   $ x-axis title
+set-plot-option plot-id=profile_plot_id y-axis-title=Carbon content [wt.%]                                                                              $ y-axis title
+set-plot-option plot-id=profile_plot_id y-axis-scaling=0..c_comp_layer_wp                                                                               $ y-axis range
+set-plot-option plot-id=profile_plot_id series rename series-index=0 new-name=numerical                                                                 $ Name the plotted series
+$ Specify the range of cells 
+set-gui-window-property window-id=profile_window_id simulation-properties simulation-properties-start-coordinate=0                                      $ starting cell (here 0)
+set-gui-window-property window-id=profile_window_id simulation-properties simulation-properties-stop-coordinate=max_cell_index                          $ stop cell (here max_cell_index)
+
+move-gui-window displace window-id=profile_window_id x-origin=0 y-origin=250 width=400 height=600
+
+
+new-gui-window type-id=g2                                                                                                                               $ Create new window: plot grid - cell history
+$ Assign a name to both the plot window and the plot itself
+set-variable-value variable=history_window_id value=active_frame_id 
+set-variable-value variable=history_plot_id value=last_plot_id
+
+set-gui-window-property window-id=history_window_id default-x-axis-for-all-plots=yes                                                                    $ Use default x-axis
+set-gui-window-property window-id=history_window_id default-x-axis-title=Time [s]                                                                       $ x-axis title
+set-gui-window-property window-id=history_window_id default-x-axis-scaling=0..sim_time                                                                  $ x-axis range
+set-plot-option plot-id=history_plot_id y-axis-title=Carbon content [wt.%]                                                                              $ y-axis title
+set-plot-option plot-id=history_plot_id y-axis-scaling=0..c_comp_layer_wp                                                                               $ y-axis range
+$ Add two series
+set-plot-option plot-id=history_plot_id series new simulation-variable variable-descriptor=_cwp$c{middle_cell_index}                                    $ add composition of the middle cell
+set-plot-option plot-id=history_plot_id series new simulation-variable variable-descriptor=_cwp$c{middle_cell_index-1}                                  $ add composition of the cell adjacent to the middle cell
+$ Name the plotted series
+set-plot-option plot-id=history_plot_id series rename series-index=0 new-name=centre 
+set-plot-option plot-id=history_plot_id series rename series-index=1 new-name="next to centre"
+
+move-gui-window displace window-id=history_window_id x-origin=400 y-origin=250 width=400 height=600
+
+
+$$************************************************************************************************** 
+                                        ANALYTICAL SOLUTION
+**************************************************************************************************$$
+
+set-variable-value variable=Bval value=c_comp_layer_wp*(barlength/num_cells_x)
+set-variable-value variable=midpt value=barlength/2
+
+$set-function-expression function=term_1 expression=1/(2*sqrt(pi*diffCoeff*_ctime))
+set-function-expression term_1 1/(2*sqrt(pi*diffCoeff*_ctime))
+$set-function-expression function=x_shifted expression=_ccenter_x-midpt
+set-function-expression x_shifted _ccenter_x-midpt
+$set-function-expression function=term_2 expression=exp((-1*x_shifted**2)/(4*diffCoeff*_ctime))
+set-function-expression term_2 exp((-1*x_shifted**2)/(4*diffCoeff*_ctime))
+$set-function-expression function=analytical_expr expression=Bval*term_1*term_2
+set-function-expression analytical_expr Bval*term_1*term_2
+
+$ Plot series onto the existing profile plot
+set-plot-option plot-id=profile_plot_id series new functional-expression expression-in-variable-x=analytical_expr definition-range=0..barlength
+
+
+$$************************************************************************************************** 
+                                   SET UP AND RUN THE SIMULATION
+**************************************************************************************************$$
+
+$ Specify the simulation time 
+set-variable-value variable=sim_time value=1e7
+set-simulation-parameter simulation-end-time end-time=sim_time                                                                                          $ end
+set-simulation-parameter update-every update-every-count=10                                                                                             $ update interval
+set-simulation-parameter diffusion diffusion-field-calculation                                                                                          $ diffusion-field simulation
+set-simulation-parameter temperature isothermal isothermal-simulation-temperature=sim_temp                                                              $ temperature: isothermal
+$ Set boundary condition: [g]eometric condition - [o]pen to environment
+set-default-boundary-cond G O                                                                                                                           
+
+$ Start cell simulation
+start-cell-simulation
+
+update-gui-window window-id=4
+
+
+$$************************************************************************************************** 
+                                        SAVING WORKSPACE
+**************************************************************************************************$$
+
+$save-workspace "file-name"=Tutorial_23
+save-workspace Tutorial_23
+

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>P80 1 - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "P80 1";
+        var mkdocs_page_input_path = "examples/precipitation/p80/p80_1.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">P80 1</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>Example P80: Part 1: Models and parameters for the Fe-Cu precipitation simulation [MatCalc Documentation]</p>
+<h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#example_p80part_1models_and_parameters_for_the_fe-cu_precipitation_simulation">Example P80: Part 1: Models and parameters for the Fe-Cu precipitation simulation</a></p>
+</li>
+<li>
+<p><a href="#compatibility">Compatibility</a></p>
+</li>
+<li><a href="#objectives">Objectives</a></li>
+<li><a href="#related_documents">Related documents</a></li>
+<li>
+<p><a href="#main_document">Main document</a></p>
+</li>
+<li>
+<p><a href="#consideration_of_coalescence">Consideration of coalescence</a></p>
+</li>
+<li><a href="#energy_of_a_diffuse_interface">Energy of a diffuse interface</a></li>
+<li><a href="#transformation_of_particles">Transformation of particles</a></li>
+<li><a href="#minimum_nucleation_energy_g_calculation">Minimum nucleation energy G* calculation</a></li>
+<li><a href="#summary">Summary</a></li>
+<li><a href="#consecutive_articles">Consecutive articles</a></li>
+</ul>
+<h1 id="example-p80-part-1-models-and-parameters-for-the-fe-cu-precipitation-simulation">Example P80: Part 1: Models and parameters for the Fe-Cu precipitation simulation</h1>
+<h2 id="compatibility">Compatibility</h2>
+<p>MatCalc version: 5.52.0038 <br />
+Database: mc_fe.tdb (newest version!), mc_sample_fe.ddb<br />
+Author: Georg Stechauner<br />
+Created: 2013-07-02 <br />
+Revisions:</p>
+<h2 id="objectives">Objectives</h2>
+<p>In this first part of P80, we try to establish the theoretical and modeling basis for the following simulation. The precipitation problem is complex, which is why several independent models and parameters are considered in this example. All of these are necessary to achieve a realistic Fe-Cu precipitation simulation.</p>
+<p>In addition to other implemented models in <em>MatCalc</em>, the following four are employed for the Fe-Cu system:</p>
+<ul>
+<li>Particle coalescence</li>
+<li>Diffuse interface energy correction</li>
+<li>Direct particle transformation</li>
+<li>Application of min G* nucleation energy concept</li>
+</ul>
+<p><strong>Note:</strong> The document P80-1 will only describe the physical background for the following simulation. The actual simulation is reported in P80-2.</p>
+<h2 id="related-documents">Related documents</h2>
+<ul>
+<li>P80-2 -  <a href="/examples/precipitation/p80/p80_2" title="examples/precipitation/p80/p80_2">Precipitation of Cu in Fe-Cu</a></li>
+<li>P80-3 -  <a href="/examples/precipitation/p80/p80_3" title="examples/precipitation/p80/p80_3">TTP plot in Fe-Cu system</a></li>
+<li>T. Jourdan, J.-L. Bocquet, F. Soisson, Modeling homogeneous precipitation with an event-based Monte Carlo method: Application to the case of Fe-Cu, Acta Mater. 58 (2010) 3295-3302.</li>
+<li>P. Warczok, J. Zenisek, E. Kozeschnik, Atomistic and continuums modeling of cluster migration and coagulation in precipitation reactions, Comp Mater Sci 60 (2012) 59-65.</li>
+<li>B. Sonderegger, E. Kozeschnik, Interfacial Energy of Diffuse Phase Boundaries in the Generalized Broken-Bond Approach, Metall Mater Trans A 41 (2010) 3262-3269.</li>
+<li>M. Perez, F. Perrard, V. Massardier, X. Kleber, V. Schmitt, A. Deschamps, Low Temperature Solubility Limit of Copper in Iron, Materials Science Forum 500-501 (2005) 631-638.</li>
+<li>P. J. Othen, M. L. Jenkins, G. D. W. Smith, High-resolution electron microscopy studies of the structure of Cu precipitates in alpha-Fe, Phil Mag A 70 (1994) 1-24.</li>
+</ul>
+<h1 id="main-document">Main document</h1>
+<p>In the following subsections, the main physical mechanisms governing precipitation in the Fe-Cu system are discussed. Consideration of any of these is important to arrive at a 'predictive' simulation of Cu precipitation in alpha-Fe.</p>
+<h2 id="consideration-of-coalescence">Consideration of coalescence</h2>
+<p>In 2012, Warczok et al. studied precipitation in Fe-Cu by means of atomistic and continuums modeling of cluster migration and coagulation. These authors found a strong tendency for particle coalescence in this system, the reason being found in an attractive interaction between Cu atoms and vacancies. The following films show an animation of particle coalescence from this work. The first movie considers a positive value of +2 for the parameter a, the second one an negative one of -2. This parameter governs the affinity of the vacancy to either matrix-forming Fe atoms or precipitate-forming Cu atoms/clusters. A positive value will maximize the CuVa bonds, while a negative one will maximize the FeVa bonds.</p>
+<p><a href="/examples/precipitation/p80/p80_mc_a_2_precfilm.gif" title="examples/precipitation/p80/p80_mc_a_2_precfilm.gif"><img alt=" Clustering of Cu - Vacancy prefers Cu-atoms" src="/examples/precipitation/p80/p80_mc_a_2_precfilm.gif" title="Clustering of Cu - Vacancy prefers Cu-atoms" /></a>
+<a href="/examples/precipitation/p80/p80_mc_cu_prec_film.gif" title="examples/precipitation/p80/p80_mc_cu_prec_film.gif"><img alt=" Clustering of Cu - Vacancy prefers Fe-atoms" src="/examples/precipitation/p80/p80_mc_cu_prec_film.gif" title="Clustering of Cu - Vacancy prefers Fe-atoms" /></a></p>
+<p>If one attempts to simulate Cu precipitation in the conventional MatCalc simulation framework<a href="#fn__1">1)</a>, growth of the Cu-precipitates will be observed as being way too slow. The reason is a mechanism change from attachment and detachment of monomers to the coalescence of larger Cu clusters, which become highly mobile in this system. With consideration of coalescence, it is possible (and necessary) to account for this change in growth mechanism correctly.</p>
+<p>In the implementation of particle coalescence, we apply the model of Binder and Staufer with a comparably low Binder-Stauffer coefficient of -3/4. This value appears to be applicable for the Fe-Cu system. The mechanism itself has been confirmed by Jourdan et al. (2010), who simulated Cu migration in Fe and found that the movement of clusters is accelerated by several orders of magnitude compared to the movement (diffusion) of monomers, which are close to the Fe-self diffusivity. In the present version of MatCalc, this acceleration will be considered by a certain value for the 'matrix diffusion enhancement factor'.</p>
+<p>The following figures show the calculated radius and number density evolution in the Fe-Cu system. Experimental data by Goodman et al. (1973).</p>
+<p><a href="/examples/precipitation/p80/p80_coalescence_radius.png" title="examples/precipitation/p80/p80_coalescence_radius.png"><img alt="Influence of BS-coefficient on precipitate growth" src="/examples/precipitation/p80/p80_coalescence_radius.png" title="Influence of BS-coefficient on precipitate growth" /></a>
+<a href="/examples/precipitation/p80/p80_coalescence_numberdens.png" title="examples/precipitation/p80/p80_coalescence_numberdens.png"><img alt=" Influence of BS-coefficient on number density" src="/examples/precipitation/p80/p80_coalescence_numberdens.png" title="Influence of BS-coefficient on number density" /></a></p>
+<p>The impact of coalescence and the variation of BS-coefficient can be seen by the evolution of the 3 different curves in both figures. In the first case (red line), where no coalescence is considered, the radius stays below the transformation value for a long time and undergoes some fluctuations. At the same time, the number density stays almost constant. The experimental values are not reproduced at all. The first improvement comes with the consideration of some coalescence and a BS-coefficient according to literature by Binder and Stauffer (1977). Even though the onset of precipitation is simulated well, the further progression becomes too sluggish. The growth is too slow for this case. In a final approach the BS-coefficient was lowered to a value of -3/4. By this, the growth of precipitates is considered at the right speed, and the number density follows the experimental values well.</p>
+<h2 id="energy-of-a-diffuse-interface">Energy of a diffuse interface</h2>
+<p>One of <em>MatCalc's</em> most outstanding features is the automatic calculation of the interfacial energy according to the generalized nearest neighbor – broken bond model. These calculations are, however, by default related to the sharp, planar case (the corresponding MatCalc variable is <code>CIE$phase_name</code> in the 'state variables GBB' category of the variables window). Usually, these values are automatically corrected for interfacial curvature (size correction <a href="#fn__2">2)</a>). The value of the size correction factor is depending on the radius of the precipitate. It can be observed via the variable <code>PD_IE_S_CORR$phase_name</code> in the 'kinetics: pref. distr.' category, which provides this data for each precipitate size class. The size correction applied in nucleation is accessible via the variable <code>NUCL_CIE_S_CORR$phase_name</code> in the 'kinetics: nucleation' section.</p>
+<p>In systems at elevated temperatures, an additional effect must be accounted for, which is related to the observation that some configurational entropy-induced atomic mixing occurs across the interface and the 'real' interface is often not sharp, but diffuse. The 'diffuseness' of the interface generally reduces the interface energy value depending on temperature. The consideration of the diffuse interface happens by multiplication with an entropic factor, which ranges from one, at 0K, to zero, at the so-called regular solution critical temperature. The correction function, which is implemented in MatCalc, is depicted in the following graph. For evaluation of this factor, which can be inspected in the variable <code>CIE_DI_CORR$phase_name</code> in the 'kinetics: precipitates' category.</p>
+<p><a href="/examples/precipitation/p80/p80_gammacorrcurve.png" title="examples/precipitation/p80/p80_gammacorrcurve.png"><img alt=" Interfacial energy correction factor as a function of the regular solution critical temperature" src="/examples/precipitation/p80/p80_gammacorrcurve.png" title="Interfacial energy correction factor as a function of the regular solution critical temperature" /></a></p>
+<p>Unfortunately, the diffuse interface correction cannot be evaluated fully automated. To use this feature in MatCalc, the user must provide a pre-evaluated regular solution critical temperature, which is denoted as <span class="arithmatex">\(T\_c\)</span>. This temperature is related to the highest temperature in the phase diagram, where the precipitate is still stable. For the Fe-Cu system, <span class="arithmatex">\(T\_c\)</span> can be read from the plot of miscibility gap in Fe-Cu shown below.</p>
+<p><a href="/examples/precipitation/p80/p80_miscibilitygap.png" title="examples/precipitation/p80/p80_miscibilitygap.png"><img alt=" Miscibility in the Fe-Cu system in Celsius and Kelvin" src="/examples/precipitation/p80/p80_miscibilitygap.png" title="Miscibility in the Fe-Cu system in Celsius and Kelvin" /></a></p>
+<p>In earlier (unpublished) work, we tried to use MatCalc to simulate the TTP curves for Cu-precipitates published by Perez et al. (2005). The diffuse interface correction factor was considered in the simulation via an interfacial energy correction table that was calibrated by hand. With these values, and accounting also for the curvature effect (size correction) as well as the chemical composition from the minimum G* concept, interface energy correction values could be identified that reproduced the experimental TTP curve. Comparing these manually obtained fit values with the automatically calculated ones from the diffuse interface model and using a value of <span class="arithmatex">\(T\_c=1860K\)</span>, only a small difference is obtained. We take this as an indication that the model is working properly in this system.</p>
+<p><a href="/examples/precipitation/p80/p80_gamma-vergleich.png" title="examples/precipitation/p80/p80_gamma-vergleich.png"><img alt=" Manually found correction factors compared to calculated ones" src="/examples/precipitation/p80/p80_gamma-vergleich.png" title="Manually found correction factors compared to calculated ones" /></a></p>
+<p>Using the model parameters with no further correction, results in the green curve shown below. Although the experimental values are qualitatively depicted, the precipitation occurs consistently too late. Consideration of size effects and other phenomena leads to the red curve, of optimized parameters.</p>
+<p><a href="/examples/precipitation/p80/p80_ttp_vergleich_model_manually_v2.png" title="examples/precipitation/p80/p80_ttp_vergleich_model_manually_v2.png"><img alt=" TTP Curve of Cu-precipiatates in Fe" src="/examples/precipitation/p80/p80_ttp_vergleich_model_manually_v2.png" title="TTP Curve of Cu-precipiatates in Fe" /></a></p>
+<h2 id="transformation-of-particles">Transformation of particles</h2>
+<p>The transformation sequence of Cu precipitates was topic of numerous publications. A good description was performed by Othen et al.(1994). Based on the HR images of semi-coherent and incoherent precipitates, the transformation radii and precipitation sequence were defined as following: (a) nucleation as coherent bcc-Cu according to min G*; (b) transformation to semi-coherent 9R structure between 2-3nm. This has also been used in the simulation of Jourdan et al.(2010); (c) transformation to incoherent fcc-Cu between radii of 4-8nm.</p>
+<p><a href="/examples/precipitation/p80/p80_prec-sequence.png" title="examples/precipitation/p80/p80_prec-sequence.png"><img alt=" Precipitation and Transformation sequence in Fe-Cu" src="/examples/precipitation/p80/p80_prec-sequence.png" title="Precipitation and Transformation sequence in Fe-Cu" /></a></p>
+<h2 id="minimum-nucleation-energy-g-calculation">Minimum nucleation energy G* calculation</h2>
+<p>The calculation and background on min G* have already been covered <a href="/howtosimulate/physical/mingstar" title="howtosimulate/physical/mingstar">elsewhere</a>.</p>
+<p>Feel free to also consult examples <a href="/examples/equilib/e10" title="examples/equilib/e10">E10</a> and in future E11 for more information on minimum nucleation energy.</p>
+<p>Performing the min G* and P calculation, respectively, for the Fe-Cu system as a function of Cu-content and temperature, leads to the following figures:</p>
+<p><a href="/examples/precipitation/p80/p80_g-star.png" title="examples/precipitation/p80/p80_g-star.png"><img alt="Minimum G* evaluation as a function of Temperature and Cu-content in Fe-Cu system" src="/examples/precipitation/p80/p80_g-star.png" title="Minimum G* evaluation as a function of Temperature and Cu-content in Fe-Cu system" /></a></p>
+<p>The calculated nucleation energy has a minimum as each temperature. At this very point, the probability for nucleation is the highest, which can be seen in the next figure. At low temperatures, the precipitate consists of almost 50% Fe and 50% Cu, whereas the nucleus at higher temperatures becomes Cu-rich. This is in accord with experiments.</p>
+<p><a href="/examples/precipitation/p80/p80_p-nucl.png" title="examples/precipitation/p80/p80_p-nucl.png"><img alt="Calculated nucleation probability" src="/examples/precipitation/p80/p80_p-nucl.png" title="Calculated nucleation probability" /></a></p>
+<h2 id="summary">Summary</h2>
+<p>Consideration of the previously mentioned parameters, models and effects, leads to a realistic description of the Fe-Cu system:</p>
+<ul>
+<li>Binder-Stauffer coefficient of -3/4. Further coalescence factor of 2, 3 and 4 for Cu-bcc, Cu-9R and Cu-fcc, respectively.</li>
+<li>Use of diffuse interface model with optimized parameters: critical temperature of 1860, interfacial energy correction 0.95*CIE$CU_BCC_1.</li>
+<li>Nucleation as coherent Cu particle according to min G* calculation. Transformation to 9R between 2-3nm, further transformation to incoherent Cu-fcc between 4-8nm.</li>
+</ul>
+<h1 id="consecutive-articles">Consecutive articles</h1>
+<p>The here elaborated models and parameters will be set to use in the following example  <a href="/examples/precipitation/p80/p80_2" title="examples/precipitation/p80/p80_2">P80_2 - Precipitation of Cu in Fe-Cu</a></p>
+<p><a href="#fnt__1">1)</a></p>
+<p>With the 'conventional framework', we denote the precipitate growth mechanism governed by the attachment and detachment of single monomers</p>
+<p><a href="#fnt__2">2)</a></p>
+<p>see the corresponding option in the 'general' tab of the 'phase status' dialog</p>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=examples%3Aprecipitation%3Ap80%3Ap80_1&amp;1788352998" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

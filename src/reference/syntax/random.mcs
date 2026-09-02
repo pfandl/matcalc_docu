@@ -1,0 +1,78 @@
+$$************************************************************************************************** 
+************************************** GENERAL INFORMATION *****************************************
+****************************************************************************************************
+
+This 'example' is designed to show the use of loops, the 'format-variable-string' option and 
+random numbers.
+
+The script generates 1000 random numbers between 1 and 10. It also sums the values up and gives the
+result as 'Summe'.
+
+Content: - Loops
+         - Format-variable-string
+         - random function
+
+Database: none
+Author: G. Stechauner
+Creation date: 2012-02-01
+This is a script for MatCalc version 5.44 (rel 0.021)
+
+
+**************************************************************************************************** 
+************************************** SETUP INFORMATION *******************************************
+**************************************************************************************************$$
+
+$ make sure we work in the correct module
+use-module core 
+
+$ creates a new workspace 
+new-workspace 
+
+@ echo n
+set-workspace-info + Random Generator
+set-workspace-info +
+set-workspace-info + Phases: none
+set-workspace-info + Chemical components: none
+set-workspace-info + 
+set-workspace-info + For further information visit www.matcalc.at
+set-workspace-info +
+
+
+$$************************************************************************************************** 
+***************************************** RANDOM SCRIPT ********************************************
+**************************************************************************************************$$
+
+set-variable-value i 0
+set-variable-value j 0
+set-variable-value k 0
+set-variable-value summe 0
+
+$ Enter range for creation of the random variables (here: 1-10)
+for (i;1..10)
+   $ Save actual value of i to test (test is a string)
+   format-variable-string test "%d" i
+   $ Create the variable number#test, where #test is substituted by the numerical value of test, which is i
+   set-variable-value number#test 0
+endfor
+
+$ Enter the amount of how many numbers you want to create (here: 1000)
+for (j;1..1000)
+   $ Allocate a random number from 1-10 (change *10 for other numbers, be aware to change all other ranges as well!)
+   $ Ceil(rand*10) ... creates values from 1 to 10
+   $ Floor(rand*10)... creates values from 0 to 9
+   set-variable-value random ceil(rand*10)
+   $ Allocate numerical value of random to string variable 'test'
+   format-variable-string test "%d" random
+   $ Increase the random-number variable by one. After 1000 steps, all numbers have been allocated.
+   set-variable-value number#test number#test+1
+endfor
+
+send-dialog-string Finished...
+
+$ Subscript to sum up all variables and their values.
+for(k;1..10)
+   format-variable-string test "%d" k
+   set-variable-value summe summe+(number#test*k)
+endfor
+
+list-all-variables

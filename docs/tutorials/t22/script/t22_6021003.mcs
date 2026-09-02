@@ -1,0 +1,202 @@
+$$************************************************************************************************** 
+************************************** GENERAL INFORMATION *****************************************
+****************************************************************************************************
+
+Recrystallization on subgrain boundaries according to Tutorial 22.
+The following contents will be covered:
+
+ - Activation of recrystallization model
+ - Kinetic simulation of recrystallization process
+
+Deformation of the material introduces new dislocations into the microstructure. These surplus
+dislocations will create the substructure by ordering themselves into the subgrain walls during the
+recovery process. MatCalc includes a model describing the transformation of the newly subgrains into
+the new recrystallized grains, as described at Buken et al. This tutorial shows the procedure to
+activate the recrystallization model, presents the typical result of the recrystallization kinetics
+simulation and discusses the output values of the parameters obtained during the simulation. 
+
+
+Database: mc_fe.tdb, mc_fe.ddb
+Author: P. Warczok
+Creation date: 31.10.2017
+Last update: 13.08.2019 (P. Warczok, Update for 6.02)
+This is a script for MatCalc version 6.02 (rel 1.003)
+
+Known issues:
+- "save-workspace "file-name"=Tutorial_22" is not working properly. Use "save-workspace Tutorial_22" instead.
+
+
+****************************************************************************************************
+************************************** SETUP INFORMATION *******************************************
+**************************************************************************************************$$
+
+use-module module-name=core 
+
+new-workspace 
+
+
+$$************************************************************************************************** 
+                          DATABASES, CHEMICAL COMPOSITION, SELECTED PHASES
+**************************************************************************************************$$
+
+open-thermodynamic-database file-name=mc_fe.tdb                                                    $ Thermodynamic database
+select-elements elements=fe c                                                                      $ Elements
+select-phases phases=fcc_a1                                                                        $ Phases
+read-thermodynamic-database 
+
+read-mobility-database file-name=mc_fe.ddb                                                         $ Mobility database
+
+enter-composition type=weight-percent composition=c=0,2                                            $ Chemical composition
+
+$ Initial equilibrium
+set-automatic-startvalues 
+set-temperature-celsius temperature=1000 
+calculate-equilibrium 
+
+
+$$************************************************************************************************** 
+                                 PRECIPITATION DOMAIN AND PHASES
+**************************************************************************************************$$
+
+create-precipitation-domain new-domain-name=matrix
+set-precipitation-parameter precipitate-or-domain-name=matrix thermodynamic-matrix-phase=FCC_A1    $ Thermodynamic parameters for matrix phase
+set-precipitation-parameter precipitate-or-domain-name=matrix subgrain-evolution-model=abc         $ Activate dislocation density evolution
+
+
+$$************************************************************************************************** 
+                                    THERMOMECHANICAL TREATMENT
+**************************************************************************************************$$
+
+create-tm-treatment tm-treatment-name=tmt
+
+$ Introducing strain to material
+append-tmt-segment tm-treatment-name=tmt 
+edit-tmt-segment tm-treatment-name=tmt tm-treatment-segment=. segment-start-temperature=1200       $ Start temperature
+edit-tmt-segment tm-treatment-name=tmt tm-treatment-segment=. segment-accumulated-strain=0,1       $ Accumulated strain
+edit-tmt-segment tm-treatment-name=tmt tm-treatment-segment=. deformation-rate=1                   $ Strain rate
+edit-tmt-segment tm-treatment-name=tmt tm-treatment-segment=. precipitation-domain=matrix                
+
+$ Isothermal holding
+append-tmt-segment tm-treatment-name=tmt 
+edit-tmt-segment tm-treatment-name=tmt tm-treatment-segment=. T_dot+delta_t temperature-gradient=0 segment-delta-time=1e4 
+edit-tmt-segment tm-treatment-name=tmt tm-treatment-segment=. precipitation-domain=matrix 
+
+
+$$************************************************************************************************** 
+                                       GRAPHICAL OUTPUT
+**************************************************************************************************$$
+
+new-gui-window type-id=p1                                                                          $ Create plot window
+move-gui-window displace window-id=. x-origin=75 y-origin=15 width=800 height=800                  $ Move and resize plot window
+
+$ define default x-axis properties
+set-gui-window-property window-id=. default-x-axis-for-all-plots=yes
+set-gui-window-property window-id=. default-x-axis-data=stepvalue
+set-gui-window-property window-id=. default-x-axis-title="Time [s]"                                $ x-axis title
+set-gui-window-property window-id=. default-x-axis-type=log                                        $ x-axis scaling type
+set-gui-window-property window-id=. default-x-axis-scaling=1e-5..                                  $ x-axis scaling range
+
+$ define plot properties: dislocation density
+set-plot-option plot-id=. use-alias-names-in-legend=yes
+set-plot-option plot-id=. y-axis-title="Dislocation density [m<sup>-2</sup>]"                      $ y-axis title
+set-plot-option plot-id=. series new buffer variable-name=DD_TOT$*                                 $ Add series
+set-plot-option plot-id=. y-axis-type=log                                                          $ y-axis scaling type
+set-plot-option plot-id=. grid major enable-x-axis=yes                                             $ Gridlines for x-axis
+set-plot-option plot-id=. grid major enable-y-axis=yes                                             $ Gridlines for y-axis
+
+$ define plot properties: subgrain diameter
+create-new-plot plot-type=xy-plot attach-to-window=.
+set-plot-option plot-id=. use-alias-names-in-legend=yes            
+set-plot-option plot-id=. y-axis-title="Mean subgrain diameter [<html>&mu;m]"
+set-plot-option plot-id=. series new buffer variable-name=SGD$*
+set-plot-option plot-id=. y-axis-factor=1e6                                                        $ y-axis scaling factor
+set-plot-option plot-id=. y-axis-type=log
+set-plot-option plot-id=. grid major enable-x-axis=yes 
+set-plot-option plot-id=. grid major enable-y-axis=yes 
+
+$ define plot properties: grain diameter
+create-new-plot plot-type=xy-plot attach-to-window=.
+set-plot-option plot-id=. use-alias-names-in-legend=yes            
+set-plot-option plot-id=. y-axis-title="Grain diameter [<html>&mu;m]"
+set-plot-option plot-id=. series new buffer variable-name=GD$*
+set-plot-option plot-id=. y-axis-factor=1e6
+set-plot-option plot-id=. y-axis-type=log												
+set-plot-option plot-id=. grid major enable-x-axis=yes 
+set-plot-option plot-id=. grid major enable-y-axis=yes 
+
+
+$$************************************************************************************************** 
+                    KINETIC CALCULATION - DISLOCATION DENSITY EVOLUTION ONLY
+**************************************************************************************************$$
+
+set-simulation-parameter temperature-control temperature-control-type=from-tm-treatment            $ Simulation from defined tmt
+set-simulation-parameter tm-treatment-name=tmt                                                     $ Specification of defined tmt
+start-precipitate-simulation 
+
+
+$$************************************************************************************************** 
+                                    INTRODUCING GRAIN GROWTH
+**************************************************************************************************$$
+
+rename-current-buffer new-buffer-name=deformation_only
+create-calc-buffer new-buffer-name=deformation&growth
+set-gui-window-property window-id=. buffer-name=deformation&growth                                 $ Buffer results on plot
+
+
+set-precipitation-parameter precipitate-or-domain-name=matrix grain-evolution-model=single-class   $ Activate grain growth
+start-precipitate-simulation 
+
+$$************************************************************************************************** 
+                                  INTRODUCING RECRYSTALLIZATION
+**************************************************************************************************$$
+
+create-calc-buffer new-buffer-name=recrystallization
+set-gui-window-property window-id=. buffer-name=recrystallization
+
+$ mofdify plot properties: Grain sizes
+set-plot-option plot-id=. series new buffer variable-name=GD_DEF$*
+set-plot-option plot-id=. series new buffer variable-name=GD_RX$*
+set-plot-option plot-id=. y-axis-scaling=..2000                                                    $ y-axis scaling range
+ 
+$ define plot properties: Nucleation rate of recrystallized grains
+create-new-plot plot-type=xy-plot attach-to-window=.
+set-plot-option plot-id=. use-alias-names-in-legend=yes            
+set-plot-option plot-id=. y-axis-title="Nucl. rate of rex. grains [m<sup>-3</sup>s<sup>-1</sup>]"
+set-plot-option plot-id=. series new buffer variable-name=RX_NUCL_RATE$*
+set-plot-option plot-id=. y-axis-type=log												
+set-plot-option plot-id=. grid major enable-x-axis=yes 
+set-plot-option plot-id=. grid major enable-y-axis=yes 
+
+$ define plot properties: Nucleation density of grains
+create-new-plot plot-type=xy-plot attach-to-window=.
+set-plot-option plot-id=. use-alias-names-in-legend=yes            
+set-plot-option plot-id=. y-axis-title="Number density of grains [m<sup>-3</sup>]"
+set-plot-option plot-id=. series new buffer variable-name=NG$*
+set-plot-option plot-id=. series new buffer variable-name=NG_DEF$*
+set-plot-option plot-id=. series new buffer variable-name=NG_RX$*
+set-plot-option plot-id=. y-axis-type=log												
+set-plot-option plot-id=. grid major enable-x-axis=yes 
+set-plot-option plot-id=. grid major enable-y-axis=yes 
+
+$ define plot properties: Recrystallized fraction
+create-new-plot plot-type=xy-plot attach-to-window=.
+set-plot-option plot-id=. use-alias-names-in-legend=yes            
+set-plot-option plot-id=. y-axis-title="Recrystallized fraction"
+set-plot-option plot-id=. series new buffer variable-name=X_RX$*
+set-plot-option plot-id=. grid major enable-x-axis=yes 
+set-plot-option plot-id=. grid major enable-y-axis=yes 
+
+set-precipitation-parameter precipitate-or-domain-name=matrix allow-recrystallisation=yes          $ Activate recrystallization model
+start-precipitate-simulation 
+
+
+$$************************************************************************************************** 
+                                      SAVING WORKSPACE
+**************************************************************************************************$$
+
+$save-workspace "file-name"=Tutorial_22
+save-workspace Tutorial_22
+
+
+
+

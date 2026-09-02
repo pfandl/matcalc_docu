@@ -1,0 +1,73 @@
+$$************************************************************************************************** 
+                               SETUP PLOTS AND OUTPUT WINDOWS
+**************************************************************************************************$$
+
+$ Window for precipitate properties
+new-gui-window p1 
+set-gui-window-property 3 S U Y                      $ Use x-axis as default
+set-gui-window-property 3 S T Time [h]               $ Set title
+set-gui-window-property 3 S Y log                    $ Set type (lin/log)
+set-gui-window-property 3 S S 1e-12..                $ Set scaling 
+set-gui-window-property 3 S F 1/3600                 $ Set factor (3600 for conversion seconds -> hours) 
+
+set-plot-option 1 T Phase fraction of cementite precipitate   $ Plot title
+set-plot-option 1 A Y 1 T Phase fraction                      $ Y-axis title
+set-plot-option 1 L N                                         $ no legend   
+set-plot-option 1 S N B F$CEMENTITE_P0 %s                     $ Add buffer data
+
+create-new-plot X . 
+set-plot-option 2 T Number of precipitates                    
+set-plot-option 2 A Y 1 T Number of precipitates [*10<sup>20</sup> m<sup>-3</sup>]
+set-plot-option 2 A Y 1 F 1e-20                               $ Set factor for Y-axis
+set-plot-option 2 L N 
+set-plot-option 2 S N B NUM_PART$CEMENTITE_P0 %s
+
+create-new-plot X . 
+set-plot-option 3 T Nucleation rate 
+set-plot-option 3 A Y 1 T Nucleation rate [*10<sup>26</sup> m<sup>-3</sup>s<sup>-1</sup>]
+set-plot-option 3 A Y 1 F 1e-26 
+set-plot-option 3 L N 
+set-plot-option 3 S N B NUCL_RATE$CEMENTITE_P0 %s
+
+create-new-plot X . 
+set-plot-option 4 T Precipitate radius 
+set-plot-option 4 A Y 1 T Precipitate radius [*10<sup>-6</sup> m]
+set-plot-option 4 A Y 1 Y log 
+set-plot-option 4 A Y 1 F 1e6
+set-plot-option 4 L B 
+set-plot-option 4 S N B R_MEAN$CEMENTITE_P0 %s
+set-plot-option 4 S N B R_CRIT$CEMENTITE_P0 %s
+set-plot-option 4 S N B R_MIN$CEMENTITE_P0 %s
+set-plot-option 4 S N B R_MAX$CEMENTITE_P0 %s
+move-gui-window 3 1 30 500 950
+
+$ Histogram for precipitate size distribution compared to LSW (100 Columns)
+new-gui-window p5
+set-gui-window-property 4 h 100                            $ Set amount of histogram columns
+
+set-plot-option 5 T Cementite precipitate distribution     
+set-plot-option 5 A X 1 T Scaled radius [nm]
+set-plot-option 5 A Y 1 T Scaled number
+set-plot-option 5 L B
+set-plot-option 5 S N P CEMENTITE_P0                       $ Add new precipitate to plot
+set-plot-option 5 H F D                                    $ Scale histogram frequency: density
+set-plot-option 5 H R Y                                    $ Scale histogram radius: yes
+set-plot-option 5 A X 1 S 0..1,499 
+set-function-expression LSW x^2*(3/(3+x))^(7/3)*((3/2)/(3/2-x))^(11/3)*exp(-x/(3/2-x))*4/9
+set-plot-option 5 S N F LSW 0..1.5                         $ Add LSW function to plot
+move-gui-window 4 500 250 500 350
+
+$ Histogram for precipitate size distribution compared to LSW (10 Columns)
+new-gui-window p5
+set-gui-window-property 5 h 10  
+set-plot-option 6 T Cementite precipitate distribution
+set-plot-option 6 A X 1 T Scaled radius
+set-plot-option 6 A Y 1 T Scaled number
+set-plot-option 6 L B
+set-plot-option 6 S N P CEMENTITE_P0 
+set-plot-option 6 H F D 
+set-plot-option 6 H R Y
+set-plot-option 6 A X 1 S 0..1,499 
+set-function-expression LSW x^2*(3/(3+x))^(7/3)*((3/2)/(3/2-x))^(11/3)*exp(-x/(3/2-x))*4/9
+set-plot-option 6 S N F LSW 0..1.5
+move-gui-window 5 500 600 500 350

@@ -1,0 +1,125 @@
+$$************************************************************************************************** 
+************************************** GENERAL INFORMATION *****************************************
+****************************************************************************************************
+
+Script for introduction to scripting (1: Equilibrium calculations) according to Tutorial 13. This is
+the "long" version of this script, where all commands are given in the full notation.
+The following contents will be covered:
+
+ - Purpose of scripts
+ - Writing a script to perform a stepped calculation and display the results
+
+A script is a text file, containing a list of commands to be executed in order from top to bottom. 
+They are particularly useful to speed up routine or repetitive operations. Once a script file has 
+been created, it can easily be modified to serve a new purpose, for example by changing the elements 
+or phases in the system. Script files, consisting only of text, are also much smaller in size than 
+MatCalc workspace files, especially those resulting from precipitation calculations.
+Individual scripts can also be grouped into master-scripts; this facilitates, for example, 
+calculations involving multi-stage heat treatments. Some sample scripts are provided with MatCalc.
+You will find them in the subdirectories of 'MatCalc/scripts/script_menu/templates'. Of course,
+you can also edit them in MatCalc by clicking on 'Open template…' in 'Script' menu.
+
+Database: mc_fe.tdb
+Author: P. Warczok
+Creation date: 10.11.2008
+Last update: 05.06.2019 (P. Warczok, Update for 6.02)
+This is a script for MatCalc version 6.02 (rel 1.003)
+
+Known issues:
+- "save-workspace "file-name"=Tutorial_13" is not working properly. --> Use "save-workspace Tutorial_13" instead.
+
+
+**************************************************************************************************** 
+************************************** SETUP INFORMATION *******************************************
+**************************************************************************************************$$
+
+use-module module-name=core                                                                        $ Use "core" module (MatCalc uses "core" module by default anyway) 
+
+new-workspace                                                                                      $ creates a new workspace 
+
+@echo value=no                                                                                     $ Hides command name in console     
+set-workspace-info information=+Script T13
+set-workspace-info information=+Calculation of equilibrium phase stability
+set-workspace-info information=+in Fe-0.4C wt.% system
+set-workspace-info information=+with phases LIQUID, BCC_A2, FCC_A1 and CEMENTITE.
+echo value=yes                                                                                     $ Shows command name in console
+
+$$************************************************************************************************** 
+**************************************** SYSTEM SETUP **********************************************
+**************************************************************************************************$$
+
+
+
+
+$$************************************************************************************************** 
+                         DATABASES, CHEMICAL COMPOSITION, SELECTED PHASES
+**************************************************************************************************$$
+
+open-thermodynamic-database file-name=mc_fe.tdb                                                    $ Thermodynamic database: mc_fe.tdb 
+select-elements elements=c fe                                                                      $ Components: Fe, Nb, C
+select-phases phases=liq bcc_a2 fcc cem                                                            $ Phases: Liquid, bcc, fcc, cementite
+read-thermodynamic-database 
+
+set-reference-element element=FE 
+enter-composition type=weight-percent composition=c=0.4                                            $ Composition: 0.4 wt.% C
+
+set-automatic-startvalues
+set-temperature-celsius temperature=700                                                            $ Temperature 700C
+calculate-equilibrium                                                                              $ Initial equilibrium
+
+
+$$************************************************************************************************** 
+                                        GRAPHICAL OUTPUT
+**************************************************************************************************$$
+
+set-step-option range start=400 stop=1600 scale=lin step-width=25 
+step-equilibrium
+
+new-gui-window type-id=p1 
+
+set-gui-window-property window-id=. default-x-axis-data=t$c
+set-gui-window-property window-id=. default-x-axis-title=Temperature [C]                           $ title for default x-axis
+
+set-plot-option plot-id=. plot-title=Phase stability in Fe-0.4 wt.% C
+set-plot-option plot-id=. y-axis-title=Phase fraction [%]
+set-plot-option plot-id=. y-axis-factor=100
+set-plot-option plot-id=. y-axis-type=log                                                          $ changes axis type to log
+set-plot-option plot-id=. y-axis-scaling=1..100                                                    $ modifies axis scaling
+
+set-plot-option plot-id=. series new buffer variable-name=f$liquid 
+set-plot-option plot-id=. series rename series-index=-1 series-name=f$liquid new-name=Liquid
+set-plot-option plot-id=. series new buffer variable-name=f$bcc_a2 
+set-plot-option plot-id=. series rename series-index=-1 series-name=f$bcc_a2 new-name=Ferrite
+set-plot-option plot-id=. series new buffer variable-name=f$fcc_a1 
+set-plot-option plot-id=. series rename series-index=-1 series-name=f$fcc_a1 new-name=Austenite 
+set-plot-option plot-id=. series new buffer variable-name=f$cementite
+set-plot-option plot-id=. series rename series-index=-1 series-name=f$cementite new-name=Fe<sub>3</sub>C
+set-plot-option plot-id=. grid which-grid=major enable-x-axis=yes 
+set-plot-option plot-id=. grid which-grid=major enable-y-axis=yes 
+
+move-gui-window  displace window-id=. x-origin=20 y-origin=20 width=800 height=1000
+update-gui-window window-id=.
+set-gui-window-property window-id=. style-sheet=col_no_symb                                         $sets style-sheet to "colour, no symbols".
+
+create-new-plot plot-type=xy-plot attach-to-window=. 
+
+set-plot-option plot-id=. plot-title=Composition of phases 
+set-plot-option plot-id=. y-axis-title=Carbon content [wt.%]                                        $ label on y-axis
+set-plot-option plot-id=. series new buffer variable-name=x$liquid$C$wp                             $ adding the first series...
+set-plot-option plot-id=. series rename series-index=-1 series-name=x$liquid$C$wp new-name=Liquid   $... and changing its name.
+set-plot-option plot-id=. series new buffer variable-name=x$bcc_a2$C$wp
+set-plot-option plot-id=. series rename series-index=-1 series-name=x$bcc_a2$C$wp new-name=Ferrite 
+set-plot-option plot-id=. series new buffer variable-name=x$fcc_a1$C$wp 
+set-plot-option plot-id=. series rename series-index=-1 series-name=x$fcc_a1$C$wp new-name=Austenite 
+set-plot-option plot-id=. series new buffer variable-name=x$cementite$C$wp
+set-plot-option plot-id=. series rename series-index=-1 series-name=x$cementite$C$wp new-name=Fe<sub>3</sub>C
+set-plot-option plot-id=. grid which-grid=major enable-x-axis=yes 
+set-plot-option plot-id=. grid which-grid=major enable-y-axis=yes 
+
+
+$$************************************************************************************************** 
+                                         SAVING WORKSPACE
+**************************************************************************************************$$
+
+$save-workspace "file-name"=Tutorial_13
+save-workspace Tutorial_13

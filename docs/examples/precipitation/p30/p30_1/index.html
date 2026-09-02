@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>P30 1 - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "P30 1";
+        var mkdocs_page_input_path = "examples/precipitation/p30/p30_1.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">P30 1</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>Example P30: Precipitation simulation in austenitic 316L steel: Evolution of Sigma, Chi and Laves precipitates [MatCalc Documentation]</p>
+<h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#example_p30precipitation_simulation_in_austenitic_316l_steelevolution_of_sigma_chi_and_laves_precipitates">Example P30: Precipitation simulation in austenitic 316L steel: Evolution of Sigma, Chi and Laves precipitates</a></p>
+</li>
+<li>
+<p><a href="#compatibility">Compatibility</a></p>
+</li>
+<li><a href="#objectives">Objectives</a></li>
+<li><a href="#related_documents">Related documents</a></li>
+<li><a href="#complementary_files">Complementary files</a></li>
+<li>
+<p><a href="#main_document">Main document</a></p>
+</li>
+<li>
+<p><a href="#setup_thermodynamics">Setup thermodynamics</a></p>
+</li>
+<li><a href="#precipitation_domain_and_precipitates">Precipitation domain and precipitates</a></li>
+<li><a href="#plots_and_diagrams">Plots and diagrams</a></li>
+<li><a href="#defining_the_heat_treatment">Defining the heat treatment</a></li>
+<li><a href="#starting_the_calculation">Starting the calculation</a></li>
+<li><a href="#resultsgeneral">Results: General</a></li>
+<li><a href="#resultscomparison_to_literature_data">Results: Comparison to literature data</a></li>
+</ul>
+<h1 id="example-p30-precipitation-simulation-in-austenitic-316l-steel-evolution-of-sigma-chi-and-laves-precipitates">Example P30: Precipitation simulation in austenitic 316L steel: Evolution of Sigma, Chi and Laves precipitates</h1>
+<h2 id="compatibility">Compatibility</h2>
+<p>MatCalc version: 5.50.0022 <br />
+Database: mc_x_FeCCrMnMoNiSi.tdb (alternatively/ mc_fe.tdb), mc_fe.ddb<br />
+Author: Georg Stechauner<br />
+Created: 2012-06-19 <br />
+Revisions:</p>
+<h2 id="objectives">Objectives</h2>
+<p>This example demonstrates the Simulation of the isothermal phase transformation of 316L at 815C, which was
+austenized at 1260C for 1.5h followed by water quench. The main interest of this example is the simultaneous nucleation of various phases at dislocations and grain boundaries.</p>
+<h2 id="related-documents">Related documents</h2>
+<ul>
+<li>B. Weiss, R. Stickler, Phase Instabilities During High Temperature Exposure of 316 Austenitic Stainless Steel, Metall Trans 3 (1972) 851-866.</li>
+</ul>
+<h2 id="complementary-files">Complementary files</h2>
+<p>Click <a href="/examples/precipitation/p30/script/p30_1.mcs" title="examples/precipitation/p30/script/p30_1.mcs (12.5 KB)">here</a> to view the script for this example.</p>
+<h1 id="main-document">Main document</h1>
+<h2 id="setup-thermodynamics">Setup thermodynamics</h2>
+<p>Use <strong>'mc_x_FeCCrMnMoNiSi.tdb'</strong> for this example with the following elements, phases and chemical composition (given in wt-%):</p>
+<table>
+<thead>
+<tr>
+<th>Elements</th>
+<th>Composition</th>
+<th>Phases</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fe</td>
+<td>ref.</td>
+<td>FCC_A1</td>
+</tr>
+<tr>
+<td>C</td>
+<td>0.023</td>
+<td>M23C6</td>
+</tr>
+<tr>
+<td>Cr</td>
+<td>17.3</td>
+<td>Laves_Phase</td>
+</tr>
+<tr>
+<td>Mn</td>
+<td>1.74</td>
+<td>Sigma</td>
+</tr>
+<tr>
+<td>Mo</td>
+<td>2.66</td>
+<td>Chi_A12</td>
+</tr>
+<tr>
+<td>Ni</td>
+<td>13.1</td>
+<td></td>
+</tr>
+<tr>
+<td>Si</td>
+<td>0.73</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Conclude the setup by reading the <strong>'mc_fe.ddb'</strong> diffusion database. Afterwards, calculate an initial equilibrium at <strong>1260°C</strong> - this is the start temperature of the kinetic simulation.</p>
+<h2 id="precipitation-domain-and-precipitates">Precipitation domain and precipitates</h2>
+<p>The parameter set used in this example has shown to reproduce experiments, concerning austenitic steels, considerably well. Feel free to use these values for your own simulations!</p>
+<p>Open the precipitation domain window and create a new precipitation domain called <strong>'Austenite'</strong>. <strong>Attach</strong> it to <strong>'fcc_a1'</strong> phase. Enter the following values for shown settings:</p>
+<table>
+<thead>
+<tr>
+<th>Tab</th>
+<th>Option</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>General</td>
+<td>Grain diameter</td>
+<td>400e-6</td>
+</tr>
+</tbody>
+</table>
+<p>Follow by setting up the precipitates. Bring up the phase status dialog window and select the three Theta phases. Click <strong>'Create new phase'</strong> and select <strong>'precipitate'</strong>. This produces one precipitate phase for each of the selected phases. Enter the following commands to complete the system setup:</p>
+<table>
+<thead>
+<tr>
+<th>Precipitate</th>
+<th>Tab</th>
+<th>Option</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M23C6_p0</td>
+<td>Nucleation</td>
+<td>Nucleation sites</td>
+<td>grain boundary</td>
+</tr>
+<tr>
+<td>Precipitate</td>
+<td>Tab</td>
+<td>Option</td>
+<td>Value</td>
+</tr>
+<tr>
+<td>Chi_A12_p0</td>
+<td>Nucleation</td>
+<td>Nucleation sites</td>
+<td>dislocations</td>
+</tr>
+<tr>
+<td>Precipitate</td>
+<td>Tab</td>
+<td>Option</td>
+<td>Value</td>
+</tr>
+<tr>
+<td>Sigma_p0</td>
+<td>Nucleation</td>
+<td>Nucleation sites</td>
+<td>grain boundary</td>
+</tr>
+<tr>
+<td>Special</td>
+<td>Diffusion in precipitate; from substitutional ratio</td>
+<td>1e-10</td>
+<td></td>
+</tr>
+<tr>
+<td>Precipitate</td>
+<td>Tab</td>
+<td>Option</td>
+<td>Value</td>
+</tr>
+<tr>
+<td>Laves_phase_p0</td>
+<td>Precipitate</td>
+<td>Interfacial energy; auto planar sharp energy</td>
+<td>remove ✔</td>
+</tr>
+<tr>
+<td>0,73*CIE$LAVES_PHASE</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Nucleation</td>
+<td>Nucleation sites</td>
+<td>dislocations</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="plots-and-diagrams">Plots and diagrams</h2>
+<p>In this example, the four plots for precipitation kinetics will be created typical for precipitation kinetics simulation. These are:</p>
+<ul>
+<li>
+<p>Temperature plot</p>
+</li>
+<li>
+<p>Displayed variable: <strong>T$C</strong></p>
+</li>
+<li>Y-axis title: <strong>'Temperature [°C]'</strong></li>
+<li>
+<p>Phase fraction plot</p>
+</li>
+<li>
+<p>Displayed variable: <strong>F_PREC<span class="arithmatex">\(\*\)</span>WP</strong> → the unit qualifier “WP” in the suffix returns the phase fraction expressed in weight percent.</p>
+</li>
+<li>Y-axis title: <strong>'Phase fraction [wt.%]'</strong></li>
+<li>
+<p>Precipitate number density plot</p>
+</li>
+<li>
+<p>Displayed variable: <strong>NUM_PREC$*</strong></p>
+</li>
+<li>Y-axis title: <strong>'Number density [m-3]'</strong></li>
+<li>Y-axis type: <strong>log</strong></li>
+<li>
+<p>Precipitate mean radius plot</p>
+</li>
+<li>
+<p>Displayed variable: <strong>R_MEAN$*</strong></p>
+</li>
+<li>Y-axis title: <strong>'Mean radius [nm]'</strong></li>
+<li>Y-axis type: <strong>log</strong></li>
+<li>Y-axis factor: <strong>1e9</strong></li>
+</ul>
+<p>The x-axis, common for all plots is to be set up as following:</p>
+<ul>
+<li>Default x-axis for all plots: <strong>yes</strong></li>
+<li>Default x-axis title: <strong>'Time [h]'</strong></li>
+<li>Default x-axis type: <strong>log</strong></li>
+<li>Default x-axis scaling: <strong>0,001..</strong></li>
+<li>Default x-axis factor: <strong>1/3600</strong></li>
+</ul>
+<p><strong>Note:</strong> The making of the plots can be sped up by creation of the relevant user-defined plot window (<strong>'Create new window'</strong> → <strong>'user-defined'</strong> tab). For this example, one can use the one called <strong>'03_kinetics_4_frames_T_f_n_r_logX'</strong> and modify it accordingly.</p>
+<h2 id="defining-the-heat-treatment">Defining the heat treatment</h2>
+<p>Even tough we are performing an isothermal heat treatment in this example, we need to start with rapid quenching, in order to nucleate the precipitates. It can be shown, that an isothermal treatment starting at 815°C without preceding quenching from solution temperature, results in no nucleation and growth of M23C6 precipitates. Keep this fact in mind, when designing isothermal heat treatments.</p>
+<p>Open the <strong>'Edit heat treatments…'</strong> dialog window and create a new heat treatment. Add a new segment and enter the following settings. Choose a starting temperature of 1260C and select <strong>'austenite'</strong> as the precipitation domain. Select <strong>'inherit'</strong> for all following segments.</p>
+<table>
+<thead>
+<tr>
+<th>Segment</th>
+<th>Ramp control</th>
+<th>End Temp. [C]</th>
+<th>Cool. Rate [K/s]</th>
+<th>Delta-Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>End Temp. &amp; H/C Rate</td>
+<td>25</td>
+<td>23</td>
+<td>-</td>
+</tr>
+<tr>
+<td>1</td>
+<td>End Temp. &amp; H/C Rate</td>
+<td>815</td>
+<td>10</td>
+<td>-</td>
+</tr>
+<tr>
+<td>2</td>
+<td>H/C Rate &amp; Delta Time</td>
+<td>-</td>
+<td>0</td>
+<td>3000*3600</td>
+</tr>
+</tbody>
+</table>
+<h2 id="starting-the-calculation">Starting the calculation</h2>
+<p>Start the simulation by opening the <strong>'Precipitation simulation…'</strong> window and selecting the recently created heat treatment as <strong>'Temperature control'</strong>. Press <strong>'Go'</strong> to start the simulation.</p>
+<p><a href="/examples/precipitation/p30/img/p30_1_preckin_6021003.png" title="examples/precipitation/p30/img/p30_1_preckin_6021003.png"><img alt=" Precipitation kinetics dialog window" src="/examples/precipitation/p30/img/p30_1_preckin_6021003.png" title="Precipitation kinetics dialog window" /></a></p>
+<h2 id="results-general">Results: General</h2>
+<p>The result for the selected heat treatment Simulation are shown below:</p>
+<p><a href="/examples/precipitation/p30/img/p30_1_temperature_6021003.png" title="examples/precipitation/p30/img/p30_1_temperature_6021003.png"><img alt=" Temperature-time profile of kinetic simulation" src="/examples/precipitation/p30/img/p30_1_temperature_6021003.png" title="Temperature-time profile of kinetic simulation" /></a></p>
+<p><a href="/examples/precipitation/p30/img/p30_1_phase_fraction_weight_percent_6021003.png" title="examples/precipitation/p30/img/p30_1_phase_fraction_weight_percent_6021003.png"><img alt=" Mass phase fraction of precipitates in 316L steel" src="/examples/precipitation/p30/img/p30_1_phase_fraction_weight_percent_6021003.png" title="Mass phase fraction of precipitates in 316L steel" /></a></p>
+<p><a href="/examples/precipitation/p30/img/p30_1_number_density_6021003.png" title="examples/precipitation/p30/img/p30_1_number_density_6021003.png"><img alt=" Number density of precipitates in 316L steel" src="/examples/precipitation/p30/img/p30_1_number_density_6021003.png" title="Number density of precipitates in 316L steel" /></a></p>
+<p><a href="/examples/precipitation/p30/img/p30_1_mean_radius_6021003.png" title="examples/precipitation/p30/img/p30_1_mean_radius_6021003.png"><img alt=" Mean radius of precipitates in 316L steel" src="/examples/precipitation/p30/img/p30_1_mean_radius_6021003.png" title="Mean radius of precipitates in 316L steel" /></a></p>
+<p>All precipitates appear during cooling to room temperature. Subsequent heating up results in the dissolution of the smallest precipitates of Chi an Laves phases (number density falls with the simultaneous increase of mean radius). During isothermal segment, all precipitates grow in size. Moreover, new precipitates of Chi and Laves phases appear within the first 100 hours. After about 1000 hours, Chi Phase decreases in size, resulting also in the fall of the phase fraction.</p>
+<h2 id="results-comparison-to-literature-data">Results: Comparison to literature data</h2>
+<p>Create a table and enter following data to compare the calculated values to experimental ones:</p>
+<table>
+<thead>
+<tr>
+<th>M23C6</th>
+<th></th>
+<th>Sigma</th>
+<th></th>
+<th>Chi_A12</th>
+<th></th>
+<th>Laves</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Time / s</td>
+<td>wt-fraction</td>
+<td>Time / s</td>
+<td>wt-fraction</td>
+<td>Time / s</td>
+<td>wt-fraction</td>
+<td>Time / s</td>
+<td>wt-fraction</td>
+</tr>
+<tr>
+<td>10800000</td>
+<td>0.0001</td>
+<td>10800000</td>
+<td>0.009</td>
+<td>10800000</td>
+<td>0.02</td>
+<td>10800000</td>
+<td>0.011</td>
+</tr>
+<tr>
+<td>5400000</td>
+<td>0.004</td>
+<td>5400000</td>
+<td>0.0035</td>
+<td>5400000</td>
+<td>0.0175</td>
+<td>5400000</td>
+<td>0.002</td>
+</tr>
+<tr>
+<td>540000</td>
+<td>0.003</td>
+<td>720000</td>
+<td>0.0015</td>
+<td>720000</td>
+<td>0.003</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>43200</td>
+<td>0.002</td>
+<td>0</td>
+<td>0</td>
+<td>54000</td>
+<td>0.0015</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5400</td>
+<td>0.0015</td>
+<td>0</td>
+<td>0</td>
+<td>28800</td>
+<td>0.0001</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Next, plot the table content on the phase fraction diagram.</p>
+<p><a href="/examples/precipitation/p30/img/p30_1_phase_fraction_weight_percent_points_6021003.png" title="examples/precipitation/p30/img/p30_1_phase_fraction_weight_percent_points_6021003.png"><img alt=" Phase fraction of precipitates in 316L compared to experimental data by Weiss and Stickler" src="/examples/precipitation/p30/img/p30_1_phase_fraction_weight_percent_points_6021003.png" title="Phase fraction of precipitates in 316L compared to experimental data by Weiss and Stickler" /></a></p>
+<p><a href="/examples/precipitation/p30/img/p30_1_phasefraction_exp.png" title="examples/precipitation/p30/img/p30_1_phasefraction_exp.png"><img alt=" Phase fraction of precipitates in 316L compared to experimental data by Weiss and Stickler" src="/examples/precipitation/p30/img/p30_1_phasefraction_exp.png" title="Phase fraction of precipitates in 316L compared to experimental data by Weiss and Stickler" /></a></p>
+<p>Simulation results are general in good agreement with the experimental data. The magnitudes of phase fractions are reproduced well. The amount of chi phase is decreasing towards the simulation end which is not confirmed with the experimental observation. On the other hand, the accuracy of the experimental data does not exclude such a scenario - an experimental investigation of the longer service times would help to resolve this question.</p>
+<p>Further have a look at the following table, showing experimental versus calculated data of precipitate phases in respect to their chemical composition. To retrieve the simulated values, you can either plot the <code>X$PhaseName$…</code> variable or select the desired temperature in your buffer and read the data from the Phase details window.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>Sigma</td>
+<td></td>
+<td>Chi</td>
+<td></td>
+<td>Laves</td>
+<td></td>
+<td>M23C6</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Exp.</td>
+<td>Sim.</td>
+<td>Exp.</td>
+<td>Sim.</td>
+<td>Exp.</td>
+<td>Sim.</td>
+<td>Exp.</td>
+<td>Sim.</td>
+</tr>
+<tr>
+<td>%-Phase</td>
+<td>0.9</td>
+<td>0.7</td>
+<td>2.0</td>
+<td>1.9</td>
+<td>1.1</td>
+<td>0.7</td>
+<td>traces</td>
+<td>0.3</td>
+</tr>
+<tr>
+<td>Mo</td>
+<td>11</td>
+<td>23</td>
+<td>22</td>
+<td>19</td>
+<td>45</td>
+<td>40</td>
+<td>14</td>
+<td>21</td>
+</tr>
+<tr>
+<td>Cr</td>
+<td>29</td>
+<td>24</td>
+<td>21</td>
+<td>24</td>
+<td>11</td>
+<td>15</td>
+<td>63</td>
+<td>72</td>
+</tr>
+<tr>
+<td>Fe</td>
+<td>55</td>
+<td>41</td>
+<td>52</td>
+<td>49</td>
+<td>38</td>
+<td>39</td>
+<td>18</td>
+<td>7</td>
+</tr>
+<tr>
+<td>Ni</td>
+<td>5</td>
+<td>12</td>
+<td>5</td>
+<td>8</td>
+<td>6</td>
+<td>6</td>
+<td>5</td>
+<td>traces</td>
+</tr>
+</tbody>
+</table>
+<p>As before, the results are generally in good agreement to the experimental data. It is still ongoing work, to improve the thermodynamic description of phases, especially intermetallics as the sigma phase.</p>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=examples%3Aprecipitation%3Ap30%3Ap30_1&amp;1788352998" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

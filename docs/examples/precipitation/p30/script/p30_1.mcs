@@ -1,0 +1,210 @@
+$$************************************************************************************************** 
+************************************** GENERAL INFORMATION *****************************************
+****************************************************************************************************
+
+This script demonstrates the kinetic simulation of precipitation process in austenitic steel 316L as
+described in Example P30-1 (https://www.matcalc.at/index.php/documentation/examples). The simulated
+cycle starts with austenized structure without the precipitates. Cooling to room temperature results
+in the formation of various precipitates (four phases are used in this simulation) which grow, and
+in some cases also dissolve again, during the susbsequent service at 815°C for 125 days. 
+
+
+Database: mc_x_FeCCrMnMoNiSi.tdb, mc_fe.ddb
+Author: P. Warczok
+Creation date: 05.11.2019
+This is a script for MatCalc version 6.02 (rel 1.003)
+
+Known issues:
+- Command for manual setting of interfacial energy is absent -> use "set-precipitation-parameter #precipitate I N #value" instead
+
+
+$$
+
+
+
+
+new-workspace 
+
+
+$ ***************************************************************************************************
+$                             DATABASES, ELEMENTS, PHASES, COMPOSITION
+$ ***************************************************************************************************
+
+$ Getting thermodynamic data
+open-thermodynamic-database file-name=mc_x_FeCCrMnMoNiSi.tdb
+select-elements elements=fe c cr mn mo ni si                                                                                                            $ Elements
+select-phases phases=fcc_a1 m23c6 laves_phase sigma chi_a12                                                                                             $ Phases
+read-thermodynamic-database 
+
+$ Getting diffusion data
+read-mobility-database file-name=mc_fe.ddb
+
+$ System composition
+enter-composition type=weight-percent composition=c=0,023 cr=17,3 mn=1,74 mo=2,66 ni=13,1 si=0,73
+
+$ Initial equlibrium
+set-automatic-startvalues 
+set-temperature-celsius temperature=1260
+calculate-equilibrium 
+
+
+$ ***************************************************************************************************
+$                                     PRECIPITATION DOMAIN
+$ ***************************************************************************************************
+
+$ Precipitation domain
+create-precipitation-domain new-domain-name=austenite
+set-precipitation-parameter precipitate-or-domain-name=austenite thermodynamic-matrix-phase=fcc_a1                                                      $ Thermodynamic description
+set-precipitation-parameter precipitate-or-domain-name=austenite initial-grain-diameter=400e-6                                                          $ Initial grain size
+
+
+$ ***************************************************************************************************
+$                                      PRECIPITATE PHASES
+$ ***************************************************************************************************
+
+$ M23C6 precipitate
+create-new-phase parent-phase=m23c6 precipitate alias-name=M23C6   
+set-precipitation-parameter precipitate-or-domain-name=M23C6_P0 nucleation-sites=grain-boundaries                                                       $ Nucleation sites
+
+$ Chi phase 
+create-new-phase parent-phase=chi_a12 precipitate alias-name=Chi 
+set-precipitation-parameter precipitate-or-domain-name=CHI_A12_P0 nucleation-sites=dislocations 
+
+$ Sigma precipitate
+create-new-phase parent-phase=sigma precipitate alias-name=Sigma   
+set-precipitation-parameter precipitate-or-domain-name=SIGMA_P0 nucleation-sites=grain-boundaries 
+set-precipitation-parameter precipitate-or-domain-name=SIGMA_P0 special diffusion-in-precipitate substitutional-diffusion-in-precipitate-factor=1e-10   $ Ratio for diffusion in precipitate
+
+$ Laves phase precipitate 
+create-new-phase parent-phase=laves_phase precipitate alias-name=Laves   
+set-precipitation-parameter precipitate-or-domain-name=LAVES_PHASE_P0 nucleation-sites=dislocations 
+SET_PRECIPITATION_PARAMETER LAVES_PHASE_P0 I N 0.73*CIE$LAVES_PHASE                                                                                     $ Modification of calculated interfacial energy value
+
+
+$ ***************************************************************************************************
+$                                  THERMOMECHANICAL TREATMENT
+$ ***************************************************************************************************
+
+create-tm-treatment tm-treatment-name=tmt
+
+$ Cooling to room temperature
+append-tmt-segment tm-treatment-name=tmt 
+edit-tmt-segment tm-treatment-name=tmt tm-treatment-segment=. segment-start-temperature=1260                                                            $ Start temperature   
+edit-tmt-segment tm-treatment-name=tmt tm-treatment-segment=. T_end+T_dot segment-end-temperature=25 temperature-gradient=23                            $ Segment end temperature and cooling rate
+edit-tmt-segment tm-treatment-name=tmt tm-treatment-segment=. precipitation-domain=austenite                                                            $ Precipitation domain
+
+$ Heating up to 815°C
+append-tmt-segment tm-treatment-name=tmt 
+edit-tmt-segment tm-treatment-name=tmt tm-treatment-segment=. T_end+T_dot segment-end-temperature=815 temperature-gradient=10
+
+$ Service at 815°C
+append-tmt-segment tm-treatment-name=tmt 
+edit-tmt-segment tm-treatment-name=tmt tm-treatment-segment=. T_dot+delta_t temperature-gradient=0 segment-delta-time=125*24*60*60                      $ Heating rate and segment duration time (125 days)
+
+
+$ ***************************************************************************************************
+$                                     EXPERIMENTAL DATA
+$ ***************************************************************************************************
+
+$ Phase fraction (mass) of M23C6
+create-global-table new-table-name=m23c6_wt_fraction {
+5400 0,15                                                                                                                                               $ Time (seconds) and phase fraction (weight percent)   
+43200 0,2
+540000 0,3
+5400000 0,4
+10800000 0,01
+}
+
+$ Phase fraction (mass) of Sigma
+create-global-table new-table-name=sigma_wt_fraction {
+720000 0,15
+5400000 0,35
+10800000 0,9
+}
+
+$ Phase fraction (mass) of Chi phase
+create-global-table new-table-name=chi_wt_fraction {
+28800 0,01
+54000 0,15
+720000 0,3
+5400000 1,75
+10800000 2
+}
+
+$ Phase fraction (mass) of Laves phase
+create-global-table new-table-name=laves_wt_fraction {
+5400000 0,2
+10800000 1,1
+}
+
+
+$ ***************************************************************************************************
+$                                           PLOT SETUP
+$ ***************************************************************************************************
+
+new-gui-window type-id=p1                                          
+move-gui-window displace window-id=. x-origin=75 y-origin=15 width=880 height=790                                                                       $ Position of plot window
+
+$ Default x-axis settings 
+set-gui-window-property window-id=. default-x-axis-for-all-plots=yes                                                                                    $ Apply the settings defined below to x-axes in all plots within this GUI-window
+set-gui-window-property window-id=. default-x-axis-title="Time [h]"                                                                                     $ X-axis title
+set-gui-window-property window-id=. default-x-axis-type=log                                                                                             $ X-axis scaling type: logarithmic
+set-gui-window-property window-id=. default-x-axis-factor=1/3600                                                                                        $ X-axis scaling factor: seconds -> hours
+set-gui-window-property window-id=. default-x-axis-scaling=0,001..                                                                                      $ X-axis scaling range: starting from 0.001
+
+$ Temperature plot
+set-plot-option plot-id=. y-axis-title="Temperature [°C]"                                                                                               $ Y-axis title 
+set-plot-option plot-id=. series new buffer variable-name=T$C                                                                                           $ Add new series to plot: variable T$C
+set-plot-option plot-id=. y-axis-scaling=0..1300                                                                                                        $ Y-axis scaling range: from 0 to 1300
+set-plot-option plot-id=. grid which-grid=major enable-x-axis=yes                                                                                       $ Gridlines for x-axis
+set-plot-option plot-id=. grid which-grid=major enable-y-axis=yes                                                                                       $ Gridlines for y-axis
+
+$ Phase fraction (weight percent) plot
+create-new-plot plot-type=xy-plot attach-to-window=. 
+set-plot-option plot-id=. use-alias-names-in-legend=yes 
+set-plot-option plot-id=. series new buffer variable-name=f_prec$*$wp
+set-plot-option plot-id=. y-axis-title="Phase fraction [wt.%]"
+set-plot-option plot-id=. y-axis-scaling=0..3
+set-plot-option plot-id=. series new table-experimental-data table-name=m23c6_wt_fraction                                                               $ Add new series to plot: Table m23c6_wt_fraction
+set-plot-option plot-id=. series new table-experimental-data table-name=chi_wt_fraction
+set-plot-option plot-id=. series new table-experimental-data table-name=sigma_wt_fraction
+set-plot-option plot-id=. series new table-experimental-data table-name=laves_wt_fraction
+set-plot-option plot-id=. series rename series-index=-1 series-name=m23c6_wt_fraction new-name=m23c6_exp                                                $ Rename series "m23c6_wt_fraction" to "m23c6_exp"
+set-plot-option plot-id=. series rename series-index=-1 series-name=chi_wt_fraction new-name=chi_exp
+set-plot-option plot-id=. series rename series-index=-1 series-name=sigma_wt_fraction new-name=sigma_exp
+set-plot-option plot-id=. series rename series-index=-1 series-name=laves_wt_fraction new-name=laves_exp
+set-plot-option plot-id=. grid which-grid=major enable-x-axis=yes 
+set-plot-option plot-id=. grid which-grid=major enable-y-axis=yes 
+
+$ Number density plot
+create-new-plot plot-type=xy-plot attach-to-window=.
+set-plot-option plot-id=. use-alias-names-in-legend=yes            
+set-plot-option plot-id=. series new buffer variable-name=num_prec$*
+set-plot-option plot-id=. y-axis-title="Number density [m<sup>-3</sup>]"
+set-plot-option plot-id=. y-axis-type=log                                                                                                               $ Y-axis scaling type: logarithmic
+set-plot-option plot-id=. y-axis-scaling=1e10..1e20                                                                                                         
+set-plot-option plot-id=. grid which-grid=major enable-x-axis=yes 
+set-plot-option plot-id=. grid which-grid=major enable-y-axis=yes 
+
+$ Mean radius plot
+create-new-plot plot-type=xy-plot attach-to-window=.
+set-plot-option plot-id=. use-alias-names-in-legend=yes
+set-plot-option plot-id=. series new buffer variable-name=r_mean$*
+set-plot-option plot-id=. y-axis-title="Mean radius [nm]"
+set-plot-option plot-id=. y-axis-type=log
+set-plot-option plot-id=. y-axis-scaling=1e-1..1e4
+set-plot-option plot-id=. y-axis-factor=1e9                                                                                                             $ Y-axis scaling factor: meter -> nanometer
+set-plot-option plot-id=. grid which-grid=major enable-x-axis=yes 
+set-plot-option plot-id=. grid which-grid=major enable-y-axis=yes 
+
+$ ***************************************************************************************************
+$                                           SIMULATION
+$ ***************************************************************************************************
+
+set-simulation-parameter temperature-control-type=from-tm-treatment                                                                                    $ Temperature control for simulation: from defined thermomechanical treatment
+set-simulation-parameter tm-treatment-name=tmt                                                                                                         $ Name of the thermomechanical treatment to be taken for simulation
+start-precipitate-simulation 
+
+
+
+

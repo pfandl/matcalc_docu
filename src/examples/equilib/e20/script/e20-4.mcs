@@ -1,0 +1,164 @@
+$$************************************************************************************************** 
+************************************** GENERAL INFORMATION *****************************************
+****************************************************************************************************
+
+This example describes a strategy for evaluation of primary solidification microstructures based on 
+purely thermodynamic grounds. This analysis can be utilized for a prediction of primary 
+precipitation and microsegregation during casting. The results can serve as a basis for defining 
+representative compositions in subsequent precipitation kinetics simulations of enriched and 
+depleted regions in a (micro)segregated microstructure.
+
+Part 4 is focussed on the prediction of microsegregation in the primary solidification 
+microstructure using the Scheil-Gulliver simulation approach. The results are later used in the 
+simulation of precipitation kinetics during continuous casting in example P20, where the 
+compositions of the enriched and depleted regions are taken as the limiting cases for the chemical 
+composition of two representative volume elements.
+
+Database: mc_fe.tdb, mc_x_FeAlCNNbTi.tdb
+Author: G. Stechauner
+Creation date: 2011-11-04
+This is a script for MatCalc version 5.44 (rel 0.021)
+
+
+**************************************************************************************************** 
+************************************** SETUP INFORMATION *******************************************
+**************************************************************************************************$$
+
+$ make sure we work in the correct module
+use-module core 
+
+$ creates a new workspace 
+new-workspace 
+
+@ echo n
+set-workspace-info + Prediction of microsegregation
+set-workspace-info +
+set-workspace-info + Phases: Liquid, FCC_A1, BCC_A2, Cementite, AlN
+set-workspace-info + Chemical components: Fe, C, Al, N, Nb, Ti
+set-workspace-info + 
+set-workspace-info + For further information visit www.matcalc.at
+set-workspace-info +
+echo y
+
+
+$$************************************************************************************************** 
+**************************************** SYSTEM SETUP **********************************************
+**************************************************************************************************$$
+
+$ verify correct MatCalc version (is accessible as internal variable) 
+if (matcalc_version<5440021)
+   send-dialog-string "MatCalc version must be 5.44.0021 or higher to run this script. Stopping."
+   stop_run_script                                  $ stop script
+endif
+
+test-exist-td-database mc_fe.tdb                    $ Check if database is present
+if (test_result==1)
+   open-thermodyn-database mc_fe.tdb                $ Thermodynamic database
+else
+   test-exist-td-database mc_x_FeAlCNNbTi.tdb 
+   if (test_result==1)
+      open-thermodyn-database mc_x_FeAlCNNbTi.tdb   $ Thermodynamic database
+   else
+      send-dialog-string "No valid database found. Visit matcalc website and download the free 'mc_x_FeAlCNNbTi' database."
+      stop_run_script
+   endif
+endif
+
+
+$$************************************************************************************************** 
+                        DATABASES, CHEMICAL COMPOSITION, SELECTED PHASES
+**************************************************************************************************$$
+
+select-elements FE C AL N NB TI VA                      
+select-phases LIQUID FCC_A1 BCC_A2 CEMENTITE ALN        
+read-thermodyn-database
+
+set-reference-element FE
+enter-composition WP C=0.22 AL=0.025 N=0.0061 NB=0.036 TI=0.0081
+
+set-automatic-startvalues
+set-temperature-celsius 1000                        $ Temperature 
+calculate-equilibrium                               $ Initial equilibrium
+
+$ Change major constituents for existing composition set to NbC
+change-phase-status fcc_a1#01 m Nb:C
+$ Add new equilibrium composition set...
+create-new-phase fcc_a1 e 
+$ ... and change its major constituents to TiN
+change-phase-status fcc_a1#02 m Ti:N
+
+
+$$*************************************************************************************************
+                                  SOLID-SOLID TRANSFORMATION
+*************************************************************************************************$$
+
+set-temperature-celsius 1525                        $ Temperature
+calculate-equilibrium                               $ Initial equilibrium
+set-step-option y s                                 $ T(y)pe - (S)cheil
+set-step-option r 1525 1000 1                       $ Calculate in a (r)ange 
+set-step-option p liquid                            $ set dependent phase (usually liquid)
+set-step-option l 1.0e-6                            $ minimum liquid fraction
+set-step-option b C y                               $ back diffusion of C: yes
+set-step-option b N y                               $ back diffusion of N: yes
+step-equilibrium
+
+create-new-phase fcc_a1 u                           $ create transformation equilib phase
+create-new-phase fcc_a1_t t                         $ create transformation solid phase
+create-global-transformation peritectic             $ for peritectic transformation
+set-transformation-option peritectic y e            $ type: use full equilibrium
+set-transformation-option peritectic f bcc_a2_s     $ 'transform from' phase
+set-transformation-option peritectic t fcc_a1_s     $ 'transform to' phase
+set-transformation-option peritectic e fcc_a1_t     $ 'transform to' phase
+set-transformation-option peritectic r 2000 0 y     $ Set temperature range
+set-transformation-option peritectic a              $ activate peritectic transformation
+
+step-equilibrium
+
+
+$$**************************************************************************************************
+                                  ANALYSIS OF MICROSEGREGATION
+**************************************************************************************************$$
+
+
+new-gui-window p1                                   $ Plot of the phase diagram
+move-gui-window . 80 80 450 500
+set-gui-window-property . s u y                     $ use default x-axis for all plots
+set-gui-window-property . x T$c                     $ x-axis data
+set-gui-window-property . S T Temperature [C]       $ x-axis title
+
+$ Plotting Liquid phase fraction and Scheil-Solid phases
+set-plot-option . S N B X$LIQUID$AL 
+set-plot-option . S N B X$LIQUID$C  
+set-plot-option . S N B X$LIQUID$N  
+set-plot-option . S N B X$LIQUID$NB 
+set-plot-option . S N B X$LIQUID$TI 
+
+set-plot-option . A Y 1 Y log                       $ Set y-axis to logarithmic 
+set-plot-option . A Y 1 T composition liquid [mf]   $ y-axis title
+set-plot-option . L R                               $ Legend on the bottom
+
+set-plot-option . s L * y                           $ Lock all series
+
+new-gui-window p1                                   $ Plot of the phase diagram
+move-gui-window . 100 100 450 500
+set-gui-window-property . s u y                     $ use default x-axis for all plots
+set-gui-window-property . x 1-f$liquid              $ x-axis data
+set-gui-window-property . S T fraction solid        $ x-axis title
+
+$ Plotting Liquid phase fraction and Scheil-Solid phases
+set-plot-option . S N B X$LIQUID$AL 
+set-plot-option . S N B X$LIQUID$C 
+set-plot-option . S N B X$LIQUID$N  
+set-plot-option . S N B X$LIQUID$NB  
+set-plot-option . S N B X$LIQUID$TI  
+
+set-plot-option . A Y 1 Y log                       $ Set y-axis to logarithmic 
+set-plot-option . A Y 1 T liquid composition [mf]   $ y-axis title
+set-plot-option . L R                               $ Legend on the bottom
+
+set-plot-option . s L * y                           $ Lock all series
+
+
+$$**************************************************************************************************
+************************************ EXAMPLE 20-4 FINISHED *****************************************
+**************************************************************************************************$$

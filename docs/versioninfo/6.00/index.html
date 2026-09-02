@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>6.00 - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "6.00";
+        var mkdocs_page_input_path = "versioninfo/6.00.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">6.00</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>MatCalc 6.00 [MatCalc Documentation]</p>
+<h2 id="matcalc-600">MatCalc 6.00</h2>
+<p>Below are details describing the various changes and new features of the MatCalc versions 6.00.xxxx.</p>
+<h4 id="version-6001000-released-2017-10-20">version 6.00.1000: released 2017-10-20</h4>
+<ul>
+<li>Many many smaller <strong>bug fixes</strong> and changes.</li>
+<li>Added the new MatCalc Remote Control, which allows you to start MatCalc and communicate with it each instance via an extremely small executable called <code>mcr</code>.</li>
+<li>Fixed a problem with the <strong>stop-run-script command</strong>, which did not stop a script inside a second loop.</li>
+<li>Added functionality to <strong>edit table contents</strong> from within scripts.</li>
+<li>…</li>
+</ul>
+<h4 id="version-6000910-released-2017-10-12">version 6.00.0910: released 2017-10-12</h4>
+<ul>
+<li>Numerous smaller <strong>bug fixes</strong> and changes.</li>
+<li>Changed a <strong>few variable names and commands</strong> in the new command line syntax. Sorry for this, but it is much more consistent now. See the template scripts for the (almost) final version of the syntax. I think the scripts read really beautifully now compared to the old syntax of version 5.</li>
+<li>Added a prototype of <strong>remote control feature</strong> for the MatCalc GUI as well as command line versions. This will be very useful in applications where you want to use MatCalc as slave application from your own master code or other software as, for instance, FEM programs. Stay tuned to see what comes out from these activities.</li>
+</ul>
+<h4 id="version-6000900-released-2017-09-15">version 6.00.0900: released 2017-09-15</h4>
+<ul>
+<li>Several modifications and bug fixes in the <strong>license management</strong> routines. Both, for multi-node multi-user node-locked licenses as well as network licenses.</li>
+<li>Numerous smaller <strong>bug fixes</strong> and changes.</li>
+<li>The <strong>installation packages</strong> are now available on all platforms.</li>
+<li>New treatment of <strong>heterogeneous nucleation site energies</strong>: The critical radius and critical nucleation energy are now sought numerically, correctly taking into account the dislocation line tension as well as grain boundary and subgrain boundary energies. The previously implemented Clemm and Fisher model is now obsolete.</li>
+<li>Removed <code>show-console</code> command.</li>
+<li>Made several changes and improvements on the <strong>microstructure evolution model</strong> for <strong>recrystallization and recovery</strong>.</li>
+<li>Made several changes and improvements in the treatment of <strong>dislocation density evolution</strong>.</li>
+<li>Modified the treatment of <strong>dynamic strength</strong> according to the new results of Johannes Kreyca. Almost final version is now implemented.</li>
+</ul>
+<h4 id="version-6000200-released-2016-11-03">version 6.00.0200: released 2016-11-03</h4>
+<ul>
+<li>The <strong>installation packages</strong> are now available on all platforms.</li>
+<li><strong>Template scripts</strong> for core module are now translated into <strong>new script syntax</strong>.</li>
+<li>Final polish of the single-class <strong>recrystallization model</strong> and fixes in the multi-class treatment. The development of realistic <strong>multi-class topology</strong> treatment is still in progress.</li>
+<li>Reformulation of the high and low temperature formulations of the <strong>dynamic strength model.</strong></li>
+<li>Improved <strong>software update routines</strong>. Software update is available in the help menu and automatically performed if internet access to the <em>MatCalc</em> server is granted.</li>
+<li>Fixed some issues with <strong>multi-class strengthening</strong> calculations.</li>
+<li>Improved <strong>automatic check</strong> for newer <em>MatCalc</em> versions.</li>
+<li>Implemented <strong>trap site competition</strong> for multiple elements on the same trapping site.</li>
+<li>Support for Fahrenheit. It is now possible to use the flag 'f' with temperature related variables, e.g., <code>T$f</code> will display temperature in Fahrenheit.</li>
+<li>Removed the obsolete model for “solute trapping phases”.</li>
+<li>Implemented model for <strong>cross-core diffusion</strong> in strengthening treatment.</li>
+<li>Changed <strong>grain growth</strong> formula to be related to radius instead of diameter. Attention: Makes kinetics twice as fast! Previous calibrations must be corrected.</li>
+<li>Added a <strong>variable</strong> to control the <strong>inner-particle diffusion reduction</strong> of shrinking particles. Makes numerical integration control of precipitate size distribution evolution more stable.</li>
+<li>Renamed some variables related to recrystallization: “REXX” → “RX”.</li>
+<li>Modified formulation of <strong>dynamic strengthening</strong>. Corresponding paper is in progress.</li>
+<li>Only allow letters, number and underlines for <strong>composition set names</strong>. Check for duplicate alias names, when creating precipitate phases.</li>
+</ul>
+<h4 id="version-6000138-released-2016-09-10">version 6.00.0138: released 2016-09-10</h4>
+<ul>
+<li>Significant <strong>progress</strong> in new console handling and implementation of <strong>new scripting syntax</strong></li>
+<li>Fixed serious <strong>bug</strong> in <strong>single-class microstructure simulation model</strong> with relation to the subgrain size evolution</li>
+<li>Added controlling controlling <strong>grain impingement</strong> during recrystallization</li>
+<li>Entirely <strong>reformulated</strong> the <strong>dynamic strengthening model</strong>: It is now based on physical parameters rather than phenomenological coefficients</li>
+<li>Open scripts in editor when using SHFT or CTRL in drag &amp; drop operations as well as from the script→templates menu</li>
+<li>Removed <strong>obsolete “solute trapping” phase</strong></li>
+<li>Fixed issues in dynamic trap sites competition</li>
+<li>Rewrote several template scripts to comply with the new scripting syntax</li>
+<li>Renewed the treatment of software update messages (first steps done).</li>
+</ul>
+<h4 id="version-6000111-released-2016-06-08">version 6.00.0111: released 2016-06-08</h4>
+<ul>
+<li>Fixed bug in the Scheil module</li>
+<li>Added information window for size-dependent nucleation energy</li>
+<li>Changed some of the <strong>MSE variable names</strong></li>
+<li>First version of <strong>kinetic accelerator</strong>. Allows you to obtain detailed information on the time step size controlling parameter in kinetic simulations.</li>
+<li>Several smaller issues …</li>
+</ul>
+<h4 id="version-6000100-released-2016-04-01">version 6.00.0100: released 2016-04-01</h4>
+<ul>
+<li>This <em>MatCalc</em> version represents the first <em>MatCalc 6</em> release that is officially supported. It has several features over the previous 5.62 releases, which are</li>
+<li><strong>Encapsulation of <em>MatCalc</em> installation</strong>. <em>MatCalc</em> now supports a “matcalc_user_data” directory, which contains all data that is not proprietary to the software installation. For instance, the file “defaults.txt” is located in the <em>MatCalc</em> program folder, because it is updated by the software developer team. “user_defaults.txt” should be located in the <strong>“matcalc_user_data”</strong> folder, because it contains user data that should not be overwritten by a software update. Ideally, “matcalc_user_data” is located in the user home directory, a server directory or a cloud drive, to make your <em>MatCalc</em> projects available on different computers. Identify your “matcalc_user_data” folder in the preferences dialog.</li>
+<li>
+<p>New <strong>Graphical User Interface (GUI)</strong> with several useful new functionality, such as</p>
+</li>
+<li>
+<p><strong>Merged console and output</strong> window</p>
+</li>
+<li><strong>Zoom in</strong> and <strong>out</strong> button</li>
+<li><strong>Navigator</strong> to assist scrolling in large workspaces with numerous open windows</li>
+<li>Windows can be arranged in <strong>windowed and tabbed</strong> mode</li>
+<li>Plot windows with improved functionality, such as, the possibility to drag and drop plots into or out of window frames, or change the order of plots in a frame</li>
+<li>New <strong>console</strong> with position sensitive suggester, making it easy to write and develop scripts <strong>(not yet fully implemented)</strong></li>
+<li>New <strong>self-explanatory scripting language</strong>, still maintaining compatibility with 5.62 scripts <strong>(not yet fully implemented)</strong></li>
+<li>New licensing model <strong>(not yet fully implemented)</strong></li>
+<li>
+<p>State parameter-based <strong>Microstructure Evolution Modeling</strong></p>
+</li>
+<li>
+<p><strong>Single-class simulations</strong> of grain growth, recovery and static recrystallization</p>
+</li>
+<li><strong>Multi-class simulations</strong> of static and dynamic simulations <strong>(not yet fully implemented)</strong></li>
+<li><strong>Stress-strain response</strong> of materials / <strong>flow curve modeling</strong> with evolution of dislocation density and consideration of temperature and strain rate dependence</li>
+<li>New <strong>trapping model</strong> to allow for simulations of grain boundary segregation or formation of Cottrell atmospheres around dislocations <strong>(not yet fully implemented)</strong></li>
+<li>New model for the formation of <strong>atomic couples and pairs</strong>, which represent precursor structures to precipitates <strong>(not yet fully implemented)</strong></li>
+<li>…</li>
+</ul>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=versioninfo%3A6.00&amp;1788352871" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

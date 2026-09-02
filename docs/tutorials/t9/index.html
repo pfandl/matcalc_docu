@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>T9 - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "T9";
+        var mkdocs_page_input_path = "tutorials/t9.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">T9</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#t9calculating_pseudobinary_phase_diagrams">T9: Calculating pseudobinary phase diagrams</a></p>
+</li>
+<li>
+<p><a href="#complimentary_files">Complimentary files</a></p>
+</li>
+<li><a href="#contents">Contents:</a></li>
+<li><a href="#setting_up_the_system">Setting up the system</a></li>
+<li><a href="#fe-c_pseudobinary_with_constant_nb_content">Fe-C pseudobinary with constant Nb content</a></li>
+<li><a href="#fe-nb_pseudobinary_with_constant_c_content">Fe-Nb pseudobinary with constant C content</a></li>
+<li><a href="#nb-c_pseudobinary_with_constant_fe_content">Nb-C pseudobinary with constant Fe content</a></li>
+<li><a href="#consecutive_articles">Consecutive articles</a></li>
+</ul>
+<h2 id="t9-calculating-pseudobinary-phase-diagrams">T9: Calculating pseudobinary phase diagrams</h2>
+<p><em>This tutorial was tested on<br />
+MatCalc version 6.03 rel 1.000<br />
+license: free<br />
+database: mc_fe.tdb</em></p>
+<h3 id="complimentary-files">Complimentary files</h3>
+<p>Click <a href="/tutorials/t9/script/t9_6021003.mcs" title="tutorials/t9/script/t9_6021003.mcs (46.2 KB)">here</a> to view the script for this tutorial.</p>
+<p>A pseudobinary phase diagram is an equilibrium diagram calculated for a ternary or higher-order system, in which the phase boundaries resulting from the variation of two of the element contents are calculated, while the amounts of all the other elements are kept constant.</p>
+<h3 id="contents">Contents:</h3>
+<ul>
+<li>Further phase boundary calculations</li>
+<li>Coping with complex boundary shapes</li>
+<li>Diagrams with different reference elements</li>
+</ul>
+<h2 id="setting-up-the-system">Setting up the system</h2>
+<p>Make a new workspace with the elements Fe, C and Nb and the phases FCC_A1, BCC_A2, LIQUID and CEMENTITE. Verify that Fe is selected as the reference element and enter the composition: 0.1 wt.% C, 0.3 wt.% Nb. Create a new p1-type plot window for the phase diagram.</p>
+<h2 id="fe-c-pseudobinary-with-constant-nb-content">Fe-C pseudobinary with constant Nb content</h2>
+<p>This is similar in many respects to the Fe-Fe3C diagram calculated in <a href="/tutorials/t8" title="tutorials/t8">Tutorial 8</a>, but the presence of niobium stabilises an additional phase, FCC_A1#01 (which is essentially NbC). The stability of this phase has a strong dependence on both carbon and niobium contents. Only the low-carbon portion of the diagram, from 0 to 0.2 wt.%, is of interest in this tutorial. Begin, as in <a href="/tutorials/t8" title="tutorials/t8">Tutorial 8</a>, by calculating an equilibrium at 1550°C, then search for the BCC_A2 phase boundary. Step from 0 to 0.2 wt.% C, with an interval of 0.001 and a maximum T-step of 20, tracing the BCC_A2 boundary. Drag and drop the T$C series into the plot and duplicate, lock and label it.
+Add the liquid and austenite (FCC_A1) upper boundaries and the lower boundary of the delta-ferrite (BCC_A2) to the diagram. Suggested equilibrium temperatures for finding these lines are as follows:</p>
+<ul>
+<li>LIQUID: 1450°C</li>
+<li>FCC_A1: 1500°C (N.B. the correct value of Tsol 'FCC_A1' should be 1480.93°C.)</li>
+<li>BCC_A2: 1450°C</li>
+</ul>
+<p>The high-temperature part of the diagram should look like this:</p>
+<p><a href="/tutorials/t9/img/t9_fe-c_pseudobinary_top_2016.png" title="tutorials/t9/img/t9_fe-c_pseudobinary_top_2016.png"><img alt=" MatCalc plot" src="/tutorials/t9/img/t9_fe-c_pseudobinary_top_2016.png" title="MatCalc plot" /></a></p>
+<p>Next, calculate the boundary for niobium carbide (FCC_A1#01). The temperature of the boundary depends strongly on carbon content, but an equilibrium at 1450°C gives a suitable starting point for finding it.<br />
+Increase the maximum T-step to 100 to cope with the steepness of the curve. The boundary may extend to very small temperature values; in this case, change the scale on the y-axis to <strong>'500..'</strong> so that only the relevant information is shown.<br />
+The final three lines can be calculated as follows:</p>
+<ul>
+<li>Upper boundary of alpha-ferrite (BCC_A2): 900°C. The maximum T-step can be reduced again to 20.</li>
+<li>Lower boundary of austenite (FCC_A1): 700°C.</li>
+<li>Upper boundary of cementite 850°C. In case of error message (because of the steep boundary), set the maximum T-step to 100.</li>
+</ul>
+<p>The finished diagram, with titles and labels added, should look like this:</p>
+<p><a href="/tutorials/t9/img/t9_plot1_fe-c_pseudobinary_2_2016.png" title="tutorials/t9/img/t9_plot1_fe-c_pseudobinary_2_2016.png"><img alt=" MatCalc plot" src="/tutorials/t9/img/t9_plot1_fe-c_pseudobinary_2_2016.png" title="MatCalc plot" /></a></p>
+<h2 id="fe-nb-pseudobinary-with-constant-c-content">Fe-Nb pseudobinary with constant C content</h2>
+<p>In this case, the niobium content is to be varied from 0 to 1 wt.% for the stepped calculations. Proceed as before, by calculating an equilibrium at 1550°C and searching for the BCC_A2 phase boundary. For the stepped calculation, enter 0, 1 and 0.01 as the start, stop and interval values and under <strong>'Boundary conditions'</strong>, change the varying element to <strong>'NB'</strong> and <strong>'max. T-step'</strong> to <strong>'20'</strong>.<br />
+The boundaries can be calculated with the same starting equilibrium temperatures as for the Fe-C diagram, because the basis composition used for calculating the equilibrium and finding a point on the boundary remains the same (0.1 wt.% C, 0.3 wt.% Nb). Search for and plot all the following boundaries:</p>
+<ul>
+<li>Upper boundary of delta-ferrite (BCC_A2)</li>
+<li>Lower boundary of liquid</li>
+<li>Upper boundary of austenite (FCC_A1)</li>
+<li>Lower boundary of delta-ferrite</li>
+<li>Upper boundary of alpha-ferrite (BCC_A2)</li>
+<li>Lower boundary of austenite</li>
+<li>Upper boundary of cementite (may need modification of maximum T-step to 100-200)</li>
+</ul>
+<p>The NbC (FCC_A1#01) boundary is slightly more complex in this example, so it will be considered in more detail. Firstly, calculate an equilibrium at 1000°C and search for the FCC_A1#01 phase boundary varying temperature. This is at 1434.70°C. Make a stepped calculation from 0 to 1 wt.% Nb with 0,001 step and max. T-step value of 2. The calculation starts as usual at the niobium content used to calculate the equilibrium (0.3 wt.%), and this is first increased up to the <strong>'stop'</strong> value (1 wt.%, in this case) and then decreased to the <strong>'start'</strong> value (0). It can be noted, however, that the calculation terminates at the <strong>'cementite'</strong> line during decreasing the Nb content. In order to find the phase boundary outside these limits, additional calculations must be performed. After locking the previous curve, calculate an equilibrium at 500°C and search for the FCC_A1#01 phase boundary at this temperature (i.e. vary the Nb content). Due to the steep boundary, it is recommended to set the calculation step to 0.001 and the max. T-step value to 200. Part-way through this calculation, the following message might appear:</p>
+<p><a href="/tutorials/t9/img/t9_other_direction_2016.png" title="tutorials/t9/img/t9_other_direction_2016.png"><img alt=" MatCalc warning" src="/tutorials/t9/img/t9_other_direction_2016.png" title="MatCalc warning" /></a></p>
+<p>Just click on 'Yes' to continue the calculation. The finished diagram is shown below.</p>
+<p><a href="/tutorials/t9/img/t9_plot_3_fe-nb_pseudobinary_4_2016.png" title="tutorials/t9/img/t9_plot_3_fe-nb_pseudobinary_4_2016.png"><img alt=" MatCalc plot" src="/tutorials/t9/img/t9_plot_3_fe-nb_pseudobinary_4_2016.png" title="MatCalc plot" /></a></p>
+<h2 id="nb-c-pseudobinary-with-constant-fe-content">Nb-C pseudobinary with constant Fe content</h2>
+<p>The final part of this tutorial considers the effect of both C and Nb contents on the stability of NbC. Previously, iron has been set as the <strong>'reference element'</strong>; this means that when the amount of the varying species increases, the amount of iron in the system decreases so that the total composition sums to unity. For the Nb-C pseudobinary, niobium will instead be set as the reference element, and a fixed iron content will be imposed, so that the sum of niobium content and carbon content is constant. In addition, the element contents will be expressed in mole fractions, so that the effect of Nb:C ratio on carbide stability can be investigated. Open <strong>'Global &gt; Composition'</strong> and switch to <strong>'mole fraction'</strong>. Change the reference element from Fe to Nb by clicking in the <strong>'Nb'</strong> line of the <strong>'Ref.Elem.'</strong> column. Enter the compositions 0.996 Fe, 0.003 C.<br />
+As usual, search for the upper boundary of the delta-ferrite phase. This should be found at 1531.43°C. In the stepped calculation dialogue box, enter 0, 0.004 and 1e-5 as the start, stop and interval values. Set the varying element to <strong>'C'</strong> and the maximum T-step to 20. In the <strong>'Options'</strong> section on the right-hand side of the box, remove the selection mark by the side of 'Composition in weight percent' so that it will instead be in mole fraction.<br />
+Calculate the following lines. The solution temperatures are given as a guide, as well as notes on calculation settings (Accept any questions about changing the direction of calculation)).</p>
+<ul>
+<li>BCC_A2: 1531.43°C</li>
+<li>LIQUID: 1499.65°C. A warning message may appear; accept this with 'Yes'.</li>
+<li>FCC_A1: 1466.53°C. The same warning may appear.</li>
+<li>BCC_A2: 1422.53°C</li>
+<li>BCC_A2: 891.37°C. Step from 0 to 0.00399 rather than 0.004 to avoid convergence problems.</li>
+<li>FCC_A1: 726.53°C. Calculation from 0 to 0.00399 with 1e-6 step.</li>
+<li>CEMENTITE: 726.53°C</li>
+</ul>
+<p>Finally, the line for FCC_A1#01 can be calculated. Search for this line, which should be found at 1320.30°C. The temperature of this phase boundary decreases very steeply at both extremities of the x-axis, because the phase becomes less and less stable as either the niobium content or the carbon content tends to zero. To obtain an idea of the shape of the curve, set the start and stop-values as 0.00001 to 0.00399 (A maximum T-step of 50 is OK for this calculation.) Modifications can then be made to the calculation parameters, decreasing the start value, increasing the stop-value and increasing the maximum T-step to try to extend the curve further towards the edges.<br />
+The finished diagram should look like this:</p>
+<p><a href="/tutorials/t9/img/t9_plot4_nb-c_pseudobinary_2_2016.png" title="tutorials/t9/img/t9_plot4_nb-c_pseudobinary_2_2016.png"><img alt=" MatCalc plot" src="/tutorials/t9/img/t9_plot4_nb-c_pseudobinary_2_2016.png" title="MatCalc plot" /></a></p>
+<h2 id="consecutive-articles">Consecutive articles</h2>
+<p>The tutorial is continued in article  <a href="/tutorials/t10" title="tutorials/t10">T10 - T0- temperature in Fe-Cr-C</a></p>
+<p>Go to <a href="/tutorials" title="tutorials">MatCalc tutorial index</a>.</p>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=tutorials%3At9&amp;1788352859" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

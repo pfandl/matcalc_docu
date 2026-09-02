@@ -1,0 +1,282 @@
+$$**************************************************************************************************
+************************************* GENERAL INFORMATION ******************************************
+****************************************************************************************************
+
+Template script for the simulation of the precipitation kinetics of AlN in the ferrite region of
+microalloyed steel according to ref.:
+R. Radis and E. Kozeschnik, Model. Simul. Mater. Sc. 18(055003) (2010) 1-16.
+
+Experimental data are taken from ref.:
+V. Massardier, V. Guetaz, J. Merlin and M. Solar. Mat. Sci. Eng. A 355 (2003) 299-310.
+
+One of the special features of this script is the possibility of the selection of three different
+simulation temperatures in the beginning of the script. The possible simulation temperatures are 
+(i)T=600°C, (ii)T=650°C and (iii)T=700°C.  
+
+The following features are utilized in this script: 
+
+ - acquire user input and perform calculations depending on user selection
+ - AlN nucleation is taken into account at dislocations and grain boundaries
+   simultaneously.
+ - uses string variables to dynamically use different experimental results for different
+   simulation temperatures 
+ - all relevant simulation parameters are encoded in global variables
+ - use of kinetic alias names in definition of precipitates
+ - automatic use of these names in plot legends
+ - use HTML tags to display superscript letters in plots
+
+Database: mc_fe.tdb, mc_sample_fe.ddb
+Author: R. Radis
+Creation date: 2010-06-14
+Last revision: 2012-09-13 (G. Stechauner, Update for 5.51)
+Reason for update: Update for example databases
+Last revision: 2013-03-18 (E. Kozeschnik, Update for 5.52)
+Reason for update: New script format and fixed problem with renaming of legend item
+Last revision: 2016-02-02 (E. Kozeschnik, Update for 6.00)
+Reason for update: Removing obsolete commands
+Last revision: 2017-09-15 (P. Warczok, Update for 6.00)
+Reason for update: Removing obsolete commands
+
+This is a script for MatCalc version 6.00.0318
+
+
+
+****************************************************************************************************
+************************************** SETUP INFORMATION *******************************************
+**************************************************************************************************$$
+
+$ make sure we work in the correct module
+use-module module-name=core                                        $ select core module for kinetic simulation
+
+$ close any open workspace without asking for save
+close-workspace f
+
+new-workspace                                          $ open new workspace
+
+@echo value=no
+set-workspace-info +Selected elements:                 $ give some information about the script
+set-workspace-info +C, Mn, Al, Cr, N, Fe
+set-workspace-info +
+set-workspace-info +Matrix phase: Ferrite (BCC_A2)
+set-workspace-info +Precipitate phase: AlN
+set-workspace-info +
+set-workspace-info +---------------------------------
+set-workspace-info +More information about MatCalc on
+set-workspace-info +   http://matcalc.tuwien.ac.at
+set-workspace-info +---------------------------------
+echo value=yes
+
+
+$$**************************************************************************************************
+**************************************** SYSTEM SETUP **********************************************
+**************************************************************************************************$$
+
+
+send-dialog-string string="please select simulation temperature from the console window ..."
+
+
+$ selection of calc variants
+set-variable-value variable=sim_temp value=1                         $ default value for calc variant
+
+@echo value=no
+send-console-string 
+send-console-string 
+send-console-string string=Possible isothermal simulation temperature
+send-console-string string=  1 ... T=600°C
+send-console-string string=  2 ... T=650°C
+send-console-string string=  3 ... T=700°C
+input-variable-value variable=sim_temp input-string="Please select simulation temperature (1-3): "
+echo value=yes
+
+
+$$**************************************************************************************************
+                                      GLOBAL VARIABLES
+**************************************************************************************************$$
+
+set-variable-value npc 50                              $ number of precipitate classes
+
+$ now come values which are dependent on the choice of sim_temp
+if (sim_temp==1)
+   set-variable-value variable=temp value=600                         $ value for isothermal simulation temp.
+   set-variable-string exp exp_massardier_T600         $ exp. results for T=600°C
+elseif (sim_temp==2)
+   set-variable-value variable=temp value=650                         $ value for isothermal simulation temp.
+   set-variable-string exp exp_massardier_T650         $ exp. results for T=650°C
+elseif (sim_temp==3)
+   set-variable-value variable=temp value=700                         $ value for isothermal simulation temp.
+   set-variable-string exp exp_massardier_T700         $ exp. results for T=700°C
+else
+   send-dialog-string string=Invalid selection for simulation temperature. Select 1, 2 or 3.
+   send-dialog-string string=Script is interrupted.
+   stop-run-script  $ stop script
+endif
+
+$$**************************************************************************************************
+                        DATABASES, CHEMICAL COMPOSITION, SELECTED PHASES
+**************************************************************************************************$$
+
+
+open-thermodynamic-database file-name=mc_x_FeAlCCrMnNSiV.tdb        $ Thermodynamic database
+select-elements elements=Al C Cr Fe Mn N                        $ select elements
+select-phases phases=bcc_a2 aln                                $ select phases
+
+read-thermodynamic-database                                $ read thermodynamic database
+
+$ steel composition ...
+enter-composition type=weight-percent composition=al=0,058 cr=0,039 c=0,025 mn=0,2 n=0,005
+
+$ Checking the existence of the diffusion database
+test-exist-mobility-database file-name=mc_fe.ddb
+if(test_result==1)  
+   read-mobility-database file-name=mc_fe.ddb 
+else
+   test-exist-mobility-database file-name=mc_sample_fe.ddb
+   if(test_result==1)
+      read-mobility-database file-name=mc_sample_fe.ddb
+   else      
+      send-console-string string="Valid mobility database for Fe-based systems missing. Please, download it from "http://matcalc.at" or contact "support@matcalc.at""
+      stop-run-script
+   endif
+endif
+
+
+$$**************************************************************************************************
+                                  CHANGE PHASE STATUS ETC.
+**************************************************************************************************$$
+
+$$**************************************************************************************************
+                       HEAT TREATMENTS, VARIABLES, TABLES & FUNCTIONS (1)
+**************************************************************************************************$$
+
+$-------------------------------------- HEAT TREATMENTS -------------------------------------------$
+
+$------------------------------------------ TABLES ------------------------------------------------$
+$ experimental data for phase fractions of AlN
+create-global-table exp_massardier_T600 {          $ create table with experimental data for T=600C
+300	  2.6667e-05
+600	  3.33e-05
+1200   5.3333e-05
+2400   0.0001
+3600   0.0001333
+5400   0.00017333
+12000  0.000306666
+24000  0.000366667
+54000  0.00041333
+78000  0.0003866667
+}
+
+create-global-table exp_massardier_T650 {           $ create table with experimental data for T=650C
+120	  3.333e-05
+240	  5.333e-05
+480	  8e-05
+780	  0.00014667
+1200   0.00016
+1800   0.00023
+3600   0.0003666
+6600   0.0004
+13800  0.0004
+}
+
+create-global-table exp_massardier_T700 {           $ create table with experimental data for T=700C
+60	  8e-05
+120	  0.000106667
+180	  0.00017333
+240	  0.00024
+480	  0.00032
+900	  0.00034666
+1800   0.0004133
+4200   0.0004
+6600   0.0004133
+13800  0.0004133
+30000  0.0004133
+}
+
+$$**************************************************************************************************
+                                PRECIPITATION DOMAINS, PRECIPITATES
+**************************************************************************************************$$
+
+$--------------------------------- PRECIPITATION DOMAINS ------------------------------------------$
+create-precipitation-domain new-domain-name=ferrite                    						$ ferrite is precipitation domain = matrix
+set-precipitation-parameter precipitate-or-domain-name=ferrite thermodynamic-matrix-phase=bcc_a2       $ matrix phase of domain ferrite
+set-precipitation-parameter precipitate-or-domain-name=ferrite equilibrium-dislocation-density=1e12    $ dislocation density (=1e12 m^-2)
+set-precipitation-parameter precipitate-or-domain-name=ferrite initial-grain-diameter=7,5e-6           $ ferrite grain size (=7,5e-6 m)
+
+$------------------------------- PRECIPITATE PHASES IN FERRITE ----------------------------------$
+create-new-phase parent-phase=aln precipitate alias-name=AlN(ferr,gb)                    			$ new precipitate phase in austenite						
+set-precipitation-parameter precipitate-or-domain-name=aln_p0 nucleation-sites=grain-boundaries        $ nucleation site at grain boundaries
+set-precipitation-parameter precipitate-or-domain-name=aln_p0 restrict-nucleation-to-precipitation-domain=ferrite        $ restrict nucleation to precipitation domain
+
+create-new-phase parent-phase=aln precipitate alias-name=AlN(ferr,d)                     			$ new precipitate phase in austenite
+set-precipitation-parameter precipitate-or-domain-name=aln_p1 nucleation-sites=dislocations            $ nucleation sites at dislocations
+set-precipitation-parameter precipitate-or-domain-name=aln_p1 use-volumetric-misfit-in-nucleation=yes  $ account for volume misfit in nucleation
+set-precipitation-parameter precipitate-or-domain-name=aln_p1 volumetric-misfit=0,27          			$ use volumetric misfit between prec./matrix
+																			                                 $ use this value instead of 0.19 (Radis et al.
+																			                                 $ MSMSE 2010) in versions 5.41. Fixed bug in
+																			                                 $ in earlier MatCalc versions.
+set-precipitation-parameter precipitate-or-domain-name=aln_p1 restrict-nucleation-to-precipitation-domain=ferrite    	$ restrict nucleation to precipitation domain
+
+
+$$**************************************************************************************************
+********************************** OUTPUT WINDOWS, PLOTS, ETC. *************************************
+**************************************************************************************************$$
+
+new-gui-window type-id=p1                                       $ generate new plot:  phase fractions
+
+set-gui-window-property window-id=. default-x-axis-data=stepvalue         $ default x-axis variable (time)
+set-gui-window-property window-id=. default-x-axis-for-all-plots=yes      $ use default x-axis for all plots: yes
+set-gui-window-property window-id=. default-x-axis-title=time / s         $ default x-axis title                    
+set-gui-window-property window-id=. default-x-axis-factor=1               $ scaling factor is 1
+set-gui-window-property window-id=. default-x-axis-type=log               $ use logarithmic scale for x-axis
+set-gui-window-property window-id=. default-x-axis-scaling=1e-6..         $ scale the x-axis from 1..
+
+set-plot-option plot-id=. use-alias-names-in-legend=yes                    $ replace variable names by kinetic alias
+set-plot-option plot-id=. series new buffer f_prec$*                  	$ add all series: phase fractions of prec.
+set-plot-option plot-id=. series new buffer f$aln_p0+f$aln_p1           $ add series: sum of phase fractions 
+set-plot-option plot-id=. series rename series-index=-1 series-name=f$AlN(ferr,gb)+f$AlN(ferr,d) new-name=AlN(total)  $ rename the sum of the phases 
+																$ important to use kinetic alias names !!!
+set-plot-option plot-id=. series new table-experimental-data #exp       $ use variable string exp for exp. results
+set-plot-option plot-id=. series rename series-index=-1 series-name=#exp new-name=exp       $ rename table series
+set-plot-option plot-id=. y-axis-title=phase fraction          			$ change y-axis title
+set-plot-option plot-id=. y-axis-type=lin                     			$ use linear scale for y-axis
+set-plot-option plot-id=. y-axis-scaling=1e-5..                  		$ scale the y-axis from 1e-5..
+set-plot-option plot-id=. legend-alignment=bottom                       $ show legend at the bottom of the figure
+
+create-new-plot plot-type=xy-plot attach-to-window=.                               		$ create new plot: mean radii
+set-plot-option plot-id=. use-alias-names-in-legend=yes                    $ replace variable names by kinetic alias 
+set-plot-option plot-id=. series new buffer r_mean$*                  	$ add all series: mean radii of precipitates
+set-plot-option plot-id=. y-axis-title=mean radius / nm        			$ change y-axis title
+set-plot-option plot-id=. y-axis-type=log                     			$ use logarithmic scale for y-axis
+set-plot-option plot-id=. y-axis-factor=1e9                     		$ scaling factor is 1e9
+set-plot-option plot-id=. legend-alignment=bottom                       $ show legend at the bottom of the figure
+
+create-new-plot plot-type=xy-plot attach-to-window=.                               		$ create new plot: number densities
+set-plot-option plot-id=. use-alias-names-in-legend=yes                    $ replace all variable names by kinetic alias
+set-plot-option plot-id=. series new buffer num_part$*                	$ add all series: number densities of precipitates
+set-plot-option plot-id=. y-axis-title=number density / m<sup>-3</sup>  $ change y-axis title
+set-plot-option plot-id=. y-axis-type=log                     			$ use logarithmic scale for y-axis
+set-plot-option plot-id=. y-axis-scaling=1e10..                  		$ scale the y-axis from 1..
+set-plot-option plot-id=. legend-alignment=bottom                       $ show legend at the bottom of the figure
+
+move-gui-window displace window-id=. x-origin=50 y-origin=10 width=700 height=950                         $ move window to new position and resize
+update-gui-window window-id=.                                     $ update the GUI window
+
+$$**************************************************************************************************
+****************************** START PRECIPITATE SIMULATION ****************************************
+**************************************************************************************************$$
+
+set-temperature-celsius temperature=1250                            $ define something
+set-automatic-startvalues                               $ initiate equil. calc. (estimate variables)
+calculate-equilibrium                                        $ calculate equilibrium state
+
+set-simulation-parameter end-time=1e5                         	$ set simulation end time
+set-simulation-parameter isothermal-temperature=temp            $ use variable value temp as simulation temp.
+set-simulation-parameter starting-conditions=reset-precipitates $ simulation starting conditions: reset
+
+$-------------------------------- START PRECIPITATE SIMULATION ------------------------------------$
+
+start-precipitate-simulation                            $ let's go
+
+$$**************************************************************************************************
+******************************** PRECIPITATE SIMULATION FINISHED ***********************************
+**************************************************************************************************$$
+

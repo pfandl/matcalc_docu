@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>6 03 - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "6 03";
+        var mkdocs_page_input_path = "versioninfo/6_03.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">6 03</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>MatCalc 6.03 [MatCalc Documentation]</p>
+<h2 id="matcalc-603">MatCalc 6.03</h2>
+<p>Below are details describing the various changes and new features of the MatCalc versions 6.03.xxxx. Version 6.03 is mostly a bugfix release with only a few new features. We are trying to make MatCalc more stable and easier to work with …</p>
+<h4 id="version-6031000-coming-2020-03-16">version 6.03.1000: coming 2020-03-16</h4>
+<h4 id="version-6030126-online-2020-03-12">version 6.03.0126: online 2020-03-12</h4>
+<h5 id="new-features">New features</h5>
+<ul>
+<li>Added support for <strong>export of plot files</strong> for <strong>Veusz</strong>. The software Veusz is open-source and available on all platforms. With the RMB → export plot → VSZ, this new feature allows you to save an native Veusz file, which can be opened and edited within this software. This will create <strong>publication-ready plots</strong> of your MatCalc results.</li>
+<li>Allow <strong>functions</strong> to be <strong>evaluated during run-time</strong>. Print function name in error message, if evaluation fails.</li>
+<li>The option for <strong>inherit from parent</strong> precipitation domain in thermo-mechanical treatment (tmt) has been replaced with <strong>«active precipitation domain»</strong>. This means that current selection of active-precipitation-domain will be used by the tmt. This adds flexibility when using a tmt in cell calculations.</li>
+<li>It is possible now to <strong>duplicate plot frame</strong>: Use either RMB or menu. Alternatively, take title pane and shake:-) New command is inserted with <strong><code>duplicate-plot-window</code></strong>.</li>
+<li>Added two new <strong>internal variables</strong>: <code>last_tmt_segment_index</code> and <code>last_plot_series_index</code>.</li>
+<li>The numerical routine for calculation of the <strong>critical nucleation radius</strong> has been changed to deliver an accurate and unique value. Previously, result was dependent on starting value before critical radius search. Now, parabola is interpolated and maximum is exactly evaluated from it.</li>
+</ul>
+<h5 id="bug-fixes">Bug fixes</h5>
+<ul>
+<li>Fixed some bugs in variables window. Can now <strong>insert user-defined variables</strong> again.</li>
+<li><strong>Subgrain size</strong> is now adapted correctly during grain growth in multi-class model.</li>
+<li>Fixed some issues related to <strong>loops within scripts</strong>.</li>
+<li><strong>stop-run-script</strong> is now correctly stopping the script within loops and subscripts.</li>
+<li>Fixed crash with <strong>auto-rescale of plots</strong>.</li>
+<li>Fixed bug in grain size distribution histogram (log scale).</li>
+<li>Fixed some issues in <strong>database dialog</strong>.</li>
+<li>Fixed bug related to <strong>trapping and lattice concentration of elements</strong>, which could become too small.</li>
+<li>Fixed issue with update of plot window titles.</li>
+<li>Fixed bug with internal variable “x”: When updating a plot, its value is now conserved and not modified.</li>
+<li>Fixed bug in calculation of Taylor forrest hardening: correct value now for all substructure models, including no_substructure_evolution.</li>
+<li>Made more meaningful error messages in MatCalc license system.</li>
+<li>Fixed wrong display of the application directory when using <code>list-current-directories</code>.</li>
+</ul>
+<h4 id="version-6030114-online-2020-01-29">version 6.03.0114: online 2020-01-29</h4>
+<h5 id="new-features_1">New features</h5>
+<ul>
+<li><strong>Heterogeneous nucleation:</strong> Implemented possibility to add <strong>elastic strain energy</strong> to heterogeneous nucleation site. This is useful, for instance, to account for the compressive and tensile stress field components of dislocations. Or to account for <strong>general stress fields</strong> that can be induced, e.g., by coherent precipitates, and facilitate 'satellite precipitates' around them.</li>
+<li>Added a criterion for the critical nucleus size into nucleation condition for <strong>particle-related nukleation</strong> in the <strong>equivalent interfacial energy</strong> model. Transformation will now only commence if the</li>
+</ul>
+<h5 id="bug-fixes_1">Bug fixes</h5>
+<ul>
+<li>Fixed incorrect calculation of <strong>effective grain boundary diffusion coefficient</strong> in the presence of <strong>excess vacancies</strong>. Also fixed related issues with pipe diffusion coefficient.</li>
+<li>Fixed incorrect treatment of <strong>number of nucleation sites</strong> for nucleation on other precipitates. Also fixed treatment of <strong>nucleation site efficiency</strong> in calculation of the maximum number of nucleation sites.</li>
+<li>Fixed incorrect <strong>dynamic yield stress</strong> in cases of zero deformation rate.</li>
+<li>Removed variable for <strong>system heat capacity</strong> <code>CP</code> because it cannot be calculated analytically in cases where the amount of phases changes.</li>
+<li>Fixed update problem with lattice vacancy concentration and end of tmt segments.</li>
+</ul>
+<h4 id="version-6030090-online-2019-11-05">version 6.03.0090: online 2019-11-05</h4>
+<h5 id="new-features_2">New features</h5>
+<ul>
+<li>All new <strong>variables window</strong>. Improved variable value update and completely <strong>new filter box</strong>. Much faster and more flexible. You will like it … The new window will also update the list view items after a change of phases, precipitation domains etc. No need to manually collapse and expand branches to update items.</li>
+<li>New <strong>options window</strong> with more consistent layout. Allows <strong>in-place editing</strong> of items and uses check boxes for yes/no selections.</li>
+<li>Added <strong>icon</strong> in tool bar to create <strong>x-y plot</strong> with a click.</li>
+<li>All new handling of tm treatments: Every calculation node can now have its own tm treatment. The global tmt can be accessed with <code>::tmt_name</code>, while the local node-related tmt is accessed without <code>::</code> using only <code>tmt_name</code>.</li>
+<li>Several changes in the API-functions for thermo-mechanical treatments (tmt). Made it more clear as to which tmt is accessed: local or global.</li>
+<li>Improved <strong>license manager</strong>. Fixed several issues with the last version and various computers.</li>
+<li>Treatment of <strong>grace logins</strong> due to interrupted internet connection has been improved to be more user-friendly.</li>
+<li>Reworked treatment of <strong>user-defined functions</strong> and its <strong>link to calculation nodes</strong>: Now, each variable inherits knowledge of its origin where it has been defined and it is evaluated now in the correct node context.</li>
+<li>Made two new switches that allow the user to <strong>enable/disable automatic merging and splitting</strong> of precipitate size classes. This facilitates more basic studies and understanding of the behavior of size distributions during calculation.</li>
+<li>Renamed a few variable notations in the command line tool. Removed inconsistencies from older versions.</li>
+<li>Worked on treatment of <strong>strain rate and temperature dependent yield stress</strong> calculation. The <strong>global-deformation-rate</strong> is now overwriting the settings in the thermo-mechanical treatment (tmt) for evaluation of the dynamic yield stress.</li>
+<li>Improved handling of plot series in plots.</li>
+<li>Removed menu item “view → create user defined window”.</li>
+<li>Improved user interaction: If equilibrium calculation fails, as well as some other tasks, the <strong>screen will blink and shake</strong> to notify user of some potential problem.</li>
+<li>Added <code>initialize-microstructure-data</code> in tm treatment segments to <strong>initialize grain sizes and subgrain sizes</strong> as well as <strong>recrystallized fraction</strong> when starting kinetic simulations.</li>
+<li>Added <strong>high and low-temperature</strong> variables for <strong>sigma_sat</strong> and <strong>theta_0</strong>.</li>
+</ul>
+<h5 id="bug-fixes_2">Bug fixes</h5>
+<ul>
+<li>Fixed some issues with <strong>multi-class size distributions</strong> and <strong>recrystallization</strong>. Works better now under complex conditions. Also, changed some weights for classification of recrystallized and deformed grains in multi-class grain evolution.</li>
+<li>Fixed problem with convergence in Scheil-Gulliver simulation.</li>
+<li>Removed 2nd axes features from plot menu because this has never been implemented in the code.</li>
+<li>Worked on <strong>import-grain-distribution</strong> and <strong>export-grain-distribution</strong>.</li>
+<li>Changed commands ending with “-arrays” to “-array”. Consistency established.</li>
+<li>Changed evaluation of <strong>dislocation jog density</strong> for FSAK excess vacancy evolution: Density is now calculated from <strong>total dislocation density</strong>, not from equilibrium.</li>
+<li>Fixed some issues with <strong>beta-function</strong> and <strong>dislocation density</strong> evaluation.</li>
+<li>Fixed problem with <strong>cross-core diffusion at low temperatures</strong>.</li>
+<li>Fixed issue with subgrain diameter evolution in single class rexx model: <strong>Read-Shockley density</strong> is now calculated from quantities of the deformed grains only. Otherwise, while X_rx == 1, these quantities would become undefined.</li>
+<li>Added variable for <strong>mean dislocation density</strong> in single-class model. Clarified meaning of <strong>some variable descriptions for dislocation density</strong> in single-class model.</li>
+<li>Fixed some problems with <strong>array plots</strong>.</li>
+<li>Fixed bug with initialization of microstructure parameters in tm segments.</li>
+<li>Fixed bug in calculation of stress derivative in high-temperature region of dynamic yield stress.</li>
+<li>Fixed wrong treatment of <strong>thermal activation for cross core diffusion</strong>.</li>
+<li>Several small bug fixes.</li>
+</ul>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=versioninfo%3A6_03&amp;1788352871" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

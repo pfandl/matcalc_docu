@@ -1,0 +1,203 @@
+$$************************************************************************************************** 
+************************************** GENERAL INFORMATION *****************************************
+****************************************************************************************************
+
+Script for T0-temperature in Fe-Cr-C according to Tutorial 10.
+The following contents will be covered:
+
+ - T0-temperature calculation
+ - Martensite / Bainite transformation
+ - Variation of T0-temperature with carbon and chromium content
+ - Import and display of experimental data into plots
+
+Database: mc_fe.tdb
+Author: P. Warczok
+Creation date: 10.11.2008
+Last update: 20.05.2019 (P. Warczok, Update for 6.02)
+This is a script for MatCalc version 6.02 (rel 1.003)
+
+Known issues:
+- "save-workspace "file-name"=Tutorial_10" is not working properly. --> Use "save-workspace Tutorial_10" instead.
+- load-calc-state calc-state-name="Start austenite" is not working. --> Use load-calc-state "Start austenite" instead.
+
+**************************************************************************************************** 
+************************************** SETUP INFORMATION *******************************************
+**************************************************************************************************$$
+
+use-module module-name=core                                                         $ Use "core" module (MatCalc uses "core" module by default anyway) 
+
+new-workspace                                                                       $ creates a new workspace 
+
+$$************************************************************************************************** 
+**************************************** SYSTEM SETUP **********************************************
+**************************************************************************************************$$
+
+
+$$************************************************************************************************** 
+                       DATABASES, CHEMICAL COMPOSITION, SELECTED PHASES
+**************************************************************************************************$$
+
+open-thermodynamic-database file-name=mc_fe.tdb                                     $ Thermodynamic database: mc_fe.tdb 
+select-elements elements=FE C CR VA                                                 $ Components: Fe, C, Cr
+select-phases phases=FCC_A1 BCC_A2                                                  $ Phases: fcc, bcc
+read-thermodynamic-database 
+
+set-reference-element element=FE
+enter-composition type=weight-percent composition=C=0,1 CR=1                        $ Composition: 0.1 wt.% C, 1 wt.% Cr
+
+set-automatic-startvalues
+set-temperature-celsius temperature=800                                             $ Temperature 800C
+calculate-equilibrium                                                               $ Initial equilibrium	
+
+
+$$************************************************************************************************** 
+                                 CALCULATE THE T0-TEMPERATURE
+**************************************************************************************************$$
+
+search-phase-boundary phase-name=BCC_A2 temperature                                 $ Varying temperature for the bcc phase boundary search
+
+create-calc-state new-state-name="Start austenite"
+
+$ Searching the T0-temperature with bcc_a2 as a target phase and fcc_a1 as a parent phase. 
+$ The composition of target phase is forced to the one of the parent phase.
+$ The dfm-offset is switched to 0
+search-phase-boundary phase-name=BCC_A2 t0-temperature parent-phase=fcc_a1 force-parent-composition-for-target-phase=yes dfm-offset=0
+
+
+$$************************************************************************************************** 
+                    EVALUATE T0-TEMPERATURE AS A FUNCTION OF CHROMIUM CONTENT
+**************************************************************************************************$$
+
+set-step-option type=T0-temperature                                                 $ Selects the type of calculation: "T0-temperature"
+set-step-option element=cr                                                          $ Chromium content varied
+set-step-option range start=0 stop=10 scale=lin step-width=0,5                      $ Range 0 - 10; linear step of 0,5
+set-step-option temperature-in-celsius=yes                                          $ Temperature in Celsius
+set-step-option element-content-in-wt%=yes                                          $ Composition in wt.%
+set-step-option T0-dependent-phase=BCC_A2                                           $ The T0-dependent phase is bcc
+set-step-option T0-parent-phase=FCC_A1                                              $ The T0-parent phase is fcc
+$ The force parent composition option is switched to yes
+set-step-option T0-force-parent-composition=yes 
+step-equilibrium
+
+new-gui-window type-id=p1 	
+set-plot-option plot-id=. series new buffer variable-name=T$C                       $ Plotting the T0-temperature
+set-gui-window-property window-id=. default-x-axis-title=Cr content [wt.%]          $ x-axis title 
+set-plot-option plot-id=. y-axis-title=T<sub>0</sub>-temperature [C]                $ y-axis title
+set-plot-option plot-id=. legend-alignment=none                                     $ No legend
+set-plot-option plot-id=. grid which-grid=major enable-x-axis=yes                   $ Switching on the major gridlines for x-axis
+set-plot-option plot-id=. grid which-grid=major enable-y-axis=yes                   $ Switching on the major gridlines for y-axis
+
+
+$$************************************************************************************************** 
+                     EVALUATE T0-TEMPERATURE AS A FUNCTION OF CARBON CONTENT
+**************************************************************************************************$$
+
+rename-current-buffer new-buffer-name=T0-chromium
+create-calc-buffer new-buffer-name=T0-carbon 
+$load-calc-state calc-state-name="Start austenite"
+load-calc-state "start austenite"                                                   $ Loads the last calc-state - "start_austenite"
+ 
+set-step-option type=T0-temperature                                                 $ Selects the type of calculation: "T0-temperature"
+set-step-option element=C                                                           $ Carbon content varied
+set-step-option range start=0 stop=1 scale=lin step-width=0,05                      $ Range 0 - 1; linear step of 0,05 
+set-step-option temperature-in-celsius=yes                                          $ Temperature in Celsius
+set-step-option element-content-in-wt%=yes                                          $ Composition in wt.%
+set-step-option T0-dependent-phase=BCC_A2                                           $ The T0-dependent phase is bcc
+set-step-option T0-parent-phase=FCC_A1                                              $ The T0-parent phase is fcc
+$ The force parent composition option is switched to yes
+set-step-option T0-force-parent-composition=yes 
+step-equilibrium
+
+set-gui-window-property window-id=. buffer-name="T0-carbon"                         $ "T0-carbon" buffer results are plotted
+set-gui-window-property window-id=. default-x-axis-title=C content [wt.%]           $ x-axis title 
+
+
+$$************************************************************************************************** 
+                    ADD SOME EXPERIMENTAL DATA ON MARTENSITE START TEMPERATURES
+**************************************************************************************************$$
+
+create-calc-buffer new-buffer-name="T0 with offset"
+create-global-table new-table-name=Exp_data                                         $ Creating table
+
+$ This command imports the data from the text file
+$ Specify the path, if the source data is not in the working directory
+$import-global-table table-name=exp_data file-name=t0_exp_temperatures.txt
+
+
+add-table-entry table-name=Exp_data x-value=0 y-value=540                           $ Adding to the "Exp_data" table the pair "0", "540"Exp_data 
+add-table-entry table-name=Exp_data x-value=0.086 y-value=510                       $ Adding to the "Exp_data" table the pair "0.086", "510"
+add-table-entry table-name=Exp_data x-value=0.1936 y-value=475                      $ etc...
+add-table-entry table-name=Exp_data x-value=0.2409 y-value=480
+add-table-entry table-name=Exp_data x-value=0.2495 y-value=470
+add-table-entry table-name=Exp_data x-value=0.2581 y-value=440
+add-table-entry table-name=Exp_data x-value=0.3011 y-value=430
+add-table-entry table-name=Exp_data x-value=0.3226 y-value=410
+add-table-entry table-name=Exp_data x-value=0.3871 y-value=410
+add-table-entry table-name=Exp_data x-value=0.3871 y-value=400
+add-table-entry table-name=Exp_data x-value=0.3871 y-value=395
+add-table-entry table-name=Exp_data x-value=0.4560 y-value=405
+add-table-entry table-name=Exp_data x-value=0.4947 y-value=355
+add-table-entry table-name=Exp_data x-value=0.5054 y-value=375
+add-table-entry table-name=Exp_data x-value=0.6022 y-value=330
+add-table-entry table-name=Exp_data x-value=0.6022 y-value=320
+add-table-entry table-name=Exp_data x-value=0.7097 y-value=280
+add-table-entry table-name=Exp_data x-value=0.7312 y-value=280
+add-table-entry table-name=Exp_data x-value=0.7743 y-value=265
+add-table-entry table-name=Exp_data x-value=0.8173 y-value=240
+add-table-entry table-name=Exp_data x-value=0.8603 y-value=225
+
+
+$ In the current plot ("."), new series with the table/experimental data from "Exp_data" table is plotted
+set-plot-option plot-id=. series new table-experimental-data table-name=Exp_data 
+set-plot-option plot-id=. legend-alignment=right                                    $ Legend on the right
+set-gui-window-property window-id=. duplicate-and-lock-plot-series                  $ Locking all unlocked series (applies only to buffer result)
+$ Renaming series: no.0 --> "T<sub>0</sub> - dfm = 0 J/mol"
+set-plot-option plot-id=. series rename series-index=-1 series-name=*_T$C new-name="T<sub>0</sub> - dfm = 0 J/mol"
+set-plot-option plot-id=. series rename series-index=1 new-name=Exp_data            $ Renaming series: no.1 --> "Exp_data"
+set-gui-window-property window-id=. buffer-name="T0 with offset"                    $ "T0_with_offset" buffer results are plotted
+
+
+$------------------------------------ dfm offset = 1200 J/mol -------------------------------------$
+set-step-option type=T0-temperature                                                 $ Selects the type of calculation: "T0-temperature"
+set-step-option element=C                                                           $ Carbon content varied
+set-step-option range start=0 stop=1 scale=lin step-width=0,05                      $ Range 0 - 1; linear step of 0,05
+set-step-option temperature-in-celsius=yes                                          $ Temperature in Celsius
+set-step-option element-content-in-wt%=yes                                          $ Composition in wt.%
+set-step-option T0-dependent-phase=BCC_A2                                           $ The T0-dependent phase is bcc
+set-step-option T0-parent-phase=FCC_A1                                              $ The T0-parent phase is fcc
+$ The force parent composition option is switched to yes
+set-step-option T0-force-parent-composition=yes 
+set-step-option T0-dfm-offset=1200                                                  $ Sets the T0-dfm-offset to 1200 J/mol
+step-equilibrium
+
+set-gui-window-property window-id=. duplicate-and-lock-plot-series                  $ Locking all unlocked series (applies only to buffer result)
+$ Renaming series: no.0 --> "T<sub>0</sub> - dfm = 1200 J/mol"
+set-plot-option plot-id=. series rename series-index=-1 series-name=*_T$C new-name="T<sub>0</sub> - dfm = 1200 J/mol"
+
+
+$------------------------------------ dfm offset = 1700 J/mol -------------------------------------$
+set-step-option type=T0-temperature                                                 $ Selects the type of calculation: "T0-temperature"
+set-step-option element=C                                                           $ Carbon content varied
+set-step-option range start=0 stop=1 scale=lin step-width=0,05                      $ Range 0 - 1; linear step of 0,05
+set-step-option temperature-in-celsius=yes                                          $ Temperature in Celsius
+set-step-option element-content-in-wt%=yes                                          $ Composition in wt.%
+set-step-option T0-dependent-phase=BCC_A2                                           $ The T0-dependent phase is bcc
+set-step-option T0-parent-phase=FCC_A1                                              $ The T0-parent phase is fcc
+$ The force parent composition option is switched to yes
+set-step-option T0-force-parent-composition=yes 
+set-step-option T0-dfm-offset=1700                                                  $ Sets the T0-dfm-offset to 1700 J/mol
+step-equilibrium
+
+set-plot-option plot-id=. series lock series-index=-1 series-name=T$C do-lock=yes   $ Locking the last series
+$ Renaming series: no.0 --> "T<sub>0</sub> - dfm = 1700 J/mol"
+set-plot-option plot-id=. series rename series-index=-1 series-name=*_T$C new-name="T<sub>0</sub> - dfm = 1700 J/mol"
+
+
+$$************************************************************************************************** 
+                                        SAVING WORKSPACE
+**************************************************************************************************$$
+
+$ Save workspace as "Tutorial_10.mcw"
+$save-workspace "file-name"=Tutorial_10
+save-workspace Tutorial_10
+

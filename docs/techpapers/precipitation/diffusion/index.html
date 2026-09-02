@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Diffusion - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Diffusion";
+        var mkdocs_page_input_path = "techpapers/precipitation/diffusion.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Diffusion</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>TechPaper #2011004: Diffusion in heterogeneous precipitation [MatCalc Documentation]</p>
+<h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#techpaper_2011004diffusion_in_heterogeneous_precipitation">TechPaper #2011004: Diffusion in heterogeneous precipitation</a></p>
+</li>
+<li>
+<p><a href="#compatibility">Compatibility</a></p>
+</li>
+<li><a href="#objectives">Objectives</a></li>
+<li><a href="#related_documents">Related documents</a></li>
+<li>
+<p><a href="#main_document">Main document</a></p>
+</li>
+<li>
+<p><a href="#diffusion_in_the_undisturbed_crystal">Diffusion in the undisturbed crystal</a></p>
+</li>
+<li>
+<p><a href="#diffusion_along_dislocations">Diffusion along dislocations</a></p>
+<ul>
+<li><a href="#recommended_values_for_the_dislocation_core_diffusivity">Recommended values for the dislocation core diffusivity</a></li>
+<li>
+<p><a href="#diffusion_along_grain_boundaries">Diffusion along grain boundaries</a></p>
+</li>
+<li>
+<p><a href="#recommended_values_for_the_grain_boundary_diffusivity">Recommended values for the grain boundary diffusivity</a></p>
+</li>
+<li>
+<p><a href="#tuning_diffusivities_for_special_cases">Tuning diffusivities for special cases</a></p>
+</li>
+<li>
+<p><a href="#recommended_values_for_mdef">Recommended values for MDEF</a></p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="techpaper-2011004-diffusion-in-heterogeneous-precipitation">TechPaper #2011004: Diffusion in heterogeneous precipitation</h1>
+<h2 id="compatibility">Compatibility</h2>
+<p>MatCalc version: 5.42 - … <br />
+Author: E. Kozeschnik <br />
+Created: 2011-06-29 <br />
+Revisions:</p>
+<h2 id="objectives">Objectives</h2>
+<p>In this paper, the implementation of diffusion during heterogenous precipitation in the <em>MatCalc</em> precipitation kinetics framework is discussed.</p>
+<h2 id="related-documents">Related documents</h2>
+<ol>
+<li><a href="/techpapers/nucleation/het_nucl_sites" title="techpapers/nucleation/het_nucl_sites">Heterogenous nucleation</a></li>
+<li><a href="/techpapers/precipitation/excess_va" title="techpapers/precipitation/excess_va">Excess vacancies</a></li>
+</ol>
+<h1 id="main-document">Main document</h1>
+<h2 id="diffusion-in-the-undisturbed-crystal">Diffusion in the undisturbed crystal</h2>
+<p>The <em>MatCalc</em> multi-component diffusion model is based on the treatment developed at KTH Stockholm for the DICTRA software. Accordingly, the diffusional mobility <span class="arithmatex">\(M\_i\)</span> of component <em>i</em> and the tracer diffusion coefficient <span class="arithmatex">\(D^\*\_i\)</span> are related by the equation</p>
+<div class="arithmatex">\[D^\*\_i = RTM\_i\]</div>
+<p>with <span class="arithmatex">\(R\)</span> being the Universal Gas Constant and <span class="arithmatex">\(T\)</span> being temperature. The values of <span class="arithmatex">\(M\_i\)</span> and <span class="arithmatex">\(D^\*\_i\)</span> are accessible through the <em>MatCalc</em> variables <strong>MO<span class="arithmatex">\(phase\_name\)</span>element</strong> and <strong>DT<span class="arithmatex">\(phase\_name\)</span>element</strong> in the 'diffusion' category of the variables list.</p>
+<p>In the <em>MatCalc</em> mobility databases, only the value of <span class="arithmatex">\(M\_i\)</span> is stored, since the thermodynamic factor can be calculated from the thermodynamic information and <span class="arithmatex">\(D^\*\_i\)</span> is then uniquely given as a function of composition and temperature only.</p>
+<p><strong>Note:</strong> The diffusion coefficient used in the precipitation kinetics framework is the tracer diffusivity given above. In the microstructure simulation framework for long-range diffusion, the chemical diffusivity is used in the form of a diffusion matrix, which accounts for all the non-diagonal cross-terms also. In the precipitation kinetics framework, the cross-terms come into play directly in the evolution equations described in the corresponding publication<a href="#fn__1">1)</a>.</p>
+<p>If you want to investigate the influence of the alloy chemistry on the diffusion coefficient, use the chemical diffusion coefficient <span class="arithmatex">\(D^c\_i\)</span>, which is defined as</p>
+<div class="arithmatex">\[D^c\_i = RTM\_i \cdot \phi\]</div>
+<p>with <span class="arithmatex">\(\phi\)</span> being the thermodynamic factor. The corresponding <em>MatCalc</em> variable is denoted <strong>D<span class="arithmatex">\(phasename\)</span>element</strong>. This version of diffusion coefficient is <em>not</em> used in the precipitation kinetics framework, since the <em>MatCalc</em> evolution equations for precipitation are based on the explicit us of chemical potentials, which takes the effect of alloy composition into account directly.</p>
+<h2 id="diffusion-along-dislocations">Diffusion along dislocations</h2>
+<p>Dislocations are linear lattice defects, which provide a network of linear high-speed diffusion paths. In the core of a dislocation, the lattice is expanded, thus supporting the possibility for solute atoms to move considerably faster than in the undisturbed bulk crystal.</p>
+<p><strong>Note:</strong> The mobilities saved in the database are assessed for equilibrium conditions, which means that some given mean grain size and a dislocation density (most likely) close to its equilibrium value have been present during the experiment. The diffusivities of the database do <em>not</em> represent values for defect-free single crystals, but poly-crystalline microstructures.</p>
+<p>The diffusion carried along by dislocations can be taken into account rigorously in the diffusivities used in the precipitation kinetics simulations by simply estimating the ratio between undisturbed crystal volume and the volume consumed by the dislocation cores. In <em>MatCalc</em>, the following relation is used to define a <em>diffusion correction factor for pipe diffusion</em> along dislocations</p>
+<p>[D_i=D^*_i \cdot \alpha_\text{PD}],</p>
+<p>with <span class="arithmatex">\(D\_i\)</span> being the effective diffusion coefficient of component <span class="arithmatex">\(i\)</span>. The correction factor <span class="arithmatex">\(\alpha\_\text{PD}\)</span> is given as</p>
+<p>[\alpha_\text{PD} = \frac{D_i}{D^*_i} = \frac{1}{D^*_i} \left( {\pi R^2_\text{core}\rho \cdot D^*_{di} + \left( 1-\pi R^2_\text{core}\rho \right)\cdot D^*_{i}} \right)].</p>
+<p>where <span class="arithmatex">\(D^\*\_{di}\)</span> is the diffusivity in the dislocation core.</p>
+<p>The value of <span class="arithmatex">\(\alpha\_\text{PD}\)</span> is accessible through the <em>MatCalc</em> variable <strong>PIPE_DCF<span class="arithmatex">\(prec\_domain\)</span>element</strong> in the 'kinetics: prec_domain special' category.</p>
+<h3 id="recommended-values-for-the-dislocation-core-diffusivity">Recommended values for the dislocation core diffusivity</h3>
+<p>In the above equations, a key parameter for evaluation of the effective diffusivity <span class="arithmatex">\(D\_i\)</span> is the diffusivity of element <span class="arithmatex">\(i\)</span> in the dislocation core <span class="arithmatex">\(D^\*\_{di}\)</span>. In MatCalc, the dislocation core diffusivity is coupled to the bulk diffusivity via a factor <span class="arithmatex">\(\alpha\_{di}\)</span>, which reads</p>
+<div class="arithmatex">\[D^\*\_{di}=\alpha\_{di}\cdot D^\*\_i\]</div>
+<p><span class="arithmatex">\(\alpha\_{di}\)</span> can be defined as a user-function in the 'subst. disl. diffusion as ratio from matrix' and 'interst. disl. diffusion as ratio from matrix' fields of the 'special' tab of the 'precipitation domain' dialog. Note that you can set the ratios separately for substitutional and interstitial elements.</p>
+<p><strong>Note:</strong> The values for <span class="arithmatex">\(\alpha\_{di}\)</span> that are evaluated with the above equation are used in all <em>MatCalc</em> expressions, where the tracer diffusion The following values are recommended for different alloy systems:</p>
+<table>
+<thead>
+<tr>
+<th>system</th>
+<th>Temperature [K]</th>
+<th><span class="arithmatex">\(\alpha\_{di}\)</span></th>
+<th>MatCalc syntax</th>
+<th>source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Al (fcc)</td>
+<td>298 - 933</td>
+<td>[ 1.07\cdot10^{-1} \cdot exp \left( \frac{43900}{RT} \right) ]</td>
+<td><code>1.07e3*exp(43900/(R*T))</code></td>
+<td>unpublished research</td>
+</tr>
+<tr>
+<td>Fe (fcc)</td>
+<td>298 - 1811</td>
+<td>[ 6.43\cdot10^{-1} \cdot exp \left( \frac{118700}{RT} \right) ]</td>
+<td><code>6.43e-1*exp(118700/(R*T))</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Fe (bcc)</td>
+<td>298 - 693</td>
+<td>[ 3.33\cdot10^{1} \cdot exp \left( \frac{70000}{RT} \right) ]</td>
+<td><code>3.33e1*exp(70000/(R*T))</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Fe (bcc)</td>
+<td>693 - 1214</td>
+<td>[ 1.33\cdot10^{-2} \cdot exp \left( \frac{115000}{RT} \right) ]</td>
+<td><code>1.33e-2*exp(115000/(R*T))</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Fe (bcc)</td>
+<td>1214 - 1811</td>
+<td>[ 1.00\cdot10^{2} \cdot exp \left( \frac{25000}{RT} \right) ]</td>
+<td><code>1.00e2*exp(25000/(R*T))</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Ni (fcc)</td>
+<td>298 - 1728</td>
+<td>[ 1.74\cdot10^{-1} \cdot exp \left( \frac{116100}{RT} \right) ]</td>
+<td><code>1.74e-1*exp(116100/(R*T))</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>coefficient <span class="arithmatex">\(D^\*\_i\)</span> enters. The pipe diffusion correction factor thus represents a <strong>prefactor to the diffusivity value</strong> that is calculated from the mobility database.</p>
+<p>In general, the value of <span class="arithmatex">\(\alpha\_{di} \approx 1\)</span> for typical dislocation densities of well-annealed metallic materials, i.e. <span class="arithmatex">\(10^{11} m/m^3\)</span> for fcc metals and <span class="arithmatex">\(10^{12} m/m^3\)</span> for bcc metals. However, in the case of dislocation densities exceeding approximately <span class="arithmatex">\(10^{13}\)</span> or <span class="arithmatex">\(10^{14} m/m^3\)</span>, the influence of <span class="arithmatex">\(\alpha\_{di}\)</span> becomes significant. At dislocation densities of <span class="arithmatex">\(10^{15}\)</span> or <span class="arithmatex">\(10^{16} m/m^3\)</span>, which are typical for martensitic microstructures, the pipe diffusion correction factor adopts values of several orders of magnitude.</p>
+<p><strong><em>Important note …</em></strong></p>
+<p>For <strong>predictive simulations</strong> in deformed metals and/or martensitic or bainitic microstructures, it is absolutely necessary to <strong>account for the influence of pipe diffusion</strong>! This effect often accelerates the precipitation kinetics by several orders of magnitude.</p>
+<h2 id="diffusion-along-grain-boundaries">Diffusion along grain boundaries</h2>
+<p>In <em>MatCalc</em>, grain boundaries are assumed to be high-angle boundaries, which provide a network of two-dimensional high-speed diffusion paths. In contrast to the pipe diffusion effect, the influence of grain boundary diffusion is <em>not</em> explicitely taken into account as a prefactor to the tracer diffusion coefficient. Instead, the influence of grain boundary diffusion on the overall precipitation kinetics must be included manually. See the corresponding section below.</p>
+<p>The grain boundary diffusion coefficient is, however, used in the kinetic framework for grain boundary precipitation<a href="#fn__2">2)</a>. The grain boundary diffusivity is explicitely integrated in the evolution equations and must be correctly set, if this type of precipitation geometry is used. For the correct definition of grain boundary nucleation and growth see also the technical paper on  <a href="/techpapers/nucleation/het_nucl_sites" title="techpapers/nucleation/het_nucl_sites">Heterogenous nucleation</a>.</p>
+<h3 id="recommended-values-for-the-grain-boundary-diffusivity">Recommended values for the grain boundary diffusivity</h3>
+<p>In the treatment of grain boundary precipitation, the grain boundary diffusivity <span class="arithmatex">\(D\_{gi}\)</span> is a key parameter. In MatCalc, the grain boundary diffusivity is coupled to the bulk diffusivity via a factor <span class="arithmatex">\(\alpha\_{gi}\)</span>, which reads</p>
+<div class="arithmatex">\[D^\*\_{gi}=\alpha\_{gi}\cdot D^\*\_i\]</div>
+<p><span class="arithmatex">\(\alpha\_{gi}\)</span> can be defined as a user-function in the 'subst. gb diffusion as ratio from matrix' and 'interst. gb diffusion as ratio from matrix' fields of the 'special' tab of the 'precipitation domain' dialog. Note that you can set the ratios separately for substitutional and interstitial elements.</p>
+<p>The following values are recommended for different alloy systems:</p>
+<table>
+<thead>
+<tr>
+<th>system</th>
+<th>Temperature [K]</th>
+<th><span class="arithmatex">\(\alpha\_{gi}\)</span></th>
+<th>MatCalc syntax</th>
+<th>source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Al (fcc)</td>
+<td>298 - 933</td>
+<td>[ 1.36\cdot10^{0} \cdot exp \left( \frac{67000}{RT} \right) ]</td>
+<td><code>1.36*exp(67000/(R*T))</code></td>
+<td>unpublished research</td>
+</tr>
+<tr>
+<td>Fe (fcc)</td>
+<td>298 - 1811</td>
+<td>[ 7.86\cdot10^{-1} \cdot exp \left( \frac{141400}{RT} \right) ]</td>
+<td><code>7.86e-1*exp(141400/(R*T))</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Fe (bcc)</td>
+<td>298 - 693</td>
+<td>[ 6.33\cdot10^{1} \cdot exp \left( \frac{87700}{RT} \right) ]</td>
+<td><code>6.33e1*exp(87700/(R*T))</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Fe (bcc)</td>
+<td>693 - 1214</td>
+<td>[ 2.53\cdot10^{-2} \cdot exp \left( \frac{132700}{RT} \right) ]</td>
+<td><code>2.53e-2*exp(132700/(R*T))</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Fe (bcc)</td>
+<td>1214 - 1811</td>
+<td>[ 1.90\cdot10^{2} \cdot exp \left( \frac{42700}{RT} \right) ]</td>
+<td><code>1.90e2*exp(42700/(R*T))</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Ni (fcc)</td>
+<td>298 - 1728</td>
+<td>[ 5.22\cdot10^{-3} \cdot exp \left( \frac{184700}{RT} \right) ]</td>
+<td><code>5.22e-3*exp(184700/(R*T))</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="tuning-diffusivities-for-special-cases">Tuning diffusivities for special cases</h2>
+<p>In some cases of precipitation kinetics simulations, the diffusion coefficient stored in the mobility database needs some adjustment, since the actual microstructure of the system does not represent the conditions for which the diffusivity has been experimentally assessed. For these situations, the so-called 'matrix diffusion enhancement factor' (MDEF) can be utilized to 'tune' the diffusion coefficients used in the simiulations toi values that better represent the experimental conditions.</p>
+<p>The MDEF is accessible through the 'substitutional matrix diffusion enhancement' and the 'interstitial matrix diffusion enhancement' in the 'special' tab of the 'precipitation domains' dialog.</p>
+<h3 id="recommended-values-for-mdef">Recommended values for MDEF</h3>
+<p>In most practical situations, it will <em>not</em> be necessary to modify the MDEF value. Sometimes, this parameter value is set between 0.2 to 5, in order to achieve 'perfekt' agreement between simulation and experiment.</p>
+<p><strong>Note:</strong> In the viewpoint of a general simulation strategy, it is not recommended , however, to change this value away from the default value of 1.0, since any change of these parameters does impair the predictive capabilities of your simulations.</p>
+<p>In some cases, however, a modification of the experimental diffusivities can be justified. One example, for instance, is precipitation at martensite subgrain boundaries. It is well known that diffusion along the subgrain boundary network is significantly faster than diffusion in the bulk crystal. For this type of precipitate, an MDEF of 5 has shown to be a reasonable diffusion enhancement, which seems to reproduce the real diffusion conditions reasonably well. For any other 'artifical' modification of the diffusion coefficients make sure that you can justify it on physical grounds.</p>
+<p>The following values are recommended for selected cases:</p>
+<table>
+<thead>
+<tr>
+<th>case</th>
+<th>MDEF</th>
+<th>comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Typical precipitation simulation</td>
+<td>1.0</td>
+<td><strong>default value is recommended</strong></td>
+</tr>
+<tr>
+<td>Grain boundary precpitation</td>
+<td>1.0</td>
+<td>Fast GB diffusion is accounted for in the gb precipitation model and the gb diffusion coefficient <span class="arithmatex">\(D\_{gi}\)</span>.</td>
+</tr>
+<tr>
+<td>Grain boundary edges and corners</td>
+<td>1.0 - 3.0</td>
+<td>Fast gb diffusion not accounted for in the model. Slight acceleration plausible</td>
+</tr>
+<tr>
+<td>Subgrain boundaries</td>
+<td>1.0 - 5.0</td>
+<td>Fast sgb diffusion not accounted for in the model. Slight acceleration plausible</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note:</strong> In addition to the acceleration of diffusion along grain boundaries and subgrain boundaries, significantly higher diffusion knietics can also be stimulated by the presence of <strong>quenched-in</strong> or <strong>deformation-induced excess vacancies</strong>. See the corresponding article  <a href="/techpapers/precipitation/excess_va" title="techpapers/precipitation/excess_va">Excess vacancies</a> for a description of this effect and how to take it into account in your simulations.</p>
+<p><a href="#fnt__1">1)</a></p>
+<p>J. Svoboda, F. D. Fischer, P. Fratzl and E. Kozeschnik, „Modelling of kinetics in multi-component multi-phase systems with spherical precipitates I. – Theory“, Mater. Sci. Eng. A, 2004, 385 (1-2) 166-174.</p>
+<p><a href="#fnt__2">2)</a></p>
+<p>E. Kozeschnik, J. Svoboda, R. Radis and F.D. Fischer, “Mean-field model for the growth and coarsening of stoichiometric precipitates at grain boundaries”, Model. Simul. Mater. Sci. Eng. 18 (2010) 015011 (19pp).</p>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=techpapers%3Aprecipitation%3Adiffusion&amp;1788352980" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

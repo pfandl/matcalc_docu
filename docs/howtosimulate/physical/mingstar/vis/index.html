@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>Vis - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Vis";
+        var mkdocs_page_input_path = "howtosimulate/physical/mingstar/vis.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Vis</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>How to... visualize min G* and P using GNUPlot [MatCalc Documentation]</p>
+<h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#how_to_visualize_min_g_and_p_using_gnuplot">How to... visualize min G* and P using GNUPlot</a></p>
+</li>
+<li>
+<p><a href="#compatibility">Compatibility</a></p>
+</li>
+<li><a href="#objectives">Objectives</a></li>
+<li><a href="#related_documents">Related documents</a></li>
+<li><a href="#complementary_files">Complementary files</a></li>
+<li>
+<p><a href="#main_document">Main document</a></p>
+</li>
+<li>
+<p><a href="#export_data_to_file">Export data to file</a></p>
+</li>
+<li><a href="#plot_with_gnuplot">Plot with GNUPlot</a></li>
+<li><a href="#refine_the_plot">Refine the plot</a></li>
+<li><a href="#plot_of_normalized_nucleation_probability">Plot of normalized nucleation probability</a></li>
+<li><a href="#additional_commands">Additional commands</a></li>
+<li><a href="#consecutive_articles">Consecutive articles</a></li>
+</ul>
+<h1 id="how-to-visualize-min-g-and-p-using-gnuplot">How to... visualize min G* and P using GNUPlot</h1>
+<h2 id="compatibility">Compatibility</h2>
+<p>MatCalc version: - <br />
+Database: - <br />
+Author: Georg Stechauner<br />
+Created: 2013-03-06 <br />
+Revisions: - <br />
+GNUPlot version: 4.6</p>
+<h2 id="objectives">Objectives</h2>
+<p>This second part shows a way to process the data calculated by <em>MatCalc</em> and how to create easily interpretable plots. The experienced user is free to use any program of his choice, which can process large amounts of data and plot them in 3D (e.g. Origin, MatLab, …). In order to provide a solution for everyone, an approach using GNUPlot (free, opensource software) is shown in this example.</p>
+<h2 id="related-documents">Related documents</h2>
+<ul>
+<li><a href="/howtosimulate/physical/mingstar/calc" title="howtosimulate/physical/mingstar/calc">Part I showing the calculation of min G* and P</a></li>
+<li><a href="http///www.gnuplot.info/" title="http///www.gnuplot.info/">http://www.gnuplot.info/</a> - GNUPlot official Homepage. Download software there, also FAQ and Demos.</li>
+</ul>
+<h2 id="complementary-files">Complementary files</h2>
+<p>Click here to view the GNUPlot script for this HowTo manual.</p>
+<h1 id="main-document">Main document</h1>
+<h2 id="export-data-to-file">Export data to file</h2>
+<p>To create a 3-dimensional G*, respectively P plot, we need to extract the relevant data from <em>MatCalc</em>. Open the desired array (either G* or normalized P) and mark all data, without the axes (values for X and Y). Then press: <strong>Copy selection</strong>. Alternatively open the 'array_without_xy' array and press <strong>Copy all</strong>.</p>
+<p><a href="/howtosimulate/physical/mingstar/array-copy.png" title="howtosimulate/physical/mingstar/array-copy.png"><img alt=" Copy data from array" src="/howtosimulate/physical/mingstar/array-copy.png" title="Copy data from array" /></a></p>
+<p>Next step, paste the values into an editor. Windows users can easily open the command line (Shortcut/ WIN+R) and type 'cmd'.</p>
+<p><a href="/howtosimulate/physical/mingstar/run-notepad.png" title="howtosimulate/physical/mingstar/run-notepad.png"><img alt=" Run notepad on Windows machines" src="/howtosimulate/physical/mingstar/run-notepad.png" title="Run notepad on Windows machines" /></a></p>
+<p>The values in the editor should be separated with Tab-stops and have '.' as commas. This is important, because GNUPlot will not process ',' as a comma (This is especially important, if you copy the data to Excel and it changes the comma!).</p>
+<p><a href="/howtosimulate/physical/mingstar/array-notepad.png" title="howtosimulate/physical/mingstar/array-notepad.png"><img alt=" Correct data in notepad" src="/howtosimulate/physical/mingstar/array-notepad.png" title="Correct data in notepad" /></a></p>
+<p>Save the file as *.txt and name it anyway you want.</p>
+<p><strong>Note:</strong> As this file has no indication of X- and Y-axis (or rather column and row) description, either name the file properly, or create a second file which describes the variables. This will be needed later on in the script, when we label the axes.</p>
+<h2 id="plot-with-gnuplot">Plot with GNUPlot</h2>
+<p>Executing the GNUPlot program file will open a command line program. The newest version 4.6 supplies some GUI which can help, if you are lost. The following procedure however is done by scripting only, without the GUI.</p>
+<p>Start by pointing to the correct directory, so GNUPlot knows where the data-files are. Write the following command, or press 'ChDir' in the GUI:</p>
+<pre><code>cd 'C:\datafiles\VCN\'
+</code></pre>
+<p><strong>Note</strong>: It is very important to always set file names and directories between quotation marks '…'. An easy way to do this, is to copy the filename/directory location in Explorer, and then use Right-click - Paste to enter it into GNUPlot.</p>
+<p>After pointing to the correct directory we define axes and boundaries, and name everything. The hashtag # is used in GNUPlot as a comment, it is not necessary to type it.</p>
+<pre><code>set ticslevel 0.1    # Distance from data points to base plane
+set zlabel 'min G*'  # Label of Z-Axis
+set ylabel 'wt-% V'  # Label of Y-Axis
+set xlabel 'wt-% N'  # Label of X-Axis
+set format z '%2.1e' # Display values on z axis as floating point with subsequent e
+set cntrparam levels incr 1e-20,2e-20,1e-18 # Settings for contour lines. 
+                     # 1. Startvalue of contour lines, 2. Stepwidth between the 
+                     # contour lines - decrease this value, to increase amount of lines.
+                     # 3. Finalvalue of contour lines.
+set contours         # Show contour lines
+set style data lines # Connect data points with lines
+set hidden3d         # Hide points and lines which are hidden
+set key outside      # Show legend outside the plot
+</code></pre>
+<p><strong>Attention</strong>: Set your own values, according to the results. Always double check the labeling: Z-Axis are the results (e.g. G* and P), X and Y are the variables which were used in the loops. Set the range of contourparameters in a way to capture all the important values! The values above will work with the G* file, created from part I.</p>
+<pre><code>splot 'VCN-gstar.txt' matrix # splot creates a 3D plot, matrix points to a matrix
+                             # style data layout.
+</code></pre>
+<p>Click into the plot, and 'rotate' the picture a little bit. This will force the 'wxg graphic output terminal' (which is responsible for plotting data to your screen) to refresh. You can also click the 'Replot' button in the GUI bar on top of the output window. This has to done, whenever you change the size of the output window. If nothing crashed and no power shortages occured, you should have plot similar to this:</p>
+<p><a href="/howtosimulate/physical/mingstar/gstar-preversion.png" title="howtosimulate/physical/mingstar/gstar-preversion.png"><img alt=" Min G* phase field for fixed temperature and carbon content, for varying V and N contents." src="/howtosimulate/physical/mingstar/gstar-preversion.png" title="Min G* phase field for fixed temperature and carbon content, for varying V and N contents." /></a></p>
+<p>But what does this tell us? Why are the axes numbered from 0 to 35? The next section will handle these topics and refine the results.</p>
+<h2 id="refine-the-plot">Refine the plot</h2>
+<p>The problems which we have to solve in this section are:</p>
+<ul>
+<li>Too many, unnecessary contour lines, but…</li>
+<li>… not enough in the relevant area</li>
+<li>Wrong values on axes</li>
+</ul>
+<p>The first problem we formulated has to be approached by two ways: the first one is, to rescale the Z-axis, to the most relevant section, which lies between 5e-20 and 2e-19.</p>
+<pre><code>set zrange [5e-20:2e-19]
+replot
+</code></pre>
+<p>This code snippet rescales the z-range and automatically replots the picture. Now we need to adapt the contour lines:</p>
+<pre><code>set cntrparam levels incr 1e-20,2e-21,1e-19
+replot
+</code></pre>
+<p>This leads to a high density of contours in the relevant area.</p>
+<p>As a next step, we need to change X- and Y-axis to correct values. Due to the fact that we plotted a matrix, GNUPlot uses the Matrix-position of the data as X- and Y-values. As we use a 16×35 matrix, X-axis goes up to 16, and Y-axis to 35. It is the easiest way to manually set axes to correct values. Open the <em>MatCalc</em> script therefore, and open the G* array. Now you need 4-5 positions and name them:</p>
+<pre><code>set xtics ('0' 0, '0.1' 3, '0.2' 6, '0.3' 9, '0.4' 12, '0.5' 15)
+set ytics ('0.1' 0, '0.2' 9, '0.3' 18, '0.4' 27, '0.5' 34)
+replot
+</code></pre>
+<p>The command 'set xtics' lets the user manually set numbers on the axes. The digits between the apostrophes are the label, the following digit the position.</p>
+<p>The final version of our min G* plot should look like this.</p>
+<p><a href="/howtosimulate/physical/mingstar/gstar-finish.png" title="howtosimulate/physical/mingstar/gstar-finish.png"><img alt=" Final version of minimum G* field" src="/howtosimulate/physical/mingstar/gstar-finish.png" title="Final version of minimum G* field" /></a></p>
+<p>However, this is only a plot of energy, and does not represent the nucleation event anywhere as good as a normalized P-array plot. Use the previously gained knowledge, and create the normalized P-array plot now!</p>
+<h2 id="plot-of-normalized-nucleation-probability">Plot of normalized nucleation probability</h2>
+<p>Without further ado, here are the code lines, to produce the corresponding graph:</p>
+<pre><code>cd 'C:\datafiles\VCN\'
+
+set ticslevel 0.1    # Distance from data points to base plane
+set zlabel 'norm. P nucl.'  # Label of Z-Axis
+set ylabel 'wt-% V'  # Label of Y-Axis
+set xlabel 'wt-% N'  # Label of X-Axis
+set cntrparam levels incr 0.1,0.1,1   # Settings for contour lines. 
+                     # 1. Startvalue of contour lines, 2. Stepwidth between the 
+                     # contour lines - decrease this value, to increase amount of lines.
+                     # 3. Finalvalue of contour lines.
+set contours         # Show contour lines
+set style data lines # Connect data points with lines
+set key outside      # Show legend outside the plot
+set xtics ('0' 0, '0.1' 3, '0.2' 6, '0.3' 9, '0.4' 12, '0.5' 15)
+set ytics ('0.1' 0, '0.2' 9, '0.3' 18, '0.4' 27, '0.5' 34)
+
+splot 'VCN-P.txt' matrix # splot creates a 3D plot, matrix points to a matrix
+                         # style data layout.
+</code></pre>
+<p>The careful reader has maybe noticed some missing commands. These are 'set hidden3d'… we are not using this command here, as the resulting mesh would totally cover the contour lines. Further we don't have to set a specific format on z axis.</p>
+<p><a href="/howtosimulate/physical/mingstar/normalized_p.png" title="howtosimulate/physical/mingstar/normalized_p.png"><img alt=" Normalized nucleation probability surface" src="/howtosimulate/physical/mingstar/normalized_p.png" title="Normalized nucleation probability surface" /></a></p>
+<p><strong>Note</strong>: It is possible to create directly *.jpgs or *.pngs from GNUPlot. However, this is neither trivial nor error-resistant. The easiest way to get images from the plots is to use either print-screen or a snipping tool of your choice,</p>
+<h2 id="additional-commands">Additional commands</h2>
+<p>There are some (actually many) commands which can possibly enhance the picture. The following one 'set pm3d' will color-code numerical values directly to the surface. Use this command either with or without 'set hidden3d'. By using 'set contour surface' you can directly see the lines, even while using hidden3d</p>
+<pre><code>set pm3d
+set hidden3d
+set contour surface
+</code></pre>
+<p><a href="/howtosimulate/physical/mingstar/normalized_p_pm3d.png" title="howtosimulate/physical/mingstar/normalized_p_pm3d.png"><img alt=" Colorful surface of normalized nucleation probability P" src="/howtosimulate/physical/mingstar/normalized_p_pm3d.png" title="Colorful surface of normalized nucleation probability P" /></a></p>
+<h1 id="consecutive-articles">Consecutive articles</h1>
+<p>For detailed commands and more information on GNUPlot, please visit their Homepage on demo files: <a href="http///www.gnuplot.info/demo/" title="http///www.gnuplot.info/demo/">http://www.gnuplot.info/demo/</a></p>
+<p>Other tutorials can be found on: <a href="http///www.gnuplot.info/help.html" title="http///www.gnuplot.info/help.html">http://www.gnuplot.info/help.html</a></p>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=howtosimulate%3Aphysical%3Amingstar%3Avis&amp;1788352992" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

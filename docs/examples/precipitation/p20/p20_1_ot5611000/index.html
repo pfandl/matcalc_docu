@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>P20 1 ot5611000 - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "P20 1 ot5611000";
+        var mkdocs_page_input_path = "examples/precipitation/p20/p20_1_ot5611000.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">P20 1 ot5611000</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>Example P20: Precipitation simulation during continuous casting of micro-alloyed Fe-Al-C-N-Nb-Ti steel, part 1: Treatment of primary precipitates (MatCalc versions older than 5.61.1000) [MatCalc Documentation]</p>
+<h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#example_p20precipitation_simulation_during_continuous_casting_of_micro-alloyed_fe-al-c-n-nb-ti_steel_part_1treatment_of_primary_precipitates_matcalc_versions_older_than_5611000">Example P20: Precipitation simulation during continuous casting of micro-alloyed Fe-Al-C-N-Nb-Ti steel, part 1: Treatment of primary precipitates (MatCalc versions older than 5.61.1000)</a></p>
+</li>
+<li>
+<p><a href="#compatibility">Compatibility</a></p>
+</li>
+<li><a href="#objectives">Objectives</a></li>
+<li><a href="#related_documents">Related documents</a></li>
+<li><a href="#complementary_files">Complementary files</a></li>
+<li>
+<p><a href="#main_document">Main document</a></p>
+</li>
+<li>
+<p><a href="#setup_thermodynamics">Setup thermodynamics</a></p>
+</li>
+<li><a href="#setup_phases">Setup phases</a></li>
+<li><a href="#evaluate_phase_fraction_of_primary_precipitates">Evaluate phase fraction of primary precipitates</a></li>
+<li><a href="#setting_up_the_precipitation_system">Setting up the precipitation system</a></li>
+<li><a href="#setting_up_the_virtual_heat_treatment">Setting up the virtual heat treatment</a></li>
+<li><a href="#setting_up_the_graphical_output">Setting up the graphical output</a></li>
+<li><a href="#starting_the_simulation">Starting the simulation</a></li>
+<li><a href="#result">Result</a></li>
+<li><a href="#transfer_of_precipitate_distributions">Transfer of precipitate distributions</a></li>
+<li><a href="#consecutive_articles">Consecutive articles</a></li>
+</ul>
+<h1 id="example-p20-precipitation-simulation-during-continuous-casting-of-micro-alloyed-fe-al-c-n-nb-ti-steel-part-1-treatment-of-primary-precipitates-matcalc-versions-older-than-5611000">Example P20: Precipitation simulation during continuous casting of micro-alloyed Fe-Al-C-N-Nb-Ti steel, part 1: Treatment of primary precipitates (MatCalc versions older than 5.61.1000)</h1>
+<h2 id="compatibility">Compatibility</h2>
+<p>MatCalc version: 5.52.0034 - 5.61.0070 (click  <a href="/examples/precipitation/p20/p20_1" title="examples/precipitation/p20/p20_1">here</a>  if you use a newer version)<br />
+Database: mc_fe.tdb, mc_x_FeAlCNNbTi.tdb, mc_fe.ddb<br />
+Author: G. Stechauner <br />
+Created: 2011-11-23 <br />
+Revisions: 2013-06-19 (P. Warczok)</p>
+<h2 id="objectives">Objectives</h2>
+<p>This is the first of two parts, which describe how to deal with primary precipitates. The method used in this example is thoroughly explained in the 'HowTo' manual for  <a href="/howtosimulate/precipitation/primary_prec" title="howtosimulate/precipitation/primary_prec">treatment of primary precipitates</a> . It utilizes a virtual heat treatment, to obtain the desired size and number density of precipitates. This calc state is then used for further calculation of the 'real' heat treatment.</p>
+<p>Part one starts off with a Scheil-Gulliver analysis to obtain the phase fraction and chemical composition of the primary precipitates. As described in the 'HowTo' manual, an equilibrium calculation is performed subsequently to evaluate a suitable temperature for the heat treatment. The optimal time and temperature for the heat treatment and the precipitation parameters are determined empirically.</p>
+<p>With this method, an adequate calc state is found, which can be used for further precipitation calculations.</p>
+<p>Part two will continue with the calculation of precipitation in enriched and depleted regions.</p>
+<h2 id="related-documents">Related documents</h2>
+<ol>
+<li>P20-2 -  <a href="/examples/precipitation/p20/p20_2" title="examples/precipitation/p20/p20_2">Precipitation kinetics in segregated and depleted regions</a></li>
+<li>'HowTo' manual -  <a href="/howtosimulate/precipitation/primary_prec" title="howtosimulate/precipitation/primary_prec">Primary precipitates</a></li>
+<li>E20-2 -  <a href="/examples/equilib/e20/e20_2" title="examples/equilib/e20/e20_2">Scheil-Gulliver analysis of primary precipitation</a></li>
+</ol>
+<h2 id="complementary-files">Complementary files</h2>
+<p>Click <a href="/examples/precipitation/p20/script/p20-1_old.mcs" title="examples/precipitation/p20/script/p20-1_old.mcs (15.4 KB)">here</a> to view the script for this tutorial.</p>
+<h1 id="main-document">Main document</h1>
+<p>Consider the same microalloyed steel as in example E20. The following table summarizes the chemical composition of the steel used in this study. The nominal composition is given in wt%.</p>
+<table>
+<thead>
+<tr>
+<th>C</th>
+<th>Al</th>
+<th>N</th>
+<th>Nb</th>
+<th>Ti</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.22</td>
+<td>0.025</td>
+<td>0.0061</td>
+<td>0.036</td>
+<td>0.0081</td>
+</tr>
+</tbody>
+</table>
+<h2 id="setup-thermodynamics">Setup thermodynamics</h2>
+<p>For simulation, either the 'mc_fe' or the 'mc_x_FeAlCNNbTi' database can be used. The dialog below shows the selected elements and phases for the 'mc_x_FeAlCNNbTi' database:</p>
+<p><a href="/examples/precipitation/p20/img/phaseselection.png" title="examples/precipitation/p20/img/phaseselection.png"><img alt=" Database dialog for P20" src="/examples/precipitation/p20/img/phaseselection.png" title="Database dialog for P20" /></a></p>
+<p>Open the database, select elements and phases, and read the database. Further load the diffusion database for Fe, as it is needed in precipitation simulation. Then enter the composition of the system in the 'Composition …' dialog of the 'Global' menu according to the table shown above.</p>
+<h2 id="setup-phases">Setup phases</h2>
+<p>With the selection of the FCC_A1 phase, <em>MatCalc</em> automatically creates a complex carbo-nitride if <code>Nb and Ti</code> as well as <code>C and N</code> are selected. This complex carbo-nitride shows a miscibilitiy gap, however, which must be taken into account in the simulation setup. This issue is dealt with extensively in example  <a href="/examples/equilib/e3" title="examples/equilib/e3">E3 - Analysis of the miscibility gap in Fe-C-N-Nb-V</a>. The carbo-nitride phase FCC_A1#01 is separated into two phases in the following steps: Suspend the original complex phase. Create composition sets for the miscibility gap phases.</p>
+<p>Open the phase status dialog window and suspend the automatically created FCC_A1#01 in the 'general' tab. Select the FCC_A1 phase and create a composition set by pressing the 'Create…' button. Select 'composition set', instead of 'equilibrium'. Enter :NB%,TI:C%,N,VA: as constituents for NbC and name it correspondingly. Repeat this procedure for TiN and define the constituents and major constituents (by setting the %) appropriately (/NB,TI%/C,N%,VA/).</p>
+<h2 id="evaluate-phase-fraction-of-primary-precipitates">Evaluate phase fraction of primary precipitates</h2>
+<p>Perform a Scheil-Gulliver analysis to obtain the values for phase fraction and chemical composition of primary precipitation phase. Refer to E20 if you want to refresh your knowledge about this method.</p>
+<p>Choose a temperature of 1570°C to start the Scheil simulation in the liquid phase. Allow back-diffusion of C and N and run the calculation to a minimum liquid fraction of 3% (enter as 0.03).</p>
+<p>Plot the liquid and Scheil-Phase fractions in an X-Y plot. After renaming, rescaling, and zooming in, a figure similar to the one below should be obtained.</p>
+<p><a href="/examples/precipitation/p20/img/scheil-fractions.png" title="examples/precipitation/p20/img/scheil-fractions.png"><img alt=" Liquid and Scheil-Phase fractions" src="/examples/precipitation/p20/img/scheil-fractions.png" title="Liquid and Scheil-Phase fractions" /></a></p>
+<p>The easiest method to extract the chemical composition of the solute-enriched region now is, to open the Buffer states window (Ctrl + L) and select the temperature corresponding to 3% residual liquid. This is generally the lowest temperature, or the one above it. In our case, we use the temperature of 1462C as the phase fraction of liquid is closer to the 3% compared to the values obtained at 1461C.</p>
+<p>Phase fractions obtained at 1462C:</p>
+<pre><code>#### /LIQUID/ moles: 0,0305076, gm: -101295 (-101295), sff: 1
+Phasestatus: entered - active
+FE +9,52351e-001   C +4,18904e-002  NB +4,28714e-003  TI +7,14451e-004  
+ N +5,35481e-004  AL +2,21249e-004  
+
+#### /TIN_S/ moles: 5,64144e-005, gm: -226949 (-226949), sff: 0,500378
+Phasestatus: fixed
+dfm: -9,46075e+000
+TI +4,94450e-001   N +4,46308e-001   C +5,33139e-002  NB +5,92815e-003
+</code></pre>
+<p>Now that we know the phase fraction and chemical composition of the primary TiN, we can start to build our virtual heat treatment.</p>
+<p><strong><em>Important note …</em></strong></p>
+<p>In order to keep this example as simple as possible, the peritectic transformation from BCC_A2 (δ-ferrite) to FCC_A1 (γ-Ferrite) is <strong>not</strong> included. By ignoring this, a phase fraction of TiN about twice as high is observed (2.6e-5 compared to 5.6e-5). Refer to example  <a href="/examples/precipitation/p21" title="examples/precipitation/p21">P21 - Precipitation simulation during continuous casting of micro-alloyed Fe-Al-C-Cu-Mn-N-Nb-S-Si-Ti steel</a>, where the transformation is included.</p>
+<h2 id="setting-up-the-precipitation-system">Setting up the precipitation system</h2>
+<p>Close the MatCalc workspace, as we do not need the Scheil analysis any longer. Create a new workspace and set up the thermodynamic system as before. Create two precipitation domains: 'virtual', for the virtual pre-heat treatment, and 'heat-treatment', for the real one.</p>
+<p><a href="/examples/precipitation/p20/img/domains.png" title="examples/precipitation/p20/img/domains.png"><img alt=" Precipitation domains for P20" src="/examples/precipitation/p20/img/domains.png" title="Precipitation domains for P20" /></a></p>
+<p>Continue by defining the precipitates:</p>
+<ul>
+<li>In the phase status dialog, suspend the automatically created equilibrium phase <code>FCC_A1#01</code>.</li>
+<li>Create a new equilibrium phase <code>FCC_A1#02</code> (Used as the precipitation domain for virtual heat treatment)</li>
+<li>Close the 'phase status' dialog and open the 'precipitation domains' dialog.</li>
+<li>Select <code>FCC_A1#02</code> as the matrix phase for virtual, and <code>FCC_A1</code> as the matrix phase for heat-treatment.</li>
+<li>Close this dialog and open the phase status dialog anew.</li>
+<li>Create a new composition set based on <code>FCC_A1</code> with the following constituents: <code>:NB,TI%:C,N%:</code> and name it <code>TiN</code>.</li>
+<li>Create a new composition set based on <code>FCC_A1</code> with the following constituents: <code>:NB%,TI:C%,N:</code> and name it <code>NbC</code>.</li>
+<li>Create two precipitate phases for <code>TiN</code> (primary and secondary) and one each for <code>NbC</code> and <code>AlN</code>.</li>
+<li>Enter the following values in the 'precipitate' tab of the 'phase status' dialog:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Precipitate</th>
+<th>TiN_p0</th>
+<th>TiN_p1</th>
+<th>NbC_p0</th>
+<th>AlN_p0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td># Size classes</td>
+<td>25</td>
+<td>25</td>
+<td>25</td>
+<td>25</td>
+</tr>
+<tr>
+<td>prec. domain &amp; restrict nucl. to</td>
+<td>virtual</td>
+<td>heat-treatment</td>
+<td>heat-treatment</td>
+<td>heat-treatment</td>
+</tr>
+<tr>
+<td>nucleate only with valid major const.</td>
+<td>✔</td>
+<td>✔</td>
+<td>✔</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>nucleation site</td>
+<td>grain bound. edge</td>
+<td>bulk</td>
+<td>bulk</td>
+<td>bulk</td>
+</tr>
+<tr>
+<td>Incubation time constant</td>
+<td>100</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>Diff. in prec. as ratio of matrix diff.</td>
+<td>1e-15</td>
+<td>0.01</td>
+<td>0.01</td>
+<td>0.01</td>
+</tr>
+</tbody>
+</table>
+<p>Note that the settings for the virtual heat treatment can be arbitrarily chosen and are not necessarily 'physically justified'. They are only aimed at reproducing the correct size and composition of the primary precipitate(s) with minimum computational effort.</p>
+<ul>
+<li>Close the phase dialog as the system is now set up.</li>
+</ul>
+<h2 id="setting-up-the-virtual-heat-treatment">Setting up the virtual heat treatment</h2>
+<p>As already mentioned in the  <a href="/howtosimulate/precipitation/primary_prec" title="howtosimulate/precipitation/primary_prec">'HowTo' manual - Primary precipitates</a> , the values which are used in this step are absolutely arbitrary. If a heating rate of 10000K/s followed by annealing for 100 years at 1000°C leads to the desired size and number density of the primary precipitates, that's fine! The only limitation one should keep in mind, is the correctness of the obtained values for size distribution, phase fraction and chemical composition; and the minimization of computational effort. Minimization of calculation time in the virtual heat treatment can be achieved by ensuring that the precipitate evolution is finished before onset of the coarsening regime, where the shrinking and final dissolution of particles takes place. This process is time consuming in the simulation. If this happens, set up the parameters such that a smaller number density of precipitates is obtained.</p>
+<p>Because primary precipitates are rather big, we are usually trying to achieve a size of a few µm, with a phase fraction and chemical composition similar to the Scheil analysis.</p>
+<p>To get an idea, at which temperature to anneal to achieve the desired phase fraction, make an equilibrium calculation beforehand. A temperature of about 1415°C is appropriate to precipitate TiN with the target phase fraction of 5e-5.</p>
+<p>The process of finding the optimal variables is best described as trial and error. The following procedure is found to be suitable:</p>
+<ol>
+<li>Open the 'heat treatment' dialog.</li>
+<li>Create a new HT called virtual, and append a new segment.</li>
+<li>Enter a starting temperature of 1110°C, and anneal at this temperature for 100 seconds. Select 'virtual' as the precipitation domain.</li>
+<li>Append a new segment and heat the sample to 1405°C with a heating rate of 1K/s.</li>
+<li>Append a new segment and anneal at this temperature for 1e+07 seconds.</li>
+</ol>
+<h2 id="setting-up-the-graphical-output">Setting up the graphical output</h2>
+<p>To follow the growth of the precipitates during the heat treatment, a plot is needed. Create a p1 plot window with 4 plots and plot <code>T$C</code>, <code>f_prec$FCC_A1#01_p0</code>, <code>num_prec$FCC_A1#01_p0</code> and <code>r_mean$FCC_A1#01_p0</code>. Change the scaling and title of axes according to the figure below. Alternatively, run <a href="/examples/precipitation/p20/script/plot-p20.mcs" title="examples/precipitation/p20/script/plot-p20.mcs (4.7 KB)">this</a> script to set up the windows accordingly.</p>
+<p>If you are interested in the size distribution, create a histogram and plot the primary precipitates.</p>
+<h2 id="starting-the-simulation">Starting the simulation</h2>
+<p>As everything is configured, the simulation can begin. Open the 'Precipitation simulation' dialog, and select the virtual heat treatment as the temperature control. Then press Go!</p>
+<h2 id="result">Result</h2>
+<p>The figure shows the result of the simulation. A phase fraction of about 5e-5 with similar chemical composition to the Scheil analysis was achieved. Save the Calc State, and use it for further simulations.</p>
+<p><a href="/examples/precipitation/p20/img/final.png" title="examples/precipitation/p20/img/final.png"><img alt=" Final data of primary precipitation calculation" src="/examples/precipitation/p20/img/final.png" title="Final data of primary precipitation calculation" /></a>
+<a href="/examples/precipitation/p20/img/final-histogramm.png" title="examples/precipitation/p20/img/final-histogramm.png"><img alt=" Histogramm of primary precipitates" src="/examples/precipitation/p20/img/final-histogramm.png" title="Histogramm of primary precipitates" /></a></p>
+<h1 id="transfer-of-precipitate-distributions">Transfer of precipitate distributions</h1>
+<p>Save the workspace file as P20_1.mcw.</p>
+<p>Once we have generated the size distribution for the primary precipitate, we can export the size distribution into a file to be able to read it back into our system in the further simulations. To do so, open the 'phase status' dialog in the precipitate tab.</p>
+<p><a href="/examples/precipitation/p20/img/fig_p20_phase_status_prec_dist.png" title="examples/precipitation/p20/img/fig_p20_phase_status_prec_dist.png"><img alt=" Phase status dialog for precipitate distribution" src="/examples/precipitation/p20/img/fig_p20_phase_status_prec_dist.png" title="Phase status dialog for precipitate distribution" /></a></p>
+<p>Click the <strong>'edit precipitate distribution'</strong> button.</p>
+<p><a href="/examples/precipitation/p20/img/fig_p20_phase_status_prec_dist_edit.png" title="examples/precipitation/p20/img/fig_p20_phase_status_prec_dist_edit.png"><img alt=" Phase status dialog for precipitate distribution" src="/examples/precipitation/p20/img/fig_p20_phase_status_prec_dist_edit.png" title="Phase status dialog for precipitate distribution" /></a></p>
+<p>Use the <strong>'Write …'</strong> button to export the size distribution into a text file. Give it the name <strong>'size_dist_tin_primary.txt'</strong>.</p>
+<p>Alternatively, you can save the size distribution using console command:</p>
+<pre><code>EXPORT_PRECIPITATE_DIST tin_p0 size_dist_tin_primary.txt
+</code></pre>
+<h1 id="consecutive-articles">Consecutive articles</h1>
+<p>This analysis is continued in part 2 article  <a href="/examples/precipitation/p20/p20_2" title="examples/precipitation/p20/p20_2">Precipitation kinetics in segregated and depleted regions</a></p>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=examples%3Aprecipitation%3Ap20%3Ap20_1_ot5611000&amp;1788353120" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

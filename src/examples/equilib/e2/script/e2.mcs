@@ -1,0 +1,217 @@
+$$************************************************************************************************** 
+************************************** GENERAL INFORMATION *****************************************
+****************************************************************************************************
+
+This example will investigate the stable Al-Cu Theta phase diagram, as well as the meta-stable 
+Theta-prime and Theta-double-prime. Refer to example E1 or tutorial T8 if you want to refresh your
+knowledge on plotting and calculating phase diagrams.
+
+Database: mc_al_v1.002.tdb
+Author: G. Stechauner
+Creation date: 2012-01-05
+This is a script for MatCalc version 5.44 (rel 1.002)
+Last update: 
+
+
+**************************************************************************************************** 
+************************************** SETUP INFORMATION *******************************************
+**************************************************************************************************$$
+
+$ make sure we work in the correct module
+use-module core 
+
+$ close any open workspace without asking for save
+close-workspace f
+
+$ Create a new workspace.
+new_workspace
+
+$ give some information about the script
+@ echo n 
+set-workspace-info +Selected elements:          
+set-workspace-info +Al, Cu
+set-workspace-info +
+set-workspace-info +Phases: FCC_A1, THETA_AL2CU (stable phase)
+set-workspace-info +TH_DP_GPB(Theta double prime) THETA_PRIME(Theta prime) 
+set-workspace-info +
+set-workspace-info +---------------------------------
+set-workspace-info +More information about MatCalc on
+set-workspace-info + http://matcalc.tuwien.ac.at
+set-workspace-info +---------------------------------
+echo y
+
+move-gui-window c hide                          $ Let's hide the console  
+
+
+$$************************************************************************************************** 
+**************************************** SYSTEM SETUP **********************************************
+**************************************************************************************************$$
+
+$ verify correct MatCalc version (is accessible as internal variable) 
+if (matcalc_version<5441002)
+   send-dialog-string "MatCalc version must be 5.44.1002 or higher to run this script. Stopping."
+   stop_run_script                                     $ stop script
+endif
+
+
+$$************************************************************************************************** 
+                        DATABASES, CHEMICAL COMPOSITION, SELECTED PHASES
+**************************************************************************************************$$
+
+open-thermodyn-database mc_sample_al.tdb
+select-elements AL CU VA                                  $ Components: Al, Cu
+select-phases LIQUID FCC_A1 TH_DP_GPB THETA_PRIME THETA_AL2CU      
+read-thermodyn-database
+
+set-reference-element AL
+enter-composition WP CU=7,0      
+
+set-temperature-celsius 500                               $ Temperature 1500C
+set-automatic-startvalues
+calculate-equilibrium                                     $ Initial equilibrium
+
+
+$$**************************************************************************************************
+                                   FE-C-MN ORTHOEQUILIBRIUM
+**************************************************************************************************$$
+
+$------------------------------------ Setting up plot ---------------------------------------------$
+new-gui-window p1                                       $ Plot of the phase diagram
+set-plot-option . S N B T$C %s                          $ Plotting the phase boundary
+$ In the [g]ridlines section, the option of showing [m]ajor grids for [x]-axis is switched to [y]es
+set-plot-option . G M X Y
+$ In the [g]ridlines section, the option of showing [m]ajor grids for [y]-axis is switched to [y]es
+set-plot-option . G M Y Y
+$ Scale the y-axis to 200 and upwards
+set-plot-option 1 A Y 1 S 0..
+
+$------------------------------------------- Liquid -----------------------------------------------$
+set-temperature-celsius 600              $ set temperature 
+calculate-equilibrium
+search-phase-boundary T Liquid           $ Varying temperature for the phase boundary search		
+
+set-step-option Y P                      $ "Phase boundary" type
+set-step-option P Liquid                 $ Phase boundary of liquid phase field
+set-step-option E CU                     $ Copper content varied
+set-step-option R 0 10 L 0.04            $ Range 0 - 10; linear step of 0,04
+set-step-option O E Y                    $ Composition in wt.%
+set-step-option O C Y                    $ Temperature in Celsius
+set-step-option X 20                     $ Setting the ma(x). T-step to 20
+step-equilibrium
+
+$ In the active[.] GUI-window, all unlocked series will be [l]ocked
+set-gui-window-property . L
+$ Renaming series
+set-plot-option . S M -1 *_T$C Liquid
+
+
+$------------------------------------------ Fcc_a1 ------------------------------------------------$
+set-temperature-celsius 600              $ set temperature 
+calculate-equilibrium 
+search-phase-boundary T FCC_A1           $ Varying temperature for the phase boundary search
+
+set-step-option Y P                      $ "Phase boundary" type
+set-step-option P FCC_A1                 $ Phase boundary of fcc phase field
+set-step-option E CU                     $ Copper content varied
+set-step-option R 0 10 L 0.04            $ Range 0 - 10; linear step of 0,04
+set-step-option O E Y                    $ Composition in wt.%
+set-step-option O C Y                    $ Temperature in C
+set-step-option X 20                     $ Setting the ma(x). T-step to 20
+step-equilibrium
+
+$ In the active[.] GUI-window, all unlocked series will be [l]ocked
+set-gui-window-property . L
+set-plot-option . S M -1 *_T$C FCC_A1    $ Renaming series
+
+
+$---------------------------------------- Theta_Al2Cu ---------------------------------------------$
+set-temperature-celsius 1400                $ Temperature 600C
+calculate-equilibrium
+search-phase-boundary T THETA_AL2CU         $ Varying temperature for the phase boundary search
+
+set-step-option Y P                         $ "Phase boundary" type
+set-step-option P THETA_AL2CU               $ Phase boundary of Theta_Al2Cu phase field
+set-step-option E CU                        $ Copper content varied
+set-step-option R 0 10 L 0.04               $ Range 0 - 10; linear step of 0,04
+set-step-option O E Y                       $ Composition in wt.%
+set-step-option O C Y                       $ Temperature in Celsius
+set-step-option X 20                        $ Setting the ma(x). T-step to 20
+step-equilibrium  
+
+set-gui-window-property . L                 $ Locking all unlocked series
+set-plot-option . S M -1 *_T$C Theta_Al2Cu  $ Renaming series
+
+
+$------------------------------------------ Theta_Prime -------------------------------------------$
+change-phase-status THETA_AL2CU f s s 
+
+set-temperature-celsius 600                 $ Temperature 
+calculate-equilibrium
+search-phase-boundary T THETA_PRIME         $ Varying temperature for the phase boundary search
+
+set-step-option Y P                         $ "Phase boundary" type
+set-step-option P THETA_PRIME               $ Phase boundary of THETA_PRIME phase field
+set-step-option E CU                        $ Copper content varied
+set-step-option R 0 10 L 0.04               $ Range 0 - 10; linear step of 0,04
+set-step-option O E Y                       $ Composition in wt.%
+set-step-option O C Y                       $ Temperature in Celsius
+set-step-option X 20                        $ Setting the ma(x). T-step to 20
+step-equilibrium
+
+set-gui-window-property . L                 $ Locking all unlocked series
+set-plot-option . S M -1 *_T$C Theta_prime  $ Renaming series
+
+
+$-------------------------------------- Theta_double_prime ----------------------------------------$
+change-phase-status THETA_PRIME f s s
+
+set-temperature-celsius 600                 $ Temperature 
+calculate-equilibrium
+search-phase-boundary T TH_DP_GPB           $ Varying temperature for the phase boundary search
+
+set-step-option Y P                         $ "Phase boundary" type
+set-step-option P TH_DP_GPB                 $ Phase boundary of TH_DP_GPB phase field
+set-step-option E CU                        $ Copper content varied
+set-step-option R 0 10 L 0.04               $ Range 0 - 10; linear step of 0,04
+set-step-option O E Y                       $ Composition in wt.%
+set-step-option O C Y                       $ Temperature in Celsius
+set-step-option X 20                        $ Setting the ma(x). T-step to 20
+step-equilibrium
+
+set-gui-window-property . L                 $ Locking all unlocked series
+set-plot-option . S M -1 *_T$C Theta_double_prime     
+set-plot-option . S R -1 T$C 
+
+
+$----------------------------------------- Experimental Data --------------------------------------$
+create-global-table experimental
+add-table-entry experimental 1.17 250
+add-table-entry experimental 1.75 314
+add-table-entry experimental 1.77 175
+add-table-entry experimental 1.77 180
+add-table-entry experimental 2.21 345
+add-table-entry experimental 2.9 220
+add-table-entry experimental 3.17 385
+add-table-entry experimental 3.46 222
+add-table-entry experimental 3.46 223
+add-table-entry experimental 4.07 405
+add-table-entry experimental 4.59 250
+add-table-entry experimental 5.14 255
+
+set-plot-option . s n t experimental 
+set-plot-option . s e -1 experimental d n                     $ Use default style: No 
+set-plot-option . s e -1 experimental l t nocurve             $ Line type: nocurve
+set-plot-option . s e -1 experimental l y none                $ Line style: none
+set-plot-option . s e -1 experimental m y utriangle           $ Marker type: utriangle
+set-plot-option . s e -1 experimental m h 2                   $ marker thickness: 2
+set-plot-option . s e -1 experimental m o purple              $ marker color: purple
+set-plot-option . s m -1 experimental experimental            $ rename plot
+
+$------------------------------------- The finished diagram ---------------------------------------$
+set-plot-option 1 T Stable and meta-stable Al-Cu phase diagram
+set-plot-option 1 A X 1 T Copper content / wt.-%     $ x-axis title 
+set-plot-option 1 A Y 1 T Temperature / C            $ y-axis title
+set-plot-option 1 L B                                $ Legend on the bottom
+move-gui-window . 20 20 600 900
+
+

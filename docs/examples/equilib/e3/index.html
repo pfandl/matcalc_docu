@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>E3 - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "E3";
+        var mkdocs_page_input_path = "examples/equilib/e3.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">E3</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>Example E3: Analysis of the miscibility gap in Fe-C-N-Nb-V [MatCalc Documentation]</p>
+<h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#example_e3analysis_of_the_miscibility_gap_in_fe-c-n-nb-v">Example E3: Analysis of the miscibility gap in Fe-C-N-Nb-V</a></p>
+</li>
+<li>
+<p><a href="#compatibility">Compatibility</a></p>
+</li>
+<li><a href="#objectives">Objectives</a></li>
+<li><a href="#related_documents">Related documents</a></li>
+<li><a href="#complementary_files">Complementary files</a></li>
+<li>
+<p><a href="#main_document">Main document</a></p>
+</li>
+<li>
+<p><a href="#setup_thermodynamics">Setup thermodynamics</a></p>
+</li>
+<li><a href="#first_complex_phase">First Complex phase</a></li>
+<li><a href="#second_complex_phase">Second complex phase</a></li>
+<li><a href="#special_problem_imajor_constituents_inconsistent">Special Problem I: Major constituents inconsistent</a></li>
+<li><a href="#special_problem_iino_miscibility_gap">Special Problem II: No miscibility gap</a></li>
+<li><a href="#consecutive_articles">Consecutive articles</a></li>
+</ul>
+<h1 id="example-e3-analysis-of-the-miscibility-gap-in-fe-c-n-nb-v">Example E3: Analysis of the miscibility gap in Fe-C-N-Nb-V</h1>
+<h2 id="compatibility">Compatibility</h2>
+<p>MatCalc version: 5.44.0015 <br />
+Database: mc_fe.tdb, mc_x_FeCNbVN.tdb <br />
+Author: Georg Stechauner<br />
+Created: 2011-09-27 <br />
+Revisions:</p>
+<h2 id="objectives">Objectives</h2>
+<p>This example was designed to create and manipulate composition sets and to analyze complex miscibility gaps. For demonstration of the related <em>MatCalc</em> features, we use the Fe-C-N-Nb-V System. This system exhibits a distinct miscibility gap for the complex (NbV)(CN) carbo-nitride.</p>
+<p>The example starts with describing the methodology for identification of miscibility gaps and explains how to seperate two different populations in <em>MatCalc</em>. A numerical problem involving local minima will occur in the example. Various solution strategies are discussed.</p>
+<p>The second part of the example involves two special problems. The first one demonstrates the “Use major constituents” option, the second one shows how changes in the chemical composition will make the miscibility gap disappear.</p>
+<h2 id="related-documents">Related documents</h2>
+<ul>
+<li><strong>E20</strong> - Thermodynamic equilibrium analysis for continuous casting simulation of micro-alloyed Fe-Al-C-N-Nb-Ti steel. Part E20-1 -  <a href="/examples/equilib/e20/e20_1" title="examples/equilib/e20/e20_1">Thermodynamic equilibrium analysis</a></li>
+</ul>
+<h2 id="complementary-files">Complementary files</h2>
+<p>Click  <a href="/examples/equilib/e3/script/e3_2017.mcs" title="examples/equilib/e3/script/e3_2017.mcs (14.9 KB)">here</a> to view the script for this tutorial.</p>
+<h1 id="main-document">Main document</h1>
+<h2 id="setup-thermodynamics">Setup thermodynamics</h2>
+<p>Start by setting up the thermodynamics. Use the mc_fe.tdb or the above listed example database and select the elements and phase according to the figure below.</p>
+<p><a href="/examples/equilib/e3/img/1_e3_thermodyn.png" title="examples/equilib/e3/img/1_e3_thermodyn.png"><img alt=" Database dialog for E3 " src="/examples/equilib/e3/img/1_e3_thermodyn.png" title="Database dialog for E3" /></a></p>
+<p>Open the composition window and enter the following values (in wt%):</p>
+<table>
+<thead>
+<tr>
+<th>C</th>
+<th>N</th>
+<th>Nb</th>
+<th>V</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.17</td>
+<td>0.01</td>
+<td>0.06</td>
+<td>0.21</td>
+</tr>
+</tbody>
+</table>
+<p>Calculate an equilibrium at 1500C.</p>
+<h2 id="first-complex-phase">First Complex phase</h2>
+<p>When looking at the phase details window, one observes instantaneously that <em>MatCalc</em> automatically creates a second phase with the name <code>FCC_A1#01</code>. This behavior is due to the following linein the database:</p>
+<pre><code> ADD_COMPOSITION_SET FCC_A1 :TI,NB,V:C,N: !
+</code></pre>
+<p>If the phase <code>FCC_A1</code> is selected, and at least one element of the substitutional sublattice (Ti, Nb, V) and one element of the interstitial sublattice (C, N) are selected, the FCC_A1#01 phase is automatically generated. The new phase represents the complex carbo-nitride phase, which is of fcc_a1 crystal lattice type, just like the matrix fcc_a1 phase.</p>
+<p><strong><em>Note …</em></strong></p>
+<p>In the CALPHAD approach, all phases with identical crystal structure are usually modeled as a single solution phase, which is why we have only selected the parent FCC_A1 phase from the database dialog. In the simulations, we then operate with two phases having identical thermodynamic data, but different chemical composition. The distinction between the phases is only made by the different <em>major constituents</em> of the two composition sets.</p>
+<p>Plot the phase fraction <code>F$FCC_A1#01</code> and the fraction of elements in phase <code>X$FCC_A1#01$*</code> over temperature in Celsius. Perform a stepped calculation from 1500 to 800C in intervals of 10C.</p>
+<p><a href="/examples/equilib/e3/img/2_e3_fraction-chem-1phase.png" title="examples/equilib/e3/img/2_e3_fraction-chem-1phase.png"><img alt=" Phase fraction with on phase" src="/examples/equilib/e3/img/2_e3_fraction-chem-1phase.png" title="Phase fraction with on phase" /></a></p>
+<p>This figure shows us that, at a temperature of about 1300C, a NbC carbide phase forms within the fcc_a1 parent matrix. At about 1070C, the phase fraction jumps up to a higher value and the slope is steeper than before. Simultaneously, the chemical composition of the complex carbo-nitride changes rapidly from a NbC-rich particle to a precipitate rich in V and C,N.</p>
+<p>This behavior is often a strong indication that a second sort of carbo-nitride will eventually become stable at this temperature. This is investigated next.</p>
+<h2 id="second-complex-phase">Second complex phase</h2>
+<p>Create the second carbo-nitride phase manually by opening the 'Phase status…' window and selecting the <code>FCC_A1</code> phase. Create an equilibrium phase, which will be called <code>FCC_A1#02</code>.</p>
+<p>As we have identified before, the first carbo-nitride phase is assumed to be NbC. Therefore, set the major constituents of</p>
+<pre><code>FCC_A1#01 to :Nb:C:
+</code></pre>
+<p>Press 'Set now' in the 'Phase status…' dialog and select 'yes'.</p>
+<p>When studying the figure above, we can see, that the phase, which starts to form at 1070C, seems to be composed of VN. Set the major constituents of</p>
+<pre><code>FCC_A1#02 to :V:N:
+</code></pre>
+<p>and press 'Set now' and 'yes' again.</p>
+<p>The phase details window should now look like this:</p>
+<p><a href="/examples/equilib/e3/img/3_e3_phasedetails.png" title="examples/equilib/e3/img/3_e3_phasedetails.png"><img alt=" Phase details after splitting the prior phase into two" src="/examples/equilib/e3/img/3_e3_phasedetails.png" title="Phase details after splitting the prior phase into two" /></a></p>
+<p><code>FCC_A1#01</code> now represents NbC, with a composition about 50%C and 50%Nb, whereas <code>FCC_A1#02</code>, which represents VN, is set to about 50%N and 50%V.
+Duplicate and lock all series from the phase fraction diagram, and remove the plot showing the chemical composition.</p>
+<p>Calculate an equilibrium again at 1500C and perform the stepped calculation as before.</p>
+<p><strong><em>Important note …</em></strong></p>
+<p>It is important to start the following calculation from the solution annealed state. Try afterwards calculating from a start temperature, where only one phase is stable. You will see the difference!</p>
+<p>Add two more plots and add <code>F$FCC_A1#02</code> to the phase fraction plot, <code>X$FCC_A1#01$*</code> and <code>X$FCC_A1#02$*</code> to the two new plots.</p>
+<p><a href="/examples/equilib/e3/img/4_phasefraction_chemie.png" title="examples/equilib/e3/img/4_phasefraction_chemie.png"><img alt=" Phase fraction and chemical composition of phases" src="/examples/equilib/e3/img/4_phasefraction_chemie.png" title="Phase fraction and chemical composition of phases" /></a></p>
+<p>From the figure showing the phase fractions, it can be directly observed that the previously calculated carbo-nitride <code>*F$FCC_A1#01</code> is almost the cumulative curve of NbC <code>FCC_A1#01</code> and VN <code>FCC_A1#02</code>.</p>
+<p>The other plots (chemical composition) show that NbC is stable over the entire temperature range. VN, on the other hand, transforms to a more stable VC at temperatures below 930C.</p>
+<h2 id="special-problem-i-major-constituents-inconsistent">Special Problem I: Major constituents inconsistent</h2>
+<p>To simulate the first problem, change the chemical composition to the following values (in wt%):</p>
+<table>
+<thead>
+<tr>
+<th>C</th>
+<th>N</th>
+<th>Nb</th>
+<th>V</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.3</td>
+<td>0.03</td>
+<td>0.2</td>
+<td>0.5</td>
+</tr>
+</tbody>
+</table>
+<p>Calculate an equilibrium at 1500 C and set automatic start values. Now perform a stepped calculation from 1500C to 800C in intervals of 10C. What you should see is an inconsistency at about 1250C. At this point, MatCalc is not sure, which phase should be NbC and VN. Therefore, we observe this spike in the diagrams.</p>
+<p><a href="/examples/equilib/e3/img/5_chemie-problem1.png" title="examples/equilib/e3/img/5_chemie-problem1.png"><img alt=" Chemical composition with inconsistency at 1250C" src="/examples/equilib/e3/img/5_chemie-problem1.png" title="Chemical composition with inconsistency at 1250C" /></a></p>
+<p>To enforce the use of the set major constituents more rigorously, we set the flag for 'enforce major constituents' in the 'Phase status…' windows.</p>
+<p><a href="/examples/equilib/e3/img/6_chemie-problem1-solved.png" title="examples/equilib/e3/img/6_chemie-problem1-solved.png"><img alt=" Chemical composition after enforcing major constituents" src="/examples/equilib/e3/img/6_chemie-problem1-solved.png" title="Chemical composition after enforcing major constituents" /></a></p>
+<p>After performing the same stepped calculation again, you should observe a plot, which is similar to the one of the first part of this example. However, the spike is supposed to be absent now.</p>
+<h2 id="special-problem-ii-no-miscibility-gap">Special Problem II: No miscibility gap</h2>
+<p>For the simulation of the second problem, close all plots and remove the 'Enforce major constituents…' flags. Set the chemical composition to (in wt%):</p>
+<table>
+<thead>
+<tr>
+<th>C</th>
+<th>N</th>
+<th>Nb</th>
+<th>V</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.17</td>
+<td>0.08</td>
+<td>0.06</td>
+<td>0.21</td>
+</tr>
+</tbody>
+</table>
+<p>Note how similar this alloy is compared to the first one. The only difference can be found in the higher amounts of nitrogen.</p>
+<p>After performing the stepped calculation, we observe that there is obviously no miscibility gap in this system. This is seen clearly in the phase fraction diagram (Go on! Plot one!), which is a curve, without any discontinuities in the phase fraction curve or rapid changes in the gradient.</p>
+<p><a href="/examples/equilib/e3/img/7-problem2-nomisc.png" title="examples/equilib/e3/img/7-problem2-nomisc.png"><img alt=" Phase fraction showing no miscibility gap; Chemical composition showing VN to be predominant" src="/examples/equilib/e3/img/7-problem2-nomisc.png" title="Phase fraction showing no miscibility gap; Chemical composition showing VN to be predominant" /></a></p>
+<p>Plotting the chemical composition shows that higher amounts of N stabilize the VN-rich precipitates and prevent the formation of NbC as a separate stable phase.</p>
+<h1 id="consecutive-articles">Consecutive articles</h1>
+<p>none</p>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=examples%3Aequilib%3Ae3&amp;1788352993" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

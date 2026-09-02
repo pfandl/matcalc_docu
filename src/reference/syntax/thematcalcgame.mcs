@@ -1,0 +1,176 @@
+$$************************************************************************************************** 
+************************************** GENERAL INFORMATION *****************************************
+****************************************************************************************************
+
+This 'example' is designed in form of a game and focused on the excessive and nested use of 
+conditions and loops. Throughout this example if-conditions, as well as while- and for-loops will
+find their use. Follow our hero on his journey into a castle, in order to rescue the princess from
+the claws of an old and mighty dragon.
+
+This example should serve everyone who wants to use loops and is not familiar with their 
+application. Note that no phases and chemical elements are selected as they are not needed.
+
+Content: - Excessive use of conditions and loops
+         - Creation of variables
+         
+Database: none
+Author: G. Stechauner
+Creation date: 2012-02-01
+This is a script for MatCalc version 5.44 (rel 0.021)
+
+
+**************************************************************************************************** 
+************************************** SETUP INFORMATION *******************************************
+**************************************************************************************************$$
+
+$ make sure we work in the correct module
+use-module core 
+
+$ creates a new workspace 
+new-workspace 
+
+@ echo n
+set-workspace-info + The MatCalc Game
+set-workspace-info +
+set-workspace-info + Phases: none
+set-workspace-info + Chemical components: none
+set-workspace-info + Characters: Hero, Princess and a Dragon
+set-workspace-info + 
+set-workspace-info + For further information visit www.matcalc.at
+set-workspace-info +
+echo y
+
+
+$$************************************************************************************************** 
+***************************************** GAME SETUP ***********************************************
+**************************************************************************************************$$
+
+$ Define all variables needed for the conditions and loops for first stage
+@ echo n
+set-variable-value while1 0                   $ Parameter for while-loop
+set-variable-value decision1 0                $ Value for first question
+set-variable-value decision2 0                $ Value for first question
+set-variable-value load2 1                    $ Parameter for loading/quitting at chpt 2
+set-variable-value random 1                   $ Random number 
+set-variable-value random ceil(rand*100)      $ Calculate a random number between 1 and 100
+set-variable-value i 1                        $ Variable for For-Loop
+set-variable-value tries 7
+set-variable-string tries_string %d           $ Variable tries as string
+format-variable-string tries_string %d tries  $ Value of tries_string gets value of tries
+set-variable-value guess 0                    $ Guess of player in the dragon's game
+ 
+
+$$************************************************************************************************** 
+***************************************** CHAPTER 1 ************************************************
+**************************************************************************************************$$
+
+@ echo n 
+send-dialog-string The night is dark and cold, as you stand in front of some migthy gates...
+send-dialog-string ... 'The princess is in there' you say to yourself. 'And I'm the only one who can rescue her!'
+send-dialog-string And thus our adventure begins...
+
+send-console-string ***********************************************************************
+send-console-string                              CHAPTER 1
+send-console-string ***********************************************************************
+send-console-string 
+send-console-string How do you want to start your glorious quest?
+send-console-string 
+send-console-string 1) Knock on the gates and demand entrance
+send-console-string 2) Swim through the moat and climb the walls
+send-console-string 3) Turn around and seek your adventure in the next tavern
+input-variable-value decision1 "Please enter your decision (1-3): "
+
+$$ Use a while loop to repeat a question as long as the answer is correct. To escape the loop, change
+    the checked value (while1) to a value un-equal 0. Use this e.g. to repeat your script, by putting 
+    the important code into a loop and asking the user if he wants to repeat in the end. Change the 
+    repeat value accordingly. $$
+while (while1==0)
+if (decision1==1)
+   send-dialog-string No one answers your bidings... You should rethink your decision!
+   send-console-string 
+   send-console-string 1) Swim through the moat and climb the walls
+   send-console-string 2) Turn around and seek your adventure in the next tavern
+   input-variable-value decision1 "Please enter your decision (1-2): "
+   set-variable-value decision1 decision1+1
+elseif (decision1==2)
+   send-dialog-string Even tough wet and stinky, you make it into the castle. Well done!
+   set-variable-value while1 1
+elseif (decision1==3)
+   send-dialog-string You art a true hero for choosing the joys of ale over the glory of saving the princess from the dragon's claws.
+   send-dialog-string Come back another day for another glorious quest.
+   stop-run-script
+else
+   send-dialog-string You cannot choose freely what to do! Stick with the narrators options!
+   stop-run-script
+endif
+endwhile
+
+
+$$************************************************************************************************** 
+***************************************** CHAPTER 2 ************************************************
+**************************************************************************************************$$
+
+
+send-dialog-string As you enter the castle square, you hear the screams of the princess behind a door right next to you, paired with the smell of sulfur in the air.
+while(load2==1)
+send-console-string
+send-console-string
+send-console-string ***********************************************************************
+send-console-string                              CHAPTER 2
+send-console-string ***********************************************************************
+send-console-string 
+send-console-string What are your plans?
+send-console-string 1) Try to open the door quietly and surprise the dragon
+send-console-string 2) Challenge the dragon by provoking him
+input-variable-value decision2 "Please enter your decision (1-2): "
+
+if (decision2==1)
+   send-dialog-string Upon quietly opening the door, the door hinges creak which makes the dragon aware of you. A searing flame ends your quest.
+   send-console-string
+   send-console-string Do you want ... 
+   send-console-string 1) ... load from the beginning of chapter 2
+   send-console-string 2) ... quit the game
+   input-variable-value load2 "Please enter your decision (1-2): "
+elseif(decision2==2)
+   send-dialog-string The dragon leaves his vault by flying up into the sky, followed by landing on the castle square behind you.
+   send-dialog-string He looks old and battle warren, but instead of attacking you, he asks you a riddle.
+   send-console-string
+   send-console-string
+   send-console-string 'Young hero, solve my riddle, and I will let you free the princess'.
+   send-console-string 'I think of a number between 1 and 100, and with no more than 8 tries you have to guess it right'.
+   send-console-string 'I will only tell you if your guess was lower, or higher than my number...'
+   send-console-string
+   set-variable-value random ceil(rand*100)
+   for(i;1..8)
+      send-console-string
+      input-variable-value guess "Enter your guess (1-100): "
+      if(guess==random)
+         send-dialog-string YOU DID IT! You've beat the dragon and rescued the princess. Now go to the tavern to enjoy the cold ale you have earned
+         stop-run-script
+      elseif(guess<random)
+         send-console-string 
+         send-console-string Your guess was too low. #tries_string tries left!
+         set-variable-value i i+1
+         set-variable-value tries tries-1
+         format-variable-string tries_string %d tries
+      elseif(guess>random)
+         send-console-string 
+         send-console-string Your guess was too high. #tries_string tries left!
+         set-variable-value i i+1  
+         set-variable-value tries tries-1
+         format-variable-string tries_string %d tries
+      endif
+   endfor
+   send-dialog-string You were not able to beat the dragon in his game and therefore he ate you. YUMMY!
+   set-variable-value tries 7
+   format-variable-string tries_string %d tries
+   send-console-string
+   send-console-string Do you want ... 
+   send-console-string 1) ... load from the beginning of chapter 2
+   send-console-string 2) ... quit the game
+   input-variable-value load2 "Please enter your decision (1-2): "
+else
+   send-dialog-string You cannot choose freely what to do! Stick with the narrators options!
+   stop-run-script
+endif
+endwhile

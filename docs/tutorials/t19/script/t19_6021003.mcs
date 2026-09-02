@@ -1,0 +1,275 @@
+$$************************************************************************************************** 
+************************************** GENERAL INFORMATION *****************************************
+****************************************************************************************************
+
+Scripting precipitation calculations according to Tutorial 19.
+The following contents will be covered:
+
+ - Setting up precipitation domains
+ - Setting up precipitate phases
+ - Scripting a complex heat-treatment
+ - Modifying precipiation parameters during heat-treatment
+ - Plotting using scripts
+ 
+The example used here uses the already familiar Fe-Nb-C system and considers a heat-treatment of an 
+initially well-annealed ferritic microstructure with no primary precipitates. Cementite is initially 
+allowed to nucleate on dislocations, and NbC on grain boundaries. The microstructure is heated into 
+the austenite phase stability region, held isothermally and then cooled quickly (quenched). On 
+quenching, a martensitic transformation occurs. This is modelled in MatCalc by a modification of the
+ferrite precipitation domain to increase the dislocation density as well as the addition of subgrains 
+as possible nucleation sites for the NbC phase. The system is then subjected to a tempering heat 
+treatment consisting of heating, isothermal hold and cooling stages.
+
+Database: mc_fe.tdb
+Author: V. Yardley
+Creation date: 20.02.2017
+Last update: 02.08.2019 (P. Warczok, Update for 6.02)
+This is a script for MatCalc version 6.02 (rel 1.003)
+
+Known issues:
+- "save-workspace "file-name"=Tutorial_19" is not working properly. Use "save-workspace Tutorial_19" instead.
+
+
+****************************************************************************************************
+************************************** SETUP INFORMATION *******************************************
+**************************************************************************************************$$
+
+use-module module-name=core 
+new-workspace                                                                                                                                                                                        $ creates a new workspace 
+
+if (matcalc_version<6000000)
+    send-dialog-string string="MatCalc version must be 6.00.0000 or higher to run this script. Stopping."
+    stop-run-script
+endif
+
+
+@$************************************
+$ enter workspace info
+@$************************************
+
+@set-workspace-info information=Script T19
+@set-workspace-info information=+Calculation of precipitation
+@set-workspace-info information=+in Fe-0.1C-0,7Nb wt.% system
+@set-workspace-info information=+during a complex heat treatment
+@set-workspace-info information=+with phases BCC_A2, FCC_A1 and CEMENTITE.
+
+
+$$************************************************************************************************** 
+                          DATABASES, CHEMICAL COMPOSITION, SELECTED PHASES
+**************************************************************************************************$$
+
+open-thermodynamic-database file-name=mc_fe.tdb                                                                                                                                                      $ Open thermodynamic database mc_fe.tdb      
+select-elements elements=FE C NB VA                                                                                                                                                                  $ Components: Fe, C, Nb, Va
+select-phases phases=BCC_A2 FCC_A1 CEMENTITE                                                                                                                                                         $ Phases: bcc, fcc, cementite      
+read-thermodynamic-database 
+
+read-mobility-database file-name=mc_fe.ddb                                                                                                                                                           $ Mobility database
+
+set-reference-element element=Fe
+enter-composition type=weight-percent composition=c=0.1 nb=0.7
+
+set-automatic-startvalues 
+set-temperature-celsius temperature=1000                                                                                                                                                             $ Temperature 1000C
+calculate-equilibrium                                                                                                                                                                                $ Initial equilibrium
+
+
+$$************************************************************************************************** 
+                                 PRECIPITATION DOMAIN AND PHASES
+**************************************************************************************************$$
+
+$ ---------------------------------- PRECIPITATION DOMAINS -----------------------------------------
+
+create-precipitation-domain new-domain-name=ferrite                                                                                                                                                  $ Create precipitation domain "ferrite"
+set-precipitation-parameter precipitate-or-domain-name=ferrite thermodynamic-matrix-phase=BCC_A2                                                                                                     $ Ferrite domain structure: bcc
+$ Equilibrium dislocation density set to 1e12 m-2
+set-precipitation-parameter precipitate-or-domain-name=ferrite equilibrium-dislocation-density=1e12
+$ Initial grain diameter set to 100e-6 m
+set-precipitation-parameter precipitate-or-domain-name=ferrite initial-grain-diameter=100e-6 
+$ Initial subgrain diameter set to 10e-6 m
+set-precipitation-parameter precipitate-or-domain-name=ferrite initial-subgrain-diameter=10e-6
+$ Subgrain elongation factor set to 10
+set-precipitation-parameter precipitate-or-domain-name=ferrite subgrain-elongation-factor=10 
+
+create-precipitation-domain new-domain-name=austenite                                                                                                                                                $ Create precipitation domain "austenite"
+set-precipitation-parameter precipitate-or-domain-name=austenite thermodynamic-matrix-phase=FCC_A1                                                                                                   $ Austenite domain structure: fcc
+$ Equilibrium dislocation density set to 1e12 m-2
+set-precipitation-parameter precipitate-or-domain-name=austenite equilibrium-dislocation-density=1e12
+$ Initial grain diameter set to 100e-6 m
+set-precipitation-parameter precipitate-or-domain-name=austenite initial-grain-diameter=100e-6 
+
+$ -------------------------------------- PRECIPITATES ----------------------------------------------
+
+create-new-phase parent-phase=CEMENTITE precipitate                                                                                                                                                  $ Create precipitate
+set-precipitation-parameter precipitate-or-domain-name=CEMENTITE_P0 number-of-size-classes=100                                                                                                       $ Size classes
+$ Nucleation sites for cementite precipitate set to dislocations
+set-precipitation-parameter precipitate-or-domain-name=CEMENTITE_P0 nucleation-sites=dislocations 
+$ Nucleus composition for cementite precipitate set to para-composition
+set-precipitation-parameter precipitate-or-domain-name=CEMENTITE_P0 nucleus-composition-model=para-composition 
+
+create-new-phase parent-phase=FCC_A1#01 precipitate                                                                                                                                                  $ Create precipitate
+set-precipitation-parameter precipitate-or-domain-name=FCC_A1#01_P0 number-of-size-classes=100                                                                                                       $ Size classes
+$ Nucleation sites for NbC precipitate set to grain boundaries
+set-precipitation-parameter precipitate-or-domain-name=FCC_A1#01_P0 nucleation-sites=grain-boundaries 
+$ Nucleus composition for NbC precipitate set to ortho-equilibrium
+set-precipitation-parameter precipitate-or-domain-name=FCC_A1#01_P0 nucleus-composition-model=ortho-composition 
+
+
+$$************************************************************************************************** 
+                                    THERMOMECHANICAL TREATMENT
+**************************************************************************************************$$
+
+$ ---------------------------------------- VARIABLES -----------------------------------------------
+
+set-variable-value variable=f_a_temp value=850                                                                                                                                                       $ ferrite-> austenite transformation temp. in C
+set-variable-value variable=a_f_temp value=600                                                                                                                                                       $ austenite-> ferrite transformation temp. in C
+set-variable-value variable=aus_temp value=1100                                                                                                                                                      $ austenitisation temp. in C
+set-variable-value variable=temp_temp value=600                                                                                                                                                      $ tempering temp. in C
+set-variable-value variable=rate_heat_to_aus value=1                                                                                                                                                 $ rate of heating to aus_temp in K/s
+set-variable-value variable=rate_cool_from_aus value=-10                                                                                                                                             $ rate of cooling from aus_temp in K/s
+set-variable-value variable=rate_heat_to_temp value=1                                                                                                                                                $ rate of heating to temp_temp in K/s
+set-variable-value variable=rate_cool_from_temp value=-1                                                                                                                                             $ rate of cooling from temp_temp in K/s
+set-variable-value variable=aus_time value=3600                                                                                                                                                      $ austenitisation time in seconds
+set-variable-value variable=temp_time value=7200                                                                                                                                                     $ tempering time in seconds
+
+$ --------------------------------- THERMOMECHANICAL TREATMENT --------------------------------------
+
+create-tm-treatment tm-treatment-name=sample_ht
+
+$ -------------------------------- AUSTENITISATION AND QUENCHING ------------------------------------
+
+append-tmt-segment tm-treatment-name=sample_ht                                                                                                                                                       $ Adding a segment to the heat treatment sequence
+edit-tmt-segment tm-treatment-name=sample_ht tm-treatment-segment=. segment-start-temperature=20                                                                                                     $ Start temperature
+edit-tmt-segment tm-treatment-name=sample_ht tm-treatment-segment=. T_end+T_dot segment-end-temperature=f_a_temp temperature-gradient=rate_heat_to_aus                                               $ End temperature and heating rate
+edit-tmt-segment tm-treatment-name=sample_ht tm-treatment-segment=. precipitation-domain=ferrite                                                                                                     $ Precipitation domain
+
+append-tmt-segment tm-treatment-name=sample_ht                                                                                                                                                       $ Adding a segment to the heat treatment sequence
+edit-tmt-segment tm-treatment-name=sample_ht tm-treatment-segment=. T_end+T_dot segment-end-temperature=aus_temp temperature-gradient=rate_heat_to_aus                                               $ End temperature and heating rate
+edit-tmt-segment tm-treatment-name=sample_ht tm-treatment-segment=. precipitation-domain=austenite                                                                                                   $ Precipitation domain
+
+append-tmt-segment tm-treatment-name=sample_ht                                                                                                                                                       $ Adding a segment to the heat treatment sequence
+edit-tmt-segment tm-treatment-name=sample_ht tm-treatment-segment=. T_end+delta_t segment-end-temperature=aus_temp segment-delta-time=aus_time                                                       $ End temperature and holding time
+edit-tmt-segment tm-treatment-name=sample_ht tm-treatment-segment=. precipitation-domain=austenite                                                                                                   $ Precipitation domain
+
+append-tmt-segment tm-treatment-name=sample_ht                                                                                                                                                       $ Adding a segment to the heat treatment sequence
+edit-tmt-segment tm-treatment-name=sample_ht tm-treatment-segment=. T_end+T_dot segment-end-temperature=a_f_temp temperature-gradient=rate_cool_from_aus                                             $ End temperature and cooling rate
+edit-tmt-segment tm-treatment-name=sample_ht tm-treatment-segment=. precipitation-domain=austenite                                                                                                   $ Precipitation domain
+
+append-tmt-segment tm-treatment-name=sample_ht                                                                                                                                                       $ Adding a segment to the heat treatment sequence
+edit-tmt-segment tm-treatment-name=sample_ht tm-treatment-segment=. T_end+T_dot segment-end-temperature=20 temperature-gradient=rate_cool_from_aus                                                   $ End temperature and cooling rate
+edit-tmt-segment tm-treatment-name=sample_ht tm-treatment-segment=. precipitation-domain=ferrite                                                                                                     $ Precipitation domain
+edit-tmt-segment tm-treatment-name=sample_ht tm-treatment-segment=. post-segment-command=+set-precipitation-parameter precipitate-or-domain-name=ferrite equilibrium-dislocation-density=1e14        $ Post-segment: Change the equilibrium dislocation density 
+edit-tmt-segment tm-treatment-name=sample_ht tm-treatment-segment=. post-segment-command=+set-precipitation-parameter precipitate-or-domain-name=FCC_A1#01_P0 nucleation-sites=subgrain-boundaries   $ Post-segment: Change the nucleation site
+
+$ --------------------------------------- TEMPERING -------------------------------------------------
+
+append-tmt-segment tm-treatment-name=sample_ht                                                                                                                                                       $ Adding a segment to the heat treatment sequence
+edit-tmt-segment tm-treatment-name=sample_ht tm-treatment-segment=. T_end+T_dot segment-end-temperature=temp_temp temperature-gradient=rate_heat_to_temp                                             $ End temperature and heating rate
+edit-tmt-segment tm-treatment-name=sample_ht tm-treatment-segment=. precipitation-domain=ferrite                                                                                                     $ Precipitation domain
+
+append-tmt-segment tm-treatment-name=sample_ht                                                                                                                                                       $ Adding a segment to the heat treatment sequence
+edit-tmt-segment tm-treatment-name=sample_ht tm-treatment-segment=. T_end+delta_t segment-end-temperature=temp_temp segment-delta-time=temp_time                                                     $ End temperature and holding time
+edit-tmt-segment tm-treatment-name=sample_ht tm-treatment-segment=. precipitation-domain=ferrite                                                                                                     $ Precipitation domain
+
+append-tmt-segment tm-treatment-name=sample_ht                                                                                                                                                       $ Adding a segment to the heat treatment sequence
+edit-tmt-segment tm-treatment-name=sample_ht tm-treatment-segment=. T_end+T_dot segment-end-temperature=20 temperature-gradient=rate_cool_from_temp                                                  $ End temperature and cooling rate
+edit-tmt-segment tm-treatment-name=sample_ht tm-treatment-segment=. precipitation-domain=ferrite                                                                                                     $ Precipitation domain
+
+
+$$************************************************************************************************** 
+                                       GRAPHICAL OUTPUT
+**************************************************************************************************$$
+
+new-gui-window type-id=p1
+set-gui-window-property window-id=. default-x-axis-title=Time [h]                                                                                                                                    $ Default x-axis title
+set-gui-window-property window-id=. default-x-axis-type=lin                                                                                                                                          $ Linear scale
+set-gui-window-property window-id=. default-x-axis-scaling=1e-10..                                                                                                                                   $ Scaling limit x-axis
+set-gui-window-property window-id=. default-x-axis-factor=1/3600                                                                                                                                     $ Multiplication factor s -> h
+set-plot-option plot-id=. series new buffer variable-name=T$C                                                                                                                                        $ Temperature in Celsius
+set-plot-option plot-id=. y-axis-title=Temperature [°C]                                                                                                                                              $ y-axis title
+set-plot-option plot-id=. legend-alignment=none                                                                                                                                                      $ No legend
+
+create-new-plot plot-type=xy-plot attach-to-window=.
+set-plot-option plot-id=. y-axis-title=Phase fraction     	                                                                                                                                         $ y-axis title
+$ New series: fraction of cementite precipitate phase
+set-plot-option plot-id=. series new buffer variable-name=F$CEMENTITE_P0 
+$ New series: fraction of NbC precipitate phase        
+set-plot-option plot-id=. series new buffer variable-name=F$FCC_A1#01_P0
+set-plot-option plot-id=. series rename series-index=0 new-name=Cementite                                                                                                                            $ Rename series -> "Cementite"
+set-plot-option plot-id=. series rename series-index=1 new-name=NbC                                                                                                                                  $ Rename series -> "NbC"
+
+create-new-plot plot-type=xy-plot attach-to-window=.
+set-plot-option plot-id=. y-axis-title=N<sub>ppt</sub> [m<sup>-3</sup>]                                                                                                                              $ y-axis title
+set-plot-option plot-id=. y-axis-type=log                                                                                                                                                            $ Log scale on y-axis
+set-plot-option plot-id=. series new buffer variable-name=NUM_PREC$CEMENTITE_P0
+set-plot-option plot-id=. series new buffer variable-name=NUM_PREC$FCC_A1#01_P0 
+set-plot-option plot-id=. series rename series-index=0 new-name=Cementite                                                                                                                            $ Rename series in plot -> "Cementite"
+set-plot-option plot-id=. series rename series-index=1 new-name=NbC                                                                                                                                  $ Rename series in plot -> "NbC"
+
+create-new-plot plot-type=xy-plot attach-to-window=.
+$ Plotting the mean radius 
+set-plot-option plot-id=. y-axis-title=R<sub>mean</sub> [m]                                                                                                                                          $ y-axis title
+set-plot-option plot-id=. y-axis-type=log                                                                                                                                                            $ Logarithmic scale on y-axis
+set-plot-option plot-id=. series new buffer variable-name=R_MEAN$CEMENTITE_P0     
+set-plot-option plot-id=. series new buffer variable-name=R_MEAN$FCC_A1#01_P0  
+set-plot-option plot-id=. series rename series-index=0 new-name=Cementite                                                                                                                            $ Rename series in plot -> "Cementite"
+set-plot-option plot-id=. series rename series-index=1 new-name=NbC                                                                                                                                  $ Rename series in plot --> "NbC"
+
+$ Major gridlines for both x- and y-axes of all plots
+set-plot-option plot-id=1 grid which-grid=major enable-x-axis=yes 
+set-plot-option plot-id=1 grid which-grid=major enable-y-axis=yes  
+set-plot-option plot-id=2 grid which-grid=major enable-x-axis=yes   
+set-plot-option plot-id=2 grid which-grid=major enable-y-axis=yes     
+set-plot-option plot-id=3 grid which-grid=major enable-x-axis=yes        
+set-plot-option plot-id=3 grid which-grid=major enable-y-axis=yes     
+set-plot-option plot-id=4 grid which-grid=major enable-x-axis=yes      
+set-plot-option plot-id=4 grid which-grid=major enable-y-axis=yes 
+
+new-gui-window p5                                                                                                                                                                                    $ Histogram
+set-gui-window-property window-id=. default-x-axis-title=Precipitate radius [nm]                                                                                                                     $ x-axis title
+set-gui-window-property window-id=. default-x-axis-factor=1e9                                                                                                                                        $ Multiplication factor
+set-plot-option plot-id=. series new precipitate-distribution phase-name=CEMENTITE_P0                                                                                                                $ New series
+set-plot-option plot-id=. histogram number-of-size-classes=20                                                                                                                                        $ Number of histogram classes set to 20
+set-plot-option plot-id=. plot-title=Cementite precipitate distribution                                                                                                                              $ plot title
+set-plot-option plot-id=. y-axis-title=Number density of precipitates  [m<sup>-3</sup>]                                                                                                              $ y-axis title
+set-plot-option plot-id=. legend-alignment=none                                                                                                                                                      $ No legend box
+
+new-gui-window p5                                                                                                                                                                                    $ Histogram
+set-gui-window-property window-id=. default-x-axis-title=Precipitate radius [nm]                                                                                                                     $ x-axis title
+set-gui-window-property window-id=. default-x-axis-factor=1e9                                                                                                                                        $ Multiplication [f]actor
+set-plot-option plot-id=. series new precipitate-distribution phase-name=FCC_A1#01_P0                                                                                                                $ New series
+set-plot-option plot-id=. histogram number-of-size-classes=20                                                                                                                                        $ number of classes
+set-plot-option plot-id=. plot-title=NbC precipitate distribution                                                                                                                                    $ plot title
+set-plot-option plot-id=. y-axis-title= Number density of precipitates  [m<sup>-3</sup>]                                                                                                             $ y-axis title 
+set-plot-option plot-id=. legend-alignment=none                                                                                                                                                      $ No legend box
+
+
+$$************************************************************************************************** 
+                                       KINETIC CALCULATION
+**************************************************************************************************$$
+
+set-simulation-parameter end-time=7200                                                                                                                                                               $ Simulation end time in s 
+set-simulation-parameter isothermal-temperature=600                                                                                                                                                  $ Isothermal - temperature   
+set-simulation-parameter temperature-in-C=yes                                                                                                                                                        $ Temperature in Celsius
+start-precipitate-simulation
+
+set-simulation-parameter tm-treatment-name=sample_ht
+start-precipitate-simulation
+
+
+$$************************************************************************************************** 
+                                         SAVING WORKSPACE
+**************************************************************************************************$$
+
+$save-workspace "file-name"=Tutorial_19
+save-workspace Tutorial_19     
+
+
+$$************************************************************************************************** 
+                                          EXPORTING PLOTS
+**************************************************************************************************$$
+
+export-frame-to-file window-id=2 format=png file-name=t19_xy_plots
+export-frame-to-file window-id=3 format=png file-name=t19_histo_cementite
+export-plot-to-file plot-id=4 format=png file-name=t19_r_mean
+
+

@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>T23 - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "T23";
+        var mkdocs_page_input_path = "tutorials/t23.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">T23</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#t23introduction_to_cell_simulationslong-range_diffusion">T23: Introduction to cell simulations: long-range diffusion</a></p>
+</li>
+<li>
+<p><a href="#complementary_files">Complementary files</a></p>
+</li>
+<li><a href="#contents">Contents</a></li>
+<li><a href="#description_of_the_problem">Description of the problem</a></li>
+<li>
+<p><a href="#setting_up_the_system">Setting up the system</a></p>
+</li>
+<li>
+<p><a href="#a_thermodynamic_and_kinetic_setup">a. Thermodynamic and kinetic setup</a></p>
+</li>
+<li><a href="#b_precipitation_domain_setup">b. Precipitation domain setup</a></li>
+<li><a href="#c_creating_the_simulation_grid">c. Creating the simulation grid</a></li>
+<li><a href="#d_assigning_properties_to_the_cells">d. Assigning properties to the cells</a></li>
+<li><a href="#e_display">e. Display</a></li>
+<li><a href="#f_analytical_solution">f. Analytical solution</a></li>
+<li><a href="#g_setting_up_and_running_the_simulation">g. Setting up and running the simulation</a></li>
+<li><a href="#interpreting_the_results">Interpreting the results</a></li>
+<li><a href="#subsequent_articles">Subsequent articles</a></li>
+</ul>
+<h2 id="t23-introduction-to-cell-simulations-long-range-diffusion">T23: Introduction to cell simulations: long-range diffusion</h2>
+<p><em>This tutorial was tested on<br />
+MatCalc version 6.04 rel 1.002<br />
+license: free<br />
+database: mc_fe.tdb; mc_fe.ddb</em></p>
+<h3 id="complementary-files">Complementary files</h3>
+<p>Click <a href="/tutorials/t23/script/t23_6021003.mcs" title="tutorials/t23/script/t23_6021003.mcs (18.7 KB)">here</a> to view the script for this tutorial.</p>
+<h3 id="contents">Contents</h3>
+<ul>
+<li>setting up a simulation grid</li>
+<li>assigning properties to cells</li>
+<li>setting up display of cell simulation results</li>
+<li>setting up simulation parameters</li>
+<li>boundary conditions</li>
+</ul>
+<p>MatCalc can be used to carry out simulations of long-range diffusion problems, and problems in which diffusion is coupled with precipitation, using a finite-element method with the system divided into a number of cells. Many examples of the application of this functionality, in different systems and with different boundary conditions, can be found in the  <a href="/examples/diffusion" title="examples/diffusion">relevant part of the 'Examples' section</a>. The present tutorial demonstrates a simple case for which an analytical solution of Fick’s 2nd Law is available. The numerical and analytical solutions are compared.</p>
+<p>The functionality for setting up and running diffusion simulations is only available through the scripting language and not through the GUI. This tutorial therefore also serves as a refresher for some of the basic scripting commands that we have already encountered, as well as introducing the new commands needed to set up and run diffusion simulations.</p>
+<h2 id="description-of-the-problem">Description of the problem</h2>
+<p>Fick's Second Law of Diffusion is a partial differential equation of the form:</p>
+<div class="arithmatex">\[ \left({\partial C \over \partial t}\right) = D . \left({\partial^2 C \over \partial x^2}\right) \]</div>
+<p>where <span class="arithmatex">\(D\)</span> is the diffusion coefficient, which is here assumed to be independent of concentration. This equation can be solved to give the concentration <span class="arithmatex">\(C\)</span> of the diffusing species as a function of distance <span class="arithmatex">\(x\)</span> and time <span class="arithmatex">\(t\)</span>. The form of the solution depends on the boundary conditions. In most cases, a numerical solution using finite-difference or finite-element methods is required, but there are some special cases in which an analytical solution is also available.</p>
+<p>One of these is the thin-film solution, in which an very thin layer containing a finite amount of the diffusing species is sandwiched between two semi-infinite bars of material. The boundary conditions are that:</p>
+<ul>
+<li>
+<p>initially, the concentration of the solute in the bar is zero; this is expressed mathematically as $ C{x=0,t=0}=0$ , where <span class="arithmatex">\(x\)</span> is the distance from the midpoint marked by the central black vertical line in the diagram below, and</p>
+</li>
+<li>
+<p>the total amount of solute is finite and constant throughout the time period considered; this is expressed mathematically as</p>
+</li>
+</ul>
+<p>[\int_{-\infty}^{\infty} C {x,t} \mathrm{d}x = B,] where <span class="arithmatex">\(B\)</span> represents the amount of solute in the system.</p>
+<p><a href="/tutorials/t23/img/t23_problem_schematic.png" title="tutorials/t23/img/t23_problem_schematic.png"><img alt="" src="/tutorials/t23/img/t23_problem_schematic.png" /></a></p>
+<p>The standard solution when the boundary conditions are of this type is of Gaussian form:</p>
+<div class="arithmatex">\[ C\{x,t\} = {B \over 2 \sqrt{\pi D t}} . \mathrm{exp}\left({-x^2 \over 4 D t}\right) \]</div>
+<p>In this tutorial, we will set up a cell-based numerical simulation of a situation that fulfils these conditions to a reasonably good approximation, i.e. a thin layer of FCC iron with a relatively high carbon content sandwiched between two bars of FCC iron with a very low carbon content. The results of this simulation will be compared with those obtained using the analytical solution.</p>
+<h2 id="setting-up-the-system">Setting up the system</h2>
+<p>Start MatCalc and create a new script file as explained in <a href="/tutorials/t13" title="tutorials/t13">Tutorial 13</a>.</p>
+<h3 id="a-thermodynamic-and-kinetic-setup">a. Thermodynamic and kinetic setup</h3>
+<p>The first task that the script must perform is to create a new MatCalc workspace. Type the following command into your script window:</p>
+<pre><code>use-module core
+</code></pre>
+<p>This tells MatCalc to use the <em>core module</em>, which it selects at the begining by default anyway; later in this tutorial we will see the use of the <em>simulation module</em>.</p>
+<pre><code>new-workspace
+</code></pre>
+<p>This creates a new workspace. If an existing unsaved workspace is open when the script is run, you will be prompted to save it. To disable this prompt, append <code>f</code> to the <code>new-workspace</code> command.</p>
+<p>Some workspace information can be added as shown:</p>
+<pre><code>@$************************************
+$ enter workspace info
+@$************************************
+@ set-workspace-info Script T23
+@ set-workspace-info +Simulation of long-range diffusion of C
+@ set-workspace-info +out of thin film
+@ set-workspace-info +with matrix phase FCC_A1.
+</code></pre>
+<p>The next step is to set up the thermodynamic and kinetic data. Enter the following commands into your script window and save the script.</p>
+<pre><code>open-thermodyn-database mc_fe.tdb
+select-elements fe c
+select-phases FCC_A1
+read-thermodyn-database
+read-mobility-database mc_fe.ddb
+</code></pre>
+<p>Following this, define the variables that will specify the initial carbon content in the bar (<code>c_comp_bar_wp</code>) and the thin layer (<code>c_comp_layer_wp</code>) so that these can be used later. Note that the carbon content of the bar is set to be very low, but for numerical reasons it is not advisable to set this to exactly zero.</p>
+<pre><code>set-variable-value c_comp_bar_wp 1e-10
+set-variable-value c_comp_layer_wp 0.8
+</code></pre>
+<p>In the cell simulation, compositions must be entered in molar notation <code>un$c</code>. The code below enables you to enter a composition in weight percent (<code>wp</code>) and then save the composition in mole fraction as a variable for use in the cell simulation.</p>
+<pre><code>enter-composition wp c=c_comp_bar_wp
+set-variable-value c_comp_bar un$c
+enter-composition wp c=c_comp_layer_wp
+set-variable-value c_comp_layer un$c
+</code></pre>
+<p>Then set a temperature and calculate an equilibrium to initialise the system and check that everything is working OK.</p>
+<pre><code>set-temperature-celsius 1000
+calculate-equilibrium
+</code></pre>
+<p>At this stage, also specify the simulation time (in seconds) for subsequent use:</p>
+<pre><code>set-variable-value sim_time 1e7
+</code></pre>
+<p>Save the script. It is recommended to test it out at this stage to catch any typing errors before going further.</p>
+<h3 id="b-precipitation-domain-setup">b. Precipitation domain setup</h3>
+<p>Before setting up the cell simulation, you must define a <em>precipitation domain</em>, i.e. a matrix of phase FCC_A1; this is necessary for subsequent use in the cell simulation.</p>
+<pre><code>create-precipitation-domain aus_domain
+set-precipitation-parameter aus_domain X FCC_A1
+</code></pre>
+<h3 id="c-creating-the-simulation-grid">c. Creating the simulation grid</h3>
+<p>The next step is to set up the cell simulation. First change to the <em>simulation</em> module:</p>
+<pre><code>use-module simulation
+</code></pre>
+<p>Define a variable representing the number of cells:</p>
+<pre><code>set-variable-value num_cells_x 99
+</code></pre>
+<p>Then create a simulation grid using the command:</p>
+<pre><code>create-simulation-grid num_cells_x 1 1
+</code></pre>
+<p>The three numbers here represent the number of cells in the x-, y- and z-directions, respectively. Define a variable representing the length of the bar:</p>
+<pre><code>set-variable-value barlength 0.099
+</code></pre>
+<p>Specify the dimensions in these directions (in m) using the command:</p>
+<pre><code>set-grid-coordinates barlength 1 1
+</code></pre>
+<p>and the geometry of the grid, using the command:</p>
+<pre><code>set-grid-geometry p
+</code></pre>
+<p>The three geometry options are:</p>
+<ul>
+<li>p - planar</li>
+<li>c - cylindrical</li>
+<li>s - spherical</li>
+</ul>
+<p>To visualise this grid, create a new window of the type g5 (Paint grid/ 2D cells):</p>
+<pre><code>new-gui-window g5
+</code></pre>
+<p>Give this window a name so that it can be referred to easily later. The variable <code>active_frame_id</code> used here is one of MatCalc's internal variables; see <a href="/reference/internal" title="reference/internal">the section of the Reference book on internal variables</a> for details.</p>
+<pre><code>set-variable-value paint_window_id active_frame_id
+</code></pre>
+<p>Modify the position, size and zoom level using the following two commands:</p>
+<pre><code>move-gui-window paint_window_id 0 100 750 160 $ change position and size
+set-gui-window-property paint_window_id i Z 200 $ zoom 200%
+</code></pre>
+<p>The grid should now look as shown:</p>
+<p><a href="/tutorials/t23/img/t23_grid.png" title="tutorials/t23/img/t23_grid.png"><img alt="" src="/tutorials/t23/img/t23_grid.png" /></a></p>
+<p>In the next section, properties will be assigned to the cells in the grid.</p>
+<h3 id="d-assigning-properties-to-the-cells">d. Assigning properties to the cells</h3>
+<p>For the diffusion simulation, it is necessary to create a <em>material</em> and assign to this the <em>precipitation domain</em> called <code>aus_domain</code> that was created above:</p>
+<pre><code>create-material aus_material
+set-material-property aus_material G D aus_domain 
+$ [g]eneral properties: [d]omain
+</code></pre>
+<p>Then set the diffusion coefficient. Here, a user-specified value is used, instead of one calculated using information from the database, to better facilitate comparison with the analytical solution. The diffusion coefficient is stored in a variable for later use. The syntax below means [d]iffusion [c]oefficient of [c]arbon, [f]unction or expression.</p>
+<pre><code>set-variable-value diffCoeff 1e-12
+set-material-property aus_material D C C F diffCoeff
+$[d]iffusion [c]oefficient of [c]arbon, [f]unction or expression
+</code></pre>
+<p>Following this, assign properties to the cells. Using the syntax below, the material <code>aus_material</code> is attached to all the cells.</p>
+<pre><code>set-cell-property a m aus_material $[a]ll cells, [m]aterial
+</code></pre>
+<p>Set the temperature of all cells to 1000˚C, by first specifying that the temperatures should be in ˚C:</p>
+<pre><code>set-simulation-parameter N Y
+</code></pre>
+<p>specifying the temperature in the form of a variable:</p>
+<pre><code>set-variable-value sim_temp 1000
+</code></pre>
+<p>and then attaching this temperature property to all cells:</p>
+<pre><code>set-cell-property a V T sim_temp $ [a]ll cells, [v]ariable, [t]emperature
+</code></pre>
+<p>Assign the lower carbon content, <code>c_comp_bar</code>, to all cells.</p>
+<pre><code>set-cell-property a V C C c_comp_bar 
+$ [a]ll cells, [v]ariable, [c]omposition [c]arbon
+</code></pre>
+<p>The next stage is to select the cell in the middle of the bar using its cell index. First, we note that the first cell has the index 0, so the highest cell index in the array obtained using:</p>
+<pre><code>set-variable-value max_cell_index num_cells_x-1
+</code></pre>
+<p>and the index of the cell in the middle is given by:</p>
+<pre><code>set-variable-value middle_cell_index max_cell_index/2
+</code></pre>
+<p>Then select the cell in the centre by its c[e]ll index:</p>
+<pre><code>add-cell-selection E middle_cell_index $ select the cell in the centre.
+</code></pre>
+<p>Assign the higher carbon content, <code>c_comp_layer</code>, to the selected cell (denoted by an asterisk).</p>
+<pre><code>set-cell-property * V C C c_comp_layer
+</code></pre>
+<p>The g5 window shows, by default, the selected cell(s) in blue:</p>
+<p><a href="/tutorials/t23/img/t23_grid_selection.png" title="tutorials/t23/img/t23_grid_selection.png"><img alt="" src="/tutorials/t23/img/t23_grid_selection.png" /></a></p>
+<h3 id="e-display">e. Display</h3>
+<p>The next stage is to set up the graphical display to look at the results. Firstly, assign a property to the existing paint window created above, <code>paint_window_id</code> so that the cells are coloured according to their carbon content.</p>
+<pre><code>set-gui-window-property paint_window_id I W V $ display cell variable
+set-gui-window-property paint_window_id I V _cwp$c $ set which variable
+set-gui-window-property paint_window_id I R 0..1
+</code></pre>
+<p>In the first line in the code above, the syntax represents s[i]mulation results, display [w]hat, [v]ariable. In the second, the [v]ariable is specified as <code>_cwp$c</code>, and in the third, the [r]ange is specified. The variable syntax <code>_cwp$c</code> represents the set of values of <code>wp$c</code> (weight percent of carbon) in the cells. Variables of this type can be found in the <strong>variables</strong> window under <strong>cafe: cells</strong>.</p>
+<p>The cell array is shown schematically below, where blue represents a lower carbon content, and yellow a higher.</p>
+<p><a href="/tutorials/t23/img/t23_grid_c_initial.png" title="tutorials/t23/img/t23_grid_c_initial.png"><img alt="" src="/tutorials/t23/img/t23_grid_c_initial.png" /></a></p>
+<p>In addition, make a profile plot of the carbon content. Create a window of type <strong>g1: plot grid: 1D profile</strong>.</p>
+<pre><code>new-gui-window g1
+</code></pre>
+<p>Assign a name to both the plot window and the plot itself:</p>
+<pre><code>set-variable-value profile_window_id active_frame_id 
+set-variable-value profile_plot_id last_plot_id
+</code></pre>
+<p>Add a [s]eries, [n]ew of the [s]imulation variable <code>_cwp$c</code>.</p>
+<pre><code>set-plot-option profile_plot_id S N S _cwp$c
+</code></pre>
+<p>Specify that the default x-axis should be used, and give it a title:</p>
+<pre><code>set-gui-window-property profile_window_id S U Y 
+set-gui-window-property profile_window_id S T Position [m]
+</code></pre>
+<p>Label the y-axis and specify its range:</p>
+<pre><code>set-plot-option profile_plot_id A Y 1 T Carbon content [wt.%]
+set-plot-option profile_plot_id A Y 1 S 0..c_comp_layer_wp
+</code></pre>
+<p>Give the plotted series the name 'Numerical':</p>
+<pre><code>set-plot-option profile_plot_id S M 0 Numerical
+</code></pre>
+<p>Specify the range of cells over which the profile is to be taken. In the syntax here, the first line gives the index of the s[t]arting cell (here 0) and the second line gives the index of the st[o]p cell (here max_cell_index).</p>
+<pre><code>set-gui-window-property profile_window_id I t 0
+set-gui-window-property profile_window_id I o max_cell_index
+</code></pre>
+<p>Give the window an appropriate size:</p>
+<pre><code>move-gui-window profile_window_id 20 20 600 400
+</code></pre>
+<p>The plot should look as shown:</p>
+<p><a href="/tutorials/t23/img/t23_plot_c_initial.png" title="tutorials/t23/img/t23_plot_c_initial.png"><img alt="" src="/tutorials/t23/img/t23_plot_c_initial.png" /></a></p>
+<p>We will now create a third window to display the time-dependent evolution of the carbon concentration in selected cells. The required window type is <strong>g2: Plot grid: cell history</strong>. Create the window and assign a name to the window and plot.</p>
+<pre><code>new-gui-window g2
+set-variable-value history_window_id active_frame_id 
+set-variable-value history_plot_id last_plot_id
+</code></pre>
+<p>Use the following commands to specify that the default x-axis should be used and to assign it a title and a range.</p>
+<pre><code>set-gui-window-property history_window_id S U Y  $use default x-axis
+set-gui-window-property history_window_id S T Time [s]
+set-gui-window-property history_window_id S S 0..sim_time
+</code></pre>
+<p>Label the y-axis and specify its range:</p>
+<pre><code>set-plot-option history_plot_id A Y 1 T Carbon content [wt.%]
+set-plot-option history_plot_id A Y 1 S 0..c_comp_layer_wp
+</code></pre>
+<p>Now add two series, firstly the composition of the middle cell, and then that of the cell adjacent to it. <img alt=":!:" src="/wiki/lib/images/smileys/exclaim.svg" /></p>
+<pre><code>set-plot-option history_plot_id S N S _cwp$c{middle_cell_index}
+set-plot-option history_plot_id S N S _cwp$c{middle_cell_index-1}
+</code></pre>
+<p>Give these series titles. Note that the quotation marks are needed for a multi-word title, as in the case of the series 'next to centre'</p>
+<pre><code>set-plot-option history_plot_id S M 0 centre 
+set-plot-option history_plot_id S M 1 'next to centre'
+</code></pre>
+<p>Finally, resize and move the history plot.</p>
+<pre><code>move-gui-window history_window_id 800 20 600 400
+</code></pre>
+<h3 id="f-analytical-solution">f. Analytical solution</h3>
+<p>In the final stage before setting up and running the simulation, the analytical solution will be added to the existing profile plot. Since the expression is rather complicated, it will be divided up into simpler terms:</p>
+<p><code>Bval*term_1*term_2</code></p>
+<p>where <code>Bval</code> represents the integral giving the amount of solute in the system:</p>
+<div class="arithmatex">\[B = \int\_{-\infty}^{\infty} C \{x,t\} \mathrm{d}x,\]</div>
+<p><code>term_1</code> is the term</p>
+<div class="arithmatex">\[ {1 \over 2 \sqrt{\pi D t}} \]</div>
+<p>and <code>term_2</code> is the term</p>
+<div class="arithmatex">\[ \mathrm{exp}\left({-x^2 \over 4 D t}\right) \]</div>
+<p>The value of the term <span class="arithmatex">\(B\)</span> can be estimated by assuming that the initial concentration of carbon in the bar is small enough to be neglected, such that initially all the carbon is in the layer in the middle of the bar. The value of <span class="arithmatex">\(B\)</span> is then simply the carbon concentration in the layer (in the units in which the curve is to be plotted, here weight percent, <code>c_comp_layer_wp</code>), multiplied by the width of the layer. The layer is one cell wide, i.e. the bar length divided by the number of cells.</p>
+<pre><code>set-variable-value Bval c_comp_layer_wp*(barlength/num_cells_x)
+</code></pre>
+<p>The cell variables (prefixed with <strong><code>_c</code></strong>) that we have seen earlier in this tutorial can be included in variables and functions. For example, <code>term_1</code> uses the cell variable <code>_ctime</code> to represent the time in the cell simulation. The variable <code>diffCoeff</code> was defined above, and <code>pi</code> is a built-in variable. (For details of the built-in variables of MatCalc, consult <a href="/reference/internal" title="reference/internal">the section of the Reference Book on internal variables</a>.)</p>
+<pre><code>set-function-expression term_1 1/(2*sqrt(pi*diffCoeff*_ctime))
+</code></pre>
+<p>It should be noted that the term <em>x</em> in the mathematical formulation of the analytical expression is measured from the centre of the range, whereas the cell variable corresponding to the x-position of the centre of the cells, <code>_ccenter_x</code>, is measured from the left-hand side of the system. We must therefore create an expression for the shifted x-coordinate:</p>
+<pre><code>set-variable-value midpt barlength/2
+set-function-expression x_shifted _ccenter_x-midpt
+set-function-expression term_2 exp((-1*x_shifted**2)/(4*diffCoeff*_ctime))
+</code></pre>
+<p>The analytical expression is then given by:</p>
+<pre><code>set-function-expression analytical_expr Bval*term_1*term_2
+</code></pre>
+<p>and this series is plotted onto the existing profile plot using the command:</p>
+<pre><code>set-plot-option profile_plot_id S N F analytical_expr 0..barlength
+</code></pre>
+<p>The <code>0..barlength</code> expression in the command above represents the range over which the function is to be evaluated; this corresponds to the length of the bar.</p>
+<p>Note that when the analytical expression is first plotted, it looks slightly strange. This is because the time is initially zero, leading to a value of zero in the denominator of the first term, <code>term_1</code>.</p>
+<h3 id="g-setting-up-and-running-the-simulation">g. Setting up and running the simulation</h3>
+<p>The final set of commands deals with the simulation time and temperature, boundary conditions, type of simulation and update interval.</p>
+<pre><code>set-simulation-parameter e sim_time $ end
+</code></pre>
+<p>Specify the update interval:</p>
+<pre><code>set-simulation-parameter u 10 $ update interval
+</code></pre>
+<p>It is now necessary to tell the simulation module what type of problem should be simulated, i.e. how temperature and diffusion should be treated. In this case, we wish to simulate a <strong>diffusion-field problem</strong>, in which the elements are allowed to diffuse through the system:</p>
+<pre><code>set-simulation-parameter d f $ diffusion-field simulation
+</code></pre>
+<p>The temperature control, by contrast, is set to be isothermal and the hold temperature specified in terms of the variable <code>sim_temp</code> set earlier.</p>
+<pre><code>set-simulation-parameter t i sim_temp $ temperature: isothermal
+</code></pre>
+<p>The final step is to set up the default boundary conditions, i.e. the boundary conditions that apply in the absence of any other boundary conditions being set for specific cells or groups of cells. The type of boundary condition required is [g]eometric, and is set to [o]pen to environment. This means that there is no periodicity or symmetry.</p>
+<pre><code>set-default-boundary-cond G O $ open to environment.
+</code></pre>
+<p>Save the script.</p>
+<p>To run the script, click on <strong>Script &gt; Run Script</strong>, press <strong>Shift + F2</strong> or click on the <a href="/tutorials/t13/img/icon_run_script.png" title="tutorials/t13/img/icon_run_script.png"><img alt="Run Script" src="/tutorials/t13/img/icon_run_script.png" title="Run Script" /></a> button. Then select the name of the script you wish to run from the drop-down menu and click on <strong>Go</strong>.</p>
+<p>When the script has been correctly executed, select <strong>Simulation &gt; Start simulation</strong> or press <strong>Ctrl + J</strong> to start the simulation. Output will appear in the Console, starting with:</p>
+<pre><code>#####################################################################
+
+ starting microstructure simulation ...
+
+#####################################################################
+</code></pre>
+<p>and finishing with:</p>
+<pre><code>####################################################################################################
+
+
+microstructure simulation finished in 59.07 secs (tot 59.07 secs) on Fri, 2016-06-10, 17:57:34 
+
+
+####################################################################################################
+</code></pre>
+<h2 id="interpreting-the-results">Interpreting the results</h2>
+<p>You will notice that, at first, the peak value of the analytical expression is much higher than the maximum value of 0.8 wt. % in the numerical simulation. The reason for this is that the analytical solution is based on the assumption that all the carbon is initially in an infinitesimally thin layer, whereas in the numerical solution, we have put the carbon into a cell of finite thickness. As the simulation proceeds, the two curves start to approach each other until they eventually almost exactly coincide. By default, the profile plot is set to show a 'stepped' profile in which the concentration is shown as discrete values corresponding to the single concentration value assigned to each cell. In the <strong>options</strong> window for this plot, select <strong>no</strong> under <strong>use steps</strong> to instead see a smooth curve that may enable easier comparison with the analytical curve.</p>
+<p>When the simulation is finished, you can examine the profiles at different times by looking at <strong>Global &gt; Buffers &gt; Edit Buffer States</strong>. You can obtain a set of profiles as shown below by loading up selected buffer states and using ‘Duplicate and Lock all Series’ on the plot right-click menu.</p>
+<p><a href="/tutorials/t23/img/t23_plot_c_series.png" title="tutorials/t23/img/t23_plot_c_series.png"><img alt="" src="/tutorials/t23/img/t23_plot_c_series.png" /></a></p>
+<p>On the cell history plot, you should be able to see how the carbon concentration of the central cell decreases, while that of the adjacent cell decreases, until at longer exposure times, they converge.</p>
+<p><a href="/tutorials/t23/img/t23_symmetric_history.png" title="tutorials/t23/img/t23_symmetric_history.png"><img alt="" src="/tutorials/t23/img/t23_symmetric_history.png" /></a></p>
+<h2 id="subsequent-articles">Subsequent articles</h2>
+<p>Go to the <a href="/tutorials" title="tutorials">MatCalc tutorial index</a>.</p>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=tutorials%3At23&amp;1788352861" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,188 @@
+$$************************************************************************************************** 
+************************************** GENERAL INFORMATION *****************************************
+****************************************************************************************************
+
+Script for introduction to precipitation calculations according to Tutorial 14.
+The following contents will be covered:
+
+ - Precipitation of cementite in a ferritic matrix in Fe-0.2 wt.% C
+ - Creating a precipitation domain
+ - Creating a precipitate phase
+ - Mobility and physical data
+ - Plotting and interpreting calculation results
+
+Database: mc_fe.tdb, mc_fe.ddb
+Author: P. Warczok
+Creation date: 18.11.2008
+Last update: 11.06.2019 (P. Warczok, Update for 6.02)
+This is a script for MatCalc version 6.02 (rel 1.003)
+
+Known issues:
+- "save-workspace "file-name"=Tutorial_14" is not working properly. --> Use "save-workspace Tutorial_14" instead.
+
+
+**************************************************************************************************** 
+************************************** SETUP INFORMATION *******************************************
+**************************************************************************************************$$
+
+$ Use "core" module (MatCalc uses "core" module by default anyway) 
+use-module module-name=core
+
+
+new-workspace    $ creates a new workspace 
+
+
+$$************************************************************************************************** 
+**************************************** SYSTEM SETUP **********************************************
+**************************************************************************************************$$
+
+
+$$************************************************************************************************** 
+                          DATABASES, CHEMICAL COMPOSITION, SELECTED PHASES
+**************************************************************************************************$$
+
+open-thermodynamic-database file-name=mc_fe.tdb                                                          $ Thermodynamic database: mc_fe.tdb 
+select-elements elements=FE C VA                                                                         $ Components: Fe, C
+select-phases phases=BCC_A2 CEMENTITE                                                                    $ Phases: bcc, cementite
+read-thermodynamic-database 
+
+set-reference-element element=FE
+enter-composition type=weight-percent composition= C=0,2                                                 $ Composition: 0.2 wt.% C
+
+
+$-------------------------------------- Precipitation domain --------------------------------------$
+create-precipitation-domain new-domain-name=Ferrite                                                      $ Creates precipitation domain "Ferrite"
+
+$ "Ferrite" is defined as a matrix phase with bcc structure
+set-precipitation-parameter precipitate-or-domain-name=Ferrite thermodynamic-matrix-phase=BCC_A2 
+
+
+$--------------------------------------- Precipitate phase ----------------------------------------$
+create-new-phase CEMENTITE precipitate                                                                   $ Cementite is defined as a precipitate phase
+$ Initializes the precipitate phase cementite_p0 with 250 classes
+set-precipitation-parameter CEMENTITE_P0 number-of-size-classes=250
+$ Dislocations are set as nucleation sites
+set-precipitation-parameter CEMENTITE_P0 nucleation-sites=dislocations 
+
+$------------------------------------- Loading mobility data --------------------------------------$
+read-mobility-database file-name=mc_fe.ddb                                                               $ Mobility (diffusion) database: mc_fe.ddb	
+ 
+
+$--------------------------------- Creating plots for the output ----------------------------------$
+new-gui-window type-id=p1 
+set-gui-window-property window-id=. default-x-axis-for-all-plots=yes                                     $ Default x-axis
+set-gui-window-property window-id=. default-x-axis-title=Time [h]                                        $ x-axis title
+set-gui-window-property window-id=. default-x-axis-type=log                                              $ Logarithimic scale on x-axis
+set-gui-window-property window-id=. default-x-axis-scaling=1e-12..                                       $ Scaling starts from 1e-12
+set-gui-window-property window-id=. default-x-axis-factor=1/3600                                         $ Multiplication [f]actor for x-axis
+
+set-plot-option plot-id=. plot-title=Phase fraction of cementite precipitate                             $ Plot title
+set-plot-option plot-id=. y-axis-title=Phase fraction                                                    $ y-axis title
+set-plot-option plot-id=. legend-alignment=none                                                          $ None legend box
+set-plot-option plot-id=. series new buffer variable-name=F$CEMENTITE_P0                                 $ Plotting the fraction of cementite precipitate phase
+
+new-gui-window type-id=p5                                                                                $ Creating a window with histogram
+set-gui-window-property window-id=. default-x-axis-for-all-plots=no                                      $ Do not use default x-axis
+$ Plot precipitate distribution of "cementite_p0" phase
+set-plot-option plot-id=. series new precipitate-distribution phase-name=CEMENTITE_P0 
+$ Divide the size range in histogram into 20 classes
+set-plot-option plot-id=. number-of-size-classes=20
+set-plot-option plot-id=. plot-title=Cementite precipitate distribution                                  $ Plot title
+set-plot-option plot-id=. x-axis-title=Precipitate radius [nm]                                           $ x-axis title
+set-plot-option plot-id=. x-axis-factor=1e9                                                              $ Multiplication factor for x-axis
+set-plot-option plot-id=. y-axis-title=Number of precipitates                                            $ y-axis title
+set-plot-option plot-id=. legend-alignment=none                                                          $ None legend box
+
+
+$$************************************************************************************************** 
+                                         THE CALCULATION
+**************************************************************************************************$$
+
+$ Numerical limit for nucleation density is set to 1,05 to obtain 250 classes in the simulation
+set-simulation-parameter nucleation-density-increase-factor=1,05
+
+set-temperature-celsius temperature=600                                                                  $ Temperature 600C
+set-automatic-startvalues
+calculate-equilibrium                                                                                    $ Initial equilibrium
+
+set-simulation-parameter end-time=3,6e3                                                                  $ Simulation end time is set to 3600 seconds (1 hour)
+
+$ Simulation is performed at the constant temperature of 600°C
+set-simulation-parameter isothermal-temperature=600
+set-simulation-parameter temperature-in-C=yes                                                            $ Temperature value expressed in degree Celsius
+
+start-precipitate-simulation                                                                             $ Starts kinetic simulation
+
+
+$$************************************************************************************************** 
+                                    INTERPRETING THE RESULTS
+**************************************************************************************************$$
+
+create-new-plot plot-type=xy-plot attach-to-window=2 
+set-plot-option plot-id=. plot-title=Number of precipitates                                              $ Plot title
+set-plot-option plot-id=. y-axis-title=Number of precipitates [*10<sup>20</sup> m<sup>-3</sup>]          $ y-axis title
+set-plot-option plot-id=. x-axis-factor=1e-20                                                            $ Multiplication factor for y-axis
+set-plot-option plot-id=. legend-alignment=none                                                          $ No legend
+$ Plotting the number of particles of cementite precipitate
+set-plot-option plot-id=. series new buffer variable-name=NUM_PART$CEMENTITE_P0
+
+create-new-plot plot-type=xy-plot attach-to-window=2 
+set-plot-option plot-id=. plot-title=Nucleation rate                                                     $ Plot title
+set-plot-option plot-id=. y-axis-title=Nucleation rate [*10<sup>26</sup> m<sup>-3</sup>s<sup>-1</sup>]   $ y-axis title
+set-plot-option plot-id=. x-axis-factor=1e-26                                                            $ Multiplication factor for y-axis
+set-plot-option plot-id=. legend-alignment=none                                                          $ No legend
+$ Plotting the nucleation rate of cementite precipitate
+set-plot-option plot-id=. series new buffer variable-name=NUCL_RATE$CEMENTITE_P0
+
+create-new-plot plot-type=xy-plot attach-to-window=2 
+set-plot-option plot-id=. plot-title=Precipitate radius                                                  $ Plot title
+set-plot-option plot-id=. y-axis-title=Precipitate radius [*10<sup>-6</sup> m]                           $ y-axis title
+set-plot-option plot-id=. y-axis-type=log                                                                $ Logarithmic scale on y-axis
+set-plot-option plot-id=. x-axis-factor=1e6                                                              $ Multiplication factor for y-axis
+set-plot-option plot-id=. legend-alignment=bottom                                                        $ Legend on the bottom
+set-plot-option plot-id=. series new buffer variable-name=R_MEAN$CEMENTITE_P0                            $ Plotting mean radius of cementite precipitate
+set-plot-option plot-id=. series new buffer variable-name=R_CRIT$CEMENTITE_P0                            $ Plotting critical radius of cementite precipitate
+set-plot-option plot-id=. series new buffer variable-name=R_MIN$CEMENTITE_P0                             $ Plotting minimal radius of cementite precipitate
+set-plot-option plot-id=. series new buffer variable-name=R_MAX$CEMENTITE_P0                             $ Plotting maximal radius of cementite precipitate
+set-plot-option plot-id=. series rename series-index=0 new-name=Mean                                     $ Renaming series no. 0 to "Mean"
+set-plot-option plot-id=. series rename series-index=1 new-name=Critical                                 $ Renaming series no. 1 to "Critical"
+set-plot-option plot-id=. series rename series-index=2 new-name=Min                                      $ Renaming series no. 2 to "Min"
+set-plot-option plot-id=. series rename series-index=3 new-name=Max                                      $ Renaming series no. 3 to "Max"
+
+set-plot-option plot-id=1 grid which-grid=major enable-x-axis=yes                                        $ Switching on the major gridlines for x-axis for plot no. 1
+set-plot-option plot-id=1 grid which-grid=major enable-y-axis=yes                                        $ Switching on the major gridlines for y-axis for plot no. 1
+set-plot-option plot-id=3 grid which-grid=major enable-x-axis=yes                                        $ Switching on the major gridlines for x-axis for plot no. 3
+set-plot-option plot-id=3 grid which-grid=major enable-y-axis=yes                                        $ Switching on the major gridlines for y-axis for plot no. 3
+set-plot-option plot-id=4 grid which-grid=major enable-x-axis=yes                                        $ Switching on the major gridlines for x-axis for plot no. 4 
+set-plot-option plot-id=4 grid which-grid=major enable-y-axis=yes                                        $ Switching on the major gridlines for y-axis for plot no. 4
+set-plot-option plot-id=5 grid which-grid=major enable-x-axis=yes                                        $ Switching on the major gridlines for x-axis for plot no. 5
+set-plot-option plot-id=5 grid which-grid=major enable-y-axis=yes                                        $ Switching on the major gridlines for y-axis for plot no. 5
+set-gui-window-property window-id=. number-of-plot-columns=2                                             $ Arranging plots in the columns with the [n]umber of columns of "2"
+
+create-new-plot plot-type=precipitate-distribution attach-to-window=3                                    $ New histogram plot
+$ Plot precipitate distribution of "cementite_p0" phase
+set-plot-option plot-id=. series new precipitate-distribution phase-name=CEMENTITE_P0
+set-plot-option plot-id=. number-of-size-classes=20                                                      $ Divide the size range in histogram into 20 classes
+$ Setting histogram frequency scaling to density
+set-plot-option plot-id=. histogram scale-frequency=density
+$ Setting histogram x-axis to show scaled radius
+set-plot-option plot-id=. histogram scale-radius=yes 
+set-plot-option plot-id=. plot-title=Scaled cementite precipitate size distribution                      $ Plot title
+set-plot-option plot-id=. x-axis-title=Scaled radius                                                     $ x-axis title
+set-plot-option plot-id=. y-axis-title=Scaled number                                                     $ y-axis title
+set-plot-option plot-id=. x-axis-scaling=0..1,499                                                        $ x-axis scaling in range 0 - 1.499
+set-plot-option plot-id=. legend-alignment=bottom                                                        $ Legend on the bottom
+
+$ Definition of "lsw" function
+set-function-expression function=lsw expression=x^2*(3/(3+x))^(7/3)*((3/2)/(3/2-x))^(11/3)*exp(-x/(3/2-x))*4/9
+$ Plotting the "lsw" function in the range 0 - 1.499
+set-plot-option plot-id=. series new functional-expression expression-in-variable-x=lsw definition-range=0..1,499
+
+
+$$************************************************************************************************** 
+                                         SAVING WORKSPACE
+**************************************************************************************************$$
+
+$save-workspace "file-name"=Tutorial_14
+save-workspace Tutorial_14
+

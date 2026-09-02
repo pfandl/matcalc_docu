@@ -1,0 +1,173 @@
+
+$ this file sets up the diffusion simulation according to the famous
+$ uphill-diffusion experiment of L. Darken from 1949 [Trans. AIME, 1949, 
+$ Vol 180, pp. 430-438.
+$ Diffusion simulation in Fe-Mn-Si-C austenite at 1050°C
+
+
+$ make sure we are in right module
+USE_MODULE CORE
+
+$ create new workspace
+new-workspace
+
+$ load thermodynamic and kinetic data
+OPEN_THERMODYN_DATABASE mc_sample_fe.tdb
+SELECT_ELEMENTS SELECT_ELEMENTS fe mn si c
+SELECT_PHASES fcc
+READ_THERMODYN_DATABASE 
+READ_MOBILITY_DATABASE mc_sample_fe.ddb 
+
+$ define some useful variables
+SET_VARIABLE_VALUE temp 1050
+
+$ set some initial conditions
+SET_TEMPERATURE_CELSIUS temp 
+ENTER_COMPOSITION WP c=0.1 
+ENTER_COMPOSITION WP mn=1.0 
+ENTER_COMPOSITION WP si=1.0 
+CALCULATE_EQUILIBRIUM 
+
+$ create window to display sample geometry
+NEW_GUI_WINDOW g5 
+SET_VARIABLE_VALUE paint_window_id active_frame_id	$ remember window id
+$MOVE_GUI_WINDOW paint_window_id 0 100 560 610
+MOVE_GUI_WINDOW paint_window_id 0 100 560 180	$ 1-dim size
+
+$ create a precipitation domain for thermodynamic props of matrix phase
+CREATE_PRECIPITATION_DOMAIN matrix		$ create domain with name 'matrix'
+SET_PRECIPITATION_PARAMETER matrix X fcc 	$ set fcc as matrix phase
+
+$ we are done now in the core module, switch to simulation module ...
+USE_MODULE SIMULATION
+
+$ some definitions to easily access/change grid parameters
+SET_VARIABLE_VALUE num_cells_x 40
+SET_VARIABLE_VALUE num_cells_y 1
+SET_VARIABLE_VALUE max_x_index num_cells_x-1
+SET_VARIABLE_VALUE max_y_index num_cells_y-1
+
+$ create the cell structure
+CREATE_SIMULATION_GRID num_cells_x num_cells_y 1 
+SET_GRID_COORDINATES 2*0.0254 1.0 1.0		$ cell dimensions: linear 2 Zoll
+SET_GRID_GEOMETRY P				$ planar grid geometry
+
+$ create a new material
+CREATE_MATERIAL austenite
+SET_MATERIAL_PROPERTY austenite G D matrix	$ couple with precipitation domain
+
+SET_CELL_PROPERTY A M austenite                 $ attach to all cells
+
+$ freeze paint frame during rest of setup
+SET_GUI_WINDOW_PROPERTY paint_window_id M Y	$manual update
+
+$ set default boundary conditions: open to ambient ...
+SET_DEFAULT_BOUNDARY_COND G O
+
+$ ********************
+$ initialize cell temperatures
+SET_CELL_PROPERTY a V T temp
+
+$ initialize composition: left half and right half separate
+REMOVE_CELL_SELECTION A		$ unselect all cells
+ADD_CELL_SELECTION l 0.0 (max_x_index/2+1)
+SET_CELL_PROPERTY * V C C 0.022514211536	$ is 0.50 wt% C
+SET_CELL_PROPERTY * V C Mn 0.00246112158032	$ is 0.25 wt% Mn
+SET_CELL_PROPERTY * V C Si 0.0731770795858	$ is 3.80 wt% Si
+INVERT_CELL_SELECTION
+SET_CELL_PROPERTY * V C C 0.026148309022	$ is 0.56 wt% C
+SET_CELL_PROPERTY * V C Mn 0.0654722046931	$ is 6.45 wt% Mn
+SET_CELL_PROPERTY * V C Si 0.00277986498572	$ is 0.14 wt% Si
+
+
+$ create table with experimental data
+CREATE_GLOBAL_TABLE exp_data
+ADD_TABLE_ENTRY exp_data 0.002048	0.49
+ADD_TABLE_ENTRY exp_data 0.004096	0.49
+ADD_TABLE_ENTRY exp_data 0.006144	0.5
+ADD_TABLE_ENTRY exp_data 0.008192	0.485
+ADD_TABLE_ENTRY exp_data 0.01024	0.475
+ADD_TABLE_ENTRY exp_data 0.012288	0.475
+ADD_TABLE_ENTRY exp_data 0.014336	0.46
+ADD_TABLE_ENTRY exp_data 0.016384	0.44
+ADD_TABLE_ENTRY exp_data 0.018176	0.44
+ADD_TABLE_ENTRY exp_data 0.019968	0.41
+ADD_TABLE_ENTRY exp_data 0.020992	0.39
+ADD_TABLE_ENTRY exp_data 0.022016	0.38
+ADD_TABLE_ENTRY exp_data 0.023552	0.355
+ADD_TABLE_ENTRY exp_data 0.025088	0.345
+ADD_TABLE_ENTRY exp_data 0.027136	0.69
+ADD_TABLE_ENTRY exp_data 0.02816	0.685
+ADD_TABLE_ENTRY exp_data 0.029184	0.665
+ADD_TABLE_ENTRY exp_data 0.030208	0.665
+ADD_TABLE_ENTRY exp_data 0.031232	0.645
+ADD_TABLE_ENTRY exp_data 0.032768	0.625
+ADD_TABLE_ENTRY exp_data 0.034816	0.615
+ADD_TABLE_ENTRY exp_data 0.036608	0.6
+ADD_TABLE_ENTRY exp_data 0.038912	0.59
+ADD_TABLE_ENTRY exp_data 0.04096	0.575
+ADD_TABLE_ENTRY exp_data 0.045056	0.575
+ADD_TABLE_ENTRY exp_data 0.049152	0.57
+
+
+$$ store in simulation state
+CREATE_SIMULATION_STATE start
+
+
+$ window rearrangement ...
+SET_GUI_WINDOW_PROPERTY paint_window_id i Z 110	$ zoom 
+SET_GUI_WINDOW_PROPERTY paint_window_id i W V 	$ display cell variable
+SET_GUI_WINDOW_PROPERTY paint_window_id i V _cx$c 	$ set which variable
+$SET_GUI_WINDOW_PROPERTY paint_window_id I R 0..10
+
+$ a new window for plotting the profile ...
+NEW_GUI_WINDOW g1 
+SET_VARIABLE_VALUE profile_window_id active_frame_id	$ remember window id
+SET_VARIABLE_VALUE profile_plot_id last_plot_id		$ remember plotid
+$default axis settings
+SET_GUI_WINDOW_PROPERTY profile_window_id S U Y 	$ use default x-axis
+SET_GUI_WINDOW_PROPERTY profile_window_id S T distance [cm] 	$ x-axis title
+SET_GUI_WINDOW_PROPERTY profile_window_id S F 100	$ multiply by 100 -> cm
+
+$ plot title and other setting for first plot
+SET_PLOT_OPTION profile_plot_id t Darken's uphill diffusion experiment
+SET_PLOT_OPTION profile_plot_id S N S _cwp$mn
+SET_PLOT_OPTION profile_plot_id S N S _cwp$si
+SET_PLOT_OPTION profile_plot_id A Y 1 T element content [wt%]		$ y-axis title
+SET_PLOT_OPTION profile_plot_id A Y 1 S 0..8				$ y-axis scaling
+$ create second plot for carbon concentration and define settings
+CREATE_NEW_PLOT 1 profile_window_id					$ new 1-dim profile plot
+SET_VARIABLE_VALUE profile_plot1_id last_plot_id			$ remember plotid
+SET_PLOT_OPTION profile_plot1_id S N S _cwp$c
+SET_PLOT_OPTION profile_plot1_id A Y 1 T carbon content [wt%]		$ y-axis title
+SET_PLOT_OPTION profile_plot1_id A Y 1 S 0.3..0.75				$ y-axis scaling
+
+$ enter experimental data points
+SET_PLOT_OPTION profile_plot1_id S N T exp_data 
+
+$$
+SET_GUI_WINDOW_PROPERTY profile_window_id I t 0.0
+SET_GUI_WINDOW_PROPERTY profile_window_id I o max_x_index.max_y_index
+MOVE_GUI_WINDOW profile_window_id 490 100 500 600 
+
+$ simulation setp
+SET_SIMULATION_PARAMETER e 864000	$ simulation end time in Darken's experiment
+SET_SIMULATION_PARAMETER u 1		$ update every
+SET_SIMULATION_PARAMETER c n b 0.05	$ integration step width such that composition change max 5%
+SET_SIMULATION_PARAMETER I A 1 1e+023 	$ initial stepsize 1
+SET_SIMULATION_PARAMETER d f		$ diffusion field simulation
+SET_SIMULATION_PARAMETER t i temp	$ temperature control: isothermal annealing
+
+$ unfreeze paint frame
+SET_GUI_WINDOW_PROPERTY paint_window_id M N	$ reset to automatic window update
+UPDATE_GUI_WINDOWS paint_window_id 
+
+$ ******************************************************
+$
+$ settings completed.
+$
+$ choose 'Start simulation...' from the simulation menu
+$ to begin simulation or press CTRL+J
+$
+$ ******************************************************
+

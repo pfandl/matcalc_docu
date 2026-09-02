@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>6 04 - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "6 04";
+        var mkdocs_page_input_path = "versioninfo/6_04.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">6 04</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>MatCalc 6.04 [MatCalc Documentation]</p>
+<h2 id="matcalc-604">MatCalc 6.04</h2>
+<p>Below are details describing the various changes and new features of the MatCalc versions 6.04.xxxx. Version 6.04 is mostly a bugfix release with only a few new features. We are trying to make MatCalc more stable and easier to work with …</p>
+<h4 id="version-6040160-online-2023-03-21">version 6.04.0160: online 2023-03-21</h4>
+<h5 id="new-features">New features</h5>
+<ul>
+<li>The MatCalc workspace files are now forward and backward compatible. It is now possible to open newer workspaces with older MatCalc versions.</li>
+<li>Several default variables have been added to the defaults.txt file.</li>
+<li>Added variables that can be used in scripts: NUM_ELEMENTS, NUM_PHASES, NUM_PREC_PHASES, NUM_PREC_DOMAINS, NUM_ERRORS, NUM_WARNINGS.</li>
+<li>The licene dialog has been completly redesigned to make it more user-friendly and informative.</li>
+<li>The term <code>precipitate transformation</code> is replacing the former <code>particle-related transformation</code>. The phase status dialog has been reworked accordingly and has improved consistency now with the nucleation option for <code>classical nucleation theory</code>.</li>
+<li>Added post processing routine to evaluate r_mean, number_density, and phase fraction of a precipitation distribution between cut off radii (Rmin, Rmax).</li>
+<li>A new option for adjusting the chemical composition of all other elements during entering has been added: It is possible now to adjust all elements instead of only the reference element.</li>
+<li>Consistent treatment of heterogeneous nucleation site energies. This energy contribution is now fully accounted for in the evaluation of the nucleation barrier. All information for nucleation are conveniently visible in the windows for <code>tabulate: Nucleation information</code> and <code>plot: Nucleation information</code>.</li>
+<li>Added variables for <code>TYS_0_TH</code> and <code>TYS_0_AT</code>.</li>
+<li>Added limit in GetAtomicAttachmentRate() to avoid singularity if chemical composition of parent and product is identical.</li>
+<li>Added support of pre-existing rexx nuclei, for instance, after cold-working and subsequent heating for recrystallization.</li>
+<li>The “subgrain-evolution-model”-parameter has been changed to “substructure-evolution-model”. Old command is now deprecated to maintain compatibility.</li>
+</ul>
+<h5 id="bug-fixes">Bug fixes</h5>
+<ul>
+<li>Excluded effect of excess vacancies on dislocation climb. Excess vacancies contribute only very little to high-temperature deformation by climb until they are annihilated and back to thermal equilibrium.</li>
+<li>Fixed an issue with a loss of series in plots after duplicate/lock and dragging new variables into plot.</li>
+<li>Fixed issue with rexx nucleation in the absence of deformation, which was happening even if it should not.</li>
+<li>Mass balance in calculation of aspect ratio of grain evolution is now correct.</li>
+<li>Fix gui updates on step-equilibrium.</li>
+<li>Fixed some issues in calculation of stress-strain curves and derivatives.</li>
+<li>Several issues in plot windows fixed.</li>
+<li>Fixed bug in search-phase-boundary calculation related to T0 temperature calculation.</li>
+<li>Fixed issue with radius vrs. diameter in Rexx nucleation rate calculation (factor 4 in area occupied by critical nucleus).</li>
+<li>Fixed some issues with the variable search filter function.</li>
+<li>Fixed bug in importGrainSizeDistribution.</li>
+<li>Several minor and major bug fixes and stability improvements.</li>
+</ul>
+<h4 id="version-6040097-online-2021-10-18">version 6.04.0097: online 2021-10-18</h4>
+<h5 id="new-features_1">New features</h5>
+<ul>
+<li>Added <strong>internal variable</strong> that reports if the MatCalc executable is GUI or command line: <code>is_gui_version</code>. Will return 1, if yes, otherwise 0.</li>
+<li>Added variable for <strong>total tmt end time</strong>: <code>TMT_TOTAL_END_TIME</code>.</li>
+<li>Introduced <strong>internal string variables</strong> for <code>io_application_directory</code>, <code>io_working_directory</code> and <code>io_last_file_path</code>.</li>
+<li><strong>Working directory</strong> is now referring to <strong>absolute FilePath</strong> instead of relative (if set-working-directory was called with relative path). Better use of internal variable #io_working_directory.</li>
+<li>Fixed bug with <code>generate-grain-size-distribution</code>.</li>
+<li>Renamed parameter value in set-simulation-parameter: <code>reset precipitates</code> is now <code>reset precipitates and microstructure</code>.</li>
+</ul>
+<h5 id="bug-fixes_1">Bug fixes</h5>
+<ul>
+<li>Fixed problems with saving and <strong>reading of workspaces</strong> between <strong>version 6.04.0053 and 6.04.0083</strong>. Some workspaces that have been saved in this version range could be corrupt and unreadable by newer versions. Sorry for this!</li>
+<li>Fixed a factor-two mistake in Zener pressure. Pressure is now exactly the one from Zener with factor 3/2.</li>
+<li><strong>Retarding pressure</strong> (Zener drag) at <strong>subgrain boundaries</strong> is now correctly evaluated with the subgrain boundary energy</li>
+<li><strong>New variable</strong> <code>PRP_SGB$prec_domain</code> for subgrain boundary retarding pressure.</li>
+<li>Fixed error in conversion from vacancy annihilation rate into trap site fraction.</li>
+<li>Redraw and rescale plot when series are added or removed.</li>
+<li>Fixed an issue with tmt and <strong>negative Celsius temperatures</strong>.</li>
+<li>Fixed an issue with <strong>grain boundary precipitate coarsening</strong> for cases, when gb precipitates are overlapping. This is important for simulation of secondary cementite formation with higher phase fraction.</li>
+<li>Several minor and major bug fixes and stability improvements.</li>
+</ul>
+<h4 id="version-6040051-online-2021-02-22">version 6.04.0051: online 2021-02-22</h4>
+<h5 id="new-features_2">New features</h5>
+<ul>
+<li>First version of file system that allows for <strong>upward compatibility</strong>. From this version on, files that are created with a higher version of MatCalc can be opened also with lower versions.</li>
+<li>Implemented possibility toinclude the <strong>energy of heterogeneous nucleation sites</strong> into the <strong>nucleation energy</strong> calculation.</li>
+<li>Added basic data in <strong>defaults.txt for Cu alloys</strong>.</li>
+<li>Added command 'set-array-entry“ to make it consistent with 'set-table-entry'.</li>
+<li>Changed calculation of <strong>number of grains</strong> in single class model: Is now based on <strong>tetrakaidecahedrons</strong> instead of spheres.</li>
+</ul>
+<h5 id="bug-fixes_2">Bug fixes</h5>
+<ul>
+<li>Allow duplicate and lock in plots where it did not work before.</li>
+<li>Fixed treatment of <strong>negative nucleation energies</strong> in plot and table window.</li>
+<li>Fixed column and row headings in Edit Array Dialog: Index starts now correctly at zero instead of one.</li>
+<li>Several minor and major bug fixes and stability improvements.</li>
+</ul>
+<h4 id="version-6040024-online-2020-09-10">version 6.04.0024: online 2020-09-10</h4>
+<h5 id="new-features_3">New features</h5>
+<ul>
+<li>You can now define <strong>multiple composition tables</strong> in the 'Edit composition …' dialog, gives them meaningful names, switch between them and make them the current chemical composition for your. In scripts, you can use the commands <code>list-composition-tables</code>, <code>create-composition-table</code>, <code>rename-composition-table</code>, <code>remove-composition-table</code> and <code>select-composition-table</code>. Convenient feature if you want to do <strong>simulations for several materials</strong> and switch between compositions quickly. All composition tables can be exported and imported and thus exchanged between workspaces.</li>
+<li>Introduced <strong>variables for vacancy fluxes</strong> into grain boundaries, dislocations and Franck loops. Variables are in the <code>prec_domain: special</code> category with names <code>PX_SVJ_GB</code>, <code>PX_SVJ_GB</code> and <code>PX_SVJ_FL</code>.</li>
+<li>Added functionality to <strong>export plot data</strong> into the scientific plot software <strong>VEUSZ</strong>. This software is open source and available for all platforms. It produces <strong>professionally-looking graphs</strong> that can be used in reports and publications.</li>
+<li>Added an option to <strong>ignore the temperature limits</strong> defined in the <strong>databases</strong>: Command is <code>set-simulation-parameter ignore-database-temperature-limits=yes</code>. Can be helpful for quick-and-dirty test, however, one must be aware that the calculations can become awfully wrong outside the specified temperature region.</li>
+<li>Changed default value for <strong>deformation-induced vacancy generation</strong> from 1.0 to 0.0.</li>
+<li><strong>Buffer name</strong> is added to <strong>window title</strong> where appropriate.</li>
+<li>Renamed 'Precipitation kinetics …' dialog into 'Microstructure simulation …' to better reflect the increasing focus on this type of simulation. Command is now <code>start-microstructure-simulation</code>.</li>
+<li>Added support for <strong>export of plot files</strong> for <strong>Veusz</strong>. The software Veusz is open-source and available on all platforms. With the RMB → export plot → VSZ, this new feature allows you to save an native Veusz file, which can be opened and edited within this software. This will create <strong>publication-ready plots</strong> of your MatCalc results.</li>
+<li>Implemented the command <code>set-new-features on/off</code> to make it possible to <strong>access new</strong> but yet unreleased <strong>features</strong> in MatCalc. Use this command with care because the new features that you can see might not yet be working properly.</li>
+<li>Added a variable for the total grain area (<code>GRAIN_AREA$prec_domain</code>).</li>
+<li>Added an option to <strong>use precipitate interface mobility only for shrinking particles</strong>. This is a somehow experimental feature that might be helpful for, e.g., retarded dissolution of clusters in Al-alloys. No idea if this can be a real effect.</li>
+</ul>
+<h5 id="bug-fixes_3">Bug fixes</h5>
+<ul>
+<li>Fixed issue in subgrain diameter evolution when subgrain size exceeds grain size.</li>
+<li>Fixed problem in graphs with constant y-values: Now displays +/- 1% of constant.</li>
+<li>Several minor and major bug fixes and stability improvements.</li>
+</ul>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=versioninfo%3A6_04&amp;1788352871" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

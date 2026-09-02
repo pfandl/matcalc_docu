@@ -1,0 +1,285 @@
+$$************************************************************************************************** 
+************************************* GENERAL INFORMATION ******************************************
+****************************************************************************************************
+
+This example shows the influence of Chromium content on the driving forces of the nucleation of 
+cementite. By setting the phase fraction to zero, it is possible to calculate the dfms. Not setting 
+the phase fraction to zero would result in no driving forces, as it is a condition of thermodynamic 
+equilibrium.
+
+The u-fraction, which will be extensively used in this example, is defined as following: the mole 
+fractions of all elements of the first lattice are 1. The other lattices are multiplied to keep the
+ratio at the same value.
+
+Example: (Fe,Cr)3C cementite is a stoichiometric compund with an Fe+Cr:C ratio of 3:1. Expressed in
+mole fractions, this means 0,75 mole on the first lattice, 0,25 on the second one. Converted to 
+u-fraction this results in 1 mole on the first lattice, and 0,33 on the second one. By varying the
+site fraction of Chromium from 0 to 1, all different kinds of cementite can be build, from Fe3C to 
+Cr3C.
+
+Database: mc_fe.tdb, mc_x_FeAlCCrMnNSiV.tdb
+Author: G. Stechauner
+Creation date: 2012-01-04
+Last revision: 
+This is a script for MatCalc version 5.44.1002
+
+
+****************************************************************************************************
+************************************** SETUP INFORMATION *******************************************
+**************************************************************************************************$$
+
+use-module core                                 $ select core module for kinetic simulation
+
+close-workspace f                               $ close any open workspace without asking for save 
+
+new-workspace                                   $ open new workspace
+
+$ give some information about the script
+@ echo n 
+set-workspace-info +Selected elements:          
+set-workspace-info +C, Cr, Fe
+set-workspace-info +
+set-workspace-info +Matrix phase: Ferrite (BCC_A2), Cementite (Fe3C)
+set-workspace-info +
+set-workspace-info +---------------------------------
+set-workspace-info +More information about MatCalc on
+set-workspace-info + http://matcalc.tuwien.ac.at
+set-workspace-info +---------------------------------
+echo y
+
+move-gui-window c hide                                 $ Let's hide the console  
+
+$$************************************************************************************************** 
+**************************************** SYSTEM SETUP **********************************************
+**************************************************************************************************$$
+
+$ verify correct MatCalc version (is accessible as internal variable) 
+if (matcalc_version<5441002)
+   send-dialog-string "MatCalc version must be 5.44.1002 or higher to run this script. Stopping."
+   stop_run_script                                     $ stop script
+endif
+
+
+$$************************************************************************************************** 
+                        DATABASES, CHEMICAL COMPOSITION, SELECTED PHASES
+**************************************************************************************************$$
+
+open-thermodyn-database mc_fe.tdb
+select-elements C Cr Fe
+select-phases bcc_a2 cementite 
+
+read-thermodyn-database
+
+enter-composition wp c=0,005 cr=3,0
+set-automatic-startvalues
+set-temperature-celsius 500
+calculate-equilibrium
+
+$ Setting u-fraction constraint to cementite and fixing mole fraction to 0
+change-phase-status cementite c Cr u 0.2 
+
+
+
+$$**************************************************************************************************
+                             EVALUATING DRIVING FORCES OVER TEMPERATURE
+**************************************************************************************************$$
+
+new-gui-window p1
+move-gui-window . 20 20 450 750                              $ . for current / PosX, PosY, Width, Height
+set-plot-option . a y 1 t dfm [J/mol]                        $ change y-axis title
+set-gui-window-property . x t$c                              $ Set X-Axis to Celsius
+set-gui-window-property . s u y
+set-gui-window-property . s t "Temperature [C]"
+
+set-step-option y t 
+set-step-option r 400 750 l 10
+
+step-equilibrium
+
+set-plot-option . s n b DFM$CEMENTITE                        $ Plot driving force of Cementite
+set-plot-option . s l * y                                    $ lock all series
+set-plot-option . s m -1 *_DFM$CEMENTITE "not-fixed"         $ rename plot
+
+change-phase-status cementite p 0                            $ Set phase fraction to zero
+change-phase-status cementite f f s                          $ set flag for fixed phase fraction
+calculate-equilibrium
+step-equilibrium
+
+set-plot-option . s n b DFM$CEMENTITE                        $ Plot driving force of Cementite
+set-plot-option . s l * y                                    $ lock all series
+set-plot-option . s m -1 *_DFM$CEMENTITE "fixed"             $ rename plot
+
+
+$$**************************************************************************************************
+                          EVALUATING DRIVING FORCES OVER CHROMIUM CONTENT
+**************************************************************************************************$$
+
+new-gui-window p1
+move-gui-window . 50 50 450 750                              $ . for current / PosX, PosY, Width, Height
+set-plot-option . a y 1 t dfm [J/mol]                        $ change y-axis title
+set-plot-option . a x 1 t Cr<sub>Cem</sub> [site fraction]   $ change x-axis title
+
+change-phase-status cementite f f c                          $ clear flag for fixed phase fraction
+
+set-step-option y e 
+set-step-option r 0 1 l 0.01 
+set-step-option o e n 
+set-step-option o p y
+set-step-option e cr 
+set-step-option t 700 
+
+step-equilibrium
+
+set-plot-option . s n b DFM$CEMENTITE                        $ Plot driving force of Cementite
+set-plot-option . s l * y                                    $ lock all series
+set-plot-option . s m -1 *_DFM$CEMENTITE "not-fixed"         $ rename plot
+
+change-phase-status cementite f f s                          $ set flag for fixed phase fraction
+change-phase-status cementite p 0                            $ Set phase fraction to zero
+
+step-equilibrium
+
+set-plot-option . s n b DFM$CEMENTITE                        $ Plot driving force of Cementite
+set-plot-option . s l * y                                    $ lock all series
+set-plot-option . s m -1 *_DFM$CEMENTITE "fixed"             $ rename plot
+
+create-new-plot x .
+set-plot-option . a y 1 t phase fraction                     $ change y-axis title
+set-plot-option . a x 1 t Cr<sub>Cem</sub> [site fraction]   $ change y-axis title
+
+change-phase-status cementite f f c                          $ clear flag for fixed phase fraction
+
+step-equilibrium
+
+set-plot-option . s n b F$CEMENTITE 
+set-plot-option . s l * y                                    $ lock all series
+set-plot-option . s m -1 *_F$CEMENTITE "not-fixed"           $ rename plot
+
+
+$$**************************************************************************************************
+               PLOTTING AND CALCULATING DRIVING FORCES FOR DIFFERENT C-CONTENTS
+**************************************************************************************************$$
+
+new-gui-window p1
+move-gui-window . 80 80 450 750                              $ . for current / PosX, PosY, Width, Height
+set-plot-option . a y 1 t dfm [J/mol]                        $ change y-axis title
+set-plot-option . a x 1 t Cr<sub>Cem</sub> [site fraction]   $ change y-axis title
+
+enter-composition wp c=0,1 cr=3,0
+$ Setting u-fraction constraint to cementite and fixing mole fraction to 0
+change-phase-status cementite p 0 
+change-phase-status cementite f f s 
+change-phase-status cementite c Cr u 0.2 
+
+set-step-option y e 
+set-step-option r 0 1 l 0.01 
+set-step-option o e n 
+set-step-option o p y
+set-step-option e cr 
+set-step-option t 500 
+
+step-equilibrium
+
+set-plot-option . s n b DFM$CEMENTITE                        $ Plot driving force of Cementite
+set-plot-option . s l * y                                    $ lock all series
+set-plot-option . s m -1 *_DFM$CEMENTITE "0.1% C"            $ rename plot
+
+enter-composition wp c=0,05 cr=3,0
+step-equilibrium
+
+set-plot-option . s n b DFM$CEMENTITE                        $ Plot driving force of Cementite
+set-plot-option . s l * y                                    $ lock all series
+set-plot-option . s m -1 *_DFM$CEMENTITE "0.05% C"           $ rename plot
+
+enter-composition wp c=0,03 cr=3,0
+step-equilibrium
+set-plot-option . s n b DFM$CEMENTITE                        $ Plot driving force of Cementite
+set-plot-option . s l * y                                    $ lock all series
+set-plot-option . s m -1 *_DFM$CEMENTITE "0.03% C"           $ rename plot
+
+enter-composition wp c=0,015 cr=3,0
+step-equilibrium
+set-plot-option . s n b DFM$CEMENTITE                        $ Plot driving force of Cementite
+set-plot-option . s l * y                                    $ lock all series
+set-plot-option . s m -1 *_DFM$CEMENTITE "0.015% C"          $ rename plot
+
+enter-composition wp c=0,005 cr=3,0
+step-equilibrium
+set-plot-option . s n b DFM$CEMENTITE                        $ Plot driving force of Cementite
+set-plot-option . s l * y                                    $ lock all series
+set-plot-option . s m -1 *_DFM$CEMENTITE "0.005% C"          $ rename plot
+
+enter-composition wp c=0,001 cr=3,0
+step-equilibrium
+set-plot-option . s n b DFM$CEMENTITE                        $ Plot driving force of Cementite
+set-plot-option . s l * y                                    $ lock all series
+set-plot-option . s m -1 *_DFM$CEMENTITE "0.001% C"          $ rename plot
+
+$ Plot some lines
+create-global-table 10k
+add-table-entry 10k 0 10000
+add-table-entry 10k 1 10000
+
+create-global-table 5k
+add-table-entry 5k 0 5000
+add-table-entry 5k 1 5000
+
+create-global-table 0k
+add-table-entry 0k 0 0
+add-table-entry 0k 1 0
+
+create-global-table OC
+add-table-entry OC 0,92216 -2400
+add-table-entry OC 0,92216 12898.7055
+
+create-global-table PC
+add-table-entry PC 0,032 -2400
+add-table-entry PC 0,032 4040
+
+set-plot-option . s n t 10k                          $ Add table to plot
+set-plot-option . s e -1 10k d n                     $ Use default style: No 
+set-plot-option . s e -1 10k l y dash                $ Line type: dash
+set-plot-option . s e -1 10k l c fuchsia             $ Line color: fuchsia
+set-plot-option . s e -1 10k m y none                $ Marker type: none
+set-plot-option . s e -1 10k l h 1                   $ Line thickness: 1
+set-plot-option . s m -1 10k 10k                     $ rename plot
+
+set-plot-option . s n t 5k                           $ Add table to plot
+set-plot-option . s e -1 5k d n                      $ Use default style: No 
+set-plot-option . s e -1 5k l y dash                 $ Line type: dash
+set-plot-option . s e -1 5k l c fuchsia              $ Line color: fuchsia
+set-plot-option . s e -1 5k m y none                 $ Marker type: none
+set-plot-option . s e -1 5k l h 1                    $ Line thickness: 1
+set-plot-option . s m -1 5k 5k                       $ rename plot
+
+set-plot-option . s n t 0k                           $ Add table to plot
+set-plot-option . s e -1 0k d n                      $ Use default style: No 
+set-plot-option . s e -1 0k l y dash                 $ Line type: dash
+set-plot-option . s e -1 0k l c fuchsia              $ Line color: fuchsia
+set-plot-option . s e -1 0k m y none                 $ Marker type: none
+set-plot-option . s e -1 0k l h 1                    $ Line thickness: 1
+set-plot-option . s m -1 0k 0k                       $ rename plot
+
+set-plot-option . s n t OC                           $ Add table to plot
+set-plot-option . s e -1 OC d n                      $ Use default style: No 
+set-plot-option . s e -1 OC l y dash                 $ Line type: dash
+set-plot-option . s e -1 OC l c "indian red"         $ Line color: fuchsia
+set-plot-option . s e -1 OC m y none                 $ Marker type: none
+set-plot-option . s e -1 OC l h 1                    $ Line thickness: 1
+set-plot-option . s m -1 OC OC                       $ rename plot
+
+set-plot-option . s n t PC                           $ Add table to plot
+set-plot-option . s e -1 PC d n                      $ Use default style: No 
+set-plot-option . s e -1 PC l y dash                 $ Line type: dash
+set-plot-option . s e -1 PC l c "indian red"         $ Line color: fuchsia
+set-plot-option . s e -1 PC m y none                 $ Marker type: none
+set-plot-option . s e -1 PC l h 1                    $ Line thickness: 1
+set-plot-option . s m -1 PC PC                       $ rename plot
+
+
+$$**************************************************************************************************
+*************************************** EXAMPLE 3 FINISHED *****************************************
+**************************************************************************************************$$
+
+
+

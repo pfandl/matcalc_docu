@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>T5 - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "T5";
+        var mkdocs_page_input_path = "tutorials/t5.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">T5</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#t5matcalc_built-in_variablesgraphical_output">T5: MatCalc built-in variables; graphical output</a></p>
+</li>
+<li>
+<p><a href="#complimentary_files">Complimentary files</a></p>
+</li>
+<li><a href="#contents">Contents</a></li>
+<li><a href="#before_starting">Before starting...</a></li>
+<li>
+<p><a href="#adding_plots_of_different_variables">Adding plots of different variables</a></p>
+</li>
+<li>
+<p><a href="#creating_a_new_plot">Creating a new plot</a></p>
+</li>
+<li><a href="#variables">Variables</a></li>
+<li><a href="#favorites">- 'favorites'</a></li>
+<li><a href="#general">-'general'</a></li>
+<li><a href="#phase_fractions">- 'phase fractions'</a></li>
+<li><a href="#composition">- 'composition'</a></li>
+<li><a href="#site_fractions">- 'site fractions'</a></li>
+<li><a href="#state_variables">- 'state variables'</a></li>
+<li><a href="#chemical_potentials_activities">- 'chemical potentials', 'activities'</a></li>
+<li><a href="#arranging_plots_in_the_columns">Arranging plots in the columns</a></li>
+<li><a href="#default_x-axis">Default x-axis</a></li>
+<li><a href="#displaying_x-values_of_multiple_plots">Displaying x-values of multiple plots</a></li>
+<li><a href="#modifying_the_series_in_a_plot">Modifying the series in a plot</a></li>
+<li><a href="#modifying_the_series_with_drag_and_drop">Modifying the series with drag and drop</a></li>
+<li>
+<p><a href="#other_series_operations">Other series operations</a></p>
+</li>
+<li>
+<p><a href="#new_series">- 'New series'</a></p>
+</li>
+<li><a href="#remove_series_remove_all_series_remove_all_locked_series">- 'Remove series', 'Remove all series', 'Remove all locked series'</a></li>
+<li><a href="#duplicate_and_lock_series__duplicate_and_lock_all_series">- 'Duplicate and lock series ...', 'Duplicate and lock all series'</a></li>
+<li><a href="#edit_series_data">- 'Edit series data ...'</a></li>
+<li><a href="#convert_series_to_table">- 'Convert series to table'</a></li>
+<li><a href="#consecutive_articles">Consecutive articles</a></li>
+</ul>
+<h2 id="t5-matcalc-built-in-variables-graphical-output">T5: MatCalc built-in variables; graphical output</h2>
+<p><em>This tutorial was tested on<br />
+MatCalc version 6.04 rel 1.001<br />
+license: free<br />
+database: mc_fe.tdb</em></p>
+<h3 id="complimentary-files">Complimentary files</h3>
+<p>Click <a href="/tutorials/t5/script/t5_6021003.mcs" title="tutorials/t5/script/t5_6021003.mcs (4.9 KB)">here</a> to view the script for this tutorial.</p>
+<h3 id="contents">Contents</h3>
+<ul>
+<li>Adding further plots to a plot window</li>
+<li>Using the built-in variables</li>
+<li>Defining a default x-axis</li>
+<li>Modifying the series</li>
+<li>Adding a new series to a plot</li>
+<li>Removing a series from a plot</li>
+<li>Duplicating and locking series</li>
+<li>Editing series data</li>
+<li>Converting series to tables</li>
+</ul>
+<h2 id="before-starting">Before starting...</h2>
+<p>Re-open the file saved in  <a href="/tutorials/t4" title="tutorials/t4">Tutorial 4</a> and save it under a new name.</p>
+<h2 id="adding-plots-of-different-variables">Adding plots of different variables</h2>
+<h3 id="creating-a-new-plot">Creating a new plot</h3>
+<p>Highlight the plot window and right-click in this window outside the plot area to bring up the plot context menu already seen in Tutorial 4. Click on <strong>'New plot'</strong>.</p>
+<p><a href="/tutorials/t5/img/t5_new_plot_6011003.png" title="tutorials/t5/img/t5_new_plot_6011003.png"><img alt=" MatCalc new plot context" src="/tutorials/t5/img/t5_new_plot_6011003.png" title="MatCalc new plot context" /></a></p>
+<p>An empty plot appears below the original one.</p>
+<h3 id="variables">Variables</h3>
+<p>As well as the phase fraction variables <strong>'F<span class="arithmatex">\(\*'** encountered in the previous tutorial, MatCalc contains many other built-in variables which are evaluated at each step-value of the stepped equilibrium calculations. These can be found in the variables window. Information about each variable is contained in the small window below the main variables window. Locate the **'driving forces'** category and drag **'DFM\)</span>*'</strong> to the empty plot window, to give a plot as shown below.</p>
+<p><a href="/tutorials/t5/img/t5_plot_dfm_2016.png" title="tutorials/t5/img/t5_plot_dfm_2016.png"><img alt=" MatCalc plot" src="/tutorials/t5/img/t5_plot_dfm_2016.png" title="MatCalc plot" /></a></p>
+<p>Other variable categories of particular interest for stepped equilibrium calculations are highlighted in blue in the image below:</p>
+<p><a href="/tutorials/t5/img/t5_variables_6050006.png" title="tutorials/t5/img/t5_variables_6050006.png"><img alt=" MatCalc variables" src="/tutorials/t5/img/t5_variables_6050006.png" title="MatCalc variables" /></a></p>
+<h3 id="-favorites">- 'favorites'</h3>
+<p>This contains the most frequently needed variables: temperature in Kelvin (<strong>'T'</strong>) and in Celsius (<strong>'T<span class="arithmatex">\(C'**), step-value, phase fractions (**'F\)</span>*'</strong>) and compositions expressed in mole fraction (<strong>'X<span class="arithmatex">\(\*\)</span>*'</strong>) and in weight percent (<strong>'X<span class="arithmatex">\(\*\)</span>*<span class="arithmatex">\(wp'**). In these composition variables, the first asterisk represents the phase, and the second, the element, for example **'X\)</span>LIQUID$C'</strong>.</p>
+<h3 id="-general">-'general'</h3>
+<p>Temperature, step-value and pressure can also be found under this category. The temperature is in Kelvin by default, but the temperature in Celsius can be obtained by appending <strong>'<span class="arithmatex">\(c'**, as has already been seen in the **'Favorites'** category. This suffix is known as a **'unit qualifier'**. Another unit qualifier is **'f'** which appended to temperature variable in form of **'t\)</span>f'</strong> returns the value of temperature in Fahrenheit. Once a variable is highlighted, a pop-up window appears with the information on the valid unit qualifiers.</p>
+<p><a href="/tutorials/t5/img/t5_general_6050006.png" title="tutorials/t5/img/t5_general_6050006.png"><img alt=" MatCalc general variables" src="/tutorials/t5/img/t5_general_6050006.png" title="MatCalc general variables" /></a></p>
+<h3 id="-phase-fractions">- 'phase fractions'</h3>
+<p>The phase fractions <strong>'F$*'</strong> are repeated here.</p>
+<h3 id="-composition">- 'composition'</h3>
+<p>This contains the <strong>'X<span class="arithmatex">\(\*\)</span>*'</strong> composition variables mentioned above, and a number of other composition-related variables, expressed either as either <strong>mole fractions (X…)</strong> or as <strong>u-fractions (U…)</strong>. (Not all of these are applicable to stepped-equilibrium calculations, e.g. <strong>'XPR<span class="arithmatex">\(\*\)</span>*'</strong> and <strong>'UP<span class="arithmatex">\(\*\)</span>*'</strong> are for precipitation calculations).<br />
+Compositions in weight percent are not given separately here, but it can be seen from the <strong>'variables information'</strong> window that <strong>'wp'</strong> is a valid unit qualifier for the variables beginning with <strong>'X'</strong>. This means that weight percentages can be obtained by appending <strong>'$wp'</strong> to the names of these variables.</p>
+<h3 id="-site-fractions">- 'site fractions'</h3>
+<p>The <strong>'Y<span class="arithmatex">\(\*\)</span>*<span class="arithmatex">\(\*'** variables give the site fraction of an element on a particular sublattice of a phase. For example, BCC\_A2 has the variables **'Y\)</span>BCC_A2<span class="arithmatex">\(FE\)</span>0'</strong> (site fraction of iron on sublattice 0) and <strong>'Y<span class="arithmatex">\(BCC\_A2\)</span>C<span class="arithmatex">\(1'** (site fractions of carbon and vacancies on sublattice 1). The **'YX\)</span>*$*'</strong> variables represent the mole fraction of an element on a particular sublattice position of a phase; in this case, vacancies are not considered.</p>
+<h3 id="-state-variables">- 'state variables'</h3>
+<p>This category consists of a number of thermodynamic variables, including molar Gibbs free energies, entropies, enthalpies and heat capacities of the system and of each phase.</p>
+<h3 id="-chemical-potentials-activities">- 'chemical potentials', 'activities'</h3>
+<p>These categories include chemical potentials <strong>'MU<span class="arithmatex">\(\*\)</span>*'</strong>, activities <strong>'AC<span class="arithmatex">\(\*\)</span>*'</strong> and activity coefficients <strong>'ACC<span class="arithmatex">\(\*\)</span>*'</strong>.<br />
+Further plots can be added to the same plot window using <strong>'New plot'</strong>; they will share the same buffer, default x-data and colour scheme. Some examples are shown below:</p>
+<ul>
+<li>Molar Gibbs free energy (<strong>'GMP$*'</strong>)</li>
+</ul>
+<p><a href="/tutorials/t5/img/t5_plot_gmp_2016.png" title="tutorials/t5/img/t5_plot_gmp_2016.png"><img alt=" MatCalc plot" src="/tutorials/t5/img/t5_plot_gmp_2016.png" title="MatCalc plot" /></a></p>
+<ul>
+<li>Chemical potential of carbon (<strong>'MUP<span class="arithmatex">\(\*\)</span>C'</strong>)</li>
+</ul>
+<p><a href="/tutorials/t5/img/t5_plot_mup_c_2016.png" title="tutorials/t5/img/t5_plot_mup_c_2016.png"><img alt=" MatCalc plot" src="/tutorials/t5/img/t5_plot_mup_c_2016.png" title="MatCalc plot" /></a></p>
+<ul>
+<li>Molar heat capacity (<strong>'CPP$*'</strong>, note the lambda-anomaly at the Curie temperature in BCC_A2)</li>
+</ul>
+<p><a href="/tutorials/t5/img/t5_plot_cpp_2016.png" title="tutorials/t5/img/t5_plot_cpp_2016.png"><img alt=" MatCalc plot" src="/tutorials/t5/img/t5_plot_cpp_2016.png" title="MatCalc plot" /></a></p>
+<p>Note the search field on the top of the 'variables' window. By typing the variable name or a keyword (e.g. 'strength'), only the relevant variables will be shown.</p>
+<p><a href="/tutorials/t5/img/t5_variables_filter_6050006.png" title="tutorials/t5/img/t5_variables_filter_6050006.png"><img alt=" MatCalc variables filter" src="/tutorials/t5/img/t5_variables_filter_6050006.png" title="MatCalc variables filter" /></a></p>
+<h3 id="arranging-plots-in-the-columns">Arranging plots in the columns</h3>
+<p>When there are many plots in the plot window then they will get streched so much that they will eventually become unreadable. In order to obtain a transparency, it might be a good idea to arrange the plots in more than one column. To place the plots in two columns, Select <strong>'plot columns'</strong> in <strong>'Options'</strong> window and type <strong>'2'</strong> in the corresponding field.</p>
+<p><a href="/tutorials/t5/img/t5_plot_columns_6050006.png" title="tutorials/t5/img/t5_plot_columns_6050006.png"><img alt=" MatCalc plot columns" src="/tutorials/t5/img/t5_plot_columns_6050006.png" title="MatCalc plot columns" /></a></p>
+<h3 id="default-x-axis">Default x-axis</h3>
+<p>To give a consistent appearance to all the x-axes in the plot window, a <strong>'default x-axis'</strong> can be defined. This is found towards the top of the <strong>'Options'</strong> window. Place a checkmark in the <strong>'use for all plots'</strong> box and define the properties of the x-axis in the same way as for a normal x-axis.</p>
+<p><a href="/tutorials/t5/img/t5_default_x-axis_6050006.png" title="tutorials/t5/img/t5_default_x-axis_6050006.png"><img alt=" MatCalc default x-axis" src="/tutorials/t5/img/t5_default_x-axis_6050006.png" title="MatCalc default x-axis" /></a></p>
+<h3 id="displaying-x-values-of-multiple-plots">Displaying x-values of multiple plots</h3>
+<p>If the plot window contains several plots, right-clicking and dragging the mouse in one of these will display not only a cross in that plot, but a vertical line at the same x-value in all the others. An example is shown below:</p>
+<p><a href="/tutorials/t5/img/t5_plot_red_line_2016.png" title="tutorials/t5/img/t5_plot_red_line_2016.png"><img alt=" MatCalc plot red line" src="/tutorials/t5/img/t5_plot_red_line_2016.png" title="MatCalc plot red line" /></a></p>
+<h2 id="modifying-the-series-in-a-plot">Modifying the series in a plot</h2>
+<p>This part of the tutorial will demonstrate how to use the unit qualifiers mentioned above. Add a new plot to the plot window and drag and drop <strong>'X<span class="arithmatex">\(\*\)</span>C'</strong> (carbon content of the phases) from the <strong>'variables'</strong> window. The resulting plot should look like this:</p>
+<p><a href="/tutorials/t5/img/t5_plot_carbon_content_2016.png" title="tutorials/t5/img/t5_plot_carbon_content_2016.png"><img alt=" MatCalc plot carbon content" src="/tutorials/t5/img/t5_plot_carbon_content_2016.png" title="MatCalc plot carbon content" /></a></p>
+<p>By default, the carbon content is expressed in mole fraction. To change the unit to weight percent, firstly click on one of the series in the new plot (e.g. <strong>'X<span class="arithmatex">\(LIQUID\)</span>C'</strong>) to select it. This should expand the section of the <strong>'Options'</strong> list which applies to this series.</p>
+<p><a href="/tutorials/t5/img/t5_option_series_6050006.png" title="tutorials/t5/img/t5_option_series_6050006.png"><img alt=" MatCalc series" src="/tutorials/t5/img/t5_option_series_6050006.png" title="MatCalc series" /></a></p>
+<p>Double-click on <strong>'y-data'</strong> for the first series. Append <strong>'$wp'</strong> to the existing expression and click <strong>'OK'</strong>.</p>
+<p><a href="/tutorials/t5/img/t5_modify_y-data_6050006.png" title="tutorials/t5/img/t5_modify_y-data_6050006.png"><img alt=" MatCalc series value modification" src="/tutorials/t5/img/t5_modify_y-data_6050006.png" title="MatCalc series value modification" /></a></p>
+<p>This will change the values plotted for the <strong>'LIQUID'</strong> series. Repeat for the other three series. The final appearance of the plot, with appropriate axis labels added, should be as shown below.</p>
+<p><a href="/tutorials/t5/img/t5_plot_carbon_content_wt_pct_2016.png" title="tutorials/t5/img/t5_plot_carbon_content_wt_pct_2016.png"><img alt=" MatCalc Plot" src="/tutorials/t5/img/t5_plot_carbon_content_wt_pct_2016.png" title="MatCalc Plot" /></a></p>
+<h2 id="modifying-the-series-with-drag-and-drop">Modifying the series with drag and drop</h2>
+<p>Alternatively you can select the variable and drag it to the window, and press <strong>'Ctrl'</strong> <em>before</em> dropping it to the plot. An option window will pop up, where you can modify the original expression (read as %s) by adding mathematical operations or <strong>change</strong> it <strong>to weight percent</strong> by <strong>appending '$wp'</strong>.</p>
+<p><a href="/tutorials/t5/img/t5_modify_expression_2016.png" title="tutorials/t5/img/t5_modify_expression_2016.png"><img alt=" Modify expression" src="/tutorials/t5/img/t5_modify_expression_2016.png" title="Modify expression" /></a></p>
+<p><strong>Note:</strong> Press <strong>'Ctrl'</strong>-key <strong>after</strong> selecting in 'variables' window and <strong>before</strong> dragging the desired variable.</p>
+<h2 id="other-series-operations">Other series operations</h2>
+<p>Right-clicking on <strong>'series'</strong> in the <strong>'Options'</strong> window displays a context menu:</p>
+<p><a href="/tutorials/t5/img/t5_option_window_2015.png" title="tutorials/t5/img/t5_option_window_2015.png"><img alt=" MatCalc window" src="/tutorials/t5/img/t5_option_window_2015.png" title="MatCalc window" /></a></p>
+<h3 id="-new-series">- 'New series'</h3>
+<p>The <strong>'New series'</strong> part of the menu expands to give the following sub-menu (provided that a plot is selected).</p>
+<p><a href="/tutorials/t5/img/t5_new_series_menu_6021003.png" title="tutorials/t5/img/t5_new_series_menu_6021003.png"><img alt=" MatCalc new series menu" src="/tutorials/t5/img/t5_new_series_menu_6021003.png" title="MatCalc new series menu" /></a></p>
+<p>Clicking on <strong>'core buffer results'</strong> creates an empty series (given the name of <strong>'auto'</strong> on the plot) to contain variables evaluated from the results of a buffer. Edit the <strong>'y-data'</strong> line in the <strong>'Options'</strong> window for this series to enter any valid built-in or user-defined variable or an expression.</p>
+<p>Variables can be copied from the <strong>'Variables'</strong> window by right-clicking on the expression required to display a menu containing Copy, Paste and other operations.</p>
+<p><a href="/tutorials/t5/img/t5_variable_window_2013.png" title="tutorials/t5/img/t5_variable_window_2013.png"><img alt=" MatCalc variables menu" src="/tutorials/t5/img/t5_variable_window_2013.png" title="MatCalc variables menu" /></a></p>
+<p>The other series types which can be added are as follows:</p>
+<ul>
+<li><strong>'table/experimental data'</strong>: allows the user to add a set of experimental data points to a plot. This will be demonstrated in  <a href="/tutorials/t10" title="tutorials/t10">Tutorial 10</a>  </li>
+<li><strong>'function/expression'</strong>: enables an algebraic expression in (x) to be entered. This will be demonstrated in  <a href="/tutorials/t12" title="tutorials/t12">Tutorial 12</a></li>
+</ul>
+<h3 id="-remove-series-remove-all-series-remove-all-locked-series">- 'Remove series', 'Remove all series', 'Remove all locked series'</h3>
+<p>To remove a series from a plot, first click on the plot to select it. This will expand the part of the Options list which applies to the plot. Select the name of the series from this list and choose <strong>'Remove series'</strong> from the right-click menu (shown above) or press <strong>'Delete'</strong>. Multiple series in the same plot can be selected at once by holding down the CTRL key while clicking on the series names. <strong>'Remove all series'</strong> in the right-click menu deletes all the series in the selected plot. <strong>'Remove all locked series'</strong> removes all the series which are locked (locking the series is described below).</p>
+<h3 id="-duplicate-and-lock-series-duplicate-and-lock-all-series">- 'Duplicate and lock series ...', 'Duplicate and lock all series'</h3>
+<p>This feature is available in the right-click menus of both the Options window and the plot window. Click on <strong>'Duplicate and lock series'</strong>, select a series from the list shown and click on <strong>'Duplicate'</strong> button. This will lock the original series and create a copy.</p>
+<p><a href="/tutorials/t5/img/t5_duplicate_series_2016.png" title="tutorials/t5/img/t5_duplicate_series_2016.png"><img alt=" MatCalc duplicate" src="/tutorials/t5/img/t5_duplicate_series_2016.png" title="MatCalc duplicate" /></a></p>
+<p><strong>'Duplicate and lock all series'</strong> performs this operation for all series in the selected plot window.</p>
+<p>The locked series is protected from any changes when the buffer contents are updated with new calculation results, while the copy is unlocked. This enables an easy comparison between results obtained under different conditions.</p>
+<h3 id="-edit-series-data">- 'Edit series data ...'</h3>
+<p>This is also available in both the Options and the plot windows. Select a series in the appearing window and click on <strong>'Edit…'</strong> to display a table containing the numerical data used to plot the graph.</p>
+<p><a href="/tutorials/t5/img/t5_edit_series_data_2016.png" title="tutorials/t5/img/t5_edit_series_data_2016.png"><img alt=" MatCalc series data" src="/tutorials/t5/img/t5_edit_series_data_2016.png" title="MatCalc series data" /></a></p>
+<p>The data can be copied using the <strong>'Copy selection'</strong> or <strong>'Copy all'</strong> buttons. The contents of the rows and columns can be modified using <strong>'Paste'</strong> (to add data copied from another source), <strong>'Clear cell(s)'</strong>, <strong>'Insert row'</strong>, <strong>'Insert col'</strong> and <strong>'Delete rows/cols'</strong> buttons. Use <strong>'Write'</strong> to save the whole dataset to a text file and <strong>'Read'</strong> to load a dataset from a text file.</p>
+<h3 id="-convert-series-to-table">- 'Convert series to table'</h3>
+<p>This places the data from the series into a named table, which can be accessed from the <strong>'Global'</strong> menu.<br />
+Select the '<strong>series</strong>' in '<strong>Options</strong>' window, click on <strong>'Convert series to table'</strong>, select the series name and edit the name of the table, if necessary, in the box which appears, as shown below.</p>
+<p><a href="/tutorials/t5/img/t5_convert_tables_2016.png" title="tutorials/t5/img/t5_convert_tables_2016.png"><img alt=" MatCalc convert tables" src="/tutorials/t5/img/t5_convert_tables_2016.png" title="MatCalc convert tables" /></a></p>
+<p>To open and edit a table, select <strong>'Tables and arrays'</strong> from the <strong>'Global'</strong> menu. This will display a list of all the available tables, which can be edited in the same way as the series data described above.</p>
+<p><a href="/tutorials/t5/img/t5_tables_window_2016.png" title="tutorials/t5/img/t5_tables_window_2016.png"><img alt=" MatCalc tables" src="/tutorials/t5/img/t5_tables_window_2016.png" title="MatCalc tables" /></a></p>
+<h2 id="consecutive-articles">Consecutive articles</h2>
+<p>The tutorial is continued in article  <a href="/tutorials/t6" title="tutorials/t6">T6 - Introduction to user-defined functions</a>.</p>
+<p>Go to <a href="/tutorials" title="tutorials">MatCalc tutorial index</a>.</p>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=tutorials%3At5&amp;1788352858" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,144 @@
+$ **************************************************************************************************
+$ *********************************** GENERAL INFORMATION ******************************************
+$ **************************************************************************************************
+$ 
+$ Example: E10 - Most-likely nucleus composition for bcc-Cu precipitation in bcc-Fe
+$ Database: mc_sample_fe2.tdb
+$ Author: P. Warczok
+$ Creation date: 2013-06-26
+$ Last revision: not revised yet
+$ Reason for update: not revised yet
+$ This script was written on MatCalc version 5.52.0038
+
+$ **************************************************************************************************
+$ ************************************ SETUP INFORMATION *******************************************
+$ **************************************************************************************************
+
+$ make sure we work in the correct module
+use-module core                                                 $ select core module for kinetic simulation
+
+$ close any open workspace without asking for save
+close-workspace f
+new-workspace                                                   $ open new workspace
+
+
+$ Creating workaspace info - gives some information about the script
+set-workspace-info +System composition (in at.%)                
+set-workspace-info +Cu = 3
+set-workspace-info +
+set-workspace-info +Script for example discussing the interfacial energy
+set-workspace-info +Cu content in precipitate stepped calculation
+set-workspace-info +paraequilibrium will be performed in the alloy
+set-workspace-info +with a defined composition.
+set-workspace-info +
+set-workspace-info +---------------------------------
+set-workspace-info +More information about MatCalc on
+set-workspace-info +     http://www.matcalc.at
+set-workspace-info +---------------------------------
+
+
+$$**********************************************************************
+*********   SYSTEM SETUP (Thermodynamics, composition, etc.)   *********
+**********************************************************************$$
+
+$ Thermodynamic data
+open-thermodyn-database mc_fe.tdb                                          $ open thermodynamic database
+select-elements cu                                                                 $ select elements
+select-phases bcc_a2                                                               $ select phases
+read-thermodyn-database                                                            $ reads data from the database
+
+
+$ Composition
+enter-composition xp cu=3                                                          $ composition in at.%
+
+
+$ Creation of second (Cu-rich) bcc phase
+create-new-phase bcc_a2 e                                                          $ create new equilibrium phase
+change-phase-status bcc_a2#01 m :cu:va:                                            $
+
+
+$ Initial equilibrium
+set-automatic-startvalues
+set-temperature-celsius 500
+calculate-equilibrium
+
+
+$ Preparing paraequilibrium calculation
+change-phase-status bcc_a2#01 c cu u xn$cu                                         $ constraint for Cu content: u-fraction equal global Cu content
+change-phase-status bcc_a2#01 f f s                                                $ fixed phase fraction
+change-phase-status bcc_a2#01 p 0                                                  $ phase fractions set to zero
+
+calculate-equilibrium
+
+
+$$*****************************************************
+*********   STEPPED EQUILIBRIUM CALCULATION   *********
+*****************************************************$$
+
+$ Stepped calculation
+$ Temperature in Celsius is default, therefore not explicitly defined
+set-step-option y e                                                                $ vary element content
+set-step-option r 0 1 l 0.01                                                       $ from, to, linear, step
+set-step-option t 500                                                              $ temperature of stepped calculation
+set-step-option o e n                                                              $ element content in at.%
+set-step-option o p y                                                              $ para-equilibrium constraint
+step-equilibrium                                                                   $ calculate!
+
+
+$$***************************
+*********   PLOTS   *********
+***************************$$
+
+new-gui-window p1                                                                  $ create plot window
+move-gui-window . 100 100 600 800                                                  $ xy-coordinates of top left corner, width and height of gui-window
+
+$ default x-axis settings
+set-gui-window-property . s u y                                                    $ use default x-axis
+set-gui-window-property . s t Cu-content of precipitate, site fraction             $ default x-axis title
+set-gui-window-property . s l b                                                    $ global legend settings: bottom 
+
+$ Plot: Driving force for Cu-rich precipitate
+set-plot-option . t Driving force for coherent bcc-nuclei                          $ Plot title
+set-plot-option . a y 1 t Driving force [J/mol]                                    $ y-axis title
+set-plot-option . g m x y                                                          $ major-grids for x-axis variable
+set-plot-option . g m y y                                                          $ major-grids for y-axis variable
+set-plot-option . s n b dfm$bcc_a2#01 %s                                           $ add series
+
+$ Plot: Interfacial energy of Cu-rich nuclei
+create-new-plot x .
+set-plot-option . t Interfacial energy of coherent bcc-nuclei                      $ Plot title
+set-plot-option . a y 1 t Interfacial energy [J/mol<sup>-2</sup>]                  $ y-axis title
+set-plot-option . g m x y                                                          $ major-grids for x-axis variable
+set-plot-option . g m y y                                                          $ major-grids for y-axis variable
+set-plot-option . s n b cie$bcc_a2#01 %s                                           $ add series
+
+new-gui-window p1                                                                  $ create plot window
+move-gui-window . 200 200 600 800                                                  $ xy-coordinates of top left corner, width and height of gui-window
+
+$ default x-axis settings
+set-gui-window-property . s u y                                                    $ use default x-axis
+set-gui-window-property . s t Cu-content of precipitate, site fraction             $ default x-axis title
+set-gui-window-property . s l b                                                    $ global legend settings: bottom 
+
+$ Plot: Critical nucleation Gibbs energy for Cu-rich phase
+set-function-expression cnge 16*pi*(cie$bcc_a2#01)^3/(3*(dfm$bcc_a2#01/vm)^2)      $ define function for critical nucleation Gibbs energy
+
+set-plot-option . t Critical Gibbs energy for nucleation of the coherent nucleus   $ Plot title
+set-plot-option . a y 1 t Critical nucleation energy [J]                           $ y-axis title
+set-plot-option . a y 1 y log                                                      $ y-axis scaling: logarithmic
+set-plot-option . g m x y                                                          $ major-grids for x-axis variable
+set-plot-option . g m y y                                                          $ major-grids for y-axis variable
+set-plot-option . s n b cnge %s                                                    $ add series
+
+set-variable-value cnge_min 6,29067883987e-020                                     $ variable defined: minimum critical Gobbs energy for nucleation
+
+set-function-expression prob exp((cnge_min-cnge)*na/r/t)                           $ define function for critical nucleation Gibbs energy
+create-new-plot x .
+set-plot-option . t Scaled probability of embryo nucleation                        $ Plot title
+set-plot-option . a y 1 t Scaled probability                                       $ y-axis title
+set-plot-option . a y 1 y lin                                                      $ y-axis scaling: logarithmic
+set-plot-option . g m x y                                                          $ major-grids for x-axis variable
+set-plot-option . g m y y                                                          $ major-grids for y-axis variable
+set-plot-option . s n b prob %s                                                    $ add series
+
+set-gui-window-property . s s 0.25..                                               $ default x-axis scaling range

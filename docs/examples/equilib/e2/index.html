@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>E2 - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "E2";
+        var mkdocs_page_input_path = "examples/equilib/e2.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">E2</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>Example E2: Stable and meta-stable phases in Al-Cu [MatCalc Documentation]</p>
+<h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#example_e2stable_and_meta-stable_phases_in_al-cu">Example E2: Stable and meta-stable phases in Al-Cu</a></p>
+</li>
+<li>
+<p><a href="#compatibility">Compatibility</a></p>
+</li>
+<li><a href="#objectives">Objectives</a></li>
+<li><a href="#related_documents">Related documents</a></li>
+<li><a href="#complementary_files">Complementary files</a></li>
+<li>
+<p><a href="#main_document">Main document</a></p>
+</li>
+<li>
+<p><a href="#setup_thermodynamics">Setup thermodynamics</a></p>
+</li>
+<li><a href="#stable_vs_meta-stable">Stable vs Meta-stable</a></li>
+<li><a href="#calculation_of_phase_fraction_diagrams">Calculation of phase fraction diagrams</a></li>
+<li><a href="#calculation_of_phase_diagram">Calculation of phase diagram</a></li>
+<li><a href="#consecutive_articles">Consecutive articles</a></li>
+</ul>
+<h1 id="example-e2-stable-and-meta-stable-phases-in-al-cu">Example E2: Stable and meta-stable phases in Al-Cu</h1>
+<h2 id="compatibility">Compatibility</h2>
+<p>MatCalc version: 5.44.1002 <br />
+Database: mc_sample_al2.tdb (Version 1.007)<br />
+Author: Georg Stechauner<br />
+Created: 2012-01-09 <br />
+Revisions: Updated to new Database</p>
+<p><strong>Note</strong>: Make sure that you use version 1.007 of the sample database!</p>
+<h2 id="objectives">Objectives</h2>
+<p>This example demonstrates how to create a phase diagram for Al-Cu containing both stable and meta-stable phases. The technically relevant composition range up to 10% Cu is covered in the simulations. Using this phase diagram, information on the nucleation characteristics and precipitation sequences of meta-stable phases can be gained.</p>
+<p>The simulations are compared to experimental kinetics data on solution temperatures.</p>
+<p>Consult Tutorial T8 or Example E1 to refresh your knowledge on phase diagram calculations.</p>
+<h2 id="related-documents">Related documents</h2>
+<ul>
+<li><a href="/tutorials/t8" title="tutorials/t8">T8: Calculating a phase diagram in a binary system</a></li>
+<li><a href="/examples/equilib/e1" title="examples/equilib/e1">E1: Stable and meta-stable phase diagram of Fe-C-Mn</a></li>
+<li>Chao Jian, PhD thesis, <em>'Theoretical studies of aluminum and aluminide alloys using CALPHAD and first-principles approach'</em>, August 2004, Pennsylvania State University.</li>
+</ul>
+<h2 id="complementary-files">Complementary files</h2>
+<p>Click <a href="/examples/equilib/e2/script/e2_v2_2018.mcs" title="examples/equilib/e2/script/e2_v2_2018.mcs (10.2 KB)">here</a> to view the script for this tutorial.</p>
+<h1 id="main-document">Main document</h1>
+<h2 id="setup-thermodynamics">Setup thermodynamics</h2>
+<p>Start by opening the aluminium database. Select the elements <strong>Al</strong> and <strong>Cu</strong> and the phases <strong>FCC_A1</strong> (Aluminium matrix phase), <strong>Liquid</strong>, <strong>THETA_AL2CU</strong> (Stable Al-Cu Theta phase), <strong>THETA_PRIME</strong> (Meta-stable Theta prime phase) and <strong>TH_DP</strong> (Meta-stable Theta double-prime). Read the database.</p>
+<p>Define the composition of the system as shown below, set automatic start values and calculate an equilibrium at 500C (values in wt-%):</p>
+<table>
+<thead>
+<tr>
+<th>Al</th>
+<th>Cu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*</td>
+<td>1.0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="stable-vs-meta-stable">Stable vs Meta-stable</h2>
+<p>After setting up the system and calculating equilibria at different temperatures and different Cu-contents, only FCC_A1, Liquid and Theta_Al2Cu are found to be stable phases. Even after changing the chemical composition to higher Cu values and calculating more equilibria, Theta_Prime and Theta_Double-prime will never be observed in the set of stable phases.</p>
+<p>The reason for this behaviour is that Theta_Al2Cu is the stable, Cu-rich phase, which will form under equilibrium conditions. In order to evaluate a phase diagram with meta-stable Theta_Prime and Theta-Double-prime, respectively, we need to suspend in each case the stable phase.</p>
+<p><strong><em>Important note…</em></strong></p>
+<p>Compare this behaviour of stable and meta-stable phases to the well known Fe-C system. Even though saying and writing 'Fe-C phase diagram', in most practical cases, the meta-stable Fe-Fe3C diagram is of interest. There are two ways to achieving this meta-stable diagram for the Fe-C system: either you only select the phases you expect to see from the database dialog, or you select all relevant phases and temporarily suspend the unwanted ones. The former choice is often done in kinetic simulations, the latter is preferred in equilibrium simulations due to higher flexibility.</p>
+<p>The second approach will be used hereafter.</p>
+<h2 id="calculation-of-phase-fraction-diagrams">Calculation of phase fraction diagrams</h2>
+<p>Since we are only interested in the technically relevant pre-eutectic area, the calculation range will be set from 0 to 10% Cu. The temperature range is relatively small due to the low melting temperatures and can be set from 0 to 700C.</p>
+<p>Assuming that this alloy is unknown to us, and we have no literature about it whatsoever, a good way to begin the equilibrium analysis is to plot the phase fraction diagram in a stepped calculation.</p>
+<p><a href="/examples/equilib/e2/e2_phasefraction-1pcu.png" title="examples/equilib/e2/e2_phasefraction-1pcu.png"><img alt=" Phase fraction of stable phases" src="/examples/equilib/e2/e2_phasefraction-1pcu.png" title="Phase fraction of stable phases" /></a></p>
+<p>This diagram confirms that only the well-known stable phases appear in the simulations. Furthermore it gives an idea of the temperatures to start the calculations from. By repeating this step, but suspending <strong>THETA_AL2CU</strong> phase, first <strong>THETA_PRIME</strong> and after that <strong>TH_DP</strong> will become the stable phases. The only difference is the phase fraction and the nucleation temperature.</p>
+<p><a href="/examples/equilib/e2/e2_suspend_al2cu.png" title="examples/equilib/e2/e2_suspend_al2cu.png"><img alt=" Suspend AL2CU to stabilize the other phases" src="/examples/equilib/e2/e2_suspend_al2cu.png" title="Suspend AL2CU to stabilize the other phases" /></a></p>
+<p>After suspending the phases, plotting the phase fractions, and locking them, the figure below can be obtained:</p>
+<p><a href="/examples/equilib/e2/e2_phasefraction-all-phases.png" title="examples/equilib/e2/e2_phasefraction-all-phases.png"><img alt=" Phasefractions of all, stable and meta-stable, phases" src="/examples/equilib/e2/e2_phasefraction-all-phases.png" title="Phasefractions of all, stable and meta-stable, phases" /></a></p>
+<h2 id="calculation-of-phase-diagram">Calculation of phase diagram</h2>
+<p>To continue with the creation of the phase diagram, which shows stable and meta-stable phases, first un-suspend all phases once again.</p>
+<p>As the temperature differences are not as big as in the Fe-C system, the same temperature can be used for all phases to find them.</p>
+<ul>
+<li>Calculate an equilibrium at 600C</li>
+<li>Search the phase boundary of the liquid phase</li>
+<li>Perform a stepped calculation in the range defined above</li>
+<li>Plot <code>T$C</code>, lock and rename it.</li>
+</ul>
+<p>Repeat this step for all three stable phases. To plot the meta-stable phase boundaries, suspend the stable AL2CU phase. Then repeat the steps above. Suspend the Theta-Prime phase, in order to stabilize the Theta-double-Prime phase. The resulting diagram should look like the figure below.</p>
+<p><a href="/examples/equilib/e2/e2_phasediagram.png" title="examples/equilib/e2/e2_phasediagram.png"><img alt=" Phase diagram of Al-Cu system for stable and meta-stable phases" src="/examples/equilib/e2/e2_phasediagram.png" title="Phase diagram of Al-Cu system for stable and meta-stable phases" /></a></p>
+<p>The experimental data shown in the figure is taken from the PhD thesis of Chao Jian (see related documents section). Add these data points by entering them into a table and then adding an experimental seris to the plot. See tutorial  <a href="/tutorials/t10" title="tutorials/t10">T10</a> for details on this procedure or the accompanying  <a href="/examples/equilib/e2/script/e2.mcs" title="examples/equilib/e2/script/e2.mcs (10.2 KB)">script</a> to see how these things are done from within a <em>MatCalc</em> script.</p>
+<p><strong>Note</strong>: The experimental data measured for nucleation of Theta-Prime phase is lower than the calculated equilibrium data. The reason is that nucleation of these phases always involves coherency stresses, since they are found to be coherent with the matrix. This energy contribution destabilizes the precipitates, which is why experiments show a lower solution temperature compared to the equilibrium calculation, which considers the ideal case of very large precipitates (no interfacial curvature) and no coherency stresses.</p>
+<p><strong><em>Important note…</em></strong></p>
+<p>If you plan on calculating the whole system from 0 to 100% Cu, you need to include several additonal phases.</p>
+<p>For some phases in the Al-Al2Cu phase diagram, you might have problems finding phase boundaries and following them automatically. Circumvent this by manually finding points on this line with the 'Search phase boundary' tool (vary chemical composition) and then plot those points as a table (not very elegant solution, but at least a workaround).</p>
+<h1 id="consecutive-articles">Consecutive articles</h1>
+<p>none</p>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=examples%3Aequilib%3Ae2&amp;1788352993" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+$$************************************************************************************************** 
+************************************** GENERAL INFORMATION *****************************************
+****************************************************************************************************
+
+Script for using the MatCalc console according to Tutorial 12.
+The following contents will be covered:
+
+ - Getting help in the MatCalc console
+ - Obtaining lists of available commands for different modules
+ - Command syntax and abbreviations
+ - Example: calculating an equilibrium using the command-line
+ - Evaluating numerical expressions and variables
+ - Defining, using and plotting functions
+
+Database: mc_fe.tdb
+Author: P. Warczok
+Creation date: 10.11.2008
+Last update: 04.06.2019 (P. Warczok, Update for 6.02)
+This is a script for MatCalc version 6.02 (rel 1.003)
+
+Known issues:
+- Functions are not displayed on the plot --> Select the plot window and use "Update current window contents" (Menu "View")
+- "save-workspace "file-name"=Tutorial_12" is not working properly. --> Use "save-workspace Tutorial_12" instead.
+
+
+**************************************************************************************************** 
+************************************** SETUP INFORMATION *******************************************
+**************************************************************************************************$$
+
+use-module module-name=core                                                       $ Use "core" module (MatCalc uses "core" module by default anyway) 
+
+new-workspace                                                                     $ creates a new workspace 
+
+
+$$************************************************************************************************** 
+                                           BASICS
+**************************************************************************************************$$
+
+help-workspace                                                                    $ Opens a list of available commands in workspace module
+help-module module-name=core                                                      $ Opens a list of available commands in mc_core 
+
+
+$$************************************************************************************************** 
+                     EXAMPLE: CALCULATING AND EQUILIBRIUM USING THE COMMAND-LINE
+**************************************************************************************************$$
+
+open-thermodynamic-database file-name=mc_fe.tdb                                   $ Thermodynamic database: mc_fe.tdb 
+$ Lists the contents of the thermodynamic ([e]quilibrium) database
+list-database-contents equi-database-contents 
+select-elements elements=C FE                                                     $ Components: Fe, C
+select-phases phases=LIQUID BCC_A2 FCC_A1 CEMENTITE                               $ Selects the liquid, bcc, fcc and cementite phases
+read-thermodynamic-database 
+
+enter-composition type=weight-percent composition=C=0,4                           $ Composition: 0.4 wt.% C
+
+set-automatic-startvalues
+set-temperature-celsius temperature=1000                                          $ Temperature 700C
+calculate-equilibrium                                                             $ Initial equilibrium
+
+
+$$************************************************************************************************** 
+                                      EVALUATING EXPRESSIONS
+**************************************************************************************************$$
+
+$------------------------------------ Numerical expressions ---------------------------------------$
+show-expression expression=4/5 
+show-expression expression=pi
+show-expression expression=4/5*3
+show-expression expression=4/(5*3)
+show-expression expression=4+4*2
+show-expression expression=(4+4)*2
+
+$-------------------------------------- Expressions in x ------------------------------------------$
+show-expression expression=3*x
+set-function-expression function=function1 expression=3*x                         $ Defining function1
+set-function-expression function=function2 expression=x**2                        $ Defining function2
+set-function-expression function=function3 expression=x^2                         $ Defining function3
+
+new-gui-window type-id=p1
+$$ For the current plot[.], in [s]eries section, [n]ew series with the [f]unction/expression
+ result for "function1" is plotted in the range of -10 - 10 $$
+set-plot-option plot-id=. series new functional-expression expression-in-variable-x=function1 definition-range=-10..10
+$ Plotting the result for "function2" is plotted in the range of -10 - 10
+set-plot-option plot-id=. series new functional-expression expression-in-variable-x=function2 definition-range=-10..10
+$ Plotting the result for "function3" is plotted in the range of -10 - 10
+set-plot-option plot-id=. series new functional-expression expression-in-variable-x=function3 definition-range=-10..10
+
+
+$$************************************************************************************************** 
+                              EXPRESSIONS USING MATCALC VARIABLES
+**************************************************************************************************$$
+
+set-function-expression function=function4 expression=F$BCC_A2*X$BCC_A2$C         $ Defining function4
+set-function-expression function=function5 expression=F$CEMENTITE*X$CEMENTITE$C   $ Defining function5
+show-expression expression=function4	
+show-expression expression=function5
+show-expression expression=function4+function5
+show-expression expression=XS$C-(function4+function5)
+
+
+$$************************************************************************************************** 
+SAVING WORKSPACE
+**************************************************************************************************$$
+
+$save-workspace "file-name"=Tutorial_12
+save-workspace Tutorial_12
+
+

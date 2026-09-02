@@ -1,0 +1,133 @@
+$$************************************************************************************************** 
+************************************** GENERAL INFORMATION *****************************************
+****************************************************************************************************
+
+Script for stepped equilibrium calculations according to Tutorial 3.
+The following contents will be covered:
+
+ - Re-opening a saved file and loading a calculation state
+ - Calculating a stepped equilibrium with varying temperature
+ - Understanding the results in the Output window
+ - Working with multiple buffers
+ - Calculating a stepped equilibrium with varying composition
+ - The Edit buffer states window
+
+Database: mc_fe.tdb
+Author: P. Warczok
+Creation date: 20.03.2008
+Last update: 10.05.2019 (P. Warczok, Update for 6.02)
+This is a script for MatCalc version 6.02 (rel 1.003)
+
+Known issues:
+- "save-workspace "file-name"=Tutorial_3" is not working properly. --> Use "save-workspace Tutorial_3" instead.
+- A command "list-buffer-contents" is available which seems to be intended to double the command "list-calc-buffer-contents"
+  --> Watch out in the next versions!
+
+
+**************************************************************************************************** 
+************************************** SETUP INFORMATION *******************************************
+**************************************************************************************************$$
+
+use-module module-name=core                   $ Use "core" module (MatCalc uses "core" module by default anyway)
+
+new-workspace 
+
+open-thermodynamic-database file-name=mc_fe.tdb 
+select-elements elements=fe c va
+$ Graphite is not selected as a phase present in the system
+select-phases phases=liquid fcc_a1 bcc_a2 cementite
+read-thermodynamic-database 
+
+calculate-equilibrium 
+
+set-reference-element element=fe                          $ Fe is set as a reference element
+enter-composition type=weight-percent composition=c=0,4   $ Sets the content of C to 0.4 wt.% 	
+
+
+
+set-temperature-celsius temperature=600                   $ Sets the system temperature to 700C
+$ Sets the start values - this should prevent from any troubles in the equilibrium calculation
+set-automatic-startvalues                               
+calculate-equilibrium                                     $ Performs the equilibrium calculation
+
+
+$$**************************************************************************************************
+                                 STEPPED EQUILIBRIUM CALCULATIONS
+**************************************************************************************************$$
+
+$------------------ Stepped equilibrium calculation with varying of temperature -------------------$
+
+$ Select the type of calculation: Temperature variation 
+set-step-option type=temperature            
+$ Define the range of the calculation: from 1600 to 400 with linear step of 25
+set-step-option range start=1600 stop=400 scale=lin step-width=25
+$ Set the temperature unit to degree Celsius (instead of default Kelvin)
+set-step-option temperature-in-celsius=yes 
+
+$ Perform stepped equilibrium calculation
+step-equilibrium                            
+
+$ Rename the current buffer to "T=400_to_1600°C"
+rename-current-buffer new-buffer-name="T=400 to 1600°C"
+
+
+$------------- Stepped equilibrium calculation with varying carbon content - part I ---------------$
+
+$ Create a new buffer "C=0_to_1.5_at_500°C"
+create-calc-buffer new-buffer-name="C=0 to 1.5 at 500°C"
+
+$ Select the type of calculation: Element content variation
+set-step-option type=element-content 
+$ Define the range of the calculation: from 0 to 1.5 with linear step of 0.05
+set-step-option range start=0 stop=1,5 scale=lin step-width=0,05
+$ The temperature unit is degree Celsius, again. 
+set-step-option temperature-in-celsius=yes 
+$ Set temperature of the calculation to 500
+set-step-option temperature=500
+$ Global composition is varied - the "vary para-equilibrium constraints" option is deactivated
+set-step-option vary-para-equil-constraints=no 
+$ Composition range is expressed in weight percent
+set-step-option element-content-in-wt%=yes 
+
+step-equilibrium                            $ Performs stepped equilibrium calculation
+
+$------------- Stepped equilibrium calculation with varying carbon content - part II --------------$
+
+$ Creating new buffer "C=0_to_1.5_at_800°C"
+create-calc-buffer new-buffer-name="C=0 to 1.5 at 800°C"
+
+$ Select the type of calculation: Element content variation
+set-step-option type=element-content                         
+$ Define the range of the calculation: from 0 to 1.5 with linear step of 0.05
+set-step-option range start=0 stop=1,5 scale=lin step-width=0,05
+set-step-option temperature-in-celsius=yes                        
+$ Set temperature of the calculation to 500
+set-step-option temperature=800                       
+$ Global composition is varied - the "vary para-equilibrium constraints" option is deactivated
+set-step-option vary-para-equil-constraints=no
+$ Composition range is expressed in weight percent
+set-step-option element-content-in-wt%=yes 
+$ Perform stepped equilibrium calculation
+step-equilibrium                            
+
+
+$$************************************************************************************************** 
+                                   OPERATION ON BUFFER STATES
+**************************************************************************************************$$
+
+$ Select the buffer state to edit
+select-calc-buffer buffer-name="C=0 to 1.5 at 800°C"
+
+$ List the contents of the selected buffer
+list-calc-buffer-contents 
+
+$ Load the buffer state no.8
+load-buffer-state line-index=8
+
+$$************************************************************************************************** 
+                                        SAVING WORKSPACE
+**************************************************************************************************$$
+
+$ Save workspace as "Tutorial_3.mcw"
+$save-workspace "file-name"=Tutorial_3
+save-workspace Tutorial_3

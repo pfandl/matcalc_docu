@@ -1,0 +1,252 @@
+
+$$************************************************************************************************** 
+************************************** GENERAL INFORMATION *****************************************
+****************************************************************************************************
+
+
+Database: mc_fe.tdb, mc_fe.ddb
+Author: G. Stechauner
+Creation date: 2011-12-16
+This is a script for MatCalc version 5.44 (rel 1.002)
+
+
+**************************************************************************************************** 
+************************************** SETUP INFORMATION *******************************************
+**************************************************************************************************$$
+
+$ make sure we work in the correct module
+use-module core            $ select core module for kinetic simulation
+
+$ close any open workspace without asking for save
+close-workspace f
+
+new-workspace              $ open new workspace
+
+@ echo n
+set-workspace-info + Precipitation of Cu in Fe
+set-workspace-info +
+set-workspace-info + Phases: FCC_A1, BCC_A2
+set-workspace-info + Chemical components: Fe, Cu
+set-workspace-info + 
+set-workspace-info + For further information visit www.matcalc.at
+set-workspace-info +
+echo y
+
+
+$$************************************************************************************************** 
+**************************************** SYSTEM SETUP **********************************************
+**************************************************************************************************$$
+
+$ verify correct MatCalc version (is accessible as internal variable) 
+if (matcalc_version<5520038)
+   send-dialog-string "MatCalc version must be 5.52.0038 or higher to run this script. Stopping."
+   stop_run_script                                  $ stop script
+endif
+
+
+$$************************************************************************************************** 
+************************** DATABASES, CHEMICAL COMPOSITION, SELECTED PHASES ************************
+**************************************************************************************************$$
+
+open-thermodyn-database mc_fe.tdb                $ Thermodynamic database
+select-elements Fe Cu                               $ select elements
+select-phase bcc_a2 fcc_a1                          $ select phases
+
+read-thermodyn-database                             $ read thermodynamic database
+read-mobility-database mc_fe.ddb                    $ read diffusion data
+read_physical_database physical_data.pdb
+
+$$************************************************************************************************** 
+************************************* CHANGE PHASE STATUS ETC. *************************************
+**************************************************************************************************$$
+
+$ Create compositions sets for bcc Cu precipitate
+create-new-phase bcc_a2 c :Cu%,FE:va%: Cu_bcc_1
+Change-phase-status Cu_bcc_1 f e s                                   $ set enforce major constituents flag!!!
+create-new-phase bcc_a2 c :Cu%,FE:va%: Cu_bcc_2
+Change-phase-status Cu_bcc_2 f e s                                   $ set enforce major constituents flag!!!
+create-new-phase fcc_a1 c :Cu%,FE:va%: Cu_fcc
+change-phase-status Cu_fcc f e s                                   $ set enforce major constituents flag!!!
+
+change-phase-status fcc_a1 f s s                                   $ suspend parent fcc_a1
+
+enter-composition x Cu=0.014                                       $ 1.4 at% Cu
+
+$ ----------------------------------- PRECIPITATION DOMAINS ----------------------------------------------
+
+create-precipitation-domain domain_bcc                             $ Precipitation domain Heat Treatment
+set-precipitation-parameter domain_bcc x bcc_a2                    $ matrix phase of Heat Treatment
+set-precipitation-parameter domain_bcc s e s 10.0                  $ matrix diffusion enhancment
+set_precipitation_parameter domain_bcc t d e 1e12 
+
+
+$ ------------------------------------- PRECIPITATE PHASES -----------------------------------------------
+
+create-new-phase cu_bcc_1 p Cu(bcc)
+set-precipitation-parameter cu_bcc_1_p0 n s b                      $ nucleation sites are bulk
+set-precipitation-parameter cu_bcc_1_p0 n j y                      $ Nucleate only with valid major constituents   
+set-precipitation-parameter cu_bcc_1_p0 n p y domain_bcc           $ restrict nucleation domain
+set-precipitation-parameter cu_bcc_1_p0 N C G                      $ minimum G-Star nucleation composition
+set_precipitation_parameter cu_bcc_1_p0 I N 0.95*CIE$CU_BCC_1      $ Consider diffuse interface due to size effect after nucleation
+set-precipitation-parameter cu_bcc_1_p0 s d r 1                    $ diffusion in precipitate: fixed ratio (default: 0.01)
+set-precipitation-parameter cu_bcc_1_p0 s i r 1                    $ interstitial diffusion in precipitate: fixed ratio (default: 0.01)
+set_precipitation_parameter cu_bcc_1_p0 S C 2                      $ Coalescence factor
+set_precipitation_parameter cu_bcc_1_p0 s b -3/4                   $ Binder-Staufer coeff.
+set-precipitation-parameter cu_bcc_1_p0 f y 1860                   $ Use critical temperature for evaluation of IE
+change-phase-status cu_bcc_1_p0 f e s
+
+create-new-phase cu_bcc_2 p Cu(9R)
+set-precipitation-parameter cu_bcc_2_p0 n s p cu_bcc_1_p0          $ nucleation sites are precipitates
+set-precipitation-parameter cu_bcc_2_p0 n j y                      $ Nucleate only with valid major constituents
+set-precipitation-parameter cu_bcc_2_p0 n p y domain_bcc           $ restrict nucleation domain
+set-precipitation-parameter cu_bcc_2_p0 s d r 1                    $ diffusion in precipitate: fixed ratio (default: 0.01)
+set-precipitation-parameter cu_bcc_2_p0 s i r 1                    $ interstitial diffusion in precipitate: fixed ratio (default: 0.01)
+set-precipitation-parameter cu_bcc_2_p0 n n d                      $ nucleation model: direct particle transformation
+set-precipitation-parameter cu_bcc_2_p0 n o r 2.0e-9 3.0e-9        $ nucleate from bcc precipitate
+set_precipitation_parameter cu_bcc_2_p0 S C 3                      $ Coalescence factor
+set_precipitation_parameter cu_bcc_2_p0 s b -3/4                   $ Binder-Staufer coeff
+change-phase-status cu_bcc_2_p0 f e s
+
+create-new-phase Cu_fcc p Cu(fcc)
+set-precipitation-parameter Cu_fcc_p0 n s p Cu_bcc_2_p0            $ nucleation sites are precipitates
+set-precipitation-parameter Cu_fcc_p0 n j y                        $ Nucleate only with valid major constituents
+set-precipitation-parameter Cu_fcc_p0 n p y domain_bcc             $ restrict nucleation domain
+set-precipitation-parameter Cu_fcc_p0 s d r 1                      $ diffusion in precipitate: fixed ratio (default: 0.01)
+set-precipitation-parameter Cu_fcc_p0 s i r 1                      $ interstitial diffusion in precipitate: fixed ratio (default: 0.01)
+set-precipitation-parameter Cu_fcc_p0 n n d                        $ nucleation model: direct particle transformation
+set-precipitation-parameter Cu_fcc_p0 n o r 4.0e-9 8.0e-9          $ nucleate from bcc precipitate
+set_precipitation_parameter cu_fcc_p0 S C 4                        $ Coalescence factor
+set_precipitation_parameter cu_fcc_p0 s b -3/4                     $ Binder-Staufer coeff
+change-phase-status Cu_fcc_p0 f e s
+
+$$************************************************************************************************** 
+**************************************** EXPERIMENTAL DATA *****************************************
+**************************************************************************************************$$
+
+
+create-global-table phasefraction 
+add-table-entry phasefraction 1e3 0.08e-2
+add-table-entry phasefraction 4e3 0.23e-2 
+add-table-entry phasefraction 7.2e3 0.264e-2     $ from karnesky and isheim, 2007 -- 1.7at%
+add-table-entry phasefraction 1e4 0.72e-2
+add-table-entry phasefraction 4e4 1.04e-2
+add-table-entry phasefraction 1.5e5 1.28e-2
+add-table-entry phasefraction 5e5 1.30e-2
+
+create-global-table radius_FIM
+add-table-entry radius_FIM 4e3 0.8e-9
+add-table-entry radius_FIM 7.2e3 1.3e-9          $ from karnesky and isheim, 2007 -- 1.7at%
+add-table-entry radius_FIM 1e4 1.4e-9
+add-table-entry radius_FIM 4e4 3.0e-9
+add-table-entry radius_FIM 1.5e5 4.8e-9
+add-table-entry radius_FIM 5e5 7.0e-9
+
+create-global-table radius_TEM
+add-table-entry radius_TEM 1.7e5 5.2e-9
+add-table-entry radius_TEM 5e5 8.0e-9
+
+create-global-table numberdensity_FIM
+add-table-entry numberdensity_FIM 4e3 9e23
+add-table-entry numberdensity_FIM 7.2e3 1.2e24   $ from karnesky and isheim, 2007 -- 1.7at%  
+add-table-entry numberdensity_FIM 1e4 1e24
+add-table-entry numberdensity_FIM 4e4 1e23
+add-table-entry numberdensity_FIM 1.5e5 3e22
+add-table-entry numberdensity_FIM 5e5 8e21
+
+create-global-table numberdensity_TEM
+add-table-entry numberdensity_TEM 4e4 4.5e21
+add-table-entry numberdensity_TEM 1.5e5 7e21
+add-table-entry numberdensity_TEM 5.5e5 7.2e21
+
+
+$$**************************************************************************************************
+************************************ OUTPUT WINDOWS, PLOTS, ETC. ***********************************
+**************************************************************************************************$$
+
+set_function_expression sum f$cu_bcc_1_p0+f$cu_bcc_2_p0+f$cu_fcc_p0
+
+$ ------------------------- Temperature, phase-fraction, radius, density ---------------------------
+
+new-gui-window p1                                               $ generate new plot: temperature
+                                                                                                                                                                                                                                                                                                                      $ Define values for default x-axis (will be used by all plots)
+$remember window ID to address it correctly later in the script
+set-variable-value buffer_window_id active_frame_id             $ assign to variable ...
+
+set-gui-window-property . x stepvalue                           $ default x-axis variable (time)
+set-gui-window-property . s u y                                 $ use default x-axis for all plots: yes
+set-gui-window-property . s y log                               $ Use log x-axis as default
+set-gui-window-property . s t time / s                          $ default x-axis title                    
+set-gui-window-property . s f 1                                 $ scaling factor is 1
+set-gui-window-property . s s 1e-1..1e10                        $ scale x-axis
+set-gui-window-property . n 2                                   $ 2 plot columns
+
+set-plot-option . s n b t$c                                     $ add series: temperature
+set-plot-option . s m -1 t$c T                                  $ rename series
+set-plot-option . a y 1 t temperature / C                       $ y-axis title
+set-plot-option . l n                                           $ no legend
+
+create-new-plot x .                                             $ create new plot: phase fractions
+set-plot-option . l a y                                         $ replace all variable names by kinetic alias names
+set-plot-option . s n b f_prec$*                                $ add all series: phase fractions of precipitates
+set-plot-option . s n b sum                                     $ Add Summenkurve
+set-plot-option . a y 1 t phase fraction / [%]                  $ change y-axis title
+set-plot-option . a y 1 y lin                                   $ use lin scale for y-axis
+set-plot-option . a y 1 f 100                                   $ scaling factor is 1e9
+set-plot-option . a y 1 s 0.0..1.4                              $ scale the y-axis 
+set-plot-option . l b                                           $ show legend at the bottom of the figure
+set-plot-option . s n t phasefraction                           $ Add table to plot
+set-plot-option . s e -1 phasefraction d n                      $ Use default style: No 
+set-plot-option . s e -1 phasefraction l y none                 $ Draw no line
+set-plot-option . s e -1 phasefraction m y ellipse              $ Use ellipse as marker
+set-plot-option . s e -1 phasefraction m o black                $ Marker outline color: black
+set-plot-option . s e -1 phasefraction m f black                $ Marker fill color: black
+
+create-new-plot x .                                             $ create new plot: mean radii
+set-plot-option . l a y                                         $ replace all variable names by kinetic alias names
+set-plot-option . s n b r_mean$*                                $ add all series: mean radii of precipitates
+set-plot-option . a y 1 t mean radius / nm                      $ change y-axis title
+set-plot-option . a y 1 y log                                   $ use logarithmic scale for y-axis
+set-plot-option . a y 1 f 1e9                                   $ scaling factor is 1e9
+$set-plot-option . a y 1 s 1e-1..1e2                             $ scale the y-axis 
+set-plot-option . l b                                           $ show legend at the bottom of the figure
+set-plot-option . s n t radius_FIM                              $ Add table to plot
+set-plot-option . s e -1 radius_FIM d n                         $ Use default style: No 
+set-plot-option . s e -1 radius_FIM l y none                    $ Draw no line
+set-plot-option . s e -1 radius_FIM m y ellipse                 $ Use ellipse as marker
+set-plot-option . s e -1 radius_FIM m o black                   $ Marker outline color: black
+set-plot-option . s e -1 radius_FIM m f black                   $ Marker fill color: black
+
+create-new-plot x .                                             $ create new plot: number densities
+set-plot-option . l a y                                         $ replace all variable names by kinetic alias names
+set-plot-option . s n b num_part$*                              $ add all series: number densities of precipitates
+set-plot-option . a y 1 t number density / m<sup>-3</sup>       $ change y-axis title
+set-plot-option . a y 1 y log                                   $ use logarithmic scale for y-axis
+$set-plot-option . a y 1 s 1e20..1e24                            $ scale the y-axis from 1..
+set-plot-option . l b                                           $ show legend at the bottom of the figure
+set-plot-option . s n t numberdensity_FIM                       $ Add table to plot
+set-plot-option . s e -1 numberdensity_FIM d n                  $ Use default style: No 
+set-plot-option . s e -1 numberdensity_FIM l y none             $ Draw no line
+set-plot-option . s e -1 numberdensity_FIM m y ellipse          $ Use ellipse as marker
+set-plot-option . s e -1 numberdensity_FIM m o black            $ Marker outline color: black
+set-plot-option . s e -1 numberdensity_FIM m f black            $ Marker fill color: black
+
+move-gui-window . 50 10 700 950                                 $ move window to new position and resize
+update-gui-window .                                             $ update the GUI window
+
+
+$$**************************************************************************************************
+********************************** START PRECIPITATE SIMULATION ************************************
+**************************************************************************************************$$
+
+set-temperature-celsius 1000                             $ define something
+set-automatic-startvalues                                $ initiate equilibrium calculation 
+calc-equilibrium                                         $ calculate equilibrium state
+calc-nucleus-compositions 
+
+set_simulation_parameter t i 500 
+
+start-precipitate-simulation 
+
+$$**************************************************************************************************
+****************************************** END OF P80_2 ********************************************
+**************************************************************************************************$$

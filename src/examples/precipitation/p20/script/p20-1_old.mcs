@@ -1,0 +1,259 @@
+
+$$************************************************************************************************** 
+************************************** GENERAL INFORMATION *****************************************
+****************************************************************************************************
+
+This is part one which example describes one of the ways explained in the 'HowTo' manual for 
+evaluation of primary precipitates. The method shown utilizes a virtual heat treatment, to obtain a 
+desired size and number density of precipitates. This calc state is then used, for further 
+calculation of the 'real' heat treatment.
+At the beginning a Scheil-Gulliver analysis is performed, to obtain the phase fraction and chemical 
+composition of the primary precipitates. As described in the 'HowTo' manual, an equilibrium 
+calculation was performed consequently to evaluate the optimal temperature for the heat treatment.
+With this method, an adequate calc state was determined, which can be used for further precipitation
+calculations.
+
+Part two will continue with the calculation of precipitates in enriched and depleted regions.
+
+Database: mc_fe.tdb, mc_x_FeAlCNNbTi.tdb, mc_fe.ddb
+Author: G. Stechauner
+Creation date: 2011-11-28
+$This is a script for MatCalc version 5.44 (rel 0.026)
+
+Update date: 2013-06-19 (P. Warczok); Added command for the export of the precipitate distribution
+Currently, this is a script for MatCalc version 5.52 (rel 0.034)
+
+**************************************************************************************************** 
+************************************** SETUP INFORMATION *******************************************
+**************************************************************************************************$$
+
+$ make sure we work in the correct module
+use-module core            $ select core module for kinetic simulation
+
+$ close any open workspace without asking for save
+close-workspace f
+
+new-workspace              $ open new workspace
+
+@ echo n
+set-workspace-info + Dealing with primary precipitates
+set-workspace-info +
+set-workspace-info + Phases: Liquid, FCC_A1, BCC_A2, Cementite, AlN, NbC, TiN
+set-workspace-info + Chemical components: Fe, C, Al, N, Nb, Ti
+set-workspace-info + 
+set-workspace-info + For further information visit www.matcalc.at
+set-workspace-info +
+echo y
+
+
+$$************************************************************************************************** 
+**************************************** SYSTEM SETUP **********************************************
+**************************************************************************************************$$
+
+$ verify correct MatCalc version (is accessible as internal variable) 
+if (matcalc_version<5520034)
+   send-dialog-string "MatCalc version must be 5.52.0034 or higher to run this script. Stopping."
+   stop_run_script                                  $ stop script
+endif
+
+test-exist-td-database mc_fe.tdb                    $ Check if database is present
+if (test_result==1)
+   open-thermodyn-database mc_fe.tdb                $ Thermodynamic database
+else
+   test-exist-td-database mc_x_FeAlCNNbTi.tdb 
+   if (test_result==1)
+      open-thermodyn-database mc_x_FeAlCNNbTi.tdb   $ Thermodynamic database
+   else
+      send-dialog-string "No valid database found. Visit matcalc website and download the free 'mc_x_FeAlCNNbTi' database."
+      stop_run_script
+   endif
+endif
+
+
+$ ************************************************************************************************** 
+$ ************************ DATABASES, CHEMICAL COMPOSITION, SELECTED PHASES ************************
+$ **************************************************************************************************
+
+select-elements Fe Al C N Nb Ti                     $ select elements
+select-phase AlN bcc_a2 fcc_a1 cementite liquid     $ select phases
+
+read-thermodyn-database                             $ read thermodynamic database
+read-mobility-database mc_sample_fe.ddb                    $ read diffusion data
+
+
+$ ************************************************************************************************** 
+$ *********************************** CHANGE PHASE STATUS ETC. *************************************
+$ **************************************************************************************************
+
+$ Suspend the automatically, unneeded phases
+change-phase-status fcc_a1#01 f s s 
+
+$ Create compositions sets for TiN and NbC
+create-new-phase fcc_a1 c :NB%,TI:C%,N,VA%: NbC
+create-new-phase fcc_a1 c :TI%,NB:N%,C,VA%: TiN
+
+$ make sure that the major constituents of TiN and NbC are enforced !!! Otherwise these
+$ two phases can become mixed up between each other
+change-phase-status NbC f e s                                       $ enforce major constituents
+change-phase-status TiN f e s                                       $ enforce major constituents
+
+enter-composition wp al=0.025 C=0.22 N=0.0061 NB=0.036 TI=0.0081
+   
+create-new-phase fcc_a1 e                                           $ create new equilibrium phase
+create-precipitation-domain virtual                                 $ Precipitationdomain for virtual Heat Treatment
+set-precipitation-parameter virtual x fcc_a1#02                     $ matrix phase of domain heat-treatment
+
+$ ----------------------------- PRECIPITATION DOMAIN heat-treatment --------------------------------------
+
+create-precipitation-domain heat-treatment                                $ heat-treatment is precipitation domain = matrix
+set-precipitation-parameter heat-treatment x fcc_a1                       $ matrix phase of domain heat-treatment
+set-precipitation-parameter heat-treatment t g 500e-6                     $ heat-treatment grain size (=500e-6 m)
+
+
+$ ------------------------- PRECIPITATE PHASES IN virtualENITE ------------------------------------
+
+create-new-phase TiN p TiN(virtual)                             $ create new precipitate phase 
+set-precipitation-parameter TiN_p0 n j y                        $ nucleation only with valid parent major constituents
+set-precipitation-parameter TiN_p0 n s e                        $ nucleation sites are grain boundary edges
+set-precipitation-parameter TiN_p0 n p y virtual                $ restrict nucleation domain
+set-precipitation-parameter TiN_p0 s d r 1e-15                  $ diffusion rate between precipitates
+set-precipitation-parameter TiN_p0 n t 100                      $ incubation time constant
+
+
+$ --------------------------- PRECIPITATE PHASES IN heat-treatment --------------------------------------
+
+create-new-phase aln p AlN(heat-treatment)                      $ create new precipitate phase 
+set-precipitation-parameter aln_p0 n p y heat-treatment         $ restrict nucleation domain
+
+create-new-phase NbC p NbC(heat-treatment)                      $ create new precipitate phase 	
+set-precipitation-parameter NbC_p0 n j y                        $ nucleation only with valid parent major constituents	
+set-precipitation-parameter NbC_p0 n p y heat-treatment         $ restrict nucleation domain
+
+create-new-phase TiN p TiN(heat-treatment)                      $ create new precipitate phase 
+set-precipitation-parameter TiN_p1 n j y                        $ nucleation only with valid parent major constituents
+set-precipitation-parameter TiN_p1 n p y heat-treatment         $ restrict nucleation domain
+
+$$ Note: Nucleation site for the precipitate phases in 'heat-treatment' are not defined, as they won't be used in this script.
+ They will be defined in the script for part 2. $$
+
+$$**************************************************************************************************
+************************************ OUTPUT WINDOWS, PLOTS, ETC. ***********************************
+**************************************************************************************************$$
+
+$ ------------------------- Temperature, phase-fraction, radius, density ---------------------------
+
+new-gui-window p1                                               $ generate new plot: temperature
+                                                                                                                                                                                                                                                                                                                      $ Define values for default x-axis (will be used by all plots)
+$remember window ID to address it correctly later in the script
+set-variable-value buffer_window_id active_frame_id             $ assign to variable ...
+
+set-gui-window-property . x stepvalue                           $ default x-axis variable (time)
+set-gui-window-property . s u y                                 $ use default x-axis for all plots: yes
+set-gui-window-property . s t time / s                          $ default x-axis title                    
+set-gui-window-property . s f 1                                 $ scaling factor is 1
+set-gui-window-property . n 2                                   $ 2 plot columns
+
+set-plot-option . s n b t$c                                     $ add series: temperature
+set-plot-option . s m -1 t$c T                                  $ rename series
+set-plot-option . a y 1 t temperature / C                       $ y-axis title
+set-plot-option . l n                                           $ no legend
+
+create-new-plot x .                                             $ create new plot: phase fractions
+set-plot-option . l a y                                         $ replace all variable names by kinetic alias names
+set-plot-option . s n b f_prec$*                                $ add all series: phase fractions of precipitates
+set-plot-option . a y 1 t phase fraction                        $ change y-axis title
+set-plot-option . a y 1 y log                                   $ use logarithmic scale for y-axis
+set-plot-option . a y 1 s 1e-8..1                               $ scale the y-axis from 1e-8..1
+set-plot-option . l b                                           $ show legend at the bottom of the figure
+
+create-new-plot x .                                             $ create new plot: mean radii
+set-plot-option . l a y                                         $ replace all variable names by kinetic alias names
+set-plot-option . s n b r_mean$*                                $ add all series: mean radii of precipitates
+set-plot-option . a y 1 t mean radius / nm                      $ change y-axis title
+set-plot-option . a y 1 y log                                   $ use logarithmic scale for y-axis
+set-plot-option . a y 1 f 1e9                                   $ scaling factor is 1e9
+set-plot-option . l b                                           $ show legend at the bottom of the figure
+
+create-new-plot x .                                             $ create new plot: number densities
+set-plot-option . l a y                                         $ replace all variable names by kinetic alias names
+set-plot-option . s n b num_part$*                              $ add all series: number densities of precipitates
+set-plot-option . a y 1 t number density / m<sup>-3</sup>       $ change y-axis title
+set-plot-option . a y 1 y log                                   $ use logarithmic scale for y-axis
+set-plot-option . a y 1 s 1..1e25                               $ scale the y-axis from 1..
+set-plot-option . l b                                           $ show legend at the bottom of the figure
+
+move-gui-window . 50 10 700 950                                 $ move window to new position and resize
+update-gui-window .                                             $ update the GUI window
+
+$ ------------------------------------------ Histogramm --------------------------------------------
+
+new-gui-window p5                             $ new precipitation distribution plot window, scaled version
+set-plot-option . l a y                       $ replace all variable names by kinetic alias names
+set-plot-option . s n p TiN_p0                $ add series
+set-plot-option . a x 1 f 1e9                 $ use scaling factor 1e9 for x-axis
+set-plot-option . a y 1 s 1e10..1e13          $ scale the y-axis from 1e10..1e22
+set-plot-option . a y 1 y log                 $ use logarithmic scale for y-axis
+set-plot-option . a x 1 t radius / nm         $ change x-axis title
+set-plot-option . a x 1 s 1..3000             $ scale the x-axis 
+set-plot-option . a x 1 y log                 $ use logarithmic scale for x-axis
+set-plot-option . a y 1 t number density      $ change y-axis title
+
+move-gui-window . 505 100 450 400             $ move window to new position and resize
+update-gui-window .                           $ Update the GUI window     
+
+$ bring output window to front ...
+move-gui-window 0 25 50 750 740               $ move output window to new position and resize
+move-gui-window 0 hide                        $ first 'hide' to be able to ...
+move-gui-window 0 show                        $ ... bring output window to front
+
+
+$$***************************************************************************************************
+******************************************** HEAT TREATMENT *****************************************
+***************************************************************************************************$$
+
+$-------------------------------------- Virtual heat treatment -------------------------------------$
+
+create-heat-treatment virtual                 $ create new heat treatment
+append-ht-segment virtual                     $ append new segment
+edit-ht-segment virtual . d n virtual         $ define precipitation domain
+
+edit-ht-segment virtual . s 1110              $ define start temperature
+edit-ht-segment virtual . 3 1110 100          $ heating rate + delta time
+
+append-ht-segment virtual                     $ append new segment
+edit-ht-segment virtual . 1 1405 1            $ Tend + heating rate
+
+append-ht-segment virtual                     $ append new segment
+edit-ht-segment virtual . 3 1405 1000000      $ heating rate + delta time
+
+
+$$**************************************************************************************************
+********************************** START PRECIPITATE SIMULATION ************************************
+**************************************************************************************************$$
+
+set-temperature-celsius 1250                             $ define something
+set-automatic-startvalues                                $ initiate equilibrium calculation 
+calc-equilibrium                                         $ calculate equilibrium state
+
+set-simulation-parameter u 100
+
+rename-current-buffer virtual                            $ rename buffer for heat treatment 
+set-gui-window-property buffer_window_id b virtual       $ attach to buffer window
+set-simulation-parameter t h virtual 10                  $ temperature profile from HT, max. T-step
+set-simulation-parameter s r                             $ starting condition for prec. sim.: reset
+
+start-precipitate-simulation                             $ let's go!
+
+$ save state after simulation. This is the starting point for next simulation: 
+create-calc-state after-virtual                          $ create calc state 
+
+$ save workspace
+save-workspace p20-1.mcw
+
+$ export distribution of primary precipitates
+export-precipitate-dist tin_p0 size_dist_tin_primary.txt
+
+
+$$**************************************************************************************************
+****************************************** END OF P20_1 ********************************************
+**************************************************************************************************$$

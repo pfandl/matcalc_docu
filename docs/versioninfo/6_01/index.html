@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>6 01 - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "6 01";
+        var mkdocs_page_input_path = "versioninfo/6_01.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">6 01</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>MatCalc 6.01 [MatCalc Documentation]</p>
+<h2 id="matcalc-601">MatCalc 6.01</h2>
+<p>Below are details describing the various changes and new features of the MatCalc versions 6.01.xxxx.</p>
+<h4 id="version-6011000-online-2018-04-17">version 6.01.1000: online 2018-04-17</h4>
+<h5 id="new-features">New features</h5>
+<ul>
+<li>Modified treatment of <strong>temperature and strain rate-dependent Yield stress</strong> according to model of Johannes Kreyca (see PhD thesis to download from publications page).</li>
+<li>Added the new <strong>MatCalc Remote Control</strong>, which allows you to start MatCalc and communicate with it each instance via an extremely small executable called <code>mcr</code>.</li>
+<li>The <strong>script editor</strong> now supports <strong>interactive input</strong>: Directly execute the commands while writing the script. Try it out, you will love it.</li>
+<li>Improved <strong>nucleation</strong> model with <strong>equivalent interfacial energy</strong>: The algorithm now correctly accounts for the minimum nucleation radius. Additionally, nucleation is only triggered if the driving force of the product phase is higher than the one of the parent phase and if the driving force is positive.</li>
+<li>All new treatment of <strong>heterogeneous nucleation</strong>. The energy contribution from heterogeneous nucleation sites is now fully incorporated in the SFFK model for growth and coarsening of precipitates.</li>
+<li>Added functionality to <strong>edit table contents</strong> from within scripts.</li>
+<li>New file format for <strong>export/import of tm treatments</strong>. Now exports all variables including pre- and post-segment scripts.</li>
+<li>It is now possible to import <strong>tm treatments with incomplete number of columns</strong>. This feature is particularly useful to import heat treatments that have been generated with, e.g., Finite Element software. We have also added a feature to <strong>'simplify'</strong> ('trim') these treatments and to reduce the number of linear segments to only those that are really needed to represents the temperature/deformation history.</li>
+<li>
+<p>Added several <strong>missing commands and variables</strong> in new scripting language (console 6)</p>
+</li>
+<li>
+<p><code>generate-grain-distribution</code></p>
+</li>
+<li><code>edit-tm-treatment</code> variables: tm-treatment-name, tm-treatment-segment …</li>
+<li>Mean subgrain diameter variables for multi-class grain structure model (<code>SGD_MC$pd</code> etc.).</li>
+<li><code>move-gui-window</code> now accepts additional arguments: <code>displace/hide/show</code>.</li>
+<li><code>set-table-entry</code> added.</li>
+<li><code>export-open-file file-name append/overwrite</code>; append appends to file, overwrite (or nothing) truncates. The obsolete command <code>export-clear-file</code> has been removed from console6.</li>
+<li><code>select-calc-state</code>, <code>load-calc-state</code>, <code>list-buffer-content</code> implemented.</li>
+<li>Added <code>set-precipitation-parameter precipitation_domain_name nucleation-fixed-molar-site-fraction</code> with composition variables.</li>
+<li>Added variable to inspect the energy contribution from heterogeneous nucleation sites (<code>PD_HDFM$prec_domain_name</code>).</li>
+<li><strong>Improved default</strong> values for recrystallization and deformation treatment implemented in <code>defaults.txt</code> file. Also, some default value strings were changed for treatment of dynamic strengthening.</li>
+<li>coline 6 is now fully <strong>case-insensitive</strong>.</li>
+<li><strong>Improved suggester</strong> treatment in console 6.</li>
+<li>Reimplemented <strong>co-cluster strengthening</strong> variable (TAU_CLUST) for individual phases.</li>
+<li>Implemented first version of <strong>stress relaxation around misfitting precipitates</strong> by creep in the matrix.</li>
+<li>Added a <strong>Crash-Reporter</strong> feature. It let's you very conveniently report problems to the MatCalc support and development team.</li>
+<li>Added a <strong>new startup page</strong>, with a history of workspaces and scripts. Let's you conveniently open workspaces and run/open scripts.</li>
+</ul>
+<h5 id="bug-fixes">Bug fixes</h5>
+<ul>
+<li>Fixed numerical rounding issues in <strong>heat treatment segments</strong>, where wrong segments might be identified at connection points.</li>
+<li>Several fixes in <strong>license file</strong> handling.</li>
+<li>Fixes in treatment of <strong>vacancy diffusion</strong> in cell simulation module.</li>
+<li>Various fixes in <strong>new scripting language</strong> syntax.</li>
+<li>Fixed coline inconsistencies and bugs for FSK traps and Couples&amp;Pairs.</li>
+<li>Fixed problem in automatic step size routine for maximum accumulated strain.</li>
+<li>Fixed issues in set-precipitation-parameters: nucleation-site-saturation; substitional-diffusion-in-precipitate-factor.</li>
+<li>Fixed missing serialize variables for couples &amp; pairs.</li>
+<li>Fixed a problem with on-particle nucleation of precipitates within the new nucleation rate treatment.</li>
+<li>Changed a few variable names for strength coupling.</li>
+<li>Fix bug in pre- and post-segment string processing for cell simulation module.</li>
+<li>Fixed a bug with substitution of “@” by phase/prec_domain name on more than one position.</li>
+<li>Fixed crash in ExpandSmallestDissolvingSizeClass if calculating with only 1 class</li>
+<li>Fixed bug in second derivatives for u-fraction constraints</li>
+<li>Fixed incorrect implementation of C-term in ABC model. Now correctly approaches saturation dislocation density asymptotically.</li>
+<li>Fixed wrong calculation of Read-Shockley dislocation density. Now goes to zero when subgrain size becomes equal to grain size.</li>
+<li>Fixed subgrain size evolution during grain growth. Is now automatically updated.</li>
+</ul>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=versioninfo%3A6_01&amp;1788352871" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

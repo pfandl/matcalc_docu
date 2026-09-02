@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>T15 - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "T15";
+        var mkdocs_page_input_path = "tutorials/t15.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">T15</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#t15effect_of_microstructure_and_conditions_part_1">T15: Effect of microstructure and conditions (Part 1)</a></p>
+</li>
+<li>
+<p><a href="#complimentary_files">Complimentary files</a></p>
+</li>
+<li><a href="#contents">Contents:</a></li>
+<li><a href="#equilibrium_calculations">Equilibrium calculations</a></li>
+<li>
+<p><a href="#nucleation_model_for_cementite">Nucleation model for cementite</a></p>
+</li>
+<li>
+<p><a href="#setting_up_the_simulation">Setting up the simulation</a></p>
+</li>
+<li><a href="#graphical_display_of_results">Graphical display of results</a></li>
+<li><a href="#calculation">Calculation</a></li>
+<li><a href="#interpretation_of_results">Interpretation of results</a></li>
+<li>
+<p><a href="#diffusivity_in_precipitates">Diffusivity in precipitates</a></p>
+</li>
+<li>
+<p><a href="#setup">Setup</a></p>
+</li>
+<li><a href="#interpretation_of_results1">Interpretation of results</a></li>
+<li>
+<p><a href="#microstructural_parameters_and_nucleation_sites">Microstructural parameters and nucleation sites</a></p>
+</li>
+<li>
+<p><a href="#setup1">Setup</a></p>
+</li>
+<li><a href="#to_finish">To finish...</a></li>
+<li><a href="#consecutive_articles">Consecutive articles</a></li>
+</ul>
+<h2 id="t15-effect-of-microstructure-and-conditions-part-1">T15: Effect of microstructure and conditions (Part 1)</h2>
+<p><em>This tutorial was tested on<br />
+MatCalc version 6.04 rel 1.001<br />
+license: free<br />
+database: mc_fe.tdb; mc_fe.ddb</em></p>
+<h3 id="complimentary-files">Complimentary files</h3>
+<p>Click <a href="/tutorials/t15/script/t15_6021003.mcs" title="tutorials/t15/script/t15_6021003.mcs (18.7 KB)">here</a> to view the script for this tutorial</p>
+<h3 id="contents">Contents:</h3>
+<p>The Fe-Cr-C system forms the basis of many industrially useful alloys. The aim of this and  <a href="/tutorials/t16" title="tutorials/t16">Tutorial 16</a> is to produce a simulation of the precipitation behaviour in a Fe-10Cr-0.1C (wt.%) alloy during heat-treatment at 600°C. This involves considering several aspects, such as the chemical compositions of nuclei, the microstructural sites on which nuclei form, and the density of these sites in the microstructure under consideration. This first of two tutorials will focus on modelling the formation of the metastable cementite (Fe3C) phase, and  <a href="/tutorials/t16" title="tutorials/t16">Tutorial 16</a> will consider the interaction between this and the more stable phase M23C6.</p>
+<ul>
+<li>Choice of nucleation model</li>
+<li>Diffusivity in precipitates</li>
+<li>Nucleation sites for the precipitate phase</li>
+<li>Microstructural parameters of the precipitation domain</li>
+</ul>
+<h2 id="equilibrium-calculations">Equilibrium calculations</h2>
+<p>Create a new workspace with the elements Fe, C and Cr and the phases BCC_A2, CEMENTITE and M23C6. Enter the composition 10 wt.% Cr, 0.1 wt.% C.<br />
+Calculate an equilibrium at 600°C and observe the contents of the <strong>'Phase summary'</strong> window. It can be seen that M23C6 is the stable phase at equilibrium. However, it is known from experience that the first phase to form on heat-treatment is cementite.<br />
+Go to <strong>'Global &gt; Phase status'</strong>, suspend the <strong>'M23C6'</strong> phase and calculate an equilibrium once again so as to study the metastable equilibrium between BCC_A2 and cementite. The composition of cementite in metastable equilibrium with BCC_A2 is, in wt.%, 85 % Cr, 7 % C, 8 % Fe; this is very rich in Cr compared to the overall system composition of 10 % Cr, 0.1 % C and 89.9 % Fe. This high amount of Cr is rather unusual for cementite, as it is expected to be rahter Fe-rich. Hence, Fe is set as the major constituent for this carbide in the database. However, MatCalc detects that the Cr-content in cementite is greater than the one of the major constituent for this phase (Fe) and a <strong>'*maj*!'</strong> warning flag appears in the 'phase summary' window.<br />
+In practice, it is found that cementite forms rapidly on heat-treatment at 600°C; this is more consistent with a mechanism which primarily involves the diffusion of C rather than the slower-diffusing Cr. It is therefore likely that the initial nuclei do not form with the equilibrium composition, but are initially much richer in Fe than Cr. Part 1 of this tutorial considers how such effects can be modelled. Re-open <strong>'Global &gt; Phase status'</strong> and remove the <strong>'suspended'</strong> flag for M23C6.</p>
+<h2 id="nucleation-model-for-cementite">Nucleation model for cementite</h2>
+<h3 id="setting-up-the-simulation">Setting up the simulation</h3>
+<p>Create a precipitate phase <strong>CEMENTITE_P0</strong>, using <strong>'Global &gt; Phase status'</strong>. In the <strong>'Nucleation“</strong> tab → <strong>'Controls'</strong> subtab, change the <strong>'Nucleus composition'</strong> model from <strong>'ortho-equilibrium'</strong> to <strong>'para-equilibrium'</strong> using the drop-down menu. <strong>'Para-equilibrium'</strong> means that the nucleus is assumed to have the same composition in terms of substitutional elements as the matrix from which it forms, and only the carbon is partitioned between the two phases. In the <strong>'ortho-equilibrium'</strong> model, by contrast, the composition of the nucleus is calculated assuming full equilibrium with the BCC_A2 matrix. In the <strong>'Nucleation &gt; Sites'</strong> tab, set the nucleation sites to <strong>'Dislocations'</strong> (remove the tick from 'bulk')</p>
+<p><a href="/tutorials/t15/img/t15_phase_status_6050006.png" title="tutorials/t15/img/t15_phase_status_6050006.png"><img alt=" MatCalc phase status" src="/tutorials/t15/img/t15_phase_status_6050006.png" title="MatCalc phase status" /></a></p>
+<p>In <strong>'Global &gt; precipitation domains'</strong>, create a new domain named <strong>'ferrite'</strong> with <strong>'BCC_A2'</strong> as its matrix phase. Accept the changes by clicking <strong>'OK'</strong> to close the window.</p>
+<p>Load the mobility data as described in  <a href="/tutorials/t14" title="tutorials/t14">Tutorial 14</a>.</p>
+<h3 id="graphical-display-of-results">Graphical display of results</h3>
+<p>Create a new XY-plot window and define a default x-axis with the following properties:</p>
+<ul>
+<li><strong>Use for all plots</strong>: yes</li>
+<li><strong>Title</strong>: Time [h]</li>
+<li><strong>Type</strong>: log</li>
+<li><strong>Scaling</strong>: 1e-10..</li>
+<li><strong>Factor</strong>: 1/3600 (to convert seconds to hours)</li>
+</ul>
+<p>Add four new plots to the window and drag and drop the following series to the plots:</p>
+<ol>
+<li><strong>F_PREC$CEMENTITE_P0</strong> (found under <strong>'precipitates general'</strong>)</li>
+<li><strong>XPR$CEMENTITE_P0<span class="arithmatex">\(CR** (Cr content of the cementite precipitate phase) and **X\_NUCL\$CEMENTITE\_P0\)</span>CR</strong> (Cr content of the nucleus). The latter can be found under <strong>'precipitates nucleation'</strong>.</li>
+<li><strong>X$BCC_A2$C</strong> (carbon content of BCC matrix)</li>
+<li><strong>NUM_PREC$CEMENTITE_P0</strong> (found under <strong>'precipitates general'</strong>)</li>
+<li><strong>R_MEAN$CEMENTITE_P0</strong> (found under <strong>'precipitates general'</strong>)</li>
+</ol>
+<p>Label the y-axes as follows</p>
+<ol>
+<li><strong>'f<sub>CEM</sub>'</strong> (fCEM)</li>
+<li><strong>'x<sub>Cr</sub>'</strong> (xCr)</li>
+<li><strong>'x<sub>BCC_A2, C</sub>'</strong> (xBCC_A2, C)</li>
+<li><strong>'N<sub>ppt</sub>[m<sup>-3</sup>]'</strong> (Nppt[m-3])</li>
+<li><strong>'R<sub>mean</sub> [m]'</strong> (Rmean [m]); y-axis set to <strong>'log'</strong></li>
+</ol>
+<p>Save the workspace.</p>
+<h3 id="calculation">Calculation</h3>
+<p>Again some modification for the algorithm used for the calculation might be beneficial to increase the speed of the calculation for this system. To do this, the numerical limits describing the minimum driving force limit for compensation of matrix composition should be changed. Up to now, this can be only modified via console commands. Type the following command-line in the console:</p>
+<p><code>set-simulation-parameter minimum-dfm-for-matrix-compensation=0,25</code></p>
+<p>Select <strong>'Calc &gt; Microstructure simulation'</strong>. Enter the finish time of the calculation: <strong>'3.6e13'</strong> s (= 1e10 hours). The isothermal treatment temperature should be set to <strong>'600'</strong> and <strong>'Temperature in C'</strong> selected. Leave the other settings as they are, and click on <strong>"Go"</strong>. (The calculation may take some time, especially on slower machines, because of the long treatment time.)<br />
+After the calculation has finished, duplicate and lock all the series in the plot window. Return to <strong>'Global &gt; Phase status'</strong> and set the nucleation model for CEMENTITE_P0 to <strong>'ortho-equilibrium'</strong> and re-open <strong>'Calc &gt; precipitation kinetics'</strong>. There is no need to change anything; simply click on <strong>'Go'</strong>. A warning appears that the contents of the current buffer will be overwritten. As the series have been locked, this does not matter; accept the warning with <strong>"Yes"</strong>.</p>
+<h3 id="interpretation-of-results">Interpretation of results</h3>
+<p>The onset of precipitation occurs much earlier in the para-equilibrium case, beginning around 1e-7 hours (~ 1e-3 seconds), as compared to ~1 hour for ortho-equilibrium. The para-equilibrium cementite fraction reaches a plateau at a smaller value than for the ortho-equilibrium case, but after a longer time at temperature, this fraction rises, eventually reaching the same value as for ortho-equilibrium.</p>
+<p><a href="/tutorials/t15/img/t15_plot1_phase_fraction_6021003.png" title="tutorials/t15/img/t15_plot1_phase_fraction_6021003.png"><img alt=" MatCalc plot" src="/tutorials/t15/img/t15_plot1_phase_fraction_6021003.png" title="MatCalc plot" /></a></p>
+<p>The para-equilibrium model stipulates that the Cr content of the nuclei (XNUCL,CEM, Para) be equal to that of the matrix. This decreases towards longer times at temperature, as the matrix becomes depleted in Cr. This depletion is caused by the Cr-enrichment of the precipitates by diffusion; their Cr content (XCEM, Para) increases up to the equilibrium value of around 0.69 (mol. fr.).<br />
+In the ortho-equilibrium case, the cementite nucleates with its equilibrium Cr content, and there is little or no change in the Cr content of the precipitates during the heat-treatment. It is this requirement for full equilibrium which accounts for the long incubation time for cementite when the ortho-equilibrium model is used; the formation of a critical nucleus with ortho-equilibrium composition requires the (slower) diffusion of Cr.</p>
+<p><a href="/tutorials/t15/img/t15_plot1_cr_content_6021003.png" title="tutorials/t15/img/t15_plot1_cr_content_6021003.png"><img alt=" MatCalc plot" src="/tutorials/t15/img/t15_plot1_cr_content_6021003.png" title="MatCalc plot" /></a></p>
+<p>In the plot of X<span class="arithmatex">\(BCC\_A2\)</span>C (the carbon content of the BCC matrix), it can be seen that the depletion of the matrix in carbon exactly follows the increase in precipitate fraction for both models.</p>
+<p><a href="/tutorials/t15/img/t15_plot1_c_content_matrix_6021003.png" title="tutorials/t15/img/t15_plot1_c_content_matrix_6021003.png"><img alt=" MatCalc plot" src="/tutorials/t15/img/t15_plot1_c_content_matrix_6021003.png" title="MatCalc plot" /></a></p>
+<p>The plot of the number of cementite precipitates shows that in the ortho-equilibrium case, nucleation occurs at a later stage and the precipitates are less numerous.</p>
+<p><a href="/tutorials/t15/img/t15_plot1_num_part_6021003.png" title="tutorials/t15/img/t15_plot1_num_part_6021003.png"><img alt=" MatCalc plot" src="/tutorials/t15/img/t15_plot1_num_part_6021003.png" title="MatCalc plot" /></a></p>
+<p>Coarsening of the precipitates is more rapid in the para-equilibrium case, as can be seen from the plot below:</p>
+<p><a href="/tutorials/t15/img/t15_plot1_mean_radius_6021003.png" title="tutorials/t15/img/t15_plot1_mean_radius_6021003.png"><img alt=" MatCalc plot" src="/tutorials/t15/img/t15_plot1_mean_radius_6021003.png" title="MatCalc plot" /></a></p>
+<p>The use of the para-equilibrium nucleation model gives better qualitative agreement with experimental observations of the rapid precipitation of cementite at temperatures such as 600°C in alloy steels. An example in the <a href="/examples/precipitation" title="examples/precipitation">Examples</a> section, in which this issue is considered in more detail, will be available shortly.</p>
+<h2 id="diffusivity-in-precipitates">Diffusivity in precipitates</h2>
+<h3 id="setup">Setup</h3>
+<p>It was seen above that, using the para-equilibrium model, cementite precipitates formed with a Fe-rich composition and subsequently enriched in Cr. The rate of enrichment depends on the ease with which chromium can diffuse into existing precipitates.<br />
+Duplicate and lock all the series in the plots. Re-open <strong>'Global &gt; Phase status'</strong>. In the <strong>'Nucleation'</strong> tab, set the cementite nucleation model to back to <strong>'para-equilibrium'</strong>. Open the <strong>'Special'</strong> tab. In the <strong>'Diffusion in precipitate as ratio from matrix …'</strong> section, the selected value of the <strong>'substitutional'</strong> ratio is set to 0.01. This means that the diffusivities of all elements within the cementite precipitate are considered to be one hundredth of their values within the matrix. Changing this value will affect the rate of Cr-enrichment of the cementite. To demonstrate this, change the value of the ratio to <strong>'0.25'</strong>, click on <strong>'OK'</strong> and re-run the simulation.</p>
+<p><a href="/tutorials/t15/img/t15_phase_status_special_2016.png" title="tutorials/t15/img/t15_phase_status_special_2016.png"><img alt=" MatCalc phase status special" src="/tutorials/t15/img/t15_phase_status_special_2016.png" title="MatCalc phase status special" /></a></p>
+<h3 id="interpretation-of-results_1">Interpretation of results</h3>
+<p>In this case, precipitation occurs at the same rate as in the first para-equilibrium calculation, but the Cr-enrichment of the precipitates is more rapid. Consequently, the increase in precipitate phase fraction and the decrease in matrix carbon content occur earlier.</p>
+<p><a href="/tutorials/t15/img/t15_plot2_phase_fraction_6021003.png" title="tutorials/t15/img/t15_plot2_phase_fraction_6021003.png"><img alt=" MatCalc plot" src="/tutorials/t15/img/t15_plot2_phase_fraction_6021003.png" title="MatCalc plot" /></a></p>
+<p>It is also notable that coarsening is delayed and the distribution of more numerous, relatively fine particles is stabilised to longer times, as shown by the plot below.</p>
+<p><a href="/tutorials/t15/img/t15_plot2_mean_radius_6021003.png" title="tutorials/t15/img/t15_plot2_mean_radius_6021003.png"><img alt=" MatCalc plot" src="/tutorials/t15/img/t15_plot2_mean_radius_6021003.png" title="MatCalc plot" /></a></p>
+<h2 id="microstructural-parameters-and-nucleation-sites">Microstructural parameters and nucleation sites</h2>
+<h3 id="setup_1">Setup</h3>
+<p>At this stage, it may be helpful to remove all the series except the original para-equilibrium calculation results from the plots to avoid them becoming cluttered. (If required, the numerical data from the series can first be exported in text form using <strong>'Copy data'</strong> from the right-click menu and then pasting these data into a spreadsheet or text editor. Alternatively, the plots can be exported in graphical form using <strong>'Copy pixmap'</strong>.) To remove a series from a plot, first click on that plot and then select the name of the series in the <strong>'Options'</strong> window. (Failure to do this can result in series from other plots being deleted instead.) Multiple series can be selected using the Ctrl button. Remove them using the Delete button or <strong>'Remove series'</strong> from the right-click menu.<br />
+Reset the <strong>'consider as ratio from matrix diffusivity'</strong> value back to its default value of <strong>'0.01'</strong> in the <strong>'Special'</strong> tab, keep the nucleus composition model set at <strong>'para-equilibrium'</strong> and click <strong>'OK'</strong> to save the changes.
+Open <strong>'Global &gt; Precipitation domains' &gt; 'General'</strong>. It contains a few data on the microstructure like dislocation density or grain diameter. The default values for each of the structural parameters are shown in the image below.</p>
+<p><a href="/tutorials/t15/img/t15_prec_domain_microstructure_2017.png" title="tutorials/t15/img/t15_prec_domain_microstructure_2017.png"><img alt=" MatCalc structure" src="/tutorials/t15/img/t15_prec_domain_microstructure_2017.png" title="MatCalc structure" /></a></p>
+<p>The nucleation sites for CEMENTITE_P0 have been set to <strong>'Dislocations'</strong> (see the section <a href="/tutorials/t15#setting_up_the_simulation" title="tutorials/t15">'Setting_up_the_simulation'</a> of this tutorial) so the dislocation density will determine the number of nucleation sites. The default dislocation density, which has been used so far, is 1e12, which is typical of an annealed structure. Change this value to <strong>'1e14'</strong> and re-run the simulation.<br />
+The following images show the phase fraction, the number of precipitates (<strong>note the log scale</strong>) and the mean radius for dislocation densities of 1e12, 1e14 and 1e16. It can be seen that increasing the nucleation site density accelerates the reaction kinetics and results in a larger number of precipitates with a smaller mean radius.</p>
+<p><a href="/tutorials/t15/img/t15_plot3_phase_fraction_6021003.png" title="tutorials/t15/img/t15_plot3_phase_fraction_6021003.png"><img alt=" MatCalc plot" src="/tutorials/t15/img/t15_plot3_phase_fraction_6021003.png" title="MatCalc plot" /></a></p>
+<p><a href="/tutorials/t15/img/t15_plot3_num_part_6021003.png" title="tutorials/t15/img/t15_plot3_num_part_6021003.png"><img alt=" MatCalc plot" src="/tutorials/t15/img/t15_plot3_num_part_6021003.png" title="MatCalc plot" /></a></p>
+<p><a href="/tutorials/t15/img/t15_plot3_mean_radius_6021003.png" title="tutorials/t15/img/t15_plot3_mean_radius_6021003.png"><img alt=" MatCalc plot" src="/tutorials/t15/img/t15_plot3_mean_radius_6021003.png" title="MatCalc plot" /></a></p>
+<h2 id="to-finish">To finish...</h2>
+<p>Save the workspace file.</p>
+<h2 id="consecutive-articles">Consecutive articles</h2>
+<p>The tutorial is continued in article  <a href="/tutorials/t16" title="tutorials/t16">T16 - Effect of microstructure and conditions (Part 2 - simultaneous precipitation)</a></p>
+<p>Go to <a href="/tutorials" title="tutorials">MatCalc tutorial index</a>.</p>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=tutorials%3At15&amp;1788352860" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

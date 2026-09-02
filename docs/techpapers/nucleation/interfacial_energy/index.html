@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Interfacial energy - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Interfacial energy";
+        var mkdocs_page_input_path = "techpapers/nucleation/interfacial_energy.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Interfacial energy</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>TechPaper #2014001: Evaluation of interfacial energies [MatCalc Documentation]</p>
+<h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#techpaper_2014001evaluation_of_interfacial_energies">TechPaper #2014001: Evaluation of interfacial energies</a></p>
+</li>
+<li>
+<p><a href="#compatibility">Compatibility</a></p>
+</li>
+<li><a href="#objectives">Objectives</a></li>
+<li><a href="#related_documents">Related documents</a></li>
+<li>
+<p><a href="#main_document">Main document</a></p>
+</li>
+<li>
+<p><a href="#the_planar_sharp_interface">The planar sharp interface</a></p>
+</li>
+<li><a href="#the_size_correction_factor">The size correction factor</a></li>
+<li><a href="#the_diffuse_interface_correction_factor">The diffuse interface correction factor</a></li>
+</ul>
+<h1 id="techpaper-2014001-evaluation-of-interfacial-energies">TechPaper #2014001: Evaluation of interfacial energies</h1>
+<h2 id="compatibility">Compatibility</h2>
+<p>MatCalc version: 5.60 - … <br />
+Author: P. Warczok <br />
+Created: 2014-04-09 <br />
+Revisions:</p>
+<h2 id="objectives">Objectives</h2>
+<p>This paper describes how the energy of the precipitate/matrix interface is evaluated in <em>MatCalc</em>. The simple case of the planar shape interface is discussed. The correction factor which allows to extend this model for the more complex situations (curved interface, diffuse interface) are also presented.</p>
+<h2 id="related-documents">Related documents</h2>
+<p>None</p>
+<h1 id="main-document">Main document</h1>
+<p>The energy of the precipitate/matrix interface (later referred to simply as “interfacial energy”) is an important parameter in the precipitate kinetics simulations. Its value determines the height of the nucleation energy barrier which the solute clusters have to overcome in order to create a separate precipitation phase. Furthermore, it affects the coarsening dynamics, when the system strives to minimize the total area of precipitate/matrix interfaces.</p>
+<p>Unfortunately, the interface energy is not directly measurable in experiments. While its value can be indirectly extracted from the models applied on the nucleation or coarsening experimental results, the obtained scatter is considerably large. On the other hand, the atomistic calculation can deliver more precise values but its computational cost makes it hardly applicable to the multi-component systems with several precipitates present at a time.</p>
+<p>The nearest-neighbor broken bond (<em>NNBB</em>) model offers a reliable physical basis and an easy-to-implement structure for the complex systems. Reformulation to generalized broken bond (<em>GBB</em>) model allowed to overcome the NNBB model dependence on the crystal structure and the interface orientation<a href="#fn__1">1)</a>. Because of the idealized case of the planar sharp interface, the correction factors to the GBB model were proposed accounting for the interface curvature for the spherical precipitate<a href="#fn__2">2)</a> and for the diffuse composition gradient across extending the interface<a href="#fn__3">3)</a>.</p>
+<h2 id="the-planar-sharp-interface">The planar sharp interface</h2>
+<p>The energy of the planar sharp interface is calculated according to GBB model with the following formula:</p>
+<div class="arithmatex">\[\gamma\_{pl,sh}=\frac{n\_s z\_s}{n\_l z\_l}\Delta H\_{sol}\]</div>
+<p>with:</p>
+<p><span class="arithmatex">\(n\_s\)</span> - number of atoms per unit interface area. It is set as <span class="arithmatex">\(n\_s=({N\_A}/{V\_m})^{2/3}\)</span>, where <span class="arithmatex">\(N\_A\)</span> stands for Avogadro number and <span class="arithmatex">\(V\_m\)</span> stands for the molar volume of the system.</p>
+<p><span class="arithmatex">\(n\_l\)</span> - number of atoms in one mole, thus being equal to <span class="arithmatex">\(N\_A\)</span></p>
+<p><span class="arithmatex">\(z\_s/z\_l\)</span> - is the ratio of number of the bonds broken by the interface to the total number of bonds. It refers only to the bonds of the atoms on the interface. As shown in Ref. 1, this ratio converges to the value of <span class="arithmatex">\(\sim0.329\)</span> for both bcc and fcc structures, when the bonds to the atoms beyond the nearest neighborhood are considered.</p>
+<p><span class="arithmatex">\(\Delta H\_{sol}\)</span> - Solution enthalpy of 1 mole of precipitate atoms in the reference phase (reference phase is marked with asterisk in the <em>Phase summary</em> window). This value is stored as a variable <strong><code>DHM_DFP$EP</code></strong> (<strong>“state variables GBB”</strong> variables group), where <strong><code>“EP”</code></strong> stands for the name of the equilibrium parent phase for the precipitate (the creation of the precipitate phase itself is not required).</p>
+<p>Considering the above, the formula for the planar sharp interface energy can be eventually given, as:</p>
+<div class="arithmatex">\[\gamma\_{pl,sh}=0.329({N\_A}{V\_m}^2)^{-1/3}\Delta H\_{sol}\]</div>
+<p>The values of <span class="arithmatex">\(\gamma\_{pl,sh}\)</span> are evaluated by MatCalc for every phase (other than the reference phase) relative to the reference phase. These are stored in the variable <strong><code>CIE$EP</code></strong> (<strong>“state variables GBB”</strong> variables group; <strong><code>“EP”</code></strong> - equilibrium phase name). Once the precipitate phases are defined, the values for those are also found in the variable <strong><code>NUCL_CIE$PP</code></strong> (<strong>“kinetics/ nucleation”</strong> variables group; <strong><code>“PP”</code></strong> - precipitate phase name).</p>
+<h2 id="the-size-correction-factor">The size correction factor</h2>
+<p>The spherical precipitates possess a curved interface, instead of a planar one. This results in a different number of bonds broken by the interface per unit interface area. Hence, a size correction factor <span class="arithmatex">\(\alpha\_{SCF}\)</span> needs to be applied on the value relevant for the planar interface. As the curvature of the interface depends on the radius of the spherical precipitate <span class="arithmatex">\(\rho\)</span>, <span class="arithmatex">\(\alpha\_{SCF}\)</span> needs to be a function of this parameter as well. A mathematical analysis presented in Ref.2 yields the following form:</p>
+<div class="arithmatex">\[\alpha\_{SCF}(\rho)=1-1.353\*10^{-10} \rho^{-1}+2.768\*10^{-21} \rho^{-2} (ln(\rho)+23.322)\]</div>
+<p>Additionally, a lower limit value of <span class="arithmatex">\(0.743\)</span> is set for <span class="arithmatex">\(\alpha\_{SCF}(\rho)\)</span>. The interfacial energy of the spherical precipitate is thus given as:</p>
+<div class="arithmatex">\[\gamma\_{sp}=\gamma\_{pl,sh}\alpha\_{SCF}(\rho)\]</div>
+<p>Clearly, this crrection factor plays an important role during the nucleation stage, when the nuclei radii are small. The value of <span class="arithmatex">\(\alpha\_{SCF}\)</span> used for the modeling of the nucleation rate is stored in the variable <strong><code>NUCL_CIE_S_CORR$Phasename</code></strong> (<strong>“kinetics/ nucleation”</strong> variables group) and is evaluated for the calculated value of the critical radius. Once the precipitate is formed, <span class="arithmatex">\(\alpha\_{SCF}\)</span> is evaluated for every precipitate size class separately so that the proper size evolution is assured (e.g. coarsening).</p>
+<h2 id="the-diffuse-interface-correction-factor">The diffuse interface correction factor</h2>
+<p>When two phases are brought in contact together, some mixing is expected on the interface which increases the entropy. In result, some boundary width might be specified where a concentration gradient is observed, rather than a sudden (sharp) composition change. Again, the number of broken bonds in the diffuse interface is different than in the case of the sharp interface and this effect is accounted by the introduction of the correction factor <span class="arithmatex">\(\beta\_{diff}\)</span>.</p>
+<p>As the diffuse interface is entropically favorable, its presence will be more pronounced with the increasing temperatures. In Ref.3, this effect was analyzed using a regular solution approximation. This approach uses the concept of the critical temperature <span class="arithmatex">\(T\_{crit}\)</span> which is the highest temperature at which two phases are present in the system, regardless of the composition. At <span class="arithmatex">\(T\_{crit}\)</span> the composition of both phases is the same (the interface energy equals zero) whereas, at <span class="arithmatex">\(T=0 K\)</span> an ideal sharp interface is present. The numerical solution for the range <span class="arithmatex">\(0 \div T\_{crit}\)</span> allowed the formulation of the analytical expression for <span class="arithmatex">\(\beta\_{diff}\)</span> as a function of <span class="arithmatex">\(T/T\_{crit}\)</span> in the form of:</p>
+<p>[\beta_{diff}(T/T_{crit})=8.4729(\frac{T}{T_{crit}})^6-26.691(\frac{T}{T_{crit}})^5+32.717(\frac{T}{T_{crit}})^4-17.674(\frac{T}{T_{crit}})^3+]
+[+2.2673(\frac{T}{T_{crit}})^2-0.09(\frac{T}{T_{crit}})+1.00047632]</p>
+<p><span class="arithmatex">\(T\_{crit}\)</span> needs to be provided by the user. The values can be specified in the <strong>“Precipitate”</strong> tab of the <strong>“Phase status”</strong> window when a precipitate is selected. For the few cases, the following values can be recommended:</p>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Precipitate</th>
+<th><span class="arithmatex">\(T\_{crit}\)</span> [K]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fe</td>
+<td>Cu(bcc)</td>
+<td>1700</td>
+</tr>
+<tr>
+<td>Fe</td>
+<td>MnS</td>
+<td>2400</td>
+</tr>
+<tr>
+<td>Fe</td>
+<td>NbC</td>
+<td>3300</td>
+</tr>
+<tr>
+<td>Fe</td>
+<td>NbN</td>
+<td>3200</td>
+</tr>
+<tr>
+<td>Fe</td>
+<td>TiN</td>
+<td>4200</td>
+</tr>
+<tr>
+<td>Fe</td>
+<td>VC</td>
+<td>2100</td>
+</tr>
+<tr>
+<td>Fe</td>
+<td>VN</td>
+<td>3300</td>
+</tr>
+<tr>
+<td>Ni</td>
+<td><span class="arithmatex">\(\gamma\)</span>' (“gamma prime”)</td>
+<td>2500</td>
+</tr>
+<tr>
+<td>Al</td>
+<td><span class="arithmatex">\(\beta\)</span> (“Mg2Si”)</td>
+<td>2000</td>
+</tr>
+<tr>
+<td>Al</td>
+<td><span class="arithmatex">\(\beta\)</span>' (“beta prime”)</td>
+<td>2200</td>
+</tr>
+</tbody>
+</table>
+<p>The value of <span class="arithmatex">\(\beta\_{diff}\)</span> used by MatCalc is stored in the variable <strong><code>CIE_DI_CORR$Phasename</code></strong> (<strong>“kinetics/ precipitates”</strong> variables group). The value of the diffuse interface energy <span class="arithmatex">\(\gamma\_{diff}\)</span> is stored in the variable <strong><code>EIE$Phasename</code></strong> (<strong>“kinetics/ precipitates”</strong> variables group), with</p>
+<div class="arithmatex">\[\gamma\_{diff}=\gamma\_{pl,sh}\beta\_{diff}(T/T\_{crit})\]</div>
+<p><a href="#fnt__1">1)</a></p>
+<p>B. Sonderegger, E. Kozeschnik, “Generalized nearest-neighbor broken-bond analysis of randomly oriented coherent interfaces in multicomponent fcc and bcc structures”, Metall. Mater. Trans. A, 2009, 40 (3) 499-510</p>
+<p><a href="#fnt__2">2)</a></p>
+<p>B. Sonderegger, E. Kozeschnik, “Size dependence of the interfacial energy in the generalized nearest-neighbor broken-bond approach”, Scripta Mater., 2009, 60 (8) 635-638</p>
+<p><a href="#fnt__3">3)</a></p>
+<p>B. Sonderegger, E. Kozeschnik, “Interfacial energy of diffuse phase boundaries in the generalized broken-bond approach”, Metall. Mater. Trans. A, 2010, 41 (12) 3262-3269</p>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=techpapers%3Anucleation%3Ainterfacial_energy&amp;1788353012" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

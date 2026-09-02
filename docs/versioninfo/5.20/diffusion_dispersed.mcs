@@ -1,0 +1,172 @@
+
+$ **************************************************************************
+$ this script sets up a simulation for simultaneous diffusion and 
+$ precipitation according to the model of local thermodynamic equilibrium
+$ between matrix and precipitate phases
+$ Ernst Kozeschnik, 2007-05-25
+$ **************************************************************************
+
+
+$ make sure we are in right module
+USE_MODULE CORE
+
+$ start with a new workspace
+new-workspace
+
+$*************************************
+$ load thermodynamic and kinetic data
+OPEN_THERMODYN_DATABASE mc_sample_fe.tdb
+SELECT_ELEMENTS SELECT_ELEMENTS fe cr c
+SELECT_PHASES bcc cem m23c6 m7c3
+READ_THERMODYN_DATABASE 
+READ_MOBILITY_DATABASE mc_sample_fe.ddb 
+
+$ some useful variable definitions
+$SET_VARIABLE_VALUE temp 580
+SET_VARIABLE_VALUE temp 700
+
+$ define composition and calc some initial equilibrium
+SET_TEMPERATURE_CELSIUS temp 
+ENTER_COMPOSITION WP c=0.13
+ENTER_COMPOSITION WP cr=8.41 
+CALCULATE_EQUILIBRIUM 
+
+$ create a window for display of the specimen geometry
+NEW_GUI_WINDOW g5 
+SET_VARIABLE_VALUE paint_window_id active_frame_id	$ remember window id
+MOVE_GUI_WINDOW paint_window_id 0 100 560 180	$ 1-dim size
+
+$ create a precipitation domain for thermodynamic props of matrix phase
+CREATE_PRECIPITATION_DOMAIN matrix		$ create domain with name 'matrix'
+SET_PRECIPITATION_PARAMETER matrix X bcc 	$ set bcc as matrix phase
+
+$ define the precipitate phases as 'dispersed phases'
+CHANGE_PHASE_STATUS cementite F I S		$ set dispersed flag
+CHANGE_PHASE_STATUS m7c3 F I S			$ set dispersed flag
+CHANGE_PHASE_STATUS m23c6 F I S			$ set dispersed flag
+
+
+$ -------------------------------------------------------------------
+$ we are done now in the core module, switch to simulation module ...
+USE_MODULE SIMULATION
+
+$ some definitions to easily access/change grid parameters
+SET_VARIABLE_VALUE num_cells_x 20
+SET_VARIABLE_VALUE num_cells_y 1
+SET_VARIABLE_VALUE max_x_index num_cells_x-1
+SET_VARIABLE_VALUE max_y_index num_cells_y-1
+
+$ create the cell structure
+CREATE_SIMULATION_GRID num_cells_x num_cells_y 1 
+SET_GRID_COORDINATES 0.001 1.0 1.0		$ cell dimensions: block with 1 mm length
+SET_GRID_GEOMETRY P				$ planar grid geometry
+
+$ create a new material
+CREATE_MATERIAL ferrite
+SET_MATERIAL_PROPERTY ferrite G D matrix	$ couple with precipitate domain
+SET_MATERIAL_PROPERTY ferrite T D 7890		$ density
+SET_MATERIAL_PROPERTY ferrite T C 500		$ heat capacity
+SET_MATERIAL_PROPERTY ferrite T N 50		$ thermal conductivity
+SET_MATERIAL_PROPERTY ferrite T E 10000		$ thermal grain boundary diffusion enhancement
+
+SET_CELL_PROPERTY A M ferrite	$ attach to all cells
+
+
+$ freeze paint frame
+SET_GUI_WINDOW_PROPERTY paint_window_id M Y	$manual update
+
+$ set default boundary conditions: open to ambient ...
+SET_DEFAULT_BOUNDARY_COND G O
+
+$ initialize cell temperatures
+SET_CELL_PROPERTY a V T temp
+
+$ initialize composition: left half and right half separate
+REMOVE_CELL_SELECTION A		$ unselect all cells
+ADD_CELL_SELECTION l 0.0 (max_x_index/2)
+SET_CELL_PROPERTY * V C C 0.00325556955377	$ wp=0.07
+SET_CELL_PROPERTY * V C Cr 0.0247096165622	$ wp=2.30
+INVERT_CELL_SELECTION
+SET_CELL_PROPERTY * V C C 0.00602120047383	$ wp=0.13
+SET_CELL_PROPERTY * V C Cr 0.0899797873616	$ wp=8.41
+
+$$ store in simulation state
+CREATE_SIMULATION_STATE start
+
+
+$ window rearrangement ...
+SET_GUI_WINDOW_PROPERTY paint_window_id i Z 110	$ zoom factor
+SET_GUI_WINDOW_PROPERTY paint_window_id i W V 	$ display cell variable
+SET_GUI_WINDOW_PROPERTY paint_window_id i V _cx$c 	$ set which variable
+$SET_GUI_WINDOW_PROPERTY paint_window_id I R 0..10
+
+$ a new window for plotting the profile ...
+NEW_GUI_WINDOW g1 
+SET_VARIABLE_VALUE profile_window_id active_frame_id	$ remember window id
+SET_VARIABLE_VALUE profile_plot_id last_plot_id		$ remember plotid
+$default axis settings
+SET_GUI_WINDOW_PROPERTY profile_window_id S U Y 	$ use default x-axis
+SET_GUI_WINDOW_PROPERTY profile_window_id S T distance [µm] 	$ x-axis title
+SET_GUI_WINDOW_PROPERTY profile_window_id S F 1e6	$ multiply by 1e6 -> µm
+
+$ settings for display of variables
+SET_GUI_WINDOW_PROPERTY profile_window_id I t 0.0			$ start coordinates
+SET_GUI_WINDOW_PROPERTY profile_window_id I o max_x_index.max_y_index	$ end coordinates
+
+$ plot title and other setting for first plot
+SET_PLOT_OPTION profile_plot_id t Diffusion in dispersed systems: dissimilar weld
+SET_PLOT_OPTION profile_plot_id A Y 1 T element content [wt%]		$ y-axis title
+SET_PLOT_OPTION profile_plot_id S N S _cwp$c
+SET_PLOT_OPTION profile_plot_id S N S _cwp$cr
+
+$ create second plot for matrix carbon concentration and define settings
+CREATE_NEW_PLOT 1 active_frame_id			$ additional plot for matrix composition 
+SET_VARIABLE_VALUE profile1_plot_id last_plot_id	$ remember plotid
+SET_PLOT_OPTION profile1_plot_id A Y 1 T matrix carbon content [mf]		$ y-axis title
+SET_PLOT_OPTION profile1_plot_id S N S _cx_mat$c
+
+$ create a third plot for precipitate phaes and define settings
+CREATE_NEW_PLOT 1 active_frame_id			$ additional plot for phase fractions
+SET_VARIABLE_VALUE profile2_plot_id last_plot_id	$ remember plotid
+SET_PLOT_OPTION profile2_plot_id A Y 1 T phase fraction	$ y-axis title
+SET_PLOT_OPTION profile2_plot_id S N S f$cementite
+SET_PLOT_OPTION profile2_plot_id S N S f$m7c3
+SET_PLOT_OPTION profile2_plot_id S N S f$m23c6
+
+
+MOVE_GUI_WINDOW profile_window_id 470 10 520 770 
+
+$ simulation setup
+SET_SIMULATION_PARAMETER e 1e9		$ simulation end time
+SET_SIMULATION_PARAMETER I A 1e-6 1e+023 	$ initial stepsize 1e-6 s, maximum 1e23 s
+SET_SIMULATION_PARAMETER d f		$ diffusion field simulation
+SET_SIMULATION_PARAMETER T I temp	$ isothermal temperature
+SET_SIMULATION_PARAMETER p e		$ precipitation control: equilibrium dispersed phases
+SET_SIMULATION_PARAMETER u 10		$ update screen every 10 iterations
+SET_SIMULATION_PARAMETER r g 1.02	$ store in logarithmic intervals 
+
+$!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+$ a most important parameter in this kind of simulation
+$ is the time integration step width. Small time steps 
+$ are important for correct diffusion profiles and thus
+$ correct phase formation. You can control it most easily
+$ by varying the maximum allowable change in element content
+SET_SIMULATION_PARAMETER c n b 0.0025	$ allow maximum matrix content change of 0.25%
+
+
+$ unfreeze paint frame
+SET_GUI_WINDOW_PROPERTY paint_window_id M N	$manual update
+UPDATE_GUI_WINDOWS paint_window_id 
+
+
+$ ******************************************************
+$
+$ settings completed.
+$
+$ choose 'Start simulation...' from the simulation menu
+$ to begin simulation or press CTRL+J
+$
+$ ******************************************************
+
+
+

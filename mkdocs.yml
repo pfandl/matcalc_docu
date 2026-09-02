@@ -1,0 +1,29 @@
+site_name: MatCalc Documentation
+
+docs_dir: src
+site_dir: docs
+
+nav:
+  - Home: index.md
+  - General information: general.md
+  - Guides:
+    - Tutorials:
+      - tutorials.md
+      - Introduction to the MatCalc graphical user interface (GUI): tutorials/t1.md
+      - Calculating a single equilibrium: tutorials/t2.md
+    - How to ... manual: howtosimulate.md
+    - Examples: examples.md
+  - References:
+    - Scripts: scripts.md
+    - Reference book: reference.md
+    - Technical Papers: techpapers.md
+    - Version info: versioninfo.md
+
+theme: readthedocs
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js

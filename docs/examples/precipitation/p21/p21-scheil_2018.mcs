@@ -1,0 +1,149 @@
+$$************************************************************************************************** 
+************************************** GENERAL INFORMATION *****************************************
+****************************************************************************************************
+
+Scheil calculation for P21 to estimate the phase fractions of primary precipitates.
+
+Database: mc_fe.tdb, mc_x_FeAlCCuMnNNbSSiTi.tdb
+Author: G. Stechauner
+Creation date: 2011-12-16
+This is a script for MatCalc version 5.44 (rel 1.002)
+
+
+**************************************************************************************************** 
+************************************** SETUP INFORMATION *******************************************
+**************************************************************************************************$$
+
+$ make sure we work in the correct module
+use-module core 
+
+$ creates a new workspace 
+new-workspace 
+
+@ echo n
+set-workspace-info + Scheil-Gulliver simulation for P21 script
+set-workspace-info +
+set-workspace-info + Phases: Liquid, FCC_A1, BCC_A2, Cementite, AlN, Cu2S, MnS_Q
+set-workspace-info + Chemical components: Fe, Al, C, Cu, Mn, N, Nb, S, Si, Ti
+set-workspace-info + 
+set-workspace-info + For further information visit www.matcalc.at
+set-workspace-info +
+echo y
+
+
+$$************************************************************************************************** 
+**************************************** SYSTEM SETUP **********************************************
+**************************************************************************************************$$
+
+$ verify correct MatCalc version (is accessible as internal variable) 
+if (matcalc_version<5441002)
+   send-dialog-string "MatCalc version must be 5.44.1002 or higher to run this script. Stopping."
+   stop_run_script                                         $ stop script
+endif
+
+
+$$************************************************************************************************** 
+                        DATABASES, CHEMICAL COMPOSITION, SELECTED PHASES
+**************************************************************************************************$$
+
+open-thermodyn-database mc_x_FeAlCCuMnNNbSSiTi.tdb   $ Thermodynamic database
+select-elements Fe Al C Cu Mn N Nb S Si Ti                    $ select elements
+select-phase AlN bcc_a2 fcc_a1 cementite Cu2S MnS_Q liquid    $ select phases
+
+read-thermodyn-database                                       $ read thermodynamic database
+read-mobility-database mc_fe.ddb                       $ read diffusion data
+
+enter-composition wp al=0.03 C=0.4 Cu=0.05 Mn=0.5 N=0.01 Nb=0.035 S=0.01 Si=0.3 Ti=0.01
+
+$ Create compositions sets for TiN and NbC
+create-new-phase fcc_a1 c :NB%,TI:C%,N,VA%: NbC
+create-new-phase fcc_a1 c :TI%,NB:N%,C,VA%: TiN
+
+$ Create scheil phases
+create-new-phase AlN S 
+create-new-phase bcc_a2 S 
+create-new-phase fcc_a1 S 
+create-new-phase cementite S 
+create-new-phase Cu2S S 
+create-new-phase MnS_Q S 
+create-new-phase TiN s
+create-new-phase NbC s
+
+$ make sure that the major constituents of TiN and NbC are enforced !!! Otherwise these
+$ two phases can become mixed up between each other
+change-phase-status NbC f e s                                       $ enforce major constituents
+change-phase-status TiN f e s                                       $ enforce major constituents
+
+change-phase-status fcc_a1#01 f s s                                 $ Suspend phase
+
+
+$$**************************************************************************************************
+                              STANDARD SCHEIL-GULLIVER SIMULATION
+**************************************************************************************************$$
+
+set-step-option y s                                 $ T(y)pe - (S)cheil
+set-step-option r 1525 1000 1                       $ Calculate in a (r)ange
+set-step-option p liquid                            $ set dependent phase (usually liquid)
+set-step-option l 0.0001                            $ minimum liquid fraction
+set-step-option b C y                               $ back diffusion of C: yes
+set-step-option b N y                               $ back diffusion of N: yes
+set-step-option b S y                               $ back diffusion of N: yes
+
+create-new-phase fcc_a1 u                           $ create transformation equilib phase
+create-new-phase fcc_a1_t t                         $ create transformation solid phase
+create-global-transformation peritectic             $ for peritectic transformation
+set-transformation-option peritectic y e            $ type: use full equilibrium
+set-transformation-option peritectic f bcc_a2_s     $ 'transform from' phase
+set-transformation-option peritectic t fcc_a1_s     $ 'transform to' phase
+set-transformation-option peritectic e fcc_a1_t     $ 'transform to' phase
+set-transformation-option peritectic r 2000 0 y     $ Set temperature range
+set-transformation-option peritectic a              $ activate peritectic transformation
+
+step-equilibrium
+
+
+$$**************************************************************************************************
+                             PLOTTING RESULTS WITHOUT BACK-DIFFUSION
+**************************************************************************************************$$
+
+new-gui-window p1                                   $ Plot of the phase diagram
+move-gui-window . 60 60 450 500
+set-gui-window-property . s u y                     $ use default x-axis for all plots
+set-gui-window-property . x T$c                     $ x-axis data
+set-gui-window-property . S T Temperature [C]       $ x-axis title
+
+set-function-expression F$FCC_A1_cum F$FCC_A1_s+F$FCC_A1_ts
+
+$ Plotting Liquid phase fraction and Scheil-Solid phases
+set-plot-option . S N B F$Liquid                     
+set-plot-option . S N B F$FCC_A1_cum                    
+set-plot-option . S N B F$NBC_s                     
+set-plot-option . S N B F$TIN_s               
+set-plot-option . S N B F$BCC_A2_s                   
+set-plot-option . S N B F$CEMENTITE_s                  
+set-plot-option . S N B F$ALN_s          
+set-plot-option . S N B F$CU2S_s
+set-plot-option . S N B F$MnS_Q_s
+
+set-plot-option . A Y 1 S 5e-7..1                   $ Scale y-axis 
+set-plot-option . A Y 1 Y log                       $ Set y-axis to logarithmic 
+set-plot-option . A Y 1 T phase fraction            $ y-axis title
+set-plot-option . L B                               $ Legend on the bottom
+
+$ Create a line to mark the 3% liquid content
+create-global-table 3p
+add-table-entry 3p 1380 0.03
+add-table-entry 3p 1423.4 0.03
+add-table-entry 3p 1423.4 0
+
+set-plot-option . s n t 3p                          $ Add table to plot
+set-plot-option . s e -1 3p d n                     $ Use default style: No 
+set-plot-option . s e -1 3p l y dash                $ Line type: dash
+set-plot-option . s e -1 3p l c fuchsia             $ Line color: fuchsia
+set-plot-option . s e -1 3p m y none                $ Marker type: none
+set-plot-option . s e -1 3p l h 2                   $ Line thickness: 2
+
+
+$$**************************************************************************************************
+********************************* EXAMPLE P21-Scheil FINISHED **************************************
+**************************************************************************************************$$

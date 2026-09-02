@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>P10 2 - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "P10 2";
+        var mkdocs_page_input_path = "examples/precipitation/p10/p10_2.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">P10 2</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>Example P10: AlN precipitation in steel, part 2: AlN precipitation in ferrite [MatCalc Documentation]</p>
+<h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#example_p10aln_precipitation_in_steel_part_2aln_precipitation_in_ferrite">Example P10: AlN precipitation in steel, part 2: AlN precipitation in ferrite</a></p>
+</li>
+<li>
+<p><a href="#compatibility">Compatibility</a></p>
+</li>
+<li><a href="#objectives">Objectives</a></li>
+<li><a href="#related_documents">Related documents</a></li>
+<li><a href="#complementary_files">Complementary files</a></li>
+<li>
+<p><a href="#main_document">Main document</a></p>
+</li>
+<li>
+<p><a href="#setup_thermodynamics">Setup thermodynamics</a></p>
+</li>
+<li><a href="#experimental_data">Experimental data</a></li>
+<li><a href="#precipitation_domain_and_precipitates">Precipitation domain and precipitates</a></li>
+<li><a href="#understanding_the_script">Understanding the script</a></li>
+<li><a href="#start_precipitation_simulation">Start precipitation simulation</a></li>
+<li><a href="#plotting_the_results">Plotting the results</a></li>
+<li><a href="#consecutive_articles">Consecutive articles</a></li>
+</ul>
+<h1 id="example-p10-aln-precipitation-in-steel-part-2-aln-precipitation-in-ferrite">Example P10: AlN precipitation in steel, part 2: AlN precipitation in ferrite</h1>
+<h2 id="compatibility">Compatibility</h2>
+<p>MatCalc version: 5.44.1002 <br />
+Database: mc_fe.tdb, mc_x_FeAlCCrMnNSiV.tdb, mc_sample_fe.ddb<br />
+Author: Georg Stechauner<br />
+Created: 2012-01-18 <br />
+Revisions:</p>
+<h2 id="objectives">Objectives</h2>
+<p>Before starting with this example, make sure that you have already worked through  <a href="/examples/precipitation/p10/p10_1" title="examples/precipitation/p10/p10_1">P10-1</a> as they are very similar.</p>
+<p>Whilst example P10-1 covered the precipitation of AlN in austenite, this example will treat the precipitation in ferrite. Thus, the procedure of setting up the system is very similar. However, the script is more complex, as it involves user interaction. The setup of the if-conditions will be covered during this example.</p>
+<p>The experimental data is taken from Massardier et al. (see cited literature). The paper is about the precipitation of nitrides in a low alloy aluminum killed steel. The free nitrogen contents were measured by utilizing thermoelectric power (TEP) measurements.</p>
+<h2 id="related-documents">Related documents</h2>
+<ul>
+<li>P10-1 -  <a href="/examples/precipitation/p10/p10_1" title="examples/precipitation/p10/p10_1">AlN precipitation in austenite</a></li>
+<li>P10-2 -  <a href="/examples/precipitation/p10/p10_2" title="examples/precipitation/p10/p10_2">AlN precipitation in ferrite</a></li>
+<li>V. Massardier, V. Guetaz, J. Merlin, M. Soler, Kinetic and microstructural study of aluminium nitride precipitation in a low carbon aluminium-killed steel, Materials Science and Engineering A355 (2003) 299-310</li>
+</ul>
+<h2 id="complementary-files">Complementary files</h2>
+<p>Click <a href="/examples/precipitation/p10/p10_2/prec_aln_ferrite_massardier_2003.mcs" title="examples/precipitation/p10/p10_2/prec_aln_ferrite_massardier_2003.mcs (15.6 KB)">here</a> to view the script for this tutorial.</p>
+<h1 id="main-document">Main document</h1>
+<h2 id="setup-thermodynamics">Setup thermodynamics</h2>
+<p>Set up the thermodynamics by either loading the mc_fe database, or the corresponding example database mc_x_FeAlCCrMnNSiV.</p>
+<p>Select the following phases, elements and enter the chemical composition in wt-%:</p>
+<table>
+<thead>
+<tr>
+<th>Elements</th>
+<th>Chemical composition</th>
+<th>Phases</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Al</td>
+<td>0.058</td>
+<td>AlN</td>
+</tr>
+<tr>
+<td>C</td>
+<td>0.025</td>
+<td>BCC_A2</td>
+</tr>
+<tr>
+<td>Cr</td>
+<td>0.039</td>
+<td></td>
+</tr>
+<tr>
+<td>Mn</td>
+<td>0.2</td>
+<td></td>
+</tr>
+<tr>
+<td>N</td>
+<td>0.005</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Set Fe to reference element.</p>
+<p>Conclude the thermodynamic setup by loading the diffusion database for Fe.</p>
+<h2 id="experimental-data">Experimental data</h2>
+<p>To be able to plot all three temperatures, which are available to select from in the script, you need to enter them into your workspace. If you are satisfied with only seeing one curve, and check the other results by running the script, feel free to do so.</p>
+<p>Create three tables and enter the following values:</p>
+<table>
+<thead>
+<tr>
+<th>Exp_T600</th>
+<th></th>
+<th>Exp_T650</th>
+<th></th>
+<th>Exp_T700</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x-Value:  time / s</td>
+<td>y-value:  phase fraction</td>
+<td>x-Value:  time / s</td>
+<td>y-value:  phase fraction</td>
+<td>x-Value:  time / s</td>
+<td>y-value:  phase fraction</td>
+</tr>
+<tr>
+<td>300</td>
+<td>2.667e-5</td>
+<td>120</td>
+<td>3.333e-5</td>
+<td>60</td>
+<td>8e-5</td>
+</tr>
+<tr>
+<td>600</td>
+<td>3.333e-5</td>
+<td>240</td>
+<td>5.333e-5</td>
+<td>120</td>
+<td>0.0001067</td>
+</tr>
+<tr>
+<td>1200</td>
+<td>5.333e-5</td>
+<td>480</td>
+<td>8e-5</td>
+<td>180</td>
+<td>0.0001733</td>
+</tr>
+<tr>
+<td>2400</td>
+<td>0.0001</td>
+<td>780</td>
+<td>0.0001466</td>
+<td>240</td>
+<td>0.00024</td>
+</tr>
+<tr>
+<td>3600</td>
+<td>0.0001333</td>
+<td>1200</td>
+<td>0.00016</td>
+<td>480</td>
+<td>0.00032</td>
+</tr>
+<tr>
+<td>5400</td>
+<td>0.00017333</td>
+<td>1800</td>
+<td>0.00023</td>
+<td>900</td>
+<td>0.0003466</td>
+</tr>
+<tr>
+<td>12000</td>
+<td>0.0003066</td>
+<td>3600</td>
+<td>0.0003666</td>
+<td>1800</td>
+<td>0.0004133</td>
+</tr>
+<tr>
+<td>24000</td>
+<td>0.0003667</td>
+<td>6600</td>
+<td>0.0004</td>
+<td>4200</td>
+<td>0.0004</td>
+</tr>
+<tr>
+<td>54000</td>
+<td>0.0004133</td>
+<td>13800</td>
+<td>0.0004</td>
+<td>6600</td>
+<td>0.0004133</td>
+</tr>
+<tr>
+<td>78000</td>
+<td>0.0003866</td>
+<td>—</td>
+<td>—</td>
+<td>13800</td>
+<td>0.0004133</td>
+</tr>
+<tr>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>30000</td>
+<td>0.0004133</td>
+</tr>
+</tbody>
+</table>
+<h2 id="precipitation-domain-and-precipitates">Precipitation domain and precipitates</h2>
+<p>Next we enter the data for the precipitation domain. To do so, open the precipitation domain dialog and create a new domain. Select bcc_a2 as its matrix phase. Enter the following data in the corresponding tabs:</p>
+<p><a href="/examples/precipitation/p10/p10_2/p10-2_precdomain.png" title="examples/precipitation/p10/p10_2/p10-2_precdomain.png"><img alt="Precipitation domain dialog" src="/examples/precipitation/p10/p10_2/p10-2_precdomain.png" title="Precipitation domain dialog" /></a></p>
+<table>
+<thead>
+<tr>
+<th>Tab</th>
+<th>Option</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Structure</td>
+<td>Grain diameter</td>
+<td>7.5e-6</td>
+</tr>
+<tr>
+<td>Dislocation density</td>
+<td>1e12</td>
+<td></td>
+</tr>
+<tr>
+<td>Special</td>
+<td>Young's modulus</td>
+<td>(193000-73.333*T$C)*1e6</td>
+</tr>
+<tr>
+<td>Diffusion ratio grain boundary  and bulk (substitutional)</td>
+<td>(10^(12-0,01*T$C))</td>
+<td></td>
+</tr>
+<tr>
+<td>Diffusion ratio grain boundary  and bulk (interstitional)</td>
+<td>(10^(12-0,01*T$C))</td>
+<td></td>
+</tr>
+<tr>
+<td>Diffusion ratio dislocation  and bulk (substitutional)</td>
+<td>(10^(8-0,005*T$C))</td>
+<td></td>
+</tr>
+<tr>
+<td>Diffusion ratio dislocation  and bulk (interstitional)</td>
+<td>(10^(8-0,005*T$C))</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Follow by setting up the precipitates. Bring up the phase status dialog window and select the AlN phase. Click 'Create new phase' and select 'precipitate'. Repeat this step to for a second population of AlN precipitates. Now begin with entering the parameters for AlN_p0 and then for AlN_p1:</p>
+<table>
+<thead>
+<tr>
+<th>Precipitate</th>
+<th>Tab</th>
+<th>Option</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AlN_p0</td>
+<td>Precipitate</td>
+<td>#size classes</td>
+<td>50 (Initialize!)</td>
+</tr>
+<tr>
+<td>AlN_p0</td>
+<td>Attached to pd</td>
+<td>ferrite</td>
+<td></td>
+</tr>
+<tr>
+<td>AlN_p0</td>
+<td>Nucleation</td>
+<td>Restrict nucleation to prec domain</td>
+<td>✔, select ferrite</td>
+</tr>
+<tr>
+<td>AlN_p0</td>
+<td>Nucleation sites</td>
+<td>grain boundary</td>
+<td></td>
+</tr>
+<tr>
+<td>AlN_p0</td>
+<td>Structure</td>
+<td>ignore for prec. strengthening</td>
+<td>✔</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Precipitate</th>
+<th>Tab</th>
+<th>Option</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AlN_p1</td>
+<td>Precipitate</td>
+<td>#size classes</td>
+<td>50 (Initialize!)</td>
+</tr>
+<tr>
+<td>AlN_p1</td>
+<td>Attached to pd</td>
+<td>ferrite</td>
+<td></td>
+</tr>
+<tr>
+<td>AlN_p1</td>
+<td>Nucleation</td>
+<td>Restrict nucleation to prec domain</td>
+<td>✔, select ferrite</td>
+</tr>
+<tr>
+<td>AlN_p1</td>
+<td>Nucleation sites</td>
+<td>dislocations</td>
+<td></td>
+</tr>
+<tr>
+<td>AlN_p1</td>
+<td>account for coherent misfit stress</td>
+<td>✔</td>
+<td></td>
+</tr>
+<tr>
+<td>AlN_p1</td>
+<td>Structure</td>
+<td>volumetric misfit</td>
+<td>No flag, enter 0.27</td>
+</tr>
+</tbody>
+</table>
+<h2 id="understanding-the-script">Understanding the script</h2>
+<p>As mentioned before, the script allows the user to choose one of three temperatures. To do so, two parts of the script are of interest:</p>
+<pre><code>set-variable-value sim_temp 1                         $ default value for calc variant
+
+send-console-string 
+send-console-string Possible isothermal simulation temperature
+send-console-string   1 ... T=600°C
+send-console-string   2 ... T=650°C
+send-console-string   3 ... T=700°C
+input-variable-value sim_temp &quot;Please select simulation temperature (1-3): &quot;
+</code></pre>
+<p>The first line of the code sets a default value for the sim_temp variable. This is done to initialize the variable and to have value, if the user decides to simply press enter without entering a value.</p>
+<p>The five lines <code>send-console-string</code> simply send the text behind the command to the console, so the user can read it. The last line <code>input-variable-value</code> is the line, where the user can choose between one of the three temperatures. The variable <code>sim_temp</code> will be set accordingly.</p>
+<p>The second part of the temperature selection consists of some <code>if</code>-conditions:</p>
+<pre><code>if (sim_temp==1)
+   set-variable-value temp 600                         $ value for isothermal simulation temp.
+   set-variable-string exp exp_massardier_T600         $ exp. results for T=600°C
+elseif (sim_temp==2)
+   set-variable-value temp 650                         $ value for isothermal simulation temp.
+   set-variable-string exp exp_massardier_T650         $ exp. results for T=650°C
+elseif (sim_temp==3)
+   set-variable-value temp 700                         $ value for isothermal simulation temp.
+   set-variable-string exp exp_massardier_T700         $ exp. results for T=700°C
+else
+   send-dialog-string Invalid selection for simulation temperature. Select 1, 2 or 3.
+   send-dialog-string Script is interrupted.
+   stop-run-script  $ stop script
+endif
+</code></pre>
+<p>The command <code>if</code> checks a condition in a boolean way: either the condition is <code>TRUE</code>, then the commands after the <code>if</code> will be performed, or the condition is <code>FALSE</code>, the the commands won't be executed and the script will jump to the next command, outside of the <code>if</code>.</p>
+<p>The next command is an <code>elseif</code>, which can only follow an <code>if</code>. Should the first condition return <code>FALSE</code>, then this condition is checked. Is the return value again <code>FALSE</code>, the next command in line gets checked up to the point, were a simple <code>else</code> is found. The <code>else</code> command is performed and the <code>endif</code> closes the segment of the if-condition again.</p>
+<p>Should the return of an <code>if</code>-condition be <code>TRUE</code> then the commands performed in this case are:</p>
+<pre><code>set-variable-value temp 600                         $ value for isothermal simulation temp.
+set-variable-string exp exp_massardier_T600         $ exp. results for T=600°C
+</code></pre>
+<p>The first command sets the variable <code>temp</code> to 600, which will be the temperature for isothermal simulation later on. The second command saves the table, in this case 'exp_massardier_T600', to the variable-string exp. This makes the process of adding the correct experimental data to the plots later on easier.</p>
+<h2 id="start-precipitation-simulation">Start precipitation simulation</h2>
+<p>To ensure correct thermodynamic values and no driving force errors (DFM-errors), set automatic start values and calculate an equilibrium at 1250C.</p>
+<p>Open the precipitation simulation dialog, and enter the values as below. Vary the isothermal temperatures to simulate precipitation behaviour at other temperatures.</p>
+<p><a href="/examples/precipitation/p10/p10_2/p10-2_preckinetics.png" title="examples/precipitation/p10/p10_2/p10-2_preckinetics.png"><img alt=" Simulation parameters" src="/examples/precipitation/p10/p10_2/p10-2_preckinetics.png" title="Simulation parameters" /></a></p>
+<p><strong>Note</strong>: The variable 'temp', which was set in the script above, is used here as the temperature value.</p>
+<h2 id="plotting-the-results">Plotting the results</h2>
+<p>Create a new X-Y-Plot (p1) and add two new plots. Set a <strong>default</strong> x-axis to <strong>logarithmic</strong> with a scaling from <strong>1e-6..</strong> and label the axis <strong>time / s</strong>.</p>
+<ol>
+<li>Plot the <strong>phase fractions</strong> of the precipitates in the first figure (<code>f_prec$…</code>) and the experimental data from the table. At a first glance it seems as if the calculated vales do not fit the experimental data. This is because the experimental data does not differentiate between the nucleation sites of the precipitates, whereas <em>MatCalc</em> does. Therefore, open the 'Functions &amp; Variables' dialog window, an select the 'Functions' tab. Create a new function there and call it <code>f_prec$AlN_total</code> and set <code>f_prec$AlN_p0+f_prec$AlN_p1</code> as its value. Now you can plot the total amount of precipitates.</li>
+<li>Plot the <strong>mean radius</strong> of the precipitates in the second figure (<code>r_mean$…</code>).</li>
+<li>Plot the <strong>number density</strong> of the precipitates in the third figure (<code>num_part$…</code>).</li>
+</ol>
+<p>Label the y-axes accordingly.</p>
+<p>The result for 600C is shown below:</p>
+<p><a href="/examples/precipitation/p10/p10_2/p10-2_final.png" title="examples/precipitation/p10/p10_2/p10-2_final.png"><img alt=" Final results for P10-2" src="/examples/precipitation/p10/p10_2/p10-2_final.png" title="Final results for P10-2" /></a></p>
+<h1 id="consecutive-articles">Consecutive articles</h1>
+<p>none</p>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=examples%3Aprecipitation%3Ap10%3Ap10_2&amp;1788352996" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

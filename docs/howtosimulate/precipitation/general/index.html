@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>General - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "General";
+        var mkdocs_page_input_path = "howtosimulate/precipitation/general.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">General</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>General considerations [MatCalc Documentation]</p>
+<h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#general_considerations">General considerations</a></p>
+</li>
+<li>
+<p><a href="#compatibility">Compatibility</a></p>
+</li>
+<li><a href="#objectives">Objectives</a></li>
+<li><a href="#related_documents">Related documents</a></li>
+<li>
+<p><a href="#main_document">Main document</a></p>
+</li>
+<li>
+<p><a href="#before_you_start">Before you start ...</a></p>
+</li>
+<li><a href="#the_representative_volume_element_rve">The representative volume element (RVE)</a></li>
+<li>
+<p><a href="#setting_up_a_precipitation_simulation">Setting up a precipitation simulation</a></p>
+</li>
+<li>
+<p><a href="#setup_the_thermodynamic_system">Setup the thermodynamic system</a></p>
+</li>
+<li><a href="#create_precipitation_domain_s">Create precipitation domain(s)</a></li>
+<li><a href="#create_precipitates">Create precipitates</a></li>
+</ul>
+<h1 id="general-considerations">General considerations</h1>
+<h2 id="compatibility">Compatibility</h2>
+<p>MatCalc version: 5.0 - … <br />
+Author: E. Kozeschnik <br />
+Created: 2011-07-05 <br />
+Revisions:</p>
+<h2 id="objectives">Objectives</h2>
+<p>In this document, general considerations for <em>precipitation kinetics simulations …</em> are discussed.</p>
+<h2 id="related-documents">Related documents</h2>
+<p>none</p>
+<h1 id="main-document">Main document</h1>
+<h2 id="before-you-start">Before you start ...</h2>
+<p>Before actually going into the software to perform the simulation, do <strong>make sure you clearly know, which problem you want to solve, and how you want to realize your task</strong>. For precipitation simulations, this statement is of highest importance, because experience shows that (particularly unexperienced) users have sometimes tremendous problems to appropriately formulate their simulation task.</p>
+<p>Setup your precipitation simulation as simple as possible in order to avoid unnecessary computational effort. This <em>is</em> an issue in kinetic simulations. Once you have successfully completed simulations in a simplified system, gradually increase the complexity until you arrive at the answer to the problem you are seeking. If you are new to MatCalc precipitation simulations, it is not advisableto start your simulations in all complexity. You will almost certainly be unable to find the correct interpretation of your results if you pack too many details into the simulations.<strong>Use the scripting functionality!</strong>. With this technique, it is easy and straightforward to gradually develop your simulations stepwise. And it makes it easy when you need to contact help desk with some unresolvable problem.</p>
+<p><strong><em>And most important …</em></strong></p>
+<p><em>MatCalc</em> is a simulation tool that follows a <em>physically-based</em> concept. <em>MatCalc</em> builds upon models that rely on well-known input parameters and the simulations can, and should!, be carried out in a parameter-free manner.</p>
+<p><strong><em>DO NOT use MatCalc as a fitting tool where you adjust the interfacial energy until the calculation fits your experiment!!!</em></strong></p>
+<p>The vision of <em>MatCalc</em> is to provide a <em>predictive</em> framework for precipitation kinetics simulations. In your simulations, identify the relevant physical mechanisms that are responsible for the behavior of the system. Use <em>MatCalc</em> as the tool by which you can test your ideas and conceptions.</p>
+<p>In the 'How to' manual section on alloy specific issues, you can find tips and tricks that are relevant for the particular system. This will certainly assist you in identifying the important processes that you have to account for. If you still have trouble, see whether you can find an appropriate <a href="/examples/index" title="examples/index">example</a>, consult the  <a href="http///matcalc.at/CustomerPortal" title="http///matcalc.at/CustomerPortal">MatCalc forum</a>, or contact  <a href="http///matcalc.at/CustomerPortal" title="http///matcalc.at/CustomerPortal">help desk</a>.</p>
+<h1 id="the-representative-volume-element-rve">The representative volume element (RVE)</h1>
+<p>When designing and performing precipitation kinetics simulations, it is important to understand the conceptual framework of the precipitation kinetics module.</p>
+<p><em>MatCalc</em> <strong>precipitation kinetics simulations</strong> are carried out within a <strong><em>representative volume element</em></strong>, which means that one single simulation refers to</p>
+<ul>
+<li>a single, homogeneous matrix (precipitation domain) containing all existing precipitates. This is a consequence of the <em>mean-field approach</em> taken in the SFFK model<a href="#fn__1">1)</a>.</li>
+<li>all precipitates are assigned to one single precipitation domain only at one time. It is possible to swap precipitates from one precipitation domain into another, though, to mimic phase transformations of the matrix phase.</li>
+<li>temperature, pressure and overall chemical composition are homogeneous inside the entire precipitation domain. There exist no gradients in these quantities inside the RVE.</li>
+</ul>
+<p>The following graphics shows a sketch of the RVE for precipitation kinetics simulations.</p>
+<p><a href="/howtosimulate/precipitation/img/matcalc_rve.png" title="howtosimulate/precipitation/img/matcalc_rve.png"><img alt=" //MatCalc// representative RVE" src="/howtosimulate/precipitation/img/matcalc_rve.png" title="//MatCalc// representative RVE" /></a></p>
+<p>The RVE in <em>MatCalc</em> contains unit volume of matter, with an arbitrary number of different atomic species. The atoms can form precipitates of different type and different chemical composition. The precipitates are considered to be spherical objects,<a href="#fn__2">2)</a> with a homogenous chemical composition, just like the matrix.</p>
+<h1 id="setting-up-a-precipitation-simulation">Setting up a precipitation simulation</h1>
+<p>When setting up a precipitation kinetics simulation, you commonly proceed with the following steps:</p>
+<h2 id="setup-the-thermodynamic-system">Setup the thermodynamic system</h2>
+<p>Create a new workspace. Then</p>
+<ul>
+<li>Open the desired database and <em>select elements and phases</em> that you want to work with. Read thermodynamic and mobility databases.</li>
+<li>Define nominal chemical composition.</li>
+</ul>
+<h2 id="create-precipitation-domains">Create precipitation domain(s)</h2>
+<p>If you want to simulation precipitation, you must provide at least one <em>container</em> for the precipitates, where they are allowed to nucleate and grow. This container is denoted as the <em>precipitation domain</em>.</p>
+<ul>
+<li><strong>Create precipitation domain</strong>. Use 'Create' in the 'Precipitation domains…' dialog.</li>
+<li>Select the <strong>thermodynamic matrix phase</strong>. This is the phase, which defines the thermodynamic properties of the precipitation domain.</li>
+<li>
+<p>Enter the microstructure information in the 'structure' tab of the precipitation domain dialog:</p>
+</li>
+<li>
+<p><strong>Grain size</strong> (important for grain boundary precipitates)</p>
+</li>
+<li><strong>Dislocation density</strong> (important for dislocation precipitates as well as pipe diffusion)</li>
+<li><strong>Subgrain size</strong> (important for subgrain boundary precipitates, e.g., in martensitic microstructure)</li>
+<li>For dislocation density above the equilibrium values (<span class="arithmatex">\(10^{11}-10^{12}\)</span>), enter the <strong>dislocation diffusivity ratio</strong> in the special tab. See article  <a href="/techpapers/precipitation/diffusion" title="techpapers/precipitation/diffusion">Diffusion in heterogenous precipitation</a> for details.</li>
+<li>For grain boundary precipitates, enter the <strong>grain boundary diffusivity ratio</strong> in the special tab. See article  <a href="/techpapers/precipitation/diffusion" title="techpapers/precipitation/diffusion">Diffusion in heterogenous precipitation</a> for details.</li>
+</ul>
+<h2 id="create-precipitates">Create precipitates</h2>
+<p>For each desired precipitate, select the <strong>precipitate parent phase</strong> and create a new precipitate with the 'Create' button. Select 'precipitate' as phase type.</p>
+<ul>
+<li>Define the desired <strong>number of size classes</strong> to use in the simulations. This quantity determines, which maximum number of size classes <em>MatCalc</em> will maintain during the simulations. Practically, values between 15 and 25 have proven to be reasonable values, if you are interested in the evolution of mean quantities, such as number density or mean radius. A value of 20 delivers a good compromise for calculation speed an accuracy.</li>
+<li>Attach the precipitate to a <strong>precipitation domain</strong>.</li>
+<li>Do <em>not</em> change the automatic setting for the interfacial energy. The estimates delivered by <em>MatCalc</em> have shown to be quite reasonable in the majority of cases, and no significant changes are usually necessary at this stage.</li>
+<li>On the 'nucleation' tab, select the desired homogeneous of heterogeneous <strong>nucleation site</strong>. See the article on  <a href="/techpapers/nucleation/het_nucl_sites" title="techpapers/nucleation/het_nucl_sites">Heterogeneous nucleation</a> for additional information.</li>
+</ul>
+<p><a href="#fnt__1">1)</a></p>
+<p>J. <strong>S</strong>voboda, F. D. <strong>F</strong>ischer, P. <strong>F</strong>ratzl and E. <strong>K</strong>ozeschnik, „Modelling of kinetics in multi-component multi-phase systems with spherical precipitates I. – Theory“, Mater. Sci. Eng. A, 2004, 385 (1-2) 166-174.</p>
+<p><a href="#fnt__2">2)</a></p>
+<p>In reality, the precipitates in <em>MatCalc</em> can have non-spherical shapes also. This is described in the article about  <a href="/techpapers/precipitation/prec_shape" title="techpapers/precipitation/prec_shape">The precipitate shape</a></p>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=howtosimulate%3Aprecipitation%3Ageneral&amp;1788352862" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

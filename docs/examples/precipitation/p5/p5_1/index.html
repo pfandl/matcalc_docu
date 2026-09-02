@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>P5 1 - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "P5 1";
+        var mkdocs_page_input_path = "examples/precipitation/p5/p5_1.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">P5 1</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>Example P5: Concurrent growth of precipitates in Fe-12%Cr-0.1%C, part 1: simulating growth of precipitates [MatCalc Documentation]</p>
+<h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#example_p5concurrent_growth_of_precipitates_in_fe-12_cr-01_c_part_1simulating_growth_of_precipitates">Example P5: Concurrent growth of precipitates in Fe-12%Cr-0.1%C, part 1: simulating growth of precipitates</a></p>
+</li>
+<li>
+<p><a href="#compatibility">Compatibility</a></p>
+</li>
+<li><a href="#objectives">Objectives</a></li>
+<li><a href="#related_documents">Related documents</a></li>
+<li><a href="#complementary_files">Complementary files</a></li>
+<li>
+<p><a href="#main_document">Main document</a></p>
+</li>
+<li>
+<p><a href="#setup_thermodynamics">Setup thermodynamics</a></p>
+</li>
+<li><a href="#precipitation_domain_and_precipitates">Precipitation domain and precipitates</a></li>
+<li><a href="#understanding_the_script">Understanding the script</a></li>
+<li><a href="#start_precipitation_simulation">Start precipitation simulation</a></li>
+<li><a href="#plotting_the_results">Plotting the results</a></li>
+<li><a href="#consecutive_articles">Consecutive articles</a></li>
+</ul>
+<h1 id="example-p5-concurrent-growth-of-precipitates-in-fe-12cr-01c-part-1-simulating-growth-of-precipitates">Example P5: Concurrent growth of precipitates in Fe-12%Cr-0.1%C, part 1: simulating growth of precipitates</h1>
+<h2 id="compatibility">Compatibility</h2>
+<p>MatCalc version: 5.44.1010 <br />
+Database: mc_sample_fe.tdb, mc_sample_fe.ddb<br />
+Author: Georg Stechauner<br />
+Created: 2012-02-10 <br />
+Revisions:</p>
+<h2 id="objectives">Objectives</h2>
+<p>Paper Simulation of the kinetics of precipitation reactions in ferritic steels. Concurrent growth of precipitates in Fe-12%Cr-0.1%C. Evaluation of concurrent growth of M3C, M7C3 and M23C6. Evolution of precipitate Cr-content.</p>
+<p>This simulation defines three precipitates (M23C6, M7C3 and Cementite) with composition Fe=12, C=0.1 wt%. Only one particle class is used to only simulate growth of one single precipitate in Ferrite. This is the same situation DICTRA can handle in their cell simulation mode. Finally compare the precipitation sequence. The resuls are very similar, if the diffusion coefficient in MatCalc is set to one times the diffusivity of the matrix.</p>
+<h2 id="related-documents">Related documents</h2>
+<ul>
+<li><em>P5-2</em> -  <a href="/examples/precipitation/p5/p5_2" title="examples/precipitation/p5/p5_2">Evaluation of inner particle diffusion coefficient</a></li>
+<li>A. Schneider, G. Inden, Simulation of the kinetics of precipitation reactions in ferritic steels, Acta Materialia 53 (2005) 519-531</li>
+</ul>
+<h2 id="complementary-files">Complementary files</h2>
+<p>Click <a href="/examples/precipitation/p5/p5-concurrentgrowth-dictra_2018.mcs" title="examples/precipitation/p5/p5-concurrentgrowth-dictra_2018.mcs (10.2 KB)">here</a> to view the script for this tutorial.</p>
+<h1 id="main-document">Main document</h1>
+<h2 id="setup-thermodynamics">Setup thermodynamics</h2>
+<p>Set up the thermodynamics by loading the mc_sample_fe database. Select the following phases, elements and enter the chemical composition in wt-%:</p>
+<table>
+<thead>
+<tr>
+<th>Elements</th>
+<th>Chemical composition</th>
+<th>Phases</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fe</td>
+<td>ref.</td>
+<td>BCC_A2</td>
+</tr>
+<tr>
+<td>C</td>
+<td>0.1</td>
+<td>CEMENTITE</td>
+</tr>
+<tr>
+<td>Cr</td>
+<td>12</td>
+<td>M7C3</td>
+</tr>
+<tr>
+<td>-</td>
+<td>-</td>
+<td>M23C6</td>
+</tr>
+</tbody>
+</table>
+<p>Conclude the thermodynamic setup by loading the diffusion database for Fe.</p>
+<p>To ensure correct thermodynamic values and no driving force errors (DFM-errors), set automatic start values and calculate an equilibrium at 1000C.</p>
+<h2 id="precipitation-domain-and-precipitates">Precipitation domain and precipitates</h2>
+<p>Next we enter the data for the precipitation domain. To do so, open the precipitation domain dialog and create a new domain. Select bcc_a2 as its matrix phase. No further changes have to be made concerning the precipitation domains. Precipitates will be added later on.</p>
+<p>Follow by setting up the precipitates. Bring up the phase status dialog window and select the Cementite, M7C3 and M23C6 phases. Click 'Create new phase' and select 'precipitate'. You have now created all three precipitates at once. Select all three precipitates now and go to the 'Precipitate' tab in order to initialize them all at once (<strong>use 1 size classes</strong>) and attach them to the beforehand created domain. Close the 'Phase status' dialog window and enter the following command to the console:</p>
+<pre><code>calc-nucleus-composition
+</code></pre>
+<p>This step is necessary to calculate the fractions needed to manually set up the precipitate distribution. Before calculating the nucleus composition, the initially set automatic startvalues were present, which would not lead to correct results. <strong>Note</strong>: calculating the nucleus composition without setting up the precipitation domains beforehand will result in an error! To set up the precipitate distribution manually, enter the next three lines to the console (copy&amp;paste):</p>
+<pre><code>set-precipitation-parameter M23C6_p0 p a 1e-9 1.35083e15 YX$M23C6$Cr$0 YX$M23C6$FE$0 YX$M23C6$Cr$1 YX$M23C6$FE$1 YX$M23C6$C$2
+set-precipitation-parameter M7C3_p0 p a 1e-9 1.35083e15 YX$M7C3$Cr$0 YX$M7C3$Fe$0 YX$M7C3$C$1
+set-precipitation-parameter cementite_p0 p a 1e-9 1.35083e15 YX$cementite$Cr$0 YX$cementite$Fe$0 YX$cementite$c$1
+</code></pre>
+<p>The code shown above consists of: Nucleus size (1e-9 → 1 nm), number density (1.35e15 /m3), Site fractions of elements.</p>
+<p>The number density was calculated using the following formula, which is used by <em>MatCalc</em>.</p>
+<p>;#;
+<img alt="y = 0.55 * x^-0.333" src="/wiki/lib/plugins/mathpublish/img.php?img=0eaec446934eebe4e50d6c3122e1d975" title="y = 0.55 * x^-0.333" />
+;#;</p>
+<p>where <strong>y</strong> is the <strong>mean point distance between randomly distributed precipitates (3-dimensional)</strong> and <strong>x</strong> is the <strong>number density</strong>. A value of the above entered number density thus results in a mean point distance of 5µm. This is the size which was used as a cellsize in the DICTRA simulation in the cited paper.</p>
+<p>Finish the precipitate setup by bringing up the 'Phase status' dialog window anew and switch to the 'Special' tab. Enter a value of <strong>1</strong> for both values at '<strong>Diffusion in precipitate</strong>'. This factor produces a diffusion rate in the precipitate which is as fast as in the surrounding matrix. More on this topic in part 2.</p>
+<p><strong><em>Important note …</em></strong></p>
+<p>Manually setting the precipitate distribution is something which should normally not be done. In this very example however it is necessary for various reasons:</p>
+<ul>
+<li>By setting the precipitates prior to the simulation and choosing the 'No action' option at the kinetic simulation, <strong>no nucleation</strong> occurs and only growth of precipitates is accounted for.</li>
+<li>Further, all precipitates have the same size, as only one size class is initialized.</li>
+<li>With manually setting the number density a mean distance of 5µm was achieved.</li>
+</ul>
+<p>This leads to a DICTRA-like simulation using <em>MatCalc</em> with the same parameters as in the paper. The influence of the inner particle diffusion ratio will be elaborated in part 2 of this example.</p>
+<h2 id="understanding-the-script">Understanding the script</h2>
+<p>Normally, without manually setting the precipitate distribution, <em>MatCalc</em> fills the size classes according to the calculations. This happens in the 'Nucleation step', where the size classes are generated. Compare this to <a href="/examples/precipitation/p1" title="examples/precipitation/p1">example P1</a> where a convergence parameter was used to slow nucleation down, in order to generate 1000 size classes. In this example however <strong>no</strong> nucleation will occur. Therefore, only growth of precipitates happens.</p>
+<p>The approach of DICTRA is fundamentally different: The user creates cells with a given cell size and simulates the growth of one precipitate with a given starting size. DICTRA keeps the chemical potentials of the created cells constant (µ1 = µ2), as the precipitates grow. Therefore, DICTRA never simulates the nucleation and always starts with a given parameter set, that is normally generated by <em>MatCalc</em> automatically.</p>
+<p>As the intention of this example however is to reproduce the values received from the cited literature, the same initial parameters had to be established. Thus only one size class was chosen, as well as the number density according to the 5µm cell size of the work of Schneider and Inden.</p>
+<p>The huge difference can be found in the calculation speed: While the simulation of the data shown in the paper took several minutes, <em>MatCalc</em> finished its calculation in several seconds!</p>
+<h2 id="start-precipitation-simulation">Start precipitation simulation</h2>
+<p>Set end time to 5e5 and isothermal temperature to 780C. Check the figure below for correct settings. <strong>Important</strong>: Don't forget to check 'No action' as starting conditions for precipitates, or else the prior setting will be reset. Press Go! to start the simulation.</p>
+<p><a href="/examples/precipitation/p5/p5_1-preckin.png" title="examples/precipitation/p5/p5_1-preckin.png"><img alt=" Precipitation kinetics dialog window" src="/examples/precipitation/p5/p5_1-preckin.png" title="Precipitation kinetics dialog window" /></a></p>
+<h2 id="plotting-the-results">Plotting the results</h2>
+<p>To plot the results either load this <a href="/examples/precipitation/p5/p5-plotsetup.mcs" title="examples/precipitation/p5/p5-plotsetup.mcs (3.4 KB)">plot-setup script</a>, or perform the following steps: create a XY-data (p1) plot for phase fraction.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data</td>
+<td><code>f$m23c6_p0</code>   <code>f$m7c3_p0</code>   <code>f$cementite_p0</code></td>
+</tr>
+<tr>
+<td>X-Axis Title</td>
+<td>t[s]</td>
+</tr>
+<tr>
+<td>X-Axis Type</td>
+<td>log</td>
+</tr>
+<tr>
+<td>X-Axis Scaling</td>
+<td>10..</td>
+</tr>
+<tr>
+<td>Y-Axis Title</td>
+<td>f[%]</td>
+</tr>
+<tr>
+<td>Y-Axis Factor</td>
+<td>100</td>
+</tr>
+</tbody>
+</table>
+<p>Feel free to rename the series data accordingly. <strong>Note</strong>: the script version contains also a plot for temperature and the radius evolution over time.</p>
+<p>To visualize the chromium content in dependence of precipitate radius, create three new p1 plots and set the settings as written below:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Plot M7C3</th>
+<th>Plot M23C6</th>
+<th>Plot Cementite</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Default x-data</td>
+<td><code>r_mean$M7C3_P0*1e9</code></td>
+<td><code>r_mean$M23C6_P0*1e9</code></td>
+<td><code>r_mean$cementite_P0*1e9</code></td>
+</tr>
+<tr>
+<td>Data</td>
+<td><code>X$M7C3_P0$Cr$wp</code></td>
+<td><code>X$M23C6_P0$Cr$wp</code></td>
+<td><code>X$cementite_P0$Cr$wp</code></td>
+</tr>
+<tr>
+<td>X-Axis Title</td>
+<td>R M7C3 [nm]</td>
+<td>R M23C6 [nm]</td>
+<td>R CEM [nm]</td>
+</tr>
+<tr>
+<td>Y-Axis Title</td>
+<td>Cr [wt%]</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>The following figures are obtained after following this examples' instructions:</p>
+<p><a href="/examples/precipitation/p5/p5_1-phasefraction-result.png" title="examples/precipitation/p5/p5_1-phasefraction-result.png"><img alt=" Phase fractions of stable M23C6 and meta-stable M7C3 and Cementite precipitate" src="/examples/precipitation/p5/p5_1-phasefraction-result.png" title="Phase fractions of stable M23C6 and meta-stable M7C3 and Cementite precipitate" /></a></p>
+<p>The figure above shows that in the early stages all three precipitates appear at the same time and in comparable amounts. After about 20 seconds both cementite and even more so M23C6 begin to increase in their phase fraction. The reason for this behavior can be found in the precipitates radius, which influences the phase fraction to a power of 3. The precipitate radius experiences a plateau which results in a plateau in the phase fraction. From then on both cementite and M7C3 decrease in their size and dissolve. The stable M23C6 also grows in size but reaches a maximum instead of dissolving.</p>
+<p><strong>Note</strong>: The cell size was chosen to be 5µm in this example to reproduce the values of Schneider and Inden, who used a cell size diameter of 10µm. The small deviation in starting parameters comes from completely different simulation approaches. Where DICTRA uses 3 spheres which have touching surfaces with their chemical potentials in equilibrium, <em>MatCalc</em> uses a mean field approach.</p>
+<p><a href="/examples/precipitation/p5/p5_1-cem-result.png" title="examples/precipitation/p5/p5_1-cem-result.png"><img alt=" Chromium content of Cementite over radius" src="/examples/precipitation/p5/p5_1-cem-result.png" title="Chromium content of Cementite over radius" /></a></p>
+<p><a href="/examples/precipitation/p5/p5_1-m7c3-result.png" title="examples/precipitation/p5/p5_1-m7c3-result.png"><img alt=" Chromium content of M7C3 over radius" src="/examples/precipitation/p5/p5_1-m7c3-result.png" title="Chromium content of M7C3 over radius" /></a></p>
+<p><a href="/examples/precipitation/p5/p5_1-m23c6-result.png" title="examples/precipitation/p5/p5_1-m23c6-result.png"><img alt=" Chromium content of M23C6 over radius" src="/examples/precipitation/p5/p5_1-m23c6-result.png" title="Chromium content of M23C6 over radius" /></a></p>
+<p>The easiest way to read the figures above is, to run the simulation and look how those curves evolve. You will observe, that the nucleus is created with a very small size of 1nm and high amounts of chromium (80 wt-%). As long as the matrix offers sufficient amounts of carbon, all three precipitates will grow. As the precipitate grows, the amounts of chromium drastically decrease. This happens as the evolution equations try to maximize the entropy. It is favorable to grow and use the available Fe than to grow by using the chromium. This can be visualized easily by plotting <code>X$Cementite_p0$Fe$wp</code> (create the function first). However as the precipitate grows, it starts to increase its content in chromium again. As the precipitate reaches its maximum size at about 900nm, the carbon of the matrix is used up thus stopping the growth. Now the concurrent process of the three precipitates starts, where the stabile precipitate is of course going to succeed. By using the other precipitates' carbon, M23C6 can continue to grow until both cementite and M7C3 are dissolved. The final, maximum size is therefore reached as the carbon is once again exhausted.</p>
+<h1 id="consecutive-articles">Consecutive articles</h1>
+<p>This analysis is continued in the article  <a href="/examples/precipitation/p5/p5_2" title="examples/precipitation/p5/p5_2">Evaluation of inner particle diffusion coefficient</a> where the influence of the inner particle diffusion ration will be elaborated.</p>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=examples%3Aprecipitation%3Ap5%3Ap5_1&amp;1788352996" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

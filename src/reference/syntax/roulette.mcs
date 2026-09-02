@@ -1,0 +1,184 @@
+$$************************************************************************************************** 
+************************************** GENERAL INFORMATION *****************************************
+****************************************************************************************************
+
+This example simulates a roulette table where you can try to win against the house. Not all
+features implemented for complexity reasons. Use this example to learn how to use random generator 
+and work with string-variables. Also conditions and loops.
+
+Content: - Excessive use of conditions and loops
+         - Creation of variables
+         - Random number generator
+         
+Database: none
+Author: G. Stechauner
+Creation date: 2012-02-02
+This is a script for MatCalc version 5.44 (rel 0.021)
+
+
+**************************************************************************************************** 
+************************************** SETUP INFORMATION *******************************************
+**************************************************************************************************$$
+
+$ make sure we work in the correct module
+use-module core 
+
+$ creates a new workspace 
+new-workspace 
+
+@ echo n
+set-workspace-info + Roulette
+set-workspace-info +
+set-workspace-info + Phases: none
+set-workspace-info + Chemical components: none
+set-workspace-info + 
+set-workspace-info + For further information visit www.matcalc.at
+set-workspace-info +
+
+
+$$************************************************************************************************** 
+***************************************** GAME SETUP ***********************************************
+**************************************************************************************************$$
+
+$ Define all variables needed for the conditions and loops for first stage
+@ echo n
+set-variable-value guess 0                    $ Guessed number or color
+set-variable-value money 1000                 $ Money of player
+set-variable-value randnumb 1                 $ Random number 
+set-variable-value randnumb floor(rand*37)    $ Calculate a random number between 0 and 36
+set-variable-value randcolor 1                $ Random color
+set-variable-value randcolor ceil(rand*2)     $ Random numbers 1 or 2
+set-variable-value i 1                        $ Variable for For-Loop
+set-variable-value continue 1                 $ Variable to keep on playing
+set-variable-value repeat 1                   $ Variable to test for invalid values
+set-variable-value game 1                     $ 1 for colors, 2 for numbers
+set-variable-value bet 1                      $ How much the player bets
+
+
+$$************************************************************************************************** 
+******************************************** GAME **************************************************
+**************************************************************************************************$$
+
+send-console-string 
+send-console-string
+send-console-string 
+$ Save the user-entered value on the variable money. 
+input-variable-value money "Hello. How much money do you want to change to chips?"
+send-console-string 
+
+$$ Transform the integer variable 'money' to a string variable 'money_string' which can be used in 
+   a console-string. %d shows that money is an integer variable. Add a string variable to an output
+   string by putting a # (hash-mark) in front of the string-variable. NOT putting the # there would 
+   result in writing 'money_string' instead of its value! $$
+
+format-variable-string money_string %d money     
+send-console-string Perfect. You have #money_string chips now. Let's play!     
+send-console-string 
+send-console-string 
+
+$$ Use a while loop to stay in this loop and repeat it as long as the checked value changes.
+ Use the == for 'comparing' variables (e.g.: if(x==1) ... condition that checks if x has the value of 1)
+ Use the = for assigning a value (e.g.: x=1 ... x gets the value of 1) $$
+while(continue==1)  
+   set-variable-value repeat 1
+   input-variable-value game "Would you like to bet on colors (press 1) or numbers (press 2)?"
+   send-console-string 
+   send-console-string
+   $$ Use a while loop to check if the user entry is correct. Change repeat to 
+       NOT 1 in order to escape the loop. $$
+   while(repeat==1)      
+      if(money<1)            
+         send-console-string ---------------------------------------------------
+         send-console-string You ran out of money. Please come back another day.
+         stop-run-script
+      endif
+      format-variable-string money_string %d money
+      input-variable-value bet "Enter how much money you want to bet (Money: #money_string)"
+      if(bet>money)
+         send-console-string
+         send-console-string You don't have that much money!
+         send-console-string Bet a smaller amount. Restarting game!
+         send-console-string
+         send-console-string
+      else
+         if(game==1)
+            set-variable-value money money-bet
+            send-console-string
+            while(repeat==1)
+               input-variable-value guess "Do you want to bet on red (press 1) or black (press 2)?"
+               $$ Check for validity of 2 conditions with '|': In order to be true
+                   the variable guess can be 1 OR ( | ) 2. $$
+               if((guess==1)|(guess==2))     
+                  send-console-string            
+		  set-variable-value randcolor ceil(rand*2)   
+		  if(guess==randcolor)
+		     send-console-string *************************************************
+		     send-console-string Congratulations! You've won and doubled your bet.
+		     send-console-string *************************************************
+		     set-variable-value money money+bet*2
+		     input-variable-value continue "Do you want to play again? Yes (1) / No (0)"
+		     send-console-string
+		     send-console-string
+		     set-variable-value repeat 0
+                  else
+		     send-console-string *************************************************
+		     send-console-string Oohhh... You just lost your bet.
+		     send-console-string *************************************************
+		     input-variable-value continue "Do you want to play again? Yes (1) / No (0)"
+		     send-console-string
+		     send-console-string
+		     set-variable-value repeat 0
+                  endif
+               else
+                  send-console-string Your selection was invalid. Try again.
+               endif
+            endwhile
+         elseif(game==2)
+            set-variable-value money money-bet
+            while(repeat==1)        
+               send-console-string
+               input-variable-value guess "Enter a number between 0 and 36 you want to bet on"
+               set-variable-value randnumb floor(rand*37)
+               format-variable-string randnumb_string %d randnumb
+               $$ Check for validity of 2 conditions with '&': In order to be true
+                   the guess has to be smaller than 36 AND ( & ) higher than 0. $$  
+               if((guess<=36)&(guess>=0))    
+                  if(guess==randnumb)            
+                     send-console-string *************************************************
+                     send-console-string The number was #randnumb_string.
+                     send-console-string Congratulations! You've won the 36-fold of your bet.
+		     send-console-string *************************************************
+		     set-variable-value money money+bet*36
+		     input-variable-value continue "Do you want to play again? Yes (1) / No (0)"
+		     send-console-string
+		     send-console-string
+                     set-variable-value repeat 0
+                  else
+                     send-console-string *************************************************
+                     send-console-string The number was #randnumb_string.
+                     send-console-string Oohhh... You just lost your bet.
+		     send-console-string *************************************************
+		     input-variable-value continue "Do you want to play again? Yes (1) / No (0)"
+		     send-console-string
+		     send-console-string
+                     set-variable-value repeat 0
+                  endif
+               else
+                  send-console-string Your selection was invalid. Try again.
+               endif
+            endwhile
+         else
+            send-console-string Wrong game selection. Only 1 or 2 are available!
+            set-variable-value repeat 0
+            send-console-string
+            send-console-string
+         endif
+      endif
+   endwhile
+endwhile
+
+send-console-string
+send-console-string
+send-console-string
+format-variable-string money_string %d money
+send-console-string Thank you for playing. Your final moneycount is #money_string.

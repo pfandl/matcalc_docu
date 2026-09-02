@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>P13 - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "P13";
+        var mkdocs_page_input_path = "examples/precipitation/p13.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">P13</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>Example P13: NbC and AlN precipitation in the deformed steel [MatCalc Documentation]</p>
+<h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#example_p13nbc_and_aln_precipitation_in_the_deformed_steel">Example P13: NbC and AlN precipitation in the deformed steel</a></p>
+</li>
+<li>
+<p><a href="#compatibility">Compatibility</a></p>
+</li>
+<li><a href="#objectives">Objectives</a></li>
+<li><a href="#complementary_files">Complementary files</a></li>
+<li>
+<p><a href="#main_document">Main document</a></p>
+</li>
+<li>
+<p><a href="#setup_thermodynamics">Setup thermodynamics</a></p>
+</li>
+<li><a href="#precipitation_domain_and_precipitates">Precipitation domain and precipitates</a></li>
+<li><a href="#heat_treatment">Heat treatment</a></li>
+<li><a href="#precipitation_simulation">Precipitation simulation</a></li>
+<li><a href="#comparison_with_no_deformation_case">Comparison with no deformation case</a></li>
+</ul>
+<h1 id="example-p13-nbc-and-aln-precipitation-in-the-deformed-steel">Example P13: NbC and AlN precipitation in the deformed steel</h1>
+<h2 id="compatibility">Compatibility</h2>
+<p>MatCalc version: 5.51.0019 <br />
+Database: mc_fe.tdb (alternatively mc_x_FeAlCNNbTi.tdb or mc_sample_fe.tdb) mc_sample_fe.ddb<br />
+Author: Walter Mayer<br />
+Created: 2012-12-10 <br />
+Revisions:</p>
+<h2 id="objectives">Objectives</h2>
+<p>This example demonstrates the influence of the plastic deformation on the precipitation kinetics. It is shown how the elastic strains are introduced into the sample heat treatment simulation. The model which describes the evolution of the dislocation density due to the applied stress is briefly discussed</p>
+<h2 id="complementary-files">Complementary files</h2>
+<p>Click <a href="/examples/precipitation/p13/script/p13_2018.mcs" title="examples/precipitation/p13/script/p13_2018.mcs (23.2 KB)">here</a> to view the script for this tutorial.</p>
+<h1 id="main-document">Main document</h1>
+<h2 id="setup-thermodynamics">Setup thermodynamics</h2>
+<p>Set up the thermodynamics by either loading the <strong>mc_fe</strong>, the example database <strong>mc_x_FeAlCNNbTi</strong> or the free <strong>mc_sample_fe</strong> database</p>
+<p>Select the following phases, elements and enter the chemical composition in wt-%:</p>
+<table>
+<thead>
+<tr>
+<th>Elements</th>
+<th>Chemical composition</th>
+<th>Phases</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Al</td>
+<td>0.05</td>
+<td>BCC_A2</td>
+</tr>
+<tr>
+<td>C</td>
+<td>0.2</td>
+<td>FCC_A1</td>
+</tr>
+<tr>
+<td>N</td>
+<td>0.005</td>
+<td>CEMENTITE</td>
+</tr>
+<tr>
+<td>Nb</td>
+<td>0.04</td>
+<td>ALN</td>
+</tr>
+</tbody>
+</table>
+<p>Set Fe to reference element. Conclude the thermodynamic setup by loading the diffusion database for Fe. To ensure correct thermodynamic values and no driving force errors (DFM-errors), set automatic start values and calculate an equilibrium at 1500 C.</p>
+<h2 id="precipitation-domain-and-precipitates">Precipitation domain and precipitates</h2>
+<p>Create two precipitation domains: ferrite (with BCC_A2 matrix phase) and austenite (with FCC_A1 matrix phase). Next, activate the dislocation density evolution model for the austenite domain.</p>
+<p><a href="/examples/precipitation/p12/img/p12_1.png" title="examples/precipitation/p12/img/p12_1.png"><img alt=" Activate dislocation density evolution model" src="/examples/precipitation/p12/img/p12_1.png" title="Activate dislocation density evolution model" /></a></p>
+<p>Leave the model parameters, as well as all other domain settings on default value. The implemented model was described by Sherstnev et al. <a href="#fn__1">1)</a> and is also discussed in this  <a href="/techpapers/precipitation/deformation" title="techpapers/precipitation/deformation">technical paper</a>. Here, it will be only mentioned that effects described by the model parameters are: dislocation creation due to the deformation (<strong>'A'</strong>), anihilation by the meeting of dislocations with antiparallel Burger's vector (<strong>'B'</strong>) and anihilation by dislocation climb (<strong>'C'</strong>)</p>
+<p>Follow by setting up the precipitates. Create one precipitate phase for cementite, two phases for fcc_a1#01 and four phases for AlN. Choose the settings, as given in the table below</p>
+<table>
+<thead>
+<tr>
+<th>Precipitate</th>
+<th>Tab</th>
+<th>Option</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cementite_p0</td>
+<td>Precipitate</td>
+<td>#size classes</td>
+<td>25 (Initialize!)</td>
+</tr>
+<tr>
+<td>cementite_p0</td>
+<td>Attached to pd</td>
+<td>ferrite</td>
+<td></td>
+</tr>
+<tr>
+<td>cementite_p0</td>
+<td>Kinetic alias name</td>
+<td>Cementite</td>
+<td></td>
+</tr>
+<tr>
+<td>cementite_p0</td>
+<td>Nucl. sites</td>
+<td>Nucleation sites</td>
+<td>dislocations</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Precipitate</th>
+<th>Tab</th>
+<th>Option</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fcc_a1#01_p0</td>
+<td>Precipitate</td>
+<td>#size classes</td>
+<td>25 (Initialize!)</td>
+</tr>
+<tr>
+<td>fcc_a1#01_p0</td>
+<td>Kinetic alias name</td>
+<td>NbC(aust,d)</td>
+<td></td>
+</tr>
+<tr>
+<td>fcc_a1#01_p0</td>
+<td>Nucleation</td>
+<td>Restrict nucleation to prec domain</td>
+<td>✔, select austenite</td>
+</tr>
+<tr>
+<td>fcc_a1#01_p0</td>
+<td>Nucl. sites</td>
+<td>Nucleation sites</td>
+<td>dislocations</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Precipitate</th>
+<th>Tab</th>
+<th>Option</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fcc_a1#01_p1</td>
+<td>Precipitate</td>
+<td>#size classes</td>
+<td>25 (Initialize!)</td>
+</tr>
+<tr>
+<td>fcc_a1#01_p1</td>
+<td>Kinetic alias name</td>
+<td>NbC(aust,gb)</td>
+<td></td>
+</tr>
+<tr>
+<td>fcc_a1#01_p1</td>
+<td>Nucleation</td>
+<td>Restrict nucleation to prec domain</td>
+<td>✔, select ferrite</td>
+</tr>
+<tr>
+<td>fcc_a1#01_p1</td>
+<td>Nucl. sites</td>
+<td>Nucleation sites</td>
+<td>grain boundary</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Precipitate</th>
+<th>Tab</th>
+<th>Option</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AlN_p0</td>
+<td>Precipitate</td>
+<td>#size classes</td>
+<td>25 (Initialize!)</td>
+</tr>
+<tr>
+<td>AlN_p0</td>
+<td>Kinetic alias name</td>
+<td>AlN(aust,d)</td>
+<td></td>
+</tr>
+<tr>
+<td>AlN_p0</td>
+<td>Nucleation</td>
+<td>Restrict nucleation to prec domain</td>
+<td>✔, select austenite</td>
+</tr>
+<tr>
+<td>AlN_p0</td>
+<td>Account for coherent misfit stress</td>
+<td>✔</td>
+<td></td>
+</tr>
+<tr>
+<td>AlN_p0</td>
+<td>Nucl. sites</td>
+<td>Nucleation sites</td>
+<td>dislocations</td>
+</tr>
+<tr>
+<td>AlN_p0</td>
+<td>Structure</td>
+<td>Vol. misfit</td>
+<td>0.27, remove ✔ from 'auto'</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Precipitate</th>
+<th>Tab</th>
+<th>Option</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AlN_p1</td>
+<td>Precipitate</td>
+<td>#size classes</td>
+<td>25 (Initialize!)</td>
+</tr>
+<tr>
+<td>AlN_p1</td>
+<td>Kinetic alias name</td>
+<td>AlN(aust,gb)</td>
+<td></td>
+</tr>
+<tr>
+<td>AlN_p1</td>
+<td>Nucleation</td>
+<td>Restrict nucleation to prec domain</td>
+<td>✔, select austenite</td>
+</tr>
+<tr>
+<td>AlN_p1</td>
+<td>Nucl. sites</td>
+<td>Nucleation sites</td>
+<td>grain boundary</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Precipitate</th>
+<th>Tab</th>
+<th>Option</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AlN_p2</td>
+<td>Precipitate</td>
+<td>#size classes</td>
+<td>25 (Initialize!)</td>
+</tr>
+<tr>
+<td>AlN_p2</td>
+<td>Kinetic alias name</td>
+<td>AlN(ferr,d)</td>
+<td></td>
+</tr>
+<tr>
+<td>AlN_p2</td>
+<td>Nucleation</td>
+<td>Restrict nucleation to prec domain</td>
+<td>✔, select ferrite</td>
+</tr>
+<tr>
+<td>AlN_p2</td>
+<td>Account for coherent misfit stress</td>
+<td>✔</td>
+<td></td>
+</tr>
+<tr>
+<td>AlN_p2</td>
+<td>Nucl. sites</td>
+<td>Nucleation sites</td>
+<td>dislocations</td>
+</tr>
+<tr>
+<td>AlN_p2</td>
+<td>Structure</td>
+<td>Vol. misfit</td>
+<td>0.27, remove ✔ from 'auto'</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Precipitate</th>
+<th>Tab</th>
+<th>Option</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AlN_p3</td>
+<td>Precipitate</td>
+<td>#size classes</td>
+<td>25 (Initialize!)</td>
+</tr>
+<tr>
+<td>AlN_p3</td>
+<td>Kinetic alias name</td>
+<td>AlN(ferr,gb)</td>
+<td></td>
+</tr>
+<tr>
+<td>AlN_p3</td>
+<td>Nucleation</td>
+<td>Restrict nucleation to prec domain</td>
+<td>✔, select ferrite</td>
+</tr>
+<tr>
+<td>AlN_p3</td>
+<td>Nucl. sites</td>
+<td>Nucleation sites</td>
+<td>grain boundary</td>
+</tr>
+</tbody>
+</table>
+<h2 id="heat-treatment">Heat treatment</h2>
+<p>Define the heat treatment with the following segments:</p>
+<ol>
+<li>Start at temperature of 1500 C. Cool down to 1200 C with 1 C/s cooling rate. Select austenite as precipitation domain.</li>
+<li>Hold at 1200 C for 30 minutes.</li>
+<li>Cool down to 1000 C with 1 C/s cooling rate.</li>
+<li>In the field <strong>'Ramp control'</strong>, choose <strong>'Accumulated strain'</strong> option. Deform material with the strain rate (<strong>'eps-dot'</strong>) of 0.15 till the accumulated strain reaches the 0.7 value. Hold the material at 1000 C (cooling rate is 0 C/s).  </li>
+</ol>
+<p><a href="/examples/precipitation/p12/img/p12_2.png" title="examples/precipitation/p12/img/p12_2.png"><img alt=" Introducing deformation characteristics" src="/examples/precipitation/p12/img/p12_2.png" title="Introducing deformation characteristics" /></a>
+5. Cool down to 950 C with 1 C/s cooling rate.
+6. Deform material with the strain rate of 0.15 till the accumulated strain reaches the 0.7 value. Hold the material at 950 C (cooling rate is 0 C/s).
+7. Cool down to 900 C with 1 C/s cooling rate.
+8. Deform material with the strain rate of 0.15 till the accumulated strain reaches the 0.7 value. Hold the material at 900 C (cooling rate is 0 C/s).
+9. Cool down to 750 C with 1 C/s cooling rate.
+10. Cool down to 650 C with 1 C/s cooling rate. Switch precipitation domain to ferrite.
+11. Cool down to 400 C within 10 hours.</p>
+<p><a href="/examples/precipitation/p12/img/p12_3.png" title="examples/precipitation/p12/img/p12_3.png"><img alt=" Heat treatment" src="/examples/precipitation/p12/img/p12_3.png" title="Heat treatment" /></a>
+<a href="/examples/precipitation/p12/img/p12_8.png" title="examples/precipitation/p12/img/p12_8.png"><img alt="" src="/examples/precipitation/p12/img/p12_8.png" /></a></p>
+<h2 id="precipitation-simulation">Precipitation simulation</h2>
+<p>Before starting the simulation, create 4 diagrams which will describe the precipitation characteristics (temperature, phase fraction, number densities, mean radii) - this is conveniently done by clicking on <strong>'View' → 'Create new window …' → 'user-defined' tab → '03_kinetics_4_frames_T_f_n_r_linX'</strong>. Start the simulation with the temperature controlled by the defined heat-treatment.</p>
+<p>The first look on the calculation results suggests that the whole precipitation appears in the ferrite domain (after ~2560 seconds). By magnifying the time axis (default x-axis!) from 2200 to 2600 seconds, one can notice the precipitates occurring in the austenite domain already where the deformation stage was introduced.</p>
+<p><a href="/examples/precipitation/p12/img/p12_4.png" title="examples/precipitation/p12/img/p12_4.png"><img alt=" Precipitate phase fractions in austenite" src="/examples/precipitation/p12/img/p12_4.png" title="Precipitate phase fractions in austenite" /></a></p>
+<p>This deformation process can be illustrated by the following plots:</p>
+<ul>
+<li><em>Strain rate</em> (<strong>'EPS_DOT'</strong> variable found in the <strong>'kinetics/general'</strong> group). The three peaks correspond to the deformation segments.</li>
+</ul>
+<p><a href="/examples/precipitation/p12/img/p12_5.png" title="examples/precipitation/p12/img/p12_5.png"><img alt=" Strain rate" src="/examples/precipitation/p12/img/p12_5.png" title="Strain rate" /></a></p>
+<ul>
+<li><em>Strain accumulated in the sample</em> (<strong>'ACC_EPS'</strong> variable found in the <strong>'kinetics/general'</strong> group). Every deformation segment resulted in increasing the strain by 0.7.</li>
+</ul>
+<p><a href="/examples/precipitation/p12/img/p12_6.png" title="examples/precipitation/p12/img/p12_6.png"><img alt=" Accumulated strain" src="/examples/precipitation/p12/img/p12_6.png" title="Accumulated strain" /></a></p>
+<ul>
+<li><em>Dislocation density in the austenite</em> (<strong>'DDT$austenite'</strong> variable found in the <strong>'kinetics/pd struct'</strong> group). Again, three peaks corresponding to the deformation stages can be recognized. The dislocation density rises by two orders of magnitude.</li>
+</ul>
+<p><a href="/examples/precipitation/p12/img/p12_7.png" title="examples/precipitation/p12/img/p12_7.png"><img alt=" Dislocation density in austenite" src="/examples/precipitation/p12/img/p12_7.png" title="Dislocation density in austenite" /></a></p>
+<ul>
+<li><em>Pipe diffusion correction factor</em> (<strong>'PIPE_DCF<span class="arithmatex">\(austenite\)</span>*'</strong> variable found in the <strong>'kinetics/pd special'</strong> group). The dislocations allow for a faster diffusion of the atoms. This effect is known as “pipe diffusion” and is represented with a correction factor, by which the diffusion coefficients of elements are multiplied (the same factor is assumed for all elements). The magnitude of this factor depends on the amount of the excess dislocation density and temperature. Increasing the number of dislocations during the deformation results in the faster diffusion in the material.</li>
+</ul>
+<p><a href="/examples/precipitation/p12/img/p12_8.png" title="examples/precipitation/p12/img/p12_8.png"><img alt=" Pipe diffusion correction factor in austenite" src="/examples/precipitation/p12/img/p12_8.png" title="Pipe diffusion correction factor in austenite" /></a></p>
+<p>The influence of the deformation on the precipitation kinetics can be discussed on the following two plots:</p>
+<ul>
+<li><em>Number density of the precipitates.</em> The number of precipitates nucleating on dislocations in austenite is increasing significantly during the deformation segments. Three increments for NbC(aust,d) and two for AlN(aust,d) precipitates can be identified. This observation is explained by the increasing number of the dislocations and thus the increasing number of the available nucleation sites for those precipitates.</li>
+</ul>
+<p><a href="/examples/precipitation/p12/img/p12_9.png" title="examples/precipitation/p12/img/p12_9.png"><img alt=" Number density of precipitates" src="/examples/precipitation/p12/img/p12_9.png" title="Number density of precipitates" /></a></p>
+<ul>
+<li><em>Mean radii of the precipitates.</em> The rapid descent of the mean radius for the NbC(aust,d) and AlN(aust,d) precipitates nucleating at dislocations is observed during the dislocation segments. This is an effect of the outburst of the new nuclei for these phases. These falls are immediately compensated by the significant radius growth which is a result of the enhanced diffusion due to the increased dislocation number (pipe-diffusion).</li>
+</ul>
+<p><a href="/examples/precipitation/p12/img/p12_10.png" title="examples/precipitation/p12/img/p12_10.png"><img alt=" Mean radii of precipitates" src="/examples/precipitation/p12/img/p12_10.png" title="Mean radii of precipitates" /></a></p>
+<h2 id="comparison-with-no-deformation-case">Comparison with no deformation case</h2>
+<p>In order to demonstrate the effects of the deformation on the precipitation process, the calculation will be repeated for the system without any deformation steps. Rename the current buffer to 'w_deform'. Create the new buffer and rename it to 'no_deform'. Duplicate and lock all series in the plots. Next, edit the segments which describe the deformation stages in the heat treatment and write zero to <strong>'eps-dot'</strong>. In options window for the plots switch the displayed buffer to 'no_deform' and start the precipitation kinetics calculation.</p>
+<p>Let's compare the results for the NbC(aust,d) and AlN(aust,d) from the both simulations</p>
+<ul>
+<li><em>Number densities.</em> The number densities for these phases are a few order smaller than in the deformed material. The phase fractions show a similar behavior. Noteworthy, the precipitates for AlN are virtually non-existent in the samples without strain. As expected, the excess dislocations increase the nucleation rates in the deformed material resulting in the higher number of precipitates.</li>
+</ul>
+<p><a href="/examples/precipitation/p12/img/p12_11.png" title="examples/precipitation/p12/img/p12_11.png"><img alt=" Number density comparison" src="/examples/precipitation/p12/img/p12_11.png" title="Number density comparison" /></a></p>
+<ul>
+<li><em>Mean radii.</em> The differences here are not very prominent. Nevertheless, the radii in the strained samples are larger, as the introduced dislocations enable the pipe-diffusion.</li>
+</ul>
+<p><a href="/examples/precipitation/p12/img/p12_12.png" title="examples/precipitation/p12/img/p12_12.png"><img alt=" Mean radius comparison" src="/examples/precipitation/p12/img/p12_12.png" title="Mean radius comparison" /></a></p>
+<p><a href="#fnt__1">1)</a></p>
+<p>Sherstnev P., Lang P., Kozeschnik E., ECCOMAS 2012, in press</p>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=examples%3Aprecipitation%3Ap13&amp;1788352997" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

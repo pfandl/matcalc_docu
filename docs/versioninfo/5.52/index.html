@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>5.52 - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "5.52";
+        var mkdocs_page_input_path = "versioninfo/5.52.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">5.52</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>MatCalc 5.52 [MatCalc Documentation]</p>
+<h2 id="matcalc-552">MatCalc 5.52</h2>
+<p>The following new features will appear in <em>MatCalc</em> versions 5.52.nnnn:</p>
+<ul>
+<li>Changed <strong>file format</strong>: Workspaces and binaries are now saved in <strong>compressed</strong> form. Saves 80-95% of disc space.</li>
+<li>Implemented <strong>diffuse interface energy correction</strong>. The treatment requires knowledge of the critical temperature, which can in several cases be estimated from the thermodynamic data.</li>
+<li>Significant improvements in the <strong>handling of plots</strong>: Context-sensitive options window helps facilitate settings.</li>
+<li><strong>Kinetic</strong> simulations can now also be run with <strong>control of chemical composition</strong>.</li>
+<li>Added <strong>new plot type (contour plot)</strong> for display of 2-dimensional arrays.</li>
+<li>Several <strong>changes in dialogs</strong>.</li>
+</ul>
+<p>Below are details describing the various changes and new features of the MatCalc versions 5.52.xxxx.</p>
+<h4 id="version-5521005-released-2013-08-23-windows">version 5.52.1005: released 2013-08-23 (Windows)</h4>
+<ul>
+<li>New <strong>plot-options for TTP-plots</strong>: <code>relative f_end</code> and <code>relative max_f_end</code>. These are similar to the options <code>relative</code> and <code>relative max_f</code> with the difference, that the last values of the buffer lines will be taken instead of the maximum.</li>
+<li>New variable <code>last_calc_result</code>. This is particularly useful for scripts.</li>
+<li><strong>Drag &amp; Drop</strong> support for <strong>files</strong> into MatCalc (script files, text files, workspaces). Script files will be run with usual Drag &amp; Drop. Holding the shift key during drop will open the script instead.</li>
+<li>Simulation module: a new <strong>variable for limiting the minimum concentration at interfaces</strong> is introduced. It can be set for each element in the ©onvergence control in <code>SET_SIMULATION_PARAMETER</code>. If the concentration at the interface goes below this value, the time step control will be ignored for the cell. Instead a fixed concentration jump of 50% is performed. This can reduce real calculation time significantly.</li>
+<li>Updated header for heat treatment exports.</li>
+<li>Several <strong>memory leak fixes</strong>.</li>
+<li>Fixed typos.</li>
+</ul>
+<h4 id="version-5520031-released-2013-05-24-windows">version 5.52.0031: released 2013-05-24 (Windows)</h4>
+<ul>
+<li>Changes of several <strong>variable names</strong> containing <strong><code>VA</code></strong> to <strong><code>SV</code></strong>. In some cases <code>VA</code> was the placeholder for substitutional vacancies. These are now distinguished from the interstitial vacancies <code>VA</code> and called structural vacancies <code>SV</code>.</li>
+<li>Fixed a problem with kinetic alias names (if they are identical to the regular phase name).</li>
+<li>New command <code>SET_LICENSE_FILEPATH</code>. This is useful if the license file is not in the same directory as the application.</li>
+<li>Fixed problem with diffusion data and composition sets of ordered phases.</li>
+<li>Made <strong>table interpolation</strong> possible with <strong>up and down ordering</strong> of x-values.</li>
+<li>Removed “calculated” dislocation density value (obsolete).</li>
+<li>Fixed a bug in equilibrium calculation with compositional constraints.</li>
+<li>Added functionality for multiple phases in ttp plot curves when using scripts.</li>
+<li>Fixed bug in calculation of minimum G* nucleus composition.</li>
+<li>Fixed a problem where diffusion terms in ordered phases were read twice.</li>
+<li>Default database is now opened per default in database dialog.</li>
+<li>New command <code>SET_PRECIPITATION_DOMAIN</code> to <strong>manually define the currently active precipitation domain</strong>.</li>
+<li>Added functionality for <strong>nucleus composition: constrained</strong>.</li>
+<li>Fixed a bug related to automatic attachment of precipitates when not using heat treatments.</li>
+<li>Fixed <strong>critical crash on Asian computers</strong> caused by special characters.</li>
+<li>Fix crash on selecting new plot created via “New Plot” context menu item in empty plot area.</li>
+<li>Implemented font changes for plots in options listbox.</li>
+<li>Fixed several typos.</li>
+</ul>
+<h4 id="version-5520008-released-2013-03-26-windows">version 5.52.0008: released 2013-03-26 (Windows)</h4>
+<ul>
+<li>Fixed a bug in the <strong>treatment of nucleation sites</strong> for subgrain boundary corners and edges.</li>
+<li>Fixed a problem in dislocation density evolution model from version 5.51.1011.</li>
+<li>MatCalc workspace and binary files are now saved in compressed form.</li>
+<li>Added variables for recrystallized fraction and dislocation density in deformed and recrystallized grains.</li>
+<li>Added functionality to define <strong>active precipitation domains</strong>. This is necessary to describe multi cell diffusion simulations with precipitation kinetics in each cell for more than one precipitation domain.</li>
+<li>Change treatment of <strong>nucleation sites for on-particle nucleation</strong>. Criterion now compares interface areas of new and parent precipitates.</li>
+<li>Removed functionality for attaching/detaching precipitates to precipitation domains(obsolete).</li>
+<li>Fixed a problem with automatic kinetic alias names in plots.</li>
+<li><strong>Kinetic alias name</strong> can now also be used as phase name (denoting phase name in variables).</li>
+<li>Fixed a <strong>problem with grain boundary precipitates</strong>, where precipitates continued to grow even if the driving force was negative.</li>
+</ul>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=versioninfo%3A5.52&amp;1788352872" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>5.42 - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "5.42";
+        var mkdocs_page_input_path = "versioninfo/5.42.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">5.42</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>MatCalc 5.42 [MatCalc Documentation]</p>
+<h2 id="matcalc-542">MatCalc 5.42</h2>
+<p>See the changes which happened with version 5.42 below</p>
+<hr />
+<p><strong>version 5.42.1016: snapshot 2011-02-04 (Windows)</strong></p>
+<ul>
+<li>Added functionality to <em>copy and export</em> plots and entire frames to <em>SVG format</em>. Graphs can now be saved in .svg files and opened and edited in programs such as CorelDraw (commercial) or Inkscape (open source, all platforms). This is extremely convenient when trying to <em>create professionally-looking diagrams</em>.</li>
+<li>Added new commands for <em>INPUT_VARIABLE_VALUE</em> and <em>INPUT_VARIABLE_STRING</em>.</li>
+<li>Use CTRL+'&lt;' and '&gt;' to <em>navigate</em> through the <em>windows</em> of your workspace.</li>
+<li>The <em>script editor</em> now supports <em>indentation</em> when programming loops and for-if conditions.</li>
+<li><em>Fixed bug</em>, where <em>post-segment script is ignored</em> in last heat treatment segment.</li>
+<li>In <em>TTP plots</em>, it is possible now, to <em>merge several phases into one ttp-line</em>. Simply set 'use_x_data_string' as a phase name and place a string of phases separated by '+' into x_data_desc, e.g., 'aln_p0+aln_p1'.</li>
+</ul>
+<p><strong>version 5.42.1008: snapshot 2011-01-17 (Windows)</strong></p>
+<ul>
+<li><em>Fixed a bug</em> in the equilibrium module causing <em>numerical problems</em> when searching and tracing <em>phase boundaries</em>.</li>
+</ul>
+<p><strong>version 5.42.1006: online 2011-01-17</strong></p>
+<ul>
+<li>Improved treatment of <em>shape factors</em> in precipitation. The parameters have been modified such that selection of no shape factor brings identical results now with selection of use shape factor and sf=1.0.</li>
+<li>Added several <em>template scripts</em>.</li>
+<li>Fixed a bug where <em>some variables did not display</em> correctly after saving and loading.</li>
+</ul>
+<p><strong>version 5.42.1005: online 2011-01-10 (Windows)</strong></p>
+<ul>
+<li>Fixed a <em>bug in treatment of precipitation strengthening</em>. This was unfortunately introduced in version 5.42.0005.</li>
+<li>Implemented logical AND ('&amp;') and OR ('|') operators in symbolic calculation.</li>
+<li>It is possible now to <em>create new phases</em> and <em>set phase amount</em> in <em>multiple selection</em> in the phase status dialog.</li>
+</ul>
+<p><strong>version 5.42.1001: online 2011-01-10 (for MacOS+Windows)</strong></p>
+<ul>
+<li>Fixed a <em>problem with libraries</em> for the MacOS installer.</li>
+<li><em>Fixed error</em> in template scripts, where an <em>incorrect pipe diffusion formula</em> was entered!</li>
+<li>Made <em>'matcalc_version'</em> a <em>global variable</em> to be able to access it from mcc.</li>
+<li>Fixed problem in <em>numerical treatment of grain boundary precipitates</em>. Improved numerical stability.</li>
+</ul>
+<p><strong>version 5.42.1000: online 2010-12-30</strong></p>
+<ul>
+<li>Several <em>new template scripts</em> have been added to the script menu, which are perfect for creating your own scripts on this basis. I particularly recommend looking at the script templates/precipitation/low_alloy_steel<em>/multi_stage_treatment_of_low_alloy_steel_martensite.mcs</em>, which contains some nice programming with conditions and <em>user interaction</em>.</li>
+<li>The command <em>STOP_RUN_SCRIPT</em> has been implemented. It will interrupt and stop scripts.</li>
+<li>You can now <em>show and hide the console window</em> with the MOVE_GUI_WINDOW command.</li>
+</ul>
+<p><strong>version 5.42.0005: beta version (Windows) 2010-12-21</strong></p>
+<ul>
+<li>Added a variable for the <em>matrix diffusion enhancement factor</em> in precipitation domains. This feature facilitates the implementation of effects such as deformation induced excess vacancies. The enhancement factor can be defined in the precipitation domain now, instead of defining it for each precipitate separately.</li>
+<li>The <em>script menu</em> has been entirely renewed and it contains now a selection of <em>template scripts</em>, that can be either run directly from the scripts menu, or opened as a template for your own easy adaptation of existing template scripts.</li>
+<li>Implemented a feature that <em>restricts nucleation</em> of precipitates to a selected <em>precipitation domain</em>. This is a useful feature in complex multi-precipitation domain calculations.</li>
+<li>The <em>export function</em> for plots in <em>pdf format</em> has been improved, such that lines are displayed thick enough for print reproduction.</li>
+<li>Added <em>internal MatCalc version</em> variable 'matcalc_version'.</li>
+</ul>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=versioninfo%3A5.42&amp;1788352873" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

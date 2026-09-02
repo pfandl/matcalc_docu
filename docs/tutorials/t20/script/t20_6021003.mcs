@@ -1,0 +1,151 @@
+$$************************************************************************************************** 
+************************************** GENERAL INFORMATION *****************************************
+****************************************************************************************************
+
+Script Simulating grain growth according to Tutorial 20.
+The following contents will be covered:
+
+ - using the single-class model for grain growth
+ 
+Database: mc_fe.tdb, mc_fe.ddb
+Author: M. Lueckl
+Creation date: 16.02.2017
+Last update: 13.08.2019 (P. Warczok, Update for 6.02)
+This is a script for MatCalc version 6.02 (rel 1.003)
+
+Known issues:
+- "save-workspace "file-name"=Tutorial_20" is not working properly. Use "save-workspace Tutorial_20" instead.
+
+
+****************************************************************************************************
+************************************** SETUP INFORMATION *******************************************
+**************************************************************************************************$$       
+
+use-module module-name=core                                                                              $ Select core module for kinetic simulation
+close-workspace options=f                                                                                $ Close any open workspace without asking for save 
+
+new-workspace                                                                                            $ Create a new workspace 
+
+$ Add some information about your Script
+@echo value=no 
+set-workspace-info information=Script T20
+set-workspace-info information=+Simulating grain growth
+set-workspace-info information=+using the single-class model
+
+echo value=yes
+
+$$************************************************************************************************** 
+**************************************** SYSTEM SETUP **********************************************
+**************************************************************************************************$$
+
+
+
+$$************************************************************************************************** 
+                          DATABASES, CHEMICAL COMPOSITION, SELECTED PHASES
+**************************************************************************************************$$
+
+open-thermodynamic-database file-name=mc_fe.tdb                                                          $ Open thermodynamic database mc_fe.tdb
+
+select-elements elements=FE NB C                                                                         $ Components: Fe
+select-phases phases=FCC_A1                                                                              $ Phases: bcc
+read-thermodynamic-database  
+
+read-mobility-database file-name=mc_fe.ddb                                                               $ Mobility (diffusion) database: mc_fe.ddb
+
+enter-composition type=weight-percent composition=C=0,1 Nb=0,04 
+
+set-automatic-startvalues 
+set-temperature-celsius temperature=1000                                                                 $ Temperature 1000C
+calculate-equilibrium                                                                                    $ Initial equilibrium
+
+
+$$************************************************************************************************** 
+                                     PRECIPITATION DOMAIN
+**************************************************************************************************$$
+
+create-precipitation-domain new-domain-name=austenite                                                    $ Creates precipitation domain "ferrite"
+set-precipitation-parameter precipitate-or-domain-name=austenite thermodynamic-matrix-phase=FCC_A1       $ Ferrite domain structure: bcc
+set-precipitation-parameter precipitate-or-domain-name=austenite initial-grain-diameter=10e-6            $ Initial grain size
+$ Activating the single-class grain growth model
+set-precipitation-parameter precipitate-or-domain-name=austenite grain-evolution-model=single-class 
+
+
+$$************************************************************************************************** 
+                                       SETTING UP PLOTS
+**************************************************************************************************$$
+
+new-gui-window type-id=p1
+move-gui-window displace window-id=. x-origin=0 y-origin=200 width=400 height=600
+set-gui-window-property window-id=. default-x-axis-title=Time [h]                                        $ Default x-axis title                    
+set-gui-window-property window-id=. default-x-axis-factor=1/3600                                         $ x-axis scaling factor
+set-plot-option plot-id=. y-axis-title=Grain diameter [µm]                                               $ y-axis title
+set-plot-option plot-id=. y-axis-scaling=10..                                                            $ y-axis scaling range
+set-plot-option plot-id=. y-axis-factor=1e6                                                              $ y-axis scaling factor
+set-plot-option plot-id=. series new buffer variable-name=GD$austenite                                   $ Add series: mean grain diameter in domain
+set-plot-option plot-id=. legend-alignment=bottom                                                        $ Show legend at the bottom of the figure
+set-plot-option plot-id=. grid which-grid=major enable-x-axis=yes                                        $ Gridlines for x-axis
+set-plot-option plot-id=. grid which-grid=major enable-y-axis=yes                                        $ Gridlines for y-axis
+
+
+$$************************************************************************************************** 
+                                       KINETIC CALCULATION
+**************************************************************************************************$$
+
+$ -------------------------------- GRAIN GROWTH IN PURE FE-MATRIX ----------------------------------
+
+$ Isothermal holding at 900°C
+set-simulation-parameter end-time=3600                                                                   $ Simulation end time
+set-simulation-parameter temperature-in-C=yes                                                            $ Temperature in celsius
+set-simulation-parameter isothermal-temperature=900                                                      $ Isothermal temperature
+
+start-precipitate-simulation
+
+set-gui-window-property window-id=. duplicate-and-lock-plot-series                                       $ Duplicate an lock all series
+set-plot-option plot-id=. series rename series-index=-1 series-name=*_gd$austenite new-name=900°C        $ Rename series 
+
+$ Isothermal holding at 1000°C
+set-simulation-parameter isothermal-temperature=1000                                                     $ Isothermal temperature
+
+start-precipitate-simulation
+
+set-gui-window-property window-id=. duplicate-and-lock-plot-series                                       $ Duplicate an lock all series
+set-plot-option plot-id=. series rename series-index=-1 series-name=*_gd$austenite new-name=1000°C       $ Rename series 
+
+$ Isothermal holding at 1100°C
+set-simulation-parameter isothermal-temperature=1100                                                     $ Isothermal temperature
+
+start-precipitate-simulation
+
+set-plot-option plot-id=. series rename series-index=-1 series-name=gd$austenite new-name=1100°C         $ Rename series 
+ 
+$ ------------------------------------ EFFECT OF SOLUTE DRAG ---------------------------------------
+
+$ Activating Cahn approach for solute drag
+set-precipitation-parameter precipitate-or-domain-name=austenite solute-drag-model=cahn-impurity-drag   
+$ Interaction energy for solute drag of Nb set to 17 kJ/mol
+set-precipitation-parameter precipitate-or-domain-name=austenite microstructure-evolution solute-drag cahn-luecke-stuewe-parameters element=NB solute-drag-interaction-energy=9e3
+
+set-plot-option plot-id=. series remove series-index=-1 series-name=1000°C                               $ Remove series
+set-plot-option plot-id=. series rename series-index=-1 series-name=1100°C new-name=900°C(solute_drag)   $ Rename series
+
+set-simulation-parameter isothermal-temperature=900                                                      $ Isothermal temperature
+start-precipitate-simulation
+
+$ -------------------------- GRAIN BOUNDARY PINNING BY PRECIPITATES --------------------------------
+
+$ Create NbC precipitate
+create-new-phase parent-phase=FCC_A1#01 precipitate 
+set-precipitation-parameter precipitate-or-domain-name=FCC_A1#01_P0 nucleation-sites=dislocations        $ Nucleatio sites
+
+set-gui-window-property window-id=. duplicate-and-lock-plot-series 
+start-precipitate-simulation
+
+set-plot-option plot-id=. series rename series-index=2 new-name=900°C(pinning_precipitates)              $ Rename series
+
+
+$$************************************************************************************************** 
+                                         SAVING WORKSPACE
+**************************************************************************************************$$
+
+$save-workspace "file-name"=Tutorial_20
+save-workspace Tutorial_20     

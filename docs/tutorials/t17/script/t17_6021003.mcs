@@ -1,0 +1,220 @@
+$$************************************************************************************************** 
+************************************** GENERAL INFORMATION *****************************************
+****************************************************************************************************
+
+Script for complex multi-stage heat treatments according to Tutorial 17.
+The following contents will be covered:
+
+ - Definition of complex heat treatments
+ - The heat treatment editor
+ - Multiple precipitation domains / matrix phase transformations
+
+In this tutorial, we simulate the precipitation of NbC in the solid state during the continuous 
+casting of steel and the subsequent austenitization treatment. The austenite / ferrite 
+transformations of the matrix phases are taken into account. The continuous casting simulation 
+starts at 1400C with linear cooling to room temperature. The austenitization treatment is carried 
+out at 1100C for 2 hours. Heating and cooling rates are assumed to be 1 K/s. Furthermore, we assume 
+that precipitation of NbC occurs only at austenite grain boundaries in the austenite during 
+continuous casting. After transformation to ferrite, we assume that precipitation occurs at grain 
+boundaries and dislocations.
+
+Database: mc_fe.tdb, mc_fe.ddb
+Author: P. Warczok
+Creation date: 10.11.2008
+Last update: 17.06.2019 (P. Warczok, Update for 6.02)
+This is a script for MatCalc version 6.02 (rel 1.003)
+
+Known issues:
+- "save-workspace "file-name"=Tutorial_17" is not working properly. --> Use "save-workspace Tutorial_17" instead.
+
+
+**************************************************************************************************** 
+************************************** SETUP INFORMATION *******************************************
+**************************************************************************************************$$
+
+use-module module-name=core                                                                                                           $ Use "core" module (MatCalc uses "core" module by default anyway) 
+
+new-workspace                                                                                                                         $ creates a new workspace 
+
+
+$$************************************************************************************************** 
+**************************************** SYSTEM SETUP **********************************************
+**************************************************************************************************$$
+
+
+
+$$************************************************************************************************** 
+                       DATABASES, CHEMICAL COMPOSITION, SELECTED PHASES
+**************************************************************************************************$$
+	
+open-thermodynamic-database file-name=mc_fe.tdb                                                                                       $ Thermodynamic database: mc_fe.tdb 
+select-elements elements=FE C NB VA                                                                                                   $ Components: Fe, C, Nb
+select-phases phases=BCC_A2 FCC_A1                                                                                                    $ Phases: bcc, fcc    
+read-thermodynamic-database 
+
+set-reference-element element=FE
+enter-composition type=weight-percent composition=C=0,1 NB=0,7                                                                        $ Composition: 0.1 wt.% C, 0.7 wt.% Nb 
+
+set-automatic-startvalues 
+set-temperature-celsius temperature=1000                                                                                              $ Temperature 1000C
+calculate-equilibrium                                                                                                                 $ Initial equilibrium
+
+create-precipitation-domain new-domain-name=austenite                                                                                 $ Creates precipitation domain "austenite"
+set-precipitation-parameter precipitate-or-domain-name=austenite thermodynamic-matrix-phase=FCC_A1                                    $ Austenite domain structure: fcc
+create-precipitation-domain new-domain-name=ferrite                                                                                   $ Creates precipitation domain "ferrite"
+set-precipitation-parameter precipitate-or-domain-name=ferrite thermodynamic-matrix-phase=BCC_A2                                      $ Ferrite domain structure: bcc
+
+create-new-phase parent-phase=FCC_A1#01 precipitate                                                                                   $ Creates NbC precipitate	
+create-new-phase parent-phase=FCC_A1#01 precipitate                                                                                   $ Creates the second phase for NbC precipitate
+
+read-mobility-database file-name=mc_fe.ddb                                                                                            $ Mobility (diffusion) database: mc_fe.ddb	
+
+
+$-------------------------------------------- Setup GUI -------------------------------------------$
+$-- (Following part is copied from /scripts/frame_scripts/03_kinetics_4_frames_T_f_n_r_logX.mcs ) -$
+
+new-gui-window p1                                                                                                                     $ create plot window
+move-gui-window displace . 75 15 880 790                                                                                              $ move and resize plot window
+
+$ define default x-axis properties
+set-gui-window-property window-id=. default-x-axis-for-all-plots=yes
+set-gui-window-property window-id=. default-x-axis-title="time / s"
+set-gui-window-property window-id=. default-x-axis-type=log
+
+set-gui-window-property . number-of-plot-columns=auto
+
+$ define plot properties: temperature profile
+set-plot-option . y-axis-title="temperature / degC"
+set-plot-option . series new buffer T$C
+
+$ define plot properties: phase fraction
+create-new-plot xy-plot .
+set-plot-option . use-alias-names-in-legend=yes            
+set-plot-option . series new buffer f_prec$*
+set-plot-option . y-axis-title="phase fraction"
+
+$ define plot properties: number density
+create-new-plot xy-plot .
+set-plot-option . use-alias-names-in-legend=yes            
+set-plot-option . series new buffer num_prec$*
+set-plot-option . y-axis-title="number density / m<sup>-3</sup>"
+set-plot-option . y-axis-type=log
+set-plot-option . y-axis-scaling=1e10..
+
+$ define plot properties: mean radius
+create-new-plot xy-plot .
+set-plot-option . use-alias-names-in-legend=yes
+set-plot-option . series new buffer r_mean$*
+set-plot-option . y-axis-title="mean radius / nm"
+set-plot-option . y-axis-type=log
+set-plot-option . y-axis-scaling=1e-1..
+set-plot-option . y-axis-factor=1e9
+
+$---------------------------------- (end of the copied file) --------------------------------------$
+
+set-gui-window-property window-id=.  default-x-axis-scaling=10..
+set-plot-option plot-id=2 y-axis-type=log 
+set-plot-option plot-id=2 y-axis-scaling=1e-10..
+
+set-plot-option plot-id=1 grid which-grid=major enable-x-axis=yes                                                                     $ Switching on the major gridlines for x-axis for plot #1
+set-plot-option plot-id=1 grid which-grid=major enable-y-axis=yes                                                                     $ Switching on the major gridlines for y-axis for plot #1
+set-plot-option plot-id=2 grid which-grid=major enable-x-axis=yes                                                                     $ Switching on the major gridlines for x-axis for plot #2
+set-plot-option plot-id=2 grid which-grid=major enable-y-axis=yes                                                                     $ Switching on the major gridlines for y-axis for plot #2
+set-plot-option plot-id=3 grid which-grid=major enable-x-axis=yes                                                                     $ Switching on the major gridlines for x-axis for plot #3
+set-plot-option plot-id=3 grid which-grid=major enable-y-axis=yes                                                                     $ Switching on the major gridlines for y-axis for plot #3
+set-plot-option plot-id=4 grid which-grid=major enable-x-axis=yes                                                                     $ Switching on the major gridlines for x-axis for plot #4
+set-plot-option plot-id=4 grid which-grid=major enable-y-axis=yes                                                                     $ Switching on the major gridlines for y-axis for plot #4
+set-gui-window-property window-id=. number-of-plot-columns=2                                                                          $ Arranging plots in 2 columns
+
+
+$$************************************************************************************************** 
+                         DEFINITION OF THE THERMOMECHANICAL TREATMENT
+**************************************************************************************************$$
+
+create-tm-treatment tm-treatment-name=sample_ht                                                                                       $ Creates the heat treatment sequence
+
+append-tmt-segment tm-treatment-name=sample_ht                                                                                        $ Adding a segment to the heat treatment sequence
+$ In the current segment ("."), Start temperature is set to 1400°C
+edit-tmt-segment tm-treatment-name=sample_ht tm-treatment-segment=. segment-start-temperature=1400
+$ In the current segment ("."), the end temperature (T_end) is set to 600°C and the cooling rate (T_dot) to 1K/s 
+edit-tmt-segment tm-treatment-name=sample_ht tm-treatment-segment=. T_end+T_dot segment-end-temperature=600 temperature-gradient=-1
+$ In the current segment ("."], precipitation domain is set to austenite
+edit-tmt-segment tm-treatment-name=sample_ht tm-treatment-segment=. precipitation-domain=austenite
+
+append-tmt-segment tm-treatment-name=sample_ht                                                                                        $ Adding a segment to the heat treatment sequence
+$ End temperature 25°C, cooling rate 1K/s
+edit-tmt-segment tm-treatment-name=sample_ht tm-treatment-segment=. T_end+T_dot segment-end-temperature=25 temperature-gradient=-1
+$ Precipitation domain is set to ferrite
+edit-tmt-segment tm-treatment-name=sample_ht tm-treatment-segment=. precipitation-domain=ferrite
+
+append-tmt-segment tm-treatment-name=sample_ht                                                                                        $ New segment
+edit-tmt-segment tm-treatment-name=sample_ht tm-treatment-segment=. T_end+T_dot segment-end-temperature=850 temperature-gradient=1    $ End temperature: 850C; Heating rate: 1K/s
+edit-tmt-segment tm-treatment-name=sample_ht tm-treatment-segment=. precipitation-domain=ferrite
+
+append-tmt-segment tm-treatment-name=sample_ht                                                                                        $ New segment
+edit-tmt-segment tm-treatment-name=sample_ht tm-treatment-segment=. T_end+T_dot segment-end-temperature=1100 temperature-gradient=1   $ End temperature: 1100C; Heating rate: 1K/s
+edit-tmt-segment tm-treatment-name=sample_ht tm-treatment-segment=. precipitation-domain=austenite                                    $ Precipitation domain: Austenite
+
+append-tmt-segment tm-treatment-name=sample_ht                                                                                        $ New segment
+$ Segment settings are: End temperature 1100°C, segment duration time 7200 seconds.
+edit-tmt-segment tm-treatment-name=sample_ht tm-treatment-segment=. T_end+delta_t segment-end-temperature=1100 segment-delta-time=7200
+edit-tmt-segment tm-treatment-name=sample_ht tm-treatment-segment=. precipitation-domain=austenite
+
+append-tmt-segment tm-treatment-name=sample_ht                                                                                        $ New segment
+edit-tmt-segment tm-treatment-name=sample_ht tm-treatment-segment=. T_end+T_dot segment-end-temperature=600 temperature-gradient=-1   $ End temperature: 600C; Heating rate: -1K/s
+edit-tmt-segment tm-treatment-name=sample_ht tm-treatment-segment=. precipitation-domain=austenite                                    $ Precipitation domain: inherited from previous
+
+append-tmt-segment tm-treatment-name=sample_ht                                                                                        $ New segment
+edit-tmt-segment tm-treatment-name=sample_ht tm-treatment-segment=. T_end+T_dot segment-end-temperature=25 temperature-gradient=-1    $ End temperature: 25C; Heating rate: -1K/s
+edit-tmt-segment tm-treatment-name=sample_ht tm-treatment-segment=. precipitation-domain=ferrite                                      $ Precipitation domain: Ferrite
+
+$ In segment no.0, a line is added [+] to the pre-segment script with a console command (Grain boundaries are set as nucleation sites for FCC_A1#01_P0 phase)
+edit-tmt-segment tm-treatment-name=sample_ht tm-treatment-segment=0 pre-segment-command=+set-precipitation-parameter precipitate-or-domain-name=FCC_A1#01_P0 nucleation-sites=grain-boundaries 
+
+$ In segment no.0, a line is added [+] to the pre-segment script with a console command (FCC_A1#01_P1 phase is not allowed to nucleate ) 
+edit-tmt-segment tm-treatment-name=sample_ht tm-treatment-segment=0 pre-segment-command=+set-precipitation-parameter precipitate-or-domain-name=FCC_A1#01_P1 nucleation-sites=none 
+
+$ In segment no.0, a line is added [+] to the post-segment script with a console command (Disloactions are set as nucleation sites for FCC_A1#01_P1 phase)
+edit-tmt-segment tm-treatment-name=sample_ht tm-treatment-segment=0 post-segment-command=+set-precipitation-parameter precipitate-or-domain-name=FCC_A1#01_P1 nucleation-sites=dislocations
+
+$save-workspace "file-name"=Tutorial_17_init
+save-workspace Tutorial_17_init
+
+
+$$************************************************************************************************** 
+                                        PERFORM SIMULATION
+**************************************************************************************************$$
+
+$ Simulation takes the temperature-time profile from defined tmt-treatment "sample_ht"
+set-simulation-parameter tm-treatment-name=sample_ht  
+$ Maximal temperature step in one iteration set to 10 K
+set-simulation-parameter max-temperature-step=10
+start-precipitate-simulation 
+
+
+$$************************************************************************************************** 
+          SIMULATION WITH PRECIPITATES WITH NUCLEATION RESTRICTED TO SELECTED DOMAIN
+**************************************************************************************************$$
+
+$ Nucleation of the FCC_A1#01_P0 precipitate is restricted to austenite domain
+set-precipitation-parameter precipitate-or-domain-name=FCC_A1#01_P0 restrict-nucleation-to-precipitation-domain=austenite 
+$ Nucleation of the FCC_A1#01_P0 precipitate is restricted to ferrite domain
+set-precipitation-parameter precipitate-or-domain-name=FCC_A1#01_P1 restrict-nucleation-to-precipitation-domain=ferrite
+set-precipitation-parameter precipitate-or-domain-name=FCC_A1#01_P0 nucleation-sites=grain-boundaries                                 $ Nucleation site for FCC_A1#01_P0: grain boundaries
+
+$ The content of the pre-segment script in segment no.0 is cleared [-]
+edit-tmt-segment tm-treatment-name=sample_ht tm-treatment-segment=0 pre-segment-command=-
+$ The content of the post-segment script in segment no.0 is cleared [-]
+edit-tmt-segment tm-treatment-name=sample_ht tm-treatment-segment=0 post-segment-command=-
+
+set-gui-window-property window-id=. duplicate-and-lock-plot-series                                                                    $ Duplicate and lock all plot series
+
+start-precipitate-simulation 
+
+
+$$************************************************************************************************** 
+                                        SAVING WORKSPACE
+**************************************************************************************************$$
+
+$save-workspace "file-name"=Tutorial_17
+save-workspace Tutorial_17

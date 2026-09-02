@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>E20 4 - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "E20 4";
+        var mkdocs_page_input_path = "examples/equilib/e20/e20_4.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">E20 4</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>Example E20: Continuous casting of micro-alloyed Fe-Al-C-N-Nb-Ti steel, part 4: Scheil-Gulliver analysis of microsegregation [MatCalc Documentation]</p>
+<h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#example_e20continuous_casting_of_micro-alloyed_fe-al-c-n-nb-ti_steel_part_4scheil-gulliver_analysis_of_microsegregation">Example E20: Continuous casting of micro-alloyed Fe-Al-C-N-Nb-Ti steel, part 4: Scheil-Gulliver analysis of microsegregation</a></p>
+</li>
+<li>
+<p><a href="#compatibility">Compatibility</a></p>
+</li>
+<li><a href="#objectives">Objectives</a></li>
+<li><a href="#related_documents">Related documents</a></li>
+<li><a href="#complementary_files">Complementary files</a></li>
+<li>
+<p><a href="#main_document">Main document</a></p>
+</li>
+<li>
+<p><a href="#setup_thermodynamic_system">Setup thermodynamic system</a></p>
+</li>
+<li><a href="#analysis_of_microsegregation">Analysis of microsegregation</a></li>
+<li><a href="#composition_of_the_enriched_region">Composition of the enriched region</a></li>
+<li><a href="#composition_of_the_depleted_region">Composition of the depleted region</a></li>
+<li><a href="#final_back-diffusion_step">Final back-diffusion step</a></li>
+<li><a href="#consecutive_articles">Consecutive articles</a></li>
+</ul>
+<h1 id="example-e20-continuous-casting-of-micro-alloyed-fe-al-c-n-nb-ti-steel-part-4-scheil-gulliver-analysis-of-microsegregation">Example E20: Continuous casting of micro-alloyed Fe-Al-C-N-Nb-Ti steel, part 4: Scheil-Gulliver analysis of microsegregation</h1>
+<h2 id="compatibility">Compatibility</h2>
+<p>MatCalc version: 5.44.0021 <br />
+Database: mc_fe.tdb, mc_x_FeAlCNNbTi.tdb <br />
+Author: E. Kozeschnik <br />
+Created: 2011-07-10 <br />
+Revisions: G. Stechauner (2011-11-10, Updated script)</p>
+<h2 id="objectives">Objectives</h2>
+<p>This example describes a strategy for evaluation of primary solidification microstructures based on purely thermodynamic grounds. This analysis can be utilized for a prediction of primary precipitation and microsegregation during casting. The results can serve as a basis for defining representative compositions in subsequent precipitation kinetics simulations of enriched and depleted regions in a (micro)segregated microstructure.</p>
+<p>The example follows the analysis presented in ref.<a href="#fn__1">1)</a>.</p>
+<p>Part 4 is focussed on the prediction of microsegregation in the primary solidification microstructure using the Scheil-Gulliver simulation approach. The results are later used in the simulation of precipitation kinetics during continuous casting in example P20, where the compositions of the enriched and depleted regions are taken as the limiting cases for the chemical composition of two representative volume elements.</p>
+<h2 id="related-documents">Related documents</h2>
+<ol>
+<li>E20-1 -  <a href="/examples/equilib/e20/e20_1" title="examples/equilib/e20/e20_1">Thermodynamic equilibrium analysis</a></li>
+<li>E20-2 -  <a href="/examples/equilib/e20/e20_2" title="examples/equilib/e20/e20_2">Scheil-Gulliver analysis of primary precipitation</a></li>
+<li>E20-3 -  <a href="/examples/equilib/e20/e20_3" title="examples/equilib/e20/e20_3">Accounting for the peritectic reaction</a></li>
+<li>E20-4 -  <a href="/examples/equilib/e20/e20_4" title="examples/equilib/e20/e20_4">Scheil-Gulliver analysis of microsegregation</a></li>
+<li>P20 -  <a href="/examples/precipitation/p20" title="examples/precipitation/p20">Precipitation simulation during continuous casting</a></li>
+</ol>
+<h2 id="complementary-files">Complementary files</h2>
+<p>Click <a href="/examples/equilib/e20/script/e20-4_2017.mcs" title="examples/equilib/e20/script/e20-4_2017.mcs (7.8 KB)">here</a> to view the script for this tutorial, and <a href="/examples/equilib/e20/workspace/e20_4_scheil_microsegregation.mcw" title="examples/equilib/e20/workspace/e20_4_scheil_microsegregation.mcw (1.5 MB)">here</a> to download the workspace file.</p>
+<h1 id="main-document">Main document</h1>
+<p>In this part 4, the Scheil-Gulliver simulation with back-diffusion and peritectic reaction, as carried in part 3, is utilized for an analysis of microsegregation.</p>
+<h2 id="setup-thermodynamic-system">Setup thermodynamic system</h2>
+<p>Load the workspace file <strong>E20_3_scheil_with_bd_and_st.mcw</strong> with the simulation results of part 3 or run the corresponding <a href="/examples/equilib/e20/script/e20-4.mcs" title="examples/equilib/e20/script/e20-4.mcs (7.8 KB)">script</a> to produce the results 'on the fly'.</p>
+<h2 id="analysis-of-microsegregation">Analysis of microsegregation</h2>
+<p>The Scheil-Gulliver simulation scheme is capable of giving estimates of the behavior
+of a solidifying system in terms of</p>
+<ul>
+<li>the phase fraction evolution of the residual liquid phase</li>
+<li>the potential occurrence of primary precipitation</li>
+<li>the composition of the residual liquid phase versus temperature and/or solid/liquid phase fraction</li>
+<li>the composition of each solidifying crystal shell at each temperature step and/or solid/liquid phase fraction</li>
+</ul>
+<p>The latter two issues can be utilized in an estimate of the microsegregation behavior of the system during solidification. The following graphs show the composition of the residual liquid versus temperature and fraction solid as obtained in the previous SG-simulation back-diffusion and the peritectic reaction.</p>
+<p><a href="/examples/equilib/e20/img/plot_scheil_6_liq_comp_2.png" title="examples/equilib/e20/img/plot_scheil_6_liq_comp_2.png"><img alt=" Residual liquid composition" src="/examples/equilib/e20/img/plot_scheil_6_liq_comp_2.png" title="Residual liquid composition" /></a></p>
+<p><a href="/examples/equilib/e20/img/plot_scheil_6_liq_comp_1.png" title="examples/equilib/e20/img/plot_scheil_6_liq_comp_1.png"><img alt=" Residual liquid composition" src="/examples/equilib/e20/img/plot_scheil_6_liq_comp_1.png" title="Residual liquid composition" /></a></p>
+<p>Before we assess an estimate for the amount of solute enrichment in the residual liquid phase, mind the following note:</p>
+<p><strong><em>Important …</em></strong></p>
+<p>In principle, the Scheil-Gulliver algorithm can be carried out until the residual liquid fraction becomes almost zero. This asymptotic behavior is not a realistic picture of practical solidification behavior, however. In real systems, back-diffusion of slow-diffusing substitutional alloying elements will also become more and more significant the smaller the liquid fraction gets. This effect will limit the maximum solute enrichment of the liquid phase and one can thus expect that final solidification of the residual liquid occurs at a certain minimum amount of residual liquid, instead of the asymptotic limit of the SG-algorithm.</p>
+<p>This issue has been addressed by W. Rindler et al.<a href="#fn__2">2)</a> for solidification of various low-alloy steels. In this work, the predicted solidification behavior by SG-simulation has been compared to experimentally observed solidification ranges. The authors conclude that final solidification occurs at residual liquid fractions of 1%, if solidification occurs under low cooling conditions. At fast cooling conditions, final solidification is well represented at residual liquid levels of 3%.</p>
+<h2 id="composition-of-the-enriched-region">Composition of the enriched region</h2>
+<p>It has already been mentioned that back-diffusion of slowly diffusing substitutional species becomes more prominent if the residual liquid fraction becomes rather small. Back-diffusion is generally limiting the maximum amount of liquid enrichment. For practical simulations, this effect can be accounted for by assuming final solidification at slightly larger residual liquid fraction, i.e. at values between 3% and 5%.</p>
+<p>Based on these findings, we evaluate the residual liquid for continuous casting conditions at the residual liquid level of 5%. This assumption has also been made, for instance, in the work of M. Pudar et al.<a href="#fn__3">3)</a> Using the 'Edit buffer states …' dialog of the 'Global' menu, browse through the calculation states</p>
+<p><a href="/examples/equilib/e20/img/dialog_edit_buffer_states_1.png" title="examples/equilib/e20/img/dialog_edit_buffer_states_1.png"><img alt=" Edit buffer states dialog" src="/examples/equilib/e20/img/dialog_edit_buffer_states_1.png" title="Edit buffer states dialog" /></a></p>
+<p>and load the state at 5% residual liquid (this is found at a temperature of 1484°C). The phase details window displays</p>
+<pre><code>#### /FCC_A1_TS/ moles: 0.685449, gm: -103404 (-103404), sff: 0.990638 
+Phasestatus: fixed 
+dfm: -4.29721e+00 
+FE +9.97545e+01   C +1.97904e-01  AL +2.70464e-02   N +5.81917e-03   
+NB +1.17704e-02  TI +2.96883e-03   
+
+#### /FCC_A1_S/ moles: 0.256015, gm: -103401 (-103401), sff: 0.990619 
+Phasestatus: fixed 
+dfm: -1.90052e+00 
+FE +9.97455e+01   C +1.98272e-01  AL +2.18335e-02   N +5.83904e-03   
+NB +2.18866e-02  TI +6.66063e-03   
+
+#### /LIQUID/ moles: 0.0518734, gm: -103530 (-103530), sff: 1 
+Phasestatus: entered - active
+FE +9.88339e+01   C +6.27554e-01  NB +4.29680e-01  TI +8.33000e-02   
+ N +1.11991e-02  AL +1.43371e-02   
+
+#### /FCC_A1/ moles: 0.00666243, gm: -103419 (-103419), sff: 0.990577
+Phasestatus: entered - active 
+FE +9.97145e+01   C +1.99142e-01  AL +1.80193e-02  NB +4.85131e-02   
+ N +5.86994e-03  TI +1.39392e-02
+</code></pre>
+<p>Note that the phase composition is shown in <strong>weight percent</strong>. You can modify this setting in the 'options' for the 'phase details' window.</p>
+<p>The composition of the enriched regions of the primary solidification microstructure is finally found with</p>
+<table>
+<thead>
+<tr>
+<th>C</th>
+<th>Al</th>
+<th>N</th>
+<th>Nb</th>
+<th>Ti</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.63</td>
+<td>0.014</td>
+<td>0.011</td>
+<td>0.43</td>
+<td>0.083</td>
+</tr>
+</tbody>
+</table>
+<h2 id="composition-of-the-depleted-region">Composition of the depleted region</h2>
+<p>After identifying the composition of the enriched regions of the primary solidification microstructure, we assess the composition of the depleted region. For this, we recall that the equilibrium phases that are connected to the 'solid' phases are used in the SG-algorithm to evaluated the partial equilibrium between the actual residual liquid and the <strong>newly formed</strong> solidified <em>shell</em> around the existing solid phases. In this sense, the solute-depleted regions of the solidified microstructure are represented by the first shell of solid material that forms from within the liquid phase. Again, we browse through the buffer and find the first solidified <strong>matrix phase</strong> at 1519°C. The phase details window shows</p>
+<pre><code>#### /LIQUID/ moles: 0.941634, gm: -106716 (-106716), sff: 1 
+Phasestatus: entered - active 
+FE +9.96914e+01   C +2.31203e-01  AL +2.47826e-02   N +6.36468e-03   
+NB +3.77430e-02  TI +8.47155e-03   
+
+#### /BCC_A2/ moles: 0.0583657, gm: -106653 (-106653), sff: 0.998046 
+Phasestatus: entered - active 
+FE +9.99189e+01   C +4.05070e-02  AL +2.84828e-02   N +1.85929e-03   
+NB +8.07260e-03  TI +2.14686e-03
+</code></pre>
+<p>The composition of the solute-depleted region is identified as the composition of the BCC_A2 phase at the beginning of solidification. The following table summarizes the observed values and compares them to the nominal composition.</p>
+<table>
+<thead>
+<tr>
+<th>condition</th>
+<th>C</th>
+<th>Al</th>
+<th>N</th>
+<th>Nb</th>
+<th>Ti</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nominal</td>
+<td>0.22</td>
+<td>0.025</td>
+<td>0.0061</td>
+<td>0.036</td>
+<td>0.0081</td>
+</tr>
+<tr>
+<td>enriched</td>
+<td>0.63</td>
+<td>0.014</td>
+<td>0.011</td>
+<td>0.43</td>
+<td>0.083</td>
+</tr>
+<tr>
+<td>depleted</td>
+<td>0.04</td>
+<td>0.028</td>
+<td>0.0019</td>
+<td>0.0081</td>
+<td>0.0021</td>
+</tr>
+</tbody>
+</table>
+<p>The Scheil-Gulliver analysis predicts strong composition differences in the enriched and depleted regions. The predictions are, at least qualitatively, confirmed by experimental investigation. The following graph shows the amount of V segregation detected by micro probe analysis,<a href="#fn__4">4)</a> thus confirming the observed tendencies for segregation.</p>
+<p><a href="/examples/equilib/e20/img/micrograph_2.png" title="examples/equilib/e20/img/micrograph_2.png"><img alt=" V segregation in primary solidification microstructure" src="/examples/equilib/e20/img/micrograph_2.png" title="V segregation in primary solidification microstructure" /></a></p>
+<p>Note that Al shows inverse segregation, since this element is enriched in the solid phase and depleted in the liquid. All other elements show positive segregation, typically in the order of a factor 5 to 50.</p>
+<h2 id="final-back-diffusion-step">Final back-diffusion step</h2>
+<p>In systems with fast diffusing elements, such as the interstitial/substitutional alloy considered in the present example, a final consideration must be made for a realistic estimate of the composition of the enriched and depleted regions. In our Scheil-Gulliver simulation with back-diffusion, partial equilibrium is evaluated after each Scheil step in order to account for back-diffusion. In the present case, the last partial equilibrium has been calculated between the already solidified phases and the residual liquid. On transformation of the residual liquid into solid, the solubilities for the fast diffusers change drastically, however, since the solid phases can usually dissolve much less solute atoms than the liquid. As soon as final solidification has completed, the fast diffusers rapidely establish partial equilibrum again, which practically means that the fast elements diffuse away from the previous residual liquid regions because their solubility is now comparable to the surrounding regions.</p>
+<p>In a first and rough approximation, this effect can be accounted for by assuming that the fast diffusers distribute homogeneously in the segregated microstructure. In the chemical composition table, the original values for C and N have thus been replaced by the nominal content. The values for the substitutional elements are left identical. The following table thus represents the best-practice estimates of the chemical composition of the enriched and depleted regions.</p>
+<table>
+<thead>
+<tr>
+<th>condition</th>
+<th>C</th>
+<th>Al</th>
+<th>N</th>
+<th>Nb</th>
+<th>Ti</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nominal</td>
+<td><strong>0.22</strong></td>
+<td>0.025</td>
+<td><strong>0.0061</strong></td>
+<td>0.036</td>
+<td>0.0081</td>
+</tr>
+<tr>
+<td>enriched</td>
+<td><strong>0.22</strong></td>
+<td>0.014</td>
+<td><strong>0.0061</strong></td>
+<td>0.43</td>
+<td>0.083</td>
+</tr>
+<tr>
+<td>depleted</td>
+<td><strong>0.22</strong></td>
+<td>0.028</td>
+<td><strong>0.0061</strong></td>
+<td>0.0081</td>
+<td>0.0021</td>
+</tr>
+</tbody>
+</table>
+<p>Save the final results in workspace <strong>E20_4_scheil_microsegregation.mcw</strong>.</p>
+<h1 id="consecutive-articles">Consecutive articles</h1>
+<p>This analysis is continued in article  <a href="/examples/precipitation/p20" title="examples/precipitation/p20">Precipitation simulation during continuous casting</a>.</p>
+<p><a href="#fnt__1">1)</a></p>
+<p>S. Zamberger, M. Pudar, K. Spiradek-Hahn, M. Reischl and E. Kozeschnik, “Numerical simulation of the evolution of primary and secondary Nb(CN), Ti(CN) and AlN in Nb-microalloyed steel during continuous casting”, IJMR (2012) in print.</p>
+<p><a href="#fnt__2">2)</a></p>
+<p>W. Rindler, E. Kozeschnik and B. Buchmayr, “Computer simulation of the brittle temperature range (BTR) for hot cracking in steels”, Steel Res., 2000, 71 (11), 460-465.</p>
+<p><a href="#fnt__3">3)</a></p>
+<p>M. Pudar, S. Zamberger, K. Spiradek-Hahn, R. Radis and E. Kozeschnik, “Computational Analysis of Precipitation during Continuous Casting of Microalloyed Steel”, Steel Res. Int. 81 (2010) 372-380.</p>
+<p><a href="#fnt__4">4)</a></p>
+<p>M. Pudar et al. (2010)</p>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=examples%3Aequilib%3Ae20%3Ae20_4&amp;1788352994" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

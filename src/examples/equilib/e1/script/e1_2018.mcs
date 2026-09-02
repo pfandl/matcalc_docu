@@ -1,0 +1,372 @@
+$$************************************************************************************************** 
+************************************** GENERAL INFORMATION *****************************************
+****************************************************************************************************
+
+In this example, the basic features of ortho- and para-equilibrium are explored. This will be done 
+by investigating the influence of Mn on the Fe-C-Mn phase diagram. Moreover the procedure of 
+calculating phase diagrams will be repeated.
+
+Database: mc_sample_fe.tdb
+Author: G. Stechauner
+Creation date: 07.10.2011
+This is a script for MatCalc version 5.44 (rel 0.014)
+Last update: G. Stechauner (21.10.2011, Database change)
+
+
+**************************************************************************************************** 
+************************************** SETUP INFORMATION *******************************************
+**************************************************************************************************$$
+
+use-module core $ Use "core" module (MatCalc uses "core" module by default anyway) 
+
+new-workspace $ creates a new workspace 
+
+
+$$************************************************************************************************** 
+**************************************** SYSTEM SETUP **********************************************
+**************************************************************************************************$$
+
+$ verify correct MatCalc version (is accessible as internal variable) 
+if (matcalc_version<5440014)
+   send-dialog-string "MatCalc version must be 5.44.0014 or higher to run this script. Stopping."
+   stop_run_script $ stop script
+endif
+
+
+$$************************************************************************************************** 
+                        DATABASES, CHEMICAL COMPOSITION, SELECTED PHASES
+**************************************************************************************************$$
+
+open-thermodyn-database mc_fe.tdb                $ Thermodynamic database: mc_sample_fe.tdb                    
+select-elements FE C MN VA                              $ Components: Fe, C, Mn
+select-phases LIQUID FCC_A1 BCC_A2 CEMENTITE            $ Phaseselection
+read-thermodyn-database
+
+set-reference-element FE
+enter-composition WP C=0,1 Mn=3,0                       $ Composition: 0.05 wt.% C
+
+set-temperature-celsius 1500                            $ Temperature 1500C
+set-automatic-startvalues
+calculate-equilibrium                                   $ Initial equilibrium
+
+
+$$**************************************************************************************************
+                                   FE-C-MN ORTHOEQUILIBRIUM
+**************************************************************************************************$$
+
+$------------------------------------ Setting up plot ---------------------------------------------$
+new-gui-window p1                                       $ Plot of the phase diagram
+set-plot-option . S N B T$C %s                          $ Plotting the phase boundary
+$ In the [g]ridlines section, the option of showing [m]ajor grids for [x]-axis is switched to [y]es
+set-plot-option . G M X Y
+$ In the [g]ridlines section, the option of showing [m]ajor grids for [y]-axis is switched to [y]es
+set-plot-option . G M Y Y
+set-plot-option 1 A Y 1 S 200..
+
+$-------------------------------- Upper boundary of delta-ferrite ---------------------------------$
+set-temperature-celsius 1530             $ Temperature 1530C
+calculate-equilibrium
+search-phase-boundary T BCC_A2           $ Varying temperature for the phase boundary search		
+
+set-step-option Y P                      $ "Phase boundary" type
+set-step-option P BCC_A2                 $ Phase boundary of bcc phase field
+set-step-option E C                      $ Carbon content varied
+set-step-option R 0 5 L 0.02             $ Range 0 - 5; linear step of 0,01
+set-step-option O E Y                    $ Composition in wt.%
+set-step-option O C Y                    $ Temperature in Celsius
+set-step-option X 20                     $ Setting the ma(x). T-step to 20
+step-equilibrium
+
+$ In the active[.] GUI-window, all unlocked series will be duplicated and [l]ocked
+set-gui-window-property . L
+$ Renaming series: "*_T$C" --> "bcc_high_1"
+set-plot-option . S M -1 *_T$C bcc_high_1
+
+
+$---------------------------------- Lower boundary of liquid --------------------------------------$
+set-temperature-celsius 1500             $ Temperature 1500C
+calculate-equilibrium 
+search-phase-boundary T LIQUID           $ Varying temperature for the phase boundary search
+
+set-step-option Y P                      $ "Phase boundary" type
+set-step-option P LIQUID                 $ Phase boundary of liquid phase field
+set-step-option E C                      $ Carbon content varied
+set-step-option R 0 5 L 0.02             $ Range 0 - 5; linear step of 0,01
+set-step-option O E Y                    $ Composition in wt.%
+set-step-option O C Y                    $ Temperature in C
+set-step-option X 20                     $ Setting the ma(x). T-step to 20
+step-equilibrium
+
+$ In the active[.] GUI-window, all unlocked series will be duplicated and [l]ocked
+set-gui-window-property . L
+set-plot-option . S M -1 *_T$C liquid    $ Renaming series: "*_T$C" --> "liquid"
+
+
+$------------------------------- Lower boundary of delta-ferrite ----------------------------------$
+set-temperature-celsius 1400                $ Temperature 1400C
+calculate-equilibrium
+search-phase-boundary T BCC_A2              $ Varying temperature for the phase boundary search
+
+set-step-option Y P                         $ "Phase boundary" type
+set-step-option P BCC_A2                    $ Phase boundary of bcc phase field
+set-step-option E C                         $ Carbon content varied
+set-step-option R 0 5 L 0.02                $ Range 0 - 5; linear step of 0,01
+set-step-option O E Y                       $ Composition in wt.%
+set-step-option O C Y                       $ Temperature in Celsius
+set-step-option X 20                        $ Setting the ma(x). T-step to 20
+step-equilibrium  
+
+set-gui-window-property . L                 $ Locking all unlocked series
+set-plot-option . S M -1 *_T$C bcc_high_2   $ Renaming series: "*_T$C" --> "bcc_high_2"
+
+
+$---------------------------------- Upper boundary of austenite -----------------------------------$
+set-temperature-celsius 1500                $ Temperature 1500C
+calculate-equilibrium
+search-phase-boundary T FCC_A1              $ Varying temperature for the phase boundary search
+
+set-step-option Y P                         $ "Phase boundary" type
+set-step-option P FCC_A1                    $ Phase boundary of fcc phase field
+set-step-option E C                         $ Carbon content varied
+set-step-option R 0 5 L 0.02                $ Range 0 - 5; linear step of 0,01
+set-step-option O E Y                       $ Composition in wt.%
+set-step-option O C Y                       $ Temperature in Celsius
+set-step-option X 20                        $ Setting the ma(x). T-step to 20
+step-equilibrium
+
+set-gui-window-property . L                 $ Locking all unlocked series
+set-plot-option . S M -1 *_T$C fcc_1        $ Renaming series: "*_T$C" --> "fcc_1"
+
+
+$-------------------------------- Upper boundary of alpha-ferrite ---------------------------------$
+set-temperature-celsius 900                 $ Temperature 900C
+calculate-equilibrium
+search-phase-boundary T BCC_A2              $ Varying temperature for the phase boundary search
+
+set-step-option Y P                         $ "Phase boundary" type
+set-step-option P BCC_A2                    $ Phase boundary of bcc phase field
+set-step-option E C                         $ Carbon content varied
+set-step-option R 0 5 L 0.02                $ Range 0 - 5; linear step of 0,01
+set-step-option O E Y                       $ Composition in wt.%
+set-step-option O C Y                       $ Temperature in Celsius
+set-step-option X 20                        $ Setting the ma(x). T-step to 20
+step-equilibrium
+
+set-gui-window-property . L                 $ Locking all unlocked series
+set-plot-option . S M -1 *_T$C bcc_low      $ Renaming series: "*_T$C" --> "bcc_low"
+
+
+$--------------------------------- Lower boundary of austenite ------------------------------------$
+set-temperature-celsius 600                 $ Temperature 600C
+calculate-equilibrium
+search-phase-boundary T FCC_A1              $ Varying temperature for the phase boundary search
+
+set-step-option Y P                         $ "Phase boundary" type
+set-step-option P FCC_A1                    $ Phase boundary of fcc phase field
+set-step-option E C                         $ Carbon content varied
+set-step-option R 0.005 5 L 0.02            $ Range 0 - 5; linear step of 0,001
+set-step-option O E Y                       $ Composition in wt.%
+set-step-option O C Y                       $ Temperature in Celsius
+set-step-option X 200                       $ Setting the ma(x). T-step to 20
+step-equilibrium
+
+set-gui-window-property . L                 $ Locking all unlocked series
+set-plot-option . S M -1 *_T$C fcc_2        $ Renaming series: "*_T$C" --> "fcc_2"
+
+
+$-------------------------------- Cementite upper phase boundary ----------------------------------$
+set-temperature-celsius 600                 $ Temperature 600C
+calculate-equilibrium
+search-phase-boundary T CEMENTITE           $ Varying temperature for the phase boundary search
+
+set-step-option Y P                         $ "Phase boundary" type
+set-step-option P CEMENTITE                 $ Phase boundary of cementite phase field
+set-step-option E C                         $ Carbon content varied
+set-step-option R 0.001 5 L 0.02                $ Range 0 - 5; linear step of 0,01
+set-step-option O E Y                       $ Composition in wt.%
+set-step-option O C Y                       $ Temperature in Celsius
+set-step-option X 20                        $ Setting the ma(x). T-step to 20
+step-equilibrium
+
+$ For current plot [.], [s]eries section, [l]ock is performed by name [-1] on "T$C" ([y]es)
+set-plot-option . S L -1 T$C Y
+set-plot-option . S M -1 *_T$C cementite    $ Renaming series: "*_T$C" --> "cementite"
+
+
+$------------------------------------- The finished diagram ---------------------------------------$
+$ Plot title. "<sub>" and "</sub>" are used to mark the text which should be written as a subscript
+set-plot-option 1 T Fe-C-Mn ortho-equilibrium phase diagram
+set-plot-option 1 A X 1 T Carbon content [wt.%]      $ x-axis title 
+set-plot-option 1 A Y 1 T Temperature [C]            $ y-axis title
+$ In the [a]xis section, the [y]-axis no.[1] has [s]caling starting from 400
+$ set-plot-option 1 A Y 1 S 450..850
+$ set-plot-option 1 A X 1 S 0..1
+set-plot-option 1 L B                                $ Legend on the bottom
+
+
+$$**************************************************************************************************
+                                     FE-C-MN PARAE-QUILIBRIUM
+**************************************************************************************************$$
+
+$$---------------------------------- Change to para-equilibrium ------------------------------------
+As of now, there is no command to set the system to para-equilibrium. Use the 'Nominal composition'
+window to change from weigth-percent to u-fraction, and set a constraint for  Mn. Alternatively open
+up the 'Phase status' window, switch to 'Constraints' tab, select all phases and press 'Set para-
+equil.' button. The values you have to set in the script will be shown in the 'Element status' $$
+change-phase-status liquid C mn U 0,0305117     $ Set constraint for Mn in liquid phase
+change-phase-status fcc_a1 C mn U 0,0305117     $ Set constraint for Mn in fcc_a1 phase
+change-phase-status bcc_a2 C mn U 0,0305117     $ Set constraint for Mn in bcc_a2 phase
+change-phase-status cementite C mn U 0,0305117  $ Set constraint for Mn in cementite phase
+
+
+$------------------------------------ SETTING UP PLOT ---------------------------------------------$
+new-gui-window p1                                       $ Plot of the phase diagram
+set-plot-option . S N B T$C %s                          $ Plotting the phase boundary
+$ In the [g]ridlines section, the option of showing [m]ajor grids for [x]-axis is switched to [y]es
+set-plot-option . G M X Y
+$ In the [g]ridlines section, the option of showing [m]ajor grids for [y]-axis is switched to [y]es
+set-plot-option . G M Y Y
+set-plot-option 2 A Y 1 S 200..
+
+
+$-------------------------------- Upper boundary of delta-ferrite ---------------------------------$
+set-temperature-celsius 1530             $ Temperature 1530C
+calculate-equilibrium
+search-phase-boundary T BCC_A2           $ Varying temperature for the phase boundary search		
+
+set-step-option Y P                      $ "Phase boundary" type
+set-step-option P BCC_A2                 $ Phase boundary of bcc phase field
+set-step-option E C                      $ Carbon content varied
+set-step-option R 0 5 L 0.02             $ Range 0 - 5; linear step of 0,01
+set-step-option O E Y                    $ Composition in wt.%
+set-step-option O C Y                    $ Temperature in Celsius
+set-step-option X 20                     $ Setting the ma(x). T-step to 20
+step-equilibrium
+
+$ In the active[.] GUI-window, all unlocked series will be duplicated and [l]ocked
+set-gui-window-property . L
+$ Renaming series: "*_T$C" --> "bcc_high_1"
+set-plot-option . S M -1 *_T$C bcc_high_1
+
+
+$---------------------------------- Lower boundary of liquid --------------------------------------$
+set-temperature-celsius 1500             $ Temperature 1500C
+calculate-equilibrium 
+search-phase-boundary T LIQUID           $ Varying temperature for the phase boundary search
+
+set-step-option Y P                      $ "Phase boundary" type
+set-step-option P LIQUID                 $ Phase boundary of liquid phase field
+set-step-option E C                      $ Carbon content varied
+set-step-option R 0 5 L 0.02             $ Range 0 - 5; linear step of 0,01
+set-step-option O E Y                    $ Composition in wt.%
+set-step-option O C Y                    $ Temperature in C
+set-step-option X 20                     $ Setting the ma(x). T-step to 20
+step-equilibrium
+
+$ In the active[.] GUI-window, all unlocked series will be duplicated and [l]ocked
+set-gui-window-property . L
+set-plot-option . S M -1 *_T$C liquid    $ Renaming series: "*_T$C" --> "liquid"
+
+
+$------------------------------- Lower boundary of delta-ferrite ----------------------------------$
+set-temperature-celsius 1400                $ Temperature 1400C
+calculate-equilibrium
+search-phase-boundary T BCC_A2              $ Varying temperature for the phase boundary search
+
+set-step-option Y P                         $ "Phase boundary" type
+set-step-option P BCC_A2                    $ Phase boundary of bcc phase field
+set-step-option E C                         $ Carbon content varied
+set-step-option R 0 5 L 0.02                $ Range 0 - 5; linear step of 0,01
+set-step-option O E Y                       $ Composition in wt.%
+set-step-option O C Y                       $ Temperature in Celsius
+set-step-option X 20                        $ Setting the ma(x). T-step to 20
+step-equilibrium  
+
+set-gui-window-property . L                 $ Locking all unlocked series
+set-plot-option . S M -1 *_T$C bcc_high_2   $ Renaming series: "*_T$C" --> "bcc_high_2"
+
+
+$---------------------------------- Upper boundary of austenite -----------------------------------$
+set-temperature-celsius 1500                $ Temperature 1500C
+calculate-equilibrium
+search-phase-boundary T FCC_A1              $ Varying temperature for the phase boundary search
+
+set-step-option Y P                         $ "Phase boundary" type
+set-step-option P FCC_A1                    $ Phase boundary of fcc phase field
+set-step-option E C                         $ Carbon content varied
+set-step-option R 0 5 L 0.02                $ Range 0 - 5; linear step of 0,01
+set-step-option O E Y                       $ Composition in wt.%
+set-step-option O C Y                       $ Temperature in Celsius
+set-step-option X 20                        $ Setting the ma(x). T-step to 20
+step-equilibrium
+
+set-gui-window-property . L                 $ Locking all unlocked series
+set-plot-option . S M -1 *_T$C fcc_1        $ Renaming series: "*_T$C" --> "fcc_1"
+
+
+$-------------------------------- Upper boundary of alpha-ferrite ---------------------------------$
+set-temperature-celsius 900                 $ Temperature 900C
+calculate-equilibrium
+search-phase-boundary T BCC_A2              $ Varying temperature for the phase boundary search
+
+set-step-option Y P                         $ "Phase boundary" type
+set-step-option P BCC_A2                    $ Phase boundary of bcc phase field
+set-step-option E C                         $ Carbon content varied
+set-step-option R 0 5 L 0.02                $ Range 0 - 5; linear step of 0,01
+set-step-option O E Y                       $ Composition in wt.%
+set-step-option O C Y                       $ Temperature in Celsius
+set-step-option X 20                        $ Setting the ma(x). T-step to 20
+step-equilibrium
+
+set-gui-window-property . L                 $ Locking all unlocked series
+set-plot-option . S M -1 *_T$C bcc_low      $ Renaming series: "*_T$C" --> "bcc_low"
+
+
+$--------------------------------- Lower boundary of austenite ------------------------------------$
+set-temperature-celsius 600                 $ Temperature 600C
+calculate-equilibrium
+search-phase-boundary T FCC_A1              $ Varying temperature for the phase boundary search
+
+set-step-option Y P                         $ "Phase boundary" type
+set-step-option P FCC_A1                    $ Phase boundary of fcc phase field
+set-step-option E C                         $ Carbon content varied
+set-step-option R 0.000005 5 L 0.02         $ Range 0 - 5; linear step of 0,001
+set-step-option O E Y                       $ Composition in wt.%
+set-step-option O C Y                       $ Temperature in Celsius
+set-step-option X 200                        $ Setting the ma(x). T-step to 20
+step-equilibrium
+
+set-gui-window-property . L                 $ Locking all unlocked series
+set-plot-option . S M -1 *_T$C fcc_2        $ Renaming series: "*_T$C" --> "fcc_2"
+
+
+$-------------------------------- Cementite upper phase boundary ----------------------------------$
+set-temperature-celsius 600                 $ Temperature 600C
+calculate-equilibrium
+search-phase-boundary T CEMENTITE           $ Varying temperature for the phase boundary search
+
+set-step-option Y P                         $ "Phase boundary" type
+set-step-option P CEMENTITE                 $ Phase boundary of cementite phase field
+set-step-option E C                         $ Carbon content varied
+set-step-option R 0 5 L 0.02                $ Range 0 - 5; linear step of 0,01
+set-step-option O E Y                       $ Composition in wt.%
+set-step-option O C Y                       $ Temperature in Celsius
+set-step-option X 20                        $ Setting the ma(x). T-step to 20
+step-equilibrium
+
+$ For current plot [.], [s]eries section, [l]ock is performed by name [-1] on "T$C" ([y]es)
+set-plot-option . S L -1 T$C Y
+set-plot-option . S M -1 *_T$C cementite    $ Renaming series: "*_T$C" --> "cementite"
+
+
+$------------------------------------- The finished diagram ---------------------------------------$
+$ Plot title. "<sub>" and "</sub>" are used to mark the text which should be written as a subscript
+set-plot-option 2 T Fe-C-Mn para-equilibrium phase diagram
+set-plot-option 2 A X 1 T Carbon content [wt.%]      $ x-axis title 
+set-plot-option 2 A Y 1 T Temperature [C]            $ y-axis title
+$ In the [a]xis section, the [y]-axis no.[1] has [s]caling starting from 400
+$ set-plot-option 1 A Y 1 S 450..850
+$ set-plot-option 1 A X 1 S 0..1
+set-plot-option 2 L B                                $ Legend on the bottom
+ 
+

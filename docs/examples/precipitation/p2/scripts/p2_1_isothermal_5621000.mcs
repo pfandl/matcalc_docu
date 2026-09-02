@@ -1,0 +1,203 @@
+$$************************************************************************************************** 
+************************************* GENERAL INFORMATION ******************************************
+****************************************************************************************************
+
+This example script simulates a technical Al-Cu alloy with 4.3 wt-% Cu. The script begins at high 
+temperatures in the solution annealed condition where only the FCC_A1 matrix is present. Upon 
+quenching to room temperature, precipitates form. Consequently the alloy is annealed at various 
+temperatures isothermically. The size and phase fraction of precipitates will be plotted and
+discussed.
+
+Database: mc_sample_al.tdb, mc_sample_al.ddb
+Author: G. Stechauner
+Creation date: 2012-02-23
+This is a script for MatCalc version 5.62 (rel 1.000)
+Last update: 2019-01-11 (P. Warczok)
+
+Updated items : 
+11-01-2019
+
+- Reomved commands defining settings that that do not influence the results of this example 
+   - "set-precipitation-parameter almatrix s g s y 10^(11-0,005*T$c)   $ define gb-diffusion, substitution"
+   - "set-precipitation-parameter almatrix s g i y 10^(11-0,005*T$c)   $ define gb-diffusion, interstitial"
+   - "set-precipitation-parameter almatrix s d s y 10^(7-0,0025*T$c)   $ define pipe diffusion, substitution"
+   - "set-precipitation-parameter almatrix s d i y 10^(7-0,0025*T$c)   $ define pipe diffusion, interstitial"
+   - "set-precipitation-parameter TH_DP_GPB_P0 F N   $ No automatic value for diffuse interface energy correction"    
+   - "set-precipitation-parameter th_dp_gpb_p0 s c 0.75   $ Coalescence factor (default: 0.00)" -> coalescence was apparently not activated in the last script
+   - "set-precipitation-parameter precipitate-or-domain-name=THETA_PRIME_P0 N F Y   $ Volumetric misfit considered during nucleation"
+   - "set-precipitation-parameter precipitate-or-domain-name=THETA_AL2CU_P0 N F Y"
+   - "set-gui-window-property window-id=. n 2   $ Set window to two columns" -> Default setting ("auto") produces 2 columns anyway
+
+
+- Removed commands that confirm the existing default values to decrease redundancy (some of these are also obosolete for 5.62.1000)
+   - "set-precipitation-parameter almatrix t d e 1e11   $ set equilibrium dislocation density"
+   - "set-precipitation-parameter almatrix v f y 1   $ consider excess vacancy concentration"
+   - "set-precipitation-parameter TH_DP_GPB_P0 N S B   $ Nucleation site: Bulk"
+   - "set-precipitation-parameter precipitate-or-domain-name=THETA_PRIME_P0 F N   $ Diffuse interface correction not considered"
+   - "set-precipitation-parameter precipitate-or-domain-name=THETA_AL2CU_P0 F N"
+   - "set-gui-window-property . s u y   $ Window ID (.), default x-axis (s), use for all plots (u), yes (y)."
+
+- Replaced commands obsolete for MatCalc 5.62.1000
+   - "set-precipitation-parameter almatrix v c m f   $ define vacancy model (FSK dynamics)"
+   - "set-precipitation-parameter almatrix h m 69.22e9-(4.01e7)*T   $ define Youngs-module"
+   - "set-precipitation-parameter almatrix h p 0.33   $ define poisson-number"
+   - "set-precipitation-parameter TH_DP_GPB_P0 D almatrix   $ Matrix" 
+   - "set-precipitation-parameter precipitate-or-domain-name=THETA_PRIME_P0 D almatrix   $ Matrix""  
+   - "set-precipitation-parameter precipitate-or-domain-name=THETA_AL2CU_P0 D almatrix"
+**************************************************************************************************** 
+************************************** SETUP INFORMATION *******************************************
+**************************************************************************************************$$
+
+$ make sure we work in the correct module
+use-module core 
+
+$ close any open workspace without asking for save
+close-workspace f
+
+$ Create a new workspace.
+new-workspace
+
+$ Enter workspace info.
+set-workspace-info +Example P2_1: Isothermal treatment
+set-workspace-info +
+set-workspace-info +Elements: Al, Cu
+set-workspace-info +Phases: FCC_A1, TH_DP_GPB, THETA_PRIME, THETA_AL2CU
+set-workspace-info +
+set-workspace-info +Example script for isothermal simulation of Al-Cu alloy.
+set-workspace-info +Refer to www.matcalc.at for further information.
+
+
+$$************************************************************************************************** 
+**************************************** SYSTEM SETUP **********************************************
+**************************************************************************************************$$
+
+$ verify correct MatCalc version (is accessible as internal variable)
+if (matcalc_version<5621000)
+   send-dialog-string "MatCalc version must be 5.62.1000 or higher to run this script. Stopping."
+   stop-run-script                                  $ stop script
+endif
+
+set-variable-value npc 25                           $ number of precipitate classes
+set-variable-value temp 100                         $ Select annealing temperature
+set-variable-value quench 50                        $ Enter quenching rate in K/s
+
+
+$$*************************************************************************************************** 
+                       DATABASES, CHEMICAL COMPOSITION, SELECTED PHASES
+***************************************************************************************************$$
+
+open-thermodyn-database mc_al.tdb
+
+select-elements Al Cu 
+select-phases FCC_A1 TH_DP_GPB THETA_PRIME THETA_AL2CU
+
+read-thermodyn-database 
+
+$ Read the diffusion database for Al-based alloys.
+read-mobility-database mc_al.ddb
+
+$ enter chemical composition
+enter-composition wp Cu=4.3
+
+$calculate some initial equilibrium
+set-temperature-celsius 550
+set-automatic-startvalues
+calculate-equilibrium 
+
+
+$$***************************************************************************************************
+                                  SET UP PRECIPITATION DOMAIN
+***************************************************************************************************$$
+
+create-precipitation-domain almatrix
+
+$ set precipitation domain properties 
+set-precipitation-parameter almatrix x fcc_a1                   $ define thermodynamic matric phase
+set-precipitation-parameter almatrix t g 200e-6                $ define grain size
+set-precipitation-parameter almatrix e v m f                    $ define vacancy model (FSK dynamics)
+set-precipitation-parameter almatrix e v f y 1                  $ consider excess vacancy concentration
+
+$$***************************************************************************************************
+                                      SET UP PRECIPITATES
+***************************************************************************************************$$
+
+$ create precipitates: Theta double prime
+create-new-phase TH_DP_GPB p
+
+set-precipitation-parameter TH_DP_GPB_P0 C npc                 $ Number of size classes
+set-precipitation-parameter th_dp_gpb_p0 H Y 0,1               $ shape factor
+set-precipitation-parameter TH_DP_GPB_P0 N S B                 $ Nucleation site: Bulk
+set-precipitation-parameter TH_DP_GPB_P0 t M N 0.03            $ No automatic value for volumetric misfit. Use 0.03
+set-precipitation-parameter TH_DP_GPB_P0 N F Y                 $ Take volumetric misfit into account
+set-precipitation-parameter th_dp_gpb_p0 s D R 0.1             $ Diffusion as ration from matrix (default: 0.01)
+set-precipitation-parameter th_dp_gpb_p0 s t 0.002             $ Excess vacancy trapping coefficient (default: 0.00)
+
+$ create precipitates: Theta prime 
+create-new-phase THETA_PRIME p
+
+set-precipitation-parameter THETA_PRIME_P0 C npc        
+set-precipitation-parameter THETA_PRIME_P0 H Y 0.1             $ Shape factor
+set-precipitation-parameter THETA_PRIME_P0 I N 0.95*CIE$THETA_PRIME $Interfacial energy correction
+set-precipitation-parameter THETA_PRIME_P0 N S D               $ Nucleation site: Dislocation 
+set-precipitation-parameter THETA_PRIME_P0 s D R 0.1           $ Diffusion as ration from matrix (default: 0.01)
+
+
+$ create precipitates: Theta
+create-new-phase THETA_AL2CU p
+
+set-precipitation-parameter THETA_AL2CU_P0 C npc        
+set-precipitation-parameter THETA_AL2CU_P0 H Y 0.1             $ Shape factor
+set-precipitation-parameter THETA_AL2CU_P0 N S D    
+set-precipitation-parameter THETA_AL2CU_P0 s D R 0.1           $ Diffusion as ration from matrix (default: 0.01)
+set-precipitation-parameter THETA_AL2CU_P0 N U 0.01            $ Nucleation constant
+
+
+$$***************************************************************************************************
+                                    PLOTS AND OUTPUT WINDOWS
+***************************************************************************************************$$
+
+new-gui-window type-id=p1   $ p1-type GUI window defined      
+
+set-gui-window-property . s t Time [s]                               $ Window ID (.), default x-axis (s), title (t), enter title. 
+set-gui-window-property . s u y                                      $ Window ID (.), default x-axis (s), use for all plots (u), yes (y).
+set-gui-window-property . s s 0.1..                                  $ Window ID (.), default x-axis (s), scaling (s), enter value.
+set-gui-window-property . s y log                                    $ Window ID (.), default x-axis (s), type (y), enter type.
+set-gui-window-property . n 2                                        $ Set window to two columns
+
+set-plot-option . s n b t$c
+set-plot-option . a y 1 t Temperature [C]
+
+create-new-plot x .
+set-plot-option . s n b f_prec$*
+set-plot-option . a y 1 t Phase fraction
+set-plot-option . a y 1 y log                                        $ Plot ID (.), axis (a), y-axis (y), first y-axis (1), type (y), enter type.
+
+create-new-plot x .
+set-plot-option . s n b r_mean$*
+set-plot-option . a y 1 t Mean radius [nm]
+set-plot-option . a y 1 f 1e9
+set-plot-option . a y 1 y log                                        $ Plot ID (.), axis (a), y-axis (y), first y-axis (1), type (y), enter type.
+
+create-new-plot x .
+set-plot-option . s n b NUM_PREC$*
+set-plot-option . a y 1 t Number density [m<sup>-3</sup>]
+set-plot-option . a y 1 y log                                        $ Plot ID (.), axis (a), y-axis (y), first y-axis (1), type (y), enter type.
+
+move-gui-window . 10 10 700 950
+
+
+$$***************************************************************************************************
+                                        HEAT TREATMENT
+***************************************************************************************************$$
+
+create-heat-treatment iso                                        $ Create new heat treatment   
+append-ht-segment iso                                            $ create a heat treatment segment			                                         
+edit-ht-segment iso . s 550                                      $ set start temperature 
+edit-ht-segment iso . 1 temp quench                              $ set segment end temperature and quenching rate
+edit-ht-segment iso . D N almatrix                               $ precipitation domain
+append-ht-segment iso 
+edit-ht-segment iso . 2 0 1e9                                    $ set heating-rate and time (1e9 seconds ~ 30 years)
+
+set_simulation_parameter t h iso 10
+
+start-precipitate-simulation

@@ -1,0 +1,163 @@
+$$************************************************************************************************** 
+************************************** GENERAL INFORMATION *****************************************
+****************************************************************************************************
+
+This script can be used as a basic template to calculate the precipitation of cementite in ferrite
+matrix. An evaluation of precipitation parameters, size distribution and asymptotic behavior will be
+performed, followed by a comparison with LSW.
+
+
+Database: mc_sample_fe.tdb, mc_sample_fe.ddb
+Author: P. Warczok
+Creation date: 18.11.2008
+This is a script for MatCalc version 5.44 (rel 1.010)
+Last update: G. Stechauner (06.02.2012, Updating script to new version and format)
+
+
+**************************************************************************************************** 
+************************************** SETUP INFORMATION *******************************************
+**************************************************************************************************$$
+
+$ Make sure we work in the correct module
+use-module core   $ Use "core" module (MatCalc uses "core" module by default anyway) 
+
+new-workspace     $ creates a new workspace 
+
+@ echo n
+set-workspace-info +MatCalc precipitation kinetics: P1
+set-workspace-info +Precipitation of cementite in Fe-0.1%C
+set-workspace-info +
+set-workspace-info +Phases: BCC_A2, CEMENTITE
+set-workspace-info +Chemical components: FE, C, VA
+set-workspace-info +
+set-workspace-info +For further information visit matcalc.tuwien.ac.at
+set-workspace-info +
+echo y
+
+
+$$************************************************************************************************** 
+**************************************** SYSTEM SETUP **********************************************
+**************************************************************************************************$$
+
+$ verify correct MatCalc version (is accessible as internal variable) 
+if (matcalc_version<5441010)
+   send-dialog-string "MatCalc version must be 5.44.1010 or higher to run this script. Stopping."
+   stop_run_script                                      $ stop script
+endif
+
+
+$$************************************************************************************************** 
+                        DATABASES, CHEMICAL COMPOSITION, SELECTED PHASES
+**************************************************************************************************$$
+
+open-thermodyn-database mc_fe.tdb 
+select-elements FE C VA
+select-phases BCC_A2 CEMENTITE
+read-thermodyn-database
+
+enter-composition WP C=0.1
+read-mobility-database mc_fe.ddb
+
+set-automatic-startvalues
+set-temperature-celsius 700                            $ Temperature 
+calculate-equilibrium                                  $ Initial equilibrium
+
+
+$$************************************************************************************************** 
+                                  SETUP PRECIPITATION SYSTEM
+**************************************************************************************************$$
+
+create-precipitation-domain Ferrite
+set-precipitation-parameter Ferrite X BCC_A2 
+
+create-new-phase cementite P 
+set-precipitation-parameter CEMENTITE_P0 C 1000      $ # size classes 
+set-precipitation-parameter CEMENTITE_P0 N S D       $ Nucleation size: dislocation
+set-simulation-parameter C N B 1.03                  $ Convergence control parameter: nucleation density increase factor (Default: 2)
+
+set-simulation-parameter E 3,6e+6                    $ Simulation end time (in [s])
+set-simulation-parameter T I 500                     $ Isothermal temperature 
+set-simulation-parameter U 100                       $ Update every steps, to see nucleation at start
+
+$$************************************************************************************************** 
+                               SETUP PLOTS AND OUTPUT WINDOWS
+**************************************************************************************************$$
+
+$ Window for precipitate properties
+new-gui-window p1 
+set-gui-window-property . S U Y                      $ Use x-axis as default
+set-gui-window-property . S T Time [h]               $ Set title
+set-gui-window-property . S Y log                    $ Set type (lin/log)
+set-gui-window-property . S S 1e-12..                $ Set scaling 
+set-gui-window-property . S F 1/3600                 $ Set factor (3600 for conversion seconds -> hours) 
+
+set-plot-option . T Phase fraction of cementite precipitate   $ Plot title
+set-plot-option . A Y 1 T Phase fraction                      $ Y-axis title
+set-plot-option . L N                                         $ no legend   
+set-plot-option . S N B F$CEMENTITE_P0 %s                     $ Add buffer data
+
+create-new-plot X . 
+set-plot-option . T Number of precipitates                    
+set-plot-option . A Y 1 T Number of precipitates [*10<sup>20</sup> m<sup>-3</sup>]
+set-plot-option . A Y 1 F 1e-20                               $ Set factor for Y-axis
+set-plot-option . L N 
+set-plot-option . S N B NUM_PART$CEMENTITE_P0 %s
+
+create-new-plot X . 
+set-plot-option . T Nucleation rate 
+set-plot-option . A Y 1 T Nucleation rate [*10<sup>26</sup> m<sup>-3</sup>s<sup>-1</sup>]
+set-plot-option . A Y 1 F 1e-26 
+set-plot-option . L N 
+set-plot-option . S N B NUCL_RATE$CEMENTITE_P0 %s
+
+create-new-plot X . 
+set-plot-option . T Precipitate radius 
+set-plot-option . A Y 1 T Precipitate radius [nm]
+set-plot-option . A Y 1 Y log 
+set-plot-option . A Y 1 F 1e9
+set-plot-option . L B 
+set-plot-option . S N B R_MEAN$CEMENTITE_P0 %s
+set-plot-option . S N B R_CRIT$CEMENTITE_P0 %s
+set-plot-option . S N B R_MIN$CEMENTITE_P0 %s
+set-plot-option . S N B R_MAX$CEMENTITE_P0 %s
+move-gui-window . 1 30 500 950
+
+$ Histogram for precipitate size distribution compared to LSW (100 Columns)
+new-gui-window p5
+set-gui-window-property . h 100                            $ Set amount of histogram columns
+
+set-plot-option . T Cementite precipitate distribution     
+set-plot-option . A X 1 T Scaled radius [nm]
+set-plot-option . A Y 1 T Scaled number
+set-plot-option . L B
+set-plot-option . S N P CEMENTITE_P0                       $ Add new precipitate to plot
+set-plot-option . H F D                                    $ Scale histogram frequency: density
+set-plot-option . H R Y                                    $ Scale histogram radius: yes
+set-plot-option . A X 1 S 0..1,499 
+set-function-expression LSW x^2*(3/(3+x))^(7/3)*((3/2)/(3/2-x))^(11/3)*exp(-x/(3/2-x))*4/9
+set-plot-option . S N F LSW 0..1.5                         $ Add LSW function to plot
+move-gui-window . 500 250 500 350
+
+$ Histogram for precipitate size distribution compared to LSW (10 Columns)
+new-gui-window p5
+set-gui-window-property . h 25  
+set-plot-option . T Cementite precipitate distribution
+set-plot-option . A X 1 T Scaled radius
+set-plot-option . A Y 1 T Scaled number
+set-plot-option . L B
+set-plot-option . S N P CEMENTITE_P0 
+set-plot-option . H F D 
+set-plot-option . H R Y
+set-plot-option . A X 1 S 0..1,499 
+set-function-expression LSW x^2*(3/(3+x))^(7/3)*((3/2)/(3/2-x))^(11/3)*exp(-x/(3/2-x))*4/9
+set-plot-option . S N F LSW 0..1.5
+move-gui-window . 500 600 500 350
+
+
+$$************************************************************************************************** 
+                                   START SIMULATION
+**************************************************************************************************$$
+
+start-precipitate-simulation 
+
+

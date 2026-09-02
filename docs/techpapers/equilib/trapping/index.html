@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Trapping - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Trapping";
+        var mkdocs_page_input_path = "techpapers/equilib/trapping.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Trapping</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>TechPaper #2016001: Equilibrium trapping [MatCalc Documentation]</p>
+<h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#techpaper_2016001equilibrium_trapping">TechPaper #2016001: Equilibrium trapping</a></p>
+</li>
+<li>
+<p><a href="#compatibility">Compatibility</a></p>
+</li>
+<li><a href="#objectives">Objectives</a></li>
+<li><a href="#related_documents">Related documents</a></li>
+<li>
+<p><a href="#main_document">Main document</a></p>
+</li>
+<li>
+<p><a href="#thermodynamics">Thermodynamics</a></p>
+</li>
+<li><a href="#references">References</a></li>
+</ul>
+<h1 id="techpaper-2016001-equilibrium-trapping">TechPaper #2016001: Equilibrium trapping</h1>
+<h2 id="compatibility">Compatibility</h2>
+<p>MatCalc version: 6.0100 - … <br />
+Author: Y. Shan <br />
+Created: 2016-08-01 <br />
+Revisions:</p>
+<h2 id="objectives">Objectives</h2>
+<p>This paper describes how trapping at equilibrium condition is evaluated in <em>MatCalc</em>. It serves as a basis for the discussion for the trapping model.</p>
+<h2 id="related-documents">Related documents</h2>
+<ul>
+<li><a href="/techpapers/precipitation/trapping" title="techpapers/precipitation/trapping">Trapping kinetics</a></li>
+<li><a href="/examples/equilib/e30" title="examples/equilib/e30">Example E30: Trapping in Fe-C</a></li>
+<li><a href="/examples/equilib/e31" title="examples/equilib/e31">Example E31: Segregation kinetics of P and S at grain boundaries</a></li>
+<li><a href="/techpapers/spec_top_present/trapping.pptx" title="techpapers/spec_top_present/trapping.pptx (1.9 MB)">Presentation of trapping model</a></li>
+</ul>
+<h1 id="main-document">Main document</h1>
+<h2 id="thermodynamics">Thermodynamics</h2>
+<p>Trapping of an element <span class="arithmatex">\(i\)</span> on a trap <span class="arithmatex">\(k\)</span> reduces the system energy by an amount of <span class="arithmatex">\(\Delta E\)</span>. Traps are usually system defects such as solute elements, dislocations or grain boundaries. The molar concentration <span class="arithmatex">\(c\_i\)</span> of the trapped element <span class="arithmatex">\(i\)</span> can be divided into a lattice (free) part, denoted by indices <span class="arithmatex">\(Li\)</span>, and into trapped parts by traps <span class="arithmatex">\(k\)</span>, denoted by indices <span class="arithmatex">\(Tki\)</span></p>
+<div class="arithmatex">\[
+c\_i = c\_{Li} + \sum\_{k}c\_{Tki} .
+\]</div>
+<p>The occupancy of all lattice positions by an element <span class="arithmatex">\(i\)</span> is given by <span class="arithmatex">\(y\_{Li}\)</span> and vice versa for trap positions of a trap <span class="arithmatex">\(k\)</span> by <span class="arithmatex">\(y\_{Tki}\)</span>. These are the product of the molar concentrations <span class="arithmatex">\(c\_{Li}\)</span>, <span class="arithmatex">\(c\_{Tki}\)</span> and the molar volumes <span class="arithmatex">\(V\_{L}\)</span>, <span class="arithmatex">\(V\_{Tk}\)</span></p>
+<div class="arithmatex">\[
+y\_{Li} = c\_{Li} V\_{L}, \quad y\_{Tki} = c\_{Tki} V\_{Tk} .
+\]</div>
+<p>The molar volume <span class="arithmatex">\(V\_{L}\)</span> corresponds to the volume of 1 mole of lattice positions, whereas the molar volume <span class="arithmatex">\(V\_{Tk}\)</span> corresponds to the volume of 1 mole of trap positions of a trap <span class="arithmatex">\(k\)</span>. The sum of the inverse molar volumes gives the inverse molar volume of the system <span class="arithmatex">\(\Omega\)</span></p>
+<div class="arithmatex">\[
+\frac{1}{\Omega} = \frac{1}{V\_L}+\sum\_{k}\frac{1}{V\_{Tk}} .
+\]</div>
+<p>As for the molar volume of trapping sites <span class="arithmatex">\(V\_{Tk}\)</span>, the value is given by the amount of trapping sources, expressed by a molar concentration <span class="arithmatex">\(c\_k\)</span>, and their range, given by the coordination number <span class="arithmatex">\(Z\_k\)</span></p>
+<div class="arithmatex">\[
+V\_{Tk} = \frac{1}{Z\_k c\_k} .
+\]</div>
+<p>Now the Gibbs Energy can be expressed by</p>
+<div class="arithmatex">\[G = G\_0 +
+R\_gT \left[ \frac{\Omega}{V\_L}\left( \sum\limits\_{i} y\_{Li} \ln y\_{Li} + (1- \sum\limits\_{i} y\_{Li}) \ln (1-\sum\limits\_{i} y\_{Li})\right) + \\
+\sum\limits\_{k} \frac{\Omega}{V\_{Tk}} \left(\sum\limits\_{i} y\_{Tki} \ln y\_{Tki} + (1- \sum\limits\_{i} y\_{Tki}) \ln (1-\sum\limits\_{i} y\_{Tki} \right)\right] - \sum\limits\_{k}\sum\limits\_{i}\frac{\Omega}{V\_{Tk}}y\_{Tki}\Delta E\_{ki}. \]</div>
+<p>The equilibrium case for element <span class="arithmatex">\(j\)</span> trapped on a trap <span class="arithmatex">\(l\)</span> can be calculated by <span class="arithmatex">\(\dot{G}=0\)</span></p>
+<div class="arithmatex">\[ \frac{y\_{Lj}}{1-\sum\limits\_{i}y\_{Li}} \frac{1-\sum\limits\_{k}\sum\limits\_{i}y\_{Tki}}{y\_{Tlj}} = \exp\left(\frac{\Delta E\_{lj}}{R\_gT}\right) .
+\]</div>
+<h2 id="references">References</h2>
+<p>[1] J. Svoboda, F. D. Fischer, Modelling for hydrogen diffusion in metals with traps revisited, Acta Mater. 60 (2012) 1211-1220.</p>
+<p>[2] F. D. Fischer, J. Svoboda, E. Kozeschnik, Interstitial diffusion in systems with multiple sorts of traps, Model. Simul. Mater. Sci. Eng. 21 (2013) 025008/1-13.</p>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=techpapers%3Aequilib%3Atrapping&amp;1788353010" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

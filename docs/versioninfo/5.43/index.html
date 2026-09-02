@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>5.43 - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "5.43";
+        var mkdocs_page_input_path = "versioninfo/5.43.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">5.43</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>MatCalc 5.43 [MatCalc Documentation]</p>
+<h2 id="matcalc-543">MatCalc 5.43</h2>
+<p>The following changes have appeared in <em>MatCalc</em> version 5.43.nnnn:</p>
+<h4 id="version-5431016-online-2011-08-08">version 5.43.1016: online 2011-08-08</h4>
+<ul>
+<li>implemented <em>LIST_INTERNAL_VARIABLES</em> command to display all internal variables and constants.</li>
+<li>started functionality for storing <em>two-dimensional arrays</em>. Use CREATE_GLOBAL_ARRAY and SET_ARRAY_VALUE to fill the array. This feature is not yet completed, will be finished in the next release.</li>
+<li>added kB for <em>Boltzmann constant</em>.</li>
+<li>fixes a few more bugs.</li>
+</ul>
+<h4 id="version-5431013-release-candidate-2011-07-14-windows">version 5.43.1013: release candidate 2011-07-14 (Windows)</h4>
+<ul>
+<li>fixes a few more bugs.</li>
+<li>implemented <em>functionality to create composition set phases</em>. These phases are selected from a parent phase and can have different constituents then. This functionality replaces the 'simple' functions that have been implemented into our databases recently. With the new functionality, it is much more convenient and flexible to create these simple phases. You can use this functionality in the GUI version, phase status dialog and 'Create…', then selection of 'composition set', or via the command <em>'CREATE_NEW_PHASE'</em> and selection of 'c' for <em>composition set</em>.</li>
+<li>The 'simple' phases, i.e. the reduced composition sets that are implemented in the mc_fe database, will be removed in the future database versions, because this functionality is entirely replaced by the 'composition set' feature described in the item above.</li>
+<li>a few more functions that will be announced later.</li>
+</ul>
+<p><strong>version 5.43.0005: beta version 2011-03-14 (Windows+Linux)</strong></p>
+<ul>
+<li>fixes several bugs in the precipitation kinetics module (heat treatments).</li>
+</ul>
+<p><strong>version 5.43.0001: beta version 2011-02-17 (Windows+Linux)</strong></p>
+<ul>
+<li>MatCalc <em>databases now contain comments</em> describing the individual phases in more detail, and a <em>'relevance' parameter</em>, which is used to sort the phases in the database dialog according to this parameter. This makes it much easier to find and select the relevant phases from the phases list. This functionality works only with the latest database versions. Please ask <a href="mailto/support@matcalc.at" title="support@matcalc.at">MatCalc support</a> if you want to use them.</li>
+<li>The treatment of <em>excess vacancies</em> has been extended. Excess vacancies can be <em>generated/annihilated</em> at <em>dislocation jogs, grain boundaries and Frank loops</em>. In addition, a simple model is now implemented to account for <em>deformation-induced vacancies</em>. At present, the routines are in the test stage. A corresponding article describing the new models has occurred in Acta Materialia (2011).</li>
+<li>First (limited) functionality for <em>implementing deformation</em> into MatCalc simulations. This is presently for test purpose only and will be released in one of the forthcoming versions. It is possible to define a global strain rate for the simulation either as a global strain rate or selectively for heat treatment segments. The latter is a perfect way of simulating the influence of deformation on the precipitation kinetics.</li>
+<li><em>Fixed a bug</em> in the Linux version, where the <em>simulation got stuck</em> in heat treatment segments under certain conditions.</li>
+</ul>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=versioninfo%3A5.43&amp;1788352873" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

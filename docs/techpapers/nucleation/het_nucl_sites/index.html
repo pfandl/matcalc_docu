@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Het nucl sites - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Het nucl sites";
+        var mkdocs_page_input_path = "techpapers/nucleation/het_nucl_sites.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Het nucl sites</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>TechPaper #2011002: Treatment of heterogeneous nucleation [MatCalc Documentation]</p>
+<h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#techpaper_2011002treatment_of_heterogeneous_nucleation">TechPaper #2011002: Treatment of heterogeneous nucleation</a></p>
+</li>
+<li>
+<p><a href="#compatibility">Compatibility</a></p>
+</li>
+<li><a href="#objectives">Objectives</a></li>
+<li><a href="#related_documents">Related documents</a></li>
+<li>
+<p><a href="#main_document">Main document</a></p>
+</li>
+<li>
+<p><a href="#homogeneous_nucleation">Homogeneous nucleation</a></p>
+<ul>
+<li><a href="#potential_nucleation_sites">Potential nucleation sites</a></li>
+<li><a href="#misfit_strain_effect">Misfit strain effect</a></li>
+<li>
+<p><a href="#dislocations">Dislocations</a></p>
+</li>
+<li>
+<p><a href="#potential_nucleation_sites1">Potential nucleation sites</a></p>
+</li>
+<li><a href="#misfit_strain_effect1">Misfit strain effect</a></li>
+<li><a href="#removal_of_a_dislocation_line_segment">Removal of a dislocation line segment</a></li>
+<li>
+<p><a href="#grain_boundaries_edges_and_corners">Grain boundaries, edges and corners</a></p>
+</li>
+<li>
+<p><a href="#potential_nucleation_sites2">Potential nucleation sites</a></p>
+</li>
+<li><a href="#misfit_strain_effect2">Misfit strain effect</a></li>
+<li><a href="#removal_of_grain_boundary_area">Removal of grain boundary area</a></li>
+<li><a href="#chemical_driving_force_for_grain_boundary_nucleation">Chemical driving force for grain boundary nucleation</a></li>
+<li>
+<p><a href="#subgrain_boundaries_edges_and_corners">Subgrain boundaries, edges and corners</a></p>
+</li>
+<li>
+<p><a href="#potential_nucleation_sites3">Potential nucleation sites</a></p>
+</li>
+<li><a href="#misfit_strain_effect3">Misfit strain effect</a></li>
+<li><a href="#removal_of_subgrain_boundary_area">Removal of subgrain boundary area</a></li>
+<li>
+<p><a href="#other_precipitates">Other precipitates</a></p>
+</li>
+<li>
+<p><a href="#nucleate_at_precipitate_surface">Nucleate at precipitate surface</a></p>
+</li>
+<li><a href="#nucleate_with_equivalent_interfacial_energy">Nucleate with equivalent interfacial energy</a></li>
+<li><a href="#nucleate_within_range_of_transformation_radius">Nucleate within range of transformation radius</a></li>
+<li><a href="#multiple_selection_of_heterogeneous_nucleation_sites">Multiple selection of heterogeneous nucleation sites</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="techpaper-2011002-treatment-of-heterogeneous-nucleation">TechPaper #2011002: Treatment of heterogeneous nucleation</h1>
+<h2 id="compatibility">Compatibility</h2>
+<p>MatCalc version: 5.44 - … <br />
+Author: E. Kozeschnik <br />
+Created: 2011-06-23 <br />
+Revisions: 2011-06-28 (koze), 2011-08-22 (koze), 2011-09-06 (koze), 2023-06-23 (warp)</p>
+<h2 id="objectives">Objectives</h2>
+<p>This paper discusses the implementation of heterogenous nucleation in the <em>MatCalc</em> precipitation kinetics framework.</p>
+<h2 id="related-documents">Related documents</h2>
+<ol>
+<li><a href="/techpapers/nucleation/nucleation_rate" title="techpapers/nucleation/nucleation_rate">The multi-component transient nucleation rate</a></li>
+<li><a href="/techpapers/precipitation/diffusion" title="techpapers/precipitation/diffusion">Diffusion in heterogenous precipitation</a></li>
+</ol>
+<h1 id="main-document">Main document</h1>
+<p>The <em>MatCalc</em> multi-component precipitate nucleation model is described in  <a href="/techpapers/nucleation/nucleation_rate" title="techpapers/nucleation/nucleation_rate">The multi-component transient nucleation rate</a>. In addition to homogeneous nucleation in the undisturbed crystal bulk volume, in <em>MatCalc</em>, nucleation can occur on different types of heterogenous nucleation sites (HNS), which are</p>
+<ul>
+<li>dislocations</li>
+<li>grain boundaries (2-grain junctions)</li>
+<li>grain boundary edges (3-grain junctions)</li>
+<li>grain boundary corners (4-grain junctions)</li>
+<li>subgrain boundaries</li>
+<li>subgrain boundary edges</li>
+<li>subgrain boundary corners</li>
+<li>other precipitates</li>
+</ul>
+<p>The choice of nucleation site has various important consequences in the treatment of nucleation. These are</p>
+<table>
+<thead>
+<tr>
+<th>parameter</th>
+<th>comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(N\_0\)</span></td>
+<td>Potential number of nucleation sites. For each HNS, the number of activated sites is evaluated. It is assumed that each single atom located on the particular HNS acts as a potential site. In homogeneous nucleation, all atoms of the unit volume are assumed to be potential sites, for nucleation on dislocations, only atoms located in the dislocation core are active nucleation sites. Similar applies for nucleation on grain boundaries and subgrain boundaries. Details on this are given in the sections below.</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(G^\*\)</span></td>
+<td>The nucleation barrier <span class="arithmatex">\(G^\*\)</span> is <em>reduced</em> due to removal of a part of the heterogeneous nucleation site area, which is either a dislocation line section or grain boundary area. In the present <em>MatCalc</em> version, this effect is implemented only for nucleation at grain boundaries in the form of the Clemm-Fisher model<a href="#fn__1">1)</a>, where a (reduced) <span class="arithmatex">\(G^\*\)</span> is calculated. In <em>MatCalc</em>, this quantity is transformed into an effective (reduced) interfacial energy.</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(G^\*\)</span></td>
+<td>The nucleation barrier <span class="arithmatex">\(G^\*\)</span> is <em>increased</em>, since the driving force for precipitation is reduced by elastic misfit stress (See the document on  <a href="/techpapers/nucleation/nucleation_rate" title="techpapers/nucleation/nucleation_rate">The multi-component transient nucleation rate</a> for details on the mathematical expression). This effect can be activated by making the appropriate settings for the Young's modulus and volumetric misfit in precipitation domain and precipitate, and by checking the “account for coherent misfit stress” option in the phase status dialog.</td>
+</tr>
+</tbody>
+</table>
+<p>In practical calculation, the first parameter, <span class="arithmatex">\(N\_0\)</span>, is controlled in the 'nucleation' tab of the 'phase status' dialog, as well as the 'structure' tab of the 'precipitation domain' dialog. In the 'phase status' dialog, the selection of HNS is used to evaluate the correct number of potential nucleation sites. In the 'precipitation domain' dialog, the microstructure parameters controlling <span class="arithmatex">\(N\_0\)</span> are defined, which is the dislocation density, grain size and subgrain size. In addition, one of the three models for on-particle nucleation can be selected.</p>
+<p>Further details on the implementation are discussed below.</p>
+<h2 id="homogeneous-nucleation">Homogeneous nucleation</h2>
+<p>Homogeneous nucleation is treated in the framework of homogeneous multi-component Classical Nucleation Theory. This topic is discussed in detail in the technical paper on  <a href="/techpapers/nucleation/nucleation_rate" title="techpapers/nucleation/nucleation_rate">The multi-component transient nucleation rate</a>.</p>
+<h3 id="potential-nucleation-sites">Potential nucleation sites</h3>
+<p>For homogeneous nucleation, each atom in the bulk volume is assumed to be a potential nucleation site. The number of sites <span class="arithmatex">\(N\_0\)</span> is simply evaluated from</p>
+<div class="arithmatex">\[N\_0=\frac{N\_{\text{A}}}{v\_m}\]</div>
+<p>where <span class="arithmatex">\(N\_\text{A}\)</span> is Avogadro's number and <span class="arithmatex">\(v\_m\)</span> is the molar volume.</p>
+<h3 id="misfit-strain-effect">Misfit strain effect</h3>
+<p>The major factor influencing the nucleation barrier in homogeneous coherent nucleation is the elastic misfit stress. In practical simulation, this effect can be activated by making the appropriate settings for the Young's modulus <span class="arithmatex">\(E\)</span> and volumetric misfit <span class="arithmatex">\(v^\*\)</span> in precipitation domain and precipitate, and by checking the “account for coherent misfit stress” option in the phase status dialog.</p>
+<p>The nucleation barrier <span class="arithmatex">\(G^\*\)</span> is then evaluated as</p>
+<div class="arithmatex">\[G^\* = \frac{16 \pi}{3} \frac{\gamma^3}{\left({\Delta G\_\text{vol} + \Delta G\_\text{el}}\right)^2}\]</div>
+<p>where <span class="arithmatex">\(\gamma\)</span> is the interfacial energy, <span class="arithmatex">\(\Delta G\_\text{vol}\)</span> is the volume free energy change on nucleation and <span class="arithmatex">\(\Delta G\_\text{el}\)</span> is the elastic energy of the stress field accompanying the nucleateion process.</p>
+<p><strong>Note:</strong> <span class="arithmatex">\(G^\*\)</span> in the elastically strained state is always larger than <span class="arithmatex">\(G^\*\)</span> in the unstrained state.</p>
+<p>The elastic energy <span class="arithmatex">\(\Delta G\_\text{el}\)</span> of a spherical inclusion can be calculated with the help Eshelby's concept, which delivers</p>
+<div class="arithmatex">\[\Delta G\_\text{el} = \frac{E}{1-\nu} \cdot (\epsilon^\*)^2 = \frac{E}{9(1-\nu)} \cdot (v^\*)^2\]</div>
+<p>where <span class="arithmatex">\(\nu\)</span> is Poisson's ratio, <span class="arithmatex">\(\epsilon^\*\)</span> is the linear misfit strain and the relation hold <span class="arithmatex">\(\epsilon^\*=v^\*/3\)</span>.</p>
+<p>In most situations, homogeneous nucleation occurs with a coherent interface between matrix and precipitate. In some cases, however, homogeneous nucleation might occur also with incoherent interfaces. This is claimed, for instance, to be the case for NbC precipitation in austenite (steel), where NbC has a large volumetric misfit to the fcc matrix.</p>
+<h2 id="dislocations">Dislocations</h2>
+<h3 id="potential-nucleation-sites_1">Potential nucleation sites</h3>
+<p>For heterogeneous nucleation at dislocations, each atom located in the dislocation core is assumed to be a potential nucleation site. The corresponding number is evaluated from the dislocation density (set in the 'structure' tab of the 'precipitation domain' dialog) according to</p>
+<div class="arithmatex">\[N\_0=\rho {\left ( \frac{N\_\text{A}}{v\_\text{m}}\right )}^{\frac{1}{3}}\]</div>
+<p>where <span class="arithmatex">\(\rho\)</span> is the dislocation density, <span class="arithmatex">\(N\_\text{A}\)</span> is Avogadro's number and <span class="arithmatex">\(v\_\text{m}\)</span> is the molar volume.</p>
+<h3 id="misfit-strain-effect_1">Misfit strain effect</h3>
+<p>When a precipitate nucleates coherently on a dislocation, the elastic misfit stress field of the precipitate interacts with the stress field of the dislocation. Since dislocations are surrounded by both, a compressive and a tensile stress field, a misfitting precipitate will always benefit from nucleation on a dislocation, irrespective of whether the misfit is positive or negative.</p>
+<p>Still, there is an important difference to the homogeneous nucleation case, which must be considered. In homogeneous coherent nucleation, the entire volumetric misfit stress is operative and should be used in the calculation. At dislocations, the compressive or tensile strain field compensates some part of the misfit and a <strong>reduced misfit value</strong> should be used in the simulation.</p>
+<p>In a study of AlN precipitation in unalloyed steel<a href="#fn__2">2)</a>, a volumetric misfit of 75% has been used for homogeneous nucleation. This value effectively suppresses <em>homogeneous</em> nucleation due to the high volumetric misfit stress energy. For nucleation on dislocations, an <em>effective</em> misfit strain of 27%<a href="#fn__3">3)</a> is capable of reproducing a large variety of experimental data correctly. For nucleation at grain boundaries, typically, the volumetric misfit is set to zero, since condensation and evaporation of vacancies is assumed to rapidly relax the entire misfit strain.</p>
+<h3 id="removal-of-a-dislocation-line-segment">Removal of a dislocation line segment</h3>
+<p>Nuclei appearing on dislocations are assumed to replace the segment of the dislocation line corresponding to the nucleus size. In consequence, the system energy decreases by the amount of replaced dislocation line energy. This effect is taken into account by the reduction of nucleation energy barrier <span class="arithmatex">\(\Delta G\_{nucl}\)</span> by a heterogenous nucleation site energy term of</p>
+<div class="arithmatex">\[\Delta G\_{het,disl}=\eta rGb^2\]</div>
+<p>where <span class="arithmatex">\(r\)</span> is the nucleus radius, <span class="arithmatex">\(G\)</span> is the shear modulus, <span class="arithmatex">\(b\)</span> is the Burgers vector and <span class="arithmatex">\(\eta\)</span> is a scaling factor (with values expected in range 0-1)<a href="#fn__4">4)</a>.</p>
+<h2 id="grain-boundaries-edges-and-corners">Grain boundaries, edges and corners</h2>
+<p>In <em>MatCalc</em>, the polycrystalline grain microstructure is modelled as an ensemble of space-filling <em>tetrakaidecahedra</em>, objects which have been introduced by Lord Kelvin (Sir William Tompson) in 1887<a href="#fn__5">5)</a>. The tetrakaidecahedron is</p>
+<ol>
+<li>space filling</li>
+<li>has minimum separating area</li>
+<li>has 120° angles between the faces</li>
+</ol>
+<p>The tetrakaidecahedron is a body with eight hexagons and six quadrilaterals.</p>
+<h3 id="potential-nucleation-sites_2">Potential nucleation sites</h3>
+<p>In <em>MatCalc</em>, a slightly simplified version of tetrakaidecahedron is used, with a geometrical form sketched in the following diagram. The simplified version slightly deviates from the three properties above, however, it has planar faces, which makes it easier to evaluate its geometrical features.</p>
+<p><a href="/techpapers/nucleation/img/fig_nucleation_tetrakaidecahedron_1.png" title="techpapers/nucleation/img/fig_nucleation_tetrakaidecahedron_1.png"><img alt=" Tetrakaidecahedron used in //MatCalc// to represent polycrystalline microstructure" src="/techpapers/nucleation/img/fig_nucleation_tetrakaidecahedron_1.png" title="Tetrakaidecahedron used in //MatCalc// to represent polycrystalline microstructure" /></a>
+<a href="/techpapers/nucleation/img/fig_nucleation_tetrakaidecahedron_2.png" title="techpapers/nucleation/img/fig_nucleation_tetrakaidecahedron_2.png"><img alt=" Tetrakaidecahedron used in //MatCalc// to represent polycrystalline microstructure" src="/techpapers/nucleation/img/fig_nucleation_tetrakaidecahedron_2.png" title="Tetrakaidecahedron used in //MatCalc// to represent polycrystalline microstructure" /></a></p>
+<p>From these objects, the total area, line length and number density of 2-grain, 3-grain and 4-grain junctions (grain boundaries, grain boundary edges and grain corners) can be evaluated straightforwardly. From these quantities, finally, the density of potential nucleation sites is calculated by evaluating the number of atoms located on the junctions. For a detailed description of the mathematical expression see, for instance, the PhD thesis by J. Rajek<a href="#fn__6">6)</a>. For selection of either of these potential nucleation sites, the corresponding choice in the 'nucleation' tab of the 'phase status' dialog must be made.</p>
+<p><strong><em>Important note…</em></strong></p>
+<p>If only 'grain boundary' is chosen as potential nucleation site, <em>MatCalc</em> evaluates nucleation and growth in a special treatment of precipitation in <em>grain boundary diffusion geometry</em>. Any other choice of nucleation site, as well as any combination of nucleation sites, will utilize the 'random nucleation' approach, where all precipitates are assumed to be randomly distributed in the bulk volume. See the section 'Multiple selection of nucleation sites' below.</p>
+<h3 id="misfit-strain-effect_2">Misfit strain effect</h3>
+<p>When a precipitate nucleates on a grain boundary site, it is assumed that the elastic misfit stress field of the precipitate is instantaneously relaxed by condensation or annihilation of structural vacancies. A corresponding theoretical model has been developed by F.D. Fischer et al.<a href="#fn__7">7)</a> and has been implemented in an older version of Matcalc<a href="#fn__8">8)</a>. A simulation study performed with this model has confirmed this assumption.</p>
+<p>In practical simulation, the volumetric misfit value for grain boundary precipitates is commonly set to a value of zero. This setting reflects the fast strain relaxation potential of these heterogeneous nucleation sites.</p>
+<h3 id="removal-of-grain-boundary-area">Removal of grain boundary area</h3>
+<p>When a precipitate nucleates, a certain amount of new interfacial area between the nucleus and the matrix must be created. On one hand, this process is energy-expensive up to the critical size of the nucleus, thus rendering this energy contribution an important ingredient of Classical Nucleation Theory. On the other hand, when a precipitate nucleates on a grain boundary site, part of the grain boundary is removed by the new precipitate, which adds an energy-supporting contribution to the energy balance.</p>
+<p><em>Starting with MatCalc version 6.04.1000</em>, the amounts of grain boundary energy consumed by the emerging nucleus (equal to heterogeneous nucleation site energy) are given as:</p>
+<ul>
+<li>for the grain boundariy surface (nucleation sites set to “grain boundaries”) [\Delta G_{het,gb}=\pi r^2\gamma_{gb}]</li>
+<li>for the grain boundary edges [\Delta G_{het,gbe}=\frac{3}{2} \pi r^2\gamma_{gb}]</li>
+<li>for the grain boundary corners [\Delta G_{het,gbc}=6arctan(\sqrt{2})r^2\gamma_{gb}]</li>
+</ul>
+<p>where <span class="arithmatex">\(r\)</span> is the nucleus radius, and <span class="arithmatex">\(\gamma\_{gb}\)</span> is the grain boundary energy<a href="#fn__9">9)</a>.</p>
+<p><em>In the MatCalc version 6.03.1000 and older</em>, the balance between expensive and supporting contributions to the nucleation process has been treated quantitatively by Clemm and Fisher<a href="#fn__10">10)</a>. These authors evaluate geometrically the ratio between newly formed grain junctions to removed grain boundary area and express the results in terms of a modified nucleation barrier <span class="arithmatex">\(G^\*\)</span>. Basically, they express this quantity in terms of three geometrical parameters <em>a</em>, <em>b</em>, <em>c</em>, the interfacial energy <span class="arithmatex">\(\gamma\_{\alpha \beta}\)</span> and the grain boundary energy <span class="arithmatex">\(\gamma\_{\alpha \alpha}\)</span></p>
+<div class="arithmatex">\[G^\* = \frac{4}{27} \frac{{ \left ( b \gamma\_{\alpha \beta} - a \gamma\_{\alpha \alpha} \right )}^3}{{\left ( c \Delta G\_\text{vol} \right )}^2}\]</div>
+<p>Clemm and Fisher then evaluate <em>a</em>, <em>b</em> and <em>c</em> for the 2-grain, 3-grain and 4-grain junctions. In <em>MatCalc</em>, this treatment was slightly extended by summing up the change in the nucleation barrier into an effective interfacial energy <span class="arithmatex">\(\gamma'\)</span> with</p>
+<div class="arithmatex">\[\gamma ' = \left(\frac{1}{36 \pi}\right)^{\frac{1}{3}} \left( \frac {b \gamma\_{\alpha\beta} - a \gamma\_{\alpha\alpha}}{c^{\frac{2}{3}}} \right)\]</div>
+<p>This quantity was accessible via the <em>MatCalc</em> variable <strong>EIE$phase_Pnn</strong> for the <em>effective interfacial energy</em>, which was determined as the calculated interfacial energy of the planar sharp interface minus the contribution from removal of grain boundary area.</p>
+<p><strong>Note:</strong> For a proper evaluation of the effective interfacial energies, the correct settings for the grain boundary energy must be made in the 'special' tab of the 'precipitation domain' dialog. Typical values for this quantity are around 0.3 J/m2.</p>
+<p>In both treatments, the employed values of precipitate interface energy and grain boundary energy can sometimes result in the absence of nucleation energy barrier. The evolution of the precipitate is then given only by its growth rate. A typical example for such behavior is the nucleation of bcc ferrite from fcc austenite in ultra-low carbon unalloyed steel, where the ferrite grains (precipitates) nucleate instantaneously after crossing the phase boundary. This effect is described, for instance, by Kozeschnik and Gamsjäger<a href="#fn__11">11)</a>.</p>
+<h3 id="chemical-driving-force-for-grain-boundary-nucleation">Chemical driving force for grain boundary nucleation</h3>
+<p>If precipitates nucleate and grow on grain boundaries, the so-called 'collector plate' mechanism is assumed to be operative for the diffusive transport of atoms to the precipitate. In this approach, commonly, an infinitely fast diffusion inside the grain boundary is assumed, and slow transport in the bulk volume. In <em>MatCalc</em>, diffusion during grain boundary nucleation is treated according to the settings made for 'diffusion in grain boundary' in the 'special' tab of the 'precipitation domain' dialog. Typical values for these quantities are summarizes in the article  <a href="/techpapers/precipitation/diffusion" title="techpapers/precipitation/diffusion">Diffusion in heterogenous precipitation</a>.</p>
+<p><strong>Note:</strong> In the nucleation stage, the effective region supporting solute atoms for nucleation is assumed to be 1 nm wide, that is, 0.5 nm to each of the two sides of the grain boundary. This assumption is essentially reproducing the observation that nucleation in grain boundaries will be extremely fast due to the fast diffusion kinetics along the grain boundary. However, once the solute atoms available in this restricted region have formed the first nuclei, any additional solute atom arriving at the grain boundary later will diffuse towards existing precipitates and attach there rather than nucleating additional particles. This assumption is the reason that you will observe decreasing and, finally, zero nucleation rate for grain boundary precipitates even if the driving force inside the grain would still support nucleation.</p>
+<h2 id="subgrain-boundaries-edges-and-corners">Subgrain boundaries, edges and corners</h2>
+<p>In <em>MatCalc</em>, subgrain boundaries (SGB) represent special objects, which are different from grain boundaries in a few aspects. SGB are</p>
+<ul>
+<li>low-angle boundaries inside the high-angle grain structure</li>
+<li>faster diffusion paths than within the bulk volume, but still significantly slower than high-angle grain boundaries</li>
+</ul>
+<p>SGBs have been introduced into <em>MatCalc</em> originally to mimic the martensitic substructure of materials. This is sketched in the figure below showing a prior austenite grain with a few martensite laths.</p>
+<p><a href="/techpapers/nucleation/img/fig_nucleation_tetrakaidecahedron_mart.png" title="techpapers/nucleation/img/fig_nucleation_tetrakaidecahedron_mart.png"><img alt=" Subgrains representing the martensitic microstructure of materials" src="/techpapers/nucleation/img/fig_nucleation_tetrakaidecahedron_mart.png" title="Subgrains representing the martensitic microstructure of materials" /></a></p>
+<h3 id="potential-nucleation-sites_3">Potential nucleation sites</h3>
+<p>For SGB nucleation, each atom located on the SGB is assumed to be a potential nucleation site. Just like for grain boundaries, the number of potential sites is evaluated from the geometrical properties of the (elongated) tetrakaidecahedron as described in J. Rajeks thesis.<a href="#fn__12">12)</a></p>
+<p>For the choice of subgrain boundary edges and corners, each atom located at these sites is considered to be a potential nucleation site. Evaluation of <span class="arithmatex">\(N\_0\)</span> is performed in analogy to grain boundaries.</p>
+<h3 id="misfit-strain-effect_3">Misfit strain effect</h3>
+<p>At subgrain boundaries, the misfit stress is assumed to be compensated easily by structural rearrangement of dislocations and generation or annihilation of excess vacancies. These processes can rapidly relax the volumetric misfit stress of the coherent precipitate.</p>
+<p>In practical simulation, it is recommended that the volumetric misfit value for subgrain boundary precipitates is set to a value of zero, therefore.</p>
+<h3 id="removal-of-subgrain-boundary-area">Removal of subgrain boundary area</h3>
+<p>The nucleation of precipitates at subgrain boundaries resembles very much the situation at grain boundaries. For this reason, the model described above for nucleation at 2-grain junctions has also been adopted for nucleation at 2-subgrain junctions. Instead of the grain boundary energy, the value for the subgrain boundary energy is utilized in the evaluation.</p>
+<p>For details, see treatment above for 2-grain junctions.</p>
+<p><strong>Note:</strong> For a proper evaluation of the effective interfacial energies, the correct settings for the subgrain boundary energy must be made in the 'special' tab of the 'precipitation domain' dialog. Typical values for this quantity are around 0.1-0.2 J/m2. In any case, the choice of value should be less than in the grain boundary case.</p>
+<h2 id="other-precipitates">Other precipitates</h2>
+<p>In <em>MatCalc</em>, three different models are presently implemented that take into account the possibility that existing precipitates can act as heterogeneous nucleation sites for other precipitates. These models can be used for two different cases where either</p>
+<ul>
+<li>One precipitate type acts as a <em>catalyst</em> for the nucleation of another precipitate type. Nucleation occurs on the phase boundary between the parent precipitate and the matrix by random compositional fluctuations within the matrix. This type of transformation is denoted as <strong>on-particle nucleation</strong>.</li>
+<li>The parent precipitate <em>directly transforms</em> into the new precipitate type by structural and/or compositional transformation. For this type of transformation, two models are implemented, with different physical foundation and transformation mechanism. This type of transformation is denoted as <strong>inner-particle nucleation</strong>.</li>
+</ul>
+<p>The selection of <strong>'other precipitates'</strong> cannot be combined with other nucleation sites, such as dislocations or grain boundaries.</p>
+<p>The models available in <em>MatCalc</em> for on-particle and inner-particle nucleation are described below.</p>
+<h3 id="nucleate-at-precipitate-surface">Nucleate at precipitate surface</h3>
+<p>In choosing the <strong>on-particle nucleation</strong> model, <em>MatCalc</em> assumes that the surface of the parent precipitates acts as a catalytic region where nucleation of the product phase is facilitated. Each atom located on the parent precipitate surface is assumed to represent a potential nucleation site.</p>
+<p>In evaluation of the total number of potential nucleation sites <span class="arithmatex">\(N\_0\)</span> for <em>on-particle</em> nucleation, MatCalc evaluates the total interfacial area spanned by the parent precipitates. This value is divided by the mean area that one single atom needs in a mono-atomic layer. The latter quantity is evaluated on basis of the precipitate molar volume to the power of 2/3. If more than one parent precipitate phase is selected, the total surface area of all selected precipitates is considered in the evaluation of <span class="arithmatex">\(N\_0\)</span>.</p>
+<p>The <em>nucleation rate</em> <span class="arithmatex">\(J\)</span> for on-particle nucleation is otherwise evaluated identical to the treatment for homogeneous nucleation. During nucleation of the new phase, the parent precipitate population remains entirely unaffected.</p>
+<p><strong>Note:</strong> This type of nucleation must be combined with a selection of 'nucleation model' of <strong>'Becker-Döring time-dependent'</strong>, since nucleation is governed by the diffusional transport of atoms in the parent matrix and the corresponding compositional and structural fluctuations. Application of the standard Classical Nucleation Theory implementation of <em>MatCalc</em> seems thus sufficiently justified.</p>
+<h3 id="nucleate-with-equivalent-interfacial-energy">Nucleate with equivalent interfacial energy</h3>
+<p>This first variant of <strong>inner-particle nucleation</strong> model has been developed and implemented<a href="#fn__13">13)</a> to allow for the simulation of nucleation in cases, where the nucleation process of the new phase occurs <strong>within</strong> the volume of the parent precipitate and the probability of transformation does not scale with the total volume of the precipitate or the precipitate radius.</p>
+<p>A typical example for this (very rare) type of transformation is found in the ferritic-martensitic 9%-Cr steel group, where Z-phase precipitates nucleate within VN precipitates, and consume the entire VN population after long time exposure at temperatures around 600°C. From a practical viewpoint, this transformation has considerable impact, since these steels then lose their precipitation strengthening potential because a single Z-phase particle can dissolve a large number of smaller and densely distributed VN precipitates.</p>
+<p>The transformation itself is only possible if the product phase is thermodynamically more stable than the parent phase. This condition is implemented in <em>MatCalc</em> in the form that the stability of parent and product phases is continuously compared based on their thermodynamic driving force. Transformation occurs only if the driving force for precipitation of the product phase is larger than the driving force evaluated for the parent phase. The difference between the two driving force values is considered to be the <em>effective driving force for nucleation</em> of the product phase.</p>
+<p>In evaluation of the nucleation rate <span class="arithmatex">\(J\)</span>, this <em>effective driving force</em> is used together with the <strong><em>equivalent interfacial energy</em></strong> value entered for this transformation type in the conventional nucleation rate expression. The total number of potential nucleation sites, <span class="arithmatex">\(N\_0\)</span>, is evaluated as the number of atoms on the surface area of the parent precipitates, the Zeldovich factor <em>Z</em> is calculated identical to the homogeneous nucleation case and the atomic attachment rate <span class="arithmatex">\(\beta^\*\)</span> is set to unity.</p>
+<p>After nucleation of <span class="arithmatex">\(J.dt\)</span> precipitates of the product phase, the equivalent number of precipitates of the parent phase is removed. The critical nucleation radius of the new precipitates is assumed to be given by the mean radius of the parent precipitates.</p>
+<p>This choice of inner-particle nucleation model must be combined with the <strong>'direct particle transformation'</strong> option for the 'nucleation model'.</p>
+<p><strong><em>Important note…</em></strong></p>
+<p>The model used for nucleation within a parent precipitate using the <em>equivalent interfacial energy</em> must be considered as a <strong><em>semi-phenomenological approach</em></strong>. It is <em>not</em> rigorously derived and represents only a work-around for the lack of a fundamental physical model of inner-particle nucleation.</p>
+<p><strong>Note:</strong> In this nucleation model, it is not possible to select more than one parent phase for this type of transformation, otherwise the transformation would not be unambiguous.</p>
+<p><strong><em>Important note…</em></strong></p>
+<p>In this type of approach, the nucleation rate evaluated on basis of the effective driving force and the equivalent interfacial energy is very sensitive to numerical oscillations during integration of the evolution equations. Particular care must be taken in the simulations to avoid numerical oscillations with strict settings of the numerical parameters controlling the integration process. Oscillations in the effective driving force can lead to <strong>unrealistic nucleation bursts</strong> that might impair the significance of the simulation results.</p>
+<h3 id="nucleate-within-range-of-transformation-radius">Nucleate within range of transformation radius</h3>
+<p>The second variant of <strong>inner-particle nucleation</strong> model has been developed for cases, where the nucleation process of the new phase occurs <strong>within</strong> the volume of the parent precipitate <strong><em>and</em></strong> the probability of transformation scales with the precipitate radius.</p>
+<p>Situations of this kind occur typically in precipitation of particles that show a transition from fully coherent to semi-coherent or incoherent interfacial structure. In the very early stages of precipitation, precipitates with volumetric misfit to the matrix are often constrained and forced into metastable crystal structures due to the coherency stress exerted by the matrix structure. While growing, the misfit stress becomes so large that the interfacial structure becomes incoherent, with the effect that the elastic misfit stress is substantially reduced. The coherency stress from the matrix is reduced and the precipitate can adopt crystal structures and/or chemical compositions with higher thermodynamic stability.</p>
+<p>An example of this type of transformation is found, for instance, in the transition of beta” to beta' precipitates in the Al-Mg-Si system. The coherent beta“ precipitates start losing coherency after reaching a certain critical size, which is denoted as the <strong>'transformation radius'</strong> in the 'nucleation' tab of the 'phase status' dialog. In the actual nucleation procedure, two values for the transformation radius must be defined, spanning a range within which the transformation from parent to product phase occurs. The two values, minimum and maximum transformation radius, <span class="arithmatex">\(r\_{t,min}\)</span> and <span class="arithmatex">\(r\_{t,max}\)</span>, reflect the observation that the transformation process will not instantaneously start at the minimum critical value, but proceed smoothly over a certain range.</p>
+<p>When a precipitate size class of the parent phase reaches the minimum critical size <span class="arithmatex">\(r\_{t,min}\)</span>, in each time integration step, a certain number of precipitates of this size class transforms into the product phase given by the actual location of the radius within the transformation interval. Close to the minimum size, the transformation probability is rather low, such that only a small number of the precipitates in the size class transform. In contrast, the probability is very high close to the maximum transformation radius and a large number of precipitates will transform in each step. Above the maximum, the transformation probability becomes unity and all particles exceeding this size are transformed immediately. This situation is schematically shown in the following graph.</p>
+<p><a href="/techpapers/nucleation/img/fig_nucleation_direct_particle_radius.png" title="techpapers/nucleation/img/fig_nucleation_direct_particle_radius.png"><img alt=" Transformation probability for inner-particle nucleation with transformation radius" src="/techpapers/nucleation/img/fig_nucleation_direct_particle_radius.png" title="Transformation probability for inner-particle nucleation with transformation radius" /></a></p>
+<p>After a certain number of new precipitates have nucleated, the same number of precipitates of the parent phase are removed from the system. The critical radius of the new precipitates is taken as the value of the parent precipitates.</p>
+<p><strong>Note:</strong> Similar to the nucleation model based on the equivalent interfacial energy, this type of inner-particle transformation only occurs, if the relative thermodynamic stability of the product phase is above the stability of the parent phase. This condition is always evaluated before any kind of inner-particle transformation is performed by <em>MatCalc</em>.</p>
+<p><strong>Practical note:</strong> If you define this type of nucleation model in your simulations, and you do not observe any transformation although the parent phase precipitates have already exceeded the maximum transformation radius, check the chemical driving force of the two phases.</p>
+<h2 id="multiple-selection-of-heterogeneous-nucleation-sites">Multiple selection of heterogeneous nucleation sites</h2>
+<p>The selection of only a single nucleation site for the new phase has been outlined in some detail above. Combination of multiple nucleation sites for one precipitates has different effects, depending on the choices.</p>
+<p>If either</p>
+<ul>
+<li>homogeneous (bulk)</li>
+<li>dislocations</li>
+<li>grain boundary edge</li>
+<li>grain boundary corner</li>
+<li>subgrain boundary</li>
+<li>subgrain boundary edge</li>
+<li>subgrain boundary corner</li>
+</ul>
+<p>is selected as nucleation site, the <strong>random distribution</strong> diffusion geometry is used in evaluation of the growth conditions for the precipitate, and the potential number of nucleation sites <span class="arithmatex">\(N\_0\)</span> is evaluated as the number of atoms located at the homogeneous or heterogeneous nucleation sites. It is possible to combine selections, with the effect that the number of potential nucleation sites are then evaluated as the superposition of all selected options.</p>
+<p>If only</p>
+<ul>
+<li>grain boundary</li>
+</ul>
+<p>is selected, nucleation is evaluated as described above in the section on grain boundary nucleation. Growth is evaluated according to the model for <strong>grain boundary</strong> diffusion geometry. Combination of grain boundary nucleation with any of the above choices will tell <em>MatCalc</em> to use the <strong>random distribution</strong> model in combination with a superposition of values for <span class="arithmatex">\(N\_0\)</span>.</p>
+<p><strong>Important Note:</strong> <em>MatCalc</em> will utilize the 'grain boundary' diffusion model for growth <strong>only</strong> for the single choice of nucleation site as 'grain boundary'. Any combination of nucleation sites, will utilize the 'random distribution' approach, where all precipitates are assumed to be randomly distributed in the bulk volume.</p>
+<p>The choice of</p>
+<ul>
+<li>other precipitates</li>
+</ul>
+<p>cannot be combined with the above options and must be used separately.</p>
+<p>With the selection of</p>
+<ul>
+<li>nucleate at precipitate surface</li>
+</ul>
+<p>you can use multiple phases as parent precipitates. The number of potential nucleation sites is evaluated from the total surface area of all precipitate types.</p>
+<p>Selections of</p>
+<ul>
+<li>equivalent interfacial energy</li>
+<li>transformation radius</li>
+</ul>
+<p>allows for selection of only one parent precipitate. These two options must be combined with the 'direct particle transformation' option for the 'nucleation model'.</p>
+<p><a href="#fnt__1">1)</a></p>
+<p>See references below</p>
+<p><a href="#fnt__2">2)</a></p>
+<p>R. Radis and E. Kozeschnik, “Kinetics of AlN precipitation in microalloyed steel”, Model. Simul. Mater. Sci. Eng. 18 (2010) 055003 (16pp)</p>
+<p><a href="#fnt__3">3)</a></p>
+<p>Erroneously, a value of 19% has been reported in the publication</p>
+<p><a href="#fnt__4">4)</a></p>
+<p>B. Miesenberger et al., “Computational analysis of heterogeneous nucleation and precipitation in
+AA6005 Al-alloy during continuous cooling DSC experiments”, Materialia 25 (2022) 101538</p>
+<p><a href="#fnt__5">5)</a></p>
+<p>Sir W. Thomson, „On the division of space with minimum partitional area“ Philos. Mag. 24 (1887) 503-514</p>
+<p><a href="#fnt__6">6)</a></p>
+<p><a href="https///www.matcalc.at/index.php/about/publications" title="https///www.matcalc.at/index.php/about/publications">list of MatCalc-relevant publications</a></p>
+<p><a href="#fnt__7">7)</a></p>
+<p>F.D. Fischer, J. Svoboda, E. Gamsjäger, E. Kozeschnik and B. Sonderegger, “Modelling of Precipitation Kinetics with Simultanous Stress Relaxation”, Mater. Res. Soc. Symp. Proc., 979, 2007, pp. 0979-HH11-04.</p>
+<p><a href="#fnt__8">8)</a></p>
+<p>In the present versions of <em>MatCalc</em>, this model is no longer available due to numerical shortcomings and very low computation efficiency of this approach</p>
+<p><a href="#fnt__9">9)</a></p>
+<p>B. Miesenberger et al., “Computational analysis of heterogeneous nucleation and precipitation in AA6005 Al-alloy during continuous cooling DSC experiments”, Materialia 25 (2022) 101538</p>
+<p><a href="#fnt__10">10)</a></p>
+<p>P.J. Clemm and J.C. Fisher, “The influence of grain boundaries on the nucleation of secondary phases, Acta Metall. 3 (1955) 70-73</p>
+<p><a href="#fnt__11">11)</a></p>
+<p>E. Kozeschnik and E. Gamsjäger, „High-Speed Quenching Dilatometer Investigation of the Austenite to Ferrite Transformation in Fe-C”, Met. Mater. Trans. 37A, 2006, 1791-1797.</p>
+<p><a href="#fnt__12">12)</a></p>
+<p><a href="https///www.matcalc.at/index.php/about/publications" title="https///www.matcalc.at/index.php/about/publications">list of MatCalc-relevant publications</a></p>
+<p><a href="#fnt__13">13)</a></p>
+<p>E. Kozeschnik, B. Sonderegger and H. Danielsen, unpublished research (2005).</p>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=techpapers%3Anucleation%3Ahet_nucl_sites&amp;1788352981" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>5.60 - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "5.60";
+        var mkdocs_page_input_path = "versioninfo/5.60.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">5.60</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>MatCalc 5.60 [MatCalc Documentation]</p>
+<h2 id="matcalc-560">MatCalc 5.60</h2>
+<p>The following new features are implemented in <em>MatCalc</em> versions 5.60.nnnn:</p>
+<ul>
+<li>A first model for a <strong>treatment of static recrystallization</strong> is now implemented.</li>
+<li>The <strong>precipitation domain dialog</strong> has been restructured to reflect the latest progress in microstructure modeling.</li>
+<li>The <strong>phase status dialog</strong> has been restructured in the nucleation and nucleation sites tab. Only aestethic changes.</li>
+<li>Introduced new variables for <strong>dislocation densities</strong>. MatCalc now distinguishes mobile, immobile and wall dislocations. Needed for advanced substructure evolution modeling.</li>
+<li>Several <strong>script commands</strong> for the <strong>precipitation domain settings</strong> with SET_PRECIPITATION_PARAMETER have been modified. This was necessary due to the restructured precipitation domain dialog.</li>
+<li>You can preview already some of the <strong>features of</strong> the future release of <strong>MatCalc 6.0</strong> by starting MatCalc with the command line argument “/6.0”.</li>
+<li>The treatment of default values is improved by introduction of a file <strong>“user_defaults.txt”</strong> in addition to the file “defaults.txt” in the path_to_matcalc/preset directory. The former file overwrites values of default.txt without being overwritten itself at the next MatCalc installation procedure.</li>
+<li>The values for <strong>diffusion ratio in dislocations and grain boundaries have been reassessed</strong> for interstitial components because these values have been overestimated significantly in previous versions (see file/ defaults.txt).</li>
+<li>Several improvements and new features in the <strong>manipulation of plots</strong>. Context-sensitive clicking in the plot and synchronization of the options window.</li>
+<li>New features in plots, such as <strong>synchronizing of zoom</strong> actions or <strong>fonts</strong> to display axes labels etc. in user-defined style and size.</li>
+<li>Implemented latest version of the <strong>precipitation strengthening model</strong> of Ahmadi et al. Several minor improvements. Added limited support for <strong>non-spherical precipitates</strong>.</li>
+<li>Added direct support for <strong>solid solution strengthening</strong>.</li>
+<li>When <strong>opening a new workspace</strong>, either through the menu or using Drag&amp;Drop, the user is asked whether the workspace should be opened in a <strong>new instance</strong> of MatCalc. This feature is particularly useful on the Mac platform.</li>
+<li>Added <strong>'ignore reset precipitates on initialize'</strong> in special tab of the phase status dialog for kinetic calculations. This feature is very useful when <strong>importing size distributions</strong>, for instance, for primary precipitates. See 'special' tab in phase status dialog.</li>
+<li>The EXPORT_OPEN_FILE command will now open the export file in append mode. This is important if you want to add buffer data to existing data stored in a file. If you want to mimic the previous behavior, use EXPORT_CLEAR_FILE command to make sure that the file is empty.</li>
+</ul>
+<p>Below are details describing the various changes and new features of the MatCalc versions 5.60.xxxx.</p>
+<h4 id="version-5601003-released-2014-03-14">version 5.60.1003: released 2014-03-14</h4>
+<ul>
+<li>Fixed problem when starting mcc on Windows.</li>
+<li>Removed equilibrium treatment of interstitials on dislocations. Now using trap partition table instead. It is still work in progress and should not yet be used.</li>
+<li>Use <strong>current temperature in stepped calculation</strong> with element content.</li>
+<li>Fixed a bug when using <strong>constrained equilibrium</strong> in <strong>nucleus composition</strong> setting for precipitates.</li>
+<li>Added <strong>variable for subgrain boundary strengthening</strong> (<code>TSGS$prec_domain_name</code>);</li>
+<li>Elements with <strong>mass &lt; 11</strong> are now <strong>treated as interstitials</strong>, too</li>
+</ul>
+<h4 id="version-5601001-released-2014-02-18">version 5.60.1001: released 2014-02-18</h4>
+<ul>
+<li>Fixed bugs in <strong>treatment of structural vacancies</strong>. Improved interaction between <strong>structural vacancies and SFK-traps</strong>.</li>
+<li>Introduced <strong>new variables</strong> (<code>YT_L_SFK$prec_domain$element</code>) for lattice concentration of vacancies and (<code>YT_TK_SFK$prec_domain$element$trap_site</code>) for concentration at specific traps. This feature is important for a correct treatment of <strong>vacancy trapping</strong> in Al-alloys.</li>
+<li>Introduced and added several variables related to the <strong>new recrystallization feature</strong>. This feature is not yet completed and users are asked to use it with care. A full treatment of rexx is planned for future releases.</li>
+<li>Fixed bug when reading thermodynamic data of <strong>phases with ordered CALPHAD description</strong>.</li>
+<li>The <strong>frame scripts</strong> for user-defined windows will now <strong>use the kinetic alias name</strong> in the plots related to precipitation kinetics.</li>
+<li><strong>Improved numerical stability</strong> in some cases of precipitation kinetics simulation. Added a few new variables to <strong>control convergence</strong>.</li>
+<li>User-defined <strong>frame scripts</strong> are now <strong>ignored in the recent files</strong> list.</li>
+<li>Fixed problem in <strong>command line control</strong> of the <strong>Scheil simulation</strong>.</li>
+<li>Diffusion enhancement at grain boundaries is now ignored for c<strong>alculation of the atomic attachment rate</strong>.</li>
+<li>Made some modifications in the <strong>phase status dialog</strong>.</li>
+<li>Added <strong>elementary charge</strong> (<code>CE</code>) as new constant.</li>
+<li><strong>Trap coordination number</strong> in SFK traps is now a function.</li>
+<li>Fixed <strong>Drag&amp;Drop problems on Mac</strong>.</li>
+<li>Fixed bug in calculation of the <strong>vacancy diffusion coefficient</strong>. Missed the equilibrium vacancy concentration in calculation of this parameter.</li>
+<li>Added feature that zooming with <strong>multiple plot windows</strong> is <strong>synchronized</strong> if the 'use default x-axis for all plots' feature is activated.</li>
+<li>Implemented an <strong>'auto'</strong> functionality for the n<strong>umber of plot columns</strong>.</li>
+<li>Fixed problem with redrawing of plot frames.</li>
+<li>Improved treatment of user-defined function drawing in plots.</li>
+<li>Added “New series …” to RMB menu of plot frames.</li>
+<li>If the global composition is modified in a post/pre segment script, the composition of the precipitation domain is now correctly updated.</li>
+</ul>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=versioninfo%3A5.60&amp;1788352872" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

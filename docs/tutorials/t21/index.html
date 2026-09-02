@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>T21 - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "T21";
+        var mkdocs_page_input_path = "tutorials/t21.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">T21</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#t21strain_induced_precipitates">T21: Strain induced precipitates</a></p>
+</li>
+<li>
+<p><a href="#complimentary_files">Complimentary files</a></p>
+</li>
+<li><a href="#contents">Contents:</a></li>
+<li>
+<p><a href="#setting_up_the_system">Setting up the system</a></p>
+</li>
+<li>
+<p><a href="#phase_solubilities">Phase solubilities</a></p>
+</li>
+<li><a href="#precipiation_domains_and_phases">Precipiation domains and phases</a></li>
+<li><a href="#thermo-mechanical_treatment">Thermo-mechanical treatment</a></li>
+<li><a href="#kinetics_simulation_of_simple_cooling_process">Kinetics simulation of simple cooling process</a></li>
+<li><a href="#effect_of_volumetric_misfit">Effect of volumetric misfit</a></li>
+<li>
+<p><a href="#simulation_of_deformation_process">Simulation of deformation process</a></p>
+</li>
+<li>
+<p><a href="#evolution_of_dislocation_density">Evolution of dislocation density</a></p>
+</li>
+<li><a href="#thermo-mechanical_treatment_settings">Thermo-mechanical treatment settings</a></li>
+<li><a href="#deactivation_of_the_volumetric_misfit">Deactivation of the volumetric misfit</a></li>
+<li><a href="#kinetic_simulation">Kinetic simulation</a></li>
+</ul>
+<h2 id="t21-strain-induced-precipitates">T21: Strain induced precipitates</h2>
+<p><em>This tutorial was tested on<br />
+MatCalc version 6.04 rel 1.002<br />
+license: free<br />
+database: mc_fe.tdb; mc_fe.ddb</em></p>
+<h3 id="complimentary-files">Complimentary files</h3>
+<p>Click <a href="/tutorials/t21/script/t21_6021003.mcs" title="tutorials/t21/script/t21_6021003.mcs (27.3 KB)">here</a> to view the script for this tutorial</p>
+<h3 id="contents">Contents:</h3>
+<ul>
+<li>Effect of volumetric misfit on precipitation kinetics</li>
+<li>Introduction of deformation into the thermo-mechanical treatment</li>
+<li>Effects of the applied deformation on the precipitation kinetics</li>
+</ul>
+<p>Deformation process influences the microstructure of the alloy. One of the effects is the occurence of the strain induced precipitates. This tutorial demonstrates how the deformation processes can be included in the simulation of the processed material. Moreover, the effects of the deformation on the precipitation kinetics are demonstrated and discussed.</p>
+<h2 id="setting-up-the-system">Setting up the system</h2>
+<p>Create a new workspace and open the <strong>'mc_fe.tdb'</strong> database. Select the elements <strong>'Fe'</strong>, <strong>'Nb'</strong> and <strong>'C'</strong>, together with the phases <strong>'BCC_A2'</strong>, <strong>'FCC_A1'</strong> and <strong>'Cementite'</strong>. Click on 'Read' instead of 'Read &amp; Close', as the subsequent step is to read the diffusion database in this window. Select <strong>'Diffusion data'</strong> on the left side and read the <strong>'mc_fe.ddb'</strong> database. Enter the composition of <strong>0.2 wt.% C</strong> and <strong>0.04 wt.% Nb</strong>. In menu <strong>'Calc'</strong>, click on <strong>'Set start values'</strong> and calculate an equilibrium at the initial 1000°C.</p>
+<h3 id="phase-solubilities">Phase solubilities</h3>
+<p>In order to have some insight into the system equilibria, perform a stepped equilibrium calculation. In <strong>'Stepped euilibrium '</strong> window select the temperature range of 400-1400°C with the step of 10°C. Click on <strong>'OK'</strong></p>
+<p><a href="/tutorials/t21/img/t21_step_equilib.png" title="tutorials/t21/img/t21_step_equilib.png"><img alt=" MatCalc plot" src="/tutorials/t21/img/t21_step_equilib.png" title="MatCalc plot" /></a></p>
+<p>The phase fractions can be plotted by calling the appropriate user-defined window. In <strong>'View'</strong> → <strong>'Create new window'</strong>, select the 'user defined' tab. There, select '01_all_phase_fractions over T_celsius_logY' and click on 'OK'.</p>
+<p><a href="/tutorials/t21/img/t21_user_defined_equilib_6050006.png" title="tutorials/t21/img/t21_user_defined_equilib_6050006.png"><img alt=" MatCalc plot" src="/tutorials/t21/img/t21_user_defined_equilib_6050006.png" title="MatCalc plot" /></a></p>
+<p>This will result in the plot looking like the one shown below. From this diagram it can be concluded that NbC precipitates below 1300°C and the ferrite will form below 850°C.</p>
+<p><a href="/tutorials/t21/img/t21_equilib_phase_fractions.png" title="tutorials/t21/img/t21_equilib_phase_fractions.png"><img alt=" MatCalc plot" src="/tutorials/t21/img/t21_equilib_phase_fractions.png" title="MatCalc plot" /></a></p>
+<h3 id="precipiation-domains-and-phases">Precipiation domains and phases</h3>
+<p>Next, create a precipitation domain called <strong>'austenite'</strong> in the 'Precipitation domains …' window. Select <strong>FCC_A1</strong> as the <strong>thermodynamic matrix phase</strong>.</p>
+<p>Now, define the precipitate phase settings in <strong>'Phase status'</strong> window. Select <strong>'FCC_A1#01'</strong> and click on <strong>'Create'</strong> and <strong>'precipitate (_Pnn'</strong>). In 'Nucleation' → 'Sites' set 'dislocations' as nucleation sites (and remove the checkmark from 'bulk').</p>
+<p><a href="/tutorials/t21/img/t21_nbc_austen_initial_set_6050006.png" title="tutorials/t21/img/t21_nbc_austen_initial_set_6050006.png"><img alt=" MatCalc plot" src="/tutorials/t21/img/t21_nbc_austen_initial_set_6050006.png" title="MatCalc plot" /></a></p>
+<h3 id="thermo-mechanical-treatment">Thermo-mechanical treatment</h3>
+<p>The last step before the initial kinetics simulation is the definition of the thermo-mehanical treatment. In <strong>'Global'</strong> → <strong>'Thermo-mech. treatments …'</strong> create a new treatment with the name <strong>'cooling'</strong>. Next, create a segment in which the austenite domain will be cooled from <strong>1300°C</strong> to <strong>750°C</strong> with <strong>1°C/s</strong> cooling rate</p>
+<p><a href="/tutorials/t21/img/t21_cooling_segment_6050006.png" title="tutorials/t21/img/t21_cooling_segment_6050006.png"><img alt=" MatCalc plot" src="/tutorials/t21/img/t21_cooling_segment_6050006.png" title="MatCalc plot" /></a></p>
+<p><a href="/tutorials/t21/img/t21_cooling_treatment_6050006.png" title="tutorials/t21/img/t21_cooling_treatment_6050006.png"><img alt=" MatCalc plot" src="/tutorials/t21/img/t21_cooling_treatment_6050006.png" title="MatCalc plot" /></a></p>
+<h2 id="kinetics-simulation-of-simple-cooling-process">Kinetics simulation of simple cooling process</h2>
+<p>With all the setup procedures done, perform the kinetics simulation. Click on <strong>'Calc' → 'Microstructure simulation'</strong>. Select the <strong>'cooling'</strong> treatment in the <strong>'Temperature control …'</strong> area and click on <strong>'Go'</strong>.</p>
+<p><a href="/tutorials/t21/img/t21_microstruct_evol_settings_6050006.png" title="tutorials/t21/img/t21_microstruct_evol_settings_6050006.png"><img alt=" MatCalc plot" src="/tutorials/t21/img/t21_microstruct_evol_settings_6050006.png" title="MatCalc plot" /></a></p>
+<p>Once the calculation is completed, use the 'user defined plots' for visualizing the phase fraction, number density and mean radius evolution of the precipitates, as well as the temperature profile. Click on <strong>'View' → 'Create new window'</strong>, select the <strong>'user-defined'</strong> tab and choose the entry <strong>'03_kinetics_4_frames_T_f_n_r_linX'</strong>. Click on <strong>'OK'</strong>. Set the start of the scaling range to <strong>'1'</strong>. The analysis of the created plots reveals a somewhat unspectacular precipitaition of NbC phase after 200 s (below 1100°C) that reaches the number density of 1e18 m-3 and stays in the nanometer range.</p>
+<p><a href="/tutorials/t21/img/t21_temp_kin.png" title="tutorials/t21/img/t21_temp_kin.png"><img alt=" MatCalc plot" src="/tutorials/t21/img/t21_temp_kin.png" title="MatCalc plot" /></a></p>
+<p><a href="/tutorials/t21/img/t21_cool_phase_fraction.png" title="tutorials/t21/img/t21_cool_phase_fraction.png"><img alt=" MatCalc plot" src="/tutorials/t21/img/t21_cool_phase_fraction.png" title="MatCalc plot" /></a></p>
+<p><a href="/tutorials/t21/img/t21_cool_number_density.png" title="tutorials/t21/img/t21_cool_number_density.png"><img alt=" MatCalc plot" src="/tutorials/t21/img/t21_cool_number_density.png" title="MatCalc plot" /></a></p>
+<p><a href="/tutorials/t21/img/t21_cool_mean_radius.png" title="tutorials/t21/img/t21_cool_mean_radius.png"><img alt=" MatCalc plot" src="/tutorials/t21/img/t21_cool_mean_radius.png" title="MatCalc plot" /></a></p>
+<p>By clicking on <strong>'Global' → 'Buffers' → 'Rename'</strong>, rename the current buffer to <strong>'Cooling'</strong>.</p>
+<h2 id="effect-of-volumetric-misfit">Effect of volumetric misfit</h2>
+<p>In general, the precipitates show usually different crystallographic features from the matrix phase. This will be the source of the stress acting on the precipitates within the grain which needs to be considered especially during the nucleation stage. As for now, all the simulations were performed in the previous tutorial were neglecting this factor. Now it will be demonstrated how this effect can be intorduced into the simulation and what is the effect of it.</p>
+<p>Click on <strong>'Global' → 'Phase status'</strong> and select <strong>'Structure'</strong> tab. In the field <strong>'vol. misfit (dV/V)'</strong> type in the values of <strong>'0.1'</strong> for the precipitate phase. This represents the stress coming from the precipitate volume differing by 10% from the matrix volume.</p>
+<p><a href="/tutorials/t21/img/t21_vol_misfit.png" title="tutorials/t21/img/t21_vol_misfit.png"><img alt=" MatCalc plot" src="/tutorials/t21/img/t21_vol_misfit.png" title="MatCalc plot" /></a></p>
+<p>Next, in <strong>'Nucleation' → 'Controls'</strong> tab put a checkmark at the <strong>'use volumetric misfit'</strong> for the precipitate phase.</p>
+<p><a href="/tutorials/t21/img/t21_vol_misfit_nucl_6050006.png" title="tutorials/t21/img/t21_vol_misfit_nucl_6050006.png"><img alt=" MatCalc plot" src="/tutorials/t21/img/t21_vol_misfit_nucl_6050006.png" title="MatCalc plot" /></a></p>
+<p>Click on 'OK' to close the window. Create a new buffer with the name <strong>'Vol_misfit'</strong>. With this buffer selected, perform again the kinetic simulation. Once the simulation is completed, duplicate and lock all series in the plots, then switch the displayed buffer to 'Vol_misfit'. As it can be noticed, the definition of the volumetric misfit decreased amount of the precipitated phase.</p>
+<p><a href="/tutorials/t21/img/t21_misfit_phase_fraction.png" title="tutorials/t21/img/t21_misfit_phase_fraction.png"><img alt=" MatCalc plot" src="/tutorials/t21/img/t21_misfit_phase_fraction.png" title="MatCalc plot" /></a></p>
+<p><a href="/tutorials/t21/img/t21_misfit_number_density.png" title="tutorials/t21/img/t21_misfit_number_density.png"><img alt=" MatCalc plot" src="/tutorials/t21/img/t21_misfit_number_density.png" title="MatCalc plot" /></a></p>
+<p><a href="/tutorials/t21/img/t21_misfit_mean_radius.png" title="tutorials/t21/img/t21_misfit_mean_radius.png"><img alt=" MatCalc plot" src="/tutorials/t21/img/t21_misfit_mean_radius.png" title="MatCalc plot" /></a></p>
+<h2 id="simulation-of-deformation-process">Simulation of deformation process</h2>
+<p>When deformation process is to be simulated, there are basically three things to be modified in the treatment:</p>
+<ul>
+<li>Activation of the dislocation density evolution model.</li>
+<li>Definition of the deformation rates and temperatures.</li>
+<li>Deactivation of the volumetric misfit effect for the nucleation during the deformation.</li>
+</ul>
+<h3 id="evolution-of-dislocation-density">Evolution of dislocation density</h3>
+<p>The deformation will change the microstructure of the alloy. Here, the change of the dislocation density by the deformation is presented.</p>
+<p>Click on <strong>'Global' → 'Precipitation domains'</strong>. The simulated deformation will be performed in the austenite region, so select austenite as a precipitation domain and switch to the <strong>'MS Evolution'</strong> tab. Inside, select <strong>'Substructure'</strong> tab and select <strong>'1-param - Sherstnev-Lang-Kozeschnik - 'ABC''</strong> as the model for the substructure evolution.</p>
+<p><a href="/tutorials/t21/img/t21_sub_model_select_6011003.png" title="tutorials/t21/img/t21_sub_model_select_6011003.png"><img alt="" src="/tutorials/t21/img/t21_sub_model_select_6011003.png" /></a></p>
+<p>You might notice some parameters in the 'Dislocation generation and anihilation …' section which describe the generation of the dislocations (<strong>'A'</strong>-parameter) and their anihilation during the static (<strong>'B'</strong>-parameter, expressed as a conditional expression) and dynamic recovery (<strong>'C'</strong>-parameter). Leave all the parameters there on the default value.</p>
+<p><a href="/tutorials/t21/img/t21_sub_model_parameters_6050006.png" title="tutorials/t21/img/t21_sub_model_parameters_6050006.png"><img alt="" src="/tutorials/t21/img/t21_sub_model_parameters_6050006.png" /></a></p>
+<h3 id="thermo-mechanical-treatment-settings">Thermo-mechanical treatment settings</h3>
+<p>In this simulation, three deformation runs will be represented. Click on <strong>'Global' → 'Thermo-mech. treatments'</strong>, select <strong>'cooling'</strong> treatment and click on <strong>'Duplicate'</strong> button at the bottom of the list. A new treatment with name <strong>'cooling_1'</strong> will be created. Select it and click on <strong>'Rename'</strong> button. In the new window that appears, type 'deformation' as the new name and click on <strong>'OK'</strong> button.</p>
+<p><a href="/tutorials/t21/img/t21_rename_tmt_6050006.png" title="tutorials/t21/img/t21_rename_tmt_6050006.png"><img alt="" src="/tutorials/t21/img/t21_rename_tmt_6050006.png" /></a></p>
+<p>In the newly created treatment, modify the first segment end temperature to 1000°C. Add a new segment, change the ramp control setting therein to <strong>'Accumulated strain'</strong> and set the <strong>'Accumulated strain'</strong> value to <strong>'0.7'</strong>.</p>
+<p><a href="/tutorials/t21/img/t21_deformation_segment_1_6050006.png" title="tutorials/t21/img/t21_deformation_segment_1_6050006.png"><img alt="" src="/tutorials/t21/img/t21_deformation_segment_1_6050006.png" /></a></p>
+<p>Afterwards, switch to the <strong>'MS Evolution'</strong> tab and type in the strain_rate value of <strong>'0.15'</strong>.</p>
+<p><a href="/tutorials/t21/img/t21_deformation_segment_6050006.png" title="tutorials/t21/img/t21_deformation_segment_6050006.png"><img alt="" src="/tutorials/t21/img/t21_deformation_segment_6050006.png" /></a></p>
+<p>The definition of the next segments should follow the settings below:</p>
+<ol>
+<li>End temperature of 950°C with 1 K/s rate.</li>
+<li>Deformation at 950°C with strain rate of 0.15 increasing the strain by 0.7.</li>
+<li>End temperature of 900°C with 1 K/s rate.</li>
+<li>Deformation at 900°C with strain rate of 0.15 increasing the strain by 0.7.</li>
+<li>End temperature of 750°C with 1 K/s rate.</li>
+</ol>
+<p>The complete treatment data are shown below.</p>
+<p><a href="/tutorials/t21/img/t21_deformation_treatment_6050006.png" title="tutorials/t21/img/t21_deformation_treatment_6050006.png"><img alt="" src="/tutorials/t21/img/t21_deformation_treatment_6050006.png" /></a></p>
+<h3 id="deactivation-of-the-volumetric-misfit">Deactivation of the volumetric misfit</h3>
+<p>As previously mentioned, some volumetric misfit might be present related to the precipitates appearing in the grains, decreasing thus their nucleation rate. However, the stress introduced during the applied deformation can cancel this effect. To account for this in MatCalc, clicking on <strong>'Global' → 'Phase status'</strong> and select the <strong>'Nucleation' → 'Controls'</strong> tab. Put a checkmark at <strong>'ignore misfit stress during deformation'</strong> for both precipitate phases. Click on 'OK' to close the window.</p>
+<p><a href="/tutorials/t21/img/t21_ignore_misfit_deform_6050006.png" title="tutorials/t21/img/t21_ignore_misfit_deform_6050006.png"><img alt="" src="/tutorials/t21/img/t21_ignore_misfit_deform_6050006.png" /></a></p>
+<h3 id="kinetic-simulation">Kinetic simulation</h3>
+<p>Click on <strong>'Global' → 'Buffers' → 'Create'</strong> to create a new buffer with the name <strong>'Deformation'</strong>. Afterwards, click on <strong>'Calc' → 'Microstructure simulation'</strong> and select <strong>'deformation'</strong> in <strong>'from tm treatment:'</strong> field. Start the calculation by clicking on <strong>'OK'</strong>. The results of the precipitation kinetics calculation are shown now with the blue curve.</p>
+<p><a href="/tutorials/t21/img/t21_deformation_phase_fraction_6011003.png" title="tutorials/t21/img/t21_deformation_phase_fraction_6011003.png"><img alt=" MatCalc plot" src="/tutorials/t21/img/t21_deformation_phase_fraction_6011003.png" title="MatCalc plot" /></a></p>
+<p><a href="/tutorials/t21/img/t21_deformation_number_density_6011003.png" title="tutorials/t21/img/t21_deformation_number_density_6011003.png"><img alt=" MatCalc plot" src="/tutorials/t21/img/t21_deformation_number_density_6011003.png" title="MatCalc plot" /></a></p>
+<p><a href="/tutorials/t21/img/t21_deformation_mean_radius_6011003.png" title="tutorials/t21/img/t21_deformation_mean_radius_6011003.png"><img alt=" MatCalc plot" src="/tutorials/t21/img/t21_deformation_mean_radius_6011003.png" title="MatCalc plot" /></a></p>
+<p>A considerable difference of three order of magnitudes is observed in the phase fraction of the precipitates. The same difference could be noticed for the number density. In both diagrams, three steps for the increase can be distinguished. The curve for the mean radius has a wavy form showing minima at the time frames of the sudden increases of the phase fraction and number density.</p>
+<p>To have a closer inspection on the deformation influence on the precipitation kinetics, create a new plot window of <strong>'p1'</strong>-type. Create three new plots, next to the existing one. Drag and drop the <strong>'EPS_DOT'</strong> variable (located in <strong>'kinetics/ general'</strong> group), representing the strain rate in the system, onto the first plot. Three peaks can be recognized relevant for the three isothermal deformation segments.</p>
+<p><a href="/tutorials/t21/img/t21_strain_rate_6011003.png" title="tutorials/t21/img/t21_strain_rate_6011003.png"><img alt=" MatCalc plot" src="/tutorials/t21/img/t21_strain_rate_6011003.png" title="MatCalc plot" /></a></p>
+<p>On the second diagramm, plot the <strong>'DD_TOT$austenite'</strong> variable (located in <strong>'prec_domain struct sc'</strong> group) representing the dislocation density of the system. Again, three peaks can be recognized with the maxima corresponding to those of strain rate curve on the first plot. Clearly, the material deformation increases the dislocation density. On the other hand, the dislocation density decreases during the segments without deformation - this is the time when static recovery occurs in the material.</p>
+<p><a href="/tutorials/t21/img/t21_dislocation_density_6011003.png" title="tutorials/t21/img/t21_dislocation_density_6011003.png"><img alt=" MatCalc plot" src="/tutorials/t21/img/t21_dislocation_density_6011003.png" title="MatCalc plot" /></a></p>
+<p>As dislocations were set as the nucleation sites for the precipitates, one might wonder if the increase in dislocation density has any effect on the precipitate nucleation. Drag and drop <strong>'NUCL_RATE$FCC_A1#01_P0'</strong> variable (located in <strong>'kinetics/ nucleation'</strong> group), representing the nucleation rate of the precipitate phase, onto the third plot. Indeed, three peaks in nucleation rate series, corresponding to periods of increased dislocation density, can be recognized. Hence, one of the deformation effects on the precipitation process ia the acceleration of the nucleation kinetics by increasing the number of sites where the precipitate nuclei can form.</p>
+<p><a href="/tutorials/t21/img/t21_nucleation_rate_6011003.png" title="tutorials/t21/img/t21_nucleation_rate_6011003.png"><img alt=" MatCalc plot" src="/tutorials/t21/img/t21_nucleation_rate_6011003.png" title="MatCalc plot" /></a></p>
+<p>Another effect can be recognized, once <strong>'PIPE_DCF<span class="arithmatex">\(austenite\)</span>*'</strong> variables (located in <strong>'prec_domain special'</strong> group) are plotted on the last diagramm. In order to explain the meaning of this variable, recall the pipe diffusion effect which is an effect of the enhanced diffusion along dislocations and is relevant for the precipitates nucleating there. In the simulations without any deformation, the pipe diffusivities are derived form the bulk diffusivities by multiplication of the latter with a factor dependent on the temperature. When dislocation density increases, an additional correction factor appears, which is dependent on the amount of the excess dislocations. The <strong>'PIPE_DCF<span class="arithmatex">\(austenite\)</span>*'</strong> variables represent this additional correction factor.</p>
+<p><a href="/tutorials/t21/img/t21_pipe_dif_cf_6011003.png" title="tutorials/t21/img/t21_pipe_dif_cf_6011003.png"><img alt=" MatCalc plot" src="/tutorials/t21/img/t21_pipe_dif_cf_6011003.png" title="MatCalc plot" /></a></p>
+<p>It can be noticed that for the segment before the deformation the factor has value of unity, as excess dislocations were not present in the system. Afterwards, three peaks can be observed again in accordance with the dislocation density peaks. This enhanced diffusion serves as an explanation for the higher precipitate mean radius which can be observed after the deformation segments.</p>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=tutorials%3At21&amp;1788352861" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

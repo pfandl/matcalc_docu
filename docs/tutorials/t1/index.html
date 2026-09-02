@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Introduction to the MatCalc graphical user interface (GUI) - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Introduction to the MatCalc graphical user interface (GUI)";
+        var mkdocs_page_input_path = "tutorials/t1.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" >Tutorials</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Introduction to the MatCalc graphical user interface (GUI)</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#contents">Contents</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#screen-layout">Screen layout</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#menu-bar">Menu bar</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#toolbar">Toolbar</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#file">File</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#working-directory-and-script">Working directory and script</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#edit">Edit</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#calculation">Calculation</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#manage-windows">Manage windows</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#managing-toolbar-elements">Managing toolbar elements</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quick-access-bar">Quick access bar</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#configuring-the-layout">Configuring the layout</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#rearranging-the-position-of-toolbar-elements-and-windows">Rearranging the position of toolbar elements and windows</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#bar-right-click-menu">Bar 'Right-click' menu</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#menu-view-show">Menu 'View' &gt; 'Show'</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#menu-view-select-window-font">Menu 'View' &gt; 'Select window font'</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#menu-view-select-application-style">Menu 'View' &gt; 'Select application style'</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#menu-view-restore-window-positions-alt-shift-r">Menu 'View' &gt; 'Restore window positions' (Alt + Shift + R)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#matcalc-workspace">MatCalc workspace</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#the-file-menu">The 'File' menu</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#creating-a-new-workspace">Creating a new workspace</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#adding-workspace-information">Adding workspace information</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#saving-workspace">Saving workspace</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#close-workspace">Close workspace</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#working-directory">Working directory</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#getting-help">Getting help</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#subsequent-articles">Subsequent articles</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Guides</li>
+          <li class="breadcrumb-item">Tutorials</li>
+      <li class="breadcrumb-item active">Introduction to the MatCalc graphical user interface (GUI)</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="t1-introduction-to-the-matcalc-graphical-user-interface-gui">T1: Introduction to the MatCalc graphical user interface (GUI)</h1>
+<p>This tutorial was tested on:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MatCalc version</td>
+<td>6.10 rel 1.002</td>
+</tr>
+<tr>
+<td>license</td>
+<td>free</td>
+</tr>
+<tr>
+<td>database</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<p>This first tutorial provides a brief tour of MatCalc's graphical user interface. The interface elements that will be referred to in the subsequent tutorials, are introduced here. At the end, the very basic operations on a MatCalc workspace and a working directory are demonstrated.</p>
+<h3 id="contents">Contents</h3>
+<ul>
+<li><a href="/tutorials/t1#the_graphical_user_interface" title="tutorials/t1">Appearance of the graphical user interface</a></li>
+<li>Overview of  <a href="/tutorials/t1#menu_bar" title="tutorials/t1">MatCalc menus</a>,  <a href="/tutorials/t1#toolbars" title="tutorials/t1">toolbar</a>, and  <a href="/tutorials/t1#quick_access_bar" title="tutorials/t1">Quick access bar</a> entries</li>
+<li><a href="/tutorials/t1#configuring_the_layout" title="tutorials/t1">Configuring the GUI layout</a></li>
+<li>The 'File' menu</li>
+<li>Creating a new workspace file</li>
+<li>Modifying the working directory</li>
+<li>Adding workspace information</li>
+<li>Saving and closing files</li>
+<li>Getting help</li>
+</ul>
+<p>The graphical user interface</p>
+<h3 id="screen-layout">Screen layout</h3>
+<p>When MatCalc is first opened, the screen appears as shown below (Windows version).</p>
+<p><a href="/tutorials/t1/img/t1_screenshot_6101002.png" title="tutorials/t1/img/t1_screenshot_6101002.png"><img alt=" MatCalc screenshot " src="/tutorials/t1/img/t1_screenshot_6101002.png" title="MatCalc screenshot" /></a></p>
+<p>The table below gives brief descriptions of the different areas of the screen.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Menu bar</td>
+<td>The main menu (see  <a href="/tutorials/t1#menu_bar" title="tutorials/t1">below</a> and the relevant section in the <a href="/reference/menu" title="reference/menu">Reference book</a>).</td>
+</tr>
+<tr>
+<td>Toolbar</td>
+<td>Icons giving quick access to frequently used functions (see  <a href="/tutorials/t1#toolbars" title="tutorials/t1">below</a>)</td>
+</tr>
+<tr>
+<td>Quick access bar</td>
+<td>Icons giving quick access to window management options (see  <a href="/tutorials/t1#quick_access_bar" title="tutorials/t1">below</a>).</td>
+</tr>
+<tr>
+<td>Console</td>
+<td>This window has an area that shows output from calculations and other operations, as well, as an area for entering command-lines; more information is given in  <a href="/tutorials/t12" title="tutorials/t12">Tutorial 12</a>.</td>
+</tr>
+<tr>
+<td>Options window</td>
+<td>Context-sensitive options to change the way information is displayed.  <a href="/tutorials/t2" title="tutorials/t2">Tutorial 2</a>,  <a href="/tutorials/t4" title="tutorials/t4">Tutorial 4</a> and  <a href="/tutorials/t5" title="tutorials/t5">Tutorial 5</a> give more information about the Options window.</td>
+</tr>
+<tr>
+<td>Variables window</td>
+<td>A list of MatCalc's built-in variables with their current values. See  <a href="/tutorials/t4" title="tutorials/t4">Tutorial 4</a> and  <a href="/tutorials/t5" title="tutorials/t5">Tutorial 5</a> for more about variables.</td>
+</tr>
+<tr>
+<td>Nodes window</td>
+<td>List of nodes used in simulation. Multiple nodes are used in advanced calculations.</td>
+</tr>
+<tr>
+<td>Status bar</td>
+<td>Gives information on the current state of the system (temperature, time, etc.) and on the contents of graphical windows (see  <a href="/tutorials/t4" title="tutorials/t4">Tutorial 4</a>).</td>
+</tr>
+<tr>
+<td>List of recent workspaces</td>
+<td>List of recently opened MatCalc workspaces. Clicking on the item on the list will open the relevant workspace.</td>
+</tr>
+<tr>
+<td>List of recent scripts</td>
+<td>List of recently opened MatCalc scripts. Clicking on the item on the list will allow to edit the relevant script (see  <a href="/tutorials/t13" title="tutorials/t13">Tutorial 13</a>).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="menu-bar">Menu bar</h3>
+<p>As with any typical GUI application, this gives access to a number of sub-menus. The <strong>File</strong> and <strong>Help</strong> menus are documented in this tutorial, and the contents of the other menus will be described in more detail in subsequent tutorials.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>File</strong></td>
+<td>opening, saving and closing files (see <strong>'File operations'</strong> below)</td>
+</tr>
+<tr>
+<td><strong>Edit</strong></td>
+<td>text-editing commands such as undo, redo, cut, copy, paste</td>
+</tr>
+<tr>
+<td><strong>Global</strong></td>
+<td>commands for setting up the system (see <a href="/tutorials/t2" title="tutorials/t2">Tutorial 2</a> and subsequent tutorials)</td>
+</tr>
+<tr>
+<td><strong>Calc</strong></td>
+<td>commands for the most frequent types of calculation (see <a href="/tutorials/t2" title="tutorials/t2">Tutorial 2</a> and subsequent tutorials)</td>
+</tr>
+<tr>
+<td><strong>Cells, Monte Carlo</strong></td>
+<td>commands for starting calculation within additional MatCalc modules</td>
+</tr>
+<tr>
+<td><strong>Script</strong></td>
+<td>to run scripts (more on this in  <a href="/tutorials/t13" title="tutorials/t13">Tutorial 13</a>)</td>
+</tr>
+<tr>
+<td><strong>View</strong></td>
+<td>to configure the GUI and create new windows for the display of results (see <a href="/tutorials/t4" title="tutorials/t4">Tutorial 4</a> and <a href="/tutorials/t5" title="tutorials/t5">Tutorial 5</a>)</td>
+</tr>
+<tr>
+<td><strong>Help</strong></td>
+<td>see <a href="/tutorials/t1#getting_help" title="tutorials/t1">Getting help</a> below</td>
+</tr>
+</tbody>
+</table>
+<p>On platforms running under <strong>MacOS</strong> an additional menu <strong>'mcg'</strong> is also present. Comprehensive information about the menu items can be found in the <a href="/reference/menu" title="reference/menu">reference book</a>.</p>
+<h3 id="toolbar">Toolbar</h3>
+<p>The toolbar area contains a number of icon groups:</p>
+<h5 id="file">File</h5>
+<p><a href="/tutorials/t1/img/t1_toolbar_file_6101002.png" title="tutorials/t1/img/t1_toolbar_file_6101002.png"><img alt=" MatCalc Toolbar File" src="/tutorials/t1/img/t1_toolbar_file_6101002.png" title="MatCalc Toolbar File" /></a> <br />
+L-R : New, open, save, close workspace, print, documentation</p>
+<h5 id="working-directory-and-script">Working directory and script</h5>
+<p><a href="/tutorials/t1/img/t1_toolbar_workdir_script_6101002.png" title="tutorials/t1/img/t1_toolbar_workdir_script_6101002.png"><img alt=" MatCalc Toolbar Toolbar" src="/tutorials/t1/img/t1_toolbar_workdir_script_6101002.png" title="MatCalc Toolbar Toolbar" /></a> <br />
+L-R: select working directory, browse working directory, run script</p>
+<h5 id="edit">Edit</h5>
+<p><a href="/tutorials/t1/img/t1_toolbar_edit_6101002.png" title="tutorials/t1/img/t1_toolbar_edit_6101002.png"><img alt=" MatCalc Toolbar Edit" src="/tutorials/t1/img/t1_toolbar_edit_6101002.png" title="MatCalc Toolbar Edit" /></a> <br />
+L-R: Undo, redo, cut, copy, paste, find</p>
+<h5 id="calculation">Calculation</h5>
+<p><a href="/tutorials/t1/img/t1_toolbar_calculation_6101002.png" title="tutorials/t1/img/t1_toolbar_calculation_6101002.png"><img alt=" MatCalc Toolbar Calculation" src="/tutorials/t1/img/t1_toolbar_calculation_6101002.png" title="MatCalc Toolbar Calculation" /></a> <br />
+L-R: Stop current action, single equilibrium, stepped equilibrium, search phase boundary, precipitate kinetics calculation, select calculation state, save into current calculation state, load from current calculation state, select calculation buffer.</p>
+<h5 id="manage-windows">Manage windows</h5>
+<p><a href="/tutorials/t1/img/t1_toolbar_manage_windows_6101002.png" title="tutorials/t1/img/t1_toolbar_manage_windows_6101002.png"><img alt=" MatCalc Toolbar Manage Windows" src="/tutorials/t1/img/t1_toolbar_manage_windows_6101002.png" title="MatCalc Toolbar Manage Windows" /></a> <br />
+L-R: Show/hide console, create new output window, create new plot window (p1-type)</p>
+<h4 id="managing-toolbar-elements">Managing toolbar elements</h4>
+<p>Right-clicking on the toolbar area gives a menu allowing the user to control which windows and which icon groups are to be displayed on the screen:</p>
+<p><a href="/tutorials/t1/img/t1_toolbar_menu_6101002.png" title="tutorials/t1/img/t1_toolbar_menu_6101002.png"><img alt=" MatCalc Toolbarmenu" src="/tutorials/t1/img/t1_toolbar_menu_6101002.png" title="MatCalc Toolbarmenu" /></a></p>
+<h3 id="quick-access-bar">Quick access bar</h3>
+<p>The quick access bar enables you to customise the appearance of your MatCalc session by displaying, hiding and rearranging the windows.</p>
+<p>The table below gives brief descriptions of the different areas of the screen.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/tutorials/t1/img/t1_icon_hide_all_6101002.png" title="tutorials/t1/img/t1_icon_hide_all_6101002.png">Hide all</a></td>
+<td>Hide options, variables, consoles and nodes. Workspace output windows remain visible.</td>
+</tr>
+<tr>
+<td><a href="/tutorials/t1/img/t1_icon_console_6101002.png" title="tutorials/t1/img/t1_icon_console_6101002.png">Console</a></td>
+<td>Show/maximise/hide the console window (three-way toggle).</td>
+</tr>
+<tr>
+<td><a href="/tutorials/t1/img/t1_icon_options_6101002.png" title="tutorials/t1/img/t1_icon_options_6101002.png">Options</a></td>
+<td>Show/hide the options window.</td>
+</tr>
+<tr>
+<td><a href="/tutorials/t1/img/t1_icon_variables_6101002.png" title="tutorials/t1/img/t1_icon_variables_6101002.png">Variables</a></td>
+<td>Show/hide the variables window.</td>
+</tr>
+<tr>
+<td><a href="/tutorials/t1/img/t1_icon_nodes_6101002.png" title="tutorials/t1/img/t1_icon_nodes_6101002.png">Nodes</a></td>
+<td>Show/hide the nodes window.</td>
+</tr>
+<tr>
+<td><a href="/tutorials/t1/img/t1_icon_start_6101002.png" title="tutorials/t1/img/t1_icon_start_6101002.png">Start</a></td>
+<td>Start calculation (green arrow), stop calculation (red 'x' shown while calculation is running). Green tick-mark indicates successfully executed calculation.</td>
+</tr>
+<tr>
+<td><a href="/tutorials/t1/img/t1_icon_freeze_6101002.png" title="tutorials/t1/img/t1_icon_freeze_6101002.png">Freeze</a></td>
+<td>Freeze window updates during calculation.</td>
+</tr>
+<tr>
+<td><a href="/tutorials/t1/img/t1_icon_fit_to_viewport_6101002.png" title="tutorials/t1/img/t1_icon_fit_to_viewport_6101002.png">Fit to viewport</a></td>
+<td>Fit windows into viewport (visible area on screen).</td>
+</tr>
+<tr>
+<td><a href="/tutorials/t1/img/t1_icon_zoom_in_6101002.png" title="tutorials/t1/img/t1_icon_zoom_in_6101002.png">Zoom in</a></td>
+<td>Zoom in.</td>
+</tr>
+<tr>
+<td><a href="/tutorials/t1/img/t1_icon_zoom_out_6101002.png" title="tutorials/t1/img/t1_icon_zoom_out_6101002.png">Zoom out</a></td>
+<td>Zoom out.</td>
+</tr>
+<tr>
+<td><a href="/tutorials/t1/img/t1_icon_open_navigator_6101002.png" title="tutorials/t1/img/t1_icon_open_navigator_6101002.png">Open navigator</a></td>
+<td>Display an overview all open windows, enabling you to find the windows and regions of interest.</td>
+</tr>
+<tr>
+<td><a href="/tutorials/t1/img/t1_icon_display_mode_6101002.png" title="tutorials/t1/img/t1_icon_display_mode_6101002.png">Display mode</a></td>
+<td>Management of output windows configuration. Clicking the down-arrow to the right of this icon reveals three options:  <strong>windowed</strong> - output is in moveable windows on the screen  <strong>tabbed</strong> - output is accessible via browser-style tabs at the top of the viewport  <strong>expose</strong> - automatic organisation of output, with minimisation of system windows such as options, console, etc. Clicking on the background of the viewport area brings back the previous display mode (windowed/tabbed).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="configuring-the-layout">Configuring the layout</h3>
+<h4 id="rearranging-the-position-of-toolbar-elements-and-windows">Rearranging the position of toolbar elements and windows</h4>
+<p>In addition to the arrangement options available in Quick access bar, toolbar icon groups and the <strong>'Options'</strong>, <strong>'Variables'</strong>, <strong>'Nodes'</strong> and <strong>'Console'</strong> windows can be detached from their locations and rearranged as desired by dragging and dropping.</p>
+<h4 id="bar-right-click-menu">Bar 'Right-click' menu</h4>
+<p>Right-clicking on the <strong>'menu bar'</strong>, <strong>'toolbar'</strong> or <strong>'quick access bar'</strong> brings up a menu allowing the user to show or hide menu icon groups and windows as described  <a href="/tutorials/t1#managing_toolbar_elements" title="tutorials/t1">above</a> ('Managing toolbar elements').</p>
+<h4 id="menu-view-show">Menu 'View' &gt; 'Show'</h4>
+<p>Enables the following windows to be displayed or hidden: 'console' (F4), 'options' (F3), 'variables' (F2), 'node manager' (Shift + F5). It corresponds with the functionalities of the respective  <a href="/tutorials/t1#quick_access_bar" title="tutorials/t1">Quick access bar</a> icons.</p>
+<p><a href="/tutorials/t1/img/t1_menu_show_windows_6101002.png" title="tutorials/t1/img/t1_menu_show_windows_6101002.png"><img alt="Menu: show windows" src="/tutorials/t1/img/t1_menu_show_windows_6101002.png" title="Menu/ show windows" /></a></p>
+<h4 id="menu-view-select-window-font">Menu 'View' &gt; 'Select window font'</h4>
+<p>Here the user can select an alternative font/font size for the display of numerical output. This does not affect the appearance of the 'console', 'nodes', 'options' and 'variables' windows.</p>
+<p><a href="/tutorials/t1/img/t1_menu_window_font_6101002.png" title="tutorials/t1/img/t1_menu_window_font_6101002.png"><img alt="Menu: window font settings" src="/tutorials/t1/img/t1_menu_window_font_6101002.png" title="Menu/ window font settings" /></a></p>
+<p><a href="/tutorials/t1/img/t1_window_font_settings_6101002.png" title="tutorials/t1/img/t1_window_font_settings_6101002.png"><img alt="Window font settings" src="/tutorials/t1/img/t1_window_font_settings_6101002.png" title="Window font settings" /></a></p>
+<h4 id="menu-view-select-application-style">Menu 'View' &gt; 'Select application style'</h4>
+<p>The overall appearance of MatCalc can be modified here. The different options offer a greater or lesser degree of free space around text items, stronger or more subtle contrast etc. - experiment with the items of the drop-down list until you find an option that suits you.</p>
+<p><a href="/tutorials/t1/img/t1_menu_application_style_6101002.png" title="tutorials/t1/img/t1_menu_application_style_6101002.png"><img alt="Menu: application style settings" src="/tutorials/t1/img/t1_menu_application_style_6101002.png" title="Menu/ application style settings" /></a></p>
+<p><a href="/tutorials/t1/img/t1_select_application_style_6101002.png" title="tutorials/t1/img/t1_select_application_style_6101002.png"><img alt="Application style settings" src="/tutorials/t1/img/t1_select_application_style_6101002.png" title="Application style settings" /></a></p>
+<h4 id="menu-view-restore-window-positions-alt-shift-r">Menu 'View' &gt; 'Restore window positions' (Alt + Shift + R)</h4>
+<p>Restores all windows to their default positions.</p>
+<p><a href="/tutorials/t1/img/t1_restore_window_positions_6101002.png" title="tutorials/t1/img/t1_restore_window_positions_6101002.png"><img alt="Menu: restore window positions" src="/tutorials/t1/img/t1_restore_window_positions_6101002.png" title="Menu/ restore window positions" /></a></p>
+<h2 id="matcalc-workspace">MatCalc workspace</h2>
+<p>Having learned about the GUI elements, it is time to meet the <strong>'MatCalc workspace'</strong> concept. Technically speaking, MatCalc workspace is an object which can be handled by MatCalc GUI. It contains all the necessary information on the user calculations, comprising inputs (elements, phases, compositions, thermodynamic and mobility data) and outputs (results of calculations, graphs, etc.). Saving the workspace preserves all the information for future use. Needless to say, the very first step to perform any simulations in MatCalc GUI is to provide the workspace – either by creating a new one or loading one created before.</p>
+<h3 id="the-file-menu">The 'File' menu</h3>
+<p>Basic workspace operations can be accessed in menu 'File'. Clicking on <strong>'File'</strong> in the menu bar opens the following menu:</p>
+<p><a href="/tutorials/t1/img/t1_menu_file_6101002.png" title="tutorials/t1/img/t1_menu_file_6101002.png"><img alt=" MatCalc file menu" src="/tutorials/t1/img/t1_menu_file_6101002.png" title="MatCalc file menu" /></a></p>
+<h3 id="creating-a-new-workspace">Creating a new workspace</h3>
+<p>To create a new workspace, do <em>one</em> of the following:</p>
+<ul>
+<li>Click on the respective icon on the toolbar</li>
+</ul>
+<p><a href="/tutorials/t1/img/t1_icon_new_6101002.png" title="tutorials/t1/img/t1_icon_new_6101002.png"><img alt=" MatCalc icon new" src="/tutorials/t1/img/t1_icon_new_6101002.png" title="MatCalc icon new" /></a></p>
+<ul>
+<li>Click on <strong>'New'</strong> from the <strong>'File'</strong> menu</li>
+</ul>
+<p><a href="/tutorials/t1/img/t1_menu_file_new_6101002.png" title="tutorials/t1/img/t1_menu_file_new_6101002.png"><img alt=" Menu: new" src="/tutorials/t1/img/t1_menu_file_new_6101002.png" title="Menu/ new" /></a></p>
+<ul>
+<li>Press <strong>Ctrl + N</strong> on the keyboard</li>
+<li>Click on the <strong>'New workspace'</strong> button</li>
+</ul>
+<p><a href="/tutorials/t1/img/t1_new_workspace_button_6101002.png" title="tutorials/t1/img/t1_new_workspace_button_6101002.png"><img alt=" New workspace button" src="/tutorials/t1/img/t1_new_workspace_button_6101002.png" title="New workspace button" /></a></p>
+<p>The following dialogue box will appear (except when clicked on <strong>'New Workspace'</strong> button):</p>
+<p><a href="/tutorials/t1/img/t1_new_file_6101002.png" title="tutorials/t1/img/t1_new_file_6101002.png"><img alt=" MatCalc new file" src="/tutorials/t1/img/t1_new_file_6101002.png" title="MatCalc new file" /></a></p>
+<p>Select <strong>'MatCalc workspace'</strong> from the drop-down list and click on <strong>“OK”</strong> button.</p>
+<p><a href="/tutorials/t1/img/t1_new_file_workspace_6101002.png" title="tutorials/t1/img/t1_new_file_workspace_6101002.png"><img alt=" MatCalc new file" src="/tutorials/t1/img/t1_new_file_workspace_6101002.png" title="MatCalc new file" /></a></p>
+<p>This runs a script file called <strong>autonew.mcs</strong>, which makes two additional windows appear: <strong>Phase details</strong> and <strong>Phase summary</strong>. When the new workspace is first created, the <strong>Phase summary</strong> and <strong>Phase details</strong> windows show messages indicating that no phases have yet been selected. The workspace is now ready for thermodynamic or precipitation calculations to be set up and performed.</p>
+<p><a href="/tutorials/t1/img/t1_workspace_screenshot_6101002.png" title="tutorials/t1/img/t1_workspace_screenshot_6101002.png"><img alt=" MatCalc Screenshot" src="/tutorials/t1/img/t1_workspace_screenshot_6101002.png" title="MatCalc Screenshot" /></a></p>
+<h3 id="adding-workspace-information">Adding workspace information</h3>
+<p>Clicking on <strong>Workspace info…</strong> in menu <strong>File</strong> opens a box in which information about the current workspace can be entered. This is useful for details of the assumptions used in the calculation, the sources of experimental data, etc.</p>
+<p><a href="/tutorials/t1/img/t1_menu_workspace_info_6101002.png" title="tutorials/t1/img/t1_menu_workspace_info_6101002.png"><img alt=" Menu: workspace info" src="/tutorials/t1/img/t1_menu_workspace_info_6101002.png" title="Menu/ workspace info" /></a></p>
+<p><a href="/tutorials/t1/img/t1_workspace_info_6101002.png" title="tutorials/t1/img/t1_workspace_info_6101002.png"><img alt="MatCalc workspace info" src="/tutorials/t1/img/t1_workspace_info_6101002.png" title="MatCalc workspace info" /></a></p>
+<h3 id="saving-workspace">Saving workspace</h3>
+<p>Workspaces can be saved using <em>alternatively</em>:</p>
+<ul>
+<li><strong>Save…</strong> in the menu <strong>File</strong></li>
+</ul>
+<p><a href="/tutorials/t1/img/t1_menu_save_6101002.png" title="tutorials/t1/img/t1_menu_save_6101002.png"><img alt=" Menu: save" src="/tutorials/t1/img/t1_menu_save_6101002.png" title="Menu/ save" /></a></p>
+<ul>
+<li>the keyboard shortcut <strong>Ctrl + S</strong></li>
+<li>the respective icon on the toolbar.</li>
+</ul>
+<p><a href="/tutorials/t1/img/t1_icon_save_6101002.png" title="tutorials/t1/img/t1_icon_save_6101002.png"><img alt=" MatCalc icon save" src="/tutorials/t1/img/t1_icon_save_6101002.png" title="MatCalc icon save" /></a></p>
+<p>To save an existing workspace under a different name, select <strong>Save As…</strong> from the file menu.</p>
+<p><a href="/tutorials/t1/img/t1_menu_save_as_6101002.png" title="tutorials/t1/img/t1_menu_save_as_6101002.png"><img alt=" Menu: save as" src="/tutorials/t1/img/t1_menu_save_as_6101002.png" title="Menu/ save as" /></a></p>
+<h3 id="close-workspace">Close workspace</h3>
+<p>To close a workspace, do <em>one</em> of the following:</p>
+<ul>
+<li>choose <strong>Close Workspace</strong> from the file menu</li>
+</ul>
+<p><a href="/tutorials/t1/img/t1_menu_close_workspace_6101002.png" title="tutorials/t1/img/t1_menu_close_workspace_6101002.png"><img alt=" Menu: close workspace" src="/tutorials/t1/img/t1_menu_close_workspace_6101002.png" title="Menu/ close workspace" /></a></p>
+<ul>
+<li>press <strong>Ctrl + Shift + W</strong></li>
+<li>click on the respective icon on the toolbar.</li>
+</ul>
+<p><a href="/tutorials/t1/img/t1_icon_close_6101002.png" title="tutorials/t1/img/t1_icon_close_6101002.png"><img alt=" MatCalc icon close" src="/tutorials/t1/img/t1_icon_close_6101002.png" title="MatCalc icon close" /></a></p>
+<p><strong><em>WARNING</em></strong></p>
+<p>Do not close the individual windows on the screen before saving, or their contents will not be saved!</p>
+<h2 id="working-directory">Working directory</h2>
+<p>Another important concept for the input/output operations of MatCalc (including saving or loading MatCalc workspaces) is the one of <strong>'working directory'</strong>. This is the directory on the user system drive opened by default when MatCalc is saving any output files or looking for any input files. Clicking on <strong>'Working directory…'</strong> in the <strong>'File'</strong> menu allows the user to designate an existing directory as the working directory or to create a new directory for this purpose. MatCalc remembers your chosen working directory for next time.</p>
+<p><a href="/tutorials/t1/img/t1_menu_working_directory_6101002.png" title="tutorials/t1/img/t1_menu_working_directory_6101002.png"><img alt=" MatCalc working directory" src="/tutorials/t1/img/t1_menu_working_directory_6101002.png" title="MatCalc working directory" /></a><br />
+<a href="/tutorials/t1/img/t1_working_directory_6101002.png" title="tutorials/t1/img/t1_working_directory_6101002.png"><img alt=" MatCalc working directory" src="/tutorials/t1/img/t1_working_directory_6101002.png" title="MatCalc working directory" /></a></p>
+<p>The paths of the current working directory and of recently used working directories are listed to the right of <strong>Recent working dirs…</strong>, allowing any of these directories to be selected easily.</p>
+<p><a href="/tutorials/t1/img/t1_menu_recent_workdirs_6101002.png" title="tutorials/t1/img/t1_menu_recent_workdirs_6101002.png"><img alt=" MatCalc recent working directories menu" src="/tutorials/t1/img/t1_menu_recent_workdirs_6101002.png" title="MatCalc recent working directories menu" /></a></p>
+<p>The same information is also available in a drop-box within the toolbar area:</p>
+<p><a href="/tutorials/t1/img/t1_workdir_dropbox_6101002.png" title="tutorials/t1/img/t1_workdir_dropbox_6101002.png"><img alt=" MatCalc working directory dropbox" src="/tutorials/t1/img/t1_workdir_dropbox_6101002.png" title="MatCalc working directory dropbox" /></a></p>
+<p>The visible entry corresponds to the currently selected working directory</p>
+<h2 id="getting-help">Getting help</h2>
+<p>The MatCalc help files are accessible on this website. At present, no local installation is provided.</p>
+<p>In the Console, typing a question-mark will display a list of available commands. These will be discussed in more detail in  <a href="/tutorials/t12" title="tutorials/t12">Tutorial 12</a>.</p>
+<h2 id="subsequent-articles">Subsequent articles</h2>
+<p>The tutorial is continued in  <a href="/tutorials/t2" title="tutorials/t2">Tutorial 2 - Calculating a single equilibrium</a></p>
+<p>Go to the <a href="/tutorials" title="tutorials">MatCalc tutorial index</a>.</p>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=tutorials%3At1&amp;1788352857" /></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../" class="btn btn-neutral float-left" title="MatCalc tutorial"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../t2/" class="btn btn-neutral float-right" title="Calculating a single equilibrium">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../t2/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

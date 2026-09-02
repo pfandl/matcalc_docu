@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Export import tmt - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Export import tmt";
+        var mkdocs_page_input_path = "howtosimulate/precipitation/export_import_tmt.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Export import tmt</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>Exporting/importing thermo-mechanical treatments [MatCalc Documentation]</p>
+<h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#exporting_importing_thermo-mechanical_treatments">Exporting/importing thermo-mechanical treatments</a></p>
+</li>
+<li>
+<p><a href="#compatibility">Compatibility</a></p>
+</li>
+<li><a href="#objectives">Objectives</a></li>
+<li><a href="#related_documents">Related documents</a></li>
+<li>
+<p><a href="#main_document">Main document</a></p>
+</li>
+<li>
+<p><a href="#export_a_tmt">Export a TMT</a></p>
+</li>
+<li><a href="#import_a_tmt">Import a TMT</a></li>
+<li><a href="#preparation_of_the_file_for_tmt_import">Preparation of the file for TMT import</a></li>
+</ul>
+<h1 id="exportingimporting-thermo-mechanical-treatments">Exporting/importing thermo-mechanical treatments</h1>
+<h2 id="compatibility">Compatibility</h2>
+<p>MatCalc version: 6.02 - … <br />
+Author: P. Warczok <br />
+Created: 2020-04-15 <br />
+Revisions:</p>
+<h2 id="objectives">Objectives</h2>
+<p>In this document, the procedures for exporting and importing the thermo-mechanical treatments (commonly abbreviated as “TMT” in MatCalc) using a text file is described. Additionally, the preparation of the text file for an import of the custom treatment is demonstrated.</p>
+<h2 id="related-documents">Related documents</h2>
+<ol>
+<li><a href="/reference/tmt_file" title="reference/tmt_file">Thermo-mechanical treatment file structure</a></li>
+</ol>
+<h1 id="main-document">Main document</h1>
+<p>While GUI editor or console/script commands allow for convenient and neat definition of the simulated thermo-mechanical cycle, its application meets the limits for treatments containing many segments. Moreover, it is not straightforward to automate the input process through these means. To overcome these problems, the export/import functionality of the treatments via a text file was introduced.</p>
+<h2 id="export-a-tmt">Export a TMT</h2>
+<p>Thermo-mechanical treatments can be stored in a text file. This file is created by MatCalc</p>
+<ul>
+<li>in GUI editor (menu “Global” → “Thermo-mech. treatments”), by selecting the relevant treatment in “available ™ treatments” list, clicking on “Write” button and defining the file name and destination directory.</li>
+<li>in console/script, with “export-tm-treatment tm-treatment-name= export-file-name=“ command. If “export-file-name” contains only the filename (without a specific path), the file will be exported into the current working directory.</li>
+</ul>
+<h2 id="import-a-tmt">Import a TMT</h2>
+<p>The text files can be imported into the thermomechanical treatments:</p>
+<ul>
+<li>in GUI editor (menu “Global” → “Thermo-mech. treatments”), by clicking on “Read” button and selecting the relevant file</li>
+<li>in console/script, with “import-tm-treatment import-file-name=“ command. If “import-file-name” contains only the filename (without a specific path), MatCalc will look for the file in the current working directory.</li>
+</ul>
+<h2 id="preparation-of-the-file-for-tmt-import">Preparation of the file for TMT import</h2>
+<p>The file describing the thermo-mechanical treatment needs to have a specific structure in order to be recognised by MatCalc. An overview of this structure is discussed  <a href="/reference/tmt_file" title="reference/tmt_file">here</a>  and can be easily experienced when a treatment defined with GUI editor or script/console commands is exported into the text file. One can notice that such a file contains a comprehensive parameter definition range. The treatment data that the user would like to import need not to contain that amount of information. Still, some structure features must be kept. Let us demonstrate it on a simple example.</p>
+<p>The starting point is the data describing the bloom cooling stored at room temperature given in the table below.</p>
+<table>
+<thead>
+<tr>
+<th>Time [h]</th>
+<th>Temperature [°C]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1400</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1280</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1170</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1070</td>
+</tr>
+<tr>
+<td>4</td>
+<td>980</td>
+</tr>
+<tr>
+<td>5</td>
+<td>900</td>
+</tr>
+<tr>
+<td>6</td>
+<td>830</td>
+</tr>
+<tr>
+<td>7</td>
+<td>760</td>
+</tr>
+<tr>
+<td>8</td>
+<td>690</td>
+</tr>
+<tr>
+<td>9</td>
+<td>640</td>
+</tr>
+<tr>
+<td>10</td>
+<td>580</td>
+</tr>
+<tr>
+<td>11</td>
+<td>540</td>
+</tr>
+<tr>
+<td>12</td>
+<td>490</td>
+</tr>
+<tr>
+<td>13</td>
+<td>450</td>
+</tr>
+<tr>
+<td>14</td>
+<td>420</td>
+</tr>
+<tr>
+<td>15</td>
+<td>380</td>
+</tr>
+<tr>
+<td>16</td>
+<td>350</td>
+</tr>
+<tr>
+<td>17</td>
+<td>320</td>
+</tr>
+<tr>
+<td>18</td>
+<td>300</td>
+</tr>
+<tr>
+<td>19</td>
+<td>270</td>
+</tr>
+<tr>
+<td>20</td>
+<td>250</td>
+</tr>
+<tr>
+<td>21</td>
+<td>230</td>
+</tr>
+<tr>
+<td>22</td>
+<td>210</td>
+</tr>
+<tr>
+<td>23</td>
+<td>200</td>
+</tr>
+<tr>
+<td>24</td>
+<td>180</td>
+</tr>
+</tbody>
+</table>
+<p>These two columns would be the content of <strong>'Data'</strong> section. Still, two modifications will be performed. The first one is just the removal of the very first line, as it contains only the information on the start temperature - this will be provided later on. The second modification is the multiplication by 3600, as MatCalc interprets the time in seconds, while the provided data was given in hours.</p>
+<pre><code>[data]
+1*60*60 1280
+2*60*60 1170
+3*60*60 1070
+4*60*60 980
+5*60*60 900
+6*60*60 830
+7*60*60 760
+8*60*60 690
+9*60*60 640
+10*60*60 580
+11*60*60 540
+12*60*60 490
+13*60*60 450
+14*60*60 420
+15*60*60 380
+16*60*60 350
+17*60*60 320
+18*60*60 300
+19*60*60 270
+20*60*60 250
+21*60*60 230
+22*60*60 210
+23*60*60 200
+24*60*60 180
+[/data]
+</code></pre>
+<p>Now, it is necessary to explain MatCalc the meaning of the columns. This is done, as follows:</p>
+<pre><code>[format]
+column=absolute_time
+column=end_temperature
+[/format]
+</code></pre>
+<p>In the <strong>'Variables'</strong> section, the mandatory entry about the segment code needs to be given. Value of <strong>'3'</strong> is taken here, so that MatCalc looks for segment end temperature and duration time. Although, the segment duration times are not provided in <strong>'data'</strong> section, MatCalc is smart enough to figure these out from the 'absolute time' column.</p>
+<pre><code>[variables]
+segment-code=3
+[/variables]
+</code></pre>
+<p>At last, the information about the tmt start temperature and the name is specified.</p>
+<pre><code>[global]
+tmt-name=Cooling
+start-temperature=1400
+[/global]
+</code></pre>
+<p>One could add some comments to the file for an easier comprehension for the reader. Any such line shall start with a dollar-sign (<strong>'$'</strong>). Of course, the comments are not mandatory.</p>
+<p>The complete file describing the above cooling curve that can be imported to MatCalc has the following content:</p>
+<pre><code>$ Below are the temperature-time data to be imported.
+$ Time is given in hours here so every time record has to be multiplied
+$ by 3600 so that MatCalc recognizes it properly (MatCalc operates with seconds)
+[data]
+1*60*60 1280
+2*60*60 1170
+3*60*60 1070
+4*60*60 980
+5*60*60 900
+6*60*60 830
+7*60*60 760
+8*60*60 690
+9*60*60 640
+10*60*60 580
+11*60*60 540
+12*60*60 490
+13*60*60 450
+14*60*60 420
+15*60*60 380
+16*60*60 350
+17*60*60 320
+18*60*60 300
+19*60*60 270
+20*60*60 250
+21*60*60 230
+22*60*60 210
+23*60*60 200
+24*60*60 180
+[/data]
+$ Interpretation of the columns is given below (the first column is absolute time,
+$ the second one is the end temperature of the segment)
+[format]
+column=absolute-time
+column=end-temperature
+[/format]
+
+$ Definition of tmt name and tmt start temperature
+[global]
+tmt-name=cooling
+start-temperature=1400
+[/global]
+
+$ Definition of default segment-code is mandatory
+$ In this case, the value of &quot;3&quot; is set
+$ (MatCalc looks for segment end temperature and duration time)
+$ (Duration time is calculated from &quot;absolute time&quot; column)
+[variables]
+segment-code=3
+[/variables]
+</code></pre>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=howtosimulate%3Aprecipitation%3Aexport_import_tmt&amp;1788352863" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

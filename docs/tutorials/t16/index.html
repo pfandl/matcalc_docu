@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>T16 - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "T16";
+        var mkdocs_page_input_path = "tutorials/t16.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">T16</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#t16effect_of_microstructure_and_conditions_part_2">T16: Effect of microstructure and conditions (Part 2)</a></p>
+</li>
+<li>
+<p><a href="#complimentary_files">Complimentary files</a></p>
+</li>
+<li><a href="#contents">Contents:</a></li>
+<li><a href="#before_starting">Before starting...</a></li>
+<li>
+<p><a href="#simultaneous_precipitation_of_cementite_and_m_sub_23_sub_c_sub_6_sub">Simultaneous precipitation of cementite and M<sub>23</sub>C<sub>6</sub></a></p>
+</li>
+<li>
+<p><a href="#setup">Setup</a></p>
+</li>
+<li><a href="#interpretation_of_results">Interpretation of results</a></li>
+<li>
+<p><a href="#effect_of_dislocation_density">Effect of dislocation density</a></p>
+</li>
+<li>
+<p><a href="#results">Results:</a></p>
+</li>
+<li>
+<p><a href="#effect_of_grain_diameter">Effect of grain diameter</a></p>
+</li>
+<li>
+<p><a href="#results1">Results:</a></p>
+</li>
+<li><a href="#consecutive_articles">Consecutive articles</a></li>
+</ul>
+<h2 id="t16-effect-of-microstructure-and-conditions-part-2">T16: Effect of microstructure and conditions (Part 2)</h2>
+<p><em>This tutorial was tested on<br />
+MatCalc version 6.04 rel 1.001<br />
+license: free<br />
+database: mc_fe.tdb; mc_fe.ddb</em></p>
+<h3 id="complimentary-files">Complimentary files</h3>
+<p>Click <a href="/tutorials/t16/script/t16_6021003.mcs" title="tutorials/t16/script/t16_6021003.mcs (13.7 KB)">here</a> to view the script for this tutorial</p>
+<h3 id="contents">Contents:</h3>
+<ul>
+<li>Simultaneous precipitation of two phases</li>
+<li>Effect of dislocation density</li>
+<li>Effect of grain diameter</li>
+<li>Subgrains and elongation factors</li>
+</ul>
+<h2 id="before-starting">Before starting...</h2>
+<p>Re-open the workspace saved from Tutorial 15 and save it under a new name.</p>
+<h2 id="simultaneous-precipitation-of-cementite-and-m23c6">Simultaneous precipitation of cementite and M<sub>23</sub>C<sub>6</sub></h2>
+<p><img alt="FIXME" src="/wiki/lib/images/smileys/fixme.svg" /></p>
+<h3 id="setup">Setup</h3>
+<p>Open <strong>'Global &gt; Phase status'</strong> and create a precipitate phase from M23C6. In the <strong>'Nucleation'</strong> tab, set the nucleus composition model to <strong>'ortho-equilibrium'</strong>. Set the nucleation sites to <strong>'Grain boundaries'</strong> in the <strong>'Nucl. sites'</strong> tab.</p>
+<p><a href="/tutorials/t16/img/t16_m23c6_nucl_sites_6050006.png" title="tutorials/t16/img/t16_m23c6_nucl_sites_6050006.png"><img alt=" MatCalc plot" src="/tutorials/t16/img/t16_m23c6_nucl_sites_6050006.png" title="MatCalc plot" /></a></p>
+<p>In <strong>'Global &gt; Precipitation domains &gt; General'</strong>, reset the dislocation density to its default value of <strong>'1e12'</strong> m-2. The default grain diameter is <strong>'100e-6'</strong> m, and it is this which governs the density of M23C6_P0 nucleation sites. Modify the existing five plots to contain the following series:</p>
+<ol>
+<li><strong>F<span class="arithmatex">\(CEMENTITE\_P0, F\)</span>M23C6_P0</strong> (fraction of cementite and M23C6 precipitated, respectively)</li>
+<li><strong>XPR<span class="arithmatex">\(CEMENTITE\_P0\)</span>CR, X<span class="arithmatex">\(BCC\_A2\)</span>CR</strong> (Cr content of cementite precipitates and matrix, respectively)</li>
+<li><strong>X<span class="arithmatex">\(BCC\_A2\)</span>C</strong> (C content of matrix)</li>
+<li><strong>NUM_PREC<span class="arithmatex">\(CEMENTITE\_P0, NUM\_PREC\)</span>M23C6_P0</strong> (number of cementite and M23C6 precipitates, respectively)</li>
+<li><strong>R_MEAN<span class="arithmatex">\(CEMENTITE\_P0, R\_MEAN\)</span>M23C6_P0</strong> (mean radius of cementite and M23C6 precipitates, respectively)</li>
+</ol>
+<p>Run the kinetic simulation, with an isothermal heat treatment at <strong>600°C</strong> as before, and an end time of <strong>3.6e+10 s</strong>.</p>
+<h3 id="interpretation-of-results">Interpretation of results</h3>
+<p>Plot 1: Cementite appears rapidly and reaches a steady-state precipitate fraction. M23C6 starts to form after around 1 hour at 600°C; this is at the expense of cementite, which redissolves. By the end of the simulation, all the cementite has dissolved and M23C6 has reached its equilibrium phase fraction.</p>
+<p><a href="/tutorials/t16/img/t16_plot1_ph_fraction_2016.png" title="tutorials/t16/img/t16_plot1_ph_fraction_2016.png"><img alt=" MatCalc plot" src="/tutorials/t16/img/t16_plot1_ph_fraction_2016.png" title="MatCalc plot" /></a></p>
+<p>Plot 2: This shows that cementite enrichment has started in the time of the cementite dissolution.</p>
+<p><a href="/tutorials/t16/img/t16_plot2_cr_content_2016.png" title="tutorials/t16/img/t16_plot2_cr_content_2016.png"><img alt=" MatCalc plot" src="/tutorials/t16/img/t16_plot2_cr_content_2016.png" title="MatCalc plot" /></a></p>
+<p>Plot 3: The depletion of the matrix in carbon occurs in two stages. The first of these corresponds to the formation of cementite, and the second to the formation of M23C6.</p>
+<p><a href="/tutorials/t16/img/t16_plot3_c_content_matrix_2016.png" title="tutorials/t16/img/t16_plot3_c_content_matrix_2016.png"><img alt=" MatCalc plot" src="/tutorials/t16/img/t16_plot3_c_content_matrix_2016.png" title="MatCalc plot" /></a></p>
+<p>Plot 4: The number of M23C6 precipitates is lower than the one cementite precipitates which is due to the lower amount of the nucleation sites - there are less sites on the grain boundaries than on the dislocations. The reduction in the number of cementite precipitates is both due to the coarsening and the phase dissolution stages:</p>
+<p><a href="/tutorials/t16/img/t16_plot4_number_ppt_2016.png" title="tutorials/t16/img/t16_plot4_number_ppt_2016.png"><img alt=" MatCalc" src="/tutorials/t16/img/t16_plot4_number_ppt_2016.png" title="MatCalc" /></a></p>
+<p>Plot 5: There is an intermediate stage between the growth and coarsening phases for the cementite precipitates (plateau between 10-6 - 10-3 hours). The maximal size of the cementite precipitates is in the micrometer range.</p>
+<p><a href="/tutorials/t16/img/t16_plot5_mean_radius_2016.png" title="tutorials/t16/img/t16_plot5_mean_radius_2016.png"><img alt=" MatCalc" src="/tutorials/t16/img/t16_plot5_mean_radius_2016.png" title="MatCalc" /></a></p>
+<h2 id="effect-of-dislocation-density">Effect of dislocation density</h2>
+<p>Duplicate and lock the series and re-run the simulation with a dislocation density of <strong>1e14 m-2</strong>, leaving the grain size the same.</p>
+<h3 id="results">Results:</h3>
+<p>The onset of cementite precipitation occurs earlier with a higher dislocation density, but the kinetics of cementite dissolution and of M23C6 precipitation are unchanged. The plot below shows a significant increase (note log scale) in the number of cementite precipitates formed.</p>
+<p><a href="/tutorials/t16/img/t16_plot6_dd_number_ppt_2016.png" title="tutorials/t16/img/t16_plot6_dd_number_ppt_2016.png"><img alt=" MatCalc plot" src="/tutorials/t16/img/t16_plot6_dd_number_ppt_2016.png" title="MatCalc plot" /></a></p>
+<p>With a higher dislocation density, the cementite particles do not become so large during the growth stage. However, coarsening begins earlier, and the curve of radius versus time for the coarsening precipitates eventually becomes parallel with that for the lower dislocation density.</p>
+<p><a href="/tutorials/t16/img/t16_plot7_dd_mean_radius_2016.png" title="tutorials/t16/img/t16_plot7_dd_mean_radius_2016.png"><img alt=" MatCalc plot" src="/tutorials/t16/img/t16_plot7_dd_mean_radius_2016.png" title="MatCalc plot" /></a></p>
+<h2 id="effect-of-grain-diameter">Effect of grain diameter</h2>
+<p>Reopen <strong>'Global &gt; Precipitation domains &gt; General'</strong>. Reset the dislocation density to <strong>1e12 m-2</strong>, set the grain diameter to <strong>10e-6 m</strong> and re-run the simulation.</p>
+<p><a href="/tutorials/t16/img/t16_grain_diameter_2017.png" title="tutorials/t16/img/t16_grain_diameter_2017.png"><img alt=" MatCalc plot" src="/tutorials/t16/img/t16_grain_diameter_2017.png" title="MatCalc plot" /></a></p>
+<h3 id="results_1">Results:</h3>
+<p>As might be expected, reducing the grain diameter accelerates the precipitation kinetics of M23C6, by providing more nucleation sites. It also accelerates the dissolution of cementite, which begins to dissolve when M23C6 starts to precipitate.</p>
+<p><a href="/tutorials/t16/img/t16_plot8_gd_ph_fraction_2016.png" title="tutorials/t16/img/t16_plot8_gd_ph_fraction_2016.png"><img alt=" MatCalc plot" src="/tutorials/t16/img/t16_plot8_gd_ph_fraction_2016.png" title="MatCalc plot" /></a></p>
+<p>The plot below shows the effect on the number of M23C6 of reducing the grain size from 10-4 to 10-5 m. The number of M23C6 increased due to more nucleation sites available.</p>
+<p><a href="/tutorials/t16/img/t16_plot9_gd_number_ppt_2016.png" title="tutorials/t16/img/t16_plot9_gd_number_ppt_2016.png"><img alt=" MatCalc plot" src="/tutorials/t16/img/t16_plot9_gd_number_ppt_2016.png" title="MatCalc plot" /></a></p>
+<p>In the plot of radius against time, the maximum cementite radius attained is reduced, because there is less time available for coarsening of this phase before dissolution sets in.</p>
+<p><a href="/tutorials/t16/img/t16_plot10_gd_mean_radius_2016.png" title="tutorials/t16/img/t16_plot10_gd_mean_radius_2016.png"><img alt=" MatCalc plot" src="/tutorials/t16/img/t16_plot10_gd_mean_radius_2016.png" title="MatCalc plot" /></a></p>
+<h2 id="consecutive-articles">Consecutive articles</h2>
+<p>The tutorial is continued in article  <a href="/tutorials/t17" title="tutorials/t17">T17 - Multi-stage heat treatment</a></p>
+<p>Go to <a href="/tutorials" title="tutorials">MatCalc tutorial index</a>.</p>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=tutorials%3At16&amp;1788352860" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

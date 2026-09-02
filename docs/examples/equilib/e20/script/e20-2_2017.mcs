@@ -1,0 +1,210 @@
+$$************************************************************************************************** 
+************************************** GENERAL INFORMATION *****************************************
+****************************************************************************************************
+
+This example describes a strategy for evaluation of primary solidification microstructures based on 
+purely thermodynamic grounds. This analysis can be utilized for a prediction of primary 
+precipitation and microsegregation during casting. The results can serve as a basis for defining 
+representative compositions in subsequent precipitation kinetics simulations of enriched and 
+depleted regions in a (micro)segregated microstructure.
+
+Part 2 makes use of the Scheil-Gulliver simulation method to estimate the possible existence of 
+primary carbonitride precipitates. The analysis is performed based on the results of the previous 
+equilibrium analysis of example E20, part 1. The primary precipitates are assumed to form in the 
+residual liquid pockets of the solidifying microstructure. The example makes use of the 
+back-diffusion and solid-solid transformation features of MatCalc.
+
+Database: mc_fe.tdb, mc_x_FeAlCNNbTi.tdb
+Author: G. Stechauner
+Creation date: 2011-11-03
+This is a script for MatCalc version 5.44 (rel 0.021)
+
+
+**************************************************************************************************** 
+************************************** SETUP INFORMATION *******************************************
+**************************************************************************************************$$
+
+$ make sure we work in the correct module
+use-module core 
+
+$ creates a new workspace 
+new-workspace 
+
+@ echo n
+set-workspace-info + Scheil-Gulliver simulation
+set-workspace-info +
+set-workspace-info + Phases: Liquid, FCC_A1, BCC_A2, Cementite, AlN
+set-workspace-info + Chemical components: Fe, C, Al, N, Nb, Ti
+set-workspace-info + 
+set-workspace-info + For further information visit www.matcalc.at
+set-workspace-info +
+echo y
+
+
+$$************************************************************************************************** 
+**************************************** SYSTEM SETUP **********************************************
+**************************************************************************************************$$
+
+$ verify correct MatCalc version (is accessible as internal variable) 
+if (matcalc_version<5440021)
+   send-dialog-string "MatCalc version must be 5.44.0021 or higher to run this script. Stopping."
+   stop_run_script                                  $ stop script
+endif
+
+test-exist-td-database mc_x_FeAlCNNbTi.tdb                    $ Check if database is present
+if (test_result==1)
+   open-thermodyn-database mc_x_FeAlCNNbTi.tdb                $ Thermodynamic database
+else
+   test-exist-td-database mc_fe.tdb 
+   if (test_result==1)
+      open-thermodyn-database mc_fe.tdb   $ Thermodynamic database
+   else
+      send-dialog-string "No valid database found. Visit matcalc website and download the free 'mc_x_FeAlCNNbTi' database."
+      stop_run_script
+   endif
+endif
+
+
+$$************************************************************************************************** 
+                        DATABASES, CHEMICAL COMPOSITION, SELECTED PHASES
+**************************************************************************************************$$
+
+select-elements FE C AL N NB TI VA                      
+select-phases LIQUID FCC_A1 BCC_A2 CEMENTITE ALN        
+read-thermodyn-database
+
+set-reference-element FE
+enter-composition WP C=0.22 AL=0.025 N=0.0061 NB=0.036 TI=0.0081
+
+set-automatic-startvalues
+set-temperature-celsius 1000                        $ Temperature
+calculate-equilibrium                               $ Initial equilibrium
+
+$ Change major constituents for existing composition set to NbC
+change-phase-status fcc_a1#01 m Nb:C
+$ Add new equilibrium composition set...
+create-new-phase fcc_a1 e 
+$ ... and change its major constituents to TiN
+change-phase-status fcc_a1#02 m Ti:N
+
+
+$$**************************************************************************************************
+                              STANDARD SCHEIL-GULLIVER SIMULATION
+**************************************************************************************************$$
+
+set-step-option y s                                 $ T(y)pe - (S)cheil
+set-step-option r 1525 1000 1                       $ Calculate in a (r)ange
+set-step-option p liquid                            $ set dependent phase (usually liquid)
+set-step-option l 1.0e-6                            $ minimum liquid fraction
+
+step-equilibrium
+
+
+$$**************************************************************************************************
+                             PLOTTING RESULTS WITHOUT BACK-DIFFUSION
+**************************************************************************************************$$
+
+new-gui-window p1                                   $ Plot of the phase diagram
+move-gui-window . 60 60 450 500
+set-gui-window-property . s u y                     $ use default x-axis for all plots
+set-gui-window-property . x T$c                     $ x-axis data
+set-gui-window-property . S T Temperature [C]       $ x-axis title
+
+$ Plotting Liquid phase fraction and Scheil-Solid phases
+set-plot-option . S N B F$Liquid                     
+set-plot-option . S N B F$FCC_A1_s                    
+set-plot-option . S N B F$FCC_A1#01_s                     
+set-plot-option . S N B F$FCC_A1#02_s               
+set-plot-option . S N B F$BCC_A2_s                   
+set-plot-option . S N B F$CEMENTITE_s                  
+set-plot-option . S N B F$ALN_s                   
+
+set-plot-option . A Y 1 S ..1                       $ Scale y-axis 
+set-plot-option . A Y 1 Y log                       $ Set y-axis to logarithmic 
+set-plot-option . A Y 1 T phase fraction            $ y-axis title
+set-plot-option . L B                               $ Legend on the bottom
+
+set-plot-option . s l * y                           $ Lock all series
+
+
+$$**************************************************************************************************
+                                BACK-DIFFUSION OF FAST DIFFUSERS
+**************************************************************************************************$$
+
+new-gui-window p1                                   $ Plot of the phase diagram
+move-gui-window . 80 80 450 500
+set-gui-window-property . s u y                     $ use default x-axis for all plots
+set-gui-window-property . x 1-f$liquid              $ x-axis data
+set-gui-window-property . S T fraction solid        $ x-axis title
+
+$ Plotting the chemical composition of liquid versus the solid phase fraction
+set-plot-option . S N B X$Liquid$Al                     
+set-plot-option . S N B X$Liquid$C         
+set-plot-option . S N B X$Liquid$N         
+set-plot-option . S N B X$Liquid$Nb         
+set-plot-option . S N B X$Liquid$Ti           
+
+set-plot-option . A Y 1 Y log                       $ Set y-axis to logarithmic 
+set-plot-option . A Y 1 T liquid composition [mf]   $ y-axis title
+set-plot-option . L r                               $ Legend on the bottom
+set-plot-option . A Y 1 S 0,00005..                 $ Scale y-axis 
+
+set-plot-option . s d * y                           $ Duplicate & Lock all series
+
+set-temperature-celsius 1525                        $ Temperature 
+calculate-equilibrium                               $ Initial equilibrium
+set-step-option y s                                 $ T(y)pe - (S)cheil
+set-step-option r 1525 1000 1                       $ Calculate in a (r)ange 
+set-step-option p liquid                            $ set dependent phase (usually liquid)
+set-step-option l 1.0e-6                            $ minimum liquid fraction
+set-step-option b C y                               $ back diffusion of C: yes
+set-step-option b N y                               $ back diffusion of N: yes
+step-equilibrium
+
+set-plot-option . s l * y                           $ Lock all series
+
+
+$$**************************************************************************************************
+                               PLOTTING RESULTS WITH BACK-DIFFUSION
+**************************************************************************************************$$
+
+new-gui-window p1                                   $ Plot of the phase diagram
+move-gui-window . 100 100 450 500
+set-gui-window-property . s u y                     $ use default x-axis for all plots
+set-gui-window-property . x T$c                     $ x-axis data
+set-gui-window-property . S T Temperature [C]       $ x-axis title
+
+$ This table is used to show the 1% line. 
+create-global-table 1p
+add-table-entry 1p 1455 0
+add-table-entry 1p 1455 0.01
+add-table-entry 1p 1450 0.01
+
+$ Plotting Liquid phase fraction and Scheil-Solid phases
+set-plot-option . S N B F$Liquid                     
+set-plot-option . S N B F$FCC_A1_s                    
+set-plot-option . S N B F$FCC_A1#01_s                     
+set-plot-option . S N B F$FCC_A1#02_s                
+set-plot-option . S N B F$BCC_A2_s                    
+set-plot-option . S N B F$CEMENTITE_s                  
+set-plot-option . S N B F$ALN_s                 
+set-plot-option . S N T 1p
+
+set-plot-option . A Y 1 S 1e-6..1                   $ Scale y-axis 
+set-plot-option . A Y 1 Y log                       $ Set y-axis to logarithmic 
+set-plot-option . A Y 1 T phase fraction            $ y-axis title
+set-plot-option . L B                               $ Legend on the bottom
+
+set-plot-option . s l * y                           $ Lock all series
+
+$ Change style, color and markers of 1% line.
+set-plot-option . S E -1 *_1p D N                   $ Use (D)efault style / (N)o
+set-plot-option . S E -1 *_1p L C red               $ (L)ine (c)olor (red)
+set-plot-option . S E -1 *_1p L H 2                 $ (L)ine t(h)ickness 
+set-plot-option . S E -1 *_1p M Y none              $ (M)arker st(y)le none
+set-plot-option . S E -1 *_1p L Y dash              $ Use a dashed line  
+
+
+$$**************************************************************************************************
+************************************ EXAMPLE 20-2 FINISHED *****************************************
+**************************************************************************************************$$

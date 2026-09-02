@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>E20 3 - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "E20 3";
+        var mkdocs_page_input_path = "examples/equilib/e20/e20_3.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">E20 3</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>Example E20: Continuous casting of micro-alloyed Fe-Al-C-N-Nb-Ti steel, part 3: Accounting for the peritectic reaction [MatCalc Documentation]</p>
+<h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#example_e20continuous_casting_of_micro-alloyed_fe-al-c-n-nb-ti_steel_part_3accounting_for_the_peritectic_reaction">Example E20: Continuous casting of micro-alloyed Fe-Al-C-N-Nb-Ti steel, part 3: Accounting for the peritectic reaction</a></p>
+</li>
+<li>
+<p><a href="#compatibility">Compatibility</a></p>
+</li>
+<li><a href="#objectives">Objectives</a></li>
+<li><a href="#related_documents">Related documents</a></li>
+<li><a href="#complementary_files">Complementary files</a></li>
+<li>
+<p><a href="#main_document">Main document</a></p>
+</li>
+<li>
+<p><a href="#setup_thermodynamic_system">Setup thermodynamic system</a></p>
+</li>
+<li><a href="#setup_solid-solid_transformation">Setup solid-solid transformation</a></li>
+<li><a href="#final_results">Final results</a></li>
+<li><a href="#consecutive_articles">Consecutive articles</a></li>
+</ul>
+<h1 id="example-e20-continuous-casting-of-micro-alloyed-fe-al-c-n-nb-ti-steel-part-3-accounting-for-the-peritectic-reaction">Example E20: Continuous casting of micro-alloyed Fe-Al-C-N-Nb-Ti steel, part 3: Accounting for the peritectic reaction</h1>
+<h2 id="compatibility">Compatibility</h2>
+<p>MatCalc version: 5.44.0021 <br />
+Database: mc_fe.tdb, mc_x_FeAlCNNbTi.tdb <br />
+Author: E. Kozeschnik <br />
+Created: 2011-07-08 <br />
+Revisions: G. Stechauner (2011-11-10, Updated image and script)</p>
+<h2 id="objectives">Objectives</h2>
+<p>This example describes a strategy for evaluation of primary solidification microstructures based on purely thermodynamic grounds. This analysis can be utilized for a prediction of primary precipitation and microsegregation during casting. The results can serve as a basis for defining representative compositions in subsequent precipitation kinetics simulations of enriched and depleted regions in a (micro)segregated microstructure.</p>
+<p>The example follows the analysis presented in ref.<a href="#fn__1">1)</a>.</p>
+<p>Part 3 discusses the possibility of taking into account the peritectic reaction into the Scheil-Gulliver simulation. It makes use of the solid-solid transformation functionality of <em>MatCalc</em>.</p>
+<h2 id="related-documents">Related documents</h2>
+<ol>
+<li>E20-1 -  <a href="/examples/equilib/e20/e20_1" title="examples/equilib/e20/e20_1">Thermodynamic equilibrium analysis</a></li>
+<li>E20-2 -  <a href="/examples/equilib/e20/e20_2" title="examples/equilib/e20/e20_2">Scheil-Gulliver analysis of primary precipitation</a></li>
+<li>E20-3 -  <a href="/examples/equilib/e20/e20_3" title="examples/equilib/e20/e20_3">Accounting for the peritectic reaction</a></li>
+<li>E20-4 -  <a href="/examples/equilib/e20/e20_4" title="examples/equilib/e20/e20_4">Scheil-Gulliver analysis of microsegregation</a></li>
+<li>P20 -  <a href="/examples/precipitation/p20" title="examples/precipitation/p20">Precipitation simulation during continuous casting</a></li>
+</ol>
+<h2 id="complementary-files">Complementary files</h2>
+<p>Click <a href="/examples/equilib/e20/script/e20-3_2017.mcs" title="examples/equilib/e20/script/e20-3_2017.mcs (9.2 KB)">here</a> to view the script for this tutorial, and <a href="/examples/equilib/e20/workspace/e20_3_scheil_with_bd_and_st.mcw" title="examples/equilib/e20/workspace/e20_3_scheil_with_bd_and_st.mcw (1.5 MB)">here</a> to download the workspace file.</p>
+<h1 id="main-document">Main document</h1>
+<p>In this part 3, the Scheil-Gulliver simulation scheme with back-diffusion of fast diffusers is extended to account for the peritectic reaction during solidification.</p>
+<h2 id="setup-thermodynamic-system">Setup thermodynamic system</h2>
+<p>Load the workspace file <strong>E20_2_scheil_with_bd.mcw</strong> with the simulation results of part 2 or run the corresponding <a href="/examples/equilib/e20/script/e20-2.mcs" title="examples/equilib/e20/script/e20-2.mcs (10.2 KB)">script</a> to produce the results 'on the fly'.</p>
+<h2 id="setup-solid-solid-transformation">Setup solid-solid transformation</h2>
+<p>In <em>MatCalc</em>, the solid-solid transformation functionality is a convenient possibility for prescribing the transformation of one phase into another, or the creation or removal of a phase, on semi-phenomenological basis. The transformation characteristics can be defined in terms of an Avrami equation, the Koistinen-Marburger equation or on basis of equilibrium and constrained equilibrium calculations. In this example, we will make use of the latter option, since we assume that the peritectic reaction occurs according to a local equilibrium driven mechanism.</p>
+<p>Open the 'Transformations …' dialog from the 'Global' menu. Create a new transformation with the name 'peritectic'. Since the peritectic reaction involves the transformation of delta-ferrite into austenite (simultaneous to the reduction of liquid phase fraction), the (solid) BCC_A2_S phase transforms into FCC_A1_S, which are the settings needed for the 'Transform from …' and the 'Transform to …' phase.</p>
+<p>In order to perform the local equilibrium transformation during the peritectic reaction, <em>MatCalc</em> must create two additional phases, which are denoted as the 'transformation' and 'transformation solid' phases, with the suffices '_T' and '_TS'. This task is carried out by <em>MatCalc</em> after pressing the 'Create equilib phase…' button. This is shown in the following dialog.</p>
+<p><a href="/examples/equilib/e20/img/dialog_global_transformation_1.png" title="examples/equilib/e20/img/dialog_global_transformation_1.png"><img alt=" Global transformation dialog" src="/examples/equilib/e20/img/dialog_global_transformation_1.png" title="Global transformation dialog" /></a></p>
+<p>After creation of the 'transformation' phases, select FCC_A1_T as the 'Equilib phase'. Finally enter 2000 into the 'Temperature start' field, to allow the occurrence of this transformation at all considered temperatures. Close the dialog and open the 'Scheil calculation…' dialog again.</p>
+<p>In the 'Scheil calculation…' dialog, select the 'Add …' button in the 'Impose transformation' group box. Select 'peritectic'.</p>
+<p><a href="/examples/equilib/e20/img/dialog_scheil_3.png" title="examples/equilib/e20/img/dialog_scheil_3.png"><img alt=" Scheil simulation dialog with peritectic reaction|" src="/examples/equilib/e20/img/dialog_scheil_3.png" title="Scheil simulation dialog with peritectic reaction|" /></a></p>
+<p>Carry out the Scheil-Gulliver simulation again. The output information now reads</p>
+<pre><code>... 
+28, 1.18 s, 1498.00 C (1771.16 K), its 6, f=0.35513011,  LIQUID BCC_A2 
+29, 1.20 s, 1497.00 C (1770.16 K), its 6, f=0.34226156,  LIQUID BCC_A2 
+30, 1.26 s, 1496.00 C (1769.16 K), its 6, f=0.33001237,  LIQUID BCC_A2 
+31, 1.28 s, 1495.00 C (1768.16 K), its 6, f=0.31833953,  LIQUID BCC_A2 
+32, 1.32 s, 1494.00 C (1767.16 K), its 12, f=0.30418038,  LIQUID FCC_A1 
+### full ###: peritectic equilibrium transformation: progress = 7.6% 
+33, 1.38 s, 1493.00 C (1766.16 K), its 4, f=0.27601410,  LIQUID FCC_A1 
+### full ###: peritectic equilibrium transformation: progress = 29% 
+34, 1.46 s, 1492.00 C (1765.16 K), its 4, f=0.22968320,  LIQUID FCC_A1 
+### full ###: peritectic equilibrium transformation: progress = 56% 
+35, 1.51 s, 1491.00 C (1764.16 K), its 4, f=0.17664449,  LIQUID FCC_A1 
+### full ###: peritectic equilibrium transformation: progress = 1e+02% 
+36, 1.60 s, 1490.00 C (1763.16 K), its 5, f=0.10784853,  LIQUID FCC_A1 
+### full ###: peritectic equilibrium transformation: progress = 1e+02% 
+37, 1.76 s, 1489.00 C (1762.16 K), its 4, f=0.09493307,  LIQUID FCC_A1 
+38, 1.78 s, 1488.00 C (1761.16 K), its 6, f=0.08428708,  LIQUID FCC_A1 
+39, 1.82 s, 1487.00 C (1760.16 K), its 6, f=0.07469405,  LIQUID FCC_A1 
+40, 1.88 s, 1486.00 C (1759.16 K), its 6, f=0.06612417,  LIQUID FCC_A1 
+41, 1.90 s, 1485.00 C (1758.16 K), its 6, f=0.05853587,  LIQUID FCC_A1 
+42, 1.92 s, 1484.00 C (1757.16 K), its 6, f=0.05187343,  LIQUID FCC_A1 
+43, 1.98 s, 1483.00 C (1756.16 K), its 9, f=0.04533524,  LIQUID FCC_A1 FCC_A1#02 
+44, 2.00 s, 1482.00 C (1755.16 K), its 7, f=0.03963010,  LIQUID FCC_A1 FCC_A1#02 
+45, 2.04 s, 1481.00 C (1754.16 K), its 7, f=0.03476746,  LIQUID FCC_A1 FCC_A1#02 
+...
+</code></pre>
+<p>The Scheil simulation proceeds as before, until a temperature of 1494°C is reached. At this temperature, the internal <em>MatCalc</em> equilibrium analysis delivers a positive chemical driving force for transformation of the BCC_A2 into the FCC_A1 phase. An additional equilibrium step is then carried out internally, which determines the equilibrium phase fractions of bcc and fcc phases, under the constraint of constant phase fraction and composition of liquid. The results of this calculation are used to transform a certain fraction of the BCC_A2_S to the FCC_A1_TS phase. The transformation progress is reported in the output window for each temperature step. This is shown in the simulation output reproduced above.</p>
+<p>The influence of the peritectic reaction on the solidification progress is rather significant, which is shown in the following plot, where the results of the simulations with and without solid-solid transformation are compared. The solidus temperature of the alloy is increased by more than 15K, which can be attributed to the higher solubility for C in the austenite phase and the according reduction of C-enrichment in the liquid. The figure also shows the additional phase fraction for FCC_A1_TS, which contains the solid-solid transformation product from the BCC_A1_S phase.</p>
+<p>Note: This series is not automatically shown. You must drag and drop the corresponding variable <code>F$FCC_A1_TS</code> into the plot.</p>
+<p><a href="/examples/equilib/e20/img/plot_scheil_5_bd_ts.png" title="examples/equilib/e20/img/plot_scheil_5_bd_ts.png"><img alt=" Scheil-Gulliver simulation with peritectic reaction" src="/examples/equilib/e20/img/plot_scheil_5_bd_ts.png" title="Scheil-Gulliver simulation with peritectic reaction" /></a></p>
+<p>Save the final results in workspace <strong>E20_3_scheil_with_bd_and_st.mcw</strong>.</p>
+<h2 id="final-results">Final results</h2>
+<p>The following figure shows the cumulative curve of the Scheil-transformed FCC_A1 as well as the other phase fractions. The user can clearly see, that the phase fraction of FCC_A1_cum reaches 1, as all the other fractions decrease.</p>
+<p><a href="/examples/equilib/e20/img/plot_scheil_6_bd_ts.png" title="examples/equilib/e20/img/plot_scheil_6_bd_ts.png"><img alt="Final result of Scheil transformation" src="/examples/equilib/e20/img/plot_scheil_6_bd_ts.png" title="Final result of Scheil transformation" /></a></p>
+<h1 id="consecutive-articles">Consecutive articles</h1>
+<p>This analysis is continued in article  <a href="/examples/equilib/e20/e20_4" title="examples/equilib/e20/e20_4">Scheil-Gulliver analysis of microsegregation</a>.</p>
+<p><a href="#fnt__1">1)</a></p>
+<p>S. Zamberger, M. Pudar, K. Spiradek-Hahn, M. Reischl and E. Kozeschnik, “Numerical simulation of the evolution of primary and secondary Nb(CN), Ti(CN) and AlN in Nb-microalloyed steel during continuous casting”, IJMR (2012) in print.</p>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=examples%3Aequilib%3Ae20%3Ae20_3&amp;1788352994" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

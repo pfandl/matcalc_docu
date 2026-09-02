@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>5.50 - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "5.50";
+        var mkdocs_page_input_path = "versioninfo/5.50.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">5.50</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>MatCalc 5.50 [MatCalc Documentation]</p>
+<h2 id="matcalc-550">MatCalc 5.50</h2>
+<p>The following new major features are implemented in <em>MatCalc</em> versions 5.50.10nn:</p>
+<ul>
+<li>Phenomenological treatment of <strong>microstructure evolution during deformation</strong>. After definition of the deformation rate $\dot\epsilon $ either as a global variable or from within a heat treatment, the evolution of deformation-induced vacancies, dislocation density and subgrain size are followed automatically. These microstructural features are fully coupled with the precipitation kinetics module and interactions between deformation and precipitation can be analyzed. Moreover, it is possible to evaluate simple <strong>stress-strain curves with dislocation and grain size hardening</strong>.</li>
+<li>Implementation of automatic treatment of nucleus composition evaluated from the <strong>minimum critical nucleation energy</strong> criterion. With these features, it is possible to automatically let MatCalc decide which will be the <strong>most favorable nucleus composition</strong> for starting the precipitation kinetics simulation.</li>
+<li>Analytical tools for evaluation of <strong>precipitation strengthening</strong> including basic <em>Orowan stress</em> as well as dislocation shearing mechanisms such as <em>chemical , coherency stress , modulus and anti-phase boundary hardening</em>. All precipitation strengthening mechanisms can be combined and used for evaluation of the total Yield stress of the material.</li>
+</ul>
+<p>Below are details describing the various changes and new features of the MatCalc versions 5.50.xxxx.</p>
+<h4 id="version-5501007-online-2012-08-31">version 5.50.1007: online 2012-08-31</h4>
+<ul>
+<li>Fixed bug in treatment of dislocation density evolution.</li>
+<li>Fixed bug in vacancy evolution model using 'mean diffusion distance' functionality (this is not a recommended model!).</li>
+<li>Fixed crash in <code>MOVE_GUI_WINDOW</code> command</li>
+<li>Variable, function, table and array names can now exceed a length of 20 characters without causing an error in parsing (previously this was limited by 20)</li>
+<li>Added command line functionality for grain growth and subgrain growth evolution models.</li>
+<li>Fixed bug in database dialog related to names in diffusion and physical data drop box.</li>
+<li>Fixed some typos.</li>
+<li>Fixed several smaller bugs in all modules.</li>
+</ul>
+<h4 id="version-5501001-online-2012-08-02">version 5.50.1001: online 2012-08-02</h4>
+<ul>
+<li>Implemented the new <strong>precipitation strengthening model</strong> of M. Ahmadi (unpublished research, 2011-2012).</li>
+<li>Fixed problems with <strong>size distributions</strong> of <strong>grain boundary precipitates</strong>. You may get different results when performing simulations of grain boundary precipitates in older <em>MatCalc</em> versions.</li>
+<li><strong>Mechanical properties</strong> of the precipitate can be <strong>synchronized with matrix</strong>. This is important for evaluation of precipitation strengthening (modulus effect).</li>
+<li>The <strong>compositional constraints</strong> (para-equilibrium simulations) can now be synchronized with the <strong>chemical composition of the reference phase</strong>, in addition to nominal composition. According push buttons have been added to the 'phase status' dialog.</li>
+<li>Fixed several smaller bugs in all modules.</li>
+</ul>
+<h4 id="version-5500050-snapshot-2012-07-05-windows">version 5.50.0050: snapshot 2012-07-05 (Windows)</h4>
+<ul>
+<li>Mechanical properties of the precipitate can be synchronized with matrix. This is important for evaluation of precipitation strengthening (modulus effect).</li>
+<li><strong>Kinetic output</strong> now also contains information about the <strong>chemical composition</strong> of the precipitates.</li>
+<li><strong>Tables and Arrays</strong> can now be exported and imported via console commands <code>EXPORT_GLOBAL_TABLE</code>, <code>IMPORT_GLOBAL_TABLE</code>, <code>EXPORT_GLOBAL_ARRAY</code> and <code>IMPORT_GLOBAL_ARRAY</code></li>
+<li><strong>Precipitate distribution</strong> can now be exported and imported via console commands <code>EXPORT_PRECIPITATE_DIST</code> and <code>IMPORT_PRECIPITATE_DIST</code></li>
+<li>new port for <a href="http///www.wolfram.com/mathematica/" title="http///www.wolfram.com/mathematica/">Mathematica</a> (see the <a href="/techpapers/software/link_external" title="techpapers/software/link_external">technical paper</a>)</li>
+<li>new command line structure for <strong>precipitation strengthening</strong>:</li>
+<li>In group <em>s(t)ructure</em> for precipitates the C constants and coupling constants has been removed. In exchange new options for <em>APB strengthening (d)islocation repulsion</em>, <em>(c)oherency strengthening average force</em> and <em>(u)se linear misfit instead of volumetric</em> has been added.</li>
+<li>In group <em>strengt(h)</em> for precipitation domains the option <em>strength s(u)perposition</em> has been removed. In exchange the options <em>disl. (l)ine tension</em>, <em>(n)on-shearing coefficient</em> and <em>(c)oupling of strength contributions</em> has been added.</li>
+</ul>
+<h4 id="version-5500040-snapshot-2012-05-24-windows">version 5.50.0040: snapshot 2012-05-24 (Windows)</h4>
+<ul>
+<li><strong>Export of plots in svg format</strong> has been improved. Export into files is now working more smoothly. Export of <strong>svg data into the clipboard</strong> works also, for instance, with the free vector graphics software <em>InkScape</em> (we recommend this software for all users that rely on free programs).</li>
+<li>Script files run and workspace file opened from system level (double click in GUI manager or started with argument on command line level) will now also be stored in the recent files/scripts/workspaces list.</li>
+<li>A new command <code>ALLOW_WINDOW_UPDATE</code> has been introduced to <strong>switch on/off automatic updates</strong> during calculations.</li>
+<li>Fixed a problem with modifiers, when 'drag and drop'-ing variables without wildcards into windows.</li>
+<li>Phase fraction variables <code>F$phase_name</code> now accept flag for weight scale. Use either <code>F$phase_name$w</code> or <code>F$phase_name$wp</code>.</li>
+<li>Implemented <strong>modulo operator</strong>. Use backslash to calculate the modulo e.g. <code>SHOW_EXPRESSION 13\3</code> returns 1</li>
+<li>New command <code>SET_PROGRESS_INDICATOR</code> to set the progress in the lower right corner. This is particularly useful for scripts with loops.</li>
+<li>New commands <code>TEST_EXIST_XXX</code> to check availability of files or databases. The result of the tests can be accessed with the internal variable <code>test_result</code></li>
+<li><code>rand</code> variable now generates better random variables (more precise)</li>
+<li><strong>Ordered/Disordered phases</strong> can now have separated sets of parameters in databases.</li>
+<li>Colours for plotting can now be set with (n)umbers</li>
+<li><strong>Molar entropy of vacancy formation</strong> SM_VA has been added</li>
+<li><strong>Array entries</strong> can now be <strong>accessed</strong> via indices: e.g. my_array[4][2] to access the value in row 4 and column 2</li>
+<li>Various bugfixes</li>
+</ul>
+<h4 id="version-5500016-snapshot-2012-02-23-windows-and-linux">version 5.50.0016: snapshot 2012-02-23 (Windows and Linux)</h4>
+<ul>
+<li>With the 'calc' button next to the <strong>'nucleus composition'</strong> drop list in the 'phase status' dialog for precipitate nucleation, MatCalc now evaluates the <strong>optimum nucleus composition</strong> of precipitates also according to the <strong>minimum nucleation barrier</strong> criterion (G*=min.). Alternatively, use the <code>CALC_NUCLEUS_COMPOSITIONS</code> command of SHFT+CTRL+K.</li>
+<li>Different <strong>precipitation domains</strong> can now have the <strong>same thermodynamic matrix phase</strong>. No need to create one separate equilibrium phase for each precipitation domain. Warning: All precipitation domains, which are linked to the same thermodynamic matrix phase, will have the same properties! Use this new feature with care. Typical application will be if you want to control nucleation of different populations of the same phase using the 'restrict nucleation to precipitation domain' feature.</li>
+<li>Implemented functionality for definition of <strong>strain rates</strong> in <strong>'edit heat treatment segment' dialog</strong>.</li>
+<li>
+<p>Added variables for Yield strength calculation: New variables category <strong>kinetics: prec. domains strength</strong>. New variables are:</p>
+</li>
+<li>
+<p><code>TYSB</code>: basic yield strength</p>
+</li>
+<li><code>TSSS</code>: solid solution strengthening (<em>not yet implemented</em>)</li>
+<li><code>TDS</code>: dislocation strengthening</li>
+<li><code>TGS</code>: grain size strengthening (Hall-Petch strengthening)</li>
+<li><code>TYS</code>: total yield strength, sum of above values and <code>TTAO_ALL</code> for precipitation strengthening, which was available already in previous versions.</li>
+<li>Added variables for <strong>dynamic evolution</strong> of <strong>dislocation density</strong> (<code>DDTC</code>), <strong>subgrain size</strong> (<code>SGDC</code>) and <strong>grain size</strong> (<code>GDC</code> / <em>not yet implemented</em>). These represent the microstructure parameters as used in calculations.</li>
+<li>For <strong>deformation-induced effects</strong> on microstructure, added variables for the <strong>steady-state dislocation density</strong> (<code>DDT_SS</code>), <strong>subgrain size</strong> (<code>SGD_SS</code>) and grain size(<code>GD_SS</code> / <em>not yet imlpemented</em>).</li>
+<li><strong>Modified</strong> size, arrangement and tab order in <strong>'precipitation domain' dialog</strong> and <strong>'phase status' dialog</strong>. Added dialog items for new features for strength calculation and deformation-induced effects.</li>
+<li>The <strong>'range' variable</strong> now accepts ':' for definition of the number of intervals and ';' for input of step width. This feature is useful in 'for - endfor' loops, as well as plots.</li>
+<li>The <strong>pre- and post-segment scripts</strong> in the heat treatment now accept <strong>conditions and loops</strong>.</li>
+<li>Fixed bug in the 'functions&amp;variables' dialog, where selection of functions in the physical data tab was not possible.</li>
+<li><strong>'Edit precipitate distribution'</strong> in 'phase status dialog can now parse <strong>variables</strong>.</li>
+<li>
+<p>The <strong>command structure</strong> in <code>SET_PRECIPITATION_PARAMETERS</code> for precipitation domains has been <strong>synchronized with GUI</strong> (this was unfortunately necessary for reasons of consistency):</p>
+</li>
+<li>
+<p>A new group 'strengt(h)' was added: 'strength s(u)perposition' and 'Ta(y)lor factor' from s(t)ructure group as well as 'Young's (m)odulus' and '(P)oisson's ratio' from (s)pecial group has been moved into this new group. Additionally the commands '(b)asic strength','(H)all-Petch coeff' and '(d)isl. strength coeff' were added to this group</p>
+</li>
+<li>Changes in group 's(t)ructure': new commands 'dislocation (e)volution','subgrain size e(v)olution' and 'grainsize evol(u)tion' with submenu for enabling/disabling '(e)volve dynamically' and setting coefficients (A)/(B)/(C)</li>
+<li>Changes in group '(v)acancies': 'mean va diff. (d)istance' was moved into the submenu of 'va(c)ancy annihilation and generation'. A new command 'deformation-(i)nduced va-generation coeff'</li>
+<li>Modified temperature record in TTP plots: now takes temperature of last record instead of taking the one at nucleation time.</li>
+<li>Fixed bug where MatCalc crashes when removing plots with the RMB menu.</li>
+<li>Fixed bug where loops did not stop when encountering errors in a script.</li>
+<li>'read and close' button in database dialog will now be disabled if database is read.</li>
+<li>Plot curves can now be selected with mouse even if legend is not displayed.</li>
+<li>Floating window positions are stored more accurately.</li>
+<li>Fixed several other minor bugs.</li>
+</ul>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=versioninfo%3A5.50&amp;1788352873" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

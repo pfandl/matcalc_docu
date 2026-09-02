@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>General - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "General";
+        var mkdocs_page_input_path = "howtosimulate/equilib/general.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">General</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>General considerations [MatCalc Documentation]</p>
+<h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#general_considerations">General considerations</a></p>
+</li>
+<li>
+<p><a href="#compatibility">Compatibility</a></p>
+</li>
+<li><a href="#objectives">Objectives</a></li>
+<li><a href="#related_documents">Related documents</a></li>
+<li>
+<p><a href="#main_document">Main document</a></p>
+</li>
+<li>
+<p><a href="#before_you_start">Before you start ...</a></p>
+</li>
+<li>
+<p><a href="#setting_up_a_thermodynamic_simulation">Setting up a thermodynamic simulation</a></p>
+</li>
+<li>
+<p><a href="#create_a_new_workspace">Create a new workspace</a></p>
+</li>
+<li><a href="#define_thermodynamic_system">Define thermodynamic system</a></li>
+<li><a href="#enter_chemical_composition">Enter chemical composition</a></li>
+<li><a href="#set_simulation_start_values">Set simulation start values</a></li>
+<li><a href="#run_your_simulation">Run your simulation</a></li>
+<li><a href="#further_information">Further information</a></li>
+</ul>
+<h1 id="general-considerations">General considerations</h1>
+<h2 id="compatibility">Compatibility</h2>
+<p>MatCalc version: 5.0 - … <br />
+Author: E. Kozeschnik <br />
+Created: 2011-07-05 <br />
+Revisions:</p>
+<h2 id="objectives">Objectives</h2>
+<p>In this document, general considerations for <em>equilibrium and non-equilibrium thermodynamic simulations …</em> are discussed.</p>
+<h2 id="related-documents">Related documents</h2>
+<pre><code>none
+</code></pre>
+<h1 id="main-document">Main document</h1>
+<h2 id="before-you-start">Before you start ...</h2>
+<p>Before actually going into the software to perform the simulation, do make sure you clearly know which problem you want to solve. Setup a thermodynamic simulation as simple as possible in order to avoid unnecessary computational effort and artifacts that might come from incomplete or missing thermodynamic data. But do not make the system too simple, otherwise you run into danger of missing the answers that you are seeking.</p>
+<h1 id="setting-up-a-thermodynamic-simulation">Setting up a thermodynamic simulation</h1>
+<p>When setting up a thermodynamic simulation in <em>MatCalc</em>, you commonly proceed with the following steps:</p>
+<h2 id="create-a-new-workspace">Create a new workspace</h2>
+<p>In the GUI version of <em>MatCalc</em>, all information about the thermodynamic system, all simulation results, and also the position and order of windows is stored in a <strong><em>MatCalc</em> workspace</strong>. The file extension is <strong>'*.mcw'</strong>. Alternatively, you can store your results in a <strong>binary file</strong>, which avoids all GUI relevant information and only stores the simulation setup and all results. The binary file extension is <strong>'*.mcb'</strong>.</p>
+<h2 id="define-thermodynamic-system">Define thermodynamic system</h2>
+<p>The definition of the thermodynamic system in <em>MatCalc</em> is a most relevant step in the simulation setup. This step defines the possible elements that take part in any kind of simulation, as well as the possible phases. Any element or phase that you miss to define in this step cannot be added or included later on without destroying all simulation results.</p>
+<ul>
+<li><em>Open the thermodynamic database</em> that you want to work with.</li>
+<li>
+<p><em>Select elements</em>.</p>
+</li>
+<li>
+<p>Consider in detail, which elements you want to include in your simulation. It is important that you do not miss the relevant element that is responsible for the effect that you want to investigate. It is also not advisable to simply select all elements that are available in the database. This increases your computational effort and it increases the possibility of unwanted artifacts or invalid calculation results. It might also impair the numerical convergence behavior.</p>
+</li>
+<li>Make sure that the relevant phases exist for all elements that you include in your calculation. It is not advisable to select, for instance, element A from the list, without also including the relevant phases, where this element can partition (go to) during the simulation. Selecting C as an element but ignoring the carbide phases will definitely deliver erroneous and unexpected results.</li>
+<li>
+<p><em>Select phases</em>.</p>
+</li>
+<li>
+<p>Selecting the appropriate phases is of utmost importance for delivering useful results from a thermodynamic equilibrium simulation. Make sure that you include <em>all stable phases</em> that might possibly appear in your system within the given limits of temperature, pressure and chemical composition. In case of analyses of metastable phase formation, as usually the case in precipitation kinetics simulations, make sure that you also include all relevant <em>metastable phases</em>.</p>
+</li>
+<li>
+<p>In the phase list, the order of phases is such that</p>
+<ul>
+<li>only phases are listed, where all elements that are required to define at least one element on each sublattice, are shown.</li>
+<li>the relevance of the individual phases is accounted for according to its setting in the corresponding column of the phases list box. The lower the relevance number, the more likely you do not have to account it in simulations with standard materials.</li>
+<li><em>Read the database</em>.</li>
+</ul>
+</li>
+</ul>
+<h2 id="enter-chemical-composition">Enter chemical composition</h2>
+<p>After definition of elements and phases of the database, the chemical composition of the thermodynamic system must be set. In the 'Nominal composition' dialog, the amount of elements can be entered in</p>
+<ul>
+<li>mole fraction (sum of all <span class="arithmatex">\(X\_i\)</span> is one)</li>
+<li>u-fraction (sum of all substitutional <span class="arithmatex">\(X\_i\)</span> is one)</li>
+<li>weight fraction (sum of all <span class="arithmatex">\(w\_i\)</span> is one)</li>
+<li>weight percent (sum of all <span class="arithmatex">\(wp\_i\)</span> is 100)</li>
+</ul>
+<p>By default, one of the elements is set as the <strong>reference element</strong>. This definition is usually done in the database with the command REFERENCE_ELEMENT.</p>
+<h2 id="set-simulation-start-values">Set simulation start values</h2>
+<p>The last step before actually performing the equilibrium simulation is to initialize the <em>MatCalc</em> variables and parameters with some reasonable starting values. This is done with the 'Set start values' command in the 'Calc' menu.</p>
+<p>It is possible, to leave out this step, however, the simulation sometimes does not converge and will deliver undefined results.</p>
+<p>You can use this command multiple times to improve the initial estimates.</p>
+<p>The 'Set start values' command is used whenever the simulation state is undefined, such as, for instance, after reading the thermodynamic database. You can also use it in case you have trouble with convergence of equilibrium simulations. Several calls of this function (and eventually a change of temperature to higher values) can be beneficial for convergence.</p>
+<h2 id="run-your-simulation">Run your simulation</h2>
+<p>Perform the equilibrium simulation with the 'Equilibrium …' command from the 'Calc' menu. Enter the desired temperature and pressure<a href="#fn__1">1)</a> and start the simulation with the 'Go' button.</p>
+<p><strong><em>Important …</em></strong></p>
+<p>When the simulation is finished, <em>MatCalc</em> provides information on the simulation results in the output window. You <strong>MUST</strong> check the results for possible errors in the calculation before you continue. <em>MatCalc</em> will report with <strong><code>- OK -</code></strong> if the simulation was successful, report a <strong><code>* Warning *</code></strong>, if you should recheck the result, and report <strong><code>* ERROR *</code></strong>, if no solution was found.</p>
+<p>If you do not check the status of your simulation results, you are running danger of using <em>undefined</em> results.</p>
+<h1 id="further-information">Further information</h1>
+<p><a href="#fnt__1">1)</a></p>
+<p>In the present MatCalc databases, no pressure-dependent data are included. This parameter is thus ignored.</p>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=howtosimulate%3Aequilib%3Ageneral&amp;1788352862" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

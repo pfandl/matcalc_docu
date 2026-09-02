@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Syntax - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Syntax";
+        var mkdocs_page_input_path = "reference/syntax.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Syntax</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>Syntax for Conditions, Loops and other commands [MatCalc Documentation]</p>
+<h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#syntax_for_conditions_loops_and_other_commands">Syntax for Conditions, Loops and other commands</a></p>
+</li>
+<li>
+<p><a href="#if-condition">IF-condition</a></p>
+</li>
+<li><a href="#while-loop">WHILE-loop</a></li>
+<li><a href="#for-loop">FOR-loop</a></li>
+<li><a href="#matcalc_built-in_functions">MatCalc built-in functions</a></li>
+</ul>
+<h2 id="syntax-for-conditions-loops-and-other-commands">Syntax for Conditions, Loops and other commands</h2>
+<p>This page contains in-depth information on how to use if-conditions, for- and while-loops as well as other commands, which could come in handy at some point.</p>
+<p>Have a look at the following demonstration examples, which make excessive use of random numbers, conditions and loops:</p>
+<ul>
+<li>Random number generator -  <a href="/reference/syntax/random.mcs" title="reference/syntax/random.mcs (3 KB)">Random generator script</a></li>
+<li>The<em>MatCalc</em>Game -  <a href="/reference/syntax/thematcalcgame.mcs" title="reference/syntax/thematcalcgame.mcs (8.9 KB)">The MatCalc game</a></li>
+<li>Roulette -  <a href="/reference/syntax/roulette.mcs" title="reference/syntax/roulette.mcs (8.8 KB)">Casino Royal</a></li>
+</ul>
+<h3 id="if-condition">IF-condition</h3>
+<pre><code>if (x&gt;5)
+   send-console-string 'The value of x is larger than 5'
+endif
+</code></pre>
+<p>An if-condition can be used whenever a condition has to be checked (e.g./ Version number check at the beginning of each MatCalc script). The example above checks if the variable <strong>x</strong> is larger than the arbitrary value of <strong>5</strong>. If the condition is TRUE, the command after the if will be performed. If it is FALSE, it will not be performed. Note that an if-condition is always ended with an <strong>endif</strong>.</p>
+<pre><code>if (x&gt;5)
+   send-console-string 'The value of x is larger than 5'
+elseif (x==5)
+   send-console-string 'The value of x is exactly 5'
+else
+   send-console-string 'The value of x is 4 or lower'
+endif
+</code></pre>
+<p>The code portion above is quite similar to the first one, however it shows other possible events. In case, that x is not larger than 5, the first <code>send-console-string</code> will not be performed, and the next <strong>elseif</strong> condition will be checked for its validity. If x has <em>exactly</em> the value of 5 (This is checked with the double equals sign <strong>==</strong>), the second string will be displayed. For <em>all</em> other events, the command written after <strong>else</strong> will be performed. The if-condition is again closed by the endif command.</p>
+<p><strong>Note</strong>: Always keep the difference between the <em>assigning</em> equals sign <strong>=</strong> and <em>comparing</em> equals sign <strong>==</strong> in mind. E.g.:</p>
+<pre><code> x=5 ... x is assigned the value of 5 (not available in MatCalc)
+x==5 ... x is checked if it has a value of 5
+</code></pre>
+<p><strong>Attention</strong>: It is NOT possible to have a comment in the same line as a loop or condition, e.g.:</p>
+<pre><code>if(x==1)   $ DO NOT comment after a condition/loop. This results in an error
+   s-v-v value 1
+endif
+
+----
+
+$ Always comment before....
+if(x==1)
+   $ ... or after the condition
+   s-v-v value 1
+endif
+</code></pre>
+<h3 id="while-loop">WHILE-loop</h3>
+<p>The <strong>while</strong>-loop will run a specific code portion for as long as the condition set for the while-loop is true:</p>
+<pre><code>while(continue==1)
+   send-console-string 'Infinite loop'
+endwhile
+</code></pre>
+<p>If the script comes to the portion written above, it will result in an infitine loop if the variable <em>continue</em> has a value of 1. The loop will always check the value and it will not stop as long as the value of <em>continue</em> is anything but 1.</p>
+<pre><code>while(continue==1)
+   input-variable-value continue &quot;Enter 1 to continue&quot;
+endwhile
+</code></pre>
+<p>We have inserted a user-input now within the loop. The user can now manually change the value of <em>continue</em> which results in either a repetition of the loop (if set to 1) or an end of the loop (anything but 1).</p>
+<h3 id="for-loop">FOR-loop</h3>
+<p>The <strong>for</strong>-loop has its main purpose in increasing a runtime variable which can be used thereafter. Another use can be found within the use of TTP scripts. Imagine to split the TTP calculation into 3 areas, of different resolution: From 1000 to 900C, the temperature step will be 10C, from 900 to 500 it will be 20C, and from there on it will be 50C. This can be realized with for-loops!</p>
+<pre><code>for(i;1..5)
+   set-variable-value i i
+   show-expression i
+endfor
+</code></pre>
+<p>The portion shown above will run from 1 to 5 and increase the value of i with every repetition. To put the for-loop to a real use, another command is needed:</p>
+<pre><code>for(i;1..5)
+   format-variable-string test %d i
+   set-variable-value number#test 0
+endfor
+
+test ... Varible which gets the value of i
+%d ..... Wildcard which shows that i is an integer value
+i ...... Runtime variable and number
+# ...... Put the hash key in front of a string, to use its 'value'
+</code></pre>
+<p><strong>Format-variable-string</strong> creates a string out of a number. In the first step, i has a value of 1, which gets assigned to test. In the next line, the variable number#test gets created and receives a value of 0. As test is a string, #test will write its value instead of the string 'test'. Therefore, the second line will create a variable named number1 and assign the value 0. In the next step, i increases to 2. This value gets assigned to test. Therefore the variable number2 with the value 0 gets created.</p>
+<pre><code>format-variable-string test %d 5
+send-console-string test
+--&gt; Output: test
+send-console-string #test
+--&gt; Output: 5
+</code></pre>
+<p>This is an easy way of creating many variables automatically. Have a look at the 'Random number generation' script linked above for more information on the automatic creation variables.</p>
+<p>There are two ways how the steps of a for-loop can be set: The automatical way has been used already without mentioning it, where the interval from x..y gets split in intervals with stepwidth 1. By adding an additional parameter, the step-width can be controlled by either splitting into intervals ( / ) or by setting a fixed step-width ( ; ).</p>
+<pre><code>for(i;1..100/5)
+$ The interval from 1 to 100 is split into 5 intervals. 
+$ The values for i are therefore: 1, 20, 40, 60, 80, 100.
+
+for(i;1..100;7)
+$ The step-width is set to 7. 
+$ The values of i are therefore: 1, 8, 15, 22, 29, ..., 85, 92, 99.
+</code></pre>
+<h3 id="matcalc-built-in-functions">MatCalc built-in functions</h3>
+<ul>
+<li>
+<p>Random function</p>
+</li>
+<li>
+<p>rand for interval ]0,1[</p>
+</li>
+<li>randz for interval [0,1[</li>
+<li>random for interval [0,1]<a href="#fn__1">1)</a></li>
+<li>
+<p>Mathematical operators</p>
+</li>
+<li>
+<p>sin</p>
+</li>
+<li>cos</li>
+<li>tan</li>
+</ul>
+<p><a href="#fnt__1">1)</a></p>
+<p>if you want to generate a <strong>distribution of natural numbers</strong> using floor or ceil functions, you must use <strong>rand</strong> or <strong>randz</strong> (with floor) instead, which exclude the upper limit of 1. E.g. for a distribution of numbers between 2 and 10 you can use: <em>2+floor(randz*9)</em></p>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=reference%3Asyntax&amp;1788352868" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

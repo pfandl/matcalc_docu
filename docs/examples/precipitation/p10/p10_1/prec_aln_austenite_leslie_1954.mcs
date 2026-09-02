@@ -1,0 +1,191 @@
+$$**************************************************************************************************
+************************************* GENERAL INFORMATION ******************************************
+****************************************************************************************************
+
+Template script for the simulation of the precipitation kinetics of AlN in the austenite region of 
+microalloyed steel according to ref.:
+R. Radis and E. Kozeschnik, Model. Simul. Mater. Sc. 18(055003) (2010) 1-16.
+
+Experimental data are taken from ref.:
+W. C. Leslie, R. L. Rickett, C. L. Dotson and C. S. Walton, Trans. ASM 46 (1954) 1470-97.
+
+Database: mc_fe.tdb, mc_sample_fe.ddb
+Author: R. Radis
+Creation date: 2010-06-04
+This is a script for MatCalc version 5.51.0004
+Last revision: 2016-02-02 (P. Warczok, Update for 6.00)
+               2016-09-06 (E. Kozeschnik, new scripting syntax)
+               2017-09-15 (P. Warczok, Update for 6.00.0318)
+
+****************************************************************************************************
+************************************** SETUP INFORMATION *******************************************
+**************************************************************************************************$$
+
+$ make sure we work in the correct module
+use-module module-name=core                                        $ select core module for kinetic simulation
+
+$ close any open workspace without asking for save
+close-workspace f
+
+new-workspace                                          $ open new workspace
+
+@echo value=no
+set-workspace-info +Selected elements:                 $ give some information about the script
+set-workspace-info +C, Mn, Al, N, Fe
+set-workspace-info +
+set-workspace-info +Matrix phase: Austenite (FCC_A1)
+set-workspace-info +Precipitate phase: AlN
+set-workspace-info +
+set-workspace-info +---------------------------------
+set-workspace-info +More information about MatCalc on
+set-workspace-info +   http://matcalc.tuwien.ac.at
+set-workspace-info +---------------------------------
+echo value=yes
+
+$$**************************************************************************************************
+**************************************** SYSTEM SETUP **********************************************
+**************************************************************************************************$$
+
+
+
+$$**************************************************************************************************
+                                     GLOBAL VARIABLES
+**************************************************************************************************$$
+
+set-variable-value variable=temp value=1250
+
+$$**************************************************************************************************
+                        DATABASES, CHEMICAL COMPOSITION, SELECTED PHASES
+**************************************************************************************************$$
+
+open-thermodynamic-database file-name=mc_x_FeAlCCrMnNSiV.tdb        $ Thermodynamic database
+select-elements elements=Al C Fe Mn N                          $ select elements
+select-phases phases=AlN fcc_a1                              $ select phases
+
+read-thermodynamic-database                               $ read thermodynamic database
+
+$ steel composition ...
+enter-composition type=weight-percent composition=al=0,079 c=0,043 mn=0,35 n=0,0072
+
+$ Checking the existence of the diffusion database
+test-exist-mobility-database file-name=mc_fe.ddb
+if(test_result==1)  
+   read-mobility-database file-name=mc_fe.ddb 
+else
+   test-exist-mobility-database file-name=mc_sample_fe.ddb
+   if(test_result==1)
+      read-mobility-database file-name=mc_sample_fe.ddb
+   else      
+      send-console-string string="Valid mobility database for Fe-based system missing. Please, download it from "http://matcalc.at" or contact "support@matcalc-engineering.com""
+      stop-run-script
+   endif
+endif
+
+$$**************************************************************************************************
+                                  CHANGE PHASE STATUS ETC.
+**************************************************************************************************$$
+
+$$**************************************************************************************************
+                       HEAT TREATMENTS, VARIABLES, TABLES & FUNCTIONS (1)
+**************************************************************************************************$$
+
+$-------------------------------------- HEAT TREATMENTS -------------------------------------------$
+
+$------------------------------------------ TABLES ------------------------------------------------$
+$ experimental data for phase fractions of AlN
+
+create-global-table exp_leslie {
+ 120    9.6e-05
+ 120    7.3e-05
+ 600    0.000184
+ 600    0.000168
+6000    0.00037
+6000    0.0004617
+}
+
+$$**************************************************************************************************
+                                PRECIPITATION DOMAINS, PRECIPITATES
+**************************************************************************************************$$
+
+$--------------------------------- PRECIPITATION DOMAINS ------------------------------------------$
+create-precipitation-domain new-domain-name=austenite                  	   $ austenite is precipitation domain = matrix
+set-precipitation-parameter precipitate-or-domain-name=austenite thermodynamic-matrix-phase=fcc_a1
+set-precipitation-parameter precipitate-or-domain-name=austenite initial-grain-diameter=50e-6     $ 50µm grain size
+
+$------------------------------- PRECIPITATE PHASES IN AUSTENITE ----------------------------------$
+create-new-phase parent-phase=aln precipitate alias-name=AlN(aust,gb)
+set-precipitation-parameter precipitate-or-domain-name=aln_p0 nucleation-sites=grain-boundaries
+set-precipitation-parameter precipitate-or-domain-name=aln_p0 restrict-nucleation-to-precipitation-domain=austenite
+
+create-new-phase parent-phase=aln precipitate alias-name=AlN(aust,d)
+set-precipitation-parameter precipitate-or-domain-name=aln_p1 nucleation-sites=dislocations
+set-precipitation-parameter precipitate-or-domain-name=aln_p1 use-volumetric-misfit-in-nucleation=yes
+set-precipitation-parameter precipitate-or-domain-name=aln_p1 volumetric-misfit=0.27  $ for effective volumetric misfit 
+														                                 $ use this value instead of 0.19 (Radis et al.
+														                                 $ MSMSE 2010) in versions 5.41. Fixed bug in
+														                                 $ in earlier MatCalc versions.
+set-precipitation-parameter precipitate-or-domain-name=aln_p1 restrict-nucleation-to-precipitation-domain=austenite
+
+
+$$**************************************************************************************************
+********************************** OUTPUT WINDOWS, PLOTS, ETC. *************************************
+**************************************************************************************************$$
+
+new-gui-window type-id=p1                                 $ generate new plot:  phase fractions
+
+set-gui-window-property window-id=. default-x-axis-data=stepvalue
+set-gui-window-property window-id=. default-x-axis-for-all-plots=yes
+set-gui-window-property window-id=. default-x-axis-title="time / s"                  
+set-gui-window-property window-id=. default-x-axis-type=log
+set-gui-window-property window-id=. default-x-axis-scaling=1e-2..
+
+set-plot-option plot-id=. use-alias-names-in-legend=yes            
+set-plot-option plot-id=. series new buffer f_prec$*
+set-plot-option plot-id=. series new table-experimental-data exp_leslie
+set-plot-option plot-id=. series rename series-index=-1 series-name=exp_leslie new-name=exp_leslie
+set-plot-option plot-id=. y-axis-title="phase fraction"
+set-plot-option plot-id=. y-axis-type=lin
+set-plot-option plot-id=. y-axis-scaling=1e-5..
+set-plot-option plot-id=. legend-alignment=bottom
+
+create-new-plot plot-type=xy-plot attach-to-window=.                          $ create new plot: mean radii
+set-plot-option plot-id=. use-alias-names-in-legend=yes 
+set-plot-option plot-id=. series new buffer r_mean$*
+set-plot-option plot-id=. y-axis-title="mean radius / nm"
+set-plot-option plot-id=. y-axis-type=log
+set-plot-option plot-id=. y-axis-factor=1e9                $ convert m to nm
+set-plot-option plot-id=. legend-alignment=bottom 
+
+create-new-plot plot-type=xy-plot attach-to-window=.                          $ create new plot: number densities
+set-plot-option plot-id=. use-alias-names-in-legend=yes
+set-plot-option plot-id=. series new buffer num_part$*
+set-plot-option plot-id=. y-axis-title=number density / m<sup>-3</sup>      $ change y-axis title
+set-plot-option plot-id=. y-axis-type=log
+set-plot-option plot-id=. y-axis-scaling=1e10..
+set-plot-option plot-id=. legend-alignment=bottom
+
+move-gui-window displace window-id=. x-origin=50 y-origin=10 width=700 height=950                $ move window to new position and resize
+update-gui-window window-id=.                                     $ update the GUI window
+
+$$**************************************************************************************************
+****************************** START PRECIPITATE SIMULATION ****************************************
+**************************************************************************************************$$
+
+set-temperature-celsius temperature=temp                $ define something
+set-automatic-startvalues                               $ initiate equil. calc. (estimate variables)
+calculate-equilibrium                                   $ calculate equilibrium state
+
+set-simulation-parameter end-time=1e5
+set-simulation-parameter temperature-control-type=isothermal
+set-simulation-parameter isothermal-temperature=982
+set-simulation-parameter starting-conditions=reset-precipitates
+set-simulation-parameter log-store-every-distance=1.5   $ still sufficient store intervals. saves mem
+
+$----------------------------- START PRECIPITATE SIMULATION ---------------------------------------$
+
+start-precipitate-simulation                            $ let's go
+
+$$**************************************************************************************************
+******************************** PRECIPITATE SIMULATION FINISHED ***********************************
+**************************************************************************************************$$
+

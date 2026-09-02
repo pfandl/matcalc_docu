@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Ssol strength - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Ssol strength";
+        var mkdocs_page_input_path = "techpapers/mprops/ssol_strength.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Ssol strength</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>TechPaper #2015001: Solid solution strengthening [MatCalc Documentation]</p>
+<h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#techpaper_2015001solid_solution_strengthening">TechPaper #2015001: Solid solution strengthening</a></p>
+</li>
+<li>
+<p><a href="#compatibility">Compatibility</a></p>
+</li>
+<li><a href="#objectives">Objectives</a></li>
+<li><a href="#related_documents">Related documents</a></li>
+<li>
+<p><a href="#main_document">Main document</a></p>
+</li>
+<li>
+<p><a href="#matcalc_model">MatCalc model</a></p>
+</li>
+<li><a href="#unit_conversion">Unit conversion</a></li>
+</ul>
+<h1 id="techpaper-2015001-solid-solution-strengthening">TechPaper #2015001: Solid solution strengthening</h1>
+<h2 id="compatibility">Compatibility</h2>
+<p>MatCalc version: 5.60 - … <br />
+Author: P. Warczok <br />
+Created: 2015-05-06 <br />
+Revisions:</p>
+<h2 id="objectives">Objectives</h2>
+<p>This paper describes how the contribution of the solid solution to the material strength is evaluated in MatCalc.</p>
+<h2 id="related-documents">Related documents</h2>
+<p>None</p>
+<h1 id="main-document">Main document</h1>
+<p>Solid solutions are obtained when the solute atoms are introduced into the crystal lattice of the host atom. The solute atoms will substitute the host atoms on its crystal sites when the sizes of these atoms are comparable. Another possibility for the solute atoms is to occupy the interstitial sites of the host lattice, but this happens when the solute atoms are of a very small size compared to the host atom (e.g. carbon atoms in Fe-bcc or Fe-fcc lattice).</p>
+<p>The size difference between the solute and host atoms results in tensile or compressive strains around the solutes present on the host lattice. These strains will interact with strains produced by the dislocations. Hence, the movement of the dislocation will require an application of the extra stress amount. This critical stress value <span class="arithmatex">\(\sigma\_{ss}\)</span> is found to be dependent on the solute atom concentration in the solid solution (matrix phase) <span class="arithmatex">\(c\_i\)</span> in the form of:  </p>
+<div class="arithmatex">\[ \sigma\_{ss}=\sum\limits\_{i} k\_i\*c\_i^{n\_i}\]</div>
+<p>with</p>
+<p><span class="arithmatex">\(k\_i\)</span> - strengthening coefficient of element i</p>
+<p><span class="arithmatex">\(n\_i\)</span> - exponent relevant for element i (values in range of 0.5-1)</p>
+<h2 id="matcalc-model">MatCalc model</h2>
+<p>In MatCalc, a similar formula is applied. The only difference is the presence of the exponents used for the summation, as shown below:  </p>
+<div class="arithmatex">\[ \sigma\_{ss}=\bigg[\Big(\sum\limits\_{i} (k\_i\*c\_{i}^{n\_i})^{m\_{sub}}\Big)\_{sub}^{\frac {m\_{tot}}{m\_{sub}}}+\Big(\sum\limits\_{i} (k\_i\*c\_{i}^{n\_i})^{m\_{int}}\Big)\_{int}^{\frac {m\_{tot}}{m\_{int}}}\bigg]^{1/m\_{tot}}\]</div>
+<p>with</p>
+<p><span class="arithmatex">\(m\_{sub}\)</span> - coupling exponent applied for functions relevant for substitutional elements</p>
+<p><span class="arithmatex">\(m\_{int}\)</span> - coupling exponent applied for functions relevant for interstitial elements</p>
+<p><span class="arithmatex">\(m\_{tot}\)</span> - global exponent</p>
+<p>In MatCalc, <span class="arithmatex">\(c\_i\)</span> is expressed with mole fraction in the above equation. <span class="arithmatex">\(\sigma\_{ss}\)</span> and <span class="arithmatex">\(k\_i\)</span> are expressed with pascal (Pa).</p>
+<h2 id="unit-conversion">Unit conversion</h2>
+<p>It must be noted, that <span class="arithmatex">\(c\_i\)</span> can be expressed in various units (e.g. at.%, wt.%) in the functions for <span class="arithmatex">\(\sigma\_{ss}\)</span> found in the literature. Hence, some care in this regard must be taken when the values of <span class="arithmatex">\(k\_i\)</span>, taken from a publication, are to be applied in MatCalc. The formula given below can be used for the adaptation of the <span class="arithmatex">\(k\_i,wt%\)</span> coefficient from the function of <span class="arithmatex">\(c\_i\)</span> expressed in wt.%  </p>
+<div class="arithmatex">\[ k\_{i,MatCalc}=k\_{i,wt\%}\*(100\*M\_i/M\_{mx})^{n\_i} \]</div>
+<p>with</p>
+<p><span class="arithmatex">\(k\_{i,MatCalc}\)</span> - strengthening coefficient for MatCalc (relevant for <span class="arithmatex">\(c\_i\)</span> expressed in mole fraction</p>
+<p><span class="arithmatex">\(k\_{i,wt\%}\)</span> - strengthening coefficient for <span class="arithmatex">\(c\_i\)</span> expressed in wt.%</p>
+<p><span class="arithmatex">\(M\_i\)</span> - Molar mass of the element i</p>
+<p><span class="arithmatex">\(M\_{mx}\)</span> - Molar mass of the matrix host element</p>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=techpapers%3Amprops%3Assol_strength&amp;1788353012" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>T3 - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "T3";
+        var mkdocs_page_input_path = "tutorials/t3.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">T3</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#t3stepped_equilibrium_calculations">T3: Stepped equilibrium calculations</a></p>
+</li>
+<li>
+<p><a href="#complimentary_files">Complimentary files</a></p>
+</li>
+<li><a href="#contents">Contents</a></li>
+<li><a href="#before_starting">Before starting...</a></li>
+<li>
+<p><a href="#stepped_equilibrium_calculation_with_varying_temperature">Stepped equilibrium calculation with varying temperature</a></p>
+</li>
+<li>
+<p><a href="#running_the_stepped_calculation">Running the stepped calculation</a></p>
+</li>
+<li><a href="#output">Output</a></li>
+<li><a href="#buffers">Buffers</a></li>
+<li>
+<p><a href="#stepped_equilibrium_calculation_with_varying_carbon_content">Stepped equilibrium calculation with varying carbon content</a></p>
+</li>
+<li>
+<p><a href="#running_the_calculation">Running the calculation</a></p>
+</li>
+<li><a href="#edit_buffer_states">Edit buffer states</a></li>
+<li><a href="#to_finish">To finish...</a></li>
+<li><a href="#consecutive_articles">Consecutive articles</a></li>
+</ul>
+<h2 id="t3-stepped-equilibrium-calculations">T3: Stepped equilibrium calculations</h2>
+<p><em>This tutorial was tested on <br />
+MatCalc version 6.04 rel 1.001 <br />
+license: free <br />
+database: mc_fe.tdb</em></p>
+<h3 id="complimentary-files">Complimentary files</h3>
+<p>Click <a href="/tutorials/t3/script/t3_6021003.mcs" title="tutorials/t3/script/t3_6021003.mcs (5.5 KB)">here</a> to view the script for this tutorial.</p>
+<h3 id="contents">Contents</h3>
+<ul>
+<li>Re-opening a saved file and loading a calculation state</li>
+<li>Calculating a stepped equilibrium with varying temperature</li>
+<li>Understanding the results in the Output window</li>
+<li>Working with multiple buffers</li>
+<li>Calculating a stepped equilibrium with varying composition</li>
+<li>The “Edit buffer states” window</li>
+</ul>
+<h2 id="before-starting">Before starting...</h2>
+<p>Re-open the file saved from <a href="/tutorials/t2" title="tutorials/t2">Tutorial 2</a> and load the calculation state <strong>'Equil @ 600°C'</strong>.</p>
+<p><a href="/tutorials/t3/img/t3_file_open_6050006.png" title="tutorials/t3/img/t3_file_open_6050006.png"><img alt=" Open MatCalc workspace " src="/tutorials/t3/img/t3_file_open_6050006.png" title="Open MatCalc workspace" /></a></p>
+<p><a href="/tutorials/t3/img/t3_load_calc_state_6050006.png" title="tutorials/t3/img/t3_load_calc_state_6050006.png"><img alt=" Load calc state " src="/tutorials/t3/img/t3_load_calc_state_6050006.png" title="Load calc state" /></a></p>
+<h2 id="stepped-equilibrium-calculation-with-varying-temperature">Stepped equilibrium calculation with varying temperature</h2>
+<h3 id="running-the-stepped-calculation">Running the stepped calculation</h3>
+<p>In phase status window, remove graphite phase.</p>
+<p><a href="/tutorials/t3/img/t3_remove_graphite_6050006.png" title="tutorials/t3/img/t3_remove_graphite_6050006.png"><img alt=" Remove graphite phase " src="/tutorials/t3/img/t3_remove_graphite_6050006.png" title="Remove graphite phase" /></a></p>
+<p>Select <strong>'Stepped calculation…'</strong> from the <strong>'Calc'</strong> menu or click on the <a href="/tutorials/t3/img/icon_calc_stepped.png" title="tutorials/t3/img/icon_calc_stepped.png"><img alt=" MatCalc stepped calculation" src="/tutorials/t3/img/icon_calc_stepped.png" title="MatCalc stepped calculation" /></a> icon.</p>
+<p><a href="/tutorials/t3/img/t3_global_stepped_calculation_6050006.png" title="tutorials/t3/img/t3_global_stepped_calculation_6050006.png"><img alt=" Open stepped calculation window " src="/tutorials/t3/img/t3_global_stepped_calculation_6050006.png" title="Open stepped calculation window" /></a></p>
+<p>The <strong>'Step equilibrium'</strong> window will appear. Select <strong>'Temperature'</strong> (the uppermost choice in the left-hand column). <br />
+In the <strong>'Range'</strong> box, the default <strong>'Start'</strong>, <strong>'Stop'</strong> and <strong>'Step interval'</strong> values are 400, 1600 and 25 respectively. Keep these values and verify that the <strong>'Temperatures in Celsius'</strong> option has been selected. The step direction is unimportant, and it is not necessary to enter the interval as <strong>'-25'</strong> if stepping in a negative direction. The contents of the <strong>'Vary'</strong> and <strong>'Boundary conditions'</strong> boxes are currently greyed-out because they are not applicable to a temperature-step calculation. Click on the <strong>'Go'</strong> button at the bottom right of the window.</p>
+<p><a href="/tutorials/t3/img/t3_step_equilibrium_6050006.png" title="tutorials/t3/img/t3_step_equilibrium_6050006.png"><img alt=" MatCalc step equilibrium" src="/tutorials/t3/img/t3_step_equilibrium_6050006.png" title="MatCalc step equilibrium" /></a></p>
+<h3 id="output">Output</h3>
+<p>The <strong>'console'</strong> window should show the following series of messages:</p>
+<pre><code>1, 0,00 s, 600,00 C (873,15 K), its 2,  BCC_A2 CEMENTITE - OK -
+2, 0,00 s, 625,00 C (898,15 K), its 4,  BCC_A2 CEMENTITE - OK -
+3, 0,00 s, 650,00 C (923,15 K), its 4,  BCC_A2 CEMENTITE - OK -
+4, 0,00 s, 675,00 C (948,15 K), its 4,  BCC_A2 CEMENTITE - OK -
+5, 0,00 s, 700,00 C (973,15 K), its 4,  BCC_A2 CEMENTITE - OK -
+6, 0,00 s, 725,00 C (998,15 K), its 4,  BCC_A2 CEMENTITE - OK -
+Tsol 'FCC_A1': 726,53 C (999,68 K) iter: 4, time used: 0,00 s
+Tsol 'CEMENTITE': 726,53 C (999,68 K) iter: 5, time used: 0,00 s
+7, 0,01 s, 750,00 C (1023,15 K), its 5,  FCC_A1 BCC_A2 - OK -
+8, 0,00 s, 775,00 C (1048,15 K), its 5,  FCC_A1 BCC_A2 - OK -
+Tsol 'BCC_A2': 787,14 C (1060,29 K) iter: 4, time used: 0,00 s
+9, 0,00 s, 800,00 C (1073,15 K), its 4,  FCC_A1 - OK -
+10, 0,00 s, 825,00 C (1098,15 K), its 2,  FCC_A1 - OK -
+11, 0,00 s, 850,00 C (1123,15 K), its 2,  FCC_A1 - OK -
+12, 0,00 s, 875,00 C (1148,15 K), its 2,  FCC_A1 - OK -
+13, 0,00 s, 900,00 C (1173,15 K), its 2,  FCC_A1 - OK -
+14, 0,00 s, 925,00 C (1198,15 K), its 2,  FCC_A1 - OK -
+15, 0,00 s, 950,00 C (1223,15 K), its 2,  FCC_A1 - OK -
+16, 0,00 s, 975,00 C (1248,15 K), its 2,  FCC_A1 - OK -
+17, 0,00 s, 1000,00 C (1273,15 K), its 2,  FCC_A1 - OK -
+18, 0,00 s, 1025,00 C (1298,15 K), its 2,  FCC_A1 - OK -
+19, 0,00 s, 1050,00 C (1323,15 K), its 2,  FCC_A1 - OK -
+20, 0,00 s, 1075,00 C (1348,15 K), its 2,  FCC_A1 - OK -
+21, 0,00 s, 1100,00 C (1373,15 K), its 2,  FCC_A1 - OK -
+22, 0,00 s, 1125,00 C (1398,15 K), its 2,  FCC_A1 - OK -
+23, 0,00 s, 1150,00 C (1423,15 K), its 2,  FCC_A1 - OK -
+24, 0,00 s, 1175,00 C (1448,15 K), its 2,  FCC_A1 - OK -
+25, 0,00 s, 1200,00 C (1473,15 K), its 2,  FCC_A1 - OK -
+26, 0,00 s, 1225,00 C (1498,15 K), its 2,  FCC_A1 - OK -
+27, 0,00 s, 1250,00 C (1523,15 K), its 2,  FCC_A1 - OK -
+28, 0,00 s, 1275,00 C (1548,15 K), its 2,  FCC_A1 - OK -
+29, 0,00 s, 1300,00 C (1573,15 K), its 2,  FCC_A1 - OK -
+30, 0,00 s, 1325,00 C (1598,15 K), its 2,  FCC_A1 - OK -
+31, 0,00 s, 1350,00 C (1623,15 K), its 2,  FCC_A1 - OK -
+32, 0,00 s, 1375,00 C (1648,15 K), its 2,  FCC_A1 - OK -
+33, 0,00 s, 1400,00 C (1673,15 K), its 2,  FCC_A1 - OK -
+34, 0,00 s, 1425,00 C (1698,15 K), its 2,  FCC_A1 - OK -
+35, 0,00 s, 1450,00 C (1723,15 K), its 2,  FCC_A1 - OK -
+Tsol 'LIQUID': 1453,06 C (1726,21 K) iter: 3, time used: 0,00 s
+36, 0,00 s, 1475,00 C (1748,15 K), its 3,  LIQUID FCC_A1 - OK -
+Tsol 'FCC_A1': 1494,61 C (1767,76 K) iter: 4, time used: 0,00 s
+Tsol 'BCC_A2': 1494,61 C (1767,76 K) iter: 5, time used: 0,00 s
+37, 0,00 s, 1500,00 C (1773,15 K), its 5,  LIQUID BCC_A2 - OK -
+Tsol 'BCC_A2': 1505,65 C (1778,80 K) iter: 4, time used: 0,00 s
+38, 0,00 s, 1525,00 C (1798,15 K), its 4,  LIQUID - OK -
+39, 0,00 s, 1550,00 C (1823,15 K), its 2,  LIQUID - OK -
+40, 0,00 s, 1575,00 C (1848,15 K), its 2,  LIQUID - OK -
+41, 0,00 s, 1600,00 C (1873,15 K), its 2,  LIQUID - OK -
+changing step direction ...
+42, 0,00 s, 575,00 C (848,15 K), its 5,  BCC_A2 CEMENTITE - OK -
+43, 0,00 s, 550,00 C (823,15 K), its 5,  BCC_A2 CEMENTITE - OK -
+44, 0,00 s, 525,00 C (798,15 K), its 5,  BCC_A2 CEMENTITE - OK -
+45, 0,00 s, 500,00 C (773,15 K), its 5,  BCC_A2 CEMENTITE - OK -
+46, 0,00 s, 475,00 C (748,15 K), its 5,  BCC_A2 CEMENTITE - OK -
+47, 0,00 s, 450,00 C (723,15 K), its 5,  BCC_A2 CEMENTITE - OK -
+48, 0,00 s, 425,00 C (698,15 K), its 5,  BCC_A2 CEMENTITE - OK -
+49, 0,00 s, 400,00 C (673,15 K), its 5,  BCC_A2 CEMENTITE - OK -
+Steps: 50, CalcTime: 0,11 s
+AktStepVal: 673,150000
+- OK -
+</code></pre>
+<p>Each line corresponds to an equilibrium calculated at a single temperature value and comprises a line number, the calculation time, the temperature, the number of iterations, the stable phases at that temperature and an <strong>'- OK -'</strong> message indicating that the equilibrium calculation was successful. <br />
+Note that the temperature-stepping starts from the equilibrium at 600°C loaded from the calculation state. Initially, the temperature is increased by the <strong>'Step interval'</strong> each time until the upper temperature limit is reached. <br />
+Then, a <strong>'changing step direction'</strong> message is displayed and, again starting from the equilibrium at 600°C, the temperature is decreased until the lower limit is reached.
+Also note the lines beginning with <strong>'Tsol'</strong>: phase solubility temperatures are automatically evaluated during the stepped calculation. Thus it is seen in the output above that from <strong>600°C to 726.53°C</strong>, the two stable phases are <strong>BCC_A2</strong> (ferrite) and <strong>CEMENTITE</strong>. At <strong>726.53°C</strong>, <strong>FCC_A1</strong> (austenite) becomes stable, and cementite becomes unstable. The two phases in equilibrium are ferrite and austenite between this temperature and <strong>787.14°C</strong>, when ferrite becomes unstable. Austenite is then the only stable phase, and this situation persists up to the liquid solubility temperature of <strong>1453.06°C</strong>. The <strong>BCC_A2</strong> phase known as delta-ferrite is stable in a narrow temperature range at high temperature, and by <strong>1600°C</strong> the only equilibrium phase is <strong>liquid</strong>. There are no changes in phase stability between 600°C and 400°C, as can be seen from the block of lines below <strong>'changing step direction …'</strong>.<br />
+The final three lines of output give the number of steps and total calculation time, the current value of the stepped variable (673.15 K = 400°C) and an <strong>'OK'</strong> message indicating that the calculation was carried out successfully. <br />
+The contents of the <strong>'Phase summary'</strong> and <strong>'Phase details'</strong> are not modified during the stepped calculation, but still display the information loaded from the calculation state <strong>'Equil @ 600°C'</strong>.</p>
+<h3 id="buffers">Buffers</h3>
+<p>All the equilibria listed above are stored in a buffer. In other words, a buffer is a collection of calculation states, with each calculation state created at a different temperature. The default buffer is named <strong>'_default_'</strong>, and its contents are overwritten when a new stepped calculation is carried out. <br />
+To be able to keep more than one set of stepped equilibria, additional buffers must be created. Firstly, rename the existing default buffer using <strong>'Global &gt; Buffers &gt; Rename'</strong>. Type <strong>'T=400 to 1600°C'</strong> into the <strong>'New buffer name'</strong> box and click <strong>'OK'</strong>.</p>
+<p><a href="/tutorials/t3/img/t3_global_rename_buffer_6050006.png" title="tutorials/t3/img/t3_global_rename_buffer_6050006.png"><img alt=" Open rename buffer window" src="/tutorials/t3/img/t3_global_rename_buffer_6050006.png" title="Open rename buffer window" /></a></p>
+<p><a href="/tutorials/t3/img/t3_rename_buffer_6050006.png" title="tutorials/t3/img/t3_rename_buffer_6050006.png"><img alt=" Rename buffer window" src="/tutorials/t3/img/t3_rename_buffer_6050006.png" title="Rename buffer window" /></a></p>
+<p>Then, create a new buffer using <strong>'Global &gt; Buffers &gt; Create'</strong>.</p>
+<p><a href="/tutorials/t3/img/t3_global_create_buffer_6050006.png" title="tutorials/t3/img/t3_global_create_buffer_6050006.png"><img alt=" Open create buffer window" src="/tutorials/t3/img/t3_global_create_buffer_6050006.png" title="Open create buffer window" /></a></p>
+<p>This new buffer will contain the results from a new stepped equilibrium calculation in which the carbon content is varied from 0 to 1.5 wt.% at 500°C, so enter the name <strong>'C=0 to 1.5 at 500°C'</strong>.</p>
+<p><a href="/tutorials/t3/img/t3_create_buffer_name_6050006.png" title="tutorials/t3/img/t3_create_buffer_name_6050006.png"><img alt=" Create buffer window" src="/tutorials/t3/img/t3_create_buffer_name_6050006.png" title="Create buffer window" /></a></p>
+<p>Note that buffers can be selected from the drop-box in the toolbar area or using 'Global &gt; Buffers &gt; Select'.</p>
+<p><a href="/tutorials/t3/img/t3_buffer_toolbox_2016.png" title="tutorials/t3/img/t3_buffer_toolbox_2016.png"><img alt=" MatCalc buffer toolbox" src="/tutorials/t3/img/t3_buffer_toolbox_2016.png" title="MatCalc buffer toolbox" /></a></p>
+<h2 id="stepped-equilibrium-calculation-with-varying-carbon-content">Stepped equilibrium calculation with varying carbon content</h2>
+<h3 id="running-the-calculation">Running the calculation</h3>
+<p>Calculate an equilibrium at 500°C. Open the <strong>'Step equilibrium'</strong> window again, but this time select <strong>'Element content'</strong> instead of <strong>'Temperature'</strong> in the <strong>'Type'</strong> box. Enter <strong>'0'</strong>, <strong>'1.5'</strong> and <strong>'0.05'</strong> respectively as the start, stop and step interval values. (Note that, as shown in the image below, MatCalc accepts either a decimal point or a comma as the decimal separator.)
+In the <strong>'Boundary conditions'</strong> box, ensure that the element selected is <strong>'C'</strong>, and enter the temperature as <strong>'500'</strong>. Ensure that in the <strong>'vary'</strong> box, <strong>'global comp'</strong> is selected, and that in the <strong>'Options'</strong> column, <strong>'Temperatures in Celsius'</strong> and <strong>'Composition in weight percent'</strong> are both selected, then click on <strong>'Go'</strong>.</p>
+<p><a href="/tutorials/t3/img/t3_step_equilibrium_element_6050006.png" title="tutorials/t3/img/t3_step_equilibrium_element_6050006.png"><img alt=" MatCalc step equilibrium" src="/tutorials/t3/img/t3_step_equilibrium_element_6050006.png" title="MatCalc step equilibrium" /></a></p>
+<p>The contents of the <strong>'console'</strong> window should appear as follows:</p>
+<pre><code>1, 0,00 s, 0,4, its 9,  BCC_A2 CEMENTITE - OK -
+2, 0,00 s, 0,45, its 2,  BCC_A2 CEMENTITE - OK -
+3, 0,00 s, 0,5, its 2,  BCC_A2 CEMENTITE - OK -
+4, 0,00 s, 0,55, its 2,  BCC_A2 CEMENTITE - OK -
+5, 0,00 s, 0,6, its 2,  BCC_A2 CEMENTITE - OK -
+6, 0,00 s, 0,65, its 2,  BCC_A2 CEMENTITE - OK -
+7, 0,00 s, 0,7, its 2,  BCC_A2 CEMENTITE - OK -
+8, 0,00 s, 0,75, its 2,  BCC_A2 CEMENTITE - OK -
+9, 0,00 s, 0,8, its 2,  BCC_A2 CEMENTITE - OK -
+10, 0,00 s, 0,85, its 2,  BCC_A2 CEMENTITE - OK -
+11, 0,00 s, 0,9, its 2,  BCC_A2 CEMENTITE - OK -
+12, 0,01 s, 0,95, its 2,  BCC_A2 CEMENTITE - OK -
+13, 0,00 s, 1, its 2,  BCC_A2 CEMENTITE - OK -
+14, 0,00 s, 1,05, its 2,  BCC_A2 CEMENTITE - OK -
+15, 0,00 s, 1,1, its 2,  BCC_A2 CEMENTITE - OK -
+16, 0,00 s, 1,15, its 2,  BCC_A2 CEMENTITE - OK -
+17, 0,00 s, 1,2, its 2,  BCC_A2 CEMENTITE - OK -
+18, 0,00 s, 1,25, its 2,  BCC_A2 CEMENTITE - OK -
+19, 0,00 s, 1,3, its 2,  BCC_A2 CEMENTITE - OK -
+20, 0,00 s, 1,35, its 2,  BCC_A2 CEMENTITE - OK -
+21, 0,00 s, 1,4, its 2,  BCC_A2 CEMENTITE - OK -
+22, 0,00 s, 1,45, its 2,  BCC_A2 CEMENTITE - OK -
+23, 0,00 s, 1,5, its 2,  BCC_A2 CEMENTITE - OK -
+changing step direction ...
+24, 0,00 s, 0,35, its 2,  BCC_A2 CEMENTITE - OK -
+25, 0,00 s, 0,3, its 2,  BCC_A2 CEMENTITE - OK -
+26, 0,00 s, 0,25, its 2,  BCC_A2 CEMENTITE - OK -
+27, 0,00 s, 0,2, its 2,  BCC_A2 CEMENTITE - OK -
+28, 0,00 s, 0,15, its 2,  BCC_A2 CEMENTITE - OK -
+29, 0,00 s, 0,1, its 2,  BCC_A2 CEMENTITE - OK -
+30, 0,00 s, 0,05, its 2,  BCC_A2 CEMENTITE - OK -
+Xsol 'CEMENTITE': 
+X(C): 5,7389141e-005, WP(C): 0,0012343224
+ - OK -
+31, 0,00 s, 1e-012, its 4,  BCC_A2 - OK -
+Steps: 32, CalcTime: 0,07 s
+AktStepVal: 0,000000
+- OK -
+</code></pre>
+<p>Similarly to the temperature-step calculation, the output consists of a series of equilibria evaluated at the specified step-values. The first of these corresponds to the carbon content of 0.4 wt.% entered in the <strong>'System composition'</strong> box in  <a href="/tutorials/t2" title="tutorials/t2">Tutorial 2</a>. The carbon content is then increased in 0.05 wt.% steps up to the maximum value of 1.5 wt.%. The 'Changing step direction' line marks the beginning of the second set of equilibria, in which the carbon content is decreased.
+At 500°C, the stable phases are BCC_A2 and CEMENTITE across almost the whole composition range, but between the final two equilibria there is a line beginning with <strong>'Xsol'</strong>. The line below this gives the carbon content at which cementite becomes unstable, both in mole fraction <strong>'X(C)'</strong> and in weight percent <strong>'WP(C)'</strong>.<br />
+Create a third buffer named <strong>'C=0 to 1.5 at 800°C'</strong> and perform a stepped calculation with the same composition range but at a temperature of 800°C.</p>
+<p><a href="/tutorials/t3/img/t3_create_third_buffer_name_6050006.png" title="tutorials/t3/img/t3_create_third_buffer_name_6050006.png"><img alt=" Create buffer window" src="/tutorials/t3/img/t3_create_third_buffer_name_6050006.png" title="Create buffer window" /></a></p>
+<p><a href="/tutorials/t3/img/t3_step_equilibrium_element_800_6050006.png" title="tutorials/t3/img/t3_step_equilibrium_element_800_6050006.png"><img alt=" MatCalc step equilibrium" src="/tutorials/t3/img/t3_step_equilibrium_element_800_6050006.png" title="MatCalc step equilibrium" /></a></p>
+<p>The output in this case includes three <strong>'Xsol'</strong> lines, corresponding to changes in phase stability:</p>
+<pre><code>1, 0,00 s, 0,4, its 23,  FCC_A1 - OK -
+2, 0,00 s, 0,45, its 3,  FCC_A1 - OK -
+3, 0,00 s, 0,5, its 3,  FCC_A1 - OK -
+4, 0,00 s, 0,55, its 3,  FCC_A1 - OK -
+5, 0,00 s, 0,6, its 3,  FCC_A1 - OK -
+6, 0,00 s, 0,65, its 3,  FCC_A1 - OK -
+7, 0,00 s, 0,7, its 3,  FCC_A1 - OK -
+8, 0,00 s, 0,75, its 3,  FCC_A1 - OK -
+9, 0,00 s, 0,8, its 3,  FCC_A1 - OK -
+10, 0,00 s, 0,85, its 3,  FCC_A1 - OK -
+11, 0,00 s, 0,9, its 3,  FCC_A1 - OK -
+Xsol 'CEMENTITE': 
+X(C): 0,042617353, WP(C): 0,94829227
+ - OK -
+12, 0,00 s, 0,95, its 4,  FCC_A1 CEMENTITE - OK -
+13, 0,00 s, 1, its 2,  FCC_A1 CEMENTITE - OK -
+14, 0,00 s, 1,05, its 2,  FCC_A1 CEMENTITE - OK -
+15, 0,00 s, 1,1, its 2,  FCC_A1 CEMENTITE - OK -
+16, 0,00 s, 1,15, its 2,  FCC_A1 CEMENTITE - OK -
+17, 0,00 s, 1,2, its 2,  FCC_A1 CEMENTITE - OK -
+18, 0,00 s, 1,25, its 2,  FCC_A1 CEMENTITE - OK -
+19, 0,00 s, 1,3, its 2,  FCC_A1 CEMENTITE - OK -
+20, 0,00 s, 1,35, its 2,  FCC_A1 CEMENTITE - OK -
+21, 0,01 s, 1,4, its 2,  FCC_A1 CEMENTITE - OK -
+22, 0,00 s, 1,45, its 2,  FCC_A1 CEMENTITE - OK -
+23, 0,00 s, 1,5, its 2,  FCC_A1 CEMENTITE - OK -
+changing step direction ...
+24, 0,00 s, 0,35, its 3,  FCC_A1 - OK -
+Xsol 'BCC_A2': 
+X(C): 0,015675087, WP(C): 0,3413233
+ - OK -
+25, 0,00 s, 0,3, its 4,  FCC_A1 BCC_A2 - OK -
+26, 0,00 s, 0,25, its 2,  FCC_A1 BCC_A2 - OK -
+27, 0,00 s, 0,2, its 2,  FCC_A1 BCC_A2 - OK -
+28, 0,00 s, 0,15, its 2,  FCC_A1 BCC_A2 - OK -
+29, 0,00 s, 0,1, its 2,  FCC_A1 BCC_A2 - OK -
+30, 0,00 s, 0,05, its 2,  FCC_A1 BCC_A2 - OK -
+Xsol 'FCC_A1': 
+X(C): 0,00055593532, WP(C): 0,011961706
+ - OK -
+31, 0,00 s, 1e-012, its 4,  BCC_A2 - OK -
+Steps: 32, CalcTime: 0,07 s
+AktStepVal: 0,000000
+- OK -
+</code></pre>
+<h3 id="edit-buffer-states">Edit buffer states</h3>
+<p>The <strong>'console'</strong> window provides information on which phases are stable at a given temperature and carbon content, but not on the phase fractions or compositions. However, this detailed information is stored in the buffers and can be found by selecting <strong>'Global &gt; Buffers &gt; Edit buffer states'</strong>.</p>
+<p><a href="/tutorials/t3/img/t3_global_edit_buffer_states_6050006.png" title="tutorials/t3/img/t3_global_edit_buffer_states_6050006.png"><img alt=" Open edit and load buffer states window" src="/tutorials/t3/img/t3_global_edit_buffer_states_6050006.png" title="Open edit and load buffer states window" /></a></p>
+<p>A new window appears with the list of the calc states stored in the buffer. The upper part of the <strong>'step value…'</strong> area contains a drop-box for selecting a buffer, and the lower part gives a list of the step-values at which equilibria have been evaluated. These are either temperature or carbon content values, depending on the buffer chosen, and their units are those specified in the <strong>'Step equilibrium'</strong> window when setting up the calculation. The <strong>'Tsol'</strong> or <strong>'Xsol'</strong> values are also stored. If the <strong>'auto load'</strong> box at the bottom left is ticked, clicking on a step-value loads the equilibrium, and the contents of the <strong>'Phase summary'</strong> and <strong>'Phase details'</strong> are immediately updated with phase fraction and composition details for this equilibrium.</p>
+<p><a href="/tutorials/t3/img/t3_edit_and_load_buffer_states_6001000.png" title="tutorials/t3/img/t3_edit_and_load_buffer_states_6001000.png"><img alt=" MatCalc edit and load buffer states" src="/tutorials/t3/img/t3_edit_and_load_buffer_states_6001000.png" title="MatCalc edit and load buffer states" /></a></p>
+<p>The next two tutorials demonstrate how to produce graphical plots of phase fractions, compositions and many other quantities as a function of the stepped variable.</p>
+<h2 id="to-finish">To finish...</h2>
+<p>Save the workspace file - it will be needed again in  <a href="/tutorials/t4" title="tutorials/t4">Tutorial 4</a>.</p>
+<h2 id="consecutive-articles">Consecutive articles</h2>
+<p>The tutorial is continued in article  <a href="/tutorials/t4" title="tutorials/t4">T4 - Graphical presentation and export of results</a></p>
+<p>Go to <a href="/tutorials" title="tutorials">MatCalc tutorial index</a>.</p>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=tutorials%3At3&amp;1788352858" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

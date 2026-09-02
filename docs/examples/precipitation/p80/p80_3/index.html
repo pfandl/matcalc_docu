@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../../img/favicon.ico" />
+    <title>P80 3 - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "P80 3";
+        var mkdocs_page_input_path = "examples/precipitation/p80/p80_3.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">P80 3</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>Example P80: Part 3: TTP plot in Fe-Cu system [MatCalc Documentation]</p>
+<h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#example_p80part_3ttp_plot_in_fe-cu_system">Example P80: Part 3: TTP plot in Fe-Cu system</a></p>
+</li>
+<li>
+<p><a href="#compatibility">Compatibility</a></p>
+</li>
+<li><a href="#objectives">Objectives</a></li>
+<li><a href="#related_documents">Related documents</a></li>
+<li><a href="#complementary_files">Complementary files</a></li>
+<li>
+<p><a href="#main_document">Main document</a></p>
+</li>
+<li>
+<p><a href="#setup_thermodynamics_and_system">Setup thermodynamics and system</a></p>
+</li>
+<li><a href="#setup_ttp_plot">Setup TTP plot</a></li>
+<li><a href="#using_the_gui">Using the GUI</a></li>
+<li><a href="#using_the_script_ttp_loop">Using the script / TTP loop</a></li>
+<li><a href="#result">Result</a></li>
+<li><a href="#consecutive_articles">Consecutive articles</a></li>
+</ul>
+<h1 id="example-p80-part-3-ttp-plot-in-fe-cu-system">Example P80: Part 3: TTP plot in Fe-Cu system</h1>
+<h2 id="compatibility">Compatibility</h2>
+<p>MatCalc version: 5.52.0038 <br />
+Database: mc_fe.tdb (newest version!), mc_sample_fe.ddb<br />
+Author: Georg Stechauner<br />
+Created: 2013-08-28 <br />
+Revisions:</p>
+<h2 id="objectives">Objectives</h2>
+<p>This final part shows the calculation of the TTP curve for Cu precipitates in the binary Fe-Cu system. We will consider all the information which was worked out in the prior parts. Therefore, the settings which are used here, will not be discussed.</p>
+<p>There are basically two ways on how to create the TTP curves which will be shown: (a) setthe system up according to part 2, and use the “Calc → TTP diagram” function from the menu. Use the correct temperature borders and MatCalc will perform the simulation. (b) The second approach needs a little scripting, or just use the supported one: the main difference is the fast cooling prior to isothermal holding, which leads to creation of thermal vacancies. It will be shown however, that the influence of them is neglectable.</p>
+<p>It is up to you to decide, whether to use the script or to simple use the GUI function.</p>
+<p><strong>Note:</strong> This is an advanced example and will not cover basics like “How to create a plot”, etc… . Please consider earlier P-examples for instructional purpose.</p>
+<h2 id="related-documents">Related documents</h2>
+<ul>
+<li>P80-1 -  <a href="/examples/precipitation/p80/p80_1" title="examples/precipitation/p80/p80_1">Models and parameters for Fe-Cu simulation</a></li>
+<li>P80-2 -  <a href="/examples/precipitation/p80/p80_2" title="examples/precipitation/p80/p80_2">Precipitation of Cu in Fe-Cu</a></li>
+<li>M. Perez, F. Perrard, V. Massardier, X. Kleber, V. Schmitt, A. Deschamps, Low Temperature Solubility Limit of Copper in Iron, Materials Science Forum 500-501 (2005) 631-638.</li>
+</ul>
+<h2 id="complementary-files">Complementary files</h2>
+<p>Click here to view the script for this example.</p>
+<h1 id="main-document">Main document</h1>
+<h2 id="setup-thermodynamics-and-system">Setup thermodynamics and system</h2>
+<p>Set up the thermodynamics, precipitates, domains, … according to part 2. Or simply load your prior workspace <img alt=":-)" src="/wiki/lib/images/smileys/smile.svg" /></p>
+<h2 id="setup-ttp-plot">Setup TTP plot</h2>
+<p>Create a new P6 - TTP plot. Click into the plot, and navigate to the 'options…' window on the left side, and right click on 'series'. Select 'New Series –&gt;' and 'ttp-curve'.</p>
+<p><a href="/examples/precipitation/p80/p80_ttp-series.png" title="examples/precipitation/p80/p80_ttp-series.png"><img alt=" Setup a ttp plot" src="/examples/precipitation/p80/p80_ttp-series.png" title="Setup a ttp plot" /></a></p>
+<p>To display the sum-curve of all precipitates and to include the transformation, we need to choose 'use_x_data_string' as data. Otherwise we could only choose from one of the three present phases. Enter the sum as 'f<span class="arithmatex">\(cu\_bcc\_1\_p0+f\)</span>cu_bcc_2_p0+f$cu_fcc_p0' in the x-data field. Enter '0.10' for y-data, to display the 10% phase fraction line.
+In the general plot options, select 'relative' at 'refer to f'. This will consider the maximum phase fraction of each temperature as 100% and refer the 10 line to it.</p>
+<h2 id="using-the-gui">Using the GUI</h2>
+<p>When using the GUI, simply select the according menu item in Calc → TTP diagram, or use the short-cut Ctrl-Alt-K. We use the temperature borders of 400 and 700°C.</p>
+<p><strong>Attention:</strong> The simulation gets unstable at high temperatures which will lead to oscillations an numerical problems. MatCalc will try to keep on simulating, which leads to very long simulation times. To solve this, only calculate up to 650°C or stop the simulation manually once the problem occurs.</p>
+<p>The GUI version also needs regular input if you want to proceed with the next temperature.</p>
+<p>Therefore, it is suggested to use the provided script with the TTP-loop.</p>
+<p><strong>ATTENTION:</strong> Using the GUI can result in errors due to wrong phase-fraction calculation. Be aware of that when checking your results!</p>
+<h2 id="using-the-script-ttp-loop">Using the script / TTP loop</h2>
+<p>The biggest amount of the script is similar to part 2 of this example. The most important piece of code, is the TTP-calculating-loop at the very end.</p>
+<pre><code>for (j;400..850;25)
+  $ Create buffer states for each temperature and name them 
+  format-variable-string buffer_name &quot;buffer_%d&quot; j 
+  create-calc-buffer #buffer_name
+  set-gui-window-property buffer_window_id b #buffer_name
+
+  set_simulation_parameter t c 850 -100 10 
+  set_simulation_parameter m j
+  set_simulation_parameter s r
+  set-precipitation-parameter cu_bcc_1_p0 n s n  $ nucleation sites are none
+  start-precipitate-simulation
+  create-calc-state cool
+
+  set_simulation_parameter s l cool
+  SET_SIMULATION_PARAMETER T i j                 $ (I)sothermal at temperature &quot;j&quot;
+  set_simulation_parameter e 1e11                $ End time 
+  set-precipitation-parameter cu_bcc_1_p0 n s b  $ nucleation sites are bulk
+  $calculate-equilibrium j
+  start-precipitate-simulation
+  $edit_ht_segment ht 1 1 j 10 
+
+  append-ttp-buffer
+
+endfor
+</code></pre>
+<p>This portion of code first creates a buffer, corresponding to the actual simulation temperature. After that, it quenches quickly to isothermal holding temperature, to consider the effect of quenched in vacancies. The last part actually starts the simulation and appends the results from the buffer to the ttp-buffer.</p>
+<h2 id="result">Result</h2>
+<p>The resulting TTP-Plot should look similar to this one. Errors and numerical problems can occur above the 650°C point with the automatic plot.</p>
+<p><a href="/examples/precipitation/p80/p80_results_of_ttp_with_all_fractions.png" title="examples/precipitation/p80/p80_results_of_ttp_with_all_fractions.png"><img alt=" Result of TTP-simulation" src="/examples/precipitation/p80/p80_results_of_ttp_with_all_fractions.png" title="Result of TTP-simulation" /></a></p>
+<h1 id="consecutive-articles">Consecutive articles</h1>
+<p>None</p>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=examples%3Aprecipitation%3Ap80%3Ap80_3&amp;1788352998" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../../..";</script>
+    <script src="../../../../js/theme_extra.js"></script>
+    <script src="../../../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

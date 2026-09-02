@@ -1,0 +1,309 @@
+$$************************************************************************************************** 
+************************************* GENERAL INFORMATION ******************************************
+****************************************************************************************************
+
+This example was designed to create and manipulate composition sets and to analyze complex 
+miscibility gaps. As a typical example, we will use the Fe-C-N-Nb-V System, which shows a distinct 
+miscibility gap involving complex carbo-nitrides.
+
+The example starts off with describing the methodology for identification of miscibility gaps and 
+how to seperate two different populations in MatCalc. A problem with local minima will come up in 
+the example and be discussed.
+
+The second part will involve two special problems. The first one demonstrates the use of the 
+Use major constituents option, the second one will show, how changes in the chemical composition 
+will make the miscibility gap disappear.
+
+Database: mc_fe.tdb, mc_x_FeCNbVN.tdb
+Author: G. Stechauner
+Creation date: 2010-10-05
+Last revision: G. Stechauner (2011-11-10, Plot updates)
+This is a script for MatCalc version 5.44.0015
+
+
+****************************************************************************************************
+************************************** SETUP INFORMATION *******************************************
+**************************************************************************************************$$
+
+use-module core                                 $ select core module for kinetic simulation
+
+close-workspace f                               $ close any open workspace without asking for save 
+
+new-workspace                                   $ open new workspace
+
+$ give some information about the script
+@ echo n 
+set-workspace-info +Selected elements:          
+set-workspace-info +C, Fe, N, Nb, V
+set-workspace-info +
+set-workspace-info +Matrix phase: Austenite (FCC_A1)
+set-workspace-info +
+set-workspace-info +---------------------------------
+set-workspace-info +More information about MatCalc on
+set-workspace-info + http://matcalc.tuwien.ac.at
+set-workspace-info +---------------------------------
+echo y
+
+move-gui-window c hide                          $ Let's hide the console  
+
+$$************************************************************************************************** 
+**************************************** SYSTEM SETUP **********************************************
+**************************************************************************************************$$
+
+$ verify correct MatCalc version (is accessible as internal variable) 
+if (matcalc_version<5440015)
+   send-dialog-string "MatCalc version must be 5.44.0015 or higher to run this script. Stopping."
+   stop_run_script                               $ stop script
+endif
+
+
+test-exist-td-database mc_x_FeCNbVN.tdb                 $ Check if database is present
+if (test_result==1)
+   open-thermodyn-database mc_x_FeCNbVN.tdb             $ Thermodynamic database: mc_fe.tdb 
+else
+   test-exist-td-database mc_fe.tdb 
+   if (test_result==1)
+      open-thermodyn-database mc_fe.tdb   $ Thermodynamic database: mc_x_FeCNbVN.tdb 
+   else
+      send-dialog-string "No valid database found. Visit matcalc website and download the free 'mc_x_FeCNbVN' database."
+      stop_run_script
+   endif
+endif
+
+
+
+$$************************************************************************************************** 
+                      DATABASES, CHEMICAL COMPOSITION, SELECTED PHASES
+**************************************************************************************************$$
+
+select-elements C Fe V N Nb
+select-phases fcc_a1 
+
+read-thermodyn-database
+
+enter-composition wp c=0,17 n=0,01 nb=0,06 V=0,21
+set-automatic-startvalues
+set-temperature-celsius 1500
+calculate-equilibrium
+
+set-step-option y t                                $ T(y)pe / (t)emperature
+set-step-option r 1500 800 l 10                    $ Set range for stepped calculation
+step-equilibrium
+
+$$**************************************************************************************************
+                                PHASE FRACTION OF NbV-CN - TOGETHER
+**************************************************************************************************$$
+
+new-gui-window p1
+move-gui-window . 40 40 450 750                  $ . for current / PosX, PosY, Width, Height
+
+$ define default x-axis properties
+set-gui-window-property . s u y                    $ use default x-axis for all plots
+set-gui-window-property . s t Temperature [C]      $ axis title
+set-gui-window-property . x T$c                    $ x-axis data
+
+set-plot-option . t Phase fraction of complex NbV-CN          $ Add title
+set-plot-option . s n b F$FCC_A1#01    $ (s)eries / (n)ew / (b)uffer results / Series: F$FCC_A1#01
+set-plot-option . s m -1 F$FCC_A1#01 NbV-CN        $ rename F$FCC_A1#01 to NbV-CN
+set-plot-option . a y 1 t phase fraction           $ change y-axis title
+set-plot-option . s l * y                          $ Lock all series
+
+create-new-plot x .                                $ Create new (x)-y-plot in active window
+set-plot-option . t Chemical composition of complex NbV-CN    $ Add title
+set-plot-option . s n b X$FCC_A1#01$*              $ Add chemical composition
+set-plot-option . a y 1 t chemical composition     $ change y-axis title
+set-plot-option . s l * y                          $ Lock all series
+
+
+$$**************************************************************************************************
+                                PHASE FRACTION OF NbC AND VN - SEPERATELY
+**************************************************************************************************$$
+
+new-gui-window p1
+move-gui-window . 60 60 450 900
+
+$ define default x-axis properties
+set-gui-window-property . s u y                    $ use default x-axis for all plots
+set-gui-window-property . s t Temperature [C]      $ axis title
+set-gui-window-property . x T$c                    $ x-axis data
+
+set-plot-option . t Phase fraction of complex NbV-CN, VN and NbC    $ Add title
+set-plot-option . s n b F$FCC_A1#01   $ (s)eries / (n)ew / (b)uffer results / Series: F$FCC_A1#01
+set-plot-option . s m -1 F$FCC_A1#01 NbV-CN        $ rename F$FCC_A1#01 to NbV-CN
+set-plot-option . a y 1 t phase fraction           $ change y-axis title
+set-plot-option . s l * y                          $ Duplicate and lock all series
+ 
+create-new-phase fcc_a1 e                    $ Create equilibrium phase with fcc_a1 as parent phase
+change-phase-status fcc_a1#01 m :nb:c:       $ Change major constituents of fcc_a1#01 to NbC
+change-phase-status fcc_a1#02 m :v:n:        $ Change major constituents of fcc_a1#02 to VN
+
+set-temperature-celsius 1500
+calculate-equilibrium
+
+set-step-option y t                                $ T(y)pe / (t)emperature
+set-step-option r 1500 800 l 10                    $ Set range for stepped calculation
+step-equilibrium
+
+set-plot-option . s n b F$FCC_A1#01    $ (s)eries / (n)ew / (b)uffer results / Series: F$FCC_A1#01
+set-plot-option . s m -1 F$FCC_A1#01 NbC           $ rename F$FCC_A1#01 to NbC
+set-plot-option . s l * y                          $ Lock all series
+  
+set-plot-option . s n b F$FCC_A1#02    $ (s)eries / (n)ew / (b)uffer results / Series: F$FCC_A1#02
+set-plot-option . s m -1 F$FCC_A1#02 VN            $ rename F$FCC_A1#02 to VN
+set-plot-option . s l * y                          $ Lock all series
+
+create-new-plot x .                                $ Create new (x)-y-plot in active window
+set-plot-option . t Chemical composition of NbC    $ Add title
+set-plot-option . s n b X$FCC_A1#01$*              $ Add chemical composition
+set-plot-option . a y 1 t chemical composition     $ Change y-axis title
+set-plot-option . s m -1 x$fcc_a1#01$c NbC_C       $ Renaming elements
+set-plot-option . s m -1 x$fcc_a1#01$fe NbC_Fe 
+set-plot-option . s m -1 x$fcc_a1#01$n NbC_N 
+set-plot-option . s m -1 x$fcc_a1#01$nb NbC_Nb 
+set-plot-option . s m -1 x$fcc_a1#01$v NbC_V 
+set-plot-option . s l * y                          $ Lock all series
+
+create-new-plot x .                                $ Create new (x)-y-plot in active window
+set-plot-option . t Chemical composition of VN     $ Add title
+set-plot-option . s n b X$FCC_A1#02$*              $ Add chemical composition
+set-plot-option . a y 1 t chemical composition     $ Change y-axis title
+set-plot-option . s m -1 x$fcc_a1#02$c VN_C        $ Renaming elements
+set-plot-option . s m -1 x$fcc_a1#02$fe VN_Fe 
+set-plot-option . s m -1 x$fcc_a1#02$n VN_N 
+set-plot-option . s m -1 x$fcc_a1#02$nb VN_Nb 
+set-plot-option . s m -1 x$fcc_a1#02$v VN_V 
+set-plot-option . s l * y                          $ Lock all series
+
+
+$$**************************************************************************************************
+                        SPECIAL PROBLEM I: MAJOR CONSTITUENTS INCONSISTENT
+**************************************************************************************************$$
+
+enter-composition wp c=0,3 n=0,03 nb=0,2 V=0,5
+set-automatic-startvalues
+set-temperature-celsius 1500
+calculate-equilibrium
+
+set-step-option y t                     $ T(y)pe / (t)emperature
+set-step-option r 1500 800 l 10         $ Set range for stepped calculation
+step-equilibrium
+
+
+new-gui-window p1
+move-gui-window . 80 80 450 600
+
+$ define default x-axis properties
+set-gui-window-property . s u y                    $ use default x-axis for all plots
+set-gui-window-property . s t Temperature [C]      $ axis title
+set-gui-window-property . x T$c                    $ x-axis data
+
+set-plot-option . s n b X$FCC_A1#01$*              $ Add chemical composition
+set-plot-option . t Chemical composition of NbC - Not Enforced   $ Add title
+set-plot-option . a y 1 t chemical composition     $ change y-axis title
+set-plot-option . s m -1 x$fcc_a1#01$c NbC_C       $ Renaming elements
+set-plot-option . s m -1 x$fcc_a1#01$fe NbC_Fe 
+set-plot-option . s m -1 x$fcc_a1#01$n NbC_N 
+set-plot-option . s m -1 x$fcc_a1#01$nb NbC_Nb 
+set-plot-option . s m -1 x$fcc_a1#01$v NbC_V 
+set-plot-option . s l * y                          $ Lock all series
+
+create-new-plot x .                                $ Create new (x)-y-plot in active window
+set-plot-option . t Chemical composition of VN - Not Enforced    $ Add title
+set-plot-option . s n b X$FCC_A1#02$*              $ Add chemical composition
+set-plot-option . a y 1 t chemical composition     $ Change y-axis title
+set-plot-option . s m -1 x$fcc_a1#02$c VN_C        $ Renaming elements
+set-plot-option . s m -1 x$fcc_a1#02$fe VN_Fe 
+set-plot-option . s m -1 x$fcc_a1#02$n VN_N 
+set-plot-option . s m -1 x$fcc_a1#02$nb VN_Nb 
+set-plot-option . s m -1 x$fcc_a1#02$v VN_V 
+set-plot-option . s l * y                          $ Lock all series
+
+change-phase-status fcc_a1#01 f e s                $ Set flag for enforce major constituents
+change-phase-status fcc_a1#02 f e s                $ Set flag for enforce major constituents
+
+set-temperature-celsius 1500
+set-automatic-startvalues
+calculate-equilibrium
+
+set-step-option y t                                $ T(y)pe / (t)emperature
+set-step-option r 1500 800 l 10                    $ Set range for stepped calculation
+step-equilibrium
+
+set-gui-window-property . n 2                      $ Set window to two columns
+move-gui-window . 80 80 850 900
+create-new-plot x .                                $ Create new (x)-y-plot in active window
+set-plot-option . t Chemical composition of NbC - Enforced    $ Add title
+set-plot-option . s n b X$FCC_A1#01$*              $ Add chemical composition
+set-plot-option . a y 1 t chemical composition     $ Change y-axis title
+set-plot-option . s m -1 x$fcc_a1#01$c NbC_C       $ Renaming elements
+set-plot-option . s m -1 x$fcc_a1#01$fe NbC_Fe 
+set-plot-option . s m -1 x$fcc_a1#01$n NbC_N 
+set-plot-option . s m -1 x$fcc_a1#01$nb NbC_Nb 
+set-plot-option . s m -1 x$fcc_a1#01$v NbC_V 
+set-plot-option . s l * y                          $ Lock all series
+
+create-new-plot x .                                $ Create new (x)-y-plot in active window
+set-plot-option . t Chemical composition of VN - Enforced    $ Add title
+set-plot-option . s n b X$FCC_A1#02$*              $ Add chemical composition
+set-plot-option . a y 1 t chemical composition     $ Change y-axis title
+set-plot-option . s m -1 x$fcc_a1#02$c VN_C        $ Renaming elements
+set-plot-option . s m -1 x$fcc_a1#02$fe VN_Fe 
+set-plot-option . s m -1 x$fcc_a1#02$n VN_N 
+set-plot-option . s m -1 x$fcc_a1#02$nb VN_Nb 
+set-plot-option . s m -1 x$fcc_a1#02$v VN_V 
+set-plot-option . s l * y                          $ Lock all series
+
+
+$$**************************************************************************************************
+                           SPECIAL PROBLEM II: NO MISCIBILITY GAP
+**************************************************************************************************$$
+
+enter-composition wp c=0,17 n=0,08 nb=0,06 V=0,21
+set-temperature-celsius 1500
+set-automatic-startvalues
+calculate-equilibrium
+
+set-step-option y t                                $ T(y)pe / (t)emperature
+set-step-option r 1500 800 l 10                    $ Set range for stepped calculation
+
+change-phase-status fcc_a1#01 f e c                $ Clear flag for enforce major constituents
+change-phase-status fcc_a1#02 f e c                $ Clear flag for enforce major constituents
+
+step-equilibrium
+
+new-gui-window p1
+move-gui-window . 100 100 450 750
+
+$ define default x-axis properties
+set-gui-window-property . s u y                    $ use default x-axis for all plots
+set-gui-window-property . s t Temperature [C]      $ axis title
+set-gui-window-property . x T$c                    $ x-axis data
+set-plot-option . t Phase fraction of VN and NbC   $ Add title
+
+set-plot-option . s n b F$FCC_A1#01    $ (s)eries / (n)ew / (b)uffer results / Series: F$FCC_A1#01
+set-plot-option . s m -1 F$FCC_A1#01 NbC           $ rename F$FCC_A1#01 to NbC
+set-plot-option . a y 1 t phase fraction           $ Change y-axis title
+set-plot-option . s l * y                          $ Lock all series
+
+set-plot-option . s n b F$FCC_A1#02    $ (s)eries / (n)ew / (b)uffer results / Series: F$FCC_A1#02
+set-plot-option . s m -1 F$FCC_A1#02 VN            $ rename F$FCC_A1#02 to VN
+set-plot-option . s l * y                          $ Lock all series
+
+create-new-plot x .                                $ Create new (x)-y-plot in active window
+set-plot-option . t Chemical composition of VN     $ Add title
+set-plot-option . s n b X$FCC_A1#02$*              $ Add chemical composition
+set-plot-option . a y 1 t chemical composition     $ Change y-axis title
+set-plot-option . s m -1 x$fcc_a1#02$c VN_C        $ Renaming elements
+set-plot-option . s m -1 x$fcc_a1#02$fe VN_Fe 
+set-plot-option . s m -1 x$fcc_a1#02$n VN_N 
+set-plot-option . s m -1 x$fcc_a1#02$nb VN_Nb 
+set-plot-option . s m -1 x$fcc_a1#02$v VN_V 
+set-plot-option . s l * y                          $ Lock all series
+
+
+$$**************************************************************************************************
+*************************************** EXAMPLE 3 FINISHED *****************************************
+**************************************************************************************************$$
+
+
+

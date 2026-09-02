@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Excess va - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Excess va";
+        var mkdocs_page_input_path = "techpapers/precipitation/excess_va.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Excess va</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>TechPaper #2014003: Excess vacancies [MatCalc Documentation]</p>
+<h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#techpaper_2014003excess_vacancies">TechPaper #2014003: Excess vacancies</a></p>
+</li>
+<li>
+<p><a href="#compatibility">Compatibility</a></p>
+</li>
+<li><a href="#objectives">Objectives</a></li>
+<li><a href="#related_documents">Related documents</a></li>
+<li>
+<p><a href="#main_document">Main document</a></p>
+</li>
+<li>
+<p><a href="#influence_of_the_excess_vacancies_on_the_precipitation_kinetics">Influence of the excess vacancies on the precipitation kinetics</a></p>
+<ul>
+<li><a href="#diffusion">Diffusion</a></li>
+<li><a href="#nucleation">Nucleation</a></li>
+<li><a href="#excess_vacancies">Excess Vacancies</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="techpaper-2014003-excess-vacancies">TechPaper #2014003: Excess vacancies</h1>
+<h2 id="compatibility">Compatibility</h2>
+<p>MatCalc version: 5.43 - … <br />
+Author: E. Kozeschnik <br />
+Created: 2014-04-25 <br />
+Revisions:</p>
+<h2 id="objectives">Objectives</h2>
+<p>This paper describes the effects of the excess vacancies on the precipitation kinetics. Next, the models of the vacancy concentration evolution used in the kinetic simulation are presented. At the end, the approach for modeling of the vacancy trapping effects is discussed.</p>
+<h2 id="related-documents">Related documents</h2>
+<ul>
+<li><a href="/techpapers/equilib/equilib_vac" title="techpapers/equilib/equilib_vac">Equilibrium vacancy concentration</a></li>
+<li><a href="/examples/precipitation/p2" title="examples/precipitation/p2">Example P2: Precipitation sequence in Al-Cu</a></li>
+</ul>
+<h1 id="main-document">Main document</h1>
+<p>The vacancies play a crucial role in the diffusion processes in the solid state. Other than for the most elements, the vacancy concentration in the alloy may vary during the temperature cycles. Clearly, the magnitude of the effects attributed to the vacancy presence will vary with the concentration of those. There are 2 models in MatCalc implemented which describe the dynamics of the vacancy generation and anihilation. Additionally, there is a possibility to account for the trapping of the vacancies which impedes the anihilation rate.</p>
+<h2 id="influence-of-the-excess-vacancies-on-the-precipitation-kinetics">Influence of the excess vacancies on the precipitation kinetics</h2>
+<p>As already mentioned, the vacancies influence the diffusion process in the solids. There is also another effect of the vacancy concentration connected with the nucleation of the precipitates. Both topics are shortly presented below.</p>
+<h3 id="diffusion">Diffusion</h3>
+<p>Atoms diffuse by the position exchange with the neighbor vacancies. Clearly, the magnitude of this process depends on the ratio of the vacancies to the atoms - the higher the ratio, the higher the probability of an atom to have an empty space to jump in. Diffusion coefficients found in the literature usually refer to the condition with the equilibrium vacancy concentration <span class="arithmatex">\(y\_{Va,eq}\)</span>. For the evaluation of the actual diffusion coefficient <span class="arithmatex">\(D\)</span>, the following equation is used:</p>
+<div class="arithmatex">\[ D = D\_{eq} \frac{y\_{Va}}{y\_{Va,eq}} \]</div>
+<p>with:</p>
+<p><span class="arithmatex">\(D\_{eq}\)</span> - Diffusion coefficient for the system with vacancy concentration <span class="arithmatex">\(y\_{Va,eq}\)</span></p>
+<p><span class="arithmatex">\(y\_{Va}\)</span> - Actual vacancy concentration</p>
+<p>Obviously, <span class="arithmatex">\(D\)</span> impacts the nucelation and growth of the precipitates.</p>
+<h3 id="nucleation">Nucleation</h3>
+<p>Except of the above mentioned diffusion modification, there is antoher effect which impacts the nucleation stage of the precipitation process. As mentioned elsewhere, the nucleation barrier <span class="arithmatex">\(G^\*\)</span> is given as:</p>
+<p>The following statements are generally accepted:</p>
+<ul>
+<li>Compression of the solid increases the vacancy-formation entropy;</li>
+<li>vacancy entropies can vary widely within one lattice structure;</li>
+<li>vacancy entropies are somewhat higher in bcc solids than in fcc solids.</li>
+</ul>
+<p>The first conclusion is directly related to the vacancy relaxation as already mentioned above. The second one shows that there are other material properties which influence the formation entropy, e.g. atomic potentials and the existence of vacancy clusters. The reason for higher entropies in bcc solids can be found in the atomic packing factor which is 68% for bcc and 74% for fcc. This means it is easier for atoms in a bcc structure to relax and the conclusions drawn in connection with the relaxation can be used to explain the literature data.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Element (Structure)</strong></td>
+<td><span class="arithmatex">\(E^f\_{Va}\)</span> [kJ/mol]</td>
+<td><span class="arithmatex">\(S^f\_{Va}\)</span> [<span class="arithmatex">\(k\_B\)</span>]</td>
+<td>Reference</td>
+</tr>
+<tr>
+<td>Al (fcc)</td>
+<td>63.68</td>
+<td>0.7</td>
+<td>Siegel<a href="#fn__1">1)</a></td>
+</tr>
+<tr>
+<td>Cr (bcc)</td>
+<td>190 <span class="arithmatex">\(\pm\)</span> 1.9</td>
+<td>2.25</td>
+<td>Cahn<a href="#fn__2">2)</a> / Burton<a href="#fn__3">3)</a></td>
+</tr>
+<tr>
+<td>Fe (fcc)</td>
+<td>173.7 - 178.5</td>
+<td>-</td>
+<td>Cahn</td>
+</tr>
+<tr>
+<td>Fe (bcc)</td>
+<td>154.4 - 166.92</td>
+<td>2.17 (?)</td>
+<td>Cahn / Burton</td>
+</tr>
+<tr>
+<td>Mg (hcp)</td>
+<td>76.23</td>
+<td>0 <span class="arithmatex">\(\pm\)</span> 0.3</td>
+<td>Cahn</td>
+</tr>
+<tr>
+<td>Mo (bcc)</td>
+<td>290 <span class="arithmatex">\(\pm\)</span> 1.9</td>
+<td>1.6</td>
+<td>Cahn</td>
+</tr>
+<tr>
+<td>Ni (fcc)</td>
+<td>172 <span class="arithmatex">\(\pm\)</span> 4.8</td>
+<td>1.96</td>
+<td>Cahn / Burton</td>
+</tr>
+<tr>
+<td>Ti (hcp)</td>
+<td>122.54</td>
+<td>5.15</td>
+<td>Landolt<a href="#fn__4">4)</a> / Kraftmakher<a href="#fn__5">5)</a>(high T)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="excess-vacancies">Excess Vacancies</h2>
+<p>Excess vacancies can be inserted in a solid by different methods:</p>
+<ul>
+<li>Quenching from high temperatures</li>
+<li>Plastic deformation</li>
+<li>Irridation</li>
+</ul>
+<p>This excess vacancies will annihilate at jogs, dislocations, and surfaces (e.g. grain boundaries). How fast depends mainly on the temperature of the solid and on the number of the mentioned traps.</p>
+<p><a href="#fnt__1">1)</a></p>
+<p>R.W. Siegel. Vacancy concentrations in metals. J.Nucl.Mater., 69-70(117-146), February
+1978.</p>
+<p><a href="#fnt__2">2)</a></p>
+<p>R. Cahn and P. Haasen.
+Physical metallurgy: Ed. by R. W. Cahn. 4th rev. ed, volume 2.
+1996.</p>
+<p><a href="#fnt__3">3)</a></p>
+<p>J.J. Burton. Vacancy formation entropy in cubic metals. Phys.Rev.B, 5(8):2948, April 1972.</p>
+<p><a href="#fnt__4">4)</a></p>
+<p>H. Ullmaier. Atomic defects in metals. In Landolt-Börnstein, New Series, volume 25.
+Springer-Verlag, Heidelberg, 1991.</p>
+<p><a href="#fnt__5">5)</a></p>
+<p>Y. Kraftmakher.
+Equilibrium vacancies and thermophysical properties of metals.
+Physics reports. North-Holland, 1998.</p>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=techpapers%3Aprecipitation%3Aexcess_va&amp;1788353011" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

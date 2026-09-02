@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>5.61 - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "5.61";
+        var mkdocs_page_input_path = "versioninfo/5.61.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">5.61</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>MatCalc 5.61 [MatCalc Documentation]</p>
+<h2 id="matcalc-561">MatCalc 5.61</h2>
+<p><strong>NOTE</strong>: This version has several huge changes in numerics. Calculations may take longer time as usual.</p>
+<p>The following new features are implemented in <em>MatCalc</em> versions 5.61.nnnn:</p>
+<ul>
+<li>Improved treatment of <strong>primary precipitates</strong>. The virtual treatment procedure is obsolete. Instead, <strong>size distributions can be generated directly</strong> from any existing phase, e.g., as calculated from a Scheil-Gulliver analysis.</li>
+<li>New <strong>FSK trapping routines</strong>, which can be applied to equilibrium and kinetic calculations.</li>
+<li>New <strong>couples and pairs</strong> model for <strong>solute trapping</strong>, which can describe the thermodynamics of atomic couples in solution phases. Presently, only the equilibrium implementation is operative.</li>
+<li>New treatment of <strong>grain boundary precipitation</strong>. User can now select whether gb precipitates are treated with gb diffusion geometry or with classical spherical diffusion fields as in the original SFFK model.</li>
+<li>Substantial changes in the <strong>substructure evolution models</strong>. The ABC and 2ABC models are working rather well already.</li>
+</ul>
+<p>Below are details describing the various changes and new features of the MatCalc versions 5.61.xxxx.</p>
+<h4 id="version-5611003-released-2015-02-17">version 5.61.1003: released 2015-02-17</h4>
+<ul>
+<li>Several improvements in ABC and 2ABC model for <strong>substructure evolution</strong>.</li>
+<li>Implemented <strong>user-defined functions</strong> in treatment of <strong>coalescence</strong>.</li>
+<li>Fixed a potential bug in calculation of <strong>diffusion coefficients of ordered phases</strong>.</li>
+<li>Implemented <strong>subgrain boundary mobility</strong> into ABC and 2ABC model. Have decoupled it from C-parameter.</li>
+<li><strong>Subgrain/cell size</strong> can now be controlled independently with A' parameter in ABC model.</li>
+<li>Fixed a bug in single-class <strong>grain size model</strong>, where grains could shrink in special cases.</li>
+<li>Fixed a problem with comments at the end of FOR command.</li>
+<li>Updated <strong>template scripts</strong> to comply to latest changes.</li>
+<li>Added variable for the Read-Shockley model for geometrically necessary dislocations in a substructure network of given subgrain size (<code>DD_EQU_RS$prec_domain_name</code>).</li>
+<li>Removed <strong>Sherstnev-Koze advanced</strong> model.</li>
+<li>2ABC model: Wall dislocation density now converges towards a separate <strong>equilibrium wall dislocation density</strong>.</li>
+<li>Fixed a problem with negative solid solution strengthening coefficients.</li>
+<li>Changed terminology from co-clusters to <strong>couples and pairs</strong>.</li>
+</ul>
+<h4 id="version-5610059-released-2014-12-11">version 5.61.0059: released 2014-12-11</h4>
+<ul>
+<li>Added the possibility of defining a <strong>fixed number of nucleation sites</strong>.</li>
+<li>Added the functinality to <strong>suppress nucleation</strong> of a complex phase when the supersaturationi is so high that the <strong>critical radius is below the minimum radius of the crystal structure</strong> (i.e., below the size of the unit cell. This feature will avoid that all different types of phases immediately nucleate with very small critical radius during fast quenching processes.</li>
+<li>Added a variable to display phase fraction of only incoherent precipitate population (<code>F_PREC_INC$phase_name</code>). This feature can be used to analyse partial phase fractions, i.e., phase fractions of a given size range.</li>
+<li>Re-organization of the <strong>precipitation domain dialog</strong>.</li>
+<li>First implementation of <strong>co-cluster</strong> thermodynamics.</li>
+<li>Added a possibility to take into account that plastic deformation can <strong>break up particles</strong>.</li>
+<li>Added feature to automatically <strong>change grain boundary precipitates from gb diffusion geometry to classical SFFK</strong> with spherical diffusion fields.</li>
+<li>Modified treatment of the <strong>equilibrium cluster distribution function</strong> (ECDF) when switching from one heat treatment segment to another.</li>
+<li>Fixed several minor bugs.</li>
+</ul>
+<h4 id="version-5610021-released-2014-07-18">version 5.61.0021: released 2014-07-18</h4>
+<ul>
+<li>Modified the <strong>numerics for precipitation calculation</strong> to improve stability and performance. New implementation should also show less oscillations in chemical potential and other variables.</li>
+<li>Modified treatment of <strong>Clemm-Fisher model for interfacial energy</strong> reduction at grain and subgrain boundaries. MatCalc now automatically adds the structural part</li>
+<li>Implemented a <strong>size-dependent inner particle diffusion coefficient factor</strong> (ipdcf). This feature (ipdcf radius exponent) makes it possible to account for easier chemical composition changes in large precipitates. The assumption is that the balance of radius and composition change for the precipitate made by the thermodynamic extremal principle (TEP) is now determined for a small shell at the precipitate boundary instead of the entire precipitate volume. It gives good results for para-cementite precipitation in martensite for a value of 2. Default is 0, which means it is not used at all. This ensures compatibility with older versions. The exponent enters the evaluation of the diffusion coefficient inside the particle proportional to the (scaled) radius to the power of exponent.</li>
+<li>Added a variable for <strong>nucleation site efficiency</strong>. In contrast to the nucleation constant, which enters only the nucleation rate expression, this efficiency also limits the total number of nucleation sites. With this feature, you can efficiently control the total number of sites.</li>
+<li>Fixed a bug in treatment of <strong>SFAK excess vavancy evolution model</strong> introduced earlier in this version.</li>
+<li>Modified some <strong>variable names for strength</strong>: precipitate strength now consistently refers to shear stress, whereas precipitation domain strength is mostly expressed in terms of yield stress.</li>
+<li>Introduced <strong>strengthening contribution model</strong> instead of only “ignore for strengthening” switch.</li>
+<li>Implemented <strong>co-cluster strengthening</strong> model of Starink et al. This is needed for a better representation of natural aging of Al-alloys.</li>
+<li>Several improvements in <strong>SFK trapping implementation</strong>. Modified treatment of available trap sites and changed several variable names and types.</li>
+<li>Implemented routine for <strong>sorting of size distributions</strong>, both, precipitate and grain size distributions. We now always maintain descending order in size variable.</li>
+<li>Fixed a “factor 10” typo in <strong>solid solution strengthening parameters</strong> in defaults.txt file.</li>
+<li>Changed model for <strong>chemical strengthening</strong>: Now the effective interfacial energy is used instead of the calculated planar sharp IE.</li>
+<li>Fixed a crash when inspecting the yx_nucl_comp$prec variable.</li>
+<li>The <strong>precipitate size distribution</strong> is now displayed AND evaluated depending on the x-axis setting of the histogram plot: “lin” will evaluate in linear size intervals, “log” in logarithmic intervals.</li>
+<li>Fixed a bug in treatment of <strong>excess vacancies</strong> on restarting precipitation calc from loaded state.</li>
+<li>In <strong>tabulate precipitate distribution</strong> window: append not prepend tabulate variables, now. This means, variables being dropped into the window are now added in the rightmost column.</li>
+<li>Fixed a few issues with multiple selection in the <strong>phase status dialog</strong>.</li>
+</ul>
+<h4 id="version-5610010-released-2014-05-14">version 5.61.0010: released 2014-05-14</h4>
+<ul>
+<li><strong>Variables, strings, functions and tables</strong> can now be defined as being <strong>either global or local</strong> by using the prefix “::”. Global variables are saved in the default-Gibbs node. This is a useful feature when accessing one single variable from extra Gibbs nodes, such as, for instance, in cell simulations. Example: “my_variable” exists only in the particular node in which it was created. Several <strong>“my_variable”</strong> can exist in different nodes. The variable <strong>“::my_variable”</strong> is always created and accessible in the default node, irrespective of the selection of current active node.</li>
+<li>Fixed a bug in the evaluation of the <strong>maximum nucleation rate nucleus composition</strong>.</li>
+<li>Fixed a problem with <strong>excess vacancies</strong> and <strong>recovery</strong> in ABC substructure model.</li>
+<li><strong>Renamed several variables</strong> related to dislocation densities and substructure. This process is ongoing and will probably continue some more time.</li>
+<li>Fixed a problem with <strong>saving last result</strong> of kinetic simulation during <strong>continuous cooling</strong>.</li>
+<li>Fixed a crash in <strong>table editor</strong>.</li>
+<li>The default value for “<strong>ignore misfit stress during deformation</strong>” is now set on <strong>FALSE</strong>. The user must explicitely check this option to use it.</li>
+</ul>
+<h4 id="version-5610003-released-2014-03-26">version 5.61.0003: released 2014-03-26</h4>
+<ul>
+<li>Fixed mistake in calculation routine of mean distances for precipitation strengthening.</li>
+</ul>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=versioninfo%3A5.61&amp;1788352872" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

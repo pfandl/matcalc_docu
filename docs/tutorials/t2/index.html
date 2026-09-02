@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Calculating a single equilibrium - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Calculating a single equilibrium";
+        var mkdocs_page_input_path = "tutorials/t2.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" >Tutorials</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Calculating a single equilibrium</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#complimentary-files">Complimentary files</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#contents">Contents</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#before-starting">Before starting...</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#setting-up-the-system">Setting up the system</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#specification-of-elements-and-phases">Specification of elements and phases</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#entering-the-composition">Entering the composition</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#calculating-an-equilibrium">Calculating an equilibrium</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#interpreting-the-results-of-the-calculation">Interpreting the results of the calculation</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#using-the-options-window-to-modify-the-display">Using the 'Options' window to modify the display</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#phase-status-suspended-and-fixed-phase-fraction">Phase status: suspended and fixed phase fraction</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#calculation-states">Calculation states</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#to-finish">To finish...</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#consecutive-articles">Consecutive articles</a>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Guides</li>
+          <li class="breadcrumb-item">Tutorials</li>
+      <li class="breadcrumb-item active">Calculating a single equilibrium</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="t2-calculating-a-single-equilibrium">T2: Calculating a single equilibrium</h1>
+<p><em>This tutorial was tested on <br />
+MatCalc version 6.04 rel 1.001 <br />
+license: free <br />
+database: mc_fe.tdb</em></p>
+<h3 id="complimentary-files">Complimentary files</h3>
+<p>Click <a href="/tutorials/t2/script/t2_6021003.mcs" title="tutorials/t2/script/t2_6021003.mcs (6.5 KB)">here</a> to view the script for this tutorial.</p>
+<p>This tutorial explains how to determine the equilibrium phases at a given temperature, their phase fractions and compositions.</p>
+<h3 id="contents">Contents</h3>
+<ul>
+<li>Opening a database and selecting elements and phases</li>
+<li>Entering a composition</li>
+<li>Calculating an equilibrium at a given temperature</li>
+<li>Interpretation of information displayed in the output, phase summary and phase details windows</li>
+<li>Using the 'Options' window to modify the display</li>
+<li>Phase status indicators</li>
+<li>Calculation states</li>
+</ul>
+<h2 id="before-starting">Before starting...</h2>
+<p>Create a new workspace file as described in <a href="/tutorials/t1#creating_a_new_workspace" title="tutorials/t1">Tutorial 1</a>.</p>
+<h2 id="setting-up-the-system">Setting up the system</h2>
+<p>The system setup is the very first operation that needs to be performned by MatCalc user after workspace creation. This includes specification of elements and phases that are to be considered in the simulation. Furthermore, information about the system composition (element contents) needs to be provided.</p>
+<h3 id="specification-of-elements-and-phases">Specification of elements and phases</h3>
+<p>In MatCalc, specification of elements and phases is inherently connected with the loading of the relevant thermodynamic data from the database. Hence, the step is performed in the database-related dialog. To access it, click on <strong>'Databases'</strong> in the <strong>'Global'</strong> menu.</p>
+<p><a href="/tutorials/t2/img/t2_global_database_6041000.png" title="tutorials/t2/img/t2_global_database_6041000.png"><img alt="Open databases window" src="/tutorials/t2/img/t2_global_database_6041000.png" title="Open databases window" /></a></p>
+<p>A window will appear as shown below.</p>
+<p><a href="/tutorials/t2/img/t2_matcalc_setup_2016.png" title="tutorials/t2/img/t2_matcalc_setup_2016.png"><img alt="Database window" src="/tutorials/t2/img/t2_matcalc_setup_2016.png" title="Database window" /></a></p>
+<p>The <strong>'Equilibrium database'</strong> box initially displays the message <strong>'database not open…'</strong>. Click on the <strong>'Open…'</strong> button; this will open the <strong>'…MatCalc/database/thermodynamic'</strong> subdirectory, allowing the user to choose a database. A small database on iron-based materials, <strong>'mc_fe.tdb'</strong>, is provided with MatCalc for demonstration purposes. Select this database and click <strong>'Open'</strong>.</p>
+<p>A list of elements will appear in the left-hand box, with FE and VA (vacancies) selected by default. In the right-hand box is a list of the phases which can occur in a system containing the selected elements. Click on <strong>'C'</strong> in the elements box; this will add to the list a number of other phases which can occur in an Fe-C system, such as graphite and several carbides. The <strong>'show all available phases'</strong> box can be used to display all the phases available in the database, irrespective of whether they can form in the system in question. <br />
+From the phase list, select <strong>'LIQUID'</strong>, <strong>'BCC_A2'</strong>, <strong>'FCC_A1'</strong>, <strong>'GRAPHITE'</strong> and <strong>'CEMENTITE'</strong>. Phases are described using crystallographic notation: BCC_A2 represents the body-centered cubic phase, which corresponds to ferrite in the iron-carbon system, and FCC_A1 is the face-centered cubic austenite phase in Fe-C. Click <strong>'Read &amp; Close'</strong>.</p>
+<p><a href="/tutorials/t2/img/t2_phases_elements_6021003.png" title="tutorials/t2/img/t2_phases_elements_6021003.png"><img alt="Elements&amp;phases setup" src="/tutorials/t2/img/t2_phases_elements_6021003.png" title="Elements&amp;phases setup" /></a></p>
+<h3 id="entering-the-composition">Entering the composition</h3>
+<p>In the <strong>'Global'</strong> menu, select <strong>'Composition'</strong>.</p>
+<p><a href="/tutorials/t2/img/t2_global_composition_6041000.png" title="tutorials/t2/img/t2_global_composition_6041000.png"><img alt=" Open composition window" src="/tutorials/t2/img/t2_global_composition_6041000.png" title="Open composition window" /></a></p>
+<p>This opens the <strong>'Nominal composition'</strong> box. The lower part of the box gives options for the units in which the composition is to be displayed: mole fraction, weight fraction, u-fraction or weight percent. One of the elements, usually the one with the highest mole fraction, is designated as the <strong>'reference element'</strong>, and the amount of this element is calculated as <strong>1-(sum of the amounts of all other elements)</strong> for compositions expressed in fractional form, or <strong>100-(sum of the amounts of all other elements)</strong> for compositions expressed as percentages. <br />
+Iron is set as the reference element by default in the 'mc_fe.tdb' database, as can be seen from the <strong>'Ref. Elem'</strong> column in the composition dialogue box. Another element can be set as the reference by selecting the element name and clicking on the <strong>'Set reference element'</strong> button on the right, or by double-clicking in the <strong>'Ref. Elem'</strong> column by the side of the element name. <br />
+To enter a composition of <strong>0.4 wt.% C</strong>, put a checkmark in <strong>'in percent'</strong> box and select <strong>'weight percent'</strong> as the unit, then highlight element <strong>'C'</strong>. Double-click in the <strong>'Amount'</strong> column or click on the <strong>'Change'</strong> button to modify the composition, then type in <strong>'0.4'</strong> and press <strong>'Enter'</strong>. <br />
+The system is now ready to perform an equilibrium calculation.</p>
+<p><a href="/tutorials/t2/img/t2_system_composition_6041000.png" title="tutorials/t2/img/t2_system_composition_6041000.png"><img alt=" System composition setup" src="/tutorials/t2/img/t2_system_composition_6041000.png" title="System composition setup" /></a></p>
+<p>Click on <strong>'OK'</strong> to close this window</p>
+<h2 id="calculating-an-equilibrium">Calculating an equilibrium</h2>
+<p>From the <strong>'Calc'</strong> menu, select <strong>'Set start values'</strong>. This initializes the calculation variables with reasonable values in order to help the Gibbs free energy minimizer to find a solution which satisfies all the boundary conditions. This command is useful if the solution algorithm seems to be 'stuck' and unable to find an equilibrium.</p>
+<p><a href="/tutorials/t2/img/t2_set_start_values_6041000.png" title="tutorials/t2/img/t2_set_start_values_6041000.png"><img alt="Set start values" src="/tutorials/t2/img/t2_set_start_values_6041000.png" title="Set start values" /></a></p>
+<p>Once one valid equilibrium has been found, solutions at other temperatures or boundary conditions are much easier to obtain. From the <strong>'Calc'</strong> menu, select <strong>'Equilibrium'</strong>, or click on the <a href="/tutorials/t2/img/icon_equilibrium.png" title="tutorials/t2/img/icon_equilibrium.png"><img alt=" MatCalc icon equilibrium" src="/tutorials/t2/img/icon_equilibrium.png" title="MatCalc icon equilibrium" /></a> icon in the toolbar.</p>
+<p><a href="/tutorials/t2/img/t2_equilibrium_6041000.png" title="tutorials/t2/img/t2_equilibrium_6041000.png"><img alt="Equilibrium settings" src="/tutorials/t2/img/t2_equilibrium_6041000.png" title="Equilibrium settings" /></a></p>
+<p>The following window appears:</p>
+<p><a href="/tutorials/t2/img/t2_calculate_equilibrium_6021003.png" title="tutorials/t2/img/t2_calculate_equilibrium_6021003.png"><img alt="Equilibrium calculation" src="/tutorials/t2/img/t2_calculate_equilibrium_6021003.png" title="Equilibrium calculation" /></a></p>
+<p>Enter <strong>'700'</strong> in the temperature box and ensure that <strong>'temperature in C'</strong> is selected. Leave the pressure at its default value. Click on <strong>'Go'</strong> to start the calculation.</p>
+<h3 id="interpreting-the-results-of-the-calculation">Interpreting the results of the calculation</h3>
+<p>The <strong>'Console'</strong>, <strong>'Phase summary'</strong> and <strong>'Phase details'</strong> windows each show information on the calculation which has just been performed. The final three lines of the console window list the number of iterations, the calculation time, the temperature and the Gibbs energy of the system. The <strong>'- OK -'</strong> message in the final line indicates that the calculation was successful, with no errors reported. Also the 'start' symbol on the Quick access menu is changed to the green check mark <a href="/tutorials/t2/img/t2_checkmark.png" title="tutorials/t2/img/t2_checkmark.png"><img alt=" Calculation OK" src="/tutorials/t2/img/t2_checkmark.png" title="Calculation OK" /></a>. If any errors do occur, the message <strong>'*** error ***'</strong> followed by a description of the nature of the error will be displayed instead of the <strong>'OK'</strong> message. Moreover, the 'start' symbol in Quick Access menu will show a small warning sign <a href="/tutorials/t2/img/t2_warning.png" title="tutorials/t2/img/t2_warning.png"><img alt=" Calculation warning" src="/tutorials/t2/img/t2_warning.png" title="Calculation warning" /></a>. In this case, reset the calculation with <strong>'Set start values'</strong> and repeat it using <strong>'Equilibrium'</strong>. It is always advisable to check the status of the calculation in the console window or Quick Access menu before proceeding. <br />
+The other lines visible in the console window are messages relating to the opening and reading of the thermodynamic database.</p>
+<p><a href="/tutorials/t2/img/t2_console_6001000.png" title="tutorials/t2/img/t2_console_6001000.png"><img alt=" MatCalc output" src="/tutorials/t2/img/t2_console_6001000.png" title="MatCalc output" /></a></p>
+<p>Information on the phase stabilities is shown in the <strong>'Phase summary'</strong> window. Those phases with non-zero phase fractions are termed <strong>'active'</strong> and are listed in the first block. Inactive phases (those which are unstable, with negative driving forces) are listed in the second block. The third column gives the phase fraction and the column after <strong>'dfm:'</strong> gives the driving force in J/mole. It can be seen that BCC_A2 (ferrite) and GRAPHITE are the stable phases at 700°C.</p>
+<p><a href="/tutorials/t2/img/t2_phase_summary_6001000.png" title="tutorials/t2/img/t2_phase_summary_6001000.png"><img alt=" MatCalc phase summary" src="/tutorials/t2/img/t2_phase_summary_6001000.png" title="MatCalc phase summary" /></a></p>
+<p>The <strong>'Phase details'</strong> window provides more comprehensive information on the properties of the phases, including the molar Gibbs free energy of the phase (the number after <strong>'gm/'</strong>) and the phase compositions (expressed in mole fraction by default), as well as the information provided in the 'Phase summary'. The phases are again grouped according to whether they are active or inactive.</p>
+<p><a href="/tutorials/t2/img/t2_phase_details_6001000.png" title="tutorials/t2/img/t2_phase_details_6001000.png"><img alt=" MatCalc phase details" src="/tutorials/t2/img/t2_phase_details_6001000.png" title="MatCalc phase details" /></a></p>
+<h3 id="using-the-options-window-to-modify-the-display">Using the 'Options' window to modify the display</h3>
+<p>To change the units in which the composition is displayed in the <strong>'Phase details'</strong> window, first highlight this window and then go to the <strong>'Options'</strong> window. (If this is not shown on the screen, make it appear by selecting <strong>'View &gt; Show &gt; Show options window'</strong> or right-clicking in the toolbar area and selecting <strong>'options'</strong> from the menu.) <br />
+The <strong>'Options'</strong> window provides display options for the currently highlighted window. In the case of the <strong>'Phase details'</strong> window, the composition can be displayed as a mole fraction, a weight fraction or a u-fraction, and can also be expressed as a percentage if required.</p>
+<p><a href="/tutorials/t2/img/t2_options_window_6041000.png" title="tutorials/t2/img/t2_options_window_6041000.png"><img alt=" MatCalc options window" src="/tutorials/t2/img/t2_options_window_6041000.png" title="MatCalc options window" /></a></p>
+<h3 id="phase-status-suspended-and-fixed-phase-fraction">Phase status: suspended and fixed phase fraction</h3>
+<p>The calculation has shown that at 700°C, BCC_A2 (ferrite) and graphite are the equilibrium (i.e. most thermodynamically stable) phases. However, it is observed in practice that in Fe-C systems with relatively low carbon contents, graphite formation is extremely slow, and can be considered not to occur over practical timescales. <br />
+Since this is the case, it is useful to calculate a metastable equilibrium, for which graphite formation is not allowed. Click on <strong>'Global &gt; Phase status'</strong></p>
+<p><a href="/tutorials/t2/img/t2_global_phase_status_6021003.png" title="tutorials/t2/img/t2_global_phase_status_6021003.png"><img alt="Open phase status window" src="/tutorials/t2/img/t2_global_phase_status_6021003.png" title="Open phase status window" /></a></p>
+<p>Highlight <strong>'GRAPHITE'</strong> phase. In the <strong>'General'</strong> tab, the uppermost section is labelled <strong>'Flags…'</strong>. Click to place a tick in the box next to <strong>'suspended'</strong> and click <strong>'OK'</strong>.</p>
+<p><a href="/tutorials/t2/img/t2_phase_status_6021003.png" title="tutorials/t2/img/t2_phase_status_6021003.png"><img alt="Suspend graphite" src="/tutorials/t2/img/t2_phase_status_6021003.png" title="Suspend graphite" /></a></p>
+<p>Repeat the equilibrium calculation and note the difference in results in the <strong>'Phase summary'</strong> window:</p>
+<pre><code>BCC_A2     *     act     9.29190-001    dfm: +0.00000e+000
+CEMENTITE        act     7.08097-002    dfm: +0.00000e+000
+### inactive ###
+FCC_A1         - OK -    0.00000+000    dfm: -1.19225e+002
+LIQUID         - OK -    0.00000+000    dfm: -3.71680e+003
+### suspended ###
+GRAPHITE
+</code></pre>
+<p>Now BCC_A2 and CEMENTITE are active, FCC_A1 and LIQUID are inactive and GRAPHITE is listed as <strong>'suspended'</strong>. Suspending a phase causes the program to consider it as if it were not there at all; the next most stable phase (in this case, cementite) becomes the equilibrium phase. Alternatively, the flag can be set to <strong>'fixed phase fraction'</strong> using the same procedure (i.e. in the 'General' tab of the 'Phase status' window, remove the tick from 'suspended' and place it in the 'fixed phase fraction' box for the graphite phase). Next, click on <strong>'set amount…'</strong> in 'Phase fractions' area and type <strong>'0'</strong> (zero) in the appearing <strong>'Input…'</strong> window.</p>
+<p><a href="/tutorials/t2/img/t2_graphite_fixed_fraction_6021003.png" title="tutorials/t2/img/t2_graphite_fixed_fraction_6021003.png"><img alt=" Graphite phase fraction fixed" src="/tutorials/t2/img/t2_graphite_fixed_fraction_6021003.png" title="Graphite phase fraction fixed" /></a></p>
+<p><a href="/tutorials/t2/img/t2_graphite_set_amount_6021003.png" title="tutorials/t2/img/t2_graphite_set_amount_6021003.png"><img alt=" Set phase fraction of graphite" src="/tutorials/t2/img/t2_graphite_set_amount_6021003.png" title="Set phase fraction of graphite" /></a></p>
+<p>Perform an equilibrium calculation again. In this case, the phase is considered not to appear, but its driving force is still evaluated. Also, cementite becomes active, as shown by the results below:</p>
+<pre><code>BCC_A2         *    act      9.29190-001    dfm: +0.00000e+000 
+CEMENTITE           act      7.08097-002    dfm: +0.00000e+000
+### inactive ### 
+GRAPHITE            fixed    0.00000+000    dfm: +2.35352e+003
+FCC_A1             - OK -    0.00000+000    dfm: -1.19225e+002
+LIQUID             - OK -    0.00000+000    dfm: -3.71680e+003
+</code></pre>
+<p>In order to eliminate graphite completely from the system, open the <strong>'Phase status'</strong> window, select the <strong>'GRAPHITE'</strong> phase and click on <strong>'Remove'</strong> button.</p>
+<p><a href="/tutorials/t2/img/t2_graphite_remove_6021003.png" title="tutorials/t2/img/t2_graphite_remove_6021003.png"><img alt="Remove graphite" src="/tutorials/t2/img/t2_graphite_remove_6021003.png" title="Remove graphite" /></a></p>
+<p><a href="/tutorials/t2/img/t2_graphite_remove_confirm_6021003.png" title="tutorials/t2/img/t2_graphite_remove_confirm_6021003.png"><img alt="Confirm Graphite removal" src="/tutorials/t2/img/t2_graphite_remove_confirm_6021003.png" title="Confirm Graphite removal" /></a></p>
+<p>A new window will appear in which MatCalc will ask you to confirm this wish - click on <strong>'Yes'</strong>. Repeat the equilibrium calculation at 700°C to obtain an equilibrium without graphite. The driving forces obtained should be identical to those found in the previous calculation in which graphite was suspended:</p>
+<pre><code>BCC_A2     *     act     9.29190-001    dfm: +0.00000e+000
+CEMENTITE        act     7.08097-002    dfm: +0.00000e+000
+### inactive ###
+FCC_A1         - OK -    0.00000+000    dfm: -1.19225e+002
+LIQUID         - OK -    0.00000+000    dfm: -3.71680e+003
+</code></pre>
+<p>Adding any other phase to the system requires re-opening the thermodynamic database and selecting the new phase next to the already highlighted ones. Re-open <strong>'Global &gt; Databases'</strong> and click on <strong>GRAPHITE</strong> to select it, then click on <strong>'Read &amp; Close'</strong>.</p>
+<p><a href="/tutorials/t2/img/t2_graphite_reload_6021003.png" title="tutorials/t2/img/t2_graphite_reload_6021003.png"><img alt="Graphite Phase selected" src="/tutorials/t2/img/t2_graphite_reload_6021003.png" title="Graphite Phase selected" /></a></p>
+<p>A warning will appear, stating that all existing data will be deleted. Accept this by clicking on <strong>'Yes'</strong>.</p>
+<p><a href="/tutorials/t2/img/t2_graphite_reload_confirm_6021003.png" title="tutorials/t2/img/t2_graphite_reload_confirm_6021003.png"><img alt=" Confirm rereading the database" src="/tutorials/t2/img/t2_graphite_reload_confirm_6021003.png" title="Confirm rereading the database" /></a></p>
+<p>A new message, with updated information on the thermodynamic data, appears in the <strong>'Output'</strong> window. Reading in new data from the database erases any previous equilibrium calculation results, so perform the equilibrium calculation at 700°C once again to obtain an equilibrium with graphite (if you get an error message, click on <strong>'Set start values'</strong> in <strong>'Calc'</strong> menu). This time, the driving forces obtained should be identical to those found in the previous calculation in which graphite was present in the system:</p>
+<pre><code>BCC_A2         *    act     9.82166-001    dfm: +0.00000e+000
+GRAPHITE            act     1.78337-002    dfm: +0.00000e+000 
+### inactive ### 
+
+FCC_A1            - OK -    0.00000+000    dfm: -1.88413e+002 
+CEMENTITE         - OK -    0.00000+000    dfm: -5.87343e+002 
+LIQUID            - OK -    0.00000+000    dfm: -4.07916e+003
+</code></pre>
+<h3 id="calculation-states">Calculation states</h3>
+<p>By default, the results from a previous equilibrium calculation are overwritten when a new calculation is carried out. However, it is sometimes useful to store the results from a calculation for future use. The <strong>'Calculation states'</strong> feature is provided for this purpose; it can be found in the <strong>'Global'</strong> menu under <strong>'CalcStates'</strong>. In the sub-menu, click on <strong>'Create'</strong> and type the name in the box:</p>
+<p><a href="/tutorials/t2/img/t2_create_calc_state_6041000.png" title="tutorials/t2/img/t2_create_calc_state_6041000.png"><img alt="Create calculation state" src="/tutorials/t2/img/t2_create_calc_state_6041000.png" title="Create calculation state" /></a></p>
+<p><a href="/tutorials/t2/img/t2_calc_state_name_6021003.png" title="tutorials/t2/img/t2_calc_state_name_6021003.png"><img alt="Calcuation state name" src="/tutorials/t2/img/t2_calc_state_name_6021003.png" title="Calcuation state name" /></a></p>
+<p>The calculation state stores all information on an equilibrium including the complete phase status, composition and any compositional states which may apply. Calculate another equilibrium at 600°C and store it by creating another calculation state. These states are now both available in the calculation state drop-box on the toolbar:</p>
+<p><a href="/tutorials/t2/img/t2_load_calc_state_6041000.png" title="tutorials/t2/img/t2_load_calc_state_6041000.png"><img alt="Calculation states list" src="/tutorials/t2/img/t2_load_calc_state_6041000.png" title="Calculation states list" /></a></p>
+<p>Select a calculation state from this box and load the stored equilibrium with the <a href="/tutorials/t2/img/load.png" title="tutorials/t2/img/load.png"><img alt=" MatCalc load" src="/tutorials/t2/img/load.png" title="MatCalc load" /></a> button. This can also be done using <strong>'Global &gt; CalcStates &gt; Select'</strong> and then <strong>'Load'</strong>. Note how the contents of the <strong>'Phase details'</strong> and <strong>'Phase summary'</strong> windows are immediately updated with the results stored in the calculation state, and the temperature at which the equilibrium was calculated is shown in the status bar towards the bottom right of the screen. The results of the current equilibrium calculation can be saved into an existing calculation state by selecting the name of the state in the drop-box and then clicking on the <a href="/tutorials/t2/img/icon_save.png" title="tutorials/t2/img/icon_save.png"><img alt=" MatCalc save" src="/tutorials/t2/img/icon_save.png" title="MatCalc save" /></a> button or using <strong>'Global &gt; CalcStates &gt; Select'</strong> and then <strong>'Save'</strong>. <strong>NB: Calculation states, like all other calculation results, are erased when data is re-read from the database!</strong></p>
+<h2 id="to-finish">To finish...</h2>
+<p>Save the workspace using <strong>'File &gt; Save as…'</strong>. Workspace files are automatically given the file extension <strong>'.mcw'</strong>.</p>
+<h2 id="consecutive-articles">Consecutive articles</h2>
+<p>The tutorial is continued in article  <a href="/tutorials/t3" title="tutorials/t3">T3 - Performing a stepped equilibrium calculation</a>.</p>
+<p>Go to <a href="/tutorials" title="tutorials">MatCalc tutorial index</a>.</p>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=tutorials%3At2&amp;1788352857" /></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../t1/" class="btn btn-neutral float-left" title="Introduction to the MatCalc graphical user interface (GUI)"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../howtosimulate/" class="btn btn-neutral float-right" title="How to ... manual">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../t1/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../howtosimulate/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

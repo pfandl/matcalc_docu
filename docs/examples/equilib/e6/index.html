@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>E6 - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "E6";
+        var mkdocs_page_input_path = "examples/equilib/e6.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../howtosimulate/">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">E6</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>Example E6: Composition-dependent driving forces for carbide precipitation in Fe-C-Cr [MatCalc Documentation]</p>
+<h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#example_e6composition-dependent_driving_forces_for_carbide_precipitation_in_fe-c-cr">Example E6: Composition-dependent driving forces for carbide precipitation in Fe-C-Cr</a></p>
+</li>
+<li>
+<p><a href="#compatibility">Compatibility</a></p>
+</li>
+<li><a href="#objectives">Objectives</a></li>
+<li><a href="#related_documents">Related documents</a></li>
+<li><a href="#complementary_files">Complementary files</a></li>
+<li>
+<p><a href="#main_document">Main document</a></p>
+</li>
+<li>
+<p><a href="#setup_thermodynamics">Setup thermodynamics</a></p>
+</li>
+<li><a href="#theoretical_excourseevaluation_of_driving_forces">Theoretical excourse: Evaluation of driving forces</a></li>
+<li><a href="#evaluating_driving_forces">Evaluating driving forces</a></li>
+<li><a href="#evaluating_compositionally_constrained_driving_forces">Evaluating compositionally constrained driving forces</a></li>
+<li><a href="#influence_of_carbon_on_driving_forces">Influence of carbon on driving forces</a></li>
+<li><a href="#consecutive_articles">Consecutive articles</a></li>
+</ul>
+<h1 id="example-e6-composition-dependent-driving-forces-for-carbide-precipitation-in-fe-c-cr">Example E6: Composition-dependent driving forces for carbide precipitation in Fe-C-Cr</h1>
+<h2 id="compatibility">Compatibility</h2>
+<p>MatCalc version: 5.44.1002 <br />
+Database: mc_sample_fe.tdb <br />
+Author: Georg Stechauner<br />
+Created: 2012-01-04 <br />
+Revisions:</p>
+<h2 id="objectives">Objectives</h2>
+<p>This example investigates the influence of Cr on the driving force for nucleation of cementite. The procedure of evaluating driving forces is demonstrated by setting the phase fraction to zero and fixing the phase fraction in the phase status dialog.</p>
+<p>The u-fraction, which will be extensively used in this example, is defined as the site fraction of an element with reference to the substitutional sublattices only. The interstitial elements are not taken into account in the normalization. The sum of all u-fractions of substitutional elements is unity.</p>
+<p>Example: (Fe,Cr)3C cementite is a stoichiometric compound with an Fe+Cr:C ratio of 3:1. Expressed in mole fractions, this means: 0.75 moles of atoms on the substitutional sublattice, and 0.25 on the interstitial one. Converted to u-fraction gives <span class="arithmatex">\(u\_{Cr}+u\_{Fe}=1\)</span> on the first sublattice, while the u-fraction of C is 0.33 on the second sublattice. By varying the u-fraction of Chromium from 0 to 1, all different kinds of cementite with respect to the Cr to Fe ratio can be obtained, ranging from pure Fe3C to pure Cr3C.</p>
+<h2 id="related-documents">Related documents</h2>
+<p>none</p>
+<h2 id="complementary-files">Complementary files</h2>
+<p>Click  <a href="/examples/equilib/e6/script/e6_2017.mcs" title="examples/equilib/e6/script/e6_2017.mcs (12.9 KB)">here</a> to view the script for this tutorial.</p>
+<h1 id="main-document">Main document</h1>
+<h2 id="setup-thermodynamics">Setup thermodynamics</h2>
+<p>Start by setting up the thermodynamics. Use one of the above listed databases and select the elements <strong>Fe</strong>, <strong>C</strong> and <strong>Cr</strong> and the phases <strong>BCC_A2</strong> and <strong>CEMENTITE</strong>.</p>
+<p>Start with a chemical composition in weigth percent as shown below:</p>
+<table>
+<thead>
+<tr>
+<th>C</th>
+<th>Cr</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.005</td>
+<td>3.0</td>
+</tr>
+</tbody>
+</table>
+<p>Start the simulation by setting automatic start values. Calculate an equilibrium at 500C.</p>
+<h2 id="theoretical-excourse-evaluation-of-driving-forces">Theoretical excourse: Evaluation of driving forces</h2>
+<p>Between two heat reservoirs, exchange processes will occur if the temperature of the two reservoirs is different. The heat flux goes to zero, if the temperature difference between the reservoirs goes to zero. Analogously, a mass flow occurs in thermodynamic systems consisting of various chemical elements, if the chemical potential of all elements differs in the individual phases. This mass flow often leads to a phase transformation, which is an internal process with the goal of minimizing of free energy by maximizing entropy. The entropy change is related to the driving force as</p>
+<div class="arithmatex">\[ D = T \frac{dS}{dξ}, \]</div>
+<p>where <span class="arithmatex">\(D\)</span> is the driving force, <span class="arithmatex">\(T\)</span> is temperature, <span class="arithmatex">\(dS\)</span> is the change of entropy and <span class="arithmatex">\(dξ\)</span> is a placeholder for any of the free system parameters, e.g. radius, chemical composition, … with (0 ≤ ξ ≤ 1). Since temperature is always a positive quantity, and <span class="arithmatex">\(dS≥0\)</span> for a spontaneous process, <span class="arithmatex">\(D\)</span> must also be &gt; 0. Consequently, if <span class="arithmatex">\(D≤0\)</span>, a process will not occur spontaneously, no matter how long one waits.</p>
+<p>Consider now a supersaturated solution with an overall composition of <span class="arithmatex">\(X\_B\ge0.4\)</span>. As shown in the figure below, initially, this composition has a Gibbs energy of <span class="arithmatex">\(G^α\_m\)</span>, which is not the lowest possible energetic state for this system, as indicated by the point <span class="arithmatex">\(^{eq}G\_m\)</span>. The lowest Gibbs energy is found with the 'Common Tangent Method', where a tangent is constructed touching the Gibbs energy curve of the phases being in equilibrium. The available amount of energy, which can be decreased by the phase transformation, is give by</p>
+<div class="arithmatex">\[ ΔG\_m = \ ^{eq}G\_m - G^α\_m .\]</div>
+<p>Analogously, the driving force can be constructed, with the help of the extrapolated Gibbs energy <span class="arithmatex">\(^{expol}G^β\_m\)</span>. This point characterizes the change of chemical composition of a matrix crystal, without changing either its chemical potential or its crystal structure. Arriving at the point <span class="arithmatex">\(^{expol}G^β\_m\)</span>, a transformation from α → β crystal structure occurs, lowering the Gibbs energy to <span class="arithmatex">\(G^β\_m\)</span>. For a phase transformation, the placeholder variable ξ is determined by the number of moles of new phase formed <span class="arithmatex">\(N^β\)</span>. Using formula one, and constant temperature, pressure and moles (that is/ <span class="arithmatex">\(TdS = G\)</span>), this leads to</p>
+<div class="arithmatex">\[ D = - \Bigl( \frac{δG}{δN^β} \Bigr)\_{T,P,N} = -ΔG^β\_m . \]</div>
+<p>Hence, the driving force is given as the change in Gibbs energy due to nucleation of beta phase, which can be constructed as the difference of extrapolated <span class="arithmatex">\(^{expol}G^β\_m\)</span> and the molar Gibbs energy <span class="arithmatex">\(G^β\_m\)</span> of β.</p>
+<p><a href="/examples/equilib/e6/g-x.png" title="examples/equilib/e6/g-x.png"><img alt=" G-x curve for precipitation" src="/examples/equilib/e6/g-x.png" title="G-x curve for precipitation" /></a></p>
+<h2 id="evaluating-driving-forces">Evaluating driving forces</h2>
+<p>In this section we are going to play around with all kinds of settings to show driving force curves. To obtain the results presented below, be sure to have a carbon content of 0.005 wt-%.</p>
+<p><strong><em>Important note …</em></strong></p>
+<p>For evaluation of chemical driving forces, it is important that you fix the phase fraction of the target phase to zero. Otherwise, the driving forces will either be zero (phase is in equilibrium with the matrix phase) or negative (the target phase is thermodynamically unstable). The driving force is commonly evaluated for the entirely supersaturated conditions, which refers to the state of zero phase fraction of the target phase. It is possible, however, to evaluate driving forces also for any other desired conditions, provided that you use the appropriate phase settings.</p>
+<p>To do so, check the 'fixed phase fraction' box in the phase status dialog, and make sure that the phase fraction of cementite is zero. If not, use the 'set amount' button to manually change the mole fraction.</p>
+<p><a href="/examples/equilib/e6/e6_fixedphasefraction.png" title="examples/equilib/e6/e6_fixedphasefraction.png"><img alt=" Cementite phase is fixed to zero phase fraction" src="/examples/equilib/e6/e6_fixedphasefraction.png" title="Cementite phase is fixed to zero phase fraction" /></a></p>
+<p>After calculating an equilibrium at 800C, the 'phase details' window looks like:</p>
+<pre><code>Cementite not fixed to 0:
+-------------------------
+#### /BCC_A2/ moles: 1, gm: -48042.9 (-48042.9), sff: 0.999768
+Phasestatus: entered - active
+FE +9.67623e-001  CR +3.21446e-002   C +2.31925e-004  
+
+
+### inactive ###
+
+#### /CEMENTITE/ moles: 0, gm: -47846.1 (33892.5), sff: 0.25
+Phasestatus: entered - not active (dfm=-2261)
+FE +3.97480e-001  CR +3.52520e-001   C +2.50000e-001  
+
+
+Cementite fixed to 0:
+---------------------
+#### /BCC_A2/ moles: 1, gm: -48042.9 (-48042.9), sff: 0.999768
+Phasestatus: entered - active
+FE +9.67623e-001  CR +3.21446e-002   C +2.31925e-004  
+
+#### /CEMENTITE/ moles: 0, gm: -47846.1 (33892.5), sff: 0.25
+Phasestatus: fixed
+dfm: -2261
+FE +3.97480e-001  CR +3.52520e-001   C +2.50000e-001  
+
+
+### inactive ###
+</code></pre>
+<p>The output above shows the phase details window and two major features of the simulation. First, the driving force is negative at a temperature of 800C (dfm=-2261 J/mol), hence nucleation of cementite will never occur. The second feature is that, as soon as the phase is fixed, its status changes from 'inactive' to 'active' and it is displayed in a different section.</p>
+<p>Performing the same step at 600C, the output of the phase details will look different:</p>
+<pre><code>Cementite not fixed to 0:
+-------------------------
+#### /BCC_A2/ moles: 0.999118, gm: -34667.6 (-34667.6), sff: 0.999989
+Phasestatus: entered - active
+FE +9.68347e-001  CR +3.16421e-002   C +1.14358e-005  
+
+#### /CEMENTITE/ moles: 0.000881997, gm: -38776.5 (28409.4), sff: 0.25
+Phasestatus: entered - active
+CR +6.01431e-001   C +2.50000e-001  FE +1.48569e-001  
+
+
+### inactive ###
+
+
+Cementite fixed to 0:
+---------------------
+#### /BCC_A2/ moles: 1, gm: -34667.8 (-34667.8), sff: 0.999768
+Phasestatus: entered - active
+FE +9.67623e-001  CR +3.21446e-002   C +2.31925e-004  
+
+#### /CEMENTITE/ moles: 0, gm: -38785.8 (28433.2), sff: 0.25
+Phasestatus: fixed
+dfm: 5473.9
+CR +6.02619e-001   C +2.50000e-001  FE +1.47381e-001  
+
+
+### inactive ###
+</code></pre>
+<p>The driving force can be read as the 'dfm' value. For the case of not fixing the phase fraction, no useful dfm-value can be read from the output window, as it will be zero.<a href="#fn__1">1)</a> Upon fixing the phase fraction of cementite to zero and repeating the equilibrium simulation, a positive driving force is observed in the phase status window.</p>
+<p><strong><em>Important note …</em></strong></p>
+<p>If you evaluate the chemical driving force without any compositional constraints (this is discussed right below), <em>MatCalc</em> performs a <strong><em>parallel tangent construction</em></strong> as shown in the figure above, to make sure that the phase composition is set such that the <strong>chemical driving force is a maximum</strong>. This condition is met for parallel tangents. It is equivalent to the condition that the difference between each chemical potential in the two phases is identical.</p>
+<p>The validity of these conditions are easily verified when drawing 'non-parallel' tangents and then investigating the resulting driving forces.</p>
+<h2 id="evaluating-compositionally-constrained-driving-forces">Evaluating compositionally constrained driving forces</h2>
+<p>Switch to the constraints tab in the 'phase status' dialog, select the cementite phase and set a u-fraction constraint for chromium of 0.2. In any of the following (constrained) equilibrium calculations, <em>MatCalc</em> will fix the Cr u-fraction in the cementite phase to this value. Since the composition of a phase is thus restricted, this type of equilibrim is also called <strong>compositionally constrained equilibrium</strong>.</p>
+<p><a href="/examples/equilib/e6/e6_constraint.png" title="examples/equilib/e6/e6_constraint.png"><img alt=" Cr constraint set for cementite" src="/examples/equilib/e6/e6_constraint.png" title="Cr constraint set for cementite" /></a></p>
+<p>The figure below shows the driving forces of cementite over temperature. Perform a <strong>stepped calculation</strong> with <strong>stepping temperature</strong> in the shown range to obtain the given figure. The fixed case shows the driving force (dfm), when the phase fraction is fixed to zero, the 'not-fixed' one shows the curve for cementite being in equilibrium with bcc_a2. It is easy to perceive that, at a temperature of about 680C, the cementite phase becomes stable and its phase fraction increases. Simultaneously, the driving force of this phase becomes zero.</p>
+<p><a href="/examples/equilib/e6/e6_fixedvsnotfixed.png" title="examples/equilib/e6/e6_fixedvsnotfixed.png"><img alt=" Driving forces of fixed vs not-fixed phase fraction" src="/examples/equilib/e6/e6_fixedvsnotfixed.png" title="Driving forces of fixed vs not-fixed phase fraction" /></a></p>
+<p>The next figure shows the calculated driving forces over the chromium site fraction. Perform a <strong>stepped calculation</strong> with <strong>Cr</strong> as the <strong>varying element content</strong> in a <strong>range from 0 to 1</strong>. Pick a sufficiently small step interval (e.g. 0.01) and select to <strong>vary the paraequilibrium u-constraint</strong>, …</p>
+<p><a href="/examples/equilib/e6/e6_vary_paraeq.png" title="examples/equilib/e6/e6_vary_paraeq.png"><img alt=" Vary paraequilibrium constraint" src="/examples/equilib/e6/e6_vary_paraeq.png" title="Vary paraequilibrium constraint" /></a></p>
+<p>… instead of the global composition. In this case, <em>MatCalc</em> looks for any given para-equilibrium constraint in terms of u-fractions, and will vary these values instead of the global chemical composition. The figures below were calculated at a temperature of 700C. The driving forces are plotted over the site-fraction of Cr in cementite. The fixed curve has a positive driving force for chromium values of 0.3 to about 0.95. Together with the next figure, it can be seen that the not-fixed curve nucleates in this region.</p>
+<p><a href="/examples/equilib/e6/e6_fixedvsnotfixed-chromium.png" title="examples/equilib/e6/e6_fixedvsnotfixed-chromium.png"><img alt=" Driving forces of fixed vs not-fixed phase fraction" src="/examples/equilib/e6/e6_fixedvsnotfixed-chromium.png" title="Driving forces of fixed vs not-fixed phase fraction" /></a></p>
+<p><a href="/examples/equilib/e6/e6_phasefraction-chromium.png" title="examples/equilib/e6/e6_phasefraction-chromium.png"><img alt=" Phase fraction of nucleated cementite" src="/examples/equilib/e6/e6_phasefraction-chromium.png" title="Phase fraction of nucleated cementite" /></a></p>
+<h2 id="influence-of-carbon-on-driving-forces">Influence of carbon on driving forces</h2>
+<p>This section shows the driving forces of cementite as a function of cementite Cr content displayed in terms of the u-fraction variable. Different C contents are plotted to visualize the effect on the driving forces. It is obvious that sufficient amount of C is needed for the nucleation of cementite. This permits the reverse conclusion that less C induces lower driving forces.</p>
+<p>Select a carbon content of 0.1 wt-% to begin with, and perform a <strong>stepped calculation</strong> for <strong>varying element content</strong>. Choose <strong>chromium</strong> to be the varying element and select, just like above, to <strong>vary the paraequilibrium constraint</strong>. Furthermore, choose 'range' and 'step width' as before. After plotting and locking each curve, change the carbon content as shown below and repeat the calculation.</p>
+<p><a href="/examples/equilib/e6/e6_final.png" title="examples/equilib/e6/e6_final.png"><img alt=" Final result of example 6" src="/examples/equilib/e6/e6_final.png" title="Final result of example 6" /></a></p>
+<p>The assumption stated above is clearly visible from the figure. The lower the C content is, the lower is the driving force for cementite nucleation. However, only for a very low value of 0.001% carbon, nucleation will not occur for small chromium values. In all other conditions, cementite nucleation is thermodynamically possible. PC and OC represent the paraequilibrium composition and the ortho-equilibrium composition, respectively. They are valid for the blue 0.03% C line only, as they are dependent on the supersaturation.</p>
+<h1 id="consecutive-articles">Consecutive articles</h1>
+<p>none</p>
+<p><a href="#fnt__1">1)</a></p>
+<p>Zero driving force is one of the necessary conditions for thermodynamic equilibrium.</p>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=examples%3Aequilib%3Ae6&amp;1788352993" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

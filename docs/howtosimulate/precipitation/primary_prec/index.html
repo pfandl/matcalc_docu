@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Primary prec - MatCalc Documentation</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Primary prec";
+        var mkdocs_page_input_path = "howtosimulate/precipitation/primary_prec.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> MatCalc Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../../general/">General information</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">MatCalc tutorial</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t2/">Calculating a single equilibrium</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../">How to ... manual</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">References</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../scripts/">Scripts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../reference/">Reference book</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../techpapers/">Technical Papers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../versioninfo/">Version info</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">MatCalc Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Primary prec</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>Primary precipitates [MatCalc Documentation]</p>
+<h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#primary_precipitates">Primary precipitates</a></p>
+</li>
+<li>
+<p><a href="#compatibility">Compatibility</a></p>
+</li>
+<li><a href="#objectives">Objectives</a></li>
+<li><a href="#related_documents">Related documents</a></li>
+<li><a href="#main_document">Main document</a></li>
+<li><a href="#estimation_of_amount_and_size_of_primary_precipitates">Estimation of amount and size of primary precipitates</a></li>
+<li>
+<p><a href="#introduce_size_distribution_of_primary_precipitates">Introduce size distribution of primary precipitates</a></p>
+</li>
+<li>
+<p><a href="#size_distributions_defined_from_parent_phase">Size distributions defined from parent phase</a></p>
+</li>
+<li><a href="#manually_defined_size_distributions">Manually defined size distributions</a></li>
+<li>
+<p><a href="#size_distributions_from_virtual_pre-treatment">Size distributions from virtual pre-treatment</a></p>
+<ul>
+<li><a href="#design_of_a_computationally_efficient_virtual_pre-treatment">Design of a computationally efficient virtual pre-treatment</a></li>
+<li><a href="#transfer_results_size_distribution">Transfer results / size distribution</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="primary-precipitates">Primary precipitates</h1>
+<h2 id="compatibility">Compatibility</h2>
+<p>MatCalc version: 5.44 - … <br />
+Author: E. Kozeschnik <br />
+Created: 2011-11-14 <br />
+Revisions:</p>
+<h2 id="objectives">Objectives</h2>
+<p>In this document, some strategies are discussed on how to treat <em>primary precipitation</em> in precipitation kinetics simulations in the solid state.</p>
+<h2 id="related-documents">Related documents</h2>
+<ol>
+<li><a href="/techpapers/nucleation/nucleation_rate" title="techpapers/nucleation/nucleation_rate">The multi-component transient nucleation rate</a></li>
+<li><a href="/examples/equilib/e20" title="examples/equilib/e20">Thermodynamic equilibrium analysis for continuous casting simulation of micro-alloyed Fe-Al-C-N-Nb-Ti steel</a></li>
+<li><a href="/examples/precipitation/p20/p20_1" title="examples/precipitation/p20/p20_1">Treatment of primary precipitates</a></li>
+</ol>
+<h1 id="main-document">Main document</h1>
+<p>Primary precipitates nucleate and grow in the residual liquid pockets before final solidification. They are usually significantly larger compared to secondary and tertiary precipitates. Due to their large size,<a href="#fn__1">1)</a> primary precipitates occur in the microstructure commonly widely spaced and they do not contribute to precipitation strengthening. Primary precipitates are usually visible in optical light microscopy investigation. They might be potential nucleation sites for fatigue cracks under dynamic loading conditions.</p>
+<p>Although primary precipitates are commonly not involved in the evolution of precipitation reactions after solidification due to their large size, they can potentially influence the chemical composition of the matrix (precipitation domain) by reducing the amount of available elements for precipitation after solidification. Consequently, some possibilities for taking this type of precipitates into account in <em>MatCalc</em> simulations are presented below.</p>
+<p>The basic idea of the present treatment of primary precipitates is to introduce the primary precipitates by some method discussed below and keep them as part of the precipitation simulation, however, without nucleation of new particles of this type throughout the regular heat treatment. Thereby, the primary precipitates are fully involved in the precipitation process. They maintain mass conservation by binding the solute elements from the precipitation process in the residual liquid pockets. And it is also possible, though not likely, that they dissolve again and release the solute atoms into the matrix again.</p>
+<h1 id="estimation-of-amount-and-size-of-primary-precipitates">Estimation of amount and size of primary precipitates</h1>
+<p>Primary precipitates are formed in the liquid state. The <em>MatCalc</em> precipitation models are not designed for liquid phase precipitation since its growth models have been developed for diffusion in the solid state. Convection and particle collisions in the liquid state are not accounted for. However, in order to take primary precipitation into account in the simulations, some workarounds can be applied to be able to account for this type of precipitates at least in an approximate way.</p>
+<p>The most straightforward means to determine (or estimate) the amount of primary precipitation is the application of the Scheil-Gulliver model. It is described in some detail in the comprehensive example  <a href="/examples/equilib/e20" title="examples/equilib/e20">Thermodynamic equilibrium analysis for continuous casting simulation of micro-alloyed Fe-Al-C-N-Nb-Ti steel</a>.</p>
+<h1 id="introduce-size-distribution-of-primary-precipitates">Introduce size distribution of primary precipitates</h1>
+<p>The size distribution, the phase fraction and the composition of the primary precipitates must in some way be entered into the <em>MatCalc</em> precipitation simulation scheme. There exist several ways for doing this: The <strong>recommended</strong> way is to generate distribution with <em>the MatCalc routine</em>, based on the composition and amount of the parent phase. This can by clicking on 'Edit precipitate distribution' button in 'Precipitate' tab of the 'Phase status' window. The user can also enter the size, number density and element mole fractions on various sites for each size class <em>manually</em>, but some caution is required by the parameter input, as explained below. The last way was the method of choice for the <em>MatCalc versions older than 5.61</em> and relied on the performance of the <em>'virtual' heat treatment</em> producing the desired distribution of primary precipitates directly from within a <em>preliminary</em> precipitation simulation.</p>
+<h2 id="size-distributions-defined-from-parent-phase">Size distributions defined from parent phase</h2>
+<p>Starting from version 5.61, MatCalc allows to create size distribution for the precipitate phase. It follows a simple routine in which the required input values are:</p>
+<ul>
+<li>Phase fraction of the phase</li>
+<li>Values for minimal, mean and maximal radius for the precipitate</li>
+<li>Size distribution function</li>
+</ul>
+<p>This feature can be accessed in ‘Phase status’ window. Select the relevant precipitate, switch to ‘Precipitate’ tab and click on ‘Edit precipitate distribution’ button.</p>
+<p><a href="/howtosimulate/precipitation/img/edit_precipitate_distribution.png" title="howtosimulate/precipitation/img/edit_precipitate_distribution.png"><img alt=" Edit size distribution" src="/howtosimulate/precipitation/img/edit_precipitate_distribution.png" title="Edit size distribution" /></a></p>
+<p>On the left side of this window, a table is available which will contain the number density, radius and composition (in term of site fractions) data for each class of the phase. On the bottom right side, the distribution function for the size precipitates can be chosen and the data for the size range can be entered.</p>
+<p><a href="/howtosimulate/precipitation/img/generate_precipitate_distribution.png" title="howtosimulate/precipitation/img/generate_precipitate_distribution.png"><img alt=" Generate size distribution" src="/howtosimulate/precipitation/img/generate_precipitate_distribution.png" title="Generate size distribution" /></a></p>
+<p>It must be noted that for the phase fraction, the value relevant for the parent phase of the precipitate (which is usually the equilibrium or the solidified phase) is taken. If needed, the phase fraction value can be modified by selecting the parent phase, switching to the ‘General’ tab, clicking on the ‘Set amount’ button and typing the value in the appearing window.</p>
+<p><a href="/howtosimulate/precipitation/img/parent_phase_fraction.png" title="howtosimulate/precipitation/img/parent_phase_fraction.png"><img alt=" Set phase fraction of parent phase" src="/howtosimulate/precipitation/img/parent_phase_fraction.png" title="Set phase fraction of parent phase" /></a></p>
+<p>Starting from the Scheil-Gulliver analysis, the size distribution of the primary precipitate can be created simply by selecting the solidified phase (the one with ‘_S’-suffix) and creating a precipitate phase out of it. This procedure is demonstrated in  <a href="/examples/precipitation/p20/p20_1" title="examples/precipitation/p20/p20_1">Example P20-1: Treatment of primary precipitates</a>.</p>
+<h2 id="manually-defined-size-distributions">Manually defined size distributions</h2>
+<p>When attempting to enter size distributions manually, please consider the following note.</p>
+<p><strong><em>Important …</em></strong></p>
+<p>It is <em>not</em> recommended that size distribution and composition of <em>non-stoichiometric</em> precipitates are entered manually into <em>MatCalc</em> to use it as starting conditions. The reason is that it is rather difficult to ensure mass conservation in multi-component systems. Unless mass conservation is ensured and thermodynamically consistent chemical compositions of the individual precipitate size classes are assured, <em>MatCalc</em> simulations might deliver strange and inconsistent calculation results.
+Upon that, it is even more difficult to define the chemical composition of each of the size classes properly, which means, in such a way that the chemical potentials of all elements are consistent.</p>
+<p>One major exception to this consideration is the special case of strictly stoichiometric precipitates. For instance, the Fe3C carbide in the Fe-C system has a fixed composition of three Fe atoms on one C atom, or the AlN precipiate in Fe-Al-N. For these simple cases, it is easily possible to maintain mass conservation and systems of this type are rather suitable for investigating the influence of size distributions on the precipitation behavior. In the download → utilities section of the <em>MatCalc</em> web site, an Excel sheet (<a href="http///matcalc.tuwien.ac.at/images/stories/Download/Utilities/MatCalcDistributions.xls" title="http///matcalc.tuwien.ac.at/images/stories/Download/Utilities/MatCalcDistributions.xls">MatCalcDistributions.xls</a>) is provided that facilitates the generation of typical idealized size distributions (Gaussian, log-normal, LSW). This spread sheet generates the distribution data for 500 size classes, which can be transferred into <em>MatCalc</em> using Copy and Paste.</p>
+<p>After generation of the size distribution in some pre-processing, e.g. the MatCalcDistributions.xls sheet, the values for number, radius and chemical composition of each size class can be entered in the precipitate distribution dialog of the phase status → precipitate dialog. Note that the chemical compositions are entered in yx-variables, which means that all yx site fractions over all sublattices sum up to one.</p>
+<p><a href="/howtosimulate/precipitation/img/fig_phase_status_edit_distribution_dlg.png" title="howtosimulate/precipitation/img/fig_phase_status_edit_distribution_dlg.png"><img alt=" Edit size distributions" src="/howtosimulate/precipitation/img/fig_phase_status_edit_distribution_dlg.png" title="Edit size distributions" /></a></p>
+<p>It is most convenient to copy and paste the values into <em>MatCalc</em>. Make sure that you have initialized your precipitate with sufficient number of size classes, otherwise the paste procedure will fail.</p>
+<h2 id="size-distributions-from-virtual-pre-treatment">Size distributions from virtual pre-treatment</h2>
+<p>For complex precipitates, manual input of size distributions is not recommended for the reasons explained above. Instead, size distributions with some desired mean precipitate radius can be generated in a 'virtual' pre-treatment, with the term 'virtual' emphasizing that these pre-treatments can involve any simulation setup that generates the desired distribution regardless of whether the input parameters are based on physical grounds or not.</p>
+<p>These pre-treatments are commonly performed in the following steps:</p>
+<ul>
+<li>Set up the precipitation system, create precipitate phases and precipitation domains.</li>
+<li>Create an additional precipitation domain for the pre-treatment.</li>
+<li>Create an additional precipitate population for the primary precipitate. Use the 'prec_name_p0' for the primary precipitate and 'prec_name_p1' (and higher index) for secondary, tertiary etc. precipitates.</li>
+<li>Select the 'restrict nucleation to prec domain' option in the nucleation tab of the phase status dialog to link the '_p0' precipitate to the precipitation domain of the pre-treatment. Let the other precipitates nucleate in the precipitation domains of the regular heat treatment.</li>
+<li>Design the pre-treatment such that after executing the pre-treatment, the '_p0' population of the primary precipitate has the desired phase fraction and mean radius.</li>
+</ul>
+<p>The last step in this recipe is the most important one, and there are several strategies on how to design this virtual pre-treatment most efficiently in terms of computational effort. Minimum simulation time for pre-treatments can be achieved, if time-consuming coarsening regimes are avoided, as well as long continuous cooling segments, where nucleation of precipitates can also make the computation times longer than necessary. A simple methodology for designing efficient pre-treatments is as follows:</p>
+<ul>
+<li>In a preliminary step, perform a <strong><em>Scheil-Gulliver simulation</em></strong> to determine the type and amount of primary precipitates in your system. See the example E20 -  <a href="/examples/equilib/e20" title="examples/equilib/e20">Thermodynamic equilibrium analysis for continuous casting simulation of micro-alloyed Fe-Al-C-N-Nb-Ti steel</a> for instructions on how to do this.</li>
+<li>Remember the amount (phase fractions) of your primary precipitates as well as their approximate chemical composition. This is also elaborated and discussed in the example E20.</li>
+<li>Set up an <strong><em>equilibrium simulation</em></strong> involving only the thermodynamic equilibrium phases of the precipitation domain and the primary precipitates. Perform equilibrium simulations to find out at which temperature the phase fraction of the primary precipitate fits the phase fraction determined previously in the Scheil-Gulliver simulation. Check whether the chemical composition of this phase corresponds roughly to the primary precipitate composition determined in the Scheil-Gulliver step.<a href="#fn__2">2)</a></li>
+<li>Set up your full precipitation system as described above for the <strong><em>virtual pre-treatment</em></strong>. It is important that you create all precipitation domains and precipitates for the following real heat treatment. We want to save the calculation state after pre-treatment and use it as a starting condition for the real heat treatment but we can only load these states correctly if the number and type of phases and precipitation domains are unchanged.</li>
+<li>Create a 'pre-heat treatment' in the heat treatment dialog. Define the segments as suggested below.</li>
+</ul>
+<p>In principle, the segments of the virtual pre-treatment and all temperatures, holding times and cooling/heating rates can be defined as you like. Fully arbitrary. Also, the settings for the pre-treatment precipitation domain and the <em>primary</em> precipitates can be set entirely without consideration of physical principles. However, in the context of computational efficiency, there are numerous more or less successful strategies possible. The one suggested below has proven to perform reasonably well in many practical investigations. It is described in detail in the next section.</p>
+<h3 id="design-of-a-computationally-efficient-virtual-pre-treatment">Design of a computationally efficient virtual pre-treatment</h3>
+<p>The two main achievements of a successful pre-treatment are to produce an initial distribution of (primary) precipitates that have the desired values for</p>
+<ul>
+<li>phase fraction and</li>
+<li>mean precipitate radius.</li>
+</ul>
+<p>The <em>phase fraction</em> of primary precipitates is commonly obtained from the preliminary equilibrium calculation as described above. The <em>mean radius</em> is commonly observed from light optical or electron microscopy. Its value is usually in the order of a few µm.</p>
+<p>In the virtual pre-treatment, these two quantities can be efficiently adjusted in the following multi-stage heat treatment:</p>
+<ul>
+<li>For only a few seconds, run the pre-treatment at an isothermal temperature <span class="arithmatex">\(T\_\text{nucl,virt}\)</span>, where nucleation of primary precipitates occurs in such a number that, in the subsequent growth step, the desired size can be achieved without entering the coarsening stage.</li>
+<li>For adjustment of the desired number density, first of all adjust the nucleation sites of the primary precipitates in the nucleation tab of the phase status dialog. By this procedure, you modify the constant <span class="arithmatex">\(N\_0\)</span> of the nucleation rate expression by several orders of magnitude. Often, 'grain boundary corners' are suitable for the purpose of virtual pre-treatments for primary precipitates.<a href="#fn__3">3)</a> For fine-tuning of the results, you might want to modify the nucleation constant. Decrease its value if the precipitates remain too small, increase it if they become too large. Do not worry if <span class="arithmatex">\(N\_C\)</span> adapts rather large or small values. This is allowed since we design a virtual treatment in this step, and not a real precipitation simulation.</li>
+<li>At heating rates in the order of 100 K/s, move to the temperature <span class="arithmatex">\(T\_\text{grow,virt}\)</span> determined in the preliminary equilibrium calculation, which has been pre-evaluated in order to produce the desired phase fraction. Run the simulation isothermally at this temperature just as long as you need to reach the equilibrium phase fraction at <span class="arithmatex">\(T\_\text{end,virt}\)</span>.<a href="#fn__4">4)</a></li>
+</ul>
+<p>The following screen shot displays a typical pre-treatment for primary TiN precipitation in micro-alloyed steel.</p>
+<p><a href="/howtosimulate/precipitation/img/fig_grow_hypothetical_ht.png" title="howtosimulate/precipitation/img/fig_grow_hypothetical_ht.png"><img alt=" Virtual heat treatment for primary precipitation" src="/howtosimulate/precipitation/img/fig_grow_hypothetical_ht.png" title="Virtual heat treatment for primary precipitation" /></a></p>
+<p>The end time of the virtual pre-treatment <span class="arithmatex">\(t\_\text{end,virt}\)</span> is commonly defined by point where the growth stage for your primary precipitates is completed. You can observe this point easily in the corresponding plots for phase fraction, mean radius and number density.</p>
+<p>The actual distribution of your primary precipitates can be inspected in the precipitate distribution - histogram plot. In the early stages, directly after reaching the phase fraction maximum, the distribution is often rather small. If you want to start your simulation with a wider initial distribution, increase the simulation time a bit, such that you enter the coarsening regime. By this method, you will be able to adjust the width of your precipitate distribution.</p>
+<h2 id="transfer-results-size-distribution">Transfer results / size distribution</h2>
+<p>Once you have generated a size distribution of your primary precipitate(s) in the virtual treatment, you have two options to carry on.</p>
+<ul>
+<li>Save the size distribution into a calc state. Use this state as a starting condition for further precipitation simulation.</li>
+<li>Export the size distribution into a file. Read the distribution file and import it into any independent further computation.</li>
+</ul>
+<p>Both ways are demonstrated in the example P20 (<a href="/examples/precipitation/p20/p20_1" title="examples/precipitation/p20/p20_1">Example P20/ Precipitation simulation during continuous casting of micro-alloyed Fe-Al-C-N-Nb-Ti steel, part 1/ Treatment of primary precipitates</a>).</p>
+<p><a href="#fnt__1">1)</a></p>
+<p>The radius of primary precipitates is commonly in the order of micrometers</p>
+<p><a href="#fnt__2">2)</a></p>
+<p>This should normally be the case. If not, your creativity is challenged to modify the present procedure such that the simulation fits your expectations</p>
+<p><a href="#fnt__3">3)</a></p>
+<p>It is recommended that you perform this step at a sufficiently low temperature, to have high enough chemical driving forces to make reproducible and stable pre-treatments. At too low supersaturation, the final number of precipitates is too sensitive to small variations in temperature, which is not convenient from a practical point of view</p>
+<p><a href="#fnt__4">4)</a></p>
+<p>You ought to control the progress of your simulation in the corresponding plots and make sure you have really reached equilibrium</p>
+<p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=howtosimulate%3Aprecipitation%3Aprimary_prec&amp;1788352863" /></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
