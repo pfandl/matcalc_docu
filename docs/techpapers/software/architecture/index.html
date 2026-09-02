@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pfandl.github.io/matcalc_docu/techpapers/software/architecture/" />
       <link rel="shortcut icon" href="../../../img/favicon.ico" />
     <title>Architecture - MatCalc Documentation</title>
     <link rel="stylesheet" href="../../../css/theme.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "Architecture";
         var mkdocs_page_input_path = "techpapers/software/architecture.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_url = "/matcalc_docu/techpapers/software/architecture/";
       </script>
     
     <!--[if lt IE 9]>
@@ -51,7 +51,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">MatCalc tutorial</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">Tutorials</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
                 </li>
@@ -138,12 +138,12 @@ Revisions:</p>
 <p>None</p>
 <h1 id="main-document">Main document</h1>
 <h2 id="programming-environment">Programming environment</h2>
-<p>The <em>MatCalc</em> software is written in C++. It is developed within the <a href="http///en.wikipedia.org/wiki/Visual_studio" title="http///en.wikipedia.org/wiki/Visual_studio">MS Visual Studio</a> environment (Windows platform) and the <a href="http///en.wikipedia.org/wiki/Qt_Creator" title="http///en.wikipedia.org/wiki/Qt_Creator">Qt Creator</a> environment (Mac OSX and Linux).</p>
-<p>The window management of the <em>MatCalc</em> GUI version, as well as the platform-independent streaming operations of GUI (mcg) and command-line version (mcc), are handled by the (<a href="http///en.wikipedia.org/wiki/Qt_(framework)" title="http://en.wikipedia.org/wiki/Qt_(framework)">Qt Developer Framework</a>).</p>
-<p>Graphical output of diagrams / plots is realized with the <a href="http///qwt.sourceforge.net/Qwt library" title="http///qwt.sourceforge.net/Qwt library">Qwt graphics library</a>. Output of Monte Carlo simulation states is done using the OpenGL language implementation within the Qt libraries.</p>
+<p>The <em>MatCalc</em> software is written in C++. It is developed within the <a href="http://en.wikipedia.org/wiki/Visual_studio" title="http://en.wikipedia.org/wiki/Visual_studio">MS Visual Studio</a> environment (Windows platform) and the <a href="http://en.wikipedia.org/wiki/Qt_Creator" title="http://en.wikipedia.org/wiki/Qt_Creator">Qt Creator</a> environment (Mac OSX and Linux).</p>
+<p>The window management of the <em>MatCalc</em> GUI version, as well as the platform-independent streaming operations of GUI (mcg) and command-line version (mcc), are handled by the (<a href="http://en.wikipedia.org/wiki/Qt_(framework)" title="http://en.wikipedia.org/wiki/Qt_(framework)">Qt Developer Framework</a>).</p>
+<p>Graphical output of diagrams / plots is realized with the <a href="http://qwt.sourceforge.net/Qwt library" title="http://qwt.sourceforge.net/Qwt library">Qwt graphics library</a>. Output of Monte Carlo simulation states is done using the OpenGL language implementation within the Qt libraries.</p>
 <h2 id="software-architecture">Software architecture</h2>
 <p>The <em>MatCalc</em> package is designed in the form of modules, with a strict separation between the user interfaces and the core modules. This is sketched in the following diagram.</p>
-<p><a href="/techpapers/software/img/matcalc_structure.png" title="techpapers/software/img/matcalc_structure.png"><img alt="  Software architecture of //MatCalc//" src="/techpapers/software/img/matcalc_structure.png" title="Software architecture of //MatCalc//" /></a></p>
+<p><a href="/matcalc_docu/techpapers/software/img/matcalc_structure.png" title="techpapers:software:img:matcalc_structure.png"><img alt="  Software architecture of //MatCalc//" src="/matcalc_docu/techpapers/software/img/matcalc_structure.png" title="Software architecture of //MatCalc//" /></a></p>
 <h3 id="user-interface">User interface</h3>
 <p>The <em>MatCalc</em> package provides two front ends to the user to control the software behavior.</p>
 <ul>

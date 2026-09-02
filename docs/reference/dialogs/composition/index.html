@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pfandl.github.io/matcalc_docu/reference/dialogs/composition/" />
       <link rel="shortcut icon" href="../../../img/favicon.ico" />
     <title>Composition - MatCalc Documentation</title>
     <link rel="stylesheet" href="../../../css/theme.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "Composition";
         var mkdocs_page_input_path = "reference/dialogs/composition.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_url = "/matcalc_docu/reference/dialogs/composition/";
       </script>
     
     <!--[if lt IE 9]>
@@ -51,7 +51,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">MatCalc tutorial</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">Tutorials</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
                 </li>
@@ -105,7 +105,7 @@
                 <p>Nominal composition [MatCalc Documentation]</p>
 <h1 id="nominal-composition">Nominal composition</h1>
 <p>After setting up the system in the database dialog, the chemical composition is usually entered in the <em>nominal composition</em> dialog box. Forgetting to do so represents a common source for strange and unexpected simulation results, simply because the chemical composition is not correctly defined. <em>MatCalc</em> tries to remember the chemical composition of precious simulations and initializes the composition values accordingly.</p>
-<p><a href="/reference/dialogs/img/composition/nominal_composition-chemical_composition_f7.png" title="reference/dialogs/img/composition/nominal_composition-chemical_composition_f7.png"><img alt=" Nominal composition dialog box" src="/reference/dialogs/img/composition/nominal_composition-chemical_composition_f7.png" title="Nominal composition dialog box" /></a></p>
+<p><a href="/matcalc_docu/reference/dialogs/img/composition/nominal_composition-chemical_composition_f7.png" title="reference:dialogs:img:composition:nominal_composition-chemical_composition_f7.png"><img alt=" Nominal composition dialog box" src="/matcalc_docu/reference/dialogs/img/composition/nominal_composition-chemical_composition_f7.png" title="Nominal composition dialog box" /></a></p>
 <ol>
 <li><strong>Element</strong>: The element column lists all loaded elements in alphabetical order.</li>
 <li><strong>Reference element</strong>: One element is set as the reference elements. Its chemical composition will automatically be set with the residual value to 100% and can not be set manually. Double click this field to change the reference element.   </li>
@@ -118,15 +118,15 @@
 6. <strong>Unit selection</strong>:</p>
 <ul>
 <li>
-<p><em>mole fraction</em>: Chemical composition in mole fraction (e.g./ Fe3C/ 0.25C, 0.75Fe).   </p>
+<p><em>mole fraction</em>: Chemical composition in mole fraction (e.g.: Fe3C: 0.25C, 0.75Fe).   </p>
 <p><code>enter-composition x c=0.25  $ Mole fraction
  enter-composition xp c=0.25 $ Mole percent</code>
-   * <em>u-fraction</em>: Chemical composition in the form of substitutional site fractions. Typically used for the setup of para-equilibrium conditions (e.g./ Fe3C/ 0.33C, 1.0Fe).   </p>
+   * <em>u-fraction</em>: Chemical composition in the form of substitutional site fractions. Typically used for the setup of para-equilibrium conditions (e.g.: Fe3C: 0.33C, 1.0Fe).   </p>
 <p><code>enter-composition u c=0.33  $ u-fraction
  enter-composition up c=33 $ u-percent</code>
-   * <em>weight fraction</em>: Chemical composition in weight fraction (e.g./ Fe3C/ 0.067C, 0.933Fe).   </p>
+   * <em>weight fraction</em>: Chemical composition in weight fraction (e.g.: Fe3C: 0.067C, 0.933Fe).   </p>
 <p><code>enter-composition w c=0.067  $ weight fraction</code>
-   * <em>weight percent</em>: Chemical composition as weight percent (e.g./ Fe3C/ 6.7%C, 93.3%Fe).   </p>
+   * <em>weight percent</em>: Chemical composition as weight percent (e.g.: Fe3C: 6.7%C, 93.3%Fe).   </p>
 <p><code>enter-composition wp c=6.67 $ weight percent</code>
 7. <strong>Save to file</strong>: not yet implemented.
 8. <strong>Open file</strong>: not yet implemented.

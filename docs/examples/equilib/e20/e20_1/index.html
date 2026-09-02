@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pfandl.github.io/matcalc_docu/examples/equilib/e20/e20_1/" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
     <title>E20 1 - MatCalc Documentation</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "E20 1";
         var mkdocs_page_input_path = "examples/equilib/e20/e20_1.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_url = "/matcalc_docu/examples/equilib/e20/e20_1/";
       </script>
     
     <!--[if lt IE 9]>
@@ -51,7 +51,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/">MatCalc tutorial</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/">Tutorials</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
                 </li>
@@ -139,14 +139,14 @@ Revisions: G. Stechauner (2.11.2011 - Update for new version and database)</p>
 <p>Part I discusses the thermodynamic equilibrium analysis, which provides information on the expected phases occurring during cooling after solidification. It emphasizes the importance of composition sets in order to correctly capture complex miscibility gaps. The results of the equilibrium analysis are directly applicable for the correct setup of subsequent precipitation kinetics simulations.</p>
 <h2 id="related-documents">Related documents</h2>
 <ol>
-<li>E20-1 -  <a href="/examples/equilib/e20/e20_1" title="examples/equilib/e20/e20_1">Thermodynamic equilibrium analysis</a></li>
-<li>E20-2 -  <a href="/examples/equilib/e20/e20_2" title="examples/equilib/e20/e20_2">Scheil-Gulliver analysis of primary precipitation</a></li>
-<li>E20-3 -  <a href="/examples/equilib/e20/e20_3" title="examples/equilib/e20/e20_3">Accounting for the peritectic reaction</a></li>
-<li>E20-4 -  <a href="/examples/equilib/e20/e20_4" title="examples/equilib/e20/e20_4">Scheil-Gulliver analysis of microsegregation</a></li>
-<li>P20 -  <a href="/examples/precipitation/p20" title="examples/precipitation/p20">Precipitation simulation during continuous casting</a></li>
+<li>E20-1 -  <a href="/matcalc_docu/examples/equilib/e20/e20_1" title="examples:equilib:e20:e20_1">Thermodynamic equilibrium analysis</a></li>
+<li>E20-2 -  <a href="/matcalc_docu/examples/equilib/e20/e20_2" title="examples:equilib:e20:e20_2">Scheil-Gulliver analysis of primary precipitation</a></li>
+<li>E20-3 -  <a href="/matcalc_docu/examples/equilib/e20/e20_3" title="examples:equilib:e20:e20_3">Accounting for the peritectic reaction</a></li>
+<li>E20-4 -  <a href="/matcalc_docu/examples/equilib/e20/e20_4" title="examples:equilib:e20:e20_4">Scheil-Gulliver analysis of microsegregation</a></li>
+<li>P20 -  <a href="/matcalc_docu/examples/precipitation/p20" title="examples:precipitation:p20">Precipitation simulation during continuous casting</a></li>
 </ol>
 <h2 id="complementary-files">Complementary files</h2>
-<p>Click <a href="/examples/equilib/e20/script/e20-1_2017.mcs" title="examples/equilib/e20/script/e20-1_2017.mcs (7.7 KB)">here</a> to view the script for this tutorial, and <a href="/examples/equilib/e20/workspace/e20_1_equilibrium.mcw" title="examples/equilib/e20/workspace/e20_1_equilibrium.mcw (823.3 KB)">here</a> to download the workspace file.</p>
+<p>Click <a href="/matcalc_docu/examples/equilib/e20/script/e20-1_2017.mcs" title="examples:equilib:e20:script:e20-1_2017.mcs (7.7 KB)">here</a> to view the script for this tutorial, and <a href="/matcalc_docu/examples/equilib/e20/workspace/e20_1_equilibrium.mcw" title="examples:equilib:e20:workspace:e20_1_equilibrium.mcw (823.3 KB)">here</a> to download the workspace file.</p>
 <h1 id="main-document">Main document</h1>
 <p>Consider a microalloyed steel during continuous casting. Even without employing kinetic simulation models, predictions can be made on the microsegregation state after solidification, the existence, type and amount of primary precipitates and equilibrium phases by simply employing thermodynamic equilibrium calculations. In the first part of this example, an analysis of equilibrium phases versus temperature is discussed in the presence of a miscibility gap for carbonitride precipitates. The following table summarizes the chemical composition of the steel used in this study. Nominal composition given in wt%.</p>
 <table>
@@ -171,7 +171,7 @@ Revisions: G. Stechauner (2.11.2011 - Update for new version and database)</p>
 </table>
 <h2 id="setup-thermodynamics">Setup thermodynamics</h2>
 <p>For simulation, either the 'mc_fe' or the 'mc_x_FeAlCNNbTi' database can be used, with the elements and phases selection as shown in the dialog below:</p>
-<p><a href="/examples/equilib/e20/img/dialog_database_1.png" title="examples/equilib/e20/img/dialog_database_1.png"><img alt=" Database dialog for E20" src="/examples/equilib/e20/img/dialog_database_1.png" title="Database dialog for E20" /></a></p>
+<p><a href="/matcalc_docu/examples/equilib/e20/img/dialog_database_1.png" title="examples:equilib:e20:img:dialog_database_1.png"><img alt=" Database dialog for E20" src="/matcalc_docu/examples/equilib/e20/img/dialog_database_1.png" title="Database dialog for E20" /></a></p>
 <p>Open the database, select elements and phases, and read the database. Then enter the composition of the system in the 'Composition …' dialog of the 'Global' menu according to the table shown above.</p>
 <h2 id="evaluate-initial-equilibirum">Evaluate initial equilibirum</h2>
 <p>Select 'Set start values' from the 'Calc' menu and evaluate equilibrium at 1000C. The output window contains the results, which should look like</p>
@@ -192,12 +192,12 @@ AL +5.00000e-01   N +5.00000e-01
 <p>The equilibrium simulation shows that, at 1000C, austenite (fcc-Fe matrix) should be in equilibrium with AlN and a phase, which is denoted as FCC_A1#01, and which is a composition set of the FCC_A1 austenite.<a href="#fn__2">2)</a> The composition set phase FCC_A1#01 is a complex MX-type carbide, with a composition rich in Nb and C and containing additionally approximately 15% Ti.</p>
 <h2 id="evaluate-phase-fractions-versus-temperature">Evaluate phase fractions versus temperature</h2>
 <p>After calculation of an initial equilibrium, a stepped calculation is attempted next, with temperature as the independent variable. Open the 'Stepped calculation …' dialog from the 'Calc' menu and set the proper parameters with</p>
-<p><a href="/examples/equilib/e20/img/dialog_stepped_equilib_1.png" title="examples/equilib/e20/img/dialog_stepped_equilib_1.png"><img alt=" Stepped equilibrium dialog settings" src="/examples/equilib/e20/img/dialog_stepped_equilib_1.png" title="Stepped equilibrium dialog settings" /></a></p>
+<p><a href="/matcalc_docu/examples/equilib/e20/img/dialog_stepped_equilib_1.png" title="examples:equilib:e20:img:dialog_stepped_equilib_1.png"><img alt=" Stepped equilibrium dialog settings" src="/matcalc_docu/examples/equilib/e20/img/dialog_stepped_equilib_1.png" title="Stepped equilibrium dialog settings" /></a></p>
 <p>Perform the calculation, and display the results in a phase fraction versus temperature plot. Select 'X-Y-plot' from the 'Create new window …' dialog of the 'View' menu. Drag and drop the <code>F$*</code> variable into the window and enter <code>T$C</code> into the 'default x-data' item of the 'options' window. Select 'Use default-x axis' → 'yes', display the y-axis in log scale and label the axis. Finally, create a new plot (right mouse button → New plot) and drag and drop the composition of the FCC_A1#01 phase into the plot (<code>X$FCC_A1#01$*</code>). The plots then should look like</p>
-<p><a href="/examples/equilib/e20/img/plot_equilib_step_1.png" title="examples/equilib/e20/img/plot_equilib_step_1.png"><img alt=" Result of stepped calculation #1" src="/examples/equilib/e20/img/plot_equilib_step_1.png" title="Result of stepped calculation #1" /></a></p>
+<p><a href="/matcalc_docu/examples/equilib/e20/img/plot_equilib_step_1.png" title="examples:equilib:e20:img:plot_equilib_step_1.png"><img alt=" Result of stepped calculation #1" src="/matcalc_docu/examples/equilib/e20/img/plot_equilib_step_1.png" title="Result of stepped calculation #1" /></a></p>
 <h2 id="test-for-potential-miscibility-gaps">Test for potential miscibility gaps</h2>
 <p>In Fe-based systems with micro-alloying additions of Nb-V-Ti and C-N, one often observes complex miscibility gaps between nitrides containing Ti (and sometimes Nb or V) and carbides containing Nb ( sometimes Ti and V). For the complex carbonitride FCC_A1#01, the enrichment of Ti and N in the otherwise Nb and C-rich phase suggests that a miscibility gap between the major constituent compositions NbC and TiN exists. In order to test this system behavior, an additional composition set for the complex carbonitride must be created from within the 'phase status' dialog and the major constituents of the two FCC_A1#01 and FCC_A1#02 phases must be set as :NB:C: and :TI:N: as shown for the latter phase in the dialog box below.</p>
-<p><a href="/examples/equilib/e20/img/phase_status_dialog_1.png" title="examples/equilib/e20/img/phase_status_dialog_1.png"><img alt=" Phase status dialog for composition set #02" src="/examples/equilib/e20/img/phase_status_dialog_1.png" title="Phase status dialog for composition set #02" /></a></p>
+<p><a href="/matcalc_docu/examples/equilib/e20/img/phase_status_dialog_1.png" title="examples:equilib:e20:img:phase_status_dialog_1.png"><img alt=" Phase status dialog for composition set #02" src="/matcalc_docu/examples/equilib/e20/img/phase_status_dialog_1.png" title="Phase status dialog for composition set #02" /></a></p>
 <p>Note: After entering the new major constituents string, do not forget to press the 'Set now' button.</p>
 <p>Calculate a new equilibrium at 1000C. The result should look like</p>
 <pre><code>#### /FCC_A1/ moles: 0.999245, gm: -62327.1 (-62327.1), sff: 0.989983 
@@ -222,13 +222,13 @@ FE +8.11633e-06  AL +5.51360e-16
 <p>The simulation with the additional composition set now delivers an additional stable equilibrium phase, which is FCC_A1#02, and which is rich in Ti and N. Simultaneously, the Ti and N contents of the FCC_A1#01 phase are significantly reduced, since these elements have now partitioned mainly into the new phase.</p>
 <h2 id="equilibrium-results-with-extended-phase-set">Equilibrium results with extended phase set</h2>
 <p>Finally, with the new phase set, the stepped calculation is repeated, with the results for the phase fractions and the composition of the two carbonitrides shown in the following diagram.</p>
-<p><a href="/examples/equilib/e20/img/dialog_stepped_equilib_2.png" title="examples/equilib/e20/img/dialog_stepped_equilib_2.png"><img alt=" Result of stepped calculation #2, with two composition sets" src="/examples/equilib/e20/img/dialog_stepped_equilib_2.png" title="Result of stepped calculation #2, with two composition sets" /></a></p>
+<p><a href="/matcalc_docu/examples/equilib/e20/img/dialog_stepped_equilib_2.png" title="examples:equilib:e20:img:dialog_stepped_equilib_2.png"><img alt=" Result of stepped calculation #2, with two composition sets" src="/matcalc_docu/examples/equilib/e20/img/dialog_stepped_equilib_2.png" title="Result of stepped calculation #2, with two composition sets" /></a></p>
 <p>Note: If you cannot see the additional line for the phase fraction of the new composition set phase, make sure that you drag and drop the <code>F$FCC_A1#02</code> variable into the first plot.</p>
-<p>The new results now clearly distinguish between a TiN-rich carbonitride phase and a NbC-rich carbonitride phase, thus confirming the existence of a miscibility gap between the two phases. This results is an important indicator for appropriate phase selection in the precipitation kinetics simulation that will be attempted in the example  <a href="/examples/precipitation/p20" title="examples/precipitation/p20">P20</a> later.</p>
+<p>The new results now clearly distinguish between a TiN-rich carbonitride phase and a NbC-rich carbonitride phase, thus confirming the existence of a miscibility gap between the two phases. This results is an important indicator for appropriate phase selection in the precipitation kinetics simulation that will be attempted in the example  <a href="/matcalc_docu/examples/precipitation/p20" title="examples:precipitation:p20">P20</a> later.</p>
 <p><strong>Note</strong>: For an interpretation of the composition of the carbonitride phases, please consider the temperature stability range of the phases. For instance, the FCC_A1#02 phase is only stable in the temperature range of approximately 650 to 1450°C. The calculated compositions outside this range are corresponding to the hypothetical values that are evaluated by <em>MatCalc</em> according to the tangent construction for maximum driving force. These compositions are often unstable and show oscillations when evaluated farther outside the stability range. In these cases, the miscibility gap is unstable and should not be considered. The composition of the phases is then also not reliable and should not be considered.</p>
 <p>Save the final results in workspace <strong>E20_1_equilibrium.mcw</strong>.</p>
 <h1 id="consecutive-articles">Consecutive articles</h1>
-<p>This analysis is continued in article  <a href="/examples/equilib/e20/e20_2" title="examples/equilib/e20/e20_2">Scheil-Gulliver analysis of primary precipitation</a></p>
+<p>This analysis is continued in article  <a href="/matcalc_docu/examples/equilib/e20/e20_2" title="examples:equilib:e20:e20_2">Scheil-Gulliver analysis of primary precipitation</a></p>
 <p><a href="#fnt__1">1)</a></p>
 <p>S. Zamberger, M. Pudar, K. Spiradek-Hahn, M. Reischl and E. Kozeschnik, “Numerical simulation of the evolution of primary and secondary Nb(CN), Ti(CN) and AlN in Nb-microalloyed steel during continuous casting”, IJMR (2012) in print.</p>
 <p><a href="#fnt__2">2)</a></p>

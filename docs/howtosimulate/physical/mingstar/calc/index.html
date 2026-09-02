@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pfandl.github.io/matcalc_docu/howtosimulate/physical/mingstar/calc/" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
     <title>Calc - MatCalc Documentation</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "Calc";
         var mkdocs_page_input_path = "howtosimulate/physical/mingstar/calc.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_url = "/matcalc_docu/howtosimulate/physical/mingstar/calc/";
       </script>
     
     <!--[if lt IE 9]>
@@ -51,7 +51,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/">MatCalc tutorial</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/">Tutorials</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
                 </li>
@@ -134,15 +134,15 @@ Created: 2013-02-28 <br />
 Revisions:</p>
 <h2 id="objectives">Objectives</h2>
 <p>The minimum nucleation energy is of interest, whenever a nucleation event occurs and has to be calculated (i.e. to calculate P-nucl). It should be understood that the calculated energy, depends on various factors including chemical composition and temperature. Further, the composition which delivers the minimum G* energy only gives a statistically 'most likely' composition, that is why the calculated nucleation probability is given in percent, depending on the likelihood of the event to occur. Other compositions, mostly close to the calculated one are also possible and have to be considered.</p>
-<p><strong>Note:</strong> This is an advanced example for interested users who want to gain a deep understanding of their material. The whole example will be given in script form, which will be discussed at length. If you feel uneasy about loops and conditions, you may want to check out our explanation on <a href="/reference/syntax" title="reference/syntax">'Syntax for Conditions, Loops and other commands'</a> beforehand.</p>
+<p><strong>Note:</strong> This is an advanced example for interested users who want to gain a deep understanding of their material. The whole example will be given in script form, which will be discussed at length. If you feel uneasy about loops and conditions, you may want to check out our explanation on <a href="/matcalc_docu/reference/syntax" title="reference:syntax">'Syntax for Conditions, Loops and other commands'</a> beforehand.</p>
 <h2 id="related-documents">Related documents</h2>
 <ul>
-<li><a href="/examples/equilib/e10" title="examples/equilib/e10">E10 - 'Most-likely' nucleus composition for bcc-Cu precipitation in bcc-Fe</a></li>
-<li><a href="/reference/syntax" title="reference/syntax">Help-file on Loops and Conditions</a></li>
-<li><a href="/howtosimulate/physical/mingstar/vis" title="howtosimulate/physical/mingstar/vis">Part II showing how to visualize min G* and P using GNUPlot</a></li>
+<li><a href="/matcalc_docu/examples/equilib/e10" title="examples:equilib:e10">E10 - 'Most-likely' nucleus composition for bcc-Cu precipitation in bcc-Fe</a></li>
+<li><a href="/matcalc_docu/reference/syntax" title="reference:syntax">Help-file on Loops and Conditions</a></li>
+<li><a href="/matcalc_docu/howtosimulate/physical/mingstar/vis" title="howtosimulate:physical:mingstar:vis">Part II showing how to visualize min G* and P using GNUPlot</a></li>
 </ul>
 <h2 id="complementary-files">Complementary files</h2>
-<p>Click <a href="/howtosimulate/physical/mingstar/howto_-_g-star_-_vcn.mcs" title="howtosimulate/physical/mingstar/howto_-_g-star_-_vcn.mcs (9.3 KB)">here</a> to view the script for this HowTo manual.</p>
+<p>Click <a href="/matcalc_docu/howtosimulate/physical/mingstar/howto_-_g-star_-_vcn.mcs" title="howtosimulate:physical:mingstar:howto_-_g-star_-_vcn.mcs (9.3 KB)">here</a> to view the script for this HowTo manual.</p>
 <h1 id="main-document">Main document</h1>
 <h2 id="physical-description-of-the-example">Physical description of the example</h2>
 <p>The basis of this example is the calculation of the minimum nucleation energy, G*. This value is a function of γ - interfacial energy and ΔG0 - driving force change while nucleation:</p>
@@ -210,10 +210,10 @@ calculate-equilibrium                         $ calculate equilibrium at test te
 @ set-variable-value row_count 0    $ index variable
 
 $ first loop is for V 
-@ for (i;Vmin..Vmax/Vint)
+@ for (i;Vmin..Vmax:Vint)
 @ $   show-expression i
 @   set-variable-value col_count 0    $ index variable
-@   for (j;Nmin..Nmax/Nint)
+@   for (j;Nmin..Nmax:Nint)
 @ $       show-expression j
 @      $ assign compositions
 @      set-variable-value x_V i
@@ -277,10 +277,10 @@ $ first loop is for V
 
 @ $ finally normalize nucleation probability
 @ set-variable-value row_count 0    $ index variable
-@ for (i;Vmin..Vmax/Vint)
+@ for (i;Vmin..Vmax:Vint)
 @ $   show-expression i
 @   set-variable-value col_count 0    $ index variable
-@   for (j;Nmin..Nmax/Nint)
+@   for (j;Nmin..Nmax:Nint)
 @      $ normalize
 @      set-array-value P_array row_count+1 col_count+1 P_array[row_count+1]....
 ....[col_count+1]/max_P_nucl
@@ -300,10 +300,10 @@ $ first loop is for V
 @ set-variable-value row_count 0    $ index variable
 
 $ first loop is for V 
-@ for (i;Vmin..Vmax/Vint)
+@ for (i;Vmin..Vmax:Vint)
 @ $   show-expression i
 @   set-variable-value col_count 0    $ index variable
-@   for (j;Nmin..Nmax/Nint)
+@   for (j;Nmin..Nmax:Nint)
 @ $       show-expression j
 @      $ assign compositions
 @      set-variable-value x_V i
@@ -330,7 +330,7 @@ $ first loop is for V
 @         set-array-value P_array row_count+1 0 x_V
 @      endif
 </code></pre>
-<p>This portion of code focuses on the setup of the arrays. It starts by initializing the 'row count' variable (which keeps track of the actual row), and the 'col count' (which does basically the same for the columns). After that, we set the auxiliary variables x_V and x_N, which are used in equilibrium calculations. As 'i' and 'j' are the runtime variables, we want to introduce those auxiliary ones to keep the code clean and easily readable! A quick check for plausibility follows (it is not possible for any atom to be negatively existing <img alt="/-D" src="/wiki/lib/images/smileys/biggrin.svg" />). The last two conditions are responsible for naming the x- and y-values of the arrays.</p>
+<p>This portion of code focuses on the setup of the arrays. It starts by initializing the 'row count' variable (which keeps track of the actual row), and the 'col count' (which does basically the same for the columns). After that, we set the auxiliary variables x_V and x_N, which are used in equilibrium calculations. As 'i' and 'j' are the runtime variables, we want to introduce those auxiliary ones to keep the code clean and easily readable! A quick check for plausibility follows (it is not possible for any atom to be negatively existing <img alt=":-D" src="/wiki/lib/images/smileys/biggrin.svg" />). The last two conditions are responsible for naming the x- and y-values of the arrays.</p>
 <p><strong>Part 2 - Calculate G* and P:</strong></p>
 <pre><code>@      $ set u-fraction constraint in nucleation phase
 @      change-phase-status VCN c V x x_V   
@@ -373,10 +373,10 @@ $ first loop is for V
 <p><strong>Part 3 - Normalization of P:</strong></p>
 <pre><code>@ $ finally normalize nucleation probability
 @ set-variable-value row_count 0    $ index variable
-@ for (i;Vmin..Vmax/Vint)
+@ for (i;Vmin..Vmax:Vint)
 @ $   show-expression i
 @   set-variable-value col_count 0    $ index variable
-@   for (j;Nmin..Nmax/Nint)
+@   for (j;Nmin..Nmax:Nint)
 @      $ normalize
 @      set-array-value P_array row_count+1 col_count+1 P_array[row_count+1]....
 ....[col_count+1]/max_P_nucl
@@ -391,7 +391,7 @@ $ first loop is for V
 </code></pre>
 <p>In this final part of the script, the whole P-array will be worked through and all values are divided by the previously found P-max. This leads to normalized values, which come in handy for plotting and visualization of the results, and give a good answer to the question of 'most likely nucleus composition'.</p>
 <h1 id="consecutive-articles">Consecutive articles</h1>
-<p>In order to visualize the obtained data, either use your own plotting tool of choice, or go to <a href="/howtosimulate/physical/mingstar/vis" title="howtosimulate/physical/mingstar/vis">part II</a>, where the procedure of plotting will be shown using opensource software GNUPlot.</p>
+<p>In order to visualize the obtained data, either use your own plotting tool of choice, or go to <a href="/matcalc_docu/howtosimulate/physical/mingstar/vis" title="howtosimulate:physical:mingstar:vis">part II</a>, where the procedure of plotting will be shown using opensource software GNUPlot.</p>
 <p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=howtosimulate%3Aphysical%3Amingstar%3Acalc&amp;1788352992" /></p>
               
             </div>

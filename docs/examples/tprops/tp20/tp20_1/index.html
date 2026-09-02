@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pfandl.github.io/matcalc_docu/examples/tprops/tp20/tp20_1/" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
     <title>Tp20 1 - MatCalc Documentation</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "Tp20 1";
         var mkdocs_page_input_path = "examples/tprops/tp20/tp20_1.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_url = "/matcalc_docu/examples/tprops/tp20/tp20_1/";
       </script>
     
     <!--[if lt IE 9]>
@@ -51,7 +51,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/">MatCalc tutorial</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/">Tutorials</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
                 </li>
@@ -141,7 +141,7 @@ Part 2 of this example will then continue with a full heat treatment, starting f
 <h2 id="related-documents">Related documents</h2>
 <p>None</p>
 <h2 id="complementary-files">Complementary files</h2>
-<p>Click <a href="/examples/tprops/tp20/script/tp20_1_script_2018.mcs" title="examples/tprops/tp20/script/tp20_1_script_2018.mcs (10.7 KB)">here</a> to view the script for this tutorial.</p>
+<p>Click <a href="/matcalc_docu/examples/tprops/tp20/script/tp20_1_script_2018.mcs" title="examples:tprops:tp20:script:tp20_1_script_2018.mcs (10.7 KB)">here</a> to view the script for this tutorial.</p>
 <h1 id="main-document">Main document</h1>
 <p>Consider a Nickel-based alloy during cooling, from a solutionized state, with the chemical composition given in the following table (composition given in wt%).</p>
 <table>
@@ -170,7 +170,7 @@ Part 2 of this example will then continue with a full heat treatment, starting f
 In the first part, we will consider this given state and simply cool down. We will see the DSC curve, as well as three populations of precipitates, with different sizes.</p>
 <h2 id="setup-thermodynamics">Setup thermodynamics</h2>
 <p>For simulation, the 'mc_ni' database, version 1.011, is used, with the elements and phases selection as shown in the dialog below:</p>
-<p><a href="/examples/tprops/tp20/img/dialog-database-phases-tp20.png" title="examples/tprops/tp20/img/dialog-database-phases-tp20.png"><img alt=" Database dialog for TP20" src="/examples/tprops/tp20/img/dialog-database-phases-tp20.png" title="Database dialog for TP20" /></a></p>
+<p><a href="/matcalc_docu/examples/tprops/tp20/img/dialog-database-phases-tp20.png" title="examples:tprops:tp20:img:dialog-database-phases-tp20.png"><img alt=" Database dialog for TP20" src="/matcalc_docu/examples/tprops/tp20/img/dialog-database-phases-tp20.png" title="Database dialog for TP20" /></a></p>
 <p>Open the database, select elements and phases, and read the database. Then enter the composition of the system in the 'Composition …' dialog of the 'Global' menu according to the table shown above.</p>
 <p>Next, read the diffusion database “mc_ni” (version 1.000 was used in this example).</p>
 <h2 id="evaluate-temperatures">Evaluate temperatures</h2>
@@ -180,7 +180,7 @@ There are now two ways to identify the one phase field:</p>
 <li>Have a look into the buffer states and click through the temperatures. You will see how the phase details change according to the temperature. The temperature range between the solidification of liquid, and the precipitation of Gamma_Prime is the one phase field we were looking for.</li>
 <li>The second way is to generate an easily interpreted graphic image of the phase fraction. Add a p1 plot to the workspace, and draf &amp; drop the <code>F$*</code> variable into it.</li>
 </ul>
-<p><a href="/examples/tprops/tp20/img/phasefraction-tp20.png" title="examples/tprops/tp20/img/phasefraction-tp20.png"><img alt=" Phase fraction to identify the one phase field" src="/examples/tprops/tp20/img/phasefraction-tp20.png" title="Phase fraction to identify the one phase field" /></a></p>
+<p><a href="/matcalc_docu/examples/tprops/tp20/img/phasefraction-tp20.png" title="examples:tprops:tp20:img:phasefraction-tp20.png"><img alt=" Phase fraction to identify the one phase field" src="/matcalc_docu/examples/tprops/tp20/img/phasefraction-tp20.png" title="Phase fraction to identify the one phase field" /></a></p>
 <p>Both methods are an easy way of finding the solutionizing temperature of 1280C.</p>
 <p>The output file of the calculated equilibrium at 1280C is shown below:</p>
 <p>`#### /FCC_A1/ moles: 1, gm: -115980 (-115980), sff: 1<br />
@@ -222,7 +222,7 @@ TA +5,30532e-002 TI +2,52059e-002 W +1,03565e-002`</p>
 <li>Volumetric misfit <code>(dV/V)</code>: misfit (Make sure that the 'Account for coherent misfit stress' option is selected!)</li>
 <li>Coherency radius [m]: 30e-9</li>
 </ul>
-<p><a href="/examples/tprops/tp20/img/dsc-tp20.png" title="examples/tprops/tp20/img/dsc-tp20.png"><img alt=" Schematic figure of DSC" src="/examples/tprops/tp20/img/dsc-tp20.png" title="Schematic figure of DSC" /></a></p>
+<p><a href="/matcalc_docu/examples/tprops/tp20/img/dsc-tp20.png" title="examples:tprops:tp20:img:dsc-tp20.png"><img alt=" Schematic figure of DSC" src="/matcalc_docu/examples/tprops/tp20/img/dsc-tp20.png" title="Schematic figure of DSC" /></a></p>
 <p>Next we have to generate a reference phase for the DSC curve (see figure above). To do so, open up the 'Phase status …' dialog window, and create an equilibrium phase for the FCC_A1 phase. Set the newly created FCC_A1#01 to 'fixed phase fraction', as we want the FCC_A1 to be the prevailing one, and calculate an equilibrium in the one phase field. Note how the chemical composition of both phases becomes identical!</p>
 <p><strong><em>Important note …</em></strong></p>
 <p>If we would not set FCC_A1#01 to 'fixed phase fraction', it could happen, that this phase becomes the predominant one!</p>
@@ -243,10 +243,10 @@ To plot the phase fraction of Gamma\_Prime, we simply have to drag &amp; drop th
 <p>Open the 'Precipitation simulation …' dialog window and select continuous cooling. Enter the start and end temperature, as well as the desired cooling rate in the according dialog boxes. For the figure below, we used a starting temperature of 1280C, an end temperature of 25C, and a cooling rate of 50K/min (enter as -0.8333).Change the initial time step to 1e-10, as a lower value will result in a wrong, vertical line at the beginning. If your settings look like ours (check figure below), <strong>start</strong> the simulation.</p>
 <p><strong><em>Important note …</em></strong></p>
 <p>When using the continuous option from the 'Precipitation simulation …', keep in mind, that a <strong>positive value</strong> in the T_dot dialog box results in <strong>heating</strong>, whereas a <strong>negative value</strong> results in <strong>cooling</strong>!</p>
-<p><a href="/examples/tprops/tp20/img/prec-simulation-tp20.png" title="examples/tprops/tp20/img/prec-simulation-tp20.png"><img alt=" Precipitation simulation settings" src="/examples/tprops/tp20/img/prec-simulation-tp20.png" title="Precipitation simulation settings" /></a></p>
+<p><a href="/matcalc_docu/examples/tprops/tp20/img/prec-simulation-tp20.png" title="examples:tprops:tp20:img:prec-simulation-tp20.png"><img alt=" Precipitation simulation settings" src="/matcalc_docu/examples/tprops/tp20/img/prec-simulation-tp20.png" title="Precipitation simulation settings" /></a></p>
 <h2 id="results">Results</h2>
 <p>If all the prior steps were executed correctly, and the calculation finished without any errors, the below shown figures should be calculated.</p>
-<p><a href="/examples/tprops/tp20/img/output_tp20_1.png" title="examples/tprops/tp20/img/output_tp20_1.png"><img alt=" Resulting plots of DSC simulation" src="/examples/tprops/tp20/img/output_tp20_1.png" title="Resulting plots of DSC simulation" /></a></p>
+<p><a href="/matcalc_docu/examples/tprops/tp20/img/output_tp20_1.png" title="examples:tprops:tp20:img:output_tp20_1.png"><img alt=" Resulting plots of DSC simulation" src="/matcalc_docu/examples/tprops/tp20/img/output_tp20_1.png" title="Resulting plots of DSC simulation" /></a></p>
 <p>We can see three peaks in the DSC curve. If you have a look at the buffer states, and go to the temperature of the first peak (~1110C), you can see the precipitation of mainly large, 1000nm big preciptates. Upon lowering the temperature, and reaching the second peak (~900C), a second population of smaller, 100nm in size precipitates can be seen. For temperatures below the last peak, a huge amount of the small, 1 to 10 nm in size precipitates form. This exact behavior can be measured experimentally and seen with TEM.</p>
 <p>We will continue in part 2, with simulating a full heat treatment, compared to only cooling in part 1. A comparison with real, experimental data will also be given.</p>
 <h1 id="consecutive-articles">Consecutive articles</h1>

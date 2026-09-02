@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pfandl.github.io/matcalc_docu/examples/precipitation/p80/p80_2/" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
     <title>P80 2 - MatCalc Documentation</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "P80 2";
         var mkdocs_page_input_path = "examples/precipitation/p80/p80_2.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_url = "/matcalc_docu/examples/precipitation/p80/p80_2/";
       </script>
     
     <!--[if lt IE 9]>
@@ -51,7 +51,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/">MatCalc tutorial</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/">Tutorials</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
                 </li>
@@ -139,15 +139,15 @@ Revisions:</p>
 <p><strong>Note 2:</strong> The results below can only be reproduced by using both, the newest version of MatCalc as well as the newest thermodynamic database. Using sample databases can result in slightly different results due to dissimilar values in the databases.</p>
 <h2 id="related-documents">Related documents</h2>
 <ul>
-<li>P80-1 -  <a href="/examples/precipitation/p80/p80_1" title="examples/precipitation/p80/p80_1">Models and parameters for Fe-Cu simulation</a></li>
-<li>P80-3 -  <a href="/examples/precipitation/p80/p80_3" title="examples/precipitation/p80/p80_3">TTP plot in Fe-Cu system</a></li>
-<li><a href="/howtosimulate/physical/mingstar/calc" title="howtosimulate/physical/mingstar/calc">Calculation of G* and nucleation probability</a></li>
+<li>P80-1 -  <a href="/matcalc_docu/examples/precipitation/p80/p80_1" title="examples:precipitation:p80:p80_1">Models and parameters for Fe-Cu simulation</a></li>
+<li>P80-3 -  <a href="/matcalc_docu/examples/precipitation/p80/p80_3" title="examples:precipitation:p80:p80_3">TTP plot in Fe-Cu system</a></li>
+<li><a href="/matcalc_docu/howtosimulate/physical/mingstar/calc" title="howtosimulate:physical:mingstar:calc">Calculation of G* and nucleation probability</a></li>
 <li>S. R. Goodman, S. S. Brenner, An FIM-Atom Probe Study of the Precipitation of Copper from Iron-1.4 at. pct Copper, Part I: Field-Ion Microscopy, Metall. Trans. 4 (1973) 2363-2369.</li>
 <li>T. Jourdan, J.-L. Bocquet, F. Soisson, Modeling homogeneous precipitation with an event-based Monte Carlo method: Application to the case of Fe-Cu, Acta Mater. 58 (2010) 3295-3302.</li>
 </ul>
 <p>If you are interested in some further information on G* calculation, please consider:</p>
 <h2 id="complementary-files">Complementary files</h2>
-<p>Click <a href="/examples/precipitation/p80/p80_script_2018.mcs" title="examples/precipitation/p80/p80_script_2018.mcs (15.8 KB)">here</a> to view the script for this example.</p>
+<p>Click <a href="/matcalc_docu/examples/precipitation/p80/p80_script_2018.mcs" title="examples:precipitation:p80:p80_script_2018.mcs (15.8 KB)">here</a> to view the script for this example.</p>
 <h1 id="main-document">Main document</h1>
 <h2 id="setup-thermodynamics">Setup thermodynamics</h2>
 <p>Set up the thermodynamics by either loading the mc_fe database.</p>
@@ -224,7 +224,7 @@ Revisions:</p>
 </table>
 <h2 id="precipitation-domain-and-precipitates">Precipitation domain and precipitates</h2>
 <p>Next we enter the data for the precipitation domain. To do so, open the precipitation domain dialog and create a new domain. Select bcc_a2 as its matrix phase. Enter the following data in the corresponding tabs:</p>
-<p><a href="/examples/precipitation/p80/p80_prec_domain.png" title="examples/precipitation/p80/p80_prec_domain.png"><img alt=" Precipitation domain dialog" src="/examples/precipitation/p80/p80_prec_domain.png" title="Precipitation domain dialog" /></a></p>
+<p><a href="/matcalc_docu/examples/precipitation/p80/p80_prec_domain.png" title="examples:precipitation:p80:p80_prec_domain.png"><img alt=" Precipitation domain dialog" src="/matcalc_docu/examples/precipitation/p80/p80_prec_domain.png" title="Precipitation domain dialog" /></a></p>
 <table>
 <thead>
 <tr>
@@ -254,9 +254,9 @@ Revisions:</p>
 <p><strong>Note:</strong> In the newest <em>MatCalc</em> version, it is not necessary to set the diffusion enhancements due to grain-boundary and dislocation pipes anymore. An assessment was performed on those parameters and the values are directly read for Fe, Ni and Al from the software.</p>
 <p>It was shown by Jourdan et al. (2010) that the cluster mobility is responsible for an acceleration of the kinetics of around two orders of magnitude. This is considered with a MDEF of 10.</p>
 <p>Follow by setting up the precipitates. Bring up the phase status dialog window and select the FCC_A1 phase. Click 'Create…' and select 'composition set'. Set the following settings as shown in the pictures and repeat it twice for BCC_A2 (create CU_BCC_1 and _2). These phases will serve as parent phases for the coherent bcc-Cu (CU_BCC_1), semi-coherent 9R-Cu (CU_BCC_2) and incoherent fcc-Cu (CU_FCC).</p>
-<p><a href="/examples/precipitation/p80/p80_composition_set.png" title="examples/precipitation/p80/p80_composition_set.png"><img alt=" Create composition sets for CU_FCC and CU_BCC" src="/examples/precipitation/p80/p80_composition_set.png" title="Create composition sets for CU_FCC and CU_BCC" /></a></p>
+<p><a href="/matcalc_docu/examples/precipitation/p80/p80_composition_set.png" title="examples:precipitation:p80:p80_composition_set.png"><img alt=" Create composition sets for CU_FCC and CU_BCC" src="/matcalc_docu/examples/precipitation/p80/p80_composition_set.png" title="Create composition sets for CU_FCC and CU_BCC" /></a></p>
 <p>Your phase status dialog should look like this after correct setup and creation of precipitates (CU_BCC_1_P0, CU_BCC_2_P0 and CU_FCC_P0):</p>
-<p><a href="/examples/precipitation/p80/p80_phase_status_dialog.png" title="examples/precipitation/p80/p80_phase_status_dialog.png"><img alt=" Phase status dialog for Fe-Cu precipitates" src="/examples/precipitation/p80/p80_phase_status_dialog.png" title="Phase status dialog for Fe-Cu precipitates" /></a></p>
+<p><a href="/matcalc_docu/examples/precipitation/p80/p80_phase_status_dialog.png" title="examples:precipitation:p80:p80_phase_status_dialog.png"><img alt=" Phase status dialog for Fe-Cu precipitates" src="/matcalc_docu/examples/precipitation/p80/p80_phase_status_dialog.png" title="Phase status dialog for Fe-Cu precipitates" /></a></p>
 <p>Configure the phases according to the following table to complete the setup:</p>
 <table>
 <thead>
@@ -487,16 +487,16 @@ Revisions:</p>
 <h2 id="plotting-the-results">Plotting the results</h2>
 <p>Open the <strong>Create new window</strong> dialog box, an switch to the <strong>user-defined</strong> tab. Select the variable <strong>03_kinetics_4_frames_T_f_n_r_logX</strong>. Automatically the relevant plots will be created. Go to the options menu and select in the <code>defaul x-axis</code> the scaling section and scale to <strong>1..1e10</strong>.</p>
 <p>Now add a sum-phase fraction to the phase fraction plot. Select the correct plot in the options window, right-click it and select (as shown) buffer results.</p>
-<p><a href="/examples/precipitation/p80/p80_add-series.png" title="examples/precipitation/p80/p80_add-series.png"><img alt=" Add series to MatCalc" src="/examples/precipitation/p80/p80_add-series.png" title="Add series to MatCalc" /></a></p>
+<p><a href="/matcalc_docu/examples/precipitation/p80/p80_add-series.png" title="examples:precipitation:p80:p80_add-series.png"><img alt=" Add series to MatCalc" src="/matcalc_docu/examples/precipitation/p80/p80_add-series.png" title="Add series to MatCalc" /></a></p>
 <p>In the pop-up window, enter:</p>
-<p><a href="/examples/precipitation/p80/p80_change_series.png" title="examples/precipitation/p80/p80_change_series.png"><img alt=" Change data of added series in MatCalc" src="/examples/precipitation/p80/p80_change_series.png" title="Change data of added series in MatCalc" /></a></p>
+<p><a href="/matcalc_docu/examples/precipitation/p80/p80_change_series.png" title="examples:precipitation:p80:p80_change_series.png"><img alt=" Change data of added series in MatCalc" src="/matcalc_docu/examples/precipitation/p80/p80_change_series.png" title="Change data of added series in MatCalc" /></a></p>
 <p>As a last step, select the plots in the options menu and right-click them as before, to add the experimental tables.</p>
 <p>The final result should look like this:</p>
-<p><a href="/examples/precipitation/p80/p80_phasefraction.png" title="examples/precipitation/p80/p80_phasefraction.png"><img alt=" Phasefraction of Fe-Cu precipitates" src="/examples/precipitation/p80/p80_phasefraction.png" title="Phasefraction of Fe-Cu precipitates" /></a></p>
-<p><a href="/examples/precipitation/p80/p80_radius.png" title="examples/precipitation/p80/p80_radius.png"><img alt=" Radius of Fe-Cu precipitates" src="/examples/precipitation/p80/p80_radius.png" title="Radius of Fe-Cu precipitates" /></a></p>
-<p><a href="/examples/precipitation/p80/p80_numberdens.png" title="examples/precipitation/p80/p80_numberdens.png"><img alt=" Number density of Fe-Cu precipitates" src="/examples/precipitation/p80/p80_numberdens.png" title="Number density of Fe-Cu precipitates" /></a></p>
+<p><a href="/matcalc_docu/examples/precipitation/p80/p80_phasefraction.png" title="examples:precipitation:p80:p80_phasefraction.png"><img alt=" Phasefraction of Fe-Cu precipitates" src="/matcalc_docu/examples/precipitation/p80/p80_phasefraction.png" title="Phasefraction of Fe-Cu precipitates" /></a></p>
+<p><a href="/matcalc_docu/examples/precipitation/p80/p80_radius.png" title="examples:precipitation:p80:p80_radius.png"><img alt=" Radius of Fe-Cu precipitates" src="/matcalc_docu/examples/precipitation/p80/p80_radius.png" title="Radius of Fe-Cu precipitates" /></a></p>
+<p><a href="/matcalc_docu/examples/precipitation/p80/p80_numberdens.png" title="examples:precipitation:p80:p80_numberdens.png"><img alt=" Number density of Fe-Cu precipitates" src="/matcalc_docu/examples/precipitation/p80/p80_numberdens.png" title="Number density of Fe-Cu precipitates" /></a></p>
 <h1 id="consecutive-articles">Consecutive articles</h1>
-<p>Save your workspace, if you plan on performing the TTP simulation in the following  <a href="/examples/precipitation/p80/p80_3" title="examples/precipitation/p80/p80_3">article</a> .</p>
+<p>Save your workspace, if you plan on performing the TTP simulation in the following  <a href="/matcalc_docu/examples/precipitation/p80/p80_3" title="examples:precipitation:p80:p80_3">article</a> .</p>
 <p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=examples%3Aprecipitation%3Ap80%3Ap80_2&amp;1788352998" /></p>
               
             </div>

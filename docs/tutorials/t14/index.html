@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pfandl.github.io/matcalc_docu/tutorials/t14/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
     <title>T14 - MatCalc Documentation</title>
     <link rel="stylesheet" href="../../css/theme.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "T14";
         var mkdocs_page_input_path = "tutorials/t14.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_url = "/matcalc_docu/tutorials/t14/";
       </script>
     
     <!--[if lt IE 9]>
@@ -51,7 +51,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../">MatCalc tutorial</a>
+                <li class="toctree-l2"><a class="reference internal" href="../">Tutorials</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
                 </li>
@@ -137,7 +137,7 @@ MatCalc version 6.04 rel 1.001<br />
 license: free<br />
 database: mc_fe.tdb; mc_fe.ddb</em></p>
 <h3 id="complimentary-files">Complimentary files</h3>
-<p>Click <a href="/tutorials/t14/script/t14_6021003.mcs" title="tutorials/t14/script/t14_6021003.mcs (14.1 KB)">here</a> to view the script for this tutorial</p>
+<p>Click <a href="/matcalc_docu/tutorials/t14/script/t14_6021003.mcs" title="tutorials:t14:script:t14_6021003.mcs (14.1 KB)">here</a> to view the script for this tutorial</p>
 <h3 id="contents">Contents:</h3>
 <ul>
 <li>Precipitation of cementite in a ferritic matrix in Fe-0.2 wt.% C</li>
@@ -152,31 +152,31 @@ database: mc_fe.tdb; mc_fe.ddb</em></p>
 <h3 id="b-precipitation-domain">B. Precipitation domain</h3>
 <p>The next two steps are to define and configure the precipitating phase and the domain in which it will form. These two steps can be done in either order. In this example, the precipitation domain will be set up first.<br />
 Open <strong>'Global &gt; Precipitation domains'</strong> and click on the <strong>'New'</strong> button towards the bottom left. A box will appear, prompting for a name for the new domain. Any name can be chosen here, for example <strong>'Ferrite'</strong> or <strong>'Matrix'</strong> and click <strong>'OK'</strong>.</p>
-<p><a href="/tutorials/t14/img/t14_domain_name_2016.png" title="tutorials/t14/img/t14_domain_name_2016.png"><img alt=" MatCalc new precipitation" src="/tutorials/t14/img/t14_domain_name_2016.png" title="MatCalc new precipitation" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t14/img/t14_domain_name_2016.png" title="tutorials:t14:img:t14_domain_name_2016.png"><img alt=" MatCalc new precipitation" src="/matcalc_docu/tutorials/t14/img/t14_domain_name_2016.png" title="MatCalc new precipitation" /></a></p>
 <p>On the <strong>'General'</strong> tab → <strong>'Thermodynamic matrix phase'</strong>, choose <strong>'BCC_A2'</strong> from the drop-box to associate this phase with the newly defined domain. Leave the rest of the settings as they are, and click <strong>'OK'</strong>.</p>
-<p><a href="/tutorials/t14/img/t14_precipitation_domain_2017.png" title="tutorials/t14/img/t14_precipitation_domain_2017.png"><img alt=" MatCalc precipitation" src="/tutorials/t14/img/t14_precipitation_domain_2017.png" title="MatCalc precipitation" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t14/img/t14_precipitation_domain_2017.png" title="tutorials:t14:img:t14_precipitation_domain_2017.png"><img alt=" MatCalc precipitation" src="/matcalc_docu/tutorials/t14/img/t14_precipitation_domain_2017.png" title="MatCalc precipitation" /></a></p>
 <h3 id="c-precipitate-phase">C. Precipitate phase</h3>
 <p>To create the precipitate phase, open <strong>'Global &gt; Phase status'</strong>. In the <strong>'Phases'</strong> list on the left-hand side, select <strong>'CEMENTITE'</strong> and click on <strong>'Create'</strong>. Select <strong>'precipitate (_Pnn)'</strong> from the drop box which opens.</p>
-<p><a href="/tutorials/t14/img/t14_create_prec_phase_2016.png" title="tutorials/t14/img/t14_create_prec_phase_2016.png"><img alt=" MatCalc create new phase" src="/tutorials/t14/img/t14_create_prec_phase_2016.png" title="MatCalc create new phase" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t14/img/t14_create_prec_phase_2016.png" title="tutorials:t14:img:t14_create_prec_phase_2016.png"><img alt=" MatCalc create new phase" src="/matcalc_docu/tutorials/t14/img/t14_create_prec_phase_2016.png" title="MatCalc create new phase" /></a></p>
 <p>A new phase, CEMENTITE_P0 appears in the phase list; click on this to select it. Open the <strong>'Precipitate'</strong> tab, and enter <strong>'250'</strong> in the <strong>'# size classes'</strong> box, click on <strong>'Initialize'</strong> and accept the warning message. The precipitates are considered as belonging to a number of classes of particles with the same radius and composition. Classes are created, rearranged and deleted during the calculation, allowing simulation of the precipitate size distribution.<br />
 The choice of the number of classes represents a trade-off between calculation time and required precision. If only average properties, such as the mean precipitate radius, are of interest, then it is sufficient to use a small number of classes such as 10 or 20. By contrast, to obtain the best possible simulation of size distribution, the number of classes should be increased to a higher value, such as 250 as used here. Leave all the other settings in this tab as they are.</p>
-<p><a href="/tutorials/t14/img/t14_precipitate_6050006.png" title="tutorials/t14/img/t14_precipitate_6050006.png"><img alt=" MatCalc phase status" src="/tutorials/t14/img/t14_precipitate_6050006.png" title="MatCalc phase status" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t14/img/t14_precipitate_6050006.png" title="tutorials:t14:img:t14_precipitate_6050006.png"><img alt=" MatCalc phase status" src="/matcalc_docu/tutorials/t14/img/t14_precipitate_6050006.png" title="MatCalc phase status" /></a></p>
 <p>Open the <strong>'Nucleation'</strong> tab and select the <strong>'Sites'</strong> sub-tab. In the <strong>'Nucleation sites…'</strong> part of this tab, remove the check mark by <strong>'bulk (homogeneous)'</strong> and instead click in the box beside <strong>'dislocations'</strong> . Click on <strong>'OK'</strong> to save these settings and return to the main screen.</p>
-<p><a href="/tutorials/t14/img/t14_nucleation_6050006.png" title="tutorials/t14/img/t14_nucleation_6050006.png"><img alt=" MatCalc nucleation" src="/tutorials/t14/img/t14_nucleation_6050006.png" title="MatCalc nucleation" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t14/img/t14_nucleation_6050006.png" title="tutorials:t14:img:t14_nucleation_6050006.png"><img alt=" MatCalc nucleation" src="/matcalc_docu/tutorials/t14/img/t14_nucleation_6050006.png" title="MatCalc nucleation" /></a></p>
 <h3 id="d-loading-mobility-data">D. Loading mobility data</h3>
 <p>Simulations of precipitation require not only thermodynamic data (already loaded in step A) but also mobility data, from which the diffusivities of the elements in the phases can be calculated. Read in the mobility data by opening <strong>'Global &gt; Databases'</strong> and select <strong>'Diffusion data'</strong> on the left side. Click on <strong>'Read…'</strong> and open <strong>'mc_fe.ddb'</strong> database. Click on <strong>'Close'</strong></p>
-<p><a href="/tutorials/t14/img/t14_diffusion_database_2016.png" title="tutorials/t14/img/t14_diffusion_database_2016.png"><img alt=" MatCalc Diffusion data" src="/tutorials/t14/img/t14_diffusion_database_2016.png" title="MatCalc Diffusion data" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t14/img/t14_diffusion_database_2016.png" title="tutorials:t14:img:t14_diffusion_database_2016.png"><img alt=" MatCalc Diffusion data" src="/matcalc_docu/tutorials/t14/img/t14_diffusion_database_2016.png" title="MatCalc Diffusion data" /></a></p>
 <h3 id="e-creating-plots-for-the-output">E. Creating plots for the output</h3>
 <p>Create a new <strong>'Plot: XY-data'</strong> window. Drag and drop <strong>'F$CEMENTITE_P0'</strong> from the variables window to this plot. In the <strong>'options'</strong> window, set <strong>'default x-axis'</strong> to <strong>'log'</strong> type. Change the title of <strong>'default x-axis'</strong> to <strong>'Time [h]'</strong> and the factor to <strong>'1/3600'</strong> to convert seconds into hours. The title of the <strong>'plot #0'</strong> should also be changed to <strong>'Phase fraction of cementite precipitates'</strong> and the title of y-axis to <strong>'Phase fraction'</strong>.<br />
 Next, create a new window <strong>'Plot: precipitate distribution - histogram'</strong> (p5) window. Select <strong>'CEMENTITE_P0'</strong> from the box which opens and click <strong>'OK'</strong>. In the <strong>'options'</strong> window, change the number of <strong>'# size classes'</strong> for this histogram to <strong>'20'</strong>. Switch off the default x-axis (in 'default x-axis', set 'no' for 'use for all plots') and set the x-axis label to <strong>'Precipitate radius [nm]'</strong>. In the <strong>'factor'</strong> line for this x-axis, enter <strong>'1e9'</strong>. This expresses the particle radii in nanometres instead of metres, making the scale easier to read. Change the y-axis label to <strong>'Number of precipitates'</strong>.</p>
-<p><a href="/tutorials/t14/img/t14_histogram_axes_1_6050006.png" title="tutorials/t14/img/t14_histogram_axes_1_6050006.png"><img alt=" MatCalc options window" src="/tutorials/t14/img/t14_histogram_axes_1_6050006.png" title="MatCalc options window" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t14/img/t14_histogram_axes_1_6050006.png" title="tutorials:t14:img:t14_histogram_axes_1_6050006.png"><img alt=" MatCalc options window" src="/matcalc_docu/tutorials/t14/img/t14_histogram_axes_1_6050006.png" title="MatCalc options window" /></a></p>
 <p>Both the histogram and the plot of phase fraction against time are updated during the calculation, so it is possible to follow the evolution of the size distribution and the phase fraction as the calculation takes place.</p>
 <h2 id="the-calculation">The calculation</h2>
 <p>As the introduced number of classes is quite large (as defined in p. 1.D.), it will be beneficial to modify the algorithm used for the calculation. To do this the numerical limits describing the increase of the nucleation density in the <strong>'convergence control'</strong> field should be changed. Up to now, this can be only modified via console commands. Type the following command-line in the console:</p>
 <p><code>set-simulation-parameter nucleation-density-increase-factor=1,05</code></p>
-<p>Open <strong>'Calc &gt; Microstructure simulation'</strong> or click on the <a href="/tutorials/t14/img/icon_kinetics_2.png" title="tutorials/t14/img/icon_kinetics_2.png"><img alt="" src="/tutorials/t14/img/icon_kinetics_2.png" /></a> icon (keyboard shortcut/ <strong>'Ctrl + K'</strong>). Enter <strong>'3600'</strong> as the simulation end time. This is in seconds, so is equivalent to 1 hour. Note that in the 'Temperature control' section, an isothermal heat-treatment at 600°C has been selected by default; leave this setting as it is.<br />
+<p>Open <strong>'Calc &gt; Microstructure simulation'</strong> or click on the <a href="/wiki/lib/exe/detail.php?id=tutorials%3At14&amp;media=tutorials/t14/img/icon_kinetics_2.png" title="tutorials:t14:img:icon_kinetics_2.png"><img alt="" src="/matcalc_docu/tutorials/t14/img/icon_kinetics_2.png" /></a> icon (keyboard shortcut: <strong>'Ctrl + K'</strong>). Enter <strong>'3600'</strong> as the simulation end time. This is in seconds, so is equivalent to 1 hour. Note that in the 'Temperature control' section, an isothermal heat-treatment at 600°C has been selected by default; leave this setting as it is.<br />
 To give more frequent updates of the graphs on the screen, the <strong>'Update output every'</strong> number can be decreased from 100 to 50. However, this will slow down the calculation somewhat, so it is probably not advisable on slow machines. Leave the other settings as they are, and click on <strong>'Go'</strong>.</p>
-<p><a href="/tutorials/t14/img/t14_precipitation_simulation_6050006.png" title="tutorials/t14/img/t14_precipitation_simulation_6050006.png"><img alt=" MatCalc microstructure simulation" src="/tutorials/t14/img/t14_precipitation_simulation_6050006.png" title="MatCalc microstructure simulation" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t14/img/t14_precipitation_simulation_6050006.png" title="tutorials:t14:img:t14_precipitation_simulation_6050006.png"><img alt=" MatCalc microstructure simulation" src="/matcalc_docu/tutorials/t14/img/t14_precipitation_simulation_6050006.png" title="MatCalc microstructure simulation" /></a></p>
 <p>The information in the <strong>'Output'</strong> window gives a summary of the current system composition, simulation time</p>
 <p>`<strong><em>*</em></strong><em> isothermal,T=873.16 K (600 C) </em><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong><strong><em>*</em></strong>*<br />
 1, recs=1; its=1/1, dt=1e-012, time: 1e-012s (2.778e-016h), eps_dot=0, T=600 C (873.1 K)  </p>
@@ -230,7 +230,7 @@ damping feature (<strong>dt=0,-</strong>) - maximum time step allowed due to the
 <p>FE +9,99771e-001(+0,00e+000) C +2,28862e-004(+0,00e+000)<br />
 ———————————————————————————————————-<br />
 CEMENTITE_P0: (250/.-gs/1e+020/d) f=0,03605/rm=3,94e-008/dfm=60,2,nucl-dfm=60,2(FE75C25)<br />
-FE75C25, n_dot=0e+000 (ecdf=1), ans=0, mcomp(its/6), step: (dt=1e-005, rad-shrink/249)`</p>
+FE75C25, n_dot=0e+000 (ecdf=1), ans=0, mcomp(its:6), step: (dt=1e-005, rad-shrink/249)`</p>
 <ul>
 <li>Additional information for the existing precipitate</li>
 </ul>
@@ -297,26 +297,26 @@ To avoid numerical instability, unreasonably large changes, for example in compo
 <p>Using these plots, the different stages of nucleation, growth and coarsening can be identified.During the <strong>nucleation</strong> stage, between 1e-11 and 1e-9 hours, the number of precipitates increases rapidly, but since these precipitates are, as yet, extremely small, the phase fraction of cementite also remains small. During this stage, the nucleation rate rises initially, due to a positive driving force for nucleation, and decreases again to zero when all the available nucleation sites are occupied.<br />
 The next stage, from approximately 1e-9 to 1e-6 hours, is the diffusion-controlled <strong>growth</strong> of these nuclei; this continues until the equilibrium phase fraction of cementite reaches its equilibrium value, as indicated by the plateau on the <strong>'Phase fraction'</strong> curve. The number of precipitates does not change during this stage, but there is an increase in radius which can just be detected on the plot below. There follows a period in which there is little or no change in any of the three parameters.<br />
 Finally, at just over 1e-2 hours onwards, there is the onset of <strong>coarsening</strong>, which is characterised by a decrease in the number of precipitates accompanied by an increase in radius. The critical radius rises and becomes larger than the smallest precipitate classes. Therefore these classes start to dissolve and the newly available carbon is used to grow the larger precipitates (Gibbs-Thomson effect). The minimum radius is unstable (leading to a 'noisy' appearance on the graph) as the small precipitates are shrinking (minimum radius goes down) and dissolving (minimum radius goes up to the next smallest class present in the system).</p>
-<p><a href="/tutorials/t14/img/t14_plot1_ph_fraction_6011003.png" title="tutorials/t14/img/t14_plot1_ph_fraction_6011003.png"><img alt=" MatCalc plot1" src="/tutorials/t14/img/t14_plot1_ph_fraction_6011003.png" title="MatCalc plot1" /></a></p>
-<p><a href="/tutorials/t14/img/t14_plot2_number_ppts_6011003.png" title="tutorials/t14/img/t14_plot2_number_ppts_6011003.png"><img alt=" MatCalc plot2" src="/tutorials/t14/img/t14_plot2_number_ppts_6011003.png" title="MatCalc plot2" /></a></p>
-<p><a href="/tutorials/t14/img/t14_plot3_nucleation_rate_6011003.png" title="tutorials/t14/img/t14_plot3_nucleation_rate_6011003.png"><img alt=" MatCalc plot3" src="/tutorials/t14/img/t14_plot3_nucleation_rate_6011003.png" title="MatCalc plot3" /></a></p>
-<p><a href="/tutorials/t14/img/t14_plot4_ppt_radius_6011003.png" title="tutorials/t14/img/t14_plot4_ppt_radius_6011003.png"><img alt=" MatCalc plot4" src="/tutorials/t14/img/t14_plot4_ppt_radius_6011003.png" title="MatCalc plot4" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t14/img/t14_plot1_ph_fraction_6011003.png" title="tutorials:t14:img:t14_plot1_ph_fraction_6011003.png"><img alt=" MatCalc plot1" src="/matcalc_docu/tutorials/t14/img/t14_plot1_ph_fraction_6011003.png" title="MatCalc plot1" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t14/img/t14_plot2_number_ppts_6011003.png" title="tutorials:t14:img:t14_plot2_number_ppts_6011003.png"><img alt=" MatCalc plot2" src="/matcalc_docu/tutorials/t14/img/t14_plot2_number_ppts_6011003.png" title="MatCalc plot2" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t14/img/t14_plot3_nucleation_rate_6011003.png" title="tutorials:t14:img:t14_plot3_nucleation_rate_6011003.png"><img alt=" MatCalc plot3" src="/matcalc_docu/tutorials/t14/img/t14_plot3_nucleation_rate_6011003.png" title="MatCalc plot3" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t14/img/t14_plot4_ppt_radius_6011003.png" title="tutorials:t14:img:t14_plot4_ppt_radius_6011003.png"><img alt=" MatCalc plot4" src="/matcalc_docu/tutorials/t14/img/t14_plot4_ppt_radius_6011003.png" title="MatCalc plot4" /></a></p>
 <h3 id="histograms-of-precipitate-size-distribution">Histograms of precipitate size distribution</h3>
 <p>The plot above shows only the variation of the mean radius with time, but more detailed information on the distribution of particle sizes can be found on the histogram. At the end of the calculation, the final size distribution is shown on the histogram. The distribution at other stages of the calculation can be recalled using <strong>'Global &gt; Buffers &gt; Edit buffer states'</strong>. This brings up a list of all the states saved in the memory, with details of time, temperature and time-step. Selecting one of these records loads the corresponding particle size distribution into the histogram if the <strong>'auto load'</strong> box at the bottom left is ticked. Otherwise, it can be loaded by clicking on the <strong>'load selected'</strong> button.</p>
-<p><a href="/tutorials/t14/img/t14_hist1_histogram_absolute_6011003.png" title="tutorials/t14/img/t14_hist1_histogram_absolute_6011003.png"><img alt=" MatCalc histogram" src="/tutorials/t14/img/t14_hist1_histogram_absolute_6011003.png" title="MatCalc histogram" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t14/img/t14_hist1_histogram_absolute_6011003.png" title="tutorials:t14:img:t14_hist1_histogram_absolute_6011003.png"><img alt=" MatCalc histogram" src="/matcalc_docu/tutorials/t14/img/t14_hist1_histogram_absolute_6011003.png" title="MatCalc histogram" /></a></p>
 <p>In the final part of this tutorial, the precipitate size distribution as calculated by MatCalc will be compared with the Lifshitz-Slyozov-Wagner (LSW) distribution given by the following equation:</p>
-<p><a href="/tutorials/t14/img/t14_formel1_lsw_formula.png" title="tutorials/t14/img/t14_formel1_lsw_formula.png"><img alt=" MatCalc formel" src="/tutorials/t14/img/t14_formel1_lsw_formula.png" title="MatCalc formel" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t14/img/t14_formel1_lsw_formula.png" title="tutorials:t14:img:t14_formel1_lsw_formula.png"><img alt=" MatCalc formel" src="/matcalc_docu/tutorials/t14/img/t14_formel1_lsw_formula.png" title="MatCalc formel" /></a></p>
 <p>In the histogram window, create a new plot and add a new series for it (set <strong>'CEMENTITE_P0'</strong> for <strong>'phase'</strong>). In the options under <strong>'plots'</strong>, select <strong>'density'</strong> for <strong>'scale frequency'</strong> and <strong>'yes'</strong> for <strong>'scale radius'</strong>. Name x-axis as <strong>'Scaled radius'</strong> and the y-axis as <strong>'Probability density'</strong>. Set the scaling of the x-axis as <strong>'0..1.499'</strong> because the LSW function is only defined between 0 and 1.5.</p>
-<p><a href="/tutorials/t14/img/t14_options_window_6050006.png" title="tutorials/t14/img/t14_options_window_6050006.png"><img alt=" MatCalc options window" src="/tutorials/t14/img/t14_options_window_6050006.png" title="MatCalc options window" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t14/img/t14_options_window_6050006.png" title="tutorials:t14:img:t14_options_window_6050006.png"><img alt=" MatCalc options window" src="/matcalc_docu/tutorials/t14/img/t14_options_window_6050006.png" title="MatCalc options window" /></a></p>
 <p>Enter the LSW function, either using the <strong>'Functions and Variables'</strong> box or by using the following command-line in the console:</p>
 <p><code>set-function-expression function=lsw expression=x^2*(3/(3+x))^(7/3)*((3/2)/(3/2-x))^(11/3)*exp(-x/(3/2-x))*4/9</code></p>
-<p>Then add the function to the scaled plot, either using the right-click menu in the Options window to add a new <strong>'function/expression'</strong> series (as it was done in  <a href="/tutorials/t6" title="tutorials/t6">Tutorial 6</a>) or by using the following command-line:</p>
+<p>Then add the function to the scaled plot, either using the right-click menu in the Options window to add a new <strong>'function/expression'</strong> series (as it was done in  <a href="/matcalc_docu/tutorials/t6" title="tutorials:t6">Tutorial 6</a>) or by using the following command-line:</p>
 <p><code>set-plot-option . s n f LSW 0..1.5</code></p>
 <p>The plot below shows a comparison between the LSW function and the histogram simulated by MatCalc.</p>
-<p><a href="/tutorials/t14/img/t14_hist2_histogram_scaled_lsw_6011003.png" title="tutorials/t14/img/t14_hist2_histogram_scaled_lsw_6011003.png"><img alt=" MatCalc hist2" src="/tutorials/t14/img/t14_hist2_histogram_scaled_lsw_6011003.png" title="MatCalc hist2" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t14/img/t14_hist2_histogram_scaled_lsw_6011003.png" title="tutorials:t14:img:t14_hist2_histogram_scaled_lsw_6011003.png"><img alt=" MatCalc hist2" src="/matcalc_docu/tutorials/t14/img/t14_hist2_histogram_scaled_lsw_6011003.png" title="MatCalc hist2" /></a></p>
 <h2 id="consecutive-articles">Consecutive articles</h2>
-<p>The tutorial is continued in article  <a href="/tutorials/t15" title="tutorials/t15">T15 - Effect of microstructure and conditions (Part 1)</a></p>
-<p>Go to <a href="/tutorials" title="tutorials">MatCalc tutorial index</a>.</p>
+<p>The tutorial is continued in article  <a href="/matcalc_docu/tutorials/t15" title="tutorials:t15">T15 - Effect of microstructure and conditions (Part 1)</a></p>
+<p>Go to <a href="/matcalc_docu/tutorials" title="tutorials">MatCalc tutorial index</a>.</p>
 <p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=tutorials%3At14&amp;1788352860" /></p>
               
             </div>

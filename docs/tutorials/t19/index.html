@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pfandl.github.io/matcalc_docu/tutorials/t19/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
     <title>T19 - MatCalc Documentation</title>
     <link rel="stylesheet" href="../../css/theme.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "T19";
         var mkdocs_page_input_path = "tutorials/t19.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_url = "/matcalc_docu/tutorials/t19/";
       </script>
     
     <!--[if lt IE 9]>
@@ -51,7 +51,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../">MatCalc tutorial</a>
+                <li class="toctree-l2"><a class="reference internal" href="../">Tutorials</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
                 </li>
@@ -130,9 +130,9 @@
 MatCalc version 6.04 rel 1.001 <br />
 license: free <br />
 database: mc_fe.tdb, mc_fe.ddb</em></p>
-<p>The use of <strong>scripting</strong> to help ensure repeatability of calculations and to simplify repetitive operations has been introduced for the equilibrium calculations <a href="/tutorials/t13" title="tutorials/t13">Tutorial 13</a>. The present tutorial describes how scripting can be used for precipitation calculations.</p>
+<p>The use of <strong>scripting</strong> to help ensure repeatability of calculations and to simplify repetitive operations has been introduced for the equilibrium calculations <a href="/matcalc_docu/tutorials/t13" title="tutorials:t13">Tutorial 13</a>. The present tutorial describes how scripting can be used for precipitation calculations.</p>
 <h3 id="complimentary-files">Complimentary files</h3>
-<p>Click <a href="/tutorials/t19/script/t19_6021003.mcs" title="tutorials/t19/script/t19_6021003.mcs (28.1 KB)">here</a> to view the (slightly reordered) script for this tutorial</p>
+<p>Click <a href="/matcalc_docu/tutorials/t19/script/t19_6021003.mcs" title="tutorials:t19:script:t19_6021003.mcs (28.1 KB)">here</a> to view the (slightly reordered) script for this tutorial</p>
 <h3 id="contents">Contents</h3>
 <ul>
 <li>Setting up precipitation domains</li>
@@ -153,7 +153,7 @@ new-workspace
     stop-run-script
 endif
 </code></pre>
-<p>Scripts should be well commented to ensure that they can be easily understood later. See <a href="/tutorials/t13#comments" title="tutorials/t13">Tutorial 13</a> for a reminder of how comments are inserted.</p>
+<p>Scripts should be well commented to ensure that they can be easily understood later. See <a href="/matcalc_docu/tutorials/t13#comments" title="tutorials:t13">Tutorial 13</a> for a reminder of how comments are inserted.</p>
 <p>Some information on the physical situation to be modelled and the assumptions made can be inserted into the MatCalc workspace for future reference.</p>
 <pre><code>@$************************************
 $ enter workspace info
@@ -226,7 +226,7 @@ set-precipitation-parameter FCC_A1#01_P0 nucleus-composition-model=ortho-composi
 set-precipitation-parameter FCC_A1#01_P1 nucleus-composition-model=ortho-composition
 </code></pre>
 <h2 id="heat-treatment">Heat-treatment</h2>
-<p>For an isothermal precipitation simulation, we would now simply need to set the temperature and time and start the simulation. This procedure is described briefly <a href="/tutorials/t19#running_the_calculation" title="tutorials/t19">below</a>. However, we will here instead look at how to use a script to create a heat-treatment.</p>
+<p>For an isothermal precipitation simulation, we would now simply need to set the temperature and time and start the simulation. This procedure is described briefly <a href="/matcalc_docu/tutorials/t19#running_the_calculation" title="tutorials:t19">below</a>. However, we will here instead look at how to use a script to create a heat-treatment.</p>
 <p>The heat-treatment consists of two sections:</p>
 <p>An <strong>austenitisation and quenching</strong> treatment consisting of:</p>
 <ul>
@@ -249,7 +249,7 @@ set-precipitation-parameter FCC_A1#01_P1 nucleus-composition-model=ortho-composi
 <li>Definition with segment end temperature and a heating/cooling rate</li>
 <li>Definition with segment end temperature and a duration time.</li>
 </ul>
-<p>We saw in <a href="/tutorials/t6" title="tutorials/t6">Tutorial 6</a> that it is possible to define our own variables. Here, we use this functionality to define a very general script consisting of an austenitisation and a tempering step.</p>
+<p>We saw in <a href="/matcalc_docu/tutorials/t6" title="tutorials:t6">Tutorial 6</a> that it is possible to define our own variables. Here, we use this functionality to define a very general script consisting of an austenitisation and a tempering step.</p>
 <pre><code>set-variable-value f_a_temp 850 $ferrite-&gt; austenite transformation temp. in C
 set-variable-value a_f_temp 600 $austenite-&gt; ferrite transformation temp. in C
 set-variable-value aus_temp 1100 $austenitisation temp. in C
@@ -302,7 +302,7 @@ edit-tmt-segment sample_ht . precipitation-domain=austenite
 edit-tmt-segment sample_ht . T_end+T_dot 20 rate_cool_from_aus    
 edit-tmt-segment sample_ht . precipitation-domain=ferrite
 </code></pre>
-<p>In addition, since this ferrite is now quenched martensite, we make some modifications to the properties of the precipitation domain. As we saw in <a href="/tutorials/t17" title="tutorials/t17">Tutorial 17</a>, pre- and post-segment scripts can be appended to segments of a thermomechanical treatment. The syntax for these scripts is illustrated by the following line of code, which sets the equilibrium dislocation density in the ferrite domain to 1e14:</p>
+<p>In addition, since this ferrite is now quenched martensite, we make some modifications to the properties of the precipitation domain. As we saw in <a href="/matcalc_docu/tutorials/t17" title="tutorials:t17">Tutorial 17</a>, pre- and post-segment scripts can be appended to segments of a thermomechanical treatment. The syntax for these scripts is illustrated by the following line of code, which sets the equilibrium dislocation density in the ferrite domain to 1e14:</p>
 <pre><code>edit-tmt-segment sample_ht . pre-segment-command=set-precipitation-parameter ferrite equilibrium-dislocation-density=1e14
 </code></pre>
 <p>Similarly, in the following line, the nucleation sites of FCC_A1#01_P1 are set to subgrains, replacing the previous 'none' setting. The <code>+</code>-sign means that the following piece of script is added to any existing commands. An existing command can be removed by prepending a <code>-</code>-sign.</p>
@@ -350,7 +350,7 @@ set-plot-option . grid major enable-y-axis=yes
 <p>A new plot is then created in the existing plot window [.] using the command:</p>
 <pre><code>create-new-plot xy-plot .
 </code></pre>
-<p>This is set up to show the phase fractions of the two precipitate phases. (See <a href="/tutorials/t5" title="tutorials/t5">Tutorial 5</a>)</p>
+<p>This is set up to show the phase fractions of the two precipitate phases. (See <a href="/matcalc_docu/tutorials/t5" title="tutorials:t5">Tutorial 5</a>)</p>
 <pre><code>set-plot-option . y-axis-title=Phase fraction
 set-plot-option . grid major enable-x-axis=yes 
 set-plot-option . grid major enable-y-axis=yes 
@@ -445,10 +445,10 @@ export-frame-to-file 3 png t19_histo_cementite
 export-plot-to-file 4 png t19_r_mean
 </code></pre>
 <p>The x-y plot window should look as follows after the calculation:</p>
-<p><a href="/tutorials/t19/img/t19_xy_plots.png" title="tutorials/t19/img/t19_xy_plots.png"><img alt="T19 xy plots" src="/tutorials/t19/img/t19_xy_plots.png" title="T19 xy plots" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t19/img/t19_xy_plots.png" title="tutorials:t19:img:t19_xy_plots.png"><img alt="T19 xy plots" src="/matcalc_docu/tutorials/t19/img/t19_xy_plots.png" title="T19 xy plots" /></a></p>
 <h2 id="subsequent-articles">Subsequent articles</h2>
-<p>The tutorial is continued in  <a href="/tutorials/t20" title="tutorials/t20">Tutorial 20 - Simulating grain growth</a></p>
-<p>Go to the <a href="/tutorials" title="tutorials">MatCalc tutorial index</a>.</p>
+<p>The tutorial is continued in  <a href="/matcalc_docu/tutorials/t20" title="tutorials:t20">Tutorial 20 - Simulating grain growth</a></p>
+<p>Go to the <a href="/matcalc_docu/tutorials" title="tutorials">MatCalc tutorial index</a>.</p>
 <p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=tutorials%3At19&amp;1788352860" /></p>
               
             </div>

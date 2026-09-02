@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pfandl.github.io/matcalc_docu/examples/equilib/e20/e20_3/" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
     <title>E20 3 - MatCalc Documentation</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "E20 3";
         var mkdocs_page_input_path = "examples/equilib/e20/e20_3.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_url = "/matcalc_docu/examples/equilib/e20/e20_3/";
       </script>
     
     <!--[if lt IE 9]>
@@ -51,7 +51,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/">MatCalc tutorial</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/">Tutorials</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
                 </li>
@@ -137,26 +137,26 @@ Revisions: G. Stechauner (2011-11-10, Updated image and script)</p>
 <p>Part 3 discusses the possibility of taking into account the peritectic reaction into the Scheil-Gulliver simulation. It makes use of the solid-solid transformation functionality of <em>MatCalc</em>.</p>
 <h2 id="related-documents">Related documents</h2>
 <ol>
-<li>E20-1 -  <a href="/examples/equilib/e20/e20_1" title="examples/equilib/e20/e20_1">Thermodynamic equilibrium analysis</a></li>
-<li>E20-2 -  <a href="/examples/equilib/e20/e20_2" title="examples/equilib/e20/e20_2">Scheil-Gulliver analysis of primary precipitation</a></li>
-<li>E20-3 -  <a href="/examples/equilib/e20/e20_3" title="examples/equilib/e20/e20_3">Accounting for the peritectic reaction</a></li>
-<li>E20-4 -  <a href="/examples/equilib/e20/e20_4" title="examples/equilib/e20/e20_4">Scheil-Gulliver analysis of microsegregation</a></li>
-<li>P20 -  <a href="/examples/precipitation/p20" title="examples/precipitation/p20">Precipitation simulation during continuous casting</a></li>
+<li>E20-1 -  <a href="/matcalc_docu/examples/equilib/e20/e20_1" title="examples:equilib:e20:e20_1">Thermodynamic equilibrium analysis</a></li>
+<li>E20-2 -  <a href="/matcalc_docu/examples/equilib/e20/e20_2" title="examples:equilib:e20:e20_2">Scheil-Gulliver analysis of primary precipitation</a></li>
+<li>E20-3 -  <a href="/matcalc_docu/examples/equilib/e20/e20_3" title="examples:equilib:e20:e20_3">Accounting for the peritectic reaction</a></li>
+<li>E20-4 -  <a href="/matcalc_docu/examples/equilib/e20/e20_4" title="examples:equilib:e20:e20_4">Scheil-Gulliver analysis of microsegregation</a></li>
+<li>P20 -  <a href="/matcalc_docu/examples/precipitation/p20" title="examples:precipitation:p20">Precipitation simulation during continuous casting</a></li>
 </ol>
 <h2 id="complementary-files">Complementary files</h2>
-<p>Click <a href="/examples/equilib/e20/script/e20-3_2017.mcs" title="examples/equilib/e20/script/e20-3_2017.mcs (9.2 KB)">here</a> to view the script for this tutorial, and <a href="/examples/equilib/e20/workspace/e20_3_scheil_with_bd_and_st.mcw" title="examples/equilib/e20/workspace/e20_3_scheil_with_bd_and_st.mcw (1.5 MB)">here</a> to download the workspace file.</p>
+<p>Click <a href="/matcalc_docu/examples/equilib/e20/script/e20-3_2017.mcs" title="examples:equilib:e20:script:e20-3_2017.mcs (9.2 KB)">here</a> to view the script for this tutorial, and <a href="/matcalc_docu/examples/equilib/e20/workspace/e20_3_scheil_with_bd_and_st.mcw" title="examples:equilib:e20:workspace:e20_3_scheil_with_bd_and_st.mcw (1.5 MB)">here</a> to download the workspace file.</p>
 <h1 id="main-document">Main document</h1>
 <p>In this part 3, the Scheil-Gulliver simulation scheme with back-diffusion of fast diffusers is extended to account for the peritectic reaction during solidification.</p>
 <h2 id="setup-thermodynamic-system">Setup thermodynamic system</h2>
-<p>Load the workspace file <strong>E20_2_scheil_with_bd.mcw</strong> with the simulation results of part 2 or run the corresponding <a href="/examples/equilib/e20/script/e20-2.mcs" title="examples/equilib/e20/script/e20-2.mcs (10.2 KB)">script</a> to produce the results 'on the fly'.</p>
+<p>Load the workspace file <strong>E20_2_scheil_with_bd.mcw</strong> with the simulation results of part 2 or run the corresponding <a href="/matcalc_docu/examples/equilib/e20/script/e20-2.mcs" title="examples:equilib:e20:script:e20-2.mcs (10.2 KB)">script</a> to produce the results 'on the fly'.</p>
 <h2 id="setup-solid-solid-transformation">Setup solid-solid transformation</h2>
 <p>In <em>MatCalc</em>, the solid-solid transformation functionality is a convenient possibility for prescribing the transformation of one phase into another, or the creation or removal of a phase, on semi-phenomenological basis. The transformation characteristics can be defined in terms of an Avrami equation, the Koistinen-Marburger equation or on basis of equilibrium and constrained equilibrium calculations. In this example, we will make use of the latter option, since we assume that the peritectic reaction occurs according to a local equilibrium driven mechanism.</p>
 <p>Open the 'Transformations …' dialog from the 'Global' menu. Create a new transformation with the name 'peritectic'. Since the peritectic reaction involves the transformation of delta-ferrite into austenite (simultaneous to the reduction of liquid phase fraction), the (solid) BCC_A2_S phase transforms into FCC_A1_S, which are the settings needed for the 'Transform from …' and the 'Transform to …' phase.</p>
 <p>In order to perform the local equilibrium transformation during the peritectic reaction, <em>MatCalc</em> must create two additional phases, which are denoted as the 'transformation' and 'transformation solid' phases, with the suffices '_T' and '_TS'. This task is carried out by <em>MatCalc</em> after pressing the 'Create equilib phase…' button. This is shown in the following dialog.</p>
-<p><a href="/examples/equilib/e20/img/dialog_global_transformation_1.png" title="examples/equilib/e20/img/dialog_global_transformation_1.png"><img alt=" Global transformation dialog" src="/examples/equilib/e20/img/dialog_global_transformation_1.png" title="Global transformation dialog" /></a></p>
+<p><a href="/matcalc_docu/examples/equilib/e20/img/dialog_global_transformation_1.png" title="examples:equilib:e20:img:dialog_global_transformation_1.png"><img alt=" Global transformation dialog" src="/matcalc_docu/examples/equilib/e20/img/dialog_global_transformation_1.png" title="Global transformation dialog" /></a></p>
 <p>After creation of the 'transformation' phases, select FCC_A1_T as the 'Equilib phase'. Finally enter 2000 into the 'Temperature start' field, to allow the occurrence of this transformation at all considered temperatures. Close the dialog and open the 'Scheil calculation…' dialog again.</p>
 <p>In the 'Scheil calculation…' dialog, select the 'Add …' button in the 'Impose transformation' group box. Select 'peritectic'.</p>
-<p><a href="/examples/equilib/e20/img/dialog_scheil_3.png" title="examples/equilib/e20/img/dialog_scheil_3.png"><img alt=" Scheil simulation dialog with peritectic reaction|" src="/examples/equilib/e20/img/dialog_scheil_3.png" title="Scheil simulation dialog with peritectic reaction|" /></a></p>
+<p><a href="/matcalc_docu/examples/equilib/e20/img/dialog_scheil_3.png" title="examples:equilib:e20:img:dialog_scheil_3.png"><img alt=" Scheil simulation dialog with peritectic reaction|" src="/matcalc_docu/examples/equilib/e20/img/dialog_scheil_3.png" title="Scheil simulation dialog with peritectic reaction|" /></a></p>
 <p>Carry out the Scheil-Gulliver simulation again. The output information now reads</p>
 <pre><code>... 
 28, 1.18 s, 1498.00 C (1771.16 K), its 6, f=0.35513011,  LIQUID BCC_A2 
@@ -187,13 +187,13 @@ Revisions: G. Stechauner (2011-11-10, Updated image and script)</p>
 <p>The Scheil simulation proceeds as before, until a temperature of 1494°C is reached. At this temperature, the internal <em>MatCalc</em> equilibrium analysis delivers a positive chemical driving force for transformation of the BCC_A2 into the FCC_A1 phase. An additional equilibrium step is then carried out internally, which determines the equilibrium phase fractions of bcc and fcc phases, under the constraint of constant phase fraction and composition of liquid. The results of this calculation are used to transform a certain fraction of the BCC_A2_S to the FCC_A1_TS phase. The transformation progress is reported in the output window for each temperature step. This is shown in the simulation output reproduced above.</p>
 <p>The influence of the peritectic reaction on the solidification progress is rather significant, which is shown in the following plot, where the results of the simulations with and without solid-solid transformation are compared. The solidus temperature of the alloy is increased by more than 15K, which can be attributed to the higher solubility for C in the austenite phase and the according reduction of C-enrichment in the liquid. The figure also shows the additional phase fraction for FCC_A1_TS, which contains the solid-solid transformation product from the BCC_A1_S phase.</p>
 <p>Note: This series is not automatically shown. You must drag and drop the corresponding variable <code>F$FCC_A1_TS</code> into the plot.</p>
-<p><a href="/examples/equilib/e20/img/plot_scheil_5_bd_ts.png" title="examples/equilib/e20/img/plot_scheil_5_bd_ts.png"><img alt=" Scheil-Gulliver simulation with peritectic reaction" src="/examples/equilib/e20/img/plot_scheil_5_bd_ts.png" title="Scheil-Gulliver simulation with peritectic reaction" /></a></p>
+<p><a href="/matcalc_docu/examples/equilib/e20/img/plot_scheil_5_bd_ts.png" title="examples:equilib:e20:img:plot_scheil_5_bd_ts.png"><img alt=" Scheil-Gulliver simulation with peritectic reaction" src="/matcalc_docu/examples/equilib/e20/img/plot_scheil_5_bd_ts.png" title="Scheil-Gulliver simulation with peritectic reaction" /></a></p>
 <p>Save the final results in workspace <strong>E20_3_scheil_with_bd_and_st.mcw</strong>.</p>
 <h2 id="final-results">Final results</h2>
 <p>The following figure shows the cumulative curve of the Scheil-transformed FCC_A1 as well as the other phase fractions. The user can clearly see, that the phase fraction of FCC_A1_cum reaches 1, as all the other fractions decrease.</p>
-<p><a href="/examples/equilib/e20/img/plot_scheil_6_bd_ts.png" title="examples/equilib/e20/img/plot_scheil_6_bd_ts.png"><img alt="Final result of Scheil transformation" src="/examples/equilib/e20/img/plot_scheil_6_bd_ts.png" title="Final result of Scheil transformation" /></a></p>
+<p><a href="/matcalc_docu/examples/equilib/e20/img/plot_scheil_6_bd_ts.png" title="examples:equilib:e20:img:plot_scheil_6_bd_ts.png"><img alt="Final result of Scheil transformation" src="/matcalc_docu/examples/equilib/e20/img/plot_scheil_6_bd_ts.png" title="Final result of Scheil transformation" /></a></p>
 <h1 id="consecutive-articles">Consecutive articles</h1>
-<p>This analysis is continued in article  <a href="/examples/equilib/e20/e20_4" title="examples/equilib/e20/e20_4">Scheil-Gulliver analysis of microsegregation</a>.</p>
+<p>This analysis is continued in article  <a href="/matcalc_docu/examples/equilib/e20/e20_4" title="examples:equilib:e20:e20_4">Scheil-Gulliver analysis of microsegregation</a>.</p>
 <p><a href="#fnt__1">1)</a></p>
 <p>S. Zamberger, M. Pudar, K. Spiradek-Hahn, M. Reischl and E. Kozeschnik, “Numerical simulation of the evolution of primary and secondary Nb(CN), Ti(CN) and AlN in Nb-microalloyed steel during continuous casting”, IJMR (2012) in print.</p>
 <p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=examples%3Aequilib%3Ae20%3Ae20_3&amp;1788352994" /></p>

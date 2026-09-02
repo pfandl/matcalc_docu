@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pfandl.github.io/matcalc_docu/examples/diffusion/d31/" />
       <link rel="shortcut icon" href="../../../img/favicon.ico" />
     <title>D31 - MatCalc Documentation</title>
     <link rel="stylesheet" href="../../../css/theme.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "D31";
         var mkdocs_page_input_path = "examples/diffusion/d31.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_url = "/matcalc_docu/examples/diffusion/d31/";
       </script>
     
     <!--[if lt IE 9]>
@@ -51,7 +51,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">MatCalc tutorial</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">Tutorials</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
                 </li>
@@ -136,24 +136,24 @@ Revisions:</p>
 <li>B. Jönsson, Z. Metallkd. 83 (1992) 5</li>
 </ul>
 <h2 id="complementary-files">Complementary files</h2>
-<p>Click <a href="/examples/diffusion/d31/d31_2018.mcs" title="examples/diffusion/d31/d31_2018.mcs (10.7 KB)">here</a> to view the script for this tutorial.
-Click <a href="/examples/diffusion/d31/d31-tables_2018.mcs" title="examples/diffusion/d31/d31-tables_2018.mcs (7.1 KB)">here</a> to download the table-script for example D31.</p>
+<p>Click <a href="/matcalc_docu/examples/diffusion/d31/d31_2018.mcs" title="examples:diffusion:d31:d31_2018.mcs (10.7 KB)">here</a> to view the script for this tutorial.
+Click <a href="/matcalc_docu/examples/diffusion/d31/d31-tables_2018.mcs" title="examples:diffusion:d31:d31-tables_2018.mcs (7.1 KB)">here</a> to download the table-script for example D31.</p>
 <h1 id="main-document">Main document</h1>
 <p>Set up the system considering only pure iron with BCC_A2 phase. This way, only tracer diffusion of Fe in bcc-Fe is possible. The experimental data reproduces the diffusion parameters under consideration of magnetic influence. Diffusion values without magnetic contribution are based on <em>MatCalc</em> calculations.</p>
 <h2 id="calculation">Calculation</h2>
 <p>To calculate the diffusion parameters perform a stepped calculation, varying the temperature in a desired range (We use 1600C to 400C with a 25C step).</p>
-<p><a href="/examples/diffusion/d31/d31-stepped.png" title="examples/diffusion/d31/d31-stepped.png"><img alt=" Stepped calculation" src="/examples/diffusion/d31/d31-stepped.png" title="Stepped calculation" /></a></p>
+<p><a href="/matcalc_docu/examples/diffusion/d31/d31-stepped.png" title="examples:diffusion:d31:d31-stepped.png"><img alt=" Stepped calculation" src="/matcalc_docu/examples/diffusion/d31/d31-stepped.png" title="Stepped calculation" /></a></p>
 <p>To plot the tracer diffusivity, simply drag and drop the value <code>DT$BCC_A2$FE</code> into a p1 plot window. The variable can be found in the <code>diffusion</code> section on the left-hand side of the screen. In order to obtain y-axis values as shown in the picture, without the preceding 10^…, <strong>hold CTRL before dropping the variable into the plot</strong>. A popup window will appear which gives the option to modify the expression. <strong>%s</strong> respresents the original expression, thus by adding a log, the logarithmic values will be plotted.</p>
-<p><a href="/examples/diffusion/d31/d31-modifyexpression.png" title="examples/diffusion/d31/d31-modifyexpression.png"><img alt=" Modify expression window to plot logarithmic values" src="/examples/diffusion/d31/d31-modifyexpression.png" title="Modify expression window to plot logarithmic values" /></a></p>
+<p><a href="/matcalc_docu/examples/diffusion/d31/d31-modifyexpression.png" title="examples:diffusion:d31:d31-modifyexpression.png"><img alt=" Modify expression window to plot logarithmic values" src="/matcalc_docu/examples/diffusion/d31/d31-modifyexpression.png" title="Modify expression window to plot logarithmic values" /></a></p>
 <h2 id="plot-without-considering-magnetic-contribution">Plot without considering magnetic contribution</h2>
 <p>To plot the second curve, go ahead and duplicate and lock the tracer diffusivity curve. Feel free to rename the curve correspondingly using the <strong>Options</strong> panel on the left-side. Open up the Phase status dialog and <strong>deselect</strong> the check box for <strong>magnetic contribution</strong>.</p>
-<p><a href="/examples/diffusion/d31/d31-magneticcontribution.png" title="examples/diffusion/d31/d31-magneticcontribution.png"><img alt=" Magnetic contribution flag in phase status dialog" src="/examples/diffusion/d31/d31-magneticcontribution.png" title="Magnetic contribution flag in phase status dialog" /></a></p>
+<p><a href="/matcalc_docu/examples/diffusion/d31/d31-magneticcontribution.png" title="examples:diffusion:d31:d31-magneticcontribution.png"><img alt=" Magnetic contribution flag in phase status dialog" src="/matcalc_docu/examples/diffusion/d31/d31-magneticcontribution.png" title="Magnetic contribution flag in phase status dialog" /></a></p>
 <p>Now perform the stepped calculation anew and the earlier duplicated curve will change. A higher diffusivity will be the result as the new curve lies above the old one. The figure below should resemble the one in your <em>MatCalc</em> and represents the final results without experimental vlaues.</p>
-<p><a href="/examples/diffusion/d31/d31-finalwithoutdata.png" title="examples/diffusion/d31/d31-finalwithoutdata.png"><img alt=" Final results of D31 without experimental data" src="/examples/diffusion/d31/d31-finalwithoutdata.png" title="Final results of D31 without experimental data" /></a></p>
+<p><a href="/matcalc_docu/examples/diffusion/d31/d31-finalwithoutdata.png" title="examples:diffusion:d31:d31-finalwithoutdata.png"><img alt=" Final results of D31 without experimental data" src="/matcalc_docu/examples/diffusion/d31/d31-finalwithoutdata.png" title="Final results of D31 without experimental data" /></a></p>
 <h2 id="add-some-experimental-data">Add some experimental data</h2>
-<p>Experimental data on diffusion values can be found in adequate literature. The data in this example is taken from the above cited work of B. Jönsson. It is highly recommended to run <a href="/examples/diffusion/d31/d31-tables.mcs" title="examples/diffusion/d31/d31-tables.mcs (7.3 KB)">this</a> short sub-script which adds three tables, instead of creating the tables manually due to the large amount of values.</p>
+<p>Experimental data on diffusion values can be found in adequate literature. The data in this example is taken from the above cited work of B. Jönsson. It is highly recommended to run <a href="/matcalc_docu/examples/diffusion/d31/d31-tables.mcs" title="examples:diffusion:d31:d31-tables.mcs (7.3 KB)">this</a> short sub-script which adds three tables, instead of creating the tables manually due to the large amount of values.</p>
 <p>The final figure is obtained after plotting the experimental data or running the sub-script, respectively.</p>
-<p><a href="/examples/diffusion/d31/d31-final.png" title="examples/diffusion/d31/d31-final.png"><img alt=" Final results with experimental data for D31" src="/examples/diffusion/d31/d31-final.png" title="Final results with experimental data for D31" /></a></p>
+<p><a href="/matcalc_docu/examples/diffusion/d31/d31-final.png" title="examples:diffusion:d31:d31-final.png"><img alt=" Final results with experimental data for D31" src="/matcalc_docu/examples/diffusion/d31/d31-final.png" title="Final results with experimental data for D31" /></a></p>
 <p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=examples%3Adiffusion%3Ad31&amp;1788353000" /></p>
               
             </div>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pfandl.github.io/matcalc_docu/examples/precipitation/p5/p5_2/" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
     <title>P5 2 - MatCalc Documentation</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "P5 2";
         var mkdocs_page_input_path = "examples/precipitation/p5/p5_2.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_url = "/matcalc_docu/examples/precipitation/p5/p5_2/";
       </script>
     
     <!--[if lt IE 9]>
@@ -51,7 +51,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/">MatCalc tutorial</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/">Tutorials</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
                 </li>
@@ -139,11 +139,11 @@ Revisions:</p>
 <p>Values for ipdcf range from 1, which represents equal diffusion rates both inside and outside of the precipitate, to 0.01, which is the default value and correlates with real observations, where diffusion inside the precipitate is much slower than outside.</p>
 <h2 id="related-documents">Related documents</h2>
 <ul>
-<li><em>P5-1</em> -  <a href="/examples/precipitation/p5/p5_1" title="examples/precipitation/p5/p5_1">Simulating growth of precipitates</a></li>
+<li><em>P5-1</em> -  <a href="/matcalc_docu/examples/precipitation/p5/p5_1" title="examples:precipitation:p5:p5_1">Simulating growth of precipitates</a></li>
 <li>A. Schneider, G. Inden, Simulation of the kinetics of precipitation reactions in ferritic steels, Acta Materialia 53 (2005) 519-531</li>
 </ul>
 <h2 id="complementary-files">Complementary files</h2>
-<p>Click <a href="/examples/precipitation/p5/p5-concurrentgrowth-dictra-ipdcf-loop_2018.mcs" title="examples/precipitation/p5/p5-concurrentgrowth-dictra-ipdcf-loop_2018.mcs (11.6 KB)">here</a> to view the script for this example.</p>
+<p>Click <a href="/matcalc_docu/examples/precipitation/p5/p5-concurrentgrowth-dictra-ipdcf-loop_2018.mcs" title="examples:precipitation:p5:p5-concurrentgrowth-dictra-ipdcf-loop_2018.mcs (11.6 KB)">here</a> to view the script for this example.</p>
 <h1 id="main-document">Main document</h1>
 <h2 id="understanding-the-script">Understanding the script</h2>
 <p>The script contains two pieces of interest, which are responsible for the variation in ipdcf without having to copy&amp;paste the same portion of code over and over again.</p>
@@ -173,7 +173,7 @@ endfor
 <p><strong>Note</strong>: Using <code>%d</code> as we did in other examples would result in the values 1, 0, 0 as the parameter <code>d</code> converts only integer, full numbers!</p>
 <h2 id="manually-change-the-ipdcf">Manually change the ipdcf</h2>
 <p>It is highly recommended to use the script for this second part, as many windows have to be created. Apart from that, use the same settings as in part one and simply change the 'Diffusion in precipitate as ration from matrix' values for both substitutional and interstitial from 1 to 0.1 and 0.01. The value which is set to 'ipdcf' in the figure below can be found in the Phase status dialog at the Special tab.</p>
-<p><a href="/examples/precipitation/p5/p5_ipdcfchange.png" title="examples/precipitation/p5/p5_ipdcfchange.png"><img alt=" Inner particle diffusion coefficient factor" src="/examples/precipitation/p5/p5_ipdcfchange.png" title="Inner particle diffusion coefficient factor" /></a></p>
+<p><a href="/matcalc_docu/examples/precipitation/p5/p5_ipdcfchange.png" title="examples:precipitation:p5:p5_ipdcfchange.png"><img alt=" Inner particle diffusion coefficient factor" src="/matcalc_docu/examples/precipitation/p5/p5_ipdcfchange.png" title="Inner particle diffusion coefficient factor" /></a></p>
 <p>After changing the factor, be sure to perform one of the following steps:</p>
 <ul>
 <li>Either lock the series of the plotted results, set up new output windows, rename and change their appearance correspondingly, and plot the data anew. This approach was used in the script.</li>
@@ -182,9 +182,9 @@ endfor
 </ul>
 <h2 id="determining-stable-phases">Determining stable phases</h2>
 <p>As a pre-simulation we can perform a stepped calculation varying the chromium content in order to find the stable phases as a function of chromium. Variation of temperature is not of interest, as all the precipitation simulations are performed isothermally at 780C. When plotting the phase fractions over temperature, the following figure can be established:</p>
-<p><a href="/examples/precipitation/p5/p5_2_stabilityofprecs.png" title="examples/precipitation/p5/p5_2_stabilityofprecs.png"><img alt=" Phase fraction of precipitates and matrix phase" src="/examples/precipitation/p5/p5_2_stabilityofprecs.png" title="Phase fraction of precipitates and matrix phase" /></a></p>
+<p><a href="/matcalc_docu/examples/precipitation/p5/p5_2_stabilityofprecs.png" title="examples:precipitation:p5:p5_2_stabilityofprecs.png"><img alt=" Phase fraction of precipitates and matrix phase" src="/matcalc_docu/examples/precipitation/p5/p5_2_stabilityofprecs.png" title="Phase fraction of precipitates and matrix phase" /></a></p>
 <p>For high chromium content both ferrite and M23C6 are stable. Upon decreasing the chromium amount, a transition area is reached at about 8% Cr where M7C3 becomes the stable phase. This region lasts until the chromium content reaches 2%, where all precipitates become unstable and only the matrix phases BCC_A2 (ferrite) and FCC_A1 (austenite) are stable. As <em>MatCalc</em> cannot consider two matrix phases during a precipitation calculation at once, the problem was dodged by assuming FCC_A1 to be a precipitate. Creating the FCC_A1_p0 exactly as the other precipitates and setting its nuclei starting size to 1nm as well, results in the figure found below. The phase fraction of 20% is very close to the results of the equilibrium calculation. Further it is shown that the other precipitates grow at first, and dissolve later on as the carbon diffuses to the FCC_A1 <em>precipitate</em>.</p>
-<p><a href="/examples/precipitation/p5/p5_2_fcca1stablephase.png" title="examples/precipitation/p5/p5_2_fcca1stablephase.png"><img alt=" FCC_A1 proved to be the stable phase" src="/examples/precipitation/p5/p5_2_fcca1stablephase.png" title="FCC_A1 proved to be the stable phase" /></a></p>
+<p><a href="/matcalc_docu/examples/precipitation/p5/p5_2_fcca1stablephase.png" title="examples:precipitation:p5:p5_2_fcca1stablephase.png"><img alt=" FCC_A1 proved to be the stable phase" src="/matcalc_docu/examples/precipitation/p5/p5_2_fcca1stablephase.png" title="FCC_A1 proved to be the stable phase" /></a></p>
 <h2 id="influence-of-ipdcf-on-the-12cr-01c-system">Influence of IPDCF on the 12%Cr-0.1%C system</h2>
 <p><strong><em>Important note …</em></strong></p>
 <p>The <strong>IPDCF</strong> is the abbreviation for 'inner particle diffusion coefficient factor'. <em>MatCalc</em> describes the diffusion within a particle as a factor from the surrounding matrix' diffusion factor. The default value is 0.01 which implies a sluggish diffusion rate compared to the enclosing matrix.</p>
@@ -200,15 +200,15 @@ endfor
 <tbody>
 <tr>
 <td>1.0</td>
-<td><a href="/examples/precipitation/p5/p5_12_ipdcf_1.png" title="examples/precipitation/p5/p5_12_ipdcf_1.png">Results of example P5 with inner particle diffusion coefficient factor of 1</a></td>
+<td><a href="/matcalc_docu/examples/precipitation/p5/p5_12_ipdcf_1.png" title="examples:precipitation:p5:p5_12_ipdcf_1.png">Results of example P5 with inner particle diffusion coefficient factor of 1</a></td>
 </tr>
 <tr>
 <td>0.1</td>
-<td><a href="/examples/precipitation/p5/p5_12_ipdcf_0.1.png" title="examples/precipitation/p5/p5_12_ipdcf_0.1.png">Results of example P5 with inner particle diffusion coefficient factor of 0.1</a></td>
+<td><a href="/matcalc_docu/examples/precipitation/p5/p5_12_ipdcf_0.1.png" title="examples:precipitation:p5:p5_12_ipdcf_0.1.png">Results of example P5 with inner particle diffusion coefficient factor of 0.1</a></td>
 </tr>
 <tr>
 <td>0.01</td>
-<td><a href="/examples/precipitation/p5/p5_12_ipdcf_0.01.png" title="examples/precipitation/p5/p5_12_ipdcf_0.01.png">Results of example P5 with inner particle diffusion coefficient factor of 0.01</a></td>
+<td><a href="/matcalc_docu/examples/precipitation/p5/p5_12_ipdcf_0.01.png" title="examples:precipitation:p5:p5_12_ipdcf_0.01.png">Results of example P5 with inner particle diffusion coefficient factor of 0.01</a></td>
 </tr>
 </tbody>
 </table>
@@ -225,15 +225,15 @@ endfor
 <tbody>
 <tr>
 <td>1.0</td>
-<td><a href="/examples/precipitation/p5/p5_7.3_ipdcf_1.png" title="examples/precipitation/p5/p5_7.3_ipdcf_1.png">Results of example P5 with inner particle diffusion coefficient factor of 1</a></td>
+<td><a href="/matcalc_docu/examples/precipitation/p5/p5_7.3_ipdcf_1.png" title="examples:precipitation:p5:p5_7.3_ipdcf_1.png">Results of example P5 with inner particle diffusion coefficient factor of 1</a></td>
 </tr>
 <tr>
 <td>0.1</td>
-<td><a href="/examples/precipitation/p5/p5_7.3_ipdcf_0.1.png" title="examples/precipitation/p5/p5_7.3_ipdcf_0.1.png">Results of example P5 with inner particle diffusion coefficient factor of 0.1</a></td>
+<td><a href="/matcalc_docu/examples/precipitation/p5/p5_7.3_ipdcf_0.1.png" title="examples:precipitation:p5:p5_7.3_ipdcf_0.1.png">Results of example P5 with inner particle diffusion coefficient factor of 0.1</a></td>
 </tr>
 <tr>
 <td>0.01</td>
-<td><a href="/examples/precipitation/p5/p5_7.3_ipdcf_0.01.png" title="examples/precipitation/p5/p5_7.3_ipdcf_0.01.png">Results of example P5 with inner particle diffusion coefficient factor of 0.01</a></td>
+<td><a href="/matcalc_docu/examples/precipitation/p5/p5_7.3_ipdcf_0.01.png" title="examples:precipitation:p5:p5_7.3_ipdcf_0.01.png">Results of example P5 with inner particle diffusion coefficient factor of 0.01</a></td>
 </tr>
 </tbody>
 </table>

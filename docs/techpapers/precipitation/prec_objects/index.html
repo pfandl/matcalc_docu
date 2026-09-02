@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pfandl.github.io/matcalc_docu/techpapers/precipitation/prec_objects/" />
       <link rel="shortcut icon" href="../../../img/favicon.ico" />
     <title>Prec objects - MatCalc Documentation</title>
     <link rel="stylesheet" href="../../../css/theme.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "Prec objects";
         var mkdocs_page_input_path = "techpapers/precipitation/prec_objects.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_url = "/matcalc_docu/techpapers/precipitation/prec_objects/";
       </script>
     
     <!--[if lt IE 9]>
@@ -51,7 +51,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">MatCalc tutorial</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">Tutorials</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
                 </li>
@@ -137,7 +137,7 @@ Revisions:</p>
 <p>The precipitation simulations in MatCalc are controlled by the kinetic calculation algorithms of the mc_core module. The foundation of the object structure is given by the setup of the thermodynamic equilibrium system, which defines the possible thermodynamic matrix phase(s) as well as the parent phases for the precipitate(s).</p>
 <h2 id="object-hierarchy">Object hierarchy</h2>
 <p>Based on the selection of equilibrium phases, the user defines precipitation domains, which are the containers for the precipitates, as well as the precipitate phase objects. Each precipitate must be created manually by the user, based on a particular precipitate parent phase, to which the precipitate remains connected to. The following figure illustrates these interconnections.</p>
-<p><a href="/techpapers/precipitation/img/precipitation_object_hierarchy.png" title="techpapers/precipitation/img/precipitation_object_hierarchy.png"><img alt=" Object hierarchy for precipitation kinetics simulations" src="/techpapers/precipitation/img/precipitation_object_hierarchy.png" title="Object hierarchy for precipitation kinetics simulations" /></a>
+<p><a href="/matcalc_docu/techpapers/precipitation/img/precipitation_object_hierarchy.png" title="techpapers:precipitation:img:precipitation_object_hierarchy.png"><img alt=" Object hierarchy for precipitation kinetics simulations" src="/matcalc_docu/techpapers/precipitation/img/precipitation_object_hierarchy.png" title="Object hierarchy for precipitation kinetics simulations" /></a>
 Figure 1: Object hierarchy for precipitation kinetics simulations in <em>MatCalc</em></p>
 <p>The figure shows the two major controlling objects for calculations in the top row, connected with a line to indicate the direct link between the two. The first object is the 'Gibbs' class from within the 'mc_core' module, which is the class that handles thermodynamic calculations, evaluation of chemical potentials and driving forces, etc., and manages the phase objects. The second class is the 'kinetic control' class, also in the 'mc_core' module of MatCalc. This class is responsible for all kinetic simulations related to the precipitation kinetics functionality. It manages the precipitation domain functions and the link between the parent phase and precipitate phase objects.</p>
 <p>Below the 'Gibbs' class, directly linked to this object, are the equilibrium phases. This is the list of phases just as they are created when the user reads the thermodynamic database. In the precipitation kinetics simulations, these phases act as parent objects to the precipitate phases. This link is indicated by the lines between the equilibrium phases and the precipitates.</p>

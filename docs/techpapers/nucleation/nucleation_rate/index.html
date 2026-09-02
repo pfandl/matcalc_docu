@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pfandl.github.io/matcalc_docu/techpapers/nucleation/nucleation_rate/" />
       <link rel="shortcut icon" href="../../../img/favicon.ico" />
     <title>Nucleation rate - MatCalc Documentation</title>
     <link rel="stylesheet" href="../../../css/theme.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "Nucleation rate";
         var mkdocs_page_input_path = "techpapers/nucleation/nucleation_rate.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_url = "/matcalc_docu/techpapers/nucleation/nucleation_rate/";
       </script>
     
     <!--[if lt IE 9]>
@@ -51,7 +51,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">MatCalc tutorial</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">Tutorials</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
                 </li>
@@ -132,15 +132,15 @@ Revisions: 2018-04-09 E. Kozeschnik for version 6.01</p>
 <p>This paper discusses the implementation of the multi-component transient nucleation rate expression in the <em>MatCalc</em> precipitation kinetics framework. The equations presented below are derived in the framework of <strong>Classical Nucleation Theory</strong> (CNT) and they are strictly valid only for the special case of size-independent interfacial energy and volume free energy as well as homogeneous nucleation. The <em>MatCalc</em>-specific extensions (size effect/diffuse interface effect/volume energy effect) and their implementation are described in seperate documents.</p>
 <h2 id="related-documents">Related documents</h2>
 <ol>
-<li><a href="/techpapers/nucleation/het_nucl_sites" title="techpapers/nucleation/het_nucl_sites">Heterogeneous nucleation</a></li>
+<li><a href="/matcalc_docu/techpapers/nucleation/het_nucl_sites" title="techpapers:nucleation:het_nucl_sites">Heterogeneous nucleation</a></li>
 </ol>
 <h1 id="main-document">Main document</h1>
-<p>Nucleation in <em>MatCalc</em> is realized in an extended Classical Nucleation Theory framework, where all input quantities are either given from experimental information (microstructure parameters such as dislocation density and grain size) or from theory (such as chemical driving force and interfacial energy). For details on the theoretical models, see the corresponding section in the list of <em>MatCalc</em>-relevant  <a href="http///matcalc.tuwien.ac.at/index.php/about/publications" title="http///matcalc.tuwien.ac.at/index.php/about/publications">publications</a>.</p>
+<p>Nucleation in <em>MatCalc</em> is realized in an extended Classical Nucleation Theory framework, where all input quantities are either given from experimental information (microstructure parameters such as dislocation density and grain size) or from theory (such as chemical driving force and interfacial energy). For details on the theoretical models, see the corresponding section in the list of <em>MatCalc</em>-relevant  <a href="http://matcalc.tuwien.ac.at/index.php/about/publications" title="http://matcalc.tuwien.ac.at/index.php/about/publications">publications</a>.</p>
 <h2 id="energetics-of-nucleus-formation">Energetics of nucleus formation</h2>
 <p>If a nucleus of a new phase forms, the total change in energy <span class="arithmatex">\(\Delta G\_\text{nucl}\)</span> accompanying this event can be expressed as</p>
 <div class="arithmatex">\[ \Delta G\_\text{nucl} = \frac{4\pi}{3} \rho^3 \cdot \Delta G\_\text{vol} + 4\pi \rho^2 \gamma\]</div>
 <p>where <span class="arithmatex">\(\rho\)</span> is the radius of the nucleus, <span class="arithmatex">\(\Delta G\_\text{vol}\)</span> is the volume free energy change on nucleation and <span class="arithmatex">\(\gamma\)</span> is the specific interfacial energy. <span class="arithmatex">\(\Delta G\_\text{vol}\)</span> has negative value if the phase to form is thermodynamically stable. The function <span class="arithmatex">\(\Delta G\_\text{nucl}\)</span> is shown in the next figure as a function of the nucleus radius.</p>
-<p><a href="/techpapers/nucleation/img/fig_nucleation_delta_g_of_r.png" title="techpapers/nucleation/img/fig_nucleation_delta_g_of_r.png"><img alt=" Total energy change on nucleation" src="/techpapers/nucleation/img/fig_nucleation_delta_g_of_r.png" title="Total energy change on nucleation" /></a></p>
+<p><a href="/matcalc_docu/techpapers/nucleation/img/fig_nucleation_delta_g_of_r.png" title="techpapers:nucleation:img:fig_nucleation_delta_g_of_r.png"><img alt=" Total energy change on nucleation" src="/matcalc_docu/techpapers/nucleation/img/fig_nucleation_delta_g_of_r.png" title="Total energy change on nucleation" /></a></p>
 <p>From this relation, the extremum value for the critical radius <span class="arithmatex">\(\rho^\*\)</span> can be evaluated after setting the first derivative of <span class="arithmatex">\(\Delta G\_\text{nucl}\)</span> to zero with</p>
 <div class="arithmatex">\[ \frac{\partial}{\partial \rho}\Delta G\_\text{nucl} = 0\]</div>
 <p>The critical radius is then</p>
@@ -205,12 +205,12 @@ Revisions: 2018-04-09 E. Kozeschnik for version 6.01</p>
 <tr>
 <td><span class="arithmatex">\(\Delta G\_\text{el}\)</span></td>
 <td>[ \frac{E}{1-\nu_\text{P}} \cdot \left( \epsilon^* \right)^2]</td>
-<td>Elastic strain energy, see also document  <a href="/techpapers/nucleation/het_nucl_sites" title="techpapers/nucleation/het_nucl_sites">Heterogeneous nucleation</a></td>
+<td>Elastic strain energy, see also document  <a href="/matcalc_docu/techpapers/nucleation/het_nucl_sites" title="techpapers:nucleation:het_nucl_sites">Heterogeneous nucleation</a></td>
 </tr>
 <tr>
 <td><span class="arithmatex">\(\gamma\)</span></td>
 <td>[ \frac{n_\text{S} \cdot z_\text{S,eff}}{N_\text{A} \cdot z_\text{L,eff}} \cdot \Delta H]</td>
-<td>Interfacial energy, see document  <a href="/techpapers/nucleation/interfacial_energy" title="techpapers/nucleation/interfacial_energy">Evaluation of interfacial energies</a> for details</td>
+<td>Interfacial energy, see document  <a href="/matcalc_docu/techpapers/nucleation/interfacial_energy" title="techpapers:nucleation:interfacial_energy">Evaluation of interfacial energies</a> for details</td>
 </tr>
 </tbody>
 </table>

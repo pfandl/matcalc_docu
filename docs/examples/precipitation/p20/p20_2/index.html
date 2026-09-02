@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pfandl.github.io/matcalc_docu/examples/precipitation/p20/p20_2/" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
     <title>P20 2 - MatCalc Documentation</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "P20 2";
         var mkdocs_page_input_path = "examples/precipitation/p20/p20_2.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_url = "/matcalc_docu/examples/precipitation/p20/p20_2/";
       </script>
     
     <!--[if lt IE 9]>
@@ -51,7 +51,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/">MatCalc tutorial</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/">Tutorials</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
                 </li>
@@ -134,16 +134,16 @@ Author: G. Stechauner <br />
 Created: 2011-11-29 <br />
 Revisions: 2015-02-15 (P. Warczok)</p>
 <h2 id="objectives">Objectives</h2>
-<p>This is the second of two parts, which describe how to deal with primary precipitates. The method used in this example is thoroughly explained in the 'HowTo' manual for  <a href="/howtosimulate/precipitation/primary_prec" title="howtosimulate/precipitation/primary_prec">treatment of primary precipitates</a> . The data from the transformation phases obtained in Scheil-Gulliver calculation are transfered into the precipitate phase and a calc state is created.</p>
-<p>Part two utilizes this calc state. This is taken as the starting point for simulation of precipitation of TiN, NbC and AlN during cooling. As the liquid solidifies, a depleted and an enriched region will form due to segregation. Refer to the equilibrium example  <a href="/examples/equilib/e20/e20_4" title="examples/equilib/e20/e20_4">E20-4 - Scheil-Gulliver analysis of microsegregation</a> if you want to test your knowledge on this topic. Using the chemical composition for the enriched and depleted regions, which is provided in E20-4, we can calculate the precipitation behavior in those extrema.</p>
+<p>This is the second of two parts, which describe how to deal with primary precipitates. The method used in this example is thoroughly explained in the 'HowTo' manual for  <a href="/matcalc_docu/howtosimulate/precipitation/primary_prec" title="howtosimulate:precipitation:primary_prec">treatment of primary precipitates</a> . The data from the transformation phases obtained in Scheil-Gulliver calculation are transfered into the precipitate phase and a calc state is created.</p>
+<p>Part two utilizes this calc state. This is taken as the starting point for simulation of precipitation of TiN, NbC and AlN during cooling. As the liquid solidifies, a depleted and an enriched region will form due to segregation. Refer to the equilibrium example  <a href="/matcalc_docu/examples/equilib/e20/e20_4" title="examples:equilib:e20:e20_4">E20-4 - Scheil-Gulliver analysis of microsegregation</a> if you want to test your knowledge on this topic. Using the chemical composition for the enriched and depleted regions, which is provided in E20-4, we can calculate the precipitation behavior in those extrema.</p>
 <p>A discussion about the results will close this example.</p>
 <h2 id="related-documents">Related documents</h2>
 <ol>
-<li>P20-1 -  <a href="/examples/precipitation/p20/p20_1" title="examples/precipitation/p20/p20_1">Treatment of primary precipitates</a></li>
-<li>E20-4 -  <a href="/examples/equilib/e20/e20_4" title="examples/equilib/e20/e20_4">Scheil-Gulliver analysis of microsegreegation</a></li>
+<li>P20-1 -  <a href="/matcalc_docu/examples/precipitation/p20/p20_1" title="examples:precipitation:p20:p20_1">Treatment of primary precipitates</a></li>
+<li>E20-4 -  <a href="/matcalc_docu/examples/equilib/e20/e20_4" title="examples:equilib:e20:e20_4">Scheil-Gulliver analysis of microsegreegation</a></li>
 </ol>
 <h2 id="complementary-files">Complementary files</h2>
-<p>Click <a href="/examples/precipitation/p20/script/p20-2_2018.mcs" title="examples/precipitation/p20/script/p20-2_2018.mcs (14.2 KB)">here</a> to view the script for this tutorial.</p>
+<p>Click <a href="/matcalc_docu/examples/precipitation/p20/script/p20-2_2018.mcs" title="examples:precipitation:p20:script:p20-2_2018.mcs (14.2 KB)">here</a> to view the script for this tutorial.</p>
 <h1 id="main-document">Main document</h1>
 <p>Consider the same microalloyed steel as in example E20. Due to segregation a depleted region, as well as an enriched region forms. The chemical composition of C and N is assumed to be constant throughout the sample due to back-diffusion. The nominal composition is given in wt%.</p>
 <table>
@@ -185,34 +185,34 @@ Revisions: 2015-02-15 (P. Warczok)</p>
 </tbody>
 </table>
 <h2 id="setup-thermodynamics">Setup thermodynamics</h2>
-<p>Load the workspace file P20_1.mcw with the simulation results of part 1 or run the corresponding <a href="/examples/precipitation/p20/script/p20-1.mcs" title="examples/precipitation/p20/script/p20-1.mcs (10.6 KB)">script</a> to produce the results 'on the fly' (if your MatCalc version is elder than 5.61.1000 use the following <a href="/examples/precipitation/p20/script/p20-1_old.mcs" title="examples/precipitation/p20/script/p20-1_old.mcs (15.4 KB)">script</a>)</p>
+<p>Load the workspace file P20_1.mcw with the simulation results of part 1 or run the corresponding <a href="/matcalc_docu/examples/precipitation/p20/script/p20-1.mcs" title="examples:precipitation:p20:script:p20-1.mcs (10.6 KB)">script</a> to produce the results 'on the fly' (if your MatCalc version is elder than 5.61.1000 use the following <a href="/matcalc_docu/examples/precipitation/p20/script/p20-1_old.mcs" title="examples:precipitation:p20:script:p20-1_old.mcs (15.4 KB)">script</a>)</p>
 <h2 id="setting-up-chemical-composition-primary-precipitates-heat-treatment">Setting up: Chemical composition, primary precipitates, heat treatment</h2>
 <p>Obviously, as two regions with a different composition are to be investigated, there are two calculations which need to be performed. Before the start of each calculation, the system composition needs to be adjusted to the values given in the table above. Moreover, the primary precipitates which were created in the previous part of this example need to be introduced at the start of the simulation. But, before these issues are resolved, define the heat-treatment describing the cooling process as shown in the image below:</p>
-<p><a href="/examples/precipitation/p20/img/heattreat-p20-2.png" title="examples/precipitation/p20/img/heattreat-p20-2.png"><img alt=" Heat treatment for the precipitation simulation" src="/examples/precipitation/p20/img/heattreat-p20-2.png" title="Heat treatment for the precipitation simulation" /></a></p>
+<p><a href="/matcalc_docu/examples/precipitation/p20/img/heattreat-p20-2.png" title="examples:precipitation:p20:img:heattreat-p20-2.png"><img alt=" Heat treatment for the precipitation simulation" src="/matcalc_docu/examples/precipitation/p20/img/heattreat-p20-2.png" title="Heat treatment for the precipitation simulation" /></a></p>
 <p>The opened 'p20-1.mcw' workspace has a stored calc state created at the end of the previous example part. This calc state contains the distribution of the primary precipitates which is the required input data for the simulations preformed in this part. Therefore, the heat treatment can be simply initialized from the calc state. However, the calc state itself contains also the composition of the system in which it was stored. For this reason it is necessary to load the calc state before the kinetic simulation, change the system composition and store it once again. This means that for the current example, two new calc states need to be created, each with the composition respective to the solute-enriched and -depleted region (with the according names, ideally). Then the simulation of each region is to be initialized from the coresponding 'new' calc state.</p>
 <p>The more elegant solution would be the introduction of precipitate distribution from the file which was exported at the end of Example P20-1. This is the method of choice when the workspace with this precipitate distribution is not available (or cannot be opened by MatCalc for any reason). In order to simulate the condtion, when the precipitate distribution is not available, open the <strong>'Phase status'</strong> window, select the <strong>'TIN_P0'</strong> (this phase represents the primary precipitate), select the <strong>'Precipitate'</strong> tab and click <strong>'Initialize …'</strong> button. After accepting the question in the pop-up window, the phase will be re-initialized and all data on the distribution will be lost as promised. To import the data from the file, click on the <strong>'Edit precipitate distribution …'</strong> button.</p>
-<p><a href="/examples/precipitation/p20/img/p20-2_import_prec_dist_1.png" title="examples/precipitation/p20/img/p20-2_import_prec_dist_1.png"><img alt=" Edit precipitate distribution..." src="/examples/precipitation/p20/img/p20-2_import_prec_dist_1.png" title="Edit precipitate distribution..." /></a></p>
+<p><a href="/matcalc_docu/examples/precipitation/p20/img/p20-2_import_prec_dist_1.png" title="examples:precipitation:p20:img:p20-2_import_prec_dist_1.png"><img alt=" Edit precipitate distribution..." src="/matcalc_docu/examples/precipitation/p20/img/p20-2_import_prec_dist_1.png" title="Edit precipitate distribution..." /></a></p>
 <p>A new window opens which allows the edition of the precipitate distributions. After clicking on <strong>'Read …'</strong> button, select the file <strong>'size_dist_tin_primary.txt'</strong> to fill the empty cells with numbers.</p>
-<p><a href="/examples/precipitation/p20/img/p20-2_import_prec_dist_2.png" title="examples/precipitation/p20/img/p20-2_import_prec_dist_2.png"><img alt="" src="/examples/precipitation/p20/img/p20-2_import_prec_dist_2.png" /></a></p>
+<p><a href="/wiki/lib/exe/detail.php?id=examples%3Aprecipitation%3Ap20%3Ap20_2&amp;media=examples/precipitation/p20/img/p20-2_import_prec_dist_2.png" title="examples:precipitation:p20:img:p20-2_import_prec_dist_2.png"><img alt="" src="/matcalc_docu/examples/precipitation/p20/img/p20-2_import_prec_dist_2.png" /></a></p>
 <p>Close the <strong>'Edit …'</strong> window by clicking on <strong>'OK'</strong> and accept the question about the application of the new data.</p>
 <p>An alternative would be to use the console command</p>
 <pre><code>IMPORT_PRECIPITATE_DIST tin_p0 size_dist_tin_primary.txt
 </code></pre>
 <p>Type in this command into the pre-script of the very first segment in the <strong>'heat-treatment'</strong> sequence.</p>
-<p><a href="/examples/precipitation/p20/img/p20-2_import_pd_pre_script.png" title="examples/precipitation/p20/img/p20-2_import_pd_pre_script.png"><img alt="" src="/examples/precipitation/p20/img/p20-2_import_pd_pre_script.png" /></a></p>
+<p><a href="/wiki/lib/exe/detail.php?id=examples%3Aprecipitation%3Ap20%3Ap20_2&amp;media=examples/precipitation/p20/img/p20-2_import_pd_pre_script.png" title="examples:precipitation:p20:img:p20-2_import_pd_pre_script.png"><img alt="" src="/matcalc_docu/examples/precipitation/p20/img/p20-2_import_pd_pre_script.png" /></a></p>
 <h2 id="setting-up-the-precipitation-system-and-plots">Setting up the precipitation system and plots</h2>
-<p>To follow the growth of the precipitates during the heat treatment, a plot is needed. Create a p1 plot window with 4 plots and plot <code>T$C</code>, <code>f_prec$*</code>, <code>num_prec$*</code> and <code>r_mean$*</code>. Change the scaling and title of axes according to the figure below. Alternatively, run <a href="/examples/precipitation/p20/script/plot-p20.mcs" title="examples/precipitation/p20/script/plot-p20.mcs (4.7 KB)">this</a> script to set up the windows accordingly. Change the scaling type for the phase fraction to logarithmic and the scaling range to 1e-12..0,01.</p>
+<p>To follow the growth of the precipitates during the heat treatment, a plot is needed. Create a p1 plot window with 4 plots and plot <code>T$C</code>, <code>f_prec$*</code>, <code>num_prec$*</code> and <code>r_mean$*</code>. Change the scaling and title of axes according to the figure below. Alternatively, run <a href="/matcalc_docu/examples/precipitation/p20/script/plot-p20.mcs" title="examples:precipitation:p20:script:plot-p20.mcs (4.7 KB)">this</a> script to set up the windows accordingly. Change the scaling type for the phase fraction to logarithmic and the scaling range to 1e-12..0,01.</p>
 <p>Switch to the histogramm showing the number density over radius. In the options window on the sidebar, right-click on 'plot' and select 'new series - precipitate distribution'. Scroll down to the new series and select TIN_P0 as phase. Repeat this for the other three precipitates. Further change the scaling of the y-axis to logarithmic.</p>
 <h2 id="starting-the-simulation">Starting the simulation</h2>
 <p>Enter the composition of the solute-enriched region. Next, bring up the <strong>'Precipitation simulation …'</strong> dialog, and change the <strong>'from heat treatment'</strong> setting to the properly configured <strong>'heat-treatment'</strong>.</p>
-<p><a href="/examples/precipitation/p20/img/p20-2_prec_simul_param.png" title="examples/precipitation/p20/img/p20-2_prec_simul_param.png"><img alt="" src="/examples/precipitation/p20/img/p20-2_prec_simul_param.png" /></a></p>
+<p><a href="/wiki/lib/exe/detail.php?id=examples%3Aprecipitation%3Ap20%3Ap20_2&amp;media=examples/precipitation/p20/img/p20-2_prec_simul_param.png" title="examples:precipitation:p20:img:p20-2_prec_simul_param.png"><img alt="" src="/matcalc_docu/examples/precipitation/p20/img/p20-2_prec_simul_param.png" /></a></p>
 <p>Press <strong>'Go'</strong> to start the simulation.</p>
 <p>Duplicate and lock the series, and repeat this step for the depleted calc state as well.</p>
 <h2 id="result">Result</h2>
 <p>The following images show the result of this example.</p>
-<p><a href="/examples/precipitation/p20/img/phasefraction-p20-2.png" title="examples/precipitation/p20/img/phasefraction-p20-2.png"><img alt=" Phase fraction over time" src="/examples/precipitation/p20/img/phasefraction-p20-2.png" title="Phase fraction over time" /></a>
-<a href="/examples/precipitation/p20/img/numberdensity-p20-2.png" title="examples/precipitation/p20/img/numberdensity-p20-2.png"><img alt=" Number density over time" src="/examples/precipitation/p20/img/numberdensity-p20-2.png" title="Number density over time" /></a>
-<a href="/examples/precipitation/p20/img/meanradius-p20-2.png" title="examples/precipitation/p20/img/meanradius-p20-2.png"><img alt=" Mean radius over time" src="/examples/precipitation/p20/img/meanradius-p20-2.png" title="Mean radius over time" /></a></p>
+<p><a href="/matcalc_docu/examples/precipitation/p20/img/phasefraction-p20-2.png" title="examples:precipitation:p20:img:phasefraction-p20-2.png"><img alt=" Phase fraction over time" src="/matcalc_docu/examples/precipitation/p20/img/phasefraction-p20-2.png" title="Phase fraction over time" /></a>
+<a href="/matcalc_docu/examples/precipitation/p20/img/numberdensity-p20-2.png" title="examples:precipitation:p20:img:numberdensity-p20-2.png"><img alt=" Number density over time" src="/matcalc_docu/examples/precipitation/p20/img/numberdensity-p20-2.png" title="Number density over time" /></a>
+<a href="/matcalc_docu/examples/precipitation/p20/img/meanradius-p20-2.png" title="examples:precipitation:p20:img:meanradius-p20-2.png"><img alt=" Mean radius over time" src="/matcalc_docu/examples/precipitation/p20/img/meanradius-p20-2.png" title="Mean radius over time" /></a></p>
 <p>As anticipated, the enriched region shows a higher phase fraction of TiN and NbC. It is interesting to note, that the precipitation of both the carbonitride phases occurs in 2 waves. The second burst of the precipitate results in the decrease of the mean radius value. AlN fraction is higher in the solute depleted region. This is due to the fact that the nitrogen supersaturation is higher there, as much less nitride precipitate is observed there. Lastly, some minor increase in the primary precipitate size was observed in the enriched region, due to the higher Ti concentration there.</p>
 <h1 id="consecutive-articles">Consecutive articles</h1>
 <p>none</p>

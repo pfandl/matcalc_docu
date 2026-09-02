@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pfandl.github.io/matcalc_docu/tutorials/t3/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
     <title>Stepped equilibrium calculations - MatCalc Documentation</title>
     <link rel="stylesheet" href="../../css/theme.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "Stepped equilibrium calculations";
         var mkdocs_page_input_path = "tutorials/t3.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_url = "/matcalc_docu/tutorials/t3/";
       </script>
     
     <!--[if lt IE 9]>
@@ -51,7 +51,7 @@
               <ul class="current">
                   <li class="toctree-l1 current"><a class="reference internal current" >Tutorials</a>
     <ul class="current">
-                <li class="toctree-l2"><a class="reference internal" href="../">MatCalc tutorial</a>
+                <li class="toctree-l2"><a class="reference internal" href="../">Tutorials</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
                 </li>
@@ -59,34 +59,6 @@
                 </li>
                 <li class="toctree-l2 current"><a class="reference internal current" href="#">Stepped equilibrium calculations</a>
     <ul class="current">
-    <li class="toctree-l3"><a class="reference internal" href="#complimentary-files">Complimentary files</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#contents">Contents</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#before-starting">Before starting...</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#stepped-equilibrium-calculation-with-varying-temperature">Stepped equilibrium calculation with varying temperature</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#running-the-stepped-calculation">Running the stepped calculation</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#output">Output</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#buffers">Buffers</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#stepped-equilibrium-calculation-with-varying-carbon-content">Stepped equilibrium calculation with varying carbon content</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#running-the-calculation">Running the calculation</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#edit-buffer-states">Edit buffer states</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#to-finish">To finish...</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#consecutive-articles">Consecutive articles</a>
-    </li>
     </ul>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../t4/">Graphical presentation and export of results</a>
@@ -134,13 +106,41 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="t3-stepped-equilibrium-calculations-matcalc-documentation">T3: Stepped equilibrium calculations [MatCalc Documentation]</h1>
+                <h3 id="table-of-contents">Table of Contents</h3>
+<ul>
+<li>
+<p><a href="#t3stepped_equilibrium_calculations">T3: Stepped equilibrium calculations</a></p>
+</li>
+<li>
+<p><a href="#complimentary_files">Complimentary files</a></p>
+</li>
+<li><a href="#contents">Contents</a></li>
+<li><a href="#before_starting">Before starting...</a></li>
+<li>
+<p><a href="#stepped_equilibrium_calculation_with_varying_temperature">Stepped equilibrium calculation with varying temperature</a></p>
+</li>
+<li>
+<p><a href="#running_the_stepped_calculation">Running the stepped calculation</a></p>
+</li>
+<li><a href="#output">Output</a></li>
+<li><a href="#buffers">Buffers</a></li>
+<li>
+<p><a href="#stepped_equilibrium_calculation_with_varying_carbon_content">Stepped equilibrium calculation with varying carbon content</a></p>
+</li>
+<li>
+<p><a href="#running_the_calculation">Running the calculation</a></p>
+</li>
+<li><a href="#edit_buffer_states">Edit buffer states</a></li>
+<li><a href="#to_finish">To finish...</a></li>
+<li><a href="#consecutive_articles">Consecutive articles</a></li>
+</ul>
+<h2 id="t3-stepped-equilibrium-calculations">T3: Stepped equilibrium calculations</h2>
 <p><em>This tutorial was tested on <br />
 MatCalc version 6.04 rel 1.001 <br />
 license: free <br />
 database: mc_fe.tdb</em></p>
 <h3 id="complimentary-files">Complimentary files</h3>
-<p>Click <a href="/tutorials/t3/script/t3_6021003.mcs" title="tutorials/t3/script/t3_6021003.mcs (5.5 KB)">here</a> to view the script for this tutorial.</p>
+<p>Click <a href="/matcalc_docu/tutorials/t3/script/t3_6021003.mcs" title="tutorials:t3:script:t3_6021003.mcs (5.5 KB)">here</a> to view the script for this tutorial.</p>
 <h3 id="contents">Contents</h3>
 <ul>
 <li>Re-opening a saved file and loading a calculation state</li>
@@ -151,18 +151,18 @@ database: mc_fe.tdb</em></p>
 <li>The “Edit buffer states” window</li>
 </ul>
 <h2 id="before-starting">Before starting...</h2>
-<p>Re-open the file saved from <a href="/tutorials/t2" title="tutorials/t2">Tutorial 2</a> and load the calculation state <strong>'Equil @ 600°C'</strong>.</p>
-<p><a href="/tutorials/t3/img/t3_file_open_6050006.png" title="tutorials/t3/img/t3_file_open_6050006.png"><img alt=" Open MatCalc workspace " src="/tutorials/t3/img/t3_file_open_6050006.png" title="Open MatCalc workspace" /></a></p>
-<p><a href="/tutorials/t3/img/t3_load_calc_state_6050006.png" title="tutorials/t3/img/t3_load_calc_state_6050006.png"><img alt=" Load calc state " src="/tutorials/t3/img/t3_load_calc_state_6050006.png" title="Load calc state" /></a></p>
+<p>Re-open the file saved from <a href="/matcalc_docu/tutorials/t2" title="tutorials:t2">Tutorial 2</a> and load the calculation state <strong>'Equil @ 600°C'</strong>.</p>
+<p><a href="/matcalc_docu/tutorials/t3/img/t3_file_open_6050006.png" title="tutorials:t3:img:t3_file_open_6050006.png"><img alt=" Open MatCalc workspace " src="/matcalc_docu/tutorials/t3/img/t3_file_open_6050006.png" title="Open MatCalc workspace" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t3/img/t3_load_calc_state_6050006.png" title="tutorials:t3:img:t3_load_calc_state_6050006.png"><img alt=" Load calc state " src="/matcalc_docu/tutorials/t3/img/t3_load_calc_state_6050006.png" title="Load calc state" /></a></p>
 <h2 id="stepped-equilibrium-calculation-with-varying-temperature">Stepped equilibrium calculation with varying temperature</h2>
 <h3 id="running-the-stepped-calculation">Running the stepped calculation</h3>
 <p>In phase status window, remove graphite phase.</p>
-<p><a href="/tutorials/t3/img/t3_remove_graphite_6050006.png" title="tutorials/t3/img/t3_remove_graphite_6050006.png"><img alt=" Remove graphite phase " src="/tutorials/t3/img/t3_remove_graphite_6050006.png" title="Remove graphite phase" /></a></p>
-<p>Select <strong>'Stepped calculation…'</strong> from the <strong>'Calc'</strong> menu or click on the <a href="/tutorials/t3/img/icon_calc_stepped.png" title="tutorials/t3/img/icon_calc_stepped.png"><img alt=" MatCalc stepped calculation" src="/tutorials/t3/img/icon_calc_stepped.png" title="MatCalc stepped calculation" /></a> icon.</p>
-<p><a href="/tutorials/t3/img/t3_global_stepped_calculation_6050006.png" title="tutorials/t3/img/t3_global_stepped_calculation_6050006.png"><img alt=" Open stepped calculation window " src="/tutorials/t3/img/t3_global_stepped_calculation_6050006.png" title="Open stepped calculation window" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t3/img/t3_remove_graphite_6050006.png" title="tutorials:t3:img:t3_remove_graphite_6050006.png"><img alt=" Remove graphite phase " src="/matcalc_docu/tutorials/t3/img/t3_remove_graphite_6050006.png" title="Remove graphite phase" /></a></p>
+<p>Select <strong>'Stepped calculation…'</strong> from the <strong>'Calc'</strong> menu or click on the <a href="/matcalc_docu/tutorials/t3/img/icon_calc_stepped.png" title="tutorials:t3:img:icon_calc_stepped.png"><img alt=" MatCalc stepped calculation" src="/matcalc_docu/tutorials/t3/img/icon_calc_stepped.png" title="MatCalc stepped calculation" /></a> icon.</p>
+<p><a href="/matcalc_docu/tutorials/t3/img/t3_global_stepped_calculation_6050006.png" title="tutorials:t3:img:t3_global_stepped_calculation_6050006.png"><img alt=" Open stepped calculation window " src="/matcalc_docu/tutorials/t3/img/t3_global_stepped_calculation_6050006.png" title="Open stepped calculation window" /></a></p>
 <p>The <strong>'Step equilibrium'</strong> window will appear. Select <strong>'Temperature'</strong> (the uppermost choice in the left-hand column). <br />
 In the <strong>'Range'</strong> box, the default <strong>'Start'</strong>, <strong>'Stop'</strong> and <strong>'Step interval'</strong> values are 400, 1600 and 25 respectively. Keep these values and verify that the <strong>'Temperatures in Celsius'</strong> option has been selected. The step direction is unimportant, and it is not necessary to enter the interval as <strong>'-25'</strong> if stepping in a negative direction. The contents of the <strong>'Vary'</strong> and <strong>'Boundary conditions'</strong> boxes are currently greyed-out because they are not applicable to a temperature-step calculation. Click on the <strong>'Go'</strong> button at the bottom right of the window.</p>
-<p><a href="/tutorials/t3/img/t3_step_equilibrium_6050006.png" title="tutorials/t3/img/t3_step_equilibrium_6050006.png"><img alt=" MatCalc step equilibrium" src="/tutorials/t3/img/t3_step_equilibrium_6050006.png" title="MatCalc step equilibrium" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t3/img/t3_step_equilibrium_6050006.png" title="tutorials:t3:img:t3_step_equilibrium_6050006.png"><img alt=" MatCalc step equilibrium" src="/matcalc_docu/tutorials/t3/img/t3_step_equilibrium_6050006.png" title="MatCalc step equilibrium" /></a></p>
 <h3 id="output">Output</h3>
 <p>The <strong>'console'</strong> window should show the following series of messages:</p>
 <pre><code>1, 0,00 s, 600,00 C (873,15 K), its 2,  BCC_A2 CEMENTITE - OK -
@@ -235,19 +235,19 @@ The contents of the <strong>'Phase summary'</strong> and <strong>'Phase details'
 <h3 id="buffers">Buffers</h3>
 <p>All the equilibria listed above are stored in a buffer. In other words, a buffer is a collection of calculation states, with each calculation state created at a different temperature. The default buffer is named <strong>'_default_'</strong>, and its contents are overwritten when a new stepped calculation is carried out. <br />
 To be able to keep more than one set of stepped equilibria, additional buffers must be created. Firstly, rename the existing default buffer using <strong>'Global &gt; Buffers &gt; Rename'</strong>. Type <strong>'T=400 to 1600°C'</strong> into the <strong>'New buffer name'</strong> box and click <strong>'OK'</strong>.</p>
-<p><a href="/tutorials/t3/img/t3_global_rename_buffer_6050006.png" title="tutorials/t3/img/t3_global_rename_buffer_6050006.png"><img alt=" Open rename buffer window" src="/tutorials/t3/img/t3_global_rename_buffer_6050006.png" title="Open rename buffer window" /></a></p>
-<p><a href="/tutorials/t3/img/t3_rename_buffer_6050006.png" title="tutorials/t3/img/t3_rename_buffer_6050006.png"><img alt=" Rename buffer window" src="/tutorials/t3/img/t3_rename_buffer_6050006.png" title="Rename buffer window" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t3/img/t3_global_rename_buffer_6050006.png" title="tutorials:t3:img:t3_global_rename_buffer_6050006.png"><img alt=" Open rename buffer window" src="/matcalc_docu/tutorials/t3/img/t3_global_rename_buffer_6050006.png" title="Open rename buffer window" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t3/img/t3_rename_buffer_6050006.png" title="tutorials:t3:img:t3_rename_buffer_6050006.png"><img alt=" Rename buffer window" src="/matcalc_docu/tutorials/t3/img/t3_rename_buffer_6050006.png" title="Rename buffer window" /></a></p>
 <p>Then, create a new buffer using <strong>'Global &gt; Buffers &gt; Create'</strong>.</p>
-<p><a href="/tutorials/t3/img/t3_global_create_buffer_6050006.png" title="tutorials/t3/img/t3_global_create_buffer_6050006.png"><img alt=" Open create buffer window" src="/tutorials/t3/img/t3_global_create_buffer_6050006.png" title="Open create buffer window" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t3/img/t3_global_create_buffer_6050006.png" title="tutorials:t3:img:t3_global_create_buffer_6050006.png"><img alt=" Open create buffer window" src="/matcalc_docu/tutorials/t3/img/t3_global_create_buffer_6050006.png" title="Open create buffer window" /></a></p>
 <p>This new buffer will contain the results from a new stepped equilibrium calculation in which the carbon content is varied from 0 to 1.5 wt.% at 500°C, so enter the name <strong>'C=0 to 1.5 at 500°C'</strong>.</p>
-<p><a href="/tutorials/t3/img/t3_create_buffer_name_6050006.png" title="tutorials/t3/img/t3_create_buffer_name_6050006.png"><img alt=" Create buffer window" src="/tutorials/t3/img/t3_create_buffer_name_6050006.png" title="Create buffer window" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t3/img/t3_create_buffer_name_6050006.png" title="tutorials:t3:img:t3_create_buffer_name_6050006.png"><img alt=" Create buffer window" src="/matcalc_docu/tutorials/t3/img/t3_create_buffer_name_6050006.png" title="Create buffer window" /></a></p>
 <p>Note that buffers can be selected from the drop-box in the toolbar area or using 'Global &gt; Buffers &gt; Select'.</p>
-<p><a href="/tutorials/t3/img/t3_buffer_toolbox_2016.png" title="tutorials/t3/img/t3_buffer_toolbox_2016.png"><img alt=" MatCalc buffer toolbox" src="/tutorials/t3/img/t3_buffer_toolbox_2016.png" title="MatCalc buffer toolbox" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t3/img/t3_buffer_toolbox_2016.png" title="tutorials:t3:img:t3_buffer_toolbox_2016.png"><img alt=" MatCalc buffer toolbox" src="/matcalc_docu/tutorials/t3/img/t3_buffer_toolbox_2016.png" title="MatCalc buffer toolbox" /></a></p>
 <h2 id="stepped-equilibrium-calculation-with-varying-carbon-content">Stepped equilibrium calculation with varying carbon content</h2>
 <h3 id="running-the-calculation">Running the calculation</h3>
 <p>Calculate an equilibrium at 500°C. Open the <strong>'Step equilibrium'</strong> window again, but this time select <strong>'Element content'</strong> instead of <strong>'Temperature'</strong> in the <strong>'Type'</strong> box. Enter <strong>'0'</strong>, <strong>'1.5'</strong> and <strong>'0.05'</strong> respectively as the start, stop and step interval values. (Note that, as shown in the image below, MatCalc accepts either a decimal point or a comma as the decimal separator.)
 In the <strong>'Boundary conditions'</strong> box, ensure that the element selected is <strong>'C'</strong>, and enter the temperature as <strong>'500'</strong>. Ensure that in the <strong>'vary'</strong> box, <strong>'global comp'</strong> is selected, and that in the <strong>'Options'</strong> column, <strong>'Temperatures in Celsius'</strong> and <strong>'Composition in weight percent'</strong> are both selected, then click on <strong>'Go'</strong>.</p>
-<p><a href="/tutorials/t3/img/t3_step_equilibrium_element_6050006.png" title="tutorials/t3/img/t3_step_equilibrium_element_6050006.png"><img alt=" MatCalc step equilibrium" src="/tutorials/t3/img/t3_step_equilibrium_element_6050006.png" title="MatCalc step equilibrium" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t3/img/t3_step_equilibrium_element_6050006.png" title="tutorials:t3:img:t3_step_equilibrium_element_6050006.png"><img alt=" MatCalc step equilibrium" src="/matcalc_docu/tutorials/t3/img/t3_step_equilibrium_element_6050006.png" title="MatCalc step equilibrium" /></a></p>
 <p>The contents of the <strong>'console'</strong> window should appear as follows:</p>
 <pre><code>1, 0,00 s, 0,4, its 9,  BCC_A2 CEMENTITE - OK -
 2, 0,00 s, 0,45, its 2,  BCC_A2 CEMENTITE - OK -
@@ -288,11 +288,11 @@ Steps: 32, CalcTime: 0,07 s
 AktStepVal: 0,000000
 - OK -
 </code></pre>
-<p>Similarly to the temperature-step calculation, the output consists of a series of equilibria evaluated at the specified step-values. The first of these corresponds to the carbon content of 0.4 wt.% entered in the <strong>'System composition'</strong> box in  <a href="/tutorials/t2" title="tutorials/t2">Tutorial 2</a>. The carbon content is then increased in 0.05 wt.% steps up to the maximum value of 1.5 wt.%. The 'Changing step direction' line marks the beginning of the second set of equilibria, in which the carbon content is decreased.
+<p>Similarly to the temperature-step calculation, the output consists of a series of equilibria evaluated at the specified step-values. The first of these corresponds to the carbon content of 0.4 wt.% entered in the <strong>'System composition'</strong> box in  <a href="/matcalc_docu/tutorials/t2" title="tutorials:t2">Tutorial 2</a>. The carbon content is then increased in 0.05 wt.% steps up to the maximum value of 1.5 wt.%. The 'Changing step direction' line marks the beginning of the second set of equilibria, in which the carbon content is decreased.
 At 500°C, the stable phases are BCC_A2 and CEMENTITE across almost the whole composition range, but between the final two equilibria there is a line beginning with <strong>'Xsol'</strong>. The line below this gives the carbon content at which cementite becomes unstable, both in mole fraction <strong>'X(C)'</strong> and in weight percent <strong>'WP(C)'</strong>.<br />
 Create a third buffer named <strong>'C=0 to 1.5 at 800°C'</strong> and perform a stepped calculation with the same composition range but at a temperature of 800°C.</p>
-<p><a href="/tutorials/t3/img/t3_create_third_buffer_name_6050006.png" title="tutorials/t3/img/t3_create_third_buffer_name_6050006.png"><img alt=" Create buffer window" src="/tutorials/t3/img/t3_create_third_buffer_name_6050006.png" title="Create buffer window" /></a></p>
-<p><a href="/tutorials/t3/img/t3_step_equilibrium_element_800_6050006.png" title="tutorials/t3/img/t3_step_equilibrium_element_800_6050006.png"><img alt=" MatCalc step equilibrium" src="/tutorials/t3/img/t3_step_equilibrium_element_800_6050006.png" title="MatCalc step equilibrium" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t3/img/t3_create_third_buffer_name_6050006.png" title="tutorials:t3:img:t3_create_third_buffer_name_6050006.png"><img alt=" Create buffer window" src="/matcalc_docu/tutorials/t3/img/t3_create_third_buffer_name_6050006.png" title="Create buffer window" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t3/img/t3_step_equilibrium_element_800_6050006.png" title="tutorials:t3:img:t3_step_equilibrium_element_800_6050006.png"><img alt=" MatCalc step equilibrium" src="/matcalc_docu/tutorials/t3/img/t3_step_equilibrium_element_800_6050006.png" title="MatCalc step equilibrium" /></a></p>
 <p>The output in this case includes three <strong>'Xsol'</strong> lines, corresponding to changes in phase stability:</p>
 <pre><code>1, 0,00 s, 0,4, its 23,  FCC_A1 - OK -
 2, 0,00 s, 0,45, its 3,  FCC_A1 - OK -
@@ -341,15 +341,15 @@ AktStepVal: 0,000000
 </code></pre>
 <h3 id="edit-buffer-states">Edit buffer states</h3>
 <p>The <strong>'console'</strong> window provides information on which phases are stable at a given temperature and carbon content, but not on the phase fractions or compositions. However, this detailed information is stored in the buffers and can be found by selecting <strong>'Global &gt; Buffers &gt; Edit buffer states'</strong>.</p>
-<p><a href="/tutorials/t3/img/t3_global_edit_buffer_states_6050006.png" title="tutorials/t3/img/t3_global_edit_buffer_states_6050006.png"><img alt=" Open edit and load buffer states window" src="/tutorials/t3/img/t3_global_edit_buffer_states_6050006.png" title="Open edit and load buffer states window" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t3/img/t3_global_edit_buffer_states_6050006.png" title="tutorials:t3:img:t3_global_edit_buffer_states_6050006.png"><img alt=" Open edit and load buffer states window" src="/matcalc_docu/tutorials/t3/img/t3_global_edit_buffer_states_6050006.png" title="Open edit and load buffer states window" /></a></p>
 <p>A new window appears with the list of the calc states stored in the buffer. The upper part of the <strong>'step value…'</strong> area contains a drop-box for selecting a buffer, and the lower part gives a list of the step-values at which equilibria have been evaluated. These are either temperature or carbon content values, depending on the buffer chosen, and their units are those specified in the <strong>'Step equilibrium'</strong> window when setting up the calculation. The <strong>'Tsol'</strong> or <strong>'Xsol'</strong> values are also stored. If the <strong>'auto load'</strong> box at the bottom left is ticked, clicking on a step-value loads the equilibrium, and the contents of the <strong>'Phase summary'</strong> and <strong>'Phase details'</strong> are immediately updated with phase fraction and composition details for this equilibrium.</p>
-<p><a href="/tutorials/t3/img/t3_edit_and_load_buffer_states_6001000.png" title="tutorials/t3/img/t3_edit_and_load_buffer_states_6001000.png"><img alt=" MatCalc edit and load buffer states" src="/tutorials/t3/img/t3_edit_and_load_buffer_states_6001000.png" title="MatCalc edit and load buffer states" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t3/img/t3_edit_and_load_buffer_states_6001000.png" title="tutorials:t3:img:t3_edit_and_load_buffer_states_6001000.png"><img alt=" MatCalc edit and load buffer states" src="/matcalc_docu/tutorials/t3/img/t3_edit_and_load_buffer_states_6001000.png" title="MatCalc edit and load buffer states" /></a></p>
 <p>The next two tutorials demonstrate how to produce graphical plots of phase fractions, compositions and many other quantities as a function of the stepped variable.</p>
 <h2 id="to-finish">To finish...</h2>
-<p>Save the workspace file - it will be needed again in  <a href="/tutorials/t4" title="tutorials/t4">Tutorial 4</a>.</p>
+<p>Save the workspace file - it will be needed again in  <a href="/matcalc_docu/tutorials/t4" title="tutorials:t4">Tutorial 4</a>.</p>
 <h2 id="consecutive-articles">Consecutive articles</h2>
-<p>The tutorial is continued in article  <a href="/tutorials/t4" title="tutorials/t4">T4 - Graphical presentation and export of results</a></p>
-<p>Go to <a href="/tutorials" title="tutorials">MatCalc tutorial index</a>.</p>
+<p>The tutorial is continued in article  <a href="/matcalc_docu/tutorials/t4" title="tutorials:t4">T4 - Graphical presentation and export of results</a></p>
+<p>Go to <a href="/matcalc_docu/tutorials" title="tutorials">MatCalc tutorial index</a>.</p>
 <p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=tutorials%3At3&amp;1788352858" /></p>
               
             </div>

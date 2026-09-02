@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pfandl.github.io/matcalc_docu/tutorials/t7/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
     <title>T7 - MatCalc Documentation</title>
     <link rel="stylesheet" href="../../css/theme.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "T7";
         var mkdocs_page_input_path = "tutorials/t7.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_url = "/matcalc_docu/tutorials/t7/";
       </script>
     
     <!--[if lt IE 9]>
@@ -51,7 +51,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../">MatCalc tutorial</a>
+                <li class="toctree-l2"><a class="reference internal" href="../">Tutorials</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
                 </li>
@@ -130,7 +130,7 @@ MatCalc version 6.04 rel 1.001<br />
 license: free<br />
 database: mc_fe.tdb</em></p>
 <h3 id="complimentary-files">Complimentary files</h3>
-<p>Click <a href="/tutorials/t7/script/t7_6021003.mcs" title="tutorials/t7/script/t7_6021003.mcs (11.8 KB)">here</a> to view the script for this tutorial.</p>
+<p>Click <a href="/matcalc_docu/tutorials/t7/script/t7_6021003.mcs" title="tutorials:t7:script:t7_6021003.mcs (11.8 KB)">here</a> to view the script for this tutorial.</p>
 <h3 id="contents">Contents</h3>
 <ul>
 <li>Using “Search phase boundary” with temperature variation to determine solidus and liquidus</li>
@@ -138,9 +138,9 @@ database: mc_fe.tdb</em></p>
 <li>Finding phase boundaries for carbide phases in terms of temperature and element content</li>
 <li>Tracing a phase boundary on axes of temperature versus element content</li>
 </ul>
-<p>It was seen in  <a href="/tutorials/t3" title="tutorials/t3">Tutorial 3</a> that MatCalc evaluates solubility temperatures (Tsol) or compositions (Xsol) during the course of stepped equilibrium calculations. It is also possible to calculate these individually using the <strong>'Search phase boundary'</strong> function.</p>
+<p>It was seen in  <a href="/matcalc_docu/tutorials/t3" title="tutorials:t3">Tutorial 3</a> that MatCalc evaluates solubility temperatures (Tsol) or compositions (Xsol) during the course of stepped equilibrium calculations. It is also possible to calculate these individually using the <strong>'Search phase boundary'</strong> function.</p>
 <h2 id="setting-up-the-system">Setting up the system</h2>
-<p>Create a new workspace file and set up the system with elements <strong>Fe</strong>, <strong>C</strong> and <strong>Nb</strong> and phases <strong>FCC_A1</strong>, <strong>BCC_A2</strong>, <strong>LIQUID</strong> and <strong>CEMENTITE</strong>. Enter the composition as <strong>0.1 wt.%C</strong>, <strong>0.3 wt.% Nb</strong> and calculate an equilibrium at 1000°C (Refer to  <a href="/tutorials/t1" title="tutorials/t1">Tutorial 1</a> and  <a href="/tutorials/t2" title="tutorials/t2">Tutorial 2</a> if necessary.)</p>
+<p>Create a new workspace file and set up the system with elements <strong>Fe</strong>, <strong>C</strong> and <strong>Nb</strong> and phases <strong>FCC_A1</strong>, <strong>BCC_A2</strong>, <strong>LIQUID</strong> and <strong>CEMENTITE</strong>. Enter the composition as <strong>0.1 wt.%C</strong>, <strong>0.3 wt.% Nb</strong> and calculate an equilibrium at 1000°C (Refer to  <a href="/matcalc_docu/tutorials/t1" title="tutorials:t1">Tutorial 1</a> and  <a href="/matcalc_docu/tutorials/t2" title="tutorials:t2">Tutorial 2</a> if necessary.)</p>
 <p>Note the results in the <strong>'Phase details'</strong> window. A second FCC_A1 phase with the name <strong>'FCC_A1#01'</strong> has automatically been created, and examination of its composition shows that its approximate formula is NbC.</p>
 <pre><code>#### /FCC_A1/ moles: 0,996502, gm: -62324,3 (-62324,3)
 Phasestatus: entered - active
@@ -169,11 +169,11 @@ FE +7,49088e-001   C +2,50000e-001  NB +9,11880e-004
 <pre><code>ADD_COMPOSITION_SET FCC_A1 :TI,NB,V:C,N: !
 </code></pre>
 <p>This creates that a <strong>new phase of type FCC_A1</strong> with Ti, Nb or V as the major constituents on the first sublattice and C or N as the major constituents on the second when the system contains these elements. The <strong>'General'</strong> tab in the <strong>'Phase status'</strong> box (<strong>'Global &gt; Phase status'</strong>) shows the major constituents for each phase, :FE:VA: and :NB:C: respectively for FCC_A1 and FCC_A1#01.</p>
-<p><a href="/tutorials/t7/img/t7_major_constituents_6011003.png" title="tutorials/t7/img/t7_major_constituents_6011003.png"><img alt=" Major constituents of FCC_A1#01" src="/tutorials/t7/img/t7_major_constituents_6011003.png" title="Major constituents of FCC_A1#01" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t7/img/t7_major_constituents_6011003.png" title="tutorials:t7:img:t7_major_constituents_6011003.png"><img alt=" Major constituents of FCC_A1#01" src="/matcalc_docu/tutorials/t7/img/t7_major_constituents_6011003.png" title="Major constituents of FCC_A1#01" /></a></p>
 <h2 id="calculating-phase-boundaries">Calculating phase boundaries</h2>
 <h3 id="solidus-and-liquidus-temperatures">Solidus and liquidus temperatures</h3>
-<p>The solidus temperature is defined by zero phase fraction of liquid. To calculate this, choose <strong>'Search phase boundary'</strong> from the <strong>'Calc'</strong> menu or click on the <a href="/tutorials/t7/img/search_phase_boundary.png" title="tutorials/t7/img/search_phase_boundary.png"><img alt=" MatCalc icon" src="/tutorials/t7/img/search_phase_boundary.png" title="MatCalc icon" /></a> icon. The box below appears. Select <strong>'Temperature'</strong> in the left-hand column and <strong>'LIQUID'</strong> in the <strong>'Target phase'</strong> column, then click on <strong>'Go'</strong>.</p>
-<p><a href="/tutorials/t7/img/t7_search_phase_boundary_2016.png" title="tutorials/t7/img/t7_search_phase_boundary_2016.png"><img alt=" MatCalc search phase boundary" src="/tutorials/t7/img/t7_search_phase_boundary_2016.png" title="MatCalc search phase boundary" /></a></p>
+<p>The solidus temperature is defined by zero phase fraction of liquid. To calculate this, choose <strong>'Search phase boundary'</strong> from the <strong>'Calc'</strong> menu or click on the <a href="/matcalc_docu/tutorials/t7/img/search_phase_boundary.png" title="tutorials:t7:img:search_phase_boundary.png"><img alt=" MatCalc icon" src="/matcalc_docu/tutorials/t7/img/search_phase_boundary.png" title="MatCalc icon" /></a> icon. The box below appears. Select <strong>'Temperature'</strong> in the left-hand column and <strong>'LIQUID'</strong> in the <strong>'Target phase'</strong> column, then click on <strong>'Go'</strong>.</p>
+<p><a href="/matcalc_docu/tutorials/t7/img/t7_search_phase_boundary_2016.png" title="tutorials:t7:img:t7_search_phase_boundary_2016.png"><img alt=" MatCalc search phase boundary" src="/matcalc_docu/tutorials/t7/img/t7_search_phase_boundary_2016.png" title="MatCalc search phase boundary" /></a></p>
 <p>The following message appears in the console window.</p>
 <pre><code>Tsol 'LIQUID': 1478,08 C (1751,24 K) iter: 15, time used: 0,03 s
 </code></pre>
@@ -186,7 +186,7 @@ The liquidus phase can be easily found if an equilibrium calculation in the liqu
 </code></pre>
 <p><strong>In general, the correct phase boundaries are found if the initial equilibrium describes the system in the neighbouring phase field which does not contain the searched phase</strong> - in the case presented above, the liquidus temperature (which is phase boundary of 'BCC_A2') was found from the 'LIQUID' phase field. Also, the algorithm used to search for phase boundaries might fail to converge if the starting point is too far away from the boundary.</p>
 <h3 id="austenite-ferrite-transformation-temperatures">Austenite-ferrite transformation temperatures</h3>
-<p>Low-alloy steels undergo a ferrite - austenite phase transformation between 700 and 800°C (see, for example,  <a href="/tutorials/t4" title="tutorials/t4">Tutorial 4</a>). To find the exact temperatures of the transformation in the Fe-0.1wt.%C-0.3wt.%Nb system, calculate an equilibrium at 700°C and use again <strong>'Search phase boundary'</strong>. Select <strong>'FCC_A1'</strong> as a target phase to identify the zero-phase boundary temperature for austenite.</p>
+<p>Low-alloy steels undergo a ferrite - austenite phase transformation between 700 and 800°C (see, for example,  <a href="/matcalc_docu/tutorials/t4" title="tutorials:t4">Tutorial 4</a>). To find the exact temperatures of the transformation in the Fe-0.1wt.%C-0.3wt.%Nb system, calculate an equilibrium at 700°C and use again <strong>'Search phase boundary'</strong>. Select <strong>'FCC_A1'</strong> as a target phase to identify the zero-phase boundary temperature for austenite.</p>
 <pre><code>Tsol 'FCC_A1': 726.53 C (999.68 K) iter: 5, time used: 0.02 s
 </code></pre>
 <p>The zero-phase boundary of BCC_A2 for this transformation can be identified by calculating an equilibrium at 900°C and then searching for the boundary.</p>
@@ -201,14 +201,14 @@ The liquidus phase can be easily found if an equilibrium calculation in the liqu
 </code></pre>
 <h3 id="element-content-for-zero-phase-fractions">Element content for zero-phase fractions</h3>
 <p>Phase boundaries can also be found in terms of element content at a fixed temperature. To illustrate this, the zero-phase boundary of cementite at 700°C will be evaluated in terms of carbon content. Calculate an equilibrium at 700°C, then open the <strong>'Search phase boundary'</strong> box and select <strong>'Element content'</strong> in the left-hand column. Set the target phase to <strong>'CEMENTITE'</strong>, the element to be varied to <strong>'C'</strong>, and the temperature to <strong>'700'</strong>, then click <strong>'Go'</strong>.</p>
-<p><a href="/tutorials/t7/img/t7_search_phase_boundary_2_2016.png" title="tutorials/t7/img/t7_search_phase_boundary_2_2016.png"><img alt=" MatCalc search phase boundary" src="/tutorials/t7/img/t7_search_phase_boundary_2_2016.png" title="MatCalc search phase boundary" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t7/img/t7_search_phase_boundary_2_2016.png" title="tutorials:t7:img:t7_search_phase_boundary_2_2016.png"><img alt=" MatCalc search phase boundary" src="/matcalc_docu/tutorials/t7/img/t7_search_phase_boundary_2_2016.png" title="MatCalc search phase boundary" /></a></p>
 <p>The output gives the carbon content for zero phase fraction of cementite in mole fraction and in weight percent.</p>
 <pre><code>iter: 2, time used: 0,03 s, GibbsEnergy: -40689,85 J
 X(C): 0,0024753954, WP(C): 0,053278076, T:  700 C (973,15 K) - OK -
 </code></pre>
 <p><strong>Note: After the search for the phase boundary with element content variation, the composition of the system is changed to the found value! (check 'Global &gt; Composition')</strong></p>
 <p>In the same way, the zero phase fraction boundary for niobium carbide at 1000°C can be evaluated in terms of the niobium content. Firstly, open <strong>'Global &gt; Composition'</strong> and reset the carbon content to <strong>0.1 wt.%</strong>. Calculate an equilibrium at <strong>1000°C</strong>, then search for the phase boundary for <strong>'FCC_A1#01'</strong>, this time setting the element to be varied to <strong>'Nb'</strong>.</p>
-<p><a href="/tutorials/t7/img/t7_search_phase_boundary_3_2016.png" title="tutorials/t7/img/t7_search_phase_boundary_3_2016.png"><img alt=" MatCalc search phase boundary" src="/tutorials/t7/img/t7_search_phase_boundary_3_2016.png" title="MatCalc search phase boundary" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t7/img/t7_search_phase_boundary_3_2016.png" title="tutorials:t7:img:t7_search_phase_boundary_3_2016.png"><img alt=" MatCalc search phase boundary" src="/matcalc_docu/tutorials/t7/img/t7_search_phase_boundary_3_2016.png" title="MatCalc search phase boundary" /></a></p>
 <p>The output in the console shows the Nb content above which the carbide phase is thermodynamically stable.</p>
 <pre><code>iter: 7, time used: 0,03 s, GibbsEnergy: -62313,505 J
 X(NB): 1,7312596e-005, WP(NB): 0,0028905809, T: 1000 C (1273,15 K) - OK -
@@ -216,16 +216,16 @@ X(NB): 1,7312596e-005, WP(NB): 0,0028905809, T: 1000 C (1273,15 K) - OK -
 <h3 id="tracing-phase-boundaries">Tracing phase boundaries</h3>
 <p>Once a point on a phase boundary has been identified using the process described above, the boundary can be traced as a function of element content. In the following example, the effect of the niobium content on the temperature of the FCC_A1#01 (NbC) zero-phase boundary will be calculated.<br />
 Having established the zero phase fraction boundary for niobium carbde at 1000°C, open the <strong>'Step equilibrium'</strong> window using <strong>'Calc &gt; Stepped calculation'</strong> and select <strong>'Phase boundary'</strong> from the left-hand column.<br />
-In the <strong>'Boundary conditions'</strong> box, set the element to <strong>'Nb'</strong>, the target phase to <strong>'FCC_A1#01'</strong> and the max. T-step to <strong>'100'</strong>. (The use of this parameter will be discussed in  <a href="/tutorials/t8" title="tutorials/t8">Tutorial 8</a>) Enter <strong>'0.01'</strong>, <strong>'0.35'</strong> and <strong>'0.01'</strong> as the start, stop and step interval values in the <strong>'Range'</strong> box. Click on <strong>'Go'</strong> to perform the calculation</p>
-<p><a href="/tutorials/t7/img/t7_step_equilibrium_2016.png" title="tutorials/t7/img/t7_step_equilibrium_2016.png"><img alt=" MatCalc step equilibrium" src="/tutorials/t7/img/t7_step_equilibrium_2016.png" title="MatCalc step equilibrium" /></a></p>
-<p>Create a new X-Y plot window (<a href="/tutorials/t4" title="tutorials/t4">Tutorial 4</a>) and drag and drop <strong>'T$c'</strong> (from <strong>'favorites'</strong> category in variables window) into it. The plot should look like this:</p>
-<p><a href="/tutorials/t7/img/t7_plot_phase_boundary_nbc_first_2016.png" title="tutorials/t7/img/t7_plot_phase_boundary_nbc_first_2016.png"><img alt=" MatCalc plot" src="/tutorials/t7/img/t7_plot_phase_boundary_nbc_first_2016.png" title="MatCalc plot" /></a></p>
-<p>Right-click in the plot window outside the plot area and choose <strong>'Duplicate and lock series'</strong> from the window (see  <a href="/tutorials/t5" title="tutorials/t5">Tutorial 5</a>). Double-click on the name of the series to duplicate it. In the <strong>'Options'</strong> window, change the name of the original series (<strong>'*_T$c'</strong>) to <strong>'0.1 wt.%C'</strong>.<br />
+In the <strong>'Boundary conditions'</strong> box, set the element to <strong>'Nb'</strong>, the target phase to <strong>'FCC_A1#01'</strong> and the max. T-step to <strong>'100'</strong>. (The use of this parameter will be discussed in  <a href="/matcalc_docu/tutorials/t8" title="tutorials:t8">Tutorial 8</a>) Enter <strong>'0.01'</strong>, <strong>'0.35'</strong> and <strong>'0.01'</strong> as the start, stop and step interval values in the <strong>'Range'</strong> box. Click on <strong>'Go'</strong> to perform the calculation</p>
+<p><a href="/matcalc_docu/tutorials/t7/img/t7_step_equilibrium_2016.png" title="tutorials:t7:img:t7_step_equilibrium_2016.png"><img alt=" MatCalc step equilibrium" src="/matcalc_docu/tutorials/t7/img/t7_step_equilibrium_2016.png" title="MatCalc step equilibrium" /></a></p>
+<p>Create a new X-Y plot window (<a href="/matcalc_docu/tutorials/t4" title="tutorials:t4">Tutorial 4</a>) and drag and drop <strong>'T$c'</strong> (from <strong>'favorites'</strong> category in variables window) into it. The plot should look like this:</p>
+<p><a href="/matcalc_docu/tutorials/t7/img/t7_plot_phase_boundary_nbc_first_2016.png" title="tutorials:t7:img:t7_plot_phase_boundary_nbc_first_2016.png"><img alt=" MatCalc plot" src="/matcalc_docu/tutorials/t7/img/t7_plot_phase_boundary_nbc_first_2016.png" title="MatCalc plot" /></a></p>
+<p>Right-click in the plot window outside the plot area and choose <strong>'Duplicate and lock series'</strong> from the window (see  <a href="/matcalc_docu/tutorials/t5" title="tutorials:t5">Tutorial 5</a>). Double-click on the name of the series to duplicate it. In the <strong>'Options'</strong> window, change the name of the original series (<strong>'*_T$c'</strong>) to <strong>'0.1 wt.%C'</strong>.<br />
 Change the carbon content of the system to 0.05 wt.% C, calculate an equilibrium at 1000°C and search again for the same phase boundary, then make a stepped calculation using the same conditions as before. The phase boundary for 0.05 wt.% C should follow the green curve in the plot below, which also shows the same phase boundary for 0.01 wt.%C - as an exercise you can try to format the plot as shown below.</p>
-<p><a href="/tutorials/t7/img/t7_plot_phase_boundary_nbc_2016.png" title="tutorials/t7/img/t7_plot_phase_boundary_nbc_2016.png"><img alt=" MatCalc plot" src="/tutorials/t7/img/t7_plot_phase_boundary_nbc_2016.png" title="MatCalc plot" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t7/img/t7_plot_phase_boundary_nbc_2016.png" title="tutorials:t7:img:t7_plot_phase_boundary_nbc_2016.png"><img alt=" MatCalc plot" src="/matcalc_docu/tutorials/t7/img/t7_plot_phase_boundary_nbc_2016.png" title="MatCalc plot" /></a></p>
 <h2 id="consecutive-articles">Consecutive articles</h2>
-<p>The tutorial is continued in article  <a href="/tutorials/t8" title="tutorials/t8">T8 - Calculating a phase diagram in a binary system</a></p>
-<p>Go to <a href="/tutorials" title="tutorials">MatCalc tutorial index</a>.</p>
+<p>The tutorial is continued in article  <a href="/matcalc_docu/tutorials/t8" title="tutorials:t8">T8 - Calculating a phase diagram in a binary system</a></p>
+<p>Go to <a href="/matcalc_docu/tutorials" title="tutorials">MatCalc tutorial index</a>.</p>
 <p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=tutorials%3At7&amp;1788352858" /></p>
               
             </div>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pfandl.github.io/matcalc_docu/techpapers/precipitation/diffusion/" />
       <link rel="shortcut icon" href="../../../img/favicon.ico" />
     <title>Diffusion - MatCalc Documentation</title>
     <link rel="stylesheet" href="../../../css/theme.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "Diffusion";
         var mkdocs_page_input_path = "techpapers/precipitation/diffusion.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_url = "/matcalc_docu/techpapers/precipitation/diffusion/";
       </script>
     
     <!--[if lt IE 9]>
@@ -51,7 +51,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">MatCalc tutorial</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">Tutorials</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
                 </li>
@@ -148,8 +148,8 @@ Revisions:</p>
 <p>In this paper, the implementation of diffusion during heterogenous precipitation in the <em>MatCalc</em> precipitation kinetics framework is discussed.</p>
 <h2 id="related-documents">Related documents</h2>
 <ol>
-<li><a href="/techpapers/nucleation/het_nucl_sites" title="techpapers/nucleation/het_nucl_sites">Heterogenous nucleation</a></li>
-<li><a href="/techpapers/precipitation/excess_va" title="techpapers/precipitation/excess_va">Excess vacancies</a></li>
+<li><a href="/matcalc_docu/techpapers/nucleation/het_nucl_sites" title="techpapers:nucleation:het_nucl_sites">Heterogenous nucleation</a></li>
+<li><a href="/matcalc_docu/techpapers/precipitation/excess_va" title="techpapers:precipitation:excess_va">Excess vacancies</a></li>
 </ol>
 <h1 id="main-document">Main document</h1>
 <h2 id="diffusion-in-the-undisturbed-crystal">Diffusion in the undisturbed crystal</h2>
@@ -236,7 +236,7 @@ Revisions:</p>
 <p>For <strong>predictive simulations</strong> in deformed metals and/or martensitic or bainitic microstructures, it is absolutely necessary to <strong>account for the influence of pipe diffusion</strong>! This effect often accelerates the precipitation kinetics by several orders of magnitude.</p>
 <h2 id="diffusion-along-grain-boundaries">Diffusion along grain boundaries</h2>
 <p>In <em>MatCalc</em>, grain boundaries are assumed to be high-angle boundaries, which provide a network of two-dimensional high-speed diffusion paths. In contrast to the pipe diffusion effect, the influence of grain boundary diffusion is <em>not</em> explicitely taken into account as a prefactor to the tracer diffusion coefficient. Instead, the influence of grain boundary diffusion on the overall precipitation kinetics must be included manually. See the corresponding section below.</p>
-<p>The grain boundary diffusion coefficient is, however, used in the kinetic framework for grain boundary precipitation<a href="#fn__2">2)</a>. The grain boundary diffusivity is explicitely integrated in the evolution equations and must be correctly set, if this type of precipitation geometry is used. For the correct definition of grain boundary nucleation and growth see also the technical paper on  <a href="/techpapers/nucleation/het_nucl_sites" title="techpapers/nucleation/het_nucl_sites">Heterogenous nucleation</a>.</p>
+<p>The grain boundary diffusion coefficient is, however, used in the kinetic framework for grain boundary precipitation<a href="#fn__2">2)</a>. The grain boundary diffusivity is explicitely integrated in the evolution equations and must be correctly set, if this type of precipitation geometry is used. For the correct definition of grain boundary nucleation and growth see also the technical paper on  <a href="/matcalc_docu/techpapers/nucleation/het_nucl_sites" title="techpapers:nucleation:het_nucl_sites">Heterogenous nucleation</a>.</p>
 <h3 id="recommended-values-for-the-grain-boundary-diffusivity">Recommended values for the grain boundary diffusivity</h3>
 <p>In the treatment of grain boundary precipitation, the grain boundary diffusivity <span class="arithmatex">\(D\_{gi}\)</span> is a key parameter. In MatCalc, the grain boundary diffusivity is coupled to the bulk diffusivity via a factor <span class="arithmatex">\(\alpha\_{gi}\)</span>, which reads</p>
 <div class="arithmatex">\[D^\*\_{gi}=\alpha\_{gi}\cdot D^\*\_i\]</div>
@@ -336,7 +336,7 @@ Revisions:</p>
 </tr>
 </tbody>
 </table>
-<p><strong>Note:</strong> In addition to the acceleration of diffusion along grain boundaries and subgrain boundaries, significantly higher diffusion knietics can also be stimulated by the presence of <strong>quenched-in</strong> or <strong>deformation-induced excess vacancies</strong>. See the corresponding article  <a href="/techpapers/precipitation/excess_va" title="techpapers/precipitation/excess_va">Excess vacancies</a> for a description of this effect and how to take it into account in your simulations.</p>
+<p><strong>Note:</strong> In addition to the acceleration of diffusion along grain boundaries and subgrain boundaries, significantly higher diffusion knietics can also be stimulated by the presence of <strong>quenched-in</strong> or <strong>deformation-induced excess vacancies</strong>. See the corresponding article  <a href="/matcalc_docu/techpapers/precipitation/excess_va" title="techpapers:precipitation:excess_va">Excess vacancies</a> for a description of this effect and how to take it into account in your simulations.</p>
 <p><a href="#fnt__1">1)</a></p>
 <p>J. Svoboda, F. D. Fischer, P. Fratzl and E. Kozeschnik, „Modelling of kinetics in multi-component multi-phase systems with spherical precipitates I. – Theory“, Mater. Sci. Eng. A, 2004, 385 (1-2) 166-174.</p>
 <p><a href="#fnt__2">2)</a></p>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pfandl.github.io/matcalc_docu/examples/equilib/e31/" />
       <link rel="shortcut icon" href="../../../img/favicon.ico" />
     <title>E31 - MatCalc Documentation</title>
     <link rel="stylesheet" href="../../../css/theme.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "E31";
         var mkdocs_page_input_path = "examples/equilib/e31.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_url = "/matcalc_docu/examples/equilib/e31/";
       </script>
     
     <!--[if lt IE 9]>
@@ -51,7 +51,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">MatCalc tutorial</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">Tutorials</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
                 </li>
@@ -136,26 +136,26 @@ Revisions:</p>
 <p>In this example, the basic features of the trapping kinetics is demonstrated. The site competition between sulphur and phosphor at grain boundaries will be highlighted in this simple example.</p>
 <h2 id="related-documents">Related documents</h2>
 <ul>
-<li><a href="/techpapers/equilib/trapping" title="techpapers/equilib/trapping">Equilibrium trapping</a></li>
-<li><a href="/techpapers/precipitation/trapping" title="techpapers/precipitation/trapping">Trapping kinetics</a></li>
-<li><a href="/examples/equilib/e30" title="examples/equilib/e30">Example E30: Trapping in Fe-C</a></li>
-<li><a href="/techpapers/spec_top_present/trapping.pptx" title="techpapers/spec_top_present/trapping.pptx (1.9 MB)">Presentation of trapping model</a></li>
+<li><a href="/matcalc_docu/techpapers/equilib/trapping" title="techpapers:equilib:trapping">Equilibrium trapping</a></li>
+<li><a href="/matcalc_docu/techpapers/precipitation/trapping" title="techpapers:precipitation:trapping">Trapping kinetics</a></li>
+<li><a href="/matcalc_docu/examples/equilib/e30" title="examples:equilib:e30">Example E30: Trapping in Fe-C</a></li>
+<li><a href="/matcalc_docu/techpapers/spec_top_present/trapping.pptx" title="techpapers:spec_top_present:trapping.pptx (1.9 MB)">Presentation of trapping model</a></li>
 </ul>
 <h2 id="complementary-files">Complementary files</h2>
-<p>Click <a href="/examples/equilib/e31/script/e31_2017.mcs" title="examples/equilib/e31/script/e31_2017.mcs (5.3 KB)">here</a> to view the script for this tutorial.</p>
+<p>Click <a href="/matcalc_docu/examples/equilib/e31/script/e31_2017.mcs" title="examples:equilib:e31:script:e31_2017.mcs (5.3 KB)">here</a> to view the script for this tutorial.</p>
 <h1 id="main-document">Main document</h1>
 <h2 id="setup-thermodynamics">Setup thermodynamics</h2>
 <p>Create a new workspace and select the mc_fe.tdb as thermodynamic database for the example. For the elements select Fe, S and P. The example will only take one phase, BCC_A2, select this phase and read the database. Afterwards read the mc_fe.ddb diffusion database. For the composition take 0.5 wt% P and 0.5 wt% S. Afterwards calculate an equilibrium at 600°C.</p>
 <h2 id="thermomechanical-treatment">Thermomechanical treatment</h2>
 <p>For the trapping kinetics to work, a thermomechanical treatment is necessary. Open the thermo-mech. treatment dialog from the Global menu or alternatively press Alt+F8. Here create a new treatment and give it a name (for example tm). Then create a new segment and double click onto it to start editing. Set the start temperature to 600. At ramp control select 'End temperature &amp; Delta-Time'. Now you should be able to enter the end temperature of 600 and a delta-time of 1e7. Finally go to the MS Evolution tab and select the reset trap partitioning checkbox. Click OK to save the changes. Your treatment should now look similar to this</p>
-<p><a href="/examples/equilib/e31/img/tm.png" title="examples/equilib/e31/img/tm.png"><img alt="" src="/examples/equilib/e31/img/tm.png" /></a></p>
+<p><a href="/wiki/lib/exe/detail.php?id=examples%3Aequilib%3Ae31&amp;media=examples/equilib/e31/img/tm.png" title="examples:equilib:e31:img:tm.png"><img alt="" src="/matcalc_docu/examples/equilib/e31/img/tm.png" /></a></p>
 <h2 id="trapping-configuration">Trapping configuration</h2>
 <p>Open the precipitation domains dialog (Ctrl+F8) and create a new domain (name could be for example matrix). Then go to the trapping tab, you should now see blank table for FSK-traps. Click two times Add in the lower left corner to add 2 traps. In the trapped box select P for the first and S for the second trap. We want to trap S and P at grain boundaries, therefore select GB in the site box for each of the two traps. The type is default, which means it will apply the type shown in the lower right corner. This one is per default set to equilibrium. However, we want to do a kinetic simulation, thus, set the box to dynamic. Back to the traps, set the delta H value for the first trap to 30000 and the second to 10000. The coordination number is set to 1e4 for both traps. Now your dialog should look like this</p>
-<p><a href="/examples/equilib/e31/img/trap.png" title="examples/equilib/e31/img/trap.png"><img alt="" src="/examples/equilib/e31/img/trap.png" /></a></p>
+<p><a href="/wiki/lib/exe/detail.php?id=examples%3Aequilib%3Ae31&amp;media=examples/equilib/e31/img/trap.png" title="examples:equilib:e31:img:trap.png"><img alt="" src="/matcalc_docu/examples/equilib/e31/img/trap.png" /></a></p>
 <h2 id="running-the-simulation-and-plotting-the-results">Running the simulation and plotting the results</h2>
 <p>Create a new plot p1. In the variables window open the tab for prec_domain special. In here look for the XT_TK_FSK variable. This variable shows the mole fraction of an element which is trapped. Double click on the variable to open it and double click again on the variable one level lower to access the variables for the current precipitation domain. Here drag and drop the first two entries into the plot, which we created earlier. Finally click the x-axis in the plot and set the type to log in the options window.</p>
 <p>Press Ctrl+K and select from tm treatment in the temperature control area. In the starting conditions select no action. Press go to start the simulation.</p>
-<p><a href="/examples/equilib/e31/img/plot.png" title="examples/equilib/e31/img/plot.png"><img alt="" src="/examples/equilib/e31/img/plot.png" /></a></p>
+<p><a href="/wiki/lib/exe/detail.php?id=examples%3Aequilib%3Ae31&amp;media=examples/equilib/e31/img/plot.png" title="examples:equilib:e31:img:plot.png"><img alt="" src="/matcalc_docu/examples/equilib/e31/img/plot.png" /></a></p>
 <h1 id="consecutive-articles">Consecutive articles</h1>
 <p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=examples%3Aequilib%3Ae31&amp;1788352994" /></p>
               

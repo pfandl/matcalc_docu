@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pfandl.github.io/matcalc_docu/examples/equilib/e2/" />
       <link rel="shortcut icon" href="../../../img/favicon.ico" />
     <title>E2 - MatCalc Documentation</title>
     <link rel="stylesheet" href="../../../css/theme.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "E2";
         var mkdocs_page_input_path = "examples/equilib/e2.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_url = "/matcalc_docu/examples/equilib/e2/";
       </script>
     
     <!--[if lt IE 9]>
@@ -51,7 +51,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">MatCalc tutorial</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">Tutorials</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
                 </li>
@@ -139,12 +139,12 @@ Revisions: Updated to new Database</p>
 <p>Consult Tutorial T8 or Example E1 to refresh your knowledge on phase diagram calculations.</p>
 <h2 id="related-documents">Related documents</h2>
 <ul>
-<li><a href="/tutorials/t8" title="tutorials/t8">T8: Calculating a phase diagram in a binary system</a></li>
-<li><a href="/examples/equilib/e1" title="examples/equilib/e1">E1: Stable and meta-stable phase diagram of Fe-C-Mn</a></li>
+<li><a href="/matcalc_docu/tutorials/t8" title="tutorials:t8">T8: Calculating a phase diagram in a binary system</a></li>
+<li><a href="/matcalc_docu/examples/equilib/e1" title="examples:equilib:e1">E1: Stable and meta-stable phase diagram of Fe-C-Mn</a></li>
 <li>Chao Jian, PhD thesis, <em>'Theoretical studies of aluminum and aluminide alloys using CALPHAD and first-principles approach'</em>, August 2004, Pennsylvania State University.</li>
 </ul>
 <h2 id="complementary-files">Complementary files</h2>
-<p>Click <a href="/examples/equilib/e2/script/e2_v2_2018.mcs" title="examples/equilib/e2/script/e2_v2_2018.mcs (10.2 KB)">here</a> to view the script for this tutorial.</p>
+<p>Click <a href="/matcalc_docu/examples/equilib/e2/script/e2_v2_2018.mcs" title="examples:equilib:e2:script:e2_v2_2018.mcs (10.2 KB)">here</a> to view the script for this tutorial.</p>
 <h1 id="main-document">Main document</h1>
 <h2 id="setup-thermodynamics">Setup thermodynamics</h2>
 <p>Start by opening the aluminium database. Select the elements <strong>Al</strong> and <strong>Cu</strong> and the phases <strong>FCC_A1</strong> (Aluminium matrix phase), <strong>Liquid</strong>, <strong>THETA_AL2CU</strong> (Stable Al-Cu Theta phase), <strong>THETA_PRIME</strong> (Meta-stable Theta prime phase) and <strong>TH_DP</strong> (Meta-stable Theta double-prime). Read the database.</p>
@@ -172,11 +172,11 @@ Revisions: Updated to new Database</p>
 <h2 id="calculation-of-phase-fraction-diagrams">Calculation of phase fraction diagrams</h2>
 <p>Since we are only interested in the technically relevant pre-eutectic area, the calculation range will be set from 0 to 10% Cu. The temperature range is relatively small due to the low melting temperatures and can be set from 0 to 700C.</p>
 <p>Assuming that this alloy is unknown to us, and we have no literature about it whatsoever, a good way to begin the equilibrium analysis is to plot the phase fraction diagram in a stepped calculation.</p>
-<p><a href="/examples/equilib/e2/e2_phasefraction-1pcu.png" title="examples/equilib/e2/e2_phasefraction-1pcu.png"><img alt=" Phase fraction of stable phases" src="/examples/equilib/e2/e2_phasefraction-1pcu.png" title="Phase fraction of stable phases" /></a></p>
+<p><a href="/matcalc_docu/examples/equilib/e2/e2_phasefraction-1pcu.png" title="examples:equilib:e2:e2_phasefraction-1pcu.png"><img alt=" Phase fraction of stable phases" src="/matcalc_docu/examples/equilib/e2/e2_phasefraction-1pcu.png" title="Phase fraction of stable phases" /></a></p>
 <p>This diagram confirms that only the well-known stable phases appear in the simulations. Furthermore it gives an idea of the temperatures to start the calculations from. By repeating this step, but suspending <strong>THETA_AL2CU</strong> phase, first <strong>THETA_PRIME</strong> and after that <strong>TH_DP</strong> will become the stable phases. The only difference is the phase fraction and the nucleation temperature.</p>
-<p><a href="/examples/equilib/e2/e2_suspend_al2cu.png" title="examples/equilib/e2/e2_suspend_al2cu.png"><img alt=" Suspend AL2CU to stabilize the other phases" src="/examples/equilib/e2/e2_suspend_al2cu.png" title="Suspend AL2CU to stabilize the other phases" /></a></p>
+<p><a href="/matcalc_docu/examples/equilib/e2/e2_suspend_al2cu.png" title="examples:equilib:e2:e2_suspend_al2cu.png"><img alt=" Suspend AL2CU to stabilize the other phases" src="/matcalc_docu/examples/equilib/e2/e2_suspend_al2cu.png" title="Suspend AL2CU to stabilize the other phases" /></a></p>
 <p>After suspending the phases, plotting the phase fractions, and locking them, the figure below can be obtained:</p>
-<p><a href="/examples/equilib/e2/e2_phasefraction-all-phases.png" title="examples/equilib/e2/e2_phasefraction-all-phases.png"><img alt=" Phasefractions of all, stable and meta-stable, phases" src="/examples/equilib/e2/e2_phasefraction-all-phases.png" title="Phasefractions of all, stable and meta-stable, phases" /></a></p>
+<p><a href="/matcalc_docu/examples/equilib/e2/e2_phasefraction-all-phases.png" title="examples:equilib:e2:e2_phasefraction-all-phases.png"><img alt=" Phasefractions of all, stable and meta-stable, phases" src="/matcalc_docu/examples/equilib/e2/e2_phasefraction-all-phases.png" title="Phasefractions of all, stable and meta-stable, phases" /></a></p>
 <h2 id="calculation-of-phase-diagram">Calculation of phase diagram</h2>
 <p>To continue with the creation of the phase diagram, which shows stable and meta-stable phases, first un-suspend all phases once again.</p>
 <p>As the temperature differences are not as big as in the Fe-C system, the same temperature can be used for all phases to find them.</p>
@@ -187,8 +187,8 @@ Revisions: Updated to new Database</p>
 <li>Plot <code>T$C</code>, lock and rename it.</li>
 </ul>
 <p>Repeat this step for all three stable phases. To plot the meta-stable phase boundaries, suspend the stable AL2CU phase. Then repeat the steps above. Suspend the Theta-Prime phase, in order to stabilize the Theta-double-Prime phase. The resulting diagram should look like the figure below.</p>
-<p><a href="/examples/equilib/e2/e2_phasediagram.png" title="examples/equilib/e2/e2_phasediagram.png"><img alt=" Phase diagram of Al-Cu system for stable and meta-stable phases" src="/examples/equilib/e2/e2_phasediagram.png" title="Phase diagram of Al-Cu system for stable and meta-stable phases" /></a></p>
-<p>The experimental data shown in the figure is taken from the PhD thesis of Chao Jian (see related documents section). Add these data points by entering them into a table and then adding an experimental seris to the plot. See tutorial  <a href="/tutorials/t10" title="tutorials/t10">T10</a> for details on this procedure or the accompanying  <a href="/examples/equilib/e2/script/e2.mcs" title="examples/equilib/e2/script/e2.mcs (10.2 KB)">script</a> to see how these things are done from within a <em>MatCalc</em> script.</p>
+<p><a href="/matcalc_docu/examples/equilib/e2/e2_phasediagram.png" title="examples:equilib:e2:e2_phasediagram.png"><img alt=" Phase diagram of Al-Cu system for stable and meta-stable phases" src="/matcalc_docu/examples/equilib/e2/e2_phasediagram.png" title="Phase diagram of Al-Cu system for stable and meta-stable phases" /></a></p>
+<p>The experimental data shown in the figure is taken from the PhD thesis of Chao Jian (see related documents section). Add these data points by entering them into a table and then adding an experimental seris to the plot. See tutorial  <a href="/matcalc_docu/tutorials/t10" title="tutorials:t10">T10</a> for details on this procedure or the accompanying  <a href="/matcalc_docu/examples/equilib/e2/script/e2.mcs" title="examples:equilib:e2:script:e2.mcs (10.2 KB)">script</a> to see how these things are done from within a <em>MatCalc</em> script.</p>
 <p><strong>Note</strong>: The experimental data measured for nucleation of Theta-Prime phase is lower than the calculated equilibrium data. The reason is that nucleation of these phases always involves coherency stresses, since they are found to be coherent with the matrix. This energy contribution destabilizes the precipitates, which is why experiments show a lower solution temperature compared to the equilibrium calculation, which considers the ideal case of very large precipitates (no interfacial curvature) and no coherency stresses.</p>
 <p><strong><em>Important note…</em></strong></p>
 <p>If you plan on calculating the whole system from 0 to 100% Cu, you need to include several additonal phases.</p>

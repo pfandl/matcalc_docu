@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pfandl.github.io/matcalc_docu/tutorials/t6/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
     <title>T6 - MatCalc Documentation</title>
     <link rel="stylesheet" href="../../css/theme.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "T6";
         var mkdocs_page_input_path = "tutorials/t6.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_url = "/matcalc_docu/tutorials/t6/";
       </script>
     
     <!--[if lt IE 9]>
@@ -51,7 +51,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../">MatCalc tutorial</a>
+                <li class="toctree-l2"><a class="reference internal" href="../">Tutorials</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
                 </li>
@@ -129,7 +129,7 @@ MatCalc version 6.04 rel 1.001<br />
 license: free<br />
 database: mc_fe.tdb</em></p>
 <h3 id="complimentary-files">Complimentary files</h3>
-<p>Click <a href="/tutorials/t6/script/t6_6021003.mcs" title="tutorials/t6/script/t6_6021003.mcs (12.4 KB)">here</a> to view the script for this tutorial.</p>
+<p>Click <a href="/matcalc_docu/tutorials/t6/script/t6_6021003.mcs" title="tutorials:t6:script:t6_6021003.mcs (12.4 KB)">here</a> to view the script for this tutorial.</p>
 <h3 id="contents">Contents</h3>
 <ul>
 <li>Expressions using built-in variables</li>
@@ -140,37 +140,37 @@ database: mc_fe.tdb</em></p>
 <h2 id="setting-up-the-system">Setting up the system</h2>
 <p>Define a system containing the elements <strong>Fe</strong> and <strong>C</strong> and and phases <strong>LIQUID</strong>, <strong>FCC_A1</strong>, <strong>BCC_A2</strong> and <strong>CEMENTITE</strong>. Enter the composition <strong>0.1 wt.% C</strong>. Make a stepped equilibrium calculation, varying the temperature from 400 to 1600°C in 25-degree intervals.<br />
 Create a new plot window and drag and drop <strong>'F$*'</strong> from the <strong>'Variables'</strong> window into the plot.</p>
-<p><a href="/tutorials/t6/img/t6_phase_fraction_2016.png" title="tutorials/t6/img/t6_phase_fraction_2016.png"><img alt=" MatCalc plot" src="/tutorials/t6/img/t6_phase_fraction_2016.png" title="MatCalc plot" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t6/img/t6_phase_fraction_2016.png" title="tutorials:t6:img:t6_phase_fraction_2016.png"><img alt=" MatCalc plot" src="/matcalc_docu/tutorials/t6/img/t6_phase_fraction_2016.png" title="MatCalc plot" /></a></p>
 <p>Create a second plot in the same window. Set the <strong>'default x-data'</strong> in the Options window to <strong>'T$C'</strong>, and define a default x-axis for all plots labelled <strong>'Temperature [°C]'</strong>.</p>
 <h2 id="combining-built-in-variables-in-new-expressions">Combining built-in variables in new expressions</h2>
 <p>In systems consisting of a matrix and carbides, it may be interesting to determine how much of the carbon in the system is present in the form of carbides, and how much remains in the matrix phase(s), at any given temperature.<br />
 The phase fraction <strong>'F<span class="arithmatex">\(\*'** represents the number of moles of phase per mole of system, and the carbon content of a phase **'X\)</span>*<span class="arithmatex">\(C'** represents the number of moles of carbon per mole of phase. The product of these quantities for a given phase gives the number of moles of carbon in the phase.  
 To plot this, first drag **'X\)</span>*<span class="arithmatex">\(C'** to the new plot to give the carbon content of each phase. Then go to the **'variables'** window, select **'F\)</span>LIQUID'</strong> and copy it using the right-click menu.<br />
 Click on the lower plot, and in the <strong>'Options'</strong> window, edit the <strong>'y-data'</strong> line for the first series (<strong>'series #0'</strong>) of this plot. This should currently read <strong>'X<span class="arithmatex">\(LIQUID\)</span>C'</strong>. Append <strong>'*F<span class="arithmatex">\(LIQUID'** to this - this can be done by pasting the previously copied **'F\)</span>LIQUID'</strong> text.</p>
-<p><a href="/tutorials/t6/img/t6_plot_options_6050006.png" title="tutorials/t6/img/t6_plot_options_6050006.png"><img alt=" MatCalc plot" src="/tutorials/t6/img/t6_plot_options_6050006.png" title="MatCalc plot" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t6/img/t6_plot_options_6050006.png" title="tutorials:t6:img:t6_plot_options_6050006.png"><img alt=" MatCalc plot" src="/matcalc_docu/tutorials/t6/img/t6_plot_options_6050006.png" title="MatCalc plot" /></a></p>
 <p>Repeat this process for the other series to give <strong>'X<span class="arithmatex">\(BCC\_A2\)</span>C*F<span class="arithmatex">\(BCC\_A2'**, **'X\)</span>FCC_A1<span class="arithmatex">\(C\*F\)</span>FCC_A1'</strong> and <strong>'X<span class="arithmatex">\(CEMENTITE\)</span>C*F<span class="arithmatex">\(CEMENTITE'**. Add another variable to the plot: **'XS\)</span>C'</strong> (can be found in the <strong>'composition'</strong> section), the mole fraction of carbon in the system. This should be equal to the sum of the other four variables on the plot.<br />
 The final plot is shown below:</p>
-<p><a href="/tutorials/t6/img/t6_plot_amount_c_in_phase_6011003.png" title="tutorials/t6/img/t6_plot_amount_c_in_phase_6011003.png"><img alt=" MatCalc plot" src="/tutorials/t6/img/t6_plot_amount_c_in_phase_6011003.png" title="MatCalc plot" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t6/img/t6_plot_amount_c_in_phase_6011003.png" title="tutorials:t6:img:t6_plot_amount_c_in_phase_6011003.png"><img alt=" MatCalc plot" src="/matcalc_docu/tutorials/t6/img/t6_plot_amount_c_in_phase_6011003.png" title="MatCalc plot" /></a></p>
 <h2 id="defining-functions">Defining functions</h2>
 <h3 id="creating-a-new-function">Creating a new function</h3>
 <p>If the expressions such as <strong>'X<span class="arithmatex">\(BCC\_A2\)</span>C*F<span class="arithmatex">\(BCC\_A2'** are likely to be used more than once, they can be defined as functions. Select **'Global &gt; Variables &amp; Functions'**. This brings up a box containing several tabs; click on **'Functions'**.  
 Click on **'New'** and type in a name for the function in the box which appears, for example, **'C\_in\_liquid'**. In the **'Expression'** box, type in **'X\)</span>LIQUID<span class="arithmatex">\(C\*F\)</span>LIQUID'</strong>. For convenience, this can be copied from the <strong>'y-data'</strong> line in the <strong>'Options'</strong> window of the plot just finished. (<strong>N.B. There is no need to put an '=' sign at the beginning of the expression.</strong>) Click on <strong>'Set'</strong> to register the expression. Repeat for the three other expressions plotted above.</p>
-<p><a href="/tutorials/t6/img/t6_variables_and_functions_2016.png" title="tutorials/t6/img/t6_variables_and_functions_2016.png"><img alt=" MatCalc Functions and variables" src="/tutorials/t6/img/t6_variables_and_functions_2016.png" title="MatCalc Functions and variables" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t6/img/t6_variables_and_functions_2016.png" title="tutorials:t6:img:t6_variables_and_functions_2016.png"><img alt=" MatCalc Functions and variables" src="/matcalc_docu/tutorials/t6/img/t6_variables_and_functions_2016.png" title="MatCalc Functions and variables" /></a></p>
 <p>Close the <strong>'Functions &amp; Variables'</strong> box to return to the main screen. Expand <strong>'functions'</strong> in the <strong>'Variables'</strong> window by clicking on the small plus-sign to the left of the word. This should give a list of the new functions:</p>
-<p><a href="/tutorials/t6/img/t6_var_func_6050006.png" title="tutorials/t6/img/t6_var_func_6050006.png"><img alt=" MatCalc variables window" src="/tutorials/t6/img/t6_var_func_6050006.png" title="MatCalc variables window" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t6/img/t6_var_func_6050006.png" title="tutorials:t6:img:t6_var_func_6050006.png"><img alt=" MatCalc variables window" src="/matcalc_docu/tutorials/t6/img/t6_var_func_6050006.png" title="MatCalc variables window" /></a></p>
 <p>Make a new plot and drag and drop the functions just defined into it (To select multiple entries, hold <strong>'Ctrl'</strong>-key while clicking on them), together with the <strong>'XS$C'</strong> variable, to check that this gives the same appearance as the plot above.</p>
 <h3 id="new-expressions-using-existing-functions">New expressions using existing functions</h3>
 <p>The fraction of the total carbon content in the system which is in the liquid phase can be calculated by dividing the function <strong>'C_in_liquid'</strong> by the total carbon content <code>XS$C</code>.
 Re-open the <strong>'Functions'</strong> tab in <strong>'Variables &amp; Functions'</strong> window and create a new function named <strong>'Fraction_C_in_liquid'</strong>. Enter <strong>'C_in_liquid/XS$C'</strong> in the <strong>'Expression'</strong> box and click on <strong>'Set'</strong>. Repeat for the other three phases.<br />
 On returning to the main screen, create a new plot and drag and drop the new <strong>'Fraction_C_in…'</strong> functions into it. (This may necessitate clicking on the triangle sign by the side of <strong>'Functions'</strong> to close and re-open it with the new functions displayed.) The resulting plot should have the same appearance as the two plots above, but a different y-scale, this time going from 0 to 1.</p>
-<p><a href="/tutorials/t6/img/t6_fraction_c_in_phase_2016.png" title="tutorials/t6/img/t6_fraction_c_in_phase_2016.png"><img alt=" MatCalc plot" src="/tutorials/t6/img/t6_fraction_c_in_phase_2016.png" title="MatCalc plot" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t6/img/t6_fraction_c_in_phase_2016.png" title="tutorials:t6:img:t6_fraction_c_in_phase_2016.png"><img alt=" MatCalc plot" src="/matcalc_docu/tutorials/t6/img/t6_fraction_c_in_phase_2016.png" title="MatCalc plot" /></a></p>
 <p>The user-defined functions are saved in the workspace and can be used for all subsequent calculations in that workspace.<br />
 Change the <strong>'default x-data'</strong> in the Options window to <strong>'StepValue'</strong>, and the name of the default x-axis to <strong>'C content [wt.%]'</strong>. Make a new stepped calculation in the <strong>'_default_'</strong> buffer, varying the carbon content from 0 to 0.5 wt.% (with 0.005 step) at 1475°C .<br />
 The phase fraction curve below shows that the carbon content has a strong influence on phase stability at this temperature. Increasing the carbon content stabilises FCC_A1 at the expense of BCC_A2, and then at higher carbon contents the liquid phase also becomes stable.</p>
-<p><a href="/tutorials/t6/img/t6_phase_fraction_vary_c_content_2016.png" title="tutorials/t6/img/t6_phase_fraction_vary_c_content_2016.png"><img alt=" MatCalc plot" src="/tutorials/t6/img/t6_phase_fraction_vary_c_content_2016.png" title="MatCalc plot" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t6/img/t6_phase_fraction_vary_c_content_2016.png" title="tutorials:t6:img:t6_phase_fraction_vary_c_content_2016.png"><img alt=" MatCalc plot" src="/matcalc_docu/tutorials/t6/img/t6_phase_fraction_vary_c_content_2016.png" title="MatCalc plot" /></a></p>
 <p>The two sets of user-defined functions appear as shown below, and in this case they provide different ways to illustrate the results.</p>
-<p><a href="/tutorials/t6/img/t6_vary_c_content_c_in_phase_2016.png" title="tutorials/t6/img/t6_vary_c_content_c_in_phase_2016.png"><img alt=" MatCalc plot" src="/tutorials/t6/img/t6_vary_c_content_c_in_phase_2016.png" title="MatCalc plot" /></a></p>
-<p><a href="/tutorials/t6/img/t6_vary_c_content_fraction_c_in_phase_2016.png" title="tutorials/t6/img/t6_vary_c_content_fraction_c_in_phase_2016.png"><img alt=" MatCalc plot" src="/tutorials/t6/img/t6_vary_c_content_fraction_c_in_phase_2016.png" title="MatCalc plot" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t6/img/t6_vary_c_content_c_in_phase_2016.png" title="tutorials:t6:img:t6_vary_c_content_c_in_phase_2016.png"><img alt=" MatCalc plot" src="/matcalc_docu/tutorials/t6/img/t6_vary_c_content_c_in_phase_2016.png" title="MatCalc plot" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t6/img/t6_vary_c_content_fraction_c_in_phase_2016.png" title="tutorials:t6:img:t6_vary_c_content_fraction_c_in_phase_2016.png"><img alt=" MatCalc plot" src="/matcalc_docu/tutorials/t6/img/t6_vary_c_content_fraction_c_in_phase_2016.png" title="MatCalc plot" /></a></p>
 <h2 id="user-defined-variables">User-defined variables</h2>
 <p>The final part of this tutorial demonstrates the use of the <strong>'Variables'</strong> tab under <strong>'Global &gt; Variables &amp; Functions'</strong>.<br />
 In the plot of C_in_liquid, C_in_bcc, etc., the curves are made up of almost straight-line sections, so it should be possible to find analytical expressions of the form <strong>y = ax +b</strong> for these, where <strong>'a'</strong> is the gradient and <strong>'b'</strong> the intercept on the y-axis.<br />
@@ -183,7 +183,7 @@ X(C): 0,012802399, WP(C): 0,27813585
 </code></pre>
 <p>The first (x, y) pair is therefore (0.27813585, 0). Go to <strong>'Global &gt; Variables &amp; Functions'</strong> and select the <strong>'Variables'</strong> tab. The variable <strong>'x'</strong> is already shown in the left-hand column. This is the StepValue, and currently has a value of 0.5.<br />
 Click on <strong>'New'</strong> and in the box, type in <strong>'x1'</strong>. Select it (in the <strong>'Available items'</strong> box) and type in or paste the first x-value (i.e. '0.27813585') in the <strong>'Expression'</strong> box (confirmed by clicking on <strong>'Set'</strong>).</p>
-<p><a href="/tutorials/t6/img/t6_func_var_2016.png" title="tutorials/t6/img/t6_func_var_2016.png"><img alt=" MatCalc functions and variables window" src="/tutorials/t6/img/t6_func_var_2016.png" title="MatCalc functions and variables window" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t6/img/t6_func_var_2016.png" title="tutorials:t6:img:t6_func_var_2016.png"><img alt=" MatCalc functions and variables window" src="/matcalc_docu/tutorials/t6/img/t6_func_var_2016.png" title="MatCalc functions and variables window" /></a></p>
 <p>Add another variable <strong>'y1'</strong>. This has a default value of zero, which does not need to be changed.
 The second (x, y) pair can be obtained by finding the y-value at x=0.5. Either use edit the buffer state for this composition (<strong>'Global &gt; Buffers &gt; Edit buffer state'</strong>, click on <strong>'0,5'</strong> in the <strong>'Buffer'</strong> box) or simply set the composition to 0.5 wt.% C and calculate an equilibrium. In both cases, the value of <strong>'C_in_liquid'</strong> at this composition can be seen in the <strong>'Variables'</strong> window. Go to <strong>'View &gt; Create New Window'</strong> and choose <strong>'d1: List variable'</strong>. Drag and drop <strong>'C_in_liquid'</strong> from the <strong>'Variables'</strong> window into the new <strong>'List variables'</strong> window which appears.</p>
 <pre><code>C_in_liquid +1,536325419797e-002
@@ -191,17 +191,17 @@ The second (x, y) pair can be obtained by finding the y-value at x=0.5. Either u
 <p>The numerical value can be selected and copied from this window. Re-open the 'Functions&amp;Variables' window and add the new variables <strong>'x2'</strong> and <strong>'y2'</strong>, equal to 0.5 and +1,536325419797e-002 in the 'Variables' tab, respectively.<br />
 The slope <strong>a</strong> and intercept <strong>b</strong> of the straight line can now be entered; <strong>a</strong> is equal to <strong>(y2-y1)/(x2-x1)</strong> and <strong>b</strong> to <strong>((x2*y1)-(x1*y2))/(x2-x1)</strong>. Create a new variable named <strong>'a'</strong>, type in the formula (or try to copy it from this tutorial) and click on <strong>'Set'</strong>. This evaluates the expression and places the numerical value in the <strong>'Expressions'</strong> box in the place of the formula. Do the same for <strong>'b'</strong>. In the <strong>'Functions'</strong> tab, the equation of the line can now be entered. Create a new function <strong>'Liquid_line'</strong> and type <strong>'(a*x)+b'</strong> into the <strong>'expression'</strong> box. Click <strong>'Close'</strong> to return to the main screen.<br />
 Drag the new <strong>'Liquid_line'</strong> function from the <strong>'Variables'</strong> window to the plot of <strong>'C_in_liquid'</strong>, etc. The resulting plot should look like this:</p>
-<p><a href="/tutorials/t6/img/t6_liquid_line_2016.png" title="tutorials/t6/img/t6_liquid_line_2016.png"><img alt=" MatCalc plot" src="/tutorials/t6/img/t6_liquid_line_2016.png" title="MatCalc plot" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t6/img/t6_liquid_line_2016.png" title="tutorials:t6:img:t6_liquid_line_2016.png"><img alt=" MatCalc plot" src="/matcalc_docu/tutorials/t6/img/t6_liquid_line_2016.png" title="MatCalc plot" /></a></p>
 <p>The <strong>'Liquid_line'</strong> function extends to negative values, unlike the true C_in_liquid curve, which has a value of zero for carbon contents between zero and 0.27 wt.%.<br />
 One way of removing the unwanted part of this line is to select <strong>'Edit series data'</strong> from the right-click menu. In the resulting table of <strong>'Liquid_line'</strong> series, select all the rows for which the y-value is negative and then click on <strong>'Delete rows/cols'</strong> to remove them. Accept the warning with <strong>'OK'</strong>.<br />
 An alternative way is to add the series as a <strong>'function/expression'</strong> rather than as a <strong>'buffer result'</strong>. There are differences in the way the program treats these two types of series; for example, in a <strong>'function/expression'</strong> series, x-values are specified as a numerical range, and the y-values are functions of x, whereas for <strong>'buffer results'</strong>, the x-values are specified as a variable (by default, the StepValue), and the y-values as another variable.<br />
 When a variable is dragged and dropped from the <strong>'variables'</strong> window, it automatically becomes a <strong>'buffer result'</strong>-type series. To add a <strong>'function/expression'</strong> series, click on the plot, then in the options window, select <strong>'new series'</strong> from the right-click menu, and choose <strong>'function/expression'</strong>. By <strong>'y-data'</strong> for the new series, type in <strong>'Liquid_line'</strong>. Edit the <strong>'x-data'</strong> line to <strong>'x1..0.5'</strong>.</p>
-<p><a href="/tutorials/t6/img/t6_function_to_plot_6050006.png" title="tutorials/t6/img/t6_function_to_plot_6050006.png"><img alt=" MatCalc function" src="/tutorials/t6/img/t6_function_to_plot_6050006.png" title="MatCalc function" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t6/img/t6_function_to_plot_6050006.png" title="tutorials:t6:img:t6_function_to_plot_6050006.png"><img alt=" MatCalc function" src="/matcalc_docu/tutorials/t6/img/t6_function_to_plot_6050006.png" title="MatCalc function" /></a></p>
 <p>The plot should now look as shown in the image below (with the <strong>'Liquid_line'</strong> series highlighted).</p>
-<p><a href="/tutorials/t6/img/t6_plot_liquid_line_2016.png" title="tutorials/t6/img/t6_plot_liquid_line_2016.png"><img alt=" MatCalc plot" src="/tutorials/t6/img/t6_plot_liquid_line_2016.png" title="MatCalc plot" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t6/img/t6_plot_liquid_line_2016.png" title="tutorials:t6:img:t6_plot_liquid_line_2016.png"><img alt=" MatCalc plot" src="/matcalc_docu/tutorials/t6/img/t6_plot_liquid_line_2016.png" title="MatCalc plot" /></a></p>
 <h2 id="consecutive-articles">Consecutive articles</h2>
-<p>The tutorial is continued in article  <a href="/tutorials/t7" title="tutorials/t7">T7 - Calculating transformation temperatures and phase boundaries</a></p>
-<p>Go to <a href="/tutorials" title="tutorials">MatCalc tutorial index</a>.</p>
+<p>The tutorial is continued in article  <a href="/matcalc_docu/tutorials/t7" title="tutorials:t7">T7 - Calculating transformation temperatures and phase boundaries</a></p>
+<p>Go to <a href="/matcalc_docu/tutorials" title="tutorials">MatCalc tutorial index</a>.</p>
 <p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=tutorials%3At6&amp;1788352858" /></p>
               
             </div>

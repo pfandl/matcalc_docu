@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pfandl.github.io/matcalc_docu/techpapers/nucleation/het_nucl_sites/" />
       <link rel="shortcut icon" href="../../../img/favicon.ico" />
     <title>Het nucl sites - MatCalc Documentation</title>
     <link rel="stylesheet" href="../../../css/theme.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "Het nucl sites";
         var mkdocs_page_input_path = "techpapers/nucleation/het_nucl_sites.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_url = "/matcalc_docu/techpapers/nucleation/het_nucl_sites/";
       </script>
     
     <!--[if lt IE 9]>
@@ -51,7 +51,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">MatCalc tutorial</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">Tutorials</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
                 </li>
@@ -168,11 +168,11 @@ Revisions: 2011-06-28 (koze), 2011-08-22 (koze), 2011-09-06 (koze), 2023-06-23 (
 <p>This paper discusses the implementation of heterogenous nucleation in the <em>MatCalc</em> precipitation kinetics framework.</p>
 <h2 id="related-documents">Related documents</h2>
 <ol>
-<li><a href="/techpapers/nucleation/nucleation_rate" title="techpapers/nucleation/nucleation_rate">The multi-component transient nucleation rate</a></li>
-<li><a href="/techpapers/precipitation/diffusion" title="techpapers/precipitation/diffusion">Diffusion in heterogenous precipitation</a></li>
+<li><a href="/matcalc_docu/techpapers/nucleation/nucleation_rate" title="techpapers:nucleation:nucleation_rate">The multi-component transient nucleation rate</a></li>
+<li><a href="/matcalc_docu/techpapers/precipitation/diffusion" title="techpapers:precipitation:diffusion">Diffusion in heterogenous precipitation</a></li>
 </ol>
 <h1 id="main-document">Main document</h1>
-<p>The <em>MatCalc</em> multi-component precipitate nucleation model is described in  <a href="/techpapers/nucleation/nucleation_rate" title="techpapers/nucleation/nucleation_rate">The multi-component transient nucleation rate</a>. In addition to homogeneous nucleation in the undisturbed crystal bulk volume, in <em>MatCalc</em>, nucleation can occur on different types of heterogenous nucleation sites (HNS), which are</p>
+<p>The <em>MatCalc</em> multi-component precipitate nucleation model is described in  <a href="/matcalc_docu/techpapers/nucleation/nucleation_rate" title="techpapers:nucleation:nucleation_rate">The multi-component transient nucleation rate</a>. In addition to homogeneous nucleation in the undisturbed crystal bulk volume, in <em>MatCalc</em>, nucleation can occur on different types of heterogenous nucleation sites (HNS), which are</p>
 <ul>
 <li>dislocations</li>
 <li>grain boundaries (2-grain junctions)</li>
@@ -202,14 +202,14 @@ Revisions: 2011-06-28 (koze), 2011-08-22 (koze), 2011-09-06 (koze), 2023-06-23 (
 </tr>
 <tr>
 <td><span class="arithmatex">\(G^\*\)</span></td>
-<td>The nucleation barrier <span class="arithmatex">\(G^\*\)</span> is <em>increased</em>, since the driving force for precipitation is reduced by elastic misfit stress (See the document on  <a href="/techpapers/nucleation/nucleation_rate" title="techpapers/nucleation/nucleation_rate">The multi-component transient nucleation rate</a> for details on the mathematical expression). This effect can be activated by making the appropriate settings for the Young's modulus and volumetric misfit in precipitation domain and precipitate, and by checking the “account for coherent misfit stress” option in the phase status dialog.</td>
+<td>The nucleation barrier <span class="arithmatex">\(G^\*\)</span> is <em>increased</em>, since the driving force for precipitation is reduced by elastic misfit stress (See the document on  <a href="/matcalc_docu/techpapers/nucleation/nucleation_rate" title="techpapers:nucleation:nucleation_rate">The multi-component transient nucleation rate</a> for details on the mathematical expression). This effect can be activated by making the appropriate settings for the Young's modulus and volumetric misfit in precipitation domain and precipitate, and by checking the “account for coherent misfit stress” option in the phase status dialog.</td>
 </tr>
 </tbody>
 </table>
 <p>In practical calculation, the first parameter, <span class="arithmatex">\(N\_0\)</span>, is controlled in the 'nucleation' tab of the 'phase status' dialog, as well as the 'structure' tab of the 'precipitation domain' dialog. In the 'phase status' dialog, the selection of HNS is used to evaluate the correct number of potential nucleation sites. In the 'precipitation domain' dialog, the microstructure parameters controlling <span class="arithmatex">\(N\_0\)</span> are defined, which is the dislocation density, grain size and subgrain size. In addition, one of the three models for on-particle nucleation can be selected.</p>
 <p>Further details on the implementation are discussed below.</p>
 <h2 id="homogeneous-nucleation">Homogeneous nucleation</h2>
-<p>Homogeneous nucleation is treated in the framework of homogeneous multi-component Classical Nucleation Theory. This topic is discussed in detail in the technical paper on  <a href="/techpapers/nucleation/nucleation_rate" title="techpapers/nucleation/nucleation_rate">The multi-component transient nucleation rate</a>.</p>
+<p>Homogeneous nucleation is treated in the framework of homogeneous multi-component Classical Nucleation Theory. This topic is discussed in detail in the technical paper on  <a href="/matcalc_docu/techpapers/nucleation/nucleation_rate" title="techpapers:nucleation:nucleation_rate">The multi-component transient nucleation rate</a>.</p>
 <h3 id="potential-nucleation-sites">Potential nucleation sites</h3>
 <p>For homogeneous nucleation, each atom in the bulk volume is assumed to be a potential nucleation site. The number of sites <span class="arithmatex">\(N\_0\)</span> is simply evaluated from</p>
 <div class="arithmatex">\[N\_0=\frac{N\_{\text{A}}}{v\_m}\]</div>
@@ -247,8 +247,8 @@ Revisions: 2011-06-28 (koze), 2011-08-22 (koze), 2011-09-06 (koze), 2023-06-23 (
 <p>The tetrakaidecahedron is a body with eight hexagons and six quadrilaterals.</p>
 <h3 id="potential-nucleation-sites_2">Potential nucleation sites</h3>
 <p>In <em>MatCalc</em>, a slightly simplified version of tetrakaidecahedron is used, with a geometrical form sketched in the following diagram. The simplified version slightly deviates from the three properties above, however, it has planar faces, which makes it easier to evaluate its geometrical features.</p>
-<p><a href="/techpapers/nucleation/img/fig_nucleation_tetrakaidecahedron_1.png" title="techpapers/nucleation/img/fig_nucleation_tetrakaidecahedron_1.png"><img alt=" Tetrakaidecahedron used in //MatCalc// to represent polycrystalline microstructure" src="/techpapers/nucleation/img/fig_nucleation_tetrakaidecahedron_1.png" title="Tetrakaidecahedron used in //MatCalc// to represent polycrystalline microstructure" /></a>
-<a href="/techpapers/nucleation/img/fig_nucleation_tetrakaidecahedron_2.png" title="techpapers/nucleation/img/fig_nucleation_tetrakaidecahedron_2.png"><img alt=" Tetrakaidecahedron used in //MatCalc// to represent polycrystalline microstructure" src="/techpapers/nucleation/img/fig_nucleation_tetrakaidecahedron_2.png" title="Tetrakaidecahedron used in //MatCalc// to represent polycrystalline microstructure" /></a></p>
+<p><a href="/matcalc_docu/techpapers/nucleation/img/fig_nucleation_tetrakaidecahedron_1.png" title="techpapers:nucleation:img:fig_nucleation_tetrakaidecahedron_1.png"><img alt=" Tetrakaidecahedron used in //MatCalc// to represent polycrystalline microstructure" src="/matcalc_docu/techpapers/nucleation/img/fig_nucleation_tetrakaidecahedron_1.png" title="Tetrakaidecahedron used in //MatCalc// to represent polycrystalline microstructure" /></a>
+<a href="/matcalc_docu/techpapers/nucleation/img/fig_nucleation_tetrakaidecahedron_2.png" title="techpapers:nucleation:img:fig_nucleation_tetrakaidecahedron_2.png"><img alt=" Tetrakaidecahedron used in //MatCalc// to represent polycrystalline microstructure" src="/matcalc_docu/techpapers/nucleation/img/fig_nucleation_tetrakaidecahedron_2.png" title="Tetrakaidecahedron used in //MatCalc// to represent polycrystalline microstructure" /></a></p>
 <p>From these objects, the total area, line length and number density of 2-grain, 3-grain and 4-grain junctions (grain boundaries, grain boundary edges and grain corners) can be evaluated straightforwardly. From these quantities, finally, the density of potential nucleation sites is calculated by evaluating the number of atoms located on the junctions. For a detailed description of the mathematical expression see, for instance, the PhD thesis by J. Rajek<a href="#fn__6">6)</a>. For selection of either of these potential nucleation sites, the corresponding choice in the 'nucleation' tab of the 'phase status' dialog must be made.</p>
 <p><strong><em>Important note…</em></strong></p>
 <p>If only 'grain boundary' is chosen as potential nucleation site, <em>MatCalc</em> evaluates nucleation and growth in a special treatment of precipitation in <em>grain boundary diffusion geometry</em>. Any other choice of nucleation site, as well as any combination of nucleation sites, will utilize the 'random nucleation' approach, where all precipitates are assumed to be randomly distributed in the bulk volume. See the section 'Multiple selection of nucleation sites' below.</p>
@@ -272,7 +272,7 @@ Revisions: 2011-06-28 (koze), 2011-08-22 (koze), 2011-09-06 (koze), 2023-06-23 (
 <p><strong>Note:</strong> For a proper evaluation of the effective interfacial energies, the correct settings for the grain boundary energy must be made in the 'special' tab of the 'precipitation domain' dialog. Typical values for this quantity are around 0.3 J/m2.</p>
 <p>In both treatments, the employed values of precipitate interface energy and grain boundary energy can sometimes result in the absence of nucleation energy barrier. The evolution of the precipitate is then given only by its growth rate. A typical example for such behavior is the nucleation of bcc ferrite from fcc austenite in ultra-low carbon unalloyed steel, where the ferrite grains (precipitates) nucleate instantaneously after crossing the phase boundary. This effect is described, for instance, by Kozeschnik and Gamsjäger<a href="#fn__11">11)</a>.</p>
 <h3 id="chemical-driving-force-for-grain-boundary-nucleation">Chemical driving force for grain boundary nucleation</h3>
-<p>If precipitates nucleate and grow on grain boundaries, the so-called 'collector plate' mechanism is assumed to be operative for the diffusive transport of atoms to the precipitate. In this approach, commonly, an infinitely fast diffusion inside the grain boundary is assumed, and slow transport in the bulk volume. In <em>MatCalc</em>, diffusion during grain boundary nucleation is treated according to the settings made for 'diffusion in grain boundary' in the 'special' tab of the 'precipitation domain' dialog. Typical values for these quantities are summarizes in the article  <a href="/techpapers/precipitation/diffusion" title="techpapers/precipitation/diffusion">Diffusion in heterogenous precipitation</a>.</p>
+<p>If precipitates nucleate and grow on grain boundaries, the so-called 'collector plate' mechanism is assumed to be operative for the diffusive transport of atoms to the precipitate. In this approach, commonly, an infinitely fast diffusion inside the grain boundary is assumed, and slow transport in the bulk volume. In <em>MatCalc</em>, diffusion during grain boundary nucleation is treated according to the settings made for 'diffusion in grain boundary' in the 'special' tab of the 'precipitation domain' dialog. Typical values for these quantities are summarizes in the article  <a href="/matcalc_docu/techpapers/precipitation/diffusion" title="techpapers:precipitation:diffusion">Diffusion in heterogenous precipitation</a>.</p>
 <p><strong>Note:</strong> In the nucleation stage, the effective region supporting solute atoms for nucleation is assumed to be 1 nm wide, that is, 0.5 nm to each of the two sides of the grain boundary. This assumption is essentially reproducing the observation that nucleation in grain boundaries will be extremely fast due to the fast diffusion kinetics along the grain boundary. However, once the solute atoms available in this restricted region have formed the first nuclei, any additional solute atom arriving at the grain boundary later will diffuse towards existing precipitates and attach there rather than nucleating additional particles. This assumption is the reason that you will observe decreasing and, finally, zero nucleation rate for grain boundary precipitates even if the driving force inside the grain would still support nucleation.</p>
 <h2 id="subgrain-boundaries-edges-and-corners">Subgrain boundaries, edges and corners</h2>
 <p>In <em>MatCalc</em>, subgrain boundaries (SGB) represent special objects, which are different from grain boundaries in a few aspects. SGB are</p>
@@ -281,7 +281,7 @@ Revisions: 2011-06-28 (koze), 2011-08-22 (koze), 2011-09-06 (koze), 2023-06-23 (
 <li>faster diffusion paths than within the bulk volume, but still significantly slower than high-angle grain boundaries</li>
 </ul>
 <p>SGBs have been introduced into <em>MatCalc</em> originally to mimic the martensitic substructure of materials. This is sketched in the figure below showing a prior austenite grain with a few martensite laths.</p>
-<p><a href="/techpapers/nucleation/img/fig_nucleation_tetrakaidecahedron_mart.png" title="techpapers/nucleation/img/fig_nucleation_tetrakaidecahedron_mart.png"><img alt=" Subgrains representing the martensitic microstructure of materials" src="/techpapers/nucleation/img/fig_nucleation_tetrakaidecahedron_mart.png" title="Subgrains representing the martensitic microstructure of materials" /></a></p>
+<p><a href="/matcalc_docu/techpapers/nucleation/img/fig_nucleation_tetrakaidecahedron_mart.png" title="techpapers:nucleation:img:fig_nucleation_tetrakaidecahedron_mart.png"><img alt=" Subgrains representing the martensitic microstructure of materials" src="/matcalc_docu/techpapers/nucleation/img/fig_nucleation_tetrakaidecahedron_mart.png" title="Subgrains representing the martensitic microstructure of materials" /></a></p>
 <h3 id="potential-nucleation-sites_3">Potential nucleation sites</h3>
 <p>For SGB nucleation, each atom located on the SGB is assumed to be a potential nucleation site. Just like for grain boundaries, the number of potential sites is evaluated from the geometrical properties of the (elongated) tetrakaidecahedron as described in J. Rajeks thesis.<a href="#fn__12">12)</a></p>
 <p>For the choice of subgrain boundary edges and corners, each atom located at these sites is considered to be a potential nucleation site. Evaluation of <span class="arithmatex">\(N\_0\)</span> is performed in analogy to grain boundaries.</p>
@@ -322,7 +322,7 @@ Revisions: 2011-06-28 (koze), 2011-08-22 (koze), 2011-09-06 (koze), 2023-06-23 (
 <p>Situations of this kind occur typically in precipitation of particles that show a transition from fully coherent to semi-coherent or incoherent interfacial structure. In the very early stages of precipitation, precipitates with volumetric misfit to the matrix are often constrained and forced into metastable crystal structures due to the coherency stress exerted by the matrix structure. While growing, the misfit stress becomes so large that the interfacial structure becomes incoherent, with the effect that the elastic misfit stress is substantially reduced. The coherency stress from the matrix is reduced and the precipitate can adopt crystal structures and/or chemical compositions with higher thermodynamic stability.</p>
 <p>An example of this type of transformation is found, for instance, in the transition of beta” to beta' precipitates in the Al-Mg-Si system. The coherent beta“ precipitates start losing coherency after reaching a certain critical size, which is denoted as the <strong>'transformation radius'</strong> in the 'nucleation' tab of the 'phase status' dialog. In the actual nucleation procedure, two values for the transformation radius must be defined, spanning a range within which the transformation from parent to product phase occurs. The two values, minimum and maximum transformation radius, <span class="arithmatex">\(r\_{t,min}\)</span> and <span class="arithmatex">\(r\_{t,max}\)</span>, reflect the observation that the transformation process will not instantaneously start at the minimum critical value, but proceed smoothly over a certain range.</p>
 <p>When a precipitate size class of the parent phase reaches the minimum critical size <span class="arithmatex">\(r\_{t,min}\)</span>, in each time integration step, a certain number of precipitates of this size class transforms into the product phase given by the actual location of the radius within the transformation interval. Close to the minimum size, the transformation probability is rather low, such that only a small number of the precipitates in the size class transform. In contrast, the probability is very high close to the maximum transformation radius and a large number of precipitates will transform in each step. Above the maximum, the transformation probability becomes unity and all particles exceeding this size are transformed immediately. This situation is schematically shown in the following graph.</p>
-<p><a href="/techpapers/nucleation/img/fig_nucleation_direct_particle_radius.png" title="techpapers/nucleation/img/fig_nucleation_direct_particle_radius.png"><img alt=" Transformation probability for inner-particle nucleation with transformation radius" src="/techpapers/nucleation/img/fig_nucleation_direct_particle_radius.png" title="Transformation probability for inner-particle nucleation with transformation radius" /></a></p>
+<p><a href="/matcalc_docu/techpapers/nucleation/img/fig_nucleation_direct_particle_radius.png" title="techpapers:nucleation:img:fig_nucleation_direct_particle_radius.png"><img alt=" Transformation probability for inner-particle nucleation with transformation radius" src="/matcalc_docu/techpapers/nucleation/img/fig_nucleation_direct_particle_radius.png" title="Transformation probability for inner-particle nucleation with transformation radius" /></a></p>
 <p>After a certain number of new precipitates have nucleated, the same number of precipitates of the parent phase are removed from the system. The critical radius of the new precipitates is taken as the value of the parent precipitates.</p>
 <p><strong>Note:</strong> Similar to the nucleation model based on the equivalent interfacial energy, this type of inner-particle transformation only occurs, if the relative thermodynamic stability of the product phase is above the stability of the parent phase. This condition is always evaluated before any kind of inner-particle transformation is performed by <em>MatCalc</em>.</p>
 <p><strong>Practical note:</strong> If you define this type of nucleation model in your simulations, and you do not observe any transformation although the parent phase precipitates have already exceeded the maximum transformation radius, check the chemical driving force of the two phases.</p>
@@ -373,7 +373,7 @@ AA6005 Al-alloy during continuous cooling DSC experiments”, Materialia 25 (202
 <p><a href="#fnt__5">5)</a></p>
 <p>Sir W. Thomson, „On the division of space with minimum partitional area“ Philos. Mag. 24 (1887) 503-514</p>
 <p><a href="#fnt__6">6)</a></p>
-<p><a href="https///www.matcalc.at/index.php/about/publications" title="https///www.matcalc.at/index.php/about/publications">list of MatCalc-relevant publications</a></p>
+<p><a href="https://www.matcalc.at/index.php/about/publications" title="https://www.matcalc.at/index.php/about/publications">list of MatCalc-relevant publications</a></p>
 <p><a href="#fnt__7">7)</a></p>
 <p>F.D. Fischer, J. Svoboda, E. Gamsjäger, E. Kozeschnik and B. Sonderegger, “Modelling of Precipitation Kinetics with Simultanous Stress Relaxation”, Mater. Res. Soc. Symp. Proc., 979, 2007, pp. 0979-HH11-04.</p>
 <p><a href="#fnt__8">8)</a></p>
@@ -385,7 +385,7 @@ AA6005 Al-alloy during continuous cooling DSC experiments”, Materialia 25 (202
 <p><a href="#fnt__11">11)</a></p>
 <p>E. Kozeschnik and E. Gamsjäger, „High-Speed Quenching Dilatometer Investigation of the Austenite to Ferrite Transformation in Fe-C”, Met. Mater. Trans. 37A, 2006, 1791-1797.</p>
 <p><a href="#fnt__12">12)</a></p>
-<p><a href="https///www.matcalc.at/index.php/about/publications" title="https///www.matcalc.at/index.php/about/publications">list of MatCalc-relevant publications</a></p>
+<p><a href="https://www.matcalc.at/index.php/about/publications" title="https://www.matcalc.at/index.php/about/publications">list of MatCalc-relevant publications</a></p>
 <p><a href="#fnt__13">13)</a></p>
 <p>E. Kozeschnik, B. Sonderegger and H. Danielsen, unpublished research (2005).</p>
 <p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=techpapers%3Anucleation%3Ahet_nucl_sites&amp;1788352981" /></p>

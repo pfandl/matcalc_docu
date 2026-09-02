@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pfandl.github.io/matcalc_docu/examples/precipitation/p2/p2_2/" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
     <title>P2 2 - MatCalc Documentation</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "P2 2";
         var mkdocs_page_input_path = "examples/precipitation/p2/p2_2.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_url = "/matcalc_docu/examples/precipitation/p2/p2_2/";
       </script>
     
     <!--[if lt IE 9]>
@@ -51,7 +51,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/">MatCalc tutorial</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/">Tutorials</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
                 </li>
@@ -137,30 +137,30 @@ Revisions:</p>
 <p>The three sections of this example show selected parameters and their influence on the vacancy site fraction. Always begin with the settings chosen in part one, and alter them according to the actual needs. It is highly recommended to use the provided scripts, or to at least read through and to try to understand them, as they simplify the amount of work that has to be done tremendously. Further do they enable easy parameter changes and otherwise time-consuming alterations of settings.</p>
 <h2 id="related-documents">Related documents</h2>
 <ul>
-<li><a href="/examples/precipitation/p2/p2_1" title="examples/precipitation/p2/p2_1">Part 1: Isothermal treatment of Al-Cu</a></li>
-<li><a href="/examples/precipitation/p2/p2_2" title="examples/precipitation/p2/p2_2">Part 2: Evolution of excess vacancies</a></li>
+<li><a href="/matcalc_docu/examples/precipitation/p2/p2_1" title="examples:precipitation:p2:p2_1">Part 1: Isothermal treatment of Al-Cu</a></li>
+<li><a href="/matcalc_docu/examples/precipitation/p2/p2_2" title="examples:precipitation:p2:p2_2">Part 2: Evolution of excess vacancies</a></li>
 </ul>
 <h2 id="complementary-files">Complementary files</h2>
-<p>Click  <a href="/examples/precipitation/p2/scripts/p2_2_vacancy-quenchrate_-_cooling_rate_2018.mcs" title="examples/precipitation/p2/scripts/p2_2_vacancy-quenchrate_-_cooling_rate_2018.mcs (10.1 KB)">here</a> to view the script for section 1, Influence of quenching rate on vacancy evolution.</p>
-<p>Click <a href="/examples/precipitation/p2/scripts/p2_2_vacancy-quenchrate_-_dislocation_density_2018.mcs" title="examples/precipitation/p2/scripts/p2_2_vacancy-quenchrate_-_dislocation_density_2018.mcs (10.9 KB)">here</a> to view the script for section 2, Influence of dislocation density on vacancy evolution.</p>
-<p>Click <a href="/examples/precipitation/p2/scripts/p2_2_vacancy-quenchrate_-_reheating_curve_2018.mcs" title="examples/precipitation/p2/scripts/p2_2_vacancy-quenchrate_-_reheating_curve_2018.mcs (11.1 KB)">here</a> to view the script for section 3, Evolution of vacancy site fraction while reheating.</p>
+<p>Click  <a href="/matcalc_docu/examples/precipitation/p2/scripts/p2_2_vacancy-quenchrate_-_cooling_rate_2018.mcs" title="examples:precipitation:p2:scripts:p2_2_vacancy-quenchrate_-_cooling_rate_2018.mcs (10.1 KB)">here</a> to view the script for section 1, Influence of quenching rate on vacancy evolution.</p>
+<p>Click <a href="/matcalc_docu/examples/precipitation/p2/scripts/p2_2_vacancy-quenchrate_-_dislocation_density_2018.mcs" title="examples:precipitation:p2:scripts:p2_2_vacancy-quenchrate_-_dislocation_density_2018.mcs (10.9 KB)">here</a> to view the script for section 2, Influence of dislocation density on vacancy evolution.</p>
+<p>Click <a href="/matcalc_docu/examples/precipitation/p2/scripts/p2_2_vacancy-quenchrate_-_reheating_curve_2018.mcs" title="examples:precipitation:p2:scripts:p2_2_vacancy-quenchrate_-_reheating_curve_2018.mcs (11.1 KB)">here</a> to view the script for section 3, Evolution of vacancy site fraction while reheating.</p>
 <h1 id="main-document">Main document</h1>
 <h2 id="setup-thermodynamics-and-precipitation-system">Setup thermodynamics and precipitation system</h2>
 <p>Use the settings shown in Part 1 to set up the system. Alternatively use the workspace file from part 1 and continue your evaluation from there.</p>
 <h2 id="influence-of-quenching-rate-on-vacancy-evolution">Influence of quenching rate on vacancy evolution</h2>
 <p>Modify the heat-treatment of part one in such manner, that the cooling rate from 600°C to 150°C varies between 1 and 1000 K/s (see red square). Set the second segment to an annealing time of 30.000 seconds. Perform the simulation 4 times and duplicate and lock the curves in between. Feel free to rename and change their appearance according to the picture below for a better visualization.</p>
-<p><a href="/examples/precipitation/p2/p2_2-changecoolingrate.png" title="examples/precipitation/p2/p2_2-changecoolingrate.png"><img alt=" Heat treatment segment" src="/examples/precipitation/p2/p2_2-changecoolingrate.png" title="Heat treatment segment" /></a></p>
+<p><a href="/matcalc_docu/examples/precipitation/p2/p2_2-changecoolingrate.png" title="examples:precipitation:p2:p2_2-changecoolingrate.png"><img alt=" Heat treatment segment" src="/matcalc_docu/examples/precipitation/p2/p2_2-changecoolingrate.png" title="Heat treatment segment" /></a></p>
 <p>A variation in the quenching speed is shown in the figure below. The black, dashed line represents the equilibrium vacancy concentration, where the colored lines show the current excess vacancy concentration with respect to their quenching speeds.</p>
-<p><a href="/examples/precipitation/p2/p2_2-coolingratefinal.png" title="examples/precipitation/p2/p2_2-coolingratefinal.png"><img alt=" Influence of cooling rate on vacancy concentration" src="/examples/precipitation/p2/p2_2-coolingratefinal.png" title="Influence of cooling rate on vacancy concentration" /></a></p>
+<p><a href="/matcalc_docu/examples/precipitation/p2/p2_2-coolingratefinal.png" title="examples:precipitation:p2:p2_2-coolingratefinal.png"><img alt=" Influence of cooling rate on vacancy concentration" src="/matcalc_docu/examples/precipitation/p2/p2_2-coolingratefinal.png" title="Influence of cooling rate on vacancy concentration" /></a></p>
 <p>The quenching-in of vacancies, thus the creation of excess vacancies due to high-cooling speeds, can easily be seen. For fast quenching rates, the vacancies, present at high temperatures, can not annihilate due to reduced diffusion rates at low temperatures which are present for the longest times. The opposite can be seen from the 1 K/s curve, where the current-vacancy density follows the equilibrium-vacancy density up to very long times. Only at the very end does a small difference appear.</p>
 <p><strong>Note</strong>: If you have a look at the script, you can see that the variation in quenching rate utilizes a for-loop. The runtime variable 'i' increases by 1 with each repetition and thus changes the exponential factor from 1 to 1000. The <code>format-variable-string</code> command is used to label the curves corresponding to their cooling rate.</p>
 <h2 id="influence-of-dislocation-density-on-vacancy-evolution">Influence of dislocation density on vacancy evolution</h2>
 <p>For the second section set the system up as before. Choose a quenching rate of 100 K/s from 600°C to 150°C. Anneal for 30.000 seconds at 150°C just as we did before. We are going to vary the dislocation density now for values between 1e10 and 1e14 (enter values in red box). Perform a calculation for each density and duplicate and lock afterwards. Rename and customize the curves to your pleasure.</p>
-<p><a href="/examples/precipitation/p2/p2_2-changedisldensity.png" title="examples/precipitation/p2/p2_2-changedisldensity.png"><img alt=" Change dislocation density" src="/examples/precipitation/p2/p2_2-changedisldensity.png" title="Change dislocation density" /></a></p>
+<p><a href="/matcalc_docu/examples/precipitation/p2/p2_2-changedisldensity.png" title="examples:precipitation:p2:p2_2-changedisldensity.png"><img alt=" Change dislocation density" src="/matcalc_docu/examples/precipitation/p2/p2_2-changedisldensity.png" title="Change dislocation density" /></a></p>
 <p>You will notice two things when looking on the figure below. For one, the equilibrium vacancy concentration is independent of the dislocation density. This is understandable, as the dislocation density enhance mainly the diffusion rate. As the equilibrium rate is independent of diffusion rates, as it always looks at a system after an infinite amount of time, there is no dependence. The second noticeable effect is the decrease in vacancies with increased dislocation density. Again, this effect can be explained by diffusion rate. As vacancies can move much faster through a system with high dislocation density, their annihilation occurs at a much faster rate, leaving less excess vacancies behind.</p>
-<p><a href="/examples/precipitation/p2/p2_2-disldensfinal.png" title="examples/precipitation/p2/p2_2-disldensfinal.png"><img alt=" Change in dislocation density" src="/examples/precipitation/p2/p2_2-disldensfinal.png" title="Change in dislocation density" /></a></p>
+<p><a href="/matcalc_docu/examples/precipitation/p2/p2_2-disldensfinal.png" title="examples:precipitation:p2:p2_2-disldensfinal.png"><img alt=" Change in dislocation density" src="/matcalc_docu/examples/precipitation/p2/p2_2-disldensfinal.png" title="Change in dislocation density" /></a></p>
 <p>Another effect which is apparent from the figure above is that increase of the '1e13' density after about 1000 seconds and the different curve progression of the '1e14' curve. The reason for this behavior roots in the precipitation of the precipitates. As Al has a lower vacancy formation enthalpy than Cu, vacancies form easier in a pure Al matrix. Due to the increased dislocation density, the formation of precipitates is favored. Therefore, the matrix depletes on Cu which is shown below. As the Cu decreases in the matrix, the vacancy formation enthalpy approaches the Al value. Thus, the '1e13' and '1e14' curves show higher vacancy concentrations.</p>
-<p><a href="/examples/precipitation/p2/p2_2-disldensfinal-chem.png" title="examples/precipitation/p2/p2_2-disldensfinal-chem.png"><img alt=" Dislocation density and Cu in AL-Matrix" src="/examples/precipitation/p2/p2_2-disldensfinal-chem.png" title="Dislocation density and Cu in AL-Matrix" /></a></p>
+<p><a href="/matcalc_docu/examples/precipitation/p2/p2_2-disldensfinal-chem.png" title="examples:precipitation:p2:p2_2-disldensfinal-chem.png"><img alt=" Dislocation density and Cu in AL-Matrix" src="/matcalc_docu/examples/precipitation/p2/p2_2-disldensfinal-chem.png" title="Dislocation density and Cu in AL-Matrix" /></a></p>
 <p><em>Upper figure: Content of Cu in Al-matrix for different dislocation densities.</em></p>
 <h2 id="evolution-of-vacancy-site-fractions-while-reheating">Evolution of vacancy site fractions while reheating</h2>
 <p>This section treats the difference between the vacancy evolution of the equilibrium concentration compared to the current vacancies at various annealing times using the FSK vacancy dynamics model.</p>
@@ -169,16 +169,16 @@ Revisions:</p>
 <p>In the older MatCalc versions, the variables <strong>PX_SV_EQUIL<span class="arithmatex">\(almatrix** and **PX\_SV\_CURR\)</span>almatrix</strong> were named <strong>PX_VA_EQUIL<span class="arithmatex">\(almatrix** and **PX\_VA\_CURR\)</span>almatrix</strong>, respectively.</p>
 <p>The red curve equals the equilibrium concentration and does not change with annealing time, quenching rate, etc. as it is always in equilibrium. The other curves however are quenched and contain a great amount of excess vacancies. Upon annealing, these vacancies reduce due to the formation of Theta'' as well as annihilation processes. It is important to note, that high excess vacancy concentrations are prime to the nucleation of Theta'' at such low temperatures, due to increasing the diffusivity considerably.</p>
 <p>After various annealing times (100 to 1e6 seconds) at room temperatures, the alloy is heated up to 250°C with a heating rate of 10K per minute. Without consideration of excess vacancy trapping, the following figure is simulated:</p>
-<p><a href="/examples/precipitation/p2/p2_3-reheating.png" title="examples/precipitation/p2/p2_3-reheating.png"><img alt=" Vacancy site fraction evolution while reheating" src="/examples/precipitation/p2/p2_3-reheating.png" title="Vacancy site fraction evolution while reheating" /></a></p>
+<p><a href="/matcalc_docu/examples/precipitation/p2/p2_3-reheating.png" title="examples:precipitation:p2:p2_3-reheating.png"><img alt=" Vacancy site fraction evolution while reheating" src="/matcalc_docu/examples/precipitation/p2/p2_3-reheating.png" title="Vacancy site fraction evolution while reheating" /></a></p>
 <p>It is apparent that the vacancy site fraction reduces even further upon increasing the temperature, up to intersect with the equilibrium site fraction. From there on, the actual site fraction follows the progress of the equilibrium curve. For very long annealing times, here 1e6 seconds, most excess vacancies are annihilated. Therefore, when re-heating, vacancies have to be formed anew. As this is a time-consuming process, the actual vacancy site fraction can not follow the equilibrium.</p>
 <p>Another case is given when considering excess vacancy trapping. The current <em>MatCalc</em> approach to excess vacancy trapping is to define a certain fraction, which is then considered to be trapped and will not be accounted for any further. Open the phase status dialog window and go to special tab for TH_DP_P0 as the selected phase. Enter <strong>0.002</strong> for <strong>excess vacancy trapping fraction</strong> and a value of <strong>0.75</strong> for the <strong>coalescence factor</strong>.</p>
-<p><a href="/examples/precipitation/p2/p2_3-excessvacancy.png" title="examples/precipitation/p2/p2_3-excessvacancy.png"><img alt=" Consider excess vacancy trapping" src="/examples/precipitation/p2/p2_3-excessvacancy.png" title="Consider excess vacancy trapping" /></a></p>
+<p><a href="/matcalc_docu/examples/precipitation/p2/p2_3-excessvacancy.png" title="examples:precipitation:p2:p2_3-excessvacancy.png"><img alt=" Consider excess vacancy trapping" src="/matcalc_docu/examples/precipitation/p2/p2_3-excessvacancy.png" title="Consider excess vacancy trapping" /></a></p>
 <p>Perform the simulation again (Remove the two dollar signs <code>$</code> at the TH_DP_P0 precipitate setup in the script and run the above provided script). An additional regime can be observed. At 1e2 to 1e4 seconds: upon reheating, the vacancy site fraction initially decreases, as the phase fraction of Theta'' keeps increasing. Arriving at temperatures of 130-140°C a bulge can be observed. The increase in vacancy site fraction at the bulge is formed, as a certain amount of trapped vacancies is freed while the precipitates dissolve. The decrease which follows shortly after is the result of the still ongoing annihilation of vacancies due to increasing the temperature. This bulge can be seen as the cumulative curve of …</p>
 <ul>
 <li>… the vacancy site fraction <strong>increasing</strong> effect of setting trapped vacancies free.</li>
 <li>… the vacancy site fraction <strong>decreasing</strong> effect of vacancy annihilation due to the FSK model.</li>
 </ul>
-<p><a href="/examples/precipitation/p2/p2_3-reheating-excessvacancy.png" title="examples/precipitation/p2/p2_3-reheating-excessvacancy.png"><img alt=" Vacancy site fraction evolution while reheating, considering excess vacancy trapping" src="/examples/precipitation/p2/p2_3-reheating-excessvacancy.png" title="Vacancy site fraction evolution while reheating, considering excess vacancy trapping" /></a></p>
+<p><a href="/matcalc_docu/examples/precipitation/p2/p2_3-reheating-excessvacancy.png" title="examples:precipitation:p2:p2_3-reheating-excessvacancy.png"><img alt=" Vacancy site fraction evolution while reheating, considering excess vacancy trapping" src="/matcalc_docu/examples/precipitation/p2/p2_3-reheating-excessvacancy.png" title="Vacancy site fraction evolution while reheating, considering excess vacancy trapping" /></a></p>
 <h1 id="consecutive-articles">Consecutive articles</h1>
 <p>none</p>
 <p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=examples%3Aprecipitation%3Ap2%3Ap2_2&amp;1788352995" /></p>

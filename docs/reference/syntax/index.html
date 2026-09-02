@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pfandl.github.io/matcalc_docu/reference/syntax/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
     <title>Syntax - MatCalc Documentation</title>
     <link rel="stylesheet" href="../../css/theme.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "Syntax";
         var mkdocs_page_input_path = "reference/syntax.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_url = "/matcalc_docu/reference/syntax/";
       </script>
     
     <!--[if lt IE 9]>
@@ -51,7 +51,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/">MatCalc tutorial</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../tutorials/">Tutorials</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
                 </li>
@@ -119,16 +119,16 @@
 <p>This page contains in-depth information on how to use if-conditions, for- and while-loops as well as other commands, which could come in handy at some point.</p>
 <p>Have a look at the following demonstration examples, which make excessive use of random numbers, conditions and loops:</p>
 <ul>
-<li>Random number generator -  <a href="/reference/syntax/random.mcs" title="reference/syntax/random.mcs (3 KB)">Random generator script</a></li>
-<li>The<em>MatCalc</em>Game -  <a href="/reference/syntax/thematcalcgame.mcs" title="reference/syntax/thematcalcgame.mcs (8.9 KB)">The MatCalc game</a></li>
-<li>Roulette -  <a href="/reference/syntax/roulette.mcs" title="reference/syntax/roulette.mcs (8.8 KB)">Casino Royal</a></li>
+<li>Random number generator -  <a href="/matcalc_docu/reference/syntax/random.mcs" title="reference:syntax:random.mcs (3 KB)">Random generator script</a></li>
+<li>The<em>MatCalc</em>Game -  <a href="/matcalc_docu/reference/syntax/thematcalcgame.mcs" title="reference:syntax:thematcalcgame.mcs (8.9 KB)">The MatCalc game</a></li>
+<li>Roulette -  <a href="/matcalc_docu/reference/syntax/roulette.mcs" title="reference:syntax:roulette.mcs (8.8 KB)">Casino Royal</a></li>
 </ul>
 <h3 id="if-condition">IF-condition</h3>
 <pre><code>if (x&gt;5)
    send-console-string 'The value of x is larger than 5'
 endif
 </code></pre>
-<p>An if-condition can be used whenever a condition has to be checked (e.g./ Version number check at the beginning of each MatCalc script). The example above checks if the variable <strong>x</strong> is larger than the arbitrary value of <strong>5</strong>. If the condition is TRUE, the command after the if will be performed. If it is FALSE, it will not be performed. Note that an if-condition is always ended with an <strong>endif</strong>.</p>
+<p>An if-condition can be used whenever a condition has to be checked (e.g.: Version number check at the beginning of each MatCalc script). The example above checks if the variable <strong>x</strong> is larger than the arbitrary value of <strong>5</strong>. If the condition is TRUE, the command after the if will be performed. If it is FALSE, it will not be performed. Note that an if-condition is always ended with an <strong>endif</strong>.</p>
 <pre><code>if (x&gt;5)
    send-console-string 'The value of x is larger than 5'
 elseif (x==5)
@@ -193,8 +193,8 @@ send-console-string #test
 --&gt; Output: 5
 </code></pre>
 <p>This is an easy way of creating many variables automatically. Have a look at the 'Random number generation' script linked above for more information on the automatic creation variables.</p>
-<p>There are two ways how the steps of a for-loop can be set: The automatical way has been used already without mentioning it, where the interval from x..y gets split in intervals with stepwidth 1. By adding an additional parameter, the step-width can be controlled by either splitting into intervals ( / ) or by setting a fixed step-width ( ; ).</p>
-<pre><code>for(i;1..100/5)
+<p>There are two ways how the steps of a for-loop can be set: The automatical way has been used already without mentioning it, where the interval from x..y gets split in intervals with stepwidth 1. By adding an additional parameter, the step-width can be controlled by either splitting into intervals ( : ) or by setting a fixed step-width ( ; ).</p>
+<pre><code>for(i;1..100:5)
 $ The interval from 1 to 100 is split into 5 intervals. 
 $ The values for i are therefore: 1, 20, 40, 60, 80, 100.
 

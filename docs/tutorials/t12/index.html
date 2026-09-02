@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pfandl.github.io/matcalc_docu/tutorials/t12/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
     <title>T12 - MatCalc Documentation</title>
     <link rel="stylesheet" href="../../css/theme.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "T12";
         var mkdocs_page_input_path = "tutorials/t12.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_url = "/matcalc_docu/tutorials/t12/";
       </script>
     
     <!--[if lt IE 9]>
@@ -51,7 +51,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../">MatCalc tutorial</a>
+                <li class="toctree-l2"><a class="reference internal" href="../">Tutorials</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
                 </li>
@@ -138,7 +138,7 @@ MatCalc version 6.00 rel 0.100<br />
 license: free<br />
 database: mc_fe.tdb</em></p>
 <h3 id="complimentary-files">Complimentary files</h3>
-<p>Click <a href="/tutorials/t12/script/t12_6021003.mcs" title="tutorials/t12/script/t12_6021003.mcs (5.8 KB)">here</a> to view the script for this tutorial</p>
+<p>Click <a href="/matcalc_docu/tutorials/t12/script/t12_6021003.mcs" title="tutorials:t12:script:t12_6021003.mcs (5.8 KB)">here</a> to view the script for this tutorial</p>
 <h3 id="contents">Contents:</h3>
 <ul>
 <li>Getting help in the MatCalc console</li>
@@ -156,10 +156,10 @@ database: mc_fe.tdb</em></p>
 <ul>
 <li>using <strong>View &gt; Show &gt; Show console</strong></li>
 </ul>
-<p><a href="/tutorials/t1/img/t1_menu_show_console_6031000.png" title="tutorials/t1/img/t1_menu_show_console_6031000.png"><img alt=" Show console in MatCalc menu" src="/tutorials/t1/img/t1_menu_show_console_6031000.png" title="Show console in MatCalc menu" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t1/img/t1_menu_show_console_6031000.png" title="tutorials:t1:img:t1_menu_show_console_6031000.png"><img alt=" Show console in MatCalc menu" src="/matcalc_docu/tutorials/t1/img/t1_menu_show_console_6031000.png" title="Show console in MatCalc menu" /></a></p>
 <ul>
 <li>pressing the <strong>'F4'</strong> key</li>
-<li>clicking on the <a href="/tutorials/t1/img/t1_icon_show_console.png" title="tutorials/t1/img/t1_icon_show_console.png"><img alt=" MatCalc Icon show console" src="/tutorials/t1/img/t1_icon_show_console.png" title="MatCalc Icon show console" /></a> icon in Toolbar.</li>
+<li>clicking on the <a href="/matcalc_docu/tutorials/t1/img/t1_icon_show_console.png" title="tutorials:t1:img:t1_icon_show_console.png"><img alt=" MatCalc Icon show console" src="/matcalc_docu/tutorials/t1/img/t1_icon_show_console.png" title="MatCalc Icon show console" /></a> icon in Toolbar.</li>
 </ul>
 <p>MatCalc 6 uses a new formalism for the command-line input. While commands used in the scripts for the older versions are recognized by the current version, the old command formalism is to be typed in <strong>'MatCalc 5 console'</strong> window.</p>
 <h2 id="basics">Basics</h2>
@@ -244,7 +244,7 @@ READ_BINARY_FILE
 _mcore:
 </code></pre>
 <h2 id="example-calculating-an-equilibrium-using-the-command-line">Example: calculating an equilibrium using the command-line</h2>
-<p>The use of command-lines will be illustrated with a simple example: setting up a workspace and calculating an equilibrium at a single temperature. This is the same calculation as in  <a href="/tutorials/t2" title="tutorials/t2">Tutorial 2</a>: an equilibrium at 700°C in a Fe-0.4 wt.% C system containing the phases LIQUID, FCC_A1, BCC_A2 and CEMENTITE.<br />
+<p>The use of command-lines will be illustrated with a simple example: setting up a workspace and calculating an equilibrium at a single temperature. This is the same calculation as in  <a href="/matcalc_docu/tutorials/t2" title="tutorials:t2">Tutorial 2</a>: an equilibrium at 700°C in a Fe-0.4 wt.% C system containing the phases LIQUID, FCC_A1, BCC_A2 and CEMENTITE.<br />
 Start with a new workspace. (Warning! Using the <strong>'new_workspace'</strong> command does not prompt the user to save any previously open workspace files, so make sure any necessary changes are saved first.)</p>
 <pre><code>MCORE: new_workspace
 
@@ -454,9 +454,9 @@ definition range /auto/: -10..10
 MCORE: SET_PLOT_OPTION 1 S N F function3 -10..10
 </code></pre>
 <p>The resulting plot should look like this:</p>
-<p><a href="/tutorials/t12/img/t12_plot1_functions_plotted_2016.png" title="tutorials/t12/img/t12_plot1_functions_plotted_2016.png"><img alt=" MatCalc plot" src="/tutorials/t12/img/t12_plot1_functions_plotted_2016.png" title="MatCalc plot" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t12/img/t12_plot1_functions_plotted_2016.png" title="tutorials:t12:img:t12_plot1_functions_plotted_2016.png"><img alt=" MatCalc plot" src="/matcalc_docu/tutorials/t12/img/t12_plot1_functions_plotted_2016.png" title="MatCalc plot" /></a></p>
 <h3 id="expressions-using-matcalc-variables">Expressions using MatCalc variables</h3>
-<p>It is also possible to define functions made up of MatCalc variables. Here, two functions similar to those discussed in  <a href="/tutorials/t6" title="tutorials/t6">Tutorial 6</a> are defined. The built-in variables can be copied and pasted from the <strong>'variables'</strong> window to the console using the right-click menus or Ctrl+C and Ctrl+V.</p>
+<p>It is also possible to define functions made up of MatCalc variables. Here, two functions similar to those discussed in  <a href="/matcalc_docu/tutorials/t6" title="tutorials:t6">Tutorial 6</a> are defined. The built-in variables can be copied and pasted from the <strong>'variables'</strong> window to the console using the right-click menus or Ctrl+C and Ctrl+V.</p>
 <pre><code>MCORE: SET_FUNCTION_EXPRESSION function4 F$BCC_A2*X$BCC_A2$C
 MCORE: SET_FUNCTION_EXPRESSION function5 F$CEMENTITE*X$CEMENTITE$C
 </code></pre>
@@ -486,13 +486,13 @@ xs$C-(function4+function5) =
 <p>The next tutorial discusses the use of command-lines in scripts to facilitate repetitive or complex tasks.</p>
 <h2 id="command-history-window">Command history window</h2>
 <p>The command history window can be made to appear by selecting the console window and either clicking on the up-arrow icon or pressing <strong>Ctrl + up-arrow</strong>. This window gives a chronological list of all the commands entered in the console.</p>
-<p><a href="/tutorials/t1/img/t1_command_history_window_2016.png" title="tutorials/t1/img/t1_command_history_window_2016.png"><img alt=" MatCalc command history window" src="/tutorials/t1/img/t1_command_history_window_2016.png" title="MatCalc command history window" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t1/img/t1_command_history_window_2016.png" title="tutorials:t1:img:t1_command_history_window_2016.png"><img alt=" MatCalc command history window" src="/matcalc_docu/tutorials/t1/img/t1_command_history_window_2016.png" title="MatCalc command history window" /></a></p>
 <p>A command can be selected using the mouse pointer or arrow keys. Right-clicking on the command displays the following menu. On the right-hand side of the menus in MatCalc are keyboard shortcuts for the more commonly used commands. It can be seen from the image below that it is sufficient to press the <strong>Enter</strong> key to execute the selected command.</p>
-<p><a href="/tutorials/t1/img/t1_command_history_menu_2013.png" title="tutorials/t1/img/t1_command_history_menu_2013.png"><img alt=" MatCalc command history menu" src="/tutorials/t1/img/t1_command_history_menu_2013.png" title="MatCalc command history menu" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t1/img/t1_command_history_menu_2013.png" title="tutorials:t1:img:t1_command_history_menu_2013.png"><img alt=" MatCalc command history menu" src="/matcalc_docu/tutorials/t1/img/t1_command_history_menu_2013.png" title="MatCalc command history menu" /></a></p>
 <p>Previously used commands can also be accessed in the Console window itself; pressing the up-arrow key displays the most recently entered command, and pressing it repeatedly scrolls through recent commands in reverse chronological order. The command displayed can be edited then executed by pressing the <strong>Enter</strong> key.</p>
 <h2 id="consecutive-articles">Consecutive articles</h2>
-<p>The tutorial is continued in article  <a href="/tutorials/t13" title="tutorials/t13">T13 - Introduction to scripting (1/ Equilibrium calculations)</a></p>
-<p>Go to <a href="/tutorials" title="tutorials">MatCalc tutorial index</a>.</p>
+<p>The tutorial is continued in article  <a href="/matcalc_docu/tutorials/t13" title="tutorials:t13">T13 - Introduction to scripting (1: Equilibrium calculations)</a></p>
+<p>Go to <a href="/matcalc_docu/tutorials" title="tutorials">MatCalc tutorial index</a>.</p>
 <p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=tutorials%3At12&amp;1788352859" /></p>
               
             </div>

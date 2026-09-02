@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pfandl.github.io/matcalc_docu/examples/diffusion/d30/" />
       <link rel="shortcut icon" href="../../../img/favicon.ico" />
     <title>D30 - MatCalc Documentation</title>
     <link rel="stylesheet" href="../../../css/theme.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "D30";
         var mkdocs_page_input_path = "examples/diffusion/d30.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_url = "/matcalc_docu/examples/diffusion/d30/";
       </script>
     
     <!--[if lt IE 9]>
@@ -51,7 +51,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">MatCalc tutorial</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">Tutorials</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
                 </li>
@@ -138,7 +138,7 @@ Revisions:</p>
 <p>Consider pure iron with tracer amounts of aluminium. To set the system up, select <strong>BCC_A2</strong> (ferrite) and <strong>FCC_A1</strong> (austenite) as the phases and a low amount of Al (e.g. 0.01 wt-% ). Don't forget to load the diffusion data. By choosing such a low amount of Al we ensure that only Al in Fe-matrix diffusion occurs, and not the other way around.</p>
 <h3 id="investigate-the-system">Investigate the system</h3>
 <p>Start off by setting automatic start values and calculate an equilibrium at 900C. Continue by performing a stepped equilibrium calculation in a range fromm 400 to 1000C.</p>
-<p><a href="/examples/diffusion/d30/d30_fcctobcc.png" title="examples/diffusion/d30/d30_fcctobcc.png"><img alt=" Transformation of FCC to BCC" src="/examples/diffusion/d30/d30_fcctobcc.png" title="Transformation of FCC to BCC" /></a></p>
+<p><a href="/matcalc_docu/examples/diffusion/d30/d30_fcctobcc.png" title="examples:diffusion:d30:d30_fcctobcc.png"><img alt=" Transformation of FCC to BCC" src="/matcalc_docu/examples/diffusion/d30/d30_fcctobcc.png" title="Transformation of FCC to BCC" /></a></p>
 <p>After plotting the phase fractions, you can see the transformation from austenite to ferrite at 913 C. Note this temperature as it will be needed later on.</p>
 <h3 id="setup-diffusion-diagram">Setup diffusion diagram</h3>
 <p>Create a new p1 plot an perform the following changes to the plot:</p>
@@ -166,7 +166,7 @@ Revisions:</p>
 </table>
 <p>As we already performed the stepped calculation, can continue with plotting the diffusion coefficients of Al. To do so, move the <code>DT$FCC_A1$AL</code> entry (Variables - diffusion - <code>DT$*$*</code>) to the plot. Repeat this for the BCC_A2.</p>
 <p>The whole temperature range is now plotted, however this is not correct, as austenite is not found a low temperatures and ferrite vice versa. To circumvent this problem, perform a stepped calculation from 1200C to 913C, where the transformation occurs and plot the diffusion data for FCC. Continue by stepping from 913 to 400C and plotting BCC data.</p>
-<p><a href="/examples/diffusion/d30/d30_al-in-iron.png" title="examples/diffusion/d30/d30_al-in-iron.png"><img alt=" Diffusion of Al in iron" src="/examples/diffusion/d30/d30_al-in-iron.png" title="Diffusion of Al in iron" /></a></p>
+<p><a href="/matcalc_docu/examples/diffusion/d30/d30_al-in-iron.png" title="examples:diffusion:d30:d30_al-in-iron.png"><img alt=" Diffusion of Al in iron" src="/matcalc_docu/examples/diffusion/d30/d30_al-in-iron.png" title="Diffusion of Al in iron" /></a></p>
 <p>The diffusion of Al in Fe can be then seen like in the figure above.</p>
 <p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=examples%3Adiffusion%3Ad30&amp;1788353000" /></p>
               

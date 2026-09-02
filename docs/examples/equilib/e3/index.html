@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pfandl.github.io/matcalc_docu/examples/equilib/e3/" />
       <link rel="shortcut icon" href="../../../img/favicon.ico" />
     <title>E3 - MatCalc Documentation</title>
     <link rel="stylesheet" href="../../../css/theme.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "E3";
         var mkdocs_page_input_path = "examples/equilib/e3.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_url = "/matcalc_docu/examples/equilib/e3/";
       </script>
     
     <!--[if lt IE 9]>
@@ -51,7 +51,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">MatCalc tutorial</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">Tutorials</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
                 </li>
@@ -139,14 +139,14 @@ Revisions:</p>
 <p>The second part of the example involves two special problems. The first one demonstrates the “Use major constituents” option, the second one shows how changes in the chemical composition will make the miscibility gap disappear.</p>
 <h2 id="related-documents">Related documents</h2>
 <ul>
-<li><strong>E20</strong> - Thermodynamic equilibrium analysis for continuous casting simulation of micro-alloyed Fe-Al-C-N-Nb-Ti steel. Part E20-1 -  <a href="/examples/equilib/e20/e20_1" title="examples/equilib/e20/e20_1">Thermodynamic equilibrium analysis</a></li>
+<li><strong>E20</strong> - Thermodynamic equilibrium analysis for continuous casting simulation of micro-alloyed Fe-Al-C-N-Nb-Ti steel. Part E20-1 -  <a href="/matcalc_docu/examples/equilib/e20/e20_1" title="examples:equilib:e20:e20_1">Thermodynamic equilibrium analysis</a></li>
 </ul>
 <h2 id="complementary-files">Complementary files</h2>
-<p>Click  <a href="/examples/equilib/e3/script/e3_2017.mcs" title="examples/equilib/e3/script/e3_2017.mcs (14.9 KB)">here</a> to view the script for this tutorial.</p>
+<p>Click  <a href="/matcalc_docu/examples/equilib/e3/script/e3_2017.mcs" title="examples:equilib:e3:script:e3_2017.mcs (14.9 KB)">here</a> to view the script for this tutorial.</p>
 <h1 id="main-document">Main document</h1>
 <h2 id="setup-thermodynamics">Setup thermodynamics</h2>
 <p>Start by setting up the thermodynamics. Use the mc_fe.tdb or the above listed example database and select the elements and phase according to the figure below.</p>
-<p><a href="/examples/equilib/e3/img/1_e3_thermodyn.png" title="examples/equilib/e3/img/1_e3_thermodyn.png"><img alt=" Database dialog for E3 " src="/examples/equilib/e3/img/1_e3_thermodyn.png" title="Database dialog for E3" /></a></p>
+<p><a href="/matcalc_docu/examples/equilib/e3/img/1_e3_thermodyn.png" title="examples:equilib:e3:img:1_e3_thermodyn.png"><img alt=" Database dialog for E3 " src="/matcalc_docu/examples/equilib/e3/img/1_e3_thermodyn.png" title="Database dialog for E3" /></a></p>
 <p>Open the composition window and enter the following values (in wt%):</p>
 <table>
 <thead>
@@ -175,7 +175,7 @@ Revisions:</p>
 <p><strong><em>Note …</em></strong></p>
 <p>In the CALPHAD approach, all phases with identical crystal structure are usually modeled as a single solution phase, which is why we have only selected the parent FCC_A1 phase from the database dialog. In the simulations, we then operate with two phases having identical thermodynamic data, but different chemical composition. The distinction between the phases is only made by the different <em>major constituents</em> of the two composition sets.</p>
 <p>Plot the phase fraction <code>F$FCC_A1#01</code> and the fraction of elements in phase <code>X$FCC_A1#01$*</code> over temperature in Celsius. Perform a stepped calculation from 1500 to 800C in intervals of 10C.</p>
-<p><a href="/examples/equilib/e3/img/2_e3_fraction-chem-1phase.png" title="examples/equilib/e3/img/2_e3_fraction-chem-1phase.png"><img alt=" Phase fraction with on phase" src="/examples/equilib/e3/img/2_e3_fraction-chem-1phase.png" title="Phase fraction with on phase" /></a></p>
+<p><a href="/matcalc_docu/examples/equilib/e3/img/2_e3_fraction-chem-1phase.png" title="examples:equilib:e3:img:2_e3_fraction-chem-1phase.png"><img alt=" Phase fraction with on phase" src="/matcalc_docu/examples/equilib/e3/img/2_e3_fraction-chem-1phase.png" title="Phase fraction with on phase" /></a></p>
 <p>This figure shows us that, at a temperature of about 1300C, a NbC carbide phase forms within the fcc_a1 parent matrix. At about 1070C, the phase fraction jumps up to a higher value and the slope is steeper than before. Simultaneously, the chemical composition of the complex carbo-nitride changes rapidly from a NbC-rich particle to a precipitate rich in V and C,N.</p>
 <p>This behavior is often a strong indication that a second sort of carbo-nitride will eventually become stable at this temperature. This is investigated next.</p>
 <h2 id="second-complex-phase">Second complex phase</h2>
@@ -189,14 +189,14 @@ Revisions:</p>
 </code></pre>
 <p>and press 'Set now' and 'yes' again.</p>
 <p>The phase details window should now look like this:</p>
-<p><a href="/examples/equilib/e3/img/3_e3_phasedetails.png" title="examples/equilib/e3/img/3_e3_phasedetails.png"><img alt=" Phase details after splitting the prior phase into two" src="/examples/equilib/e3/img/3_e3_phasedetails.png" title="Phase details after splitting the prior phase into two" /></a></p>
+<p><a href="/matcalc_docu/examples/equilib/e3/img/3_e3_phasedetails.png" title="examples:equilib:e3:img:3_e3_phasedetails.png"><img alt=" Phase details after splitting the prior phase into two" src="/matcalc_docu/examples/equilib/e3/img/3_e3_phasedetails.png" title="Phase details after splitting the prior phase into two" /></a></p>
 <p><code>FCC_A1#01</code> now represents NbC, with a composition about 50%C and 50%Nb, whereas <code>FCC_A1#02</code>, which represents VN, is set to about 50%N and 50%V.
 Duplicate and lock all series from the phase fraction diagram, and remove the plot showing the chemical composition.</p>
 <p>Calculate an equilibrium again at 1500C and perform the stepped calculation as before.</p>
 <p><strong><em>Important note …</em></strong></p>
 <p>It is important to start the following calculation from the solution annealed state. Try afterwards calculating from a start temperature, where only one phase is stable. You will see the difference!</p>
 <p>Add two more plots and add <code>F$FCC_A1#02</code> to the phase fraction plot, <code>X$FCC_A1#01$*</code> and <code>X$FCC_A1#02$*</code> to the two new plots.</p>
-<p><a href="/examples/equilib/e3/img/4_phasefraction_chemie.png" title="examples/equilib/e3/img/4_phasefraction_chemie.png"><img alt=" Phase fraction and chemical composition of phases" src="/examples/equilib/e3/img/4_phasefraction_chemie.png" title="Phase fraction and chemical composition of phases" /></a></p>
+<p><a href="/matcalc_docu/examples/equilib/e3/img/4_phasefraction_chemie.png" title="examples:equilib:e3:img:4_phasefraction_chemie.png"><img alt=" Phase fraction and chemical composition of phases" src="/matcalc_docu/examples/equilib/e3/img/4_phasefraction_chemie.png" title="Phase fraction and chemical composition of phases" /></a></p>
 <p>From the figure showing the phase fractions, it can be directly observed that the previously calculated carbo-nitride <code>*F$FCC_A1#01</code> is almost the cumulative curve of NbC <code>FCC_A1#01</code> and VN <code>FCC_A1#02</code>.</p>
 <p>The other plots (chemical composition) show that NbC is stable over the entire temperature range. VN, on the other hand, transforms to a more stable VC at temperatures below 930C.</p>
 <h2 id="special-problem-i-major-constituents-inconsistent">Special Problem I: Major constituents inconsistent</h2>
@@ -220,9 +220,9 @@ Duplicate and lock all series from the phase fraction diagram, and remove the pl
 </tbody>
 </table>
 <p>Calculate an equilibrium at 1500 C and set automatic start values. Now perform a stepped calculation from 1500C to 800C in intervals of 10C. What you should see is an inconsistency at about 1250C. At this point, MatCalc is not sure, which phase should be NbC and VN. Therefore, we observe this spike in the diagrams.</p>
-<p><a href="/examples/equilib/e3/img/5_chemie-problem1.png" title="examples/equilib/e3/img/5_chemie-problem1.png"><img alt=" Chemical composition with inconsistency at 1250C" src="/examples/equilib/e3/img/5_chemie-problem1.png" title="Chemical composition with inconsistency at 1250C" /></a></p>
+<p><a href="/matcalc_docu/examples/equilib/e3/img/5_chemie-problem1.png" title="examples:equilib:e3:img:5_chemie-problem1.png"><img alt=" Chemical composition with inconsistency at 1250C" src="/matcalc_docu/examples/equilib/e3/img/5_chemie-problem1.png" title="Chemical composition with inconsistency at 1250C" /></a></p>
 <p>To enforce the use of the set major constituents more rigorously, we set the flag for 'enforce major constituents' in the 'Phase status…' windows.</p>
-<p><a href="/examples/equilib/e3/img/6_chemie-problem1-solved.png" title="examples/equilib/e3/img/6_chemie-problem1-solved.png"><img alt=" Chemical composition after enforcing major constituents" src="/examples/equilib/e3/img/6_chemie-problem1-solved.png" title="Chemical composition after enforcing major constituents" /></a></p>
+<p><a href="/matcalc_docu/examples/equilib/e3/img/6_chemie-problem1-solved.png" title="examples:equilib:e3:img:6_chemie-problem1-solved.png"><img alt=" Chemical composition after enforcing major constituents" src="/matcalc_docu/examples/equilib/e3/img/6_chemie-problem1-solved.png" title="Chemical composition after enforcing major constituents" /></a></p>
 <p>After performing the same stepped calculation again, you should observe a plot, which is similar to the one of the first part of this example. However, the spike is supposed to be absent now.</p>
 <h2 id="special-problem-ii-no-miscibility-gap">Special Problem II: No miscibility gap</h2>
 <p>For the simulation of the second problem, close all plots and remove the 'Enforce major constituents…' flags. Set the chemical composition to (in wt%):</p>
@@ -246,7 +246,7 @@ Duplicate and lock all series from the phase fraction diagram, and remove the pl
 </table>
 <p>Note how similar this alloy is compared to the first one. The only difference can be found in the higher amounts of nitrogen.</p>
 <p>After performing the stepped calculation, we observe that there is obviously no miscibility gap in this system. This is seen clearly in the phase fraction diagram (Go on! Plot one!), which is a curve, without any discontinuities in the phase fraction curve or rapid changes in the gradient.</p>
-<p><a href="/examples/equilib/e3/img/7-problem2-nomisc.png" title="examples/equilib/e3/img/7-problem2-nomisc.png"><img alt=" Phase fraction showing no miscibility gap; Chemical composition showing VN to be predominant" src="/examples/equilib/e3/img/7-problem2-nomisc.png" title="Phase fraction showing no miscibility gap; Chemical composition showing VN to be predominant" /></a></p>
+<p><a href="/matcalc_docu/examples/equilib/e3/img/7-problem2-nomisc.png" title="examples:equilib:e3:img:7-problem2-nomisc.png"><img alt=" Phase fraction showing no miscibility gap; Chemical composition showing VN to be predominant" src="/matcalc_docu/examples/equilib/e3/img/7-problem2-nomisc.png" title="Phase fraction showing no miscibility gap; Chemical composition showing VN to be predominant" /></a></p>
 <p>Plotting the chemical composition shows that higher amounts of N stabilize the VN-rich precipitates and prevent the formation of NbC as a separate stable phase.</p>
 <h1 id="consecutive-articles">Consecutive articles</h1>
 <p>none</p>

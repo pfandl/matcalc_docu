@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pfandl.github.io/matcalc_docu/tutorials/t10/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
     <title>T10 - MatCalc Documentation</title>
     <link rel="stylesheet" href="../../css/theme.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "T10";
         var mkdocs_page_input_path = "tutorials/t10.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_url = "/matcalc_docu/tutorials/t10/";
       </script>
     
     <!--[if lt IE 9]>
@@ -51,7 +51,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../">MatCalc tutorial</a>
+                <li class="toctree-l2"><a class="reference internal" href="../">Tutorials</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
                 </li>
@@ -124,8 +124,8 @@ MatCalc version 6.04 rel 1.001<br />
 license: free<br />
 database: mc_fe.tdb</em></p>
 <h3 id="complimentary-files">Complimentary files</h3>
-<p>Click <a href="/tutorials/t10/script/t10_6021003.mcs" title="tutorials/t10/script/t10_6021003.mcs (13.4 KB)">here</a> to view the script for this tutorial.</p>
-<p>Click <a href="/tutorials/t10/script/t0_exp_temperatures.xls" title="tutorials/t10/script/t0_exp_temperatures.xls (27 KB)">here for .xls</a> or <a href="/tutorials/t10/script/t0_exp_temperatures.txt" title="tutorials/t10/script/t0_exp_temperatures.txt (246 B)">here for .txt</a> table, respectively.</p>
+<p>Click <a href="/matcalc_docu/tutorials/t10/script/t10_6021003.mcs" title="tutorials:t10:script:t10_6021003.mcs (13.4 KB)">here</a> to view the script for this tutorial.</p>
+<p>Click <a href="/matcalc_docu/tutorials/t10/script/t0_exp_temperatures.xls" title="tutorials:t10:script:t0_exp_temperatures.xls (27 KB)">here for .xls</a> or <a href="/matcalc_docu/tutorials/t10/script/t0_exp_temperatures.txt" title="tutorials:t10:script:t0_exp_temperatures.txt (246 B)">here for .txt</a> table, respectively.</p>
 <h3 id="contents">Contents:</h3>
 <ul>
 <li>T0- temperature calculation</li>
@@ -142,10 +142,10 @@ database: mc_fe.tdb</em></p>
 <pre><code>Tsol 'BCC_A2': 857,21 C (1130,36 K) iter: 12, time used: 0,02 s
 </code></pre>
 <p>In the <strong>'Phase summary'</strong> and <strong>'Phase details'</strong> window, only the FCC_A1 phase is denoted as active (mole fracton = 1). We can now proceed with this initial condition. For convenience, store this (current) state in a calculation state with the name <strong>'Start austenite'</strong> by selecting <strong>'Global' → 'CalcStates' → 'Create…'</strong>.</p>
-<p><a href="/tutorials/t10/img/t10_global_menu_6050006.png" title="tutorials/t10/img/t10_global_menu_6050006.png"><img alt=" MatCalc global menu" src="/tutorials/t10/img/t10_global_menu_6050006.png" title="MatCalc global menu" /></a></p>
-<p><a href="/tutorials/t10/img/t10_create_a_new_calc_state_2016.png" title="tutorials/t10/img/t10_create_a_new_calc_state_2016.png"><img alt=" MatCalc calc states " src="/tutorials/t10/img/t10_create_a_new_calc_state_2016.png" title="MatCalc calc states" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t10/img/t10_global_menu_6050006.png" title="tutorials:t10:img:t10_global_menu_6050006.png"><img alt=" MatCalc global menu" src="/matcalc_docu/tutorials/t10/img/t10_global_menu_6050006.png" title="MatCalc global menu" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t10/img/t10_create_a_new_calc_state_2016.png" title="tutorials:t10:img:t10_create_a_new_calc_state_2016.png"><img alt=" MatCalc calc states " src="/matcalc_docu/tutorials/t10/img/t10_create_a_new_calc_state_2016.png" title="MatCalc calc states" /></a></p>
 <p>We can now evaluate the T0-temperature for austenite and ferrite with <strong>'Calc' → 'Search phase boundary…'</strong> or <strong>Ctrl+Shift+T</strong>. The following, well-known, dialog box appears:</p>
-<p><a href="/tutorials/t10/img/t10_phase_boundary_2016.png" title="tutorials/t10/img/t10_phase_boundary_2016.png"><img alt=" MatCalc search phase boundary" src="/tutorials/t10/img/t10_phase_boundary_2016.png" title="MatCalc search phase boundary" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t10/img/t10_phase_boundary_2016.png" title="tutorials:t10:img:t10_phase_boundary_2016.png"><img alt=" MatCalc search phase boundary" src="/matcalc_docu/tutorials/t10/img/t10_phase_boundary_2016.png" title="MatCalc search phase boundary" /></a></p>
 <p>Select <strong>'T0-temperature'</strong> in the type listbox, <strong>'BCC_A2'</strong> as target phase and <strong>'FCC_A1'</strong> as parent phase. The check box <strong>'Force target to have parent composition'</strong> must be chosen, because the composition of BCC_A2 wil be adjusted according to the parent composition. The energy difference (<strong>DFM offset</strong>) can be left as default (zero). Press <strong>'Go'</strong> to start the calculation. The result is shown below</p>
 <pre><code>T0(FCC_A1/BCC_A2):  791,461 C (1064,61 K)
 iter: 2, time used: 0,00 s
@@ -167,22 +167,22 @@ FE +9,84677e-001  CR +1,06937e-002   C +4,62933e-003
 <h2 id="step-3-evaluate-t0-temperature-as-a-function-of-chromium-content">Step 3: Evaluate T<sub>0</sub>- temperature as a function of chromium content</h2>
 <p><img alt="FIXME" src="/wiki/lib/images/smileys/fixme.svg" /></p>
 <p>Let us now investigate how the T0- temperature for ferrite and austenite varies with the chromium content. From the menu select <strong>'Calc' → 'Stepped calculation…'</strong>or press <strong>Ctrl+T</strong>. In the left listbox of the <strong>'Step equilibrium …'</strong> window, select type <strong>'T0 temperature'</strong>. Select <strong>'FCC_A1'</strong> for the parent phase and <strong>'BCC_A2'</strong> for the target phase. Don't forget to select chromium as the independent element. Enter the chromium range between <strong>'0'</strong> and <strong>'10'</strong> weight percent in steps of <strong>'0.5'</strong> and don't forget to mark the <strong>'Force identical composition'</strong> box. The <strong>'Step equilibrium …'</strong> window looks now as follows.</p>
-<p><a href="/tutorials/t10/img/t10_step_equilibrium_1_6011003.png" title="tutorials/t10/img/t10_step_equilibrium_1_6011003.png"><img alt=" MatCalc step equilibrium" src="/tutorials/t10/img/t10_step_equilibrium_1_6011003.png" title="MatCalc step equilibrium" /></a></p>
-<p>Press <strong>'Go'</strong> to start the calculation. The result can be displayed in the well known <strong>'XY-data'</strong> plot. Create the plot and drag and drop the <strong>T$c</strong> variable from the variables window into the plot. Edit the <strong>'x-axis'</strong>, <strong>'y-axis'</strong> and <strong>'legend'</strong> (see also  <a href="/tutorials/t4" title="tutorials/t4">Tutorial 4</a> or  <a href="/tutorials/t5" title="tutorials/t5">Tutorial 5</a>) such that the result of the stepped T0- temperature calculation looks as follows.</p>
-<p><a href="/tutorials/t10/img/t10_plot1_first_result_2_2016.png" title="tutorials/t10/img/t10_plot1_first_result_2_2016.png"><img alt=" MatCalc plot" src="/tutorials/t10/img/t10_plot1_first_result_2_2016.png" title="MatCalc plot" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t10/img/t10_step_equilibrium_1_6011003.png" title="tutorials:t10:img:t10_step_equilibrium_1_6011003.png"><img alt=" MatCalc step equilibrium" src="/matcalc_docu/tutorials/t10/img/t10_step_equilibrium_1_6011003.png" title="MatCalc step equilibrium" /></a></p>
+<p>Press <strong>'Go'</strong> to start the calculation. The result can be displayed in the well known <strong>'XY-data'</strong> plot. Create the plot and drag and drop the <strong>T$c</strong> variable from the variables window into the plot. Edit the <strong>'x-axis'</strong>, <strong>'y-axis'</strong> and <strong>'legend'</strong> (see also  <a href="/matcalc_docu/tutorials/t4" title="tutorials:t4">Tutorial 4</a> or  <a href="/matcalc_docu/tutorials/t5" title="tutorials:t5">Tutorial 5</a>) such that the result of the stepped T0- temperature calculation looks as follows.</p>
+<p><a href="/matcalc_docu/tutorials/t10/img/t10_plot1_first_result_2_2016.png" title="tutorials:t10:img:t10_plot1_first_result_2_2016.png"><img alt=" MatCalc plot" src="/matcalc_docu/tutorials/t10/img/t10_plot1_first_result_2_2016.png" title="MatCalc plot" /></a></p>
 <h2 id="step-4-evaluate-t0-temperature-as-a-function-of-carbon-content">Step 4: Evaluate T<sub>0</sub>-temperature as a function of carbon content</h2>
 <p><img alt="FIXME" src="/wiki/lib/images/smileys/fixme.svg" /></p>
 <p>In the same way, similar to the evaluation of the dependence of the T0- temperature on the chromium content, it is possible to calculate the T0- temperature as a function of the carbon content. Therefore, rename the <strong>'_default_'</strong> buffer selecting <strong>'Global' → 'Buffers' → 'Rename…'</strong> and give it the name <strong>'T0-chromium'</strong>. Then create a new buffer (<strong>'Global' → 'Buffers' → 'Create…'</strong>) with the name <strong>'T0-carbon'</strong> and load the calculation state <strong>'Start austenite'</strong> (make sure that the current buffer is the <strong>'T0-carbon'</strong>). Analogously to the calculation before, carry out a stepped calculation. Press <strong>'Calc' → 'Stepped calculation …'</strong> or press <strong>Ctrl+T</strong>, enter the following settings and press <strong>'Go'</strong>.</p>
-<p><a href="/tutorials/t10/img/t10_step_equilibrium_2_6011003.png" title="tutorials/t10/img/t10_step_equilibrium_2_6011003.png"><img alt=" MatCalc step equilibrium" src="/tutorials/t10/img/t10_step_equilibrium_2_6011003.png" title="MatCalc step equilibrium" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t10/img/t10_step_equilibrium_2_6011003.png" title="tutorials:t10:img:t10_step_equilibrium_2_6011003.png"><img alt=" MatCalc step equilibrium" src="/matcalc_docu/tutorials/t10/img/t10_step_equilibrium_2_6011003.png" title="MatCalc step equilibrium" /></a></p>
 <p>There is no need to create a new plot in order to display the graph for the T0-temperature dependence for varying carbon content. The T0- temperature line in the figure can be simply changed by <strong>switching</strong> from <strong>'T0-chromium'</strong> buffer to the <strong>'T0-carbon'</strong> buffer <strong>in the options window</strong>.</p>
-<p><a href="/tutorials/t10/img/t10_options_window_6050006.png" title="tutorials/t10/img/t10_options_window_6050006.png"><img alt=" MatCalc options window" src="/tutorials/t10/img/t10_options_window_6050006.png" title="MatCalc options window" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t10/img/t10_options_window_6050006.png" title="tutorials:t10:img:t10_options_window_6050006.png"><img alt=" MatCalc options window" src="/matcalc_docu/tutorials/t10/img/t10_options_window_6050006.png" title="MatCalc options window" /></a></p>
 <p>Afterwards, the x- and y-axes must be rescaled and in the case of the x-axis renamed. So the result looks as follows.</p>
-<p><a href="/tutorials/t10/img/t10_plot_07_second_result_2_2016.png" title="tutorials/t10/img/t10_plot_07_second_result_2_2016.png"><img alt=" MatCalc plot" src="/tutorials/t10/img/t10_plot_07_second_result_2_2016.png" title="MatCalc plot" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t10/img/t10_plot_07_second_result_2_2016.png" title="tutorials:t10:img:t10_plot_07_second_result_2_2016.png"><img alt=" MatCalc plot" src="/matcalc_docu/tutorials/t10/img/t10_plot_07_second_result_2_2016.png" title="MatCalc plot" /></a></p>
 <p>The strong dependence of the T0- temperature on the carbon content is evident. This is reflected in the strong influence of carbon on the martensite start temperature.</p>
 <h2 id="step-5-add-some-experimental-data-on-martensite-start-temperatures">Step 5: Add some experimental data on martensite start temperatures</h2>
 <p>The experimental data, which will be added to the recent plot, are taken from ref. <a href="#fn__1">1)</a>. Before doing so, we must create a new buffer. So, none of the former results will be lost. Name the new buffer as <strong>'T0 with offset'</strong> (further calculations with various dfm-offsets will be done …) and create a table selecting <strong>'Global' → 'Tables and Arrays'</strong>. Press <strong>'New …'</strong> and call the table <strong>'Exp. data'</strong>.</p>
-<p><a href="/tutorials/t10/img/t10_new_table_2016.png" title="tutorials/t10/img/t10_new_table_2016.png"><img alt=" MatCalc options window" src="/tutorials/t10/img/t10_new_table_2016.png" title="MatCalc options window" /></a></p>
-<p>After selecting <strong>'Edit …'</strong>, enter the following measured martensite start temperatures into the table or copy them from a file (<a href="/tutorials/t10/script/t0_exp_temperatures.xls" title="tutorials/t10/script/t0_exp_temperatures.xls (27 KB)">the file is here</a>, or here <a href="/tutorials/t10/script/t0_exp_temperatures.txt" title="tutorials/t10/script/t0_exp_temperatures.txt (246 B)">(.txt)</a>).</p>
+<p><a href="/matcalc_docu/tutorials/t10/img/t10_new_table_2016.png" title="tutorials:t10:img:t10_new_table_2016.png"><img alt=" MatCalc options window" src="/matcalc_docu/tutorials/t10/img/t10_new_table_2016.png" title="MatCalc options window" /></a></p>
+<p>After selecting <strong>'Edit …'</strong>, enter the following measured martensite start temperatures into the table or copy them from a file (<a href="/matcalc_docu/tutorials/t10/script/t0_exp_temperatures.xls" title="tutorials:t10:script:t0_exp_temperatures.xls (27 KB)">the file is here</a>, or here <a href="/matcalc_docu/tutorials/t10/script/t0_exp_temperatures.txt" title="tutorials:t10:script:t0_exp_temperatures.txt (246 B)">(.txt)</a>).</p>
 <table>
 <thead>
 <tr>
@@ -277,19 +277,19 @@ FE +9,84677e-001  CR +1,06937e-002   C +4,62933e-003
 </tr>
 </tbody>
 </table>
-<p>Press <strong>'OK'</strong> twice and insert the experimental data into the plot as a new series (right-click in <strong>'options'</strong> window and select <strong>'New series' → 'table experimental data'</strong>) and switch to <strong>'Exp. data'</strong> in <strong>'connected to'</strong> box (see also  <a href="/tutorials/t5" title="tutorials/t5">Tutorial 5</a>).</p>
-<p><a href="/tutorials/t10/img/t10_connecting_table_data_6050006.png" title="tutorials/t10/img/t10_connecting_table_data_6050006.png"><img alt=" MatCalc options window" src="/tutorials/t10/img/t10_connecting_table_data_6050006.png" title="MatCalc options window" /></a></p>
+<p>Press <strong>'OK'</strong> twice and insert the experimental data into the plot as a new series (right-click in <strong>'options'</strong> window and select <strong>'New series' → 'table experimental data'</strong>) and switch to <strong>'Exp. data'</strong> in <strong>'connected to'</strong> box (see also  <a href="/matcalc_docu/tutorials/t5" title="tutorials:t5">Tutorial 5</a>).</p>
+<p><a href="/matcalc_docu/tutorials/t10/img/t10_connecting_table_data_6050006.png" title="tutorials:t10:img:t10_connecting_table_data_6050006.png"><img alt=" MatCalc options window" src="/matcalc_docu/tutorials/t10/img/t10_connecting_table_data_6050006.png" title="MatCalc options window" /></a></p>
 <p>Edit the legend and the series names. The result looks as follows.</p>
-<p><a href="/tutorials/t10/img/t10_plot2_third_result_2_2016.png" title="tutorials/t10/img/t10_plot2_third_result_2_2016.png"><img alt=" MatCalc plot" src="/tutorials/t10/img/t10_plot2_third_result_2_2016.png" title="MatCalc plot" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t10/img/t10_plot2_third_result_2_2016.png" title="tutorials:t10:img:t10_plot2_third_result_2_2016.png"><img alt=" MatCalc plot" src="/matcalc_docu/tutorials/t10/img/t10_plot2_third_result_2_2016.png" title="MatCalc plot" /></a></p>
 <p>Apparently, the calculated T0- temperature does not fit the experimental data, however the curve runs parallel to it with the calculated temperatures being higher. The reason is that a certain amount of driving force is required to start the martensite transformation. This extra energy, or extra driving force, is of the order of 1.2 to 2.5 kJ/mol (depending on the composition of the alloy) and can be defined in the field <strong>dfm-offset</strong>. Default value for this parameter is zero.</p>
 <p>To evaluate how high this extra energy is as a function of carbon content, stepped calculations with different dfm-offsets can be performed. Carry out two simulations, one as a steped T0- temperature calculation with a <strong>dfm-offset</strong> of <strong>1200 J/mole</strong> and one with <strong>1700 J/mole</strong>. Before starting, lock the first series (T0- dfm=0 J/mole). So the first graph will be conserved for further comparison. Select <strong>'Calc' → 'Stepped calculation …'</strong>and complete the dialog box as follows:</p>
-<p><a href="/tutorials/t10/img/t10_step_equilibrium_3_2016.png" title="tutorials/t10/img/t10_step_equilibrium_3_2016.png"><img alt=" MatCalc step equilibrium" src="/tutorials/t10/img/t10_step_equilibrium_3_2016.png" title="MatCalc step equilibrium" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t10/img/t10_step_equilibrium_3_2016.png" title="tutorials:t10:img:t10_step_equilibrium_3_2016.png"><img alt=" MatCalc step equilibrium" src="/matcalc_docu/tutorials/t10/img/t10_step_equilibrium_3_2016.png" title="MatCalc step equilibrium" /></a></p>
 <p>Change the plot buffer to <strong>'T0 with offset'</strong> in the <strong>'options'</strong> window. Drag and drop the <strong>'T$c'</strong> variable again into the plot and rename the series to <strong>T0 - dfm=1200 J/mole</strong>. Lock the curve afterwards. Repeat these operations to obtain a curve for a dfm-offset of 1700 J/mole. The plot now looks like follows.</p>
-<p><a href="/tutorials/t10/img/t10_plot3_fourth_result_2_2016.png" title="tutorials/t10/img/t10_plot3_fourth_result_2_2016.png"><img alt=" MatCalc plot" src="/tutorials/t10/img/t10_plot3_fourth_result_2_2016.png" title="MatCalc plot" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t10/img/t10_plot3_fourth_result_2_2016.png" title="tutorials:t10:img:t10_plot3_fourth_result_2_2016.png"><img alt=" MatCalc plot" src="/matcalc_docu/tutorials/t10/img/t10_plot3_fourth_result_2_2016.png" title="MatCalc plot" /></a></p>
 <p>A dfm-offset in the range of 1200-1700 J/mole can be used to obtain reasonable agreement between the calculations and the experimental data.</p>
 <h2 id="consecutive-articles">Consecutive articles</h2>
-<p>The tutorial is continued in article  <a href="/tutorials/t11" title="tutorials/t11">T11 - Simulation of solidification of 0.7C 3Mn steel</a></p>
-<p>Go to <a href="/tutorials" title="tutorials">MatCalc tutorial index</a>.</p>
+<p>The tutorial is continued in article  <a href="/matcalc_docu/tutorials/t11" title="tutorials:t11">T11 - Simulation of solidification of 0.7C 3Mn steel</a></p>
+<p>Go to <a href="/matcalc_docu/tutorials" title="tutorials">MatCalc tutorial index</a>.</p>
 <p><a href="#fnt__1">1)</a></p>
 <p><strong>References</strong><br />
 [1] Z. Jicheng and J. Zhanpeng, Acta met. mater. 38 (1990) 425-431.</p>

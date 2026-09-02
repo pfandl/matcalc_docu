@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pfandl.github.io/matcalc_docu/examples/precipitation/p10/p10_2/" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
     <title>P10 2 - MatCalc Documentation</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "P10 2";
         var mkdocs_page_input_path = "examples/precipitation/p10/p10_2.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_url = "/matcalc_docu/examples/precipitation/p10/p10_2/";
       </script>
     
     <!--[if lt IE 9]>
@@ -51,7 +51,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/">MatCalc tutorial</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/">Tutorials</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
                 </li>
@@ -135,17 +135,17 @@ Author: Georg Stechauner<br />
 Created: 2012-01-18 <br />
 Revisions:</p>
 <h2 id="objectives">Objectives</h2>
-<p>Before starting with this example, make sure that you have already worked through  <a href="/examples/precipitation/p10/p10_1" title="examples/precipitation/p10/p10_1">P10-1</a> as they are very similar.</p>
+<p>Before starting with this example, make sure that you have already worked through  <a href="/matcalc_docu/examples/precipitation/p10/p10_1" title="examples:precipitation:p10:p10_1">P10-1</a> as they are very similar.</p>
 <p>Whilst example P10-1 covered the precipitation of AlN in austenite, this example will treat the precipitation in ferrite. Thus, the procedure of setting up the system is very similar. However, the script is more complex, as it involves user interaction. The setup of the if-conditions will be covered during this example.</p>
 <p>The experimental data is taken from Massardier et al. (see cited literature). The paper is about the precipitation of nitrides in a low alloy aluminum killed steel. The free nitrogen contents were measured by utilizing thermoelectric power (TEP) measurements.</p>
 <h2 id="related-documents">Related documents</h2>
 <ul>
-<li>P10-1 -  <a href="/examples/precipitation/p10/p10_1" title="examples/precipitation/p10/p10_1">AlN precipitation in austenite</a></li>
-<li>P10-2 -  <a href="/examples/precipitation/p10/p10_2" title="examples/precipitation/p10/p10_2">AlN precipitation in ferrite</a></li>
+<li>P10-1 -  <a href="/matcalc_docu/examples/precipitation/p10/p10_1" title="examples:precipitation:p10:p10_1">AlN precipitation in austenite</a></li>
+<li>P10-2 -  <a href="/matcalc_docu/examples/precipitation/p10/p10_2" title="examples:precipitation:p10:p10_2">AlN precipitation in ferrite</a></li>
 <li>V. Massardier, V. Guetaz, J. Merlin, M. Soler, Kinetic and microstructural study of aluminium nitride precipitation in a low carbon aluminium-killed steel, Materials Science and Engineering A355 (2003) 299-310</li>
 </ul>
 <h2 id="complementary-files">Complementary files</h2>
-<p>Click <a href="/examples/precipitation/p10/p10_2/prec_aln_ferrite_massardier_2003.mcs" title="examples/precipitation/p10/p10_2/prec_aln_ferrite_massardier_2003.mcs (15.6 KB)">here</a> to view the script for this tutorial.</p>
+<p>Click <a href="/matcalc_docu/examples/precipitation/p10/p10_2/prec_aln_ferrite_massardier_2003.mcs" title="examples:precipitation:p10:p10_2:prec_aln_ferrite_massardier_2003.mcs (15.6 KB)">here</a> to view the script for this tutorial.</p>
 <h1 id="main-document">Main document</h1>
 <h2 id="setup-thermodynamics">Setup thermodynamics</h2>
 <p>Set up the thermodynamics by either loading the mc_fe database, or the corresponding example database mc_x_FeAlCCrMnNSiV.</p>
@@ -303,7 +303,7 @@ Revisions:</p>
 </table>
 <h2 id="precipitation-domain-and-precipitates">Precipitation domain and precipitates</h2>
 <p>Next we enter the data for the precipitation domain. To do so, open the precipitation domain dialog and create a new domain. Select bcc_a2 as its matrix phase. Enter the following data in the corresponding tabs:</p>
-<p><a href="/examples/precipitation/p10/p10_2/p10-2_precdomain.png" title="examples/precipitation/p10/p10_2/p10-2_precdomain.png"><img alt="Precipitation domain dialog" src="/examples/precipitation/p10/p10_2/p10-2_precdomain.png" title="Precipitation domain dialog" /></a></p>
+<p><a href="/matcalc_docu/examples/precipitation/p10/p10_2/p10-2_precdomain.png" title="examples:precipitation:p10:p10_2:p10-2_precdomain.png"><img alt="Precipitation domain dialog" src="/matcalc_docu/examples/precipitation/p10/p10_2/p10-2_precdomain.png" title="Precipitation domain dialog" /></a></p>
 <table>
 <thead>
 <tr>
@@ -480,7 +480,7 @@ set-variable-string exp exp_massardier_T600         $ exp. results for T=600°C
 <h2 id="start-precipitation-simulation">Start precipitation simulation</h2>
 <p>To ensure correct thermodynamic values and no driving force errors (DFM-errors), set automatic start values and calculate an equilibrium at 1250C.</p>
 <p>Open the precipitation simulation dialog, and enter the values as below. Vary the isothermal temperatures to simulate precipitation behaviour at other temperatures.</p>
-<p><a href="/examples/precipitation/p10/p10_2/p10-2_preckinetics.png" title="examples/precipitation/p10/p10_2/p10-2_preckinetics.png"><img alt=" Simulation parameters" src="/examples/precipitation/p10/p10_2/p10-2_preckinetics.png" title="Simulation parameters" /></a></p>
+<p><a href="/matcalc_docu/examples/precipitation/p10/p10_2/p10-2_preckinetics.png" title="examples:precipitation:p10:p10_2:p10-2_preckinetics.png"><img alt=" Simulation parameters" src="/matcalc_docu/examples/precipitation/p10/p10_2/p10-2_preckinetics.png" title="Simulation parameters" /></a></p>
 <p><strong>Note</strong>: The variable 'temp', which was set in the script above, is used here as the temperature value.</p>
 <h2 id="plotting-the-results">Plotting the results</h2>
 <p>Create a new X-Y-Plot (p1) and add two new plots. Set a <strong>default</strong> x-axis to <strong>logarithmic</strong> with a scaling from <strong>1e-6..</strong> and label the axis <strong>time / s</strong>.</p>
@@ -491,7 +491,7 @@ set-variable-string exp exp_massardier_T600         $ exp. results for T=600°C
 </ol>
 <p>Label the y-axes accordingly.</p>
 <p>The result for 600C is shown below:</p>
-<p><a href="/examples/precipitation/p10/p10_2/p10-2_final.png" title="examples/precipitation/p10/p10_2/p10-2_final.png"><img alt=" Final results for P10-2" src="/examples/precipitation/p10/p10_2/p10-2_final.png" title="Final results for P10-2" /></a></p>
+<p><a href="/matcalc_docu/examples/precipitation/p10/p10_2/p10-2_final.png" title="examples:precipitation:p10:p10_2:p10-2_final.png"><img alt=" Final results for P10-2" src="/matcalc_docu/examples/precipitation/p10/p10_2/p10-2_final.png" title="Final results for P10-2" /></a></p>
 <h1 id="consecutive-articles">Consecutive articles</h1>
 <p>none</p>
 <p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=examples%3Aprecipitation%3Ap10%3Ap10_2&amp;1788352996" /></p>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pfandl.github.io/matcalc_docu/tutorials/t13/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
     <title>T13 - MatCalc Documentation</title>
     <link rel="stylesheet" href="../../css/theme.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "T13";
         var mkdocs_page_input_path = "tutorials/t13.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_url = "/matcalc_docu/tutorials/t13/";
       </script>
     
     <!--[if lt IE 9]>
@@ -51,7 +51,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../">MatCalc tutorial</a>
+                <li class="toctree-l2"><a class="reference internal" href="../">Tutorials</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
                 </li>
@@ -138,7 +138,7 @@ MatCalc version 6.03 rel 1.000<br />
 license: free<br />
 database: mc_fe.tdb</em></p>
 <h3 id="complimentary-files">Complimentary files</h3>
-<p>Click <a href="/tutorials/t13/script/t13_6021003.mcs" title="tutorials/t13/script/t13_6021003.mcs (7.7 KB)">here</a> to view the script for this tutorial</p>
+<p>Click <a href="/matcalc_docu/tutorials/t13/script/t13_6021003.mcs" title="tutorials:t13:script:t13_6021003.mcs (7.7 KB)">here</a> to view the script for this tutorial</p>
 <h3 id="contents">Contents:</h3>
 <ul>
 <li>Purpose of scripts</li>
@@ -160,17 +160,17 @@ Individual scripts can also be grouped into master-scripts; this facilitates, fo
 <h3 id="editing-a-script">Editing a script</h3>
 <p>There are also two ways of editing an existing script:</p>
 <ol>
-<li>In MatCalc, using <strong>'File → Open'</strong> or clicking on <a href="/tutorials/t13/img/icon_open_file_2.png" title="tutorials/t13/img/icon_open_file_2.png"><img alt=" MatCalc icon" src="/tutorials/t13/img/icon_open_file_2.png" title="MatCalc icon" /></a> icon in the toolbar (keyboard shortcut <strong>'Ctrl + O'</strong>). Select the filter to <strong>'MatCalc script (*.mcs)'</strong> files</li>
+<li>In MatCalc, using <strong>'File → Open'</strong> or clicking on <a href="/matcalc_docu/tutorials/t13/img/icon_open_file_2.png" title="tutorials:t13:img:icon_open_file_2.png"><img alt=" MatCalc icon" src="/matcalc_docu/tutorials/t13/img/icon_open_file_2.png" title="MatCalc icon" /></a> icon in the toolbar (keyboard shortcut <strong>'Ctrl + O'</strong>). Select the filter to <strong>'MatCalc script (*.mcs)'</strong> files</li>
 <li>Alternatively, you can use any text editor (which saves files as plain text).</li>
 </ol>
 <h3 id="executing-a-script">Executing a script</h3>
 <p>And again, there are two ways of executing a script in MatCalc:</p>
 <ol>
-<li>Using <strong>'Script → Run script'</strong> or clicking on <a href="/tutorials/t13/img/icon_run_script.png" title="tutorials/t13/img/icon_run_script.png"><img alt=" MatCalc icon" src="/tutorials/t13/img/icon_run_script.png" title="MatCalc icon" /></a> icon in the toolbar (keyboard shortcut <strong>'Shift + F2'</strong>)</li>
+<li>Using <strong>'Script → Run script'</strong> or clicking on <a href="/matcalc_docu/tutorials/t13/img/icon_run_script.png" title="tutorials:t13:img:icon_run_script.png"><img alt=" MatCalc icon" src="/matcalc_docu/tutorials/t13/img/icon_run_script.png" title="MatCalc icon" /></a> icon in the toolbar (keyboard shortcut <strong>'Shift + F2'</strong>)</li>
 <li>Double-clicking on the <strong>'.mcs'</strong> file icon</li>
 </ol>
 <h2 id="example-a-stepped-equilibrium">Example: a stepped equilibrium</h2>
-<p>This example will show how to write a script to perform the stepped calculation in  <a href="/tutorials/t3" title="tutorials/t3">Tutorial 3</a> and display the results.</p>
+<p>This example will show how to write a script to perform the stepped calculation in  <a href="/matcalc_docu/tutorials/t3" title="tutorials:t3">Tutorial 3</a> and display the results.</p>
 <h3 id="comments">Comments</h3>
 <p>It is always advisable to comment the script extensively so as to help other users (or oneself several months later!) to understand the aim of the calculation, assumptions, etc.
 Any line prefixed with a <strong>'<span class="arithmatex">\('**-sign will not be interpreted as a command. The **'\)</span>'</strong>-sign can also be inserted part-way through a line; the rest of the line will be treated as a comment.</p>
@@ -210,7 +210,7 @@ open-thermodyn-database</code></p>
 name for thermodynamic database /mc_sample_fe/:</code></p>
 <p>(Press <strong>'enter'</strong> to select the default option.) Leaving out the arguments of the command in this way allows for interactivity in scripts. If, instead, the script is intended to be fully automatic, the argument should be put after the command on the same line. Replace the above line with the following:</p>
 <p><code>open-thermodyn-database mc_fe.tdb</code></p>
-<p>The next parts of the script are to set up the system, set the temperature and calculate an equilibrium. These commands have already been seen in <a href="/tutorials/t12" title="tutorials/t12">Tutorial 12</a>.</p>
+<p>The next parts of the script are to set up the system, set the temperature and calculate an equilibrium. These commands have already been seen in <a href="/matcalc_docu/tutorials/t12" title="tutorials:t12">Tutorial 12</a>.</p>
 <p><code>@$************************************  
 $ select elements and phases  
 @$************************************  
@@ -238,7 +238,7 @@ $ define step parameters and make stepped calculation
 set-step-option range 400 1600 lin 25  
 step-equilibrium</code></p>
 <h3 id="graphical-output">Graphical output</h3>
-<p>The final part of the script is concerned with graphical presentation of results. The following line creates a new GUI window to contain the plot. As was seen in  <a href="/tutorials/t12" title="tutorials/t12">Tutorial 12</a>, the code <strong>'p1'</strong> is used to open an XY-plot.</p>
+<p>The final part of the script is concerned with graphical presentation of results. The following line creates a new GUI window to contain the plot. As was seen in  <a href="/matcalc_docu/tutorials/t12" title="tutorials:t12">Tutorial 12</a>, the code <strong>'p1'</strong> is used to open an XY-plot.</p>
 <p><code>@$************************************  
 $ graphical output  
 @$************************************  
@@ -289,11 +289,11 @@ set-plot-option . grid major enable-y-axis=yes</code></p>
 <p>The script can be concluded with the following line, which should appear in the console when the script has been executed without any errors.</p>
 <p><code>$ *** DONE ***</code></p>
 <p>The final diagrams should look like this:</p>
-<p><a href="/tutorials/t13/img/t13_plot1_phase_stability_6011003.png" title="tutorials/t13/img/t13_plot1_phase_stability_6011003.png"><img alt=" MatCalc plot" src="/tutorials/t13/img/t13_plot1_phase_stability_6011003.png" title="MatCalc plot" /></a></p>
-<p><a href="/tutorials/t13/img/t13_plot2_phase_composition_6011003.png" title="tutorials/t13/img/t13_plot2_phase_composition_6011003.png"><img alt=" MatCalc plot" src="/tutorials/t13/img/t13_plot2_phase_composition_6011003.png" title="MatCalc plot" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t13/img/t13_plot1_phase_stability_6011003.png" title="tutorials:t13:img:t13_plot1_phase_stability_6011003.png"><img alt=" MatCalc plot" src="/matcalc_docu/tutorials/t13/img/t13_plot1_phase_stability_6011003.png" title="MatCalc plot" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t13/img/t13_plot2_phase_composition_6011003.png" title="tutorials:t13:img:t13_plot2_phase_composition_6011003.png"><img alt=" MatCalc plot" src="/matcalc_docu/tutorials/t13/img/t13_plot2_phase_composition_6011003.png" title="MatCalc plot" /></a></p>
 <h2 id="consecutive-articles">Consecutive articles</h2>
-<p>The tutorial is continued in article  <a href="/tutorials/t14" title="tutorials/t14">T14 - Introduction to precipitation calculations</a></p>
-<p>Go to <a href="/tutorials" title="tutorials">MatCalc tutorial index</a>.</p>
+<p>The tutorial is continued in article  <a href="/matcalc_docu/tutorials/t14" title="tutorials:t14">T14 - Introduction to precipitation calculations</a></p>
+<p>Go to <a href="/matcalc_docu/tutorials" title="tutorials">MatCalc tutorial index</a>.</p>
 <p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=tutorials%3At13&amp;1788352859" /></p>
               
             </div>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pfandl.github.io/matcalc_docu/examples/equilib/e10/" />
       <link rel="shortcut icon" href="../../../img/favicon.ico" />
     <title>E10 - MatCalc Documentation</title>
     <link rel="stylesheet" href="../../../css/theme.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "E10";
         var mkdocs_page_input_path = "examples/equilib/e10.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_url = "/matcalc_docu/examples/equilib/e10/";
       </script>
     
     <!--[if lt IE 9]>
@@ -51,7 +51,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">MatCalc tutorial</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">Tutorials</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
                 </li>
@@ -142,16 +142,16 @@ Revisions:</p>
 <p>This example follows the analysis presented in ref.<a href="#fn__1">1)</a>.</p>
 <h2 id="related-documents">Related documents</h2>
 <ul>
-<li><a href="/examples/equilib/e6" title="examples/equilib/e6">E6 - Composition-dependent driving forces for carbide precipitation in Fe-C-Cr</a> - The evaluation of the driving force for the precipitate formation is needed for reaching the objective of the current example. Therefore, the user is recommended to become acquainted with the content of example E6.</li>
-<li><a href="/techpapers/nucleation/interfacial_energy" title="techpapers/nucleation/interfacial_energy">Evaluation of interfacial energies</a> - A technical paper which describes how the value of the interfacial energy is obtained.</li>
+<li><a href="/matcalc_docu/examples/equilib/e6" title="examples:equilib:e6">E6 - Composition-dependent driving forces for carbide precipitation in Fe-C-Cr</a> - The evaluation of the driving force for the precipitate formation is needed for reaching the objective of the current example. Therefore, the user is recommended to become acquainted with the content of example E6.</li>
+<li><a href="/matcalc_docu/techpapers/nucleation/interfacial_energy" title="techpapers:nucleation:interfacial_energy">Evaluation of interfacial energies</a> - A technical paper which describes how the value of the interfacial energy is obtained.</li>
 </ul>
 <h2 id="complementary-files">Complementary files</h2>
-<p>Click  <a href="/examples/equilib/e10/script/e10_2018.mcs" title="examples/equilib/e10/script/e10_2018.mcs (8.5 KB)">here</a> to view the script for this example.</p>
+<p>Click  <a href="/matcalc_docu/examples/equilib/e10/script/e10_2018.mcs" title="examples:equilib:e10:script:e10_2018.mcs (8.5 KB)">here</a> to view the script for this example.</p>
 <h1 id="main-document">Main document</h1>
 <h2 id="setup-thermodynamics">Setup thermodynamics</h2>
 <p>In the new workspace, open one of the above listed databases and select the elements <strong>Fe</strong> and <strong>Cu</strong>, as well as the phase <strong>BCC_A2</strong>. Set a chemical composition of 3 at.% Cu.<br />
 The studied system should consist of two phases: the supersaturated solid solution and the precipitate phase which is to form. In this example, both of those have the same a body centered cubic structure. However, after reading the thermodynamic database, only one phase is present. Thus, create a second equilibrium <strong>'BCC_A2'</strong> phase. As this should be the Cu-rich phase, replace Fe with Cu as its major constituent.</p>
-<p><a href="/examples/equilib/e10/img/e10_1.png" title="examples/equilib/e10/img/e10_1.png"><img alt=" Change major constituents" src="/examples/equilib/e10/img/e10_1.png" title="Change major constituents" /></a></p>
+<p><a href="/matcalc_docu/examples/equilib/e10/img/e10_1.png" title="examples:equilib:e10:img:e10_1.png"><img alt=" Change major constituents" src="/matcalc_docu/examples/equilib/e10/img/e10_1.png" title="Change major constituents" /></a></p>
 <h2 id="equilibrium-calculation">Equilibrium calculation</h2>
 <p>Set automatic start values and calculate an equilibrium at 500°C. The result obtained in 'Phase details' window should appear like this (while the exact numbers might differ depending on the thermodynamic database used, the magnitude of the values should be the same):</p>
 <pre><code>#### /BCC_A2/ moles: 0,97111, gm: -28406.9 (-28406.9), sff: 1
@@ -168,11 +168,11 @@ CU +9.97417e-001  FE +2.58303e-003
 <h2 id="paraequilibrium-stepped-calculation">Paraequilibrium stepped calculation</h2>
 <p>The paraequilibrium stepped calculation will allow to study the parameter values for the system when the composition of a given phase is changed, rather than the composition of the whole system. This kind of calculation will allow to study the dependence of the interfacial energy and the driving force for formation of the precipitate phase depending on its composition.<br />
 In the 'Phase details' window, select the <strong>'BCC_A2#01'</strong> phase, switch to the <strong>'Constraints'</strong> tab and click on the <strong>'Set para from nominal'</strong> button. This will set a u-fraction of Cu equal to the global composition.</p>
-<p><a href="/examples/equilib/e10/img/e10_2.png" title="examples/equilib/e10/img/e10_2.png"><img alt=" Set paraequilibrium composition" src="/examples/equilib/e10/img/e10_2.png" title="Set paraequilibrium composition" /></a></p>
+<p><a href="/matcalc_docu/examples/equilib/e10/img/e10_2.png" title="examples:equilib:e10:img:e10_2.png"><img alt=" Set paraequilibrium composition" src="/matcalc_docu/examples/equilib/e10/img/e10_2.png" title="Set paraequilibrium composition" /></a></p>
 <p>In the 'General' tab, set the phase fraction of this phase to zero and check the <strong>'fixed phase fraction'</strong> box. This step ensures that the driving force for the phase formation is evaluated though the phase itself is absent in the system.</p>
-<p><a href="/examples/equilib/e10/img/e10_3.png" title="examples/equilib/e10/img/e10_3.png"><img alt=" Set 'fixed phase fraction'" src="/examples/equilib/e10/img/e10_3.png" title="Set 'fixed phase fraction'" /></a></p>
+<p><a href="/matcalc_docu/examples/equilib/e10/img/e10_3.png" title="examples:equilib:e10:img:e10_3.png"><img alt=" Set 'fixed phase fraction'" src="/matcalc_docu/examples/equilib/e10/img/e10_3.png" title="Set 'fixed phase fraction'" /></a></p>
 <p>Calculate an equilibrium once again. Next, open the <strong>'Step equilibrium'</strong> window and select the <strong>'element con…'</strong> type of the calculation. Set the range over the whole composition with <strong>0.01</strong> step. Ensure that the temperature is set to <strong>500°C</strong> and the <strong>'Composition in weight percent'</strong> box is unchecked. Clearly, an important point is to select <strong>'paraequ. u-constr.'</strong> in the <strong>'vary…'</strong> field instead of the default <strong>'global comp.'</strong>.</p>
-<p><a href="/examples/equilib/e10/img/e10_4.png" title="examples/equilib/e10/img/e10_4.png"><img alt=" Step equilibrium settings " src="/examples/equilib/e10/img/e10_4.png" title="Step equilibrium settings" /></a></p>
+<p><a href="/matcalc_docu/examples/equilib/e10/img/e10_4.png" title="examples:equilib:e10:img:e10_4.png"><img alt=" Step equilibrium settings " src="/matcalc_docu/examples/equilib/e10/img/e10_4.png" title="Step equilibrium settings" /></a></p>
 <p>Click on <strong>'Go'</strong></p>
 <p><strong><em>Important note …</em></strong></p>
 <p>In order to perform a stepped paraequilibrium calculation successfully, a u-fraction constraint must be set for the relevant element. Otherwise, an error message stating <strong>'There is no appropriate paraequilibrium constraint set for this element'</strong>. If you get this message, check if the varied element (i.e. the one selected in the stepped calculation window) is also having the u-constraint set correctly in the 'Phase status' window.</p>
@@ -183,10 +183,10 @@ In the 'Phase details' window, select the <strong>'BCC_A2#01'</strong> phase, sw
 <li>Interfacial energy for the precipitate phase</li>
 </ul>
 <p>The driving force for the Cu-rich phase formation (<strong>'DFM$BCC_A2#01'</strong> variable found in <strong>'driving forces'</strong> group) has non-positive values for Cu contents below 24 at.%. This indicates that the creation of any coherent nuclei with the Cu content below this value is not expected to happen, as it would increase the Gibbs energy of the system.</p>
-<p><a href="/examples/equilib/e10/img/e10_5.png" title="examples/equilib/e10/img/e10_5.png"><img alt=" Driving force for Cu-rich phase as a function of nucleus composition" src="/examples/equilib/e10/img/e10_5.png" title="Driving force for Cu-rich phase as a function of nucleus composition" /></a></p>
-<p><a href="/examples/equilib/e10/img/e10_6.png" title="examples/equilib/e10/img/e10_6.png"><img alt=" Driving force for unstable Cu-rich phase" src="/examples/equilib/e10/img/e10_6.png" title="Driving force for unstable Cu-rich phase" /></a></p>
-<p>The interfacial energy of the Cu-rich nuclei (<strong>'CIE$BCC_A2#01'</strong> variable found in <strong>'state variables GBB'</strong> group) is increasing monotonically with the Cu content of the nuclei. This is due to the fact that the more copper in the precipitate, the more energy-rich Fe-Cu bonds at the interface are present. Further details on the evaluation of the interfacial energy are given in this  <a href="/techpapers/nucleation/interfacial_energy" title="techpapers/nucleation/interfacial_energy">technical paper</a></p>
-<p><a href="/examples/equilib/e10/img/e10_7.png" title="examples/equilib/e10/img/e10_7.png"><img alt=" Interfacial energy of Cu-rich phase nuclei as a function of nucleus composition" src="/examples/equilib/e10/img/e10_7.png" title="Interfacial energy of Cu-rich phase nuclei as a function of nucleus composition" /></a></p>
+<p><a href="/matcalc_docu/examples/equilib/e10/img/e10_5.png" title="examples:equilib:e10:img:e10_5.png"><img alt=" Driving force for Cu-rich phase as a function of nucleus composition" src="/matcalc_docu/examples/equilib/e10/img/e10_5.png" title="Driving force for Cu-rich phase as a function of nucleus composition" /></a></p>
+<p><a href="/matcalc_docu/examples/equilib/e10/img/e10_6.png" title="examples:equilib:e10:img:e10_6.png"><img alt=" Driving force for unstable Cu-rich phase" src="/matcalc_docu/examples/equilib/e10/img/e10_6.png" title="Driving force for unstable Cu-rich phase" /></a></p>
+<p>The interfacial energy of the Cu-rich nuclei (<strong>'CIE$BCC_A2#01'</strong> variable found in <strong>'state variables GBB'</strong> group) is increasing monotonically with the Cu content of the nuclei. This is due to the fact that the more copper in the precipitate, the more energy-rich Fe-Cu bonds at the interface are present. Further details on the evaluation of the interfacial energy are given in this  <a href="/matcalc_docu/techpapers/nucleation/interfacial_energy" title="techpapers:nucleation:interfacial_energy">technical paper</a></p>
+<p><a href="/matcalc_docu/examples/equilib/e10/img/e10_7.png" title="examples:equilib:e10:img:e10_7.png"><img alt=" Interfacial energy of Cu-rich phase nuclei as a function of nucleus composition" src="/matcalc_docu/examples/equilib/e10/img/e10_7.png" title="Interfacial energy of Cu-rich phase nuclei as a function of nucleus composition" /></a></p>
 <h2 id="evaluation-of-the-critical-nucleation-gibbs-energy">Evaluation of the critical nucleation Gibbs energy</h2>
 <p>In order to calculate the critical nucleation Gibbs energy, define a function according to the equation cited in the introduction to this example. One needs to keep in mind, that the driving forces present in the equation defining the critical nucleation Gibbs energy are expressed per volume (m3) instead of amount (mol). Hence, the driving forces are to be divided by the molar volume of the system. This parameter is represented in MatCalc by <strong>'VM'</strong> variable found in <strong>'mass/volume/density'</strong> group. The syntax for the function (named in the script as <strong>'cnge'</strong>) should look like this:</p>
 <pre><code>(16*pi*(cie$bcc_a2#01)^3)/(3*(dfm$bcc_a2#01/vm)^2)
@@ -195,7 +195,7 @@ In the 'Phase details' window, select the <strong>'BCC_A2#01'</strong> phase, sw
 <p>* MatCalc has a built-in variable <strong>'PI'</strong> which has a value corresponding to the mathematical constant <img alt="pi" src="/wiki/lib/plugins/mathpublish/img.php?img=131b066e40a5113b1bf63456fba6cc77" title="pi" /></p>
 <p>* Unless a physical database is loaded, variable <strong>'VM'</strong> has a default value of <strong>7e-6 m3mol-1</strong>.</p>
 <p>The plot of the function for the whole composition range looks a little strange for the first moment - A curve with two sharp extrema (use a logarithmic scaling for y-axis!). The extrema correspond to the compositions for which the driving force equals zero, in which case the critical energy goes to infinity. However, the values for the composition range below 24 at.% Cu have no physical meaning, as this is the range where the driving force is negative and the precipitate will not form, anyway. An investigation of the compostion range above 25 at.% of Cu will reveal a minimum of the critical nucleation Gibbs energy for the nuclei consisting of ~33 at.% of Cu with the value of ~6,29*10-20 joules per nucleus. But does it mean that nuclei with this composition will be the only one to form? Before this question is answered, store this minimal Gibbs energy value as a variable <strong>'cnge_min'</strong>.</p>
-<p><a href="/examples/equilib/e10/img/e10_8.png" title="examples/equilib/e10/img/e10_8.png"><img alt=" Critical Gibbs energy for the nucleation of the coherent bcc-phase" src="/examples/equilib/e10/img/e10_8.png" title="Critical Gibbs energy for the nucleation of the coherent bcc-phase" /></a></p>
+<p><a href="/matcalc_docu/examples/equilib/e10/img/e10_8.png" title="examples:equilib:e10:img:e10_8.png"><img alt=" Critical Gibbs energy for the nucleation of the coherent bcc-phase" src="/matcalc_docu/examples/equilib/e10/img/e10_8.png" title="Critical Gibbs energy for the nucleation of the coherent bcc-phase" /></a></p>
 <h2 id="evaluation-of-nucleation-probability">Evaluation of nucleation probability</h2>
 <p>The critical nucleation Gibbs energy can be used as an input parameter for the statistical analysis. The probability of the nucleation of an embryo with a specific composition is dependent on its critical nucleation Gibbs energy as:</p>
 <div class="arithmatex">\[ P(x\_{Cu}) \approx exp \LARGE(\normalsize - \frac{G^{\*}(x\_{Cu})}{k\_{B}T}\LARGE) \]</div>
@@ -205,7 +205,7 @@ In the 'Phase details' window, select the <strong>'BCC_A2#01'</strong> phase, sw
 <pre><code> exp((cnge_min-cnge)*na/r/t)
 </code></pre>
 <p>Next, plot this function. This diagram shows the relative frequency of the embryo nucleation depending on its composition. The reference is set to the most frequent appearing nucleus with 33 at.% Cu. Still the nucleated embryos need not to have strict this composition. One can find half as much embryos containing 38 at.% Cu as the ones with 33 at.%, for instance. The occurence of the nuclei consisting of more than 50 at.% Cu will be a very rare event (relative probability is lower than 0.01). The thermodynamic calculation showed that in the equilibrated system, the content of the Cu-rich phase is ~99.7 at.%. Remarkably, an embryo with this composition will appear every 10-11 times the one with the lowest nucleation energy - one needs a logarithmic scale to find this value at all. It is interesting to note that the Cu-rich phase does not seem to nucleate with the Cu-rich embryos…</p>
-<p><a href="/examples/equilib/e10/img/e10_9.png" title="examples/equilib/e10/img/e10_9.png"><img alt=" Scaled probability of nucleation" src="/examples/equilib/e10/img/e10_9.png" title="Scaled probability of nucleation" /></a></p>
+<p><a href="/matcalc_docu/examples/equilib/e10/img/e10_9.png" title="examples:equilib:e10:img:e10_9.png"><img alt=" Scaled probability of nucleation" src="/matcalc_docu/examples/equilib/e10/img/e10_9.png" title="Scaled probability of nucleation" /></a></p>
 <h1 id="consecutive-articles">Consecutive articles</h1>
 <p>none</p>
 <p><a href="#fnt__1">1)</a></p>

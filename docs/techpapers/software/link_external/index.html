@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pfandl.github.io/matcalc_docu/techpapers/software/link_external/" />
       <link rel="shortcut icon" href="../../../img/favicon.ico" />
     <title>Link external - MatCalc Documentation</title>
     <link rel="stylesheet" href="../../../css/theme.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "Link external";
         var mkdocs_page_input_path = "techpapers/software/link_external.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_url = "/matcalc_docu/techpapers/software/link_external/";
       </script>
     
     <!--[if lt IE 9]>
@@ -51,7 +51,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">MatCalc tutorial</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">Tutorials</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
                 </li>
@@ -201,7 +201,7 @@ Revisions: 2017-03-21, updated MATLAB port for MatCalc 6</p>
 <li>the shared QtCore and QtGui libraries</li>
 </ol>
 <p>Note: you can skip the compiling step if you already possess a compiled mex binary, but this can lead to problems on <em>MATLAB</em> versions other than the version which the binary has been compiled on.</p>
-<p>For compiling you need a C-compiler. If you don't already have one you can use the <a href="http///ftp.gnu.org/gnu/gcc/" title="http///ftp.gnu.org/gnu/gcc/">GCC 4.3 compiler</a>(warning/ MATLAB does <strong>not support</strong> higher gcc compiler) or find one from this <a href="http///www.mathworks.com/support/compilers/previous_releases.html" title="http///www.mathworks.com/support/compilers/previous_releases.html">list</a>. To compile the <em>MatCalc</em> mex-files make sure that you have all files in the current working dir on <em>MATLAB</em> and type</p>
+<p>For compiling you need a C-compiler. If you don't already have one you can use the <a href="http://ftp.gnu.org/gnu/gcc/" title="http://ftp.gnu.org/gnu/gcc/">GCC 4.3 compiler</a>(warning: MATLAB does <strong>not support</strong> higher gcc compiler) or find one from this <a href="http://www.mathworks.com/support/compilers/previous_releases.html" title="http://www.mathworks.com/support/compilers/previous_releases.html">list</a>. To compile the <em>MatCalc</em> mex-files make sure that you have all files in the current working dir on <em>MATLAB</em> and type</p>
 <p>Windows,Linux:</p>
 <pre><code>mex mc.cpp mc_core.lib QtCore4.lib QtGui4.lib
 </code></pre>
@@ -293,7 +293,7 @@ end
 plot(T,F_LIQ,T,F_FCC,T,F_BCC,T,F_CEM,T,F_GRA)
 legend('F$LIQUID','F$FCC_A1','F$BCC_A2','F$CEMENTITE','F$GRAPHITE')
 </code></pre>
-<p><a href="/techpapers/software/img/mex-test.png" title="techpapers/software/img/mex-test.png"><img alt="" src="/techpapers/software/img/mex-test.png" /></a></p>
+<p><a href="/wiki/lib/exe/detail.php?id=techpapers%3Asoftware%3Alink_external&amp;media=techpapers/software/img/mex-test.png" title="techpapers:software:img:mex-test.png"><img alt="" src="/matcalc_docu/techpapers/software/img/mex-test.png" /></a></p>
 <h3 id="using-the-matcalc-shared-libraries-directly">Using the MatCalc shared libraries directly</h3>
 <p>For this method you <strong>need</strong>:</p>
 <ol>
@@ -367,15 +367,15 @@ phase_fraction_cementite = MCGetVariable[&quot;F$CEM&quot;]
 <h2 id="external-links">External links</h2>
 <h3 id="matlab_1">MATLAB</h3>
 <ol>
-<li><a href="http///www.mathworks.com/products/matlab/" title="http///www.mathworks.com/products/matlab/">MATLAB homepage</a></li>
-<li><a href="http///www.mathworks.com/help/pdf_doc/matlab/apiext.pdf" title="http///www.mathworks.com/help/pdf_doc/matlab/apiext.pdf">MATLAB documentation for external interfaces</a></li>
-<li><a href="http///www.mathworks.com/support/compilers/previous_releases.html" title="http///www.mathworks.com/support/compilers/previous_releases.html">Information about supported and compatible compilers</a></li>
-<li><a href="https///help.ubuntu.com/community/MATLAB#MEX_functions" title="https///help.ubuntu.com/community/MATLAB#MEX_functions">Guide for setting up gcc compiler 4.3 for ubuntu</a></li>
+<li><a href="http://www.mathworks.com/products/matlab/" title="http://www.mathworks.com/products/matlab/">MATLAB homepage</a></li>
+<li><a href="http://www.mathworks.com/help/pdf_doc/matlab/apiext.pdf" title="http://www.mathworks.com/help/pdf_doc/matlab/apiext.pdf">MATLAB documentation for external interfaces</a></li>
+<li><a href="http://www.mathworks.com/support/compilers/previous_releases.html" title="http://www.mathworks.com/support/compilers/previous_releases.html">Information about supported and compatible compilers</a></li>
+<li><a href="https://help.ubuntu.com/community/MATLAB#MEX_functions" title="https://help.ubuntu.com/community/MATLAB#MEX_functions">Guide for setting up gcc compiler 4.3 for ubuntu</a></li>
 </ol>
 <h3 id="mathematica_1">Mathematica</h3>
 <ol>
-<li><a href="http///www.wolfram.com/mathematica/" title="http///www.wolfram.com/mathematica/">Mathematica homepage</a></li>
-<li><a href="http///reference.wolfram.com/mathematica/tutorial/MathLinkAndExternalProgramCommunicationOverview.html" title="http///reference.wolfram.com/mathematica/tutorial/MathLinkAndExternalProgramCommunicationOverview.html">Mathematica documentation for MathLink</a></li>
+<li><a href="http://www.wolfram.com/mathematica/" title="http://www.wolfram.com/mathematica/">Mathematica homepage</a></li>
+<li><a href="http://reference.wolfram.com/mathematica/tutorial/MathLinkAndExternalProgramCommunicationOverview.html" title="http://reference.wolfram.com/mathematica/tutorial/MathLinkAndExternalProgramCommunicationOverview.html">Mathematica documentation for MathLink</a></li>
 </ol>
 <p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=techpapers%3Asoftware%3Alink_external&amp;1788353010" /></p>
               

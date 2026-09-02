@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pfandl.github.io/matcalc_docu/tutorials/t20/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
     <title>T20 - MatCalc Documentation</title>
     <link rel="stylesheet" href="../../css/theme.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "T20";
         var mkdocs_page_input_path = "tutorials/t20.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_url = "/matcalc_docu/tutorials/t20/";
       </script>
     
     <!--[if lt IE 9]>
@@ -51,7 +51,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../">MatCalc tutorial</a>
+                <li class="toctree-l2"><a class="reference internal" href="../">Tutorials</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
                 </li>
@@ -123,7 +123,7 @@ MatCalc version 6.04 rel 1.002<br />
 license: free<br />
 database: mc_fe.tdb; mc_fe.ddb</em></p>
 <h3 id="complimentary-files">Complimentary files</h3>
-<p>Click <a href="/tutorials/t20/script/t20_6021003.mcs" title="tutorials/t20/script/t20_6021003.mcs (9 KB)">here</a> to view the script for this tutorial</p>
+<p>Click <a href="/matcalc_docu/tutorials/t20/script/t20_6021003.mcs" title="tutorials:t20:script:t20_6021003.mcs (9 KB)">here</a> to view the script for this tutorial</p>
 <h3 id="contents">Contents</h3>
 <ul>
 <li>Single-class model for grain growth</li>
@@ -135,28 +135,28 @@ database: mc_fe.tdb; mc_fe.ddb</em></p>
 <h2 id="grain-growth-of-pure-fe-matrix">Grain growth of pure Fe-matrix</h2>
 <p>The simplest possible scenario for grain growth will be considered first: a single-phase, pure metal with no solutes or precipitates present to retard grain growth. Although, Nb and C are defined in this system with a nonzero content, the effect of the solute atoms on the grain growth needs to be switched on, as it will be demonstrated later.</p>
 <p>In <strong>'Precipitation domains' → general'</strong> tab, specify the <strong>'Initial grain size'</strong> with 10 micrometers:</p>
-<p><a href="/tutorials/t20/img/t20_precipitation_domains_general_6011003.png" title="tutorials/t20/img/t20_precipitation_domains_general_6011003.png"><img alt="" src="/tutorials/t20/img/t20_precipitation_domains_general_6011003.png" /></a></p>
+<p><a href="/wiki/lib/exe/detail.php?id=tutorials%3At20&amp;media=tutorials/t20/img/t20_precipitation_domains_general_6011003.png" title="tutorials:t20:img:t20_precipitation_domains_general_6011003.png"><img alt="" src="/matcalc_docu/tutorials/t20/img/t20_precipitation_domains_general_6011003.png" /></a></p>
 <p>Next, in the <strong>'MS Evolution'</strong> tab select the <strong>'Grainstructure'</strong> sub-tab. By default, the evolution model for grain size is set to <strong>'None - no evolution'</strong>. This is the option that has been used in all kinetic simulations so far; the grain size, as well as other microstructural parameters such as dislocation density, has been taken as constant. Instead, set this to <strong>'Single class model'</strong>. A set of options will appear as shown in the diagram below. Leave the values with default settings and click on 'OK' button.</p>
-<p><a href="/tutorials/t20/img/t20_precipitation_domains_msevol_grainstructure_6050006.png" title="tutorials/t20/img/t20_precipitation_domains_msevol_grainstructure_6050006.png"><img alt="" src="/tutorials/t20/img/t20_precipitation_domains_msevol_grainstructure_6050006.png" /></a></p>
+<p><a href="/wiki/lib/exe/detail.php?id=tutorials%3At20&amp;media=tutorials/t20/img/t20_precipitation_domains_msevol_grainstructure_6050006.png" title="tutorials:t20:img:t20_precipitation_domains_msevol_grainstructure_6050006.png"><img alt="" src="/matcalc_docu/tutorials/t20/img/t20_precipitation_domains_msevol_grainstructure_6050006.png" /></a></p>
 <p>Using <strong>'Calc' → 'Microstructure simulation'</strong>, set up an isothermal simulation with an end-time of 3600 s (1 hour) and a temperature of 900°C. Click on <strong>'Go'</strong>. The simulation will be over very rapidly compared to precipitation simulations.</p>
 <p>Create a plot of type 'p1'. In the <strong>'variables'</strong> window, find the section entitled <strong>'prec domain struct sc'</strong> ('sc' standing for 'single class') and expand to show <strong>GD<span class="arithmatex">\(**\*-variables. Expand this one step further to show **GD\)</span>austenite</strong>, and drag this to the plot window. Change the (default x-axis label to read <strong>time [h]</strong> and modify the scaling factor to <strong>1/3600</strong>. Change the y-axis title to <strong>Grain diameter [&mu;m]</strong> and modify the scaling factor to <strong>1e6</strong>.</p>
-<p>Label the existing series as <strong>'900°C'</strong>, duplicate and lock it and repeat the calculation for 1000°C and 1100°C to give curves as shown/</p>
-<p><a href="/tutorials/t20/img/t20_grain_growth_free_6021003.png" title="tutorials/t20/img/t20_grain_growth_free_6021003.png"><img alt="Grain growth plot" src="/tutorials/t20/img/t20_grain_growth_free_6021003.png" title="Grain growth plot" /></a></p>
+<p>Label the existing series as <strong>'900°C'</strong>, duplicate and lock it and repeat the calculation for 1000°C and 1100°C to give curves as shown:</p>
+<p><a href="/matcalc_docu/tutorials/t20/img/t20_grain_growth_free_6021003.png" title="tutorials:t20:img:t20_grain_growth_free_6021003.png"><img alt="Grain growth plot" src="/matcalc_docu/tutorials/t20/img/t20_grain_growth_free_6021003.png" title="Grain growth plot" /></a></p>
 <p>Clearly, the temperature increases the growth rate. A curious MatCalc user is encouraged to check if changing Nb and C contents to negligible values, like 1e-10 wt.%, gives the same output.</p>
 <h2 id="grain-growth-of-supersaturated-fe-matrix-solute-drag-effect">Grain growth of supersaturated Fe-matrix - solute drag effect</h2>
 <p>In this tutorial, the effect of solutes atom on the grain growth will be implemented in the framework proposed by Cahn. In this approach, the energies describing the interaction of grain boundary with the solute atoms are used. Open the <strong>'Precipitation domains'</strong> window and switch once again to <strong>'MS Evolution'</strong> tab. This time click on <strong>'Solute drag'</strong> sub-tab and select <strong>'Cahn: impurity drag (transient)'</strong> as <strong>'Solute drag model'</strong>. Now, the interaction energies for various solutes defined for this system can be set. Click on the field <strong>'Inter. energy [J/mol]'</strong> for <strong>'NB'</strong> and type <strong>'9e3'</strong> standing for 9 kJ/mol. Click on 'OK' button to close the window.</p>
-<p><a href="/tutorials/t20/img/t20_precipitation_domains_msevol_soldrag_6021003.png" title="tutorials/t20/img/t20_precipitation_domains_msevol_soldrag_6021003.png"><img alt="" src="/tutorials/t20/img/t20_precipitation_domains_msevol_soldrag_6021003.png" /></a></p>
+<p><a href="/wiki/lib/exe/detail.php?id=tutorials%3At20&amp;media=tutorials/t20/img/t20_precipitation_domains_msevol_soldrag_6021003.png" title="tutorials:t20:img:t20_precipitation_domains_msevol_soldrag_6021003.png"><img alt="" src="/matcalc_docu/tutorials/t20/img/t20_precipitation_domains_msevol_soldrag_6021003.png" /></a></p>
 <p>For a better overview, remove the series representing 1000 and 1100°C from the plot. Setup again the isothermal simulation for 3600 s at 900°C. Start the simulation and plot the grain diameter series next to the existing one.</p>
-<p><a href="/tutorials/t20/img/t20_grain_growth_solute_drag_6021003.png" title="tutorials/t20/img/t20_grain_growth_solute_drag_6021003.png"><img alt="" src="/tutorials/t20/img/t20_grain_growth_solute_drag_6021003.png" /></a></p>
+<p><a href="/wiki/lib/exe/detail.php?id=tutorials%3At20&amp;media=tutorials/t20/img/t20_grain_growth_solute_drag_6021003.png" title="tutorials:t20:img:t20_grain_growth_solute_drag_6021003.png"><img alt="" src="/matcalc_docu/tutorials/t20/img/t20_grain_growth_solute_drag_6021003.png" /></a></p>
 <p>One can notice, that the simulated solute drag effect of Nb atoms slowed down the growth rate and the final grain diameter after 1 hour is expected to be around 170 micrometers - almost a half of the grain size for the pure iron matrix simulated previously.</p>
 <h2 id="grain-growth-in-presence-of-precipitates-grain-boundary-pinning">Grain growth in presence of precipitates - grain boundary pinning</h2>
 <p>The final simulation demonstrates the effect of the precipitates on the grain growth. In order to account for this effect. a precipitate phase needs to be defined which will appear in the simulation. In the <strong>'Phase status'</strong> window, create the precipitate phase for <strong>'FCC_A1#01'</strong> phase, and select the dislocations as nucleation sites (in <strong>'nucleation'</strong> tab).</p>
-<p><a href="/tutorials/t20/img/t20_nbc_nucleation_sites_6050006.png" title="tutorials/t20/img/t20_nbc_nucleation_sites_6050006.png"><img alt="" src="/tutorials/t20/img/t20_nbc_nucleation_sites_6050006.png" /></a></p>
+<p><a href="/wiki/lib/exe/detail.php?id=tutorials%3At20&amp;media=tutorials/t20/img/t20_nbc_nucleation_sites_6050006.png" title="tutorials:t20:img:t20_nbc_nucleation_sites_6050006.png"><img alt="" src="/matcalc_docu/tutorials/t20/img/t20_nbc_nucleation_sites_6050006.png" /></a></p>
 <p>Once again, setup the isothermal simulation for 3600 s at 900°C and plot the grain diameter of austenite when the calculation is completed.</p>
-<p><a href="/tutorials/t20/img/t20_grain_growth_prec_pinning_6021003.png" title="tutorials/t20/img/t20_grain_growth_prec_pinning_6021003.png"><img alt="" src="/tutorials/t20/img/t20_grain_growth_prec_pinning_6021003.png" /></a></p>
+<p><a href="/wiki/lib/exe/detail.php?id=tutorials%3At20&amp;media=tutorials/t20/img/t20_grain_growth_prec_pinning_6021003.png" title="tutorials:t20:img:t20_grain_growth_prec_pinning_6021003.png"><img alt="" src="/matcalc_docu/tutorials/t20/img/t20_grain_growth_prec_pinning_6021003.png" /></a></p>
 <p>A further decrease of the grain rate can be observed, once the precipitate phase is present. On the first sight, one might get an impression that the effect of the precipitates is not that big. However, it must be remarked that the precipitates were created in this simulation and phase fraction of these has a minor value of almost 4e-6 after one hour, compared to around 4e-4 in equilibrium at this temperature. The difference in the grain sizes gets more and more significant, as the amount of precipitates increases, which can be observed for the increased tempering times.</p>
 <h2 id="subsequent-articles">Subsequent articles</h2>
-<p>Go to the <a href="/tutorials" title="tutorials">MatCalc tutorial index</a>.</p>
+<p>Go to the <a href="/matcalc_docu/tutorials" title="tutorials">MatCalc tutorial index</a>.</p>
 <p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=tutorials%3At20&amp;1788352861" /></p>
               
             </div>

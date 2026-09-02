@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pfandl.github.io/matcalc_docu/tutorials/t11/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
     <title>T11 - MatCalc Documentation</title>
     <link rel="stylesheet" href="../../css/theme.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "T11";
         var mkdocs_page_input_path = "tutorials/t11.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_url = "/matcalc_docu/tutorials/t11/";
       </script>
     
     <!--[if lt IE 9]>
@@ -51,7 +51,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../">MatCalc tutorial</a>
+                <li class="toctree-l2"><a class="reference internal" href="../">Tutorials</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
                 </li>
@@ -123,7 +123,7 @@ MatCalc version 6.04 rel 1.001<br />
 license: free<br />
 database: mc_fe.tdb</em></p>
 <h3 id="complimentary-files">Complimentary files</h3>
-<p>Click <a href="/tutorials/t11/script/t11_6021003.mcs" title="tutorials/t11/script/t11_6021003.mcs (9.7 KB)">here</a> to view the script for this tutorial.</p>
+<p>Click <a href="/matcalc_docu/tutorials/t11/script/t11_6021003.mcs" title="tutorials:t11:script:t11_6021003.mcs (9.7 KB)">here</a> to view the script for this tutorial.</p>
 <h3 id="contents">Contents:</h3>
 <ul>
 <li>Scheil calculation</li>
@@ -132,16 +132,16 @@ database: mc_fe.tdb</em></p>
 <li>Solid-solid transformation</li>
 </ul>
 <p>The <strong>Scheil-Gulliver method</strong> allows calculating the <strong>fraction and composition of all phases during solidification</strong> step by step from the liquidus temperature to the temperature where solidification of the residual liquid phase occurs <a href="#fn__1">1)</a>. The particular residual fraction at final solidification is dependent on the cooling rate. Generally, the fraction is higher, the higher the cooling rate is. At slow cooling rates, the liquid film can become very thin and the residual liquid enriches more than in the case of higher fraction residual liquid at solidification.<br />
-According to the Scheil-Gulliver hypothesis, illustrated in the figure below (Fig.1), a solidifying liquid with the initial composition C0 is slightly undercooled. Consequently, a certain fraction of solid is formed with a composition of CS,1 with the remaining liquid phase with the composition CL,1. Both phases are in <strong>local equilibrium following the lever rule</strong>. From that instant on, the composition of the solid phase with regard to the substitutional atoms is frozen due to the Scheil-Gulliver assumption of very slow (and therefore negligible) diffusion in the solid phase. The interstitial elements boron, carbon and nitrogen are assumed to be nevertheless highly mobile in the liquid phase as well as the solid phase. Therefore, these elements are assumed to be able to establish equilibrium between the liquid and solid phases due to back-diffusion of enriched solute atoms from the liquid phase into the solid phase. This process occurs repeatedly, enriching the solid phase as well as the liquid phase with solute during cooling (Fig.1/CL,i and CS,i).</p>
-<p><a href="/tutorials/t11/img/t11_figure1v2.png" title="tutorials/t11/img/t11_figure1v2.png"><img alt="MatCalc figure" src="/tutorials/t11/img/t11_figure1v2.png" title="MatCalc figure" /></a></p>
+According to the Scheil-Gulliver hypothesis, illustrated in the figure below (Fig.1), a solidifying liquid with the initial composition C0 is slightly undercooled. Consequently, a certain fraction of solid is formed with a composition of CS,1 with the remaining liquid phase with the composition CL,1. Both phases are in <strong>local equilibrium following the lever rule</strong>. From that instant on, the composition of the solid phase with regard to the substitutional atoms is frozen due to the Scheil-Gulliver assumption of very slow (and therefore negligible) diffusion in the solid phase. The interstitial elements boron, carbon and nitrogen are assumed to be nevertheless highly mobile in the liquid phase as well as the solid phase. Therefore, these elements are assumed to be able to establish equilibrium between the liquid and solid phases due to back-diffusion of enriched solute atoms from the liquid phase into the solid phase. This process occurs repeatedly, enriching the solid phase as well as the liquid phase with solute during cooling (Fig.1:CL,i and CS,i).</p>
+<p><a href="/matcalc_docu/tutorials/t11/img/t11_figure1v2.png" title="tutorials:t11:img:t11_figure1v2.png"><img alt="MatCalc figure" src="/matcalc_docu/tutorials/t11/img/t11_figure1v2.png" title="MatCalc figure" /></a></p>
 <p><code>Fig.1: Scheme of Scheil solidification of a hypothetic Fe-C alloy. During solidification the actual liquid phase, beginning with C0, is undercooled and solidifies according to the lever rule enriching the liquid phase with solute atoms</code></p>
 <p>When solidification is finished, the microstructure of the solid phase shows a composition gradient from the regions where the solidification started (centre of the dendrite) to the areas where the last liquid solidified (outer shell of the dendrite). The composition of the residual liquid at final solidification corresponds to the composition of the interdendritic regions. It should be noted that the Scheil-Gulliver analysis yields an upper limit of segregation since the substitutional elements also have a finite mobility and have some potential of back-diffusion.<br />
 Scheil-type calculations in multi-component systems have proven to be a useful method to simulate solidification processes. The present example shows how to carry out this type of simulation with MatCalc and demonstrates the effect of carbon back-diffusion on the solidification process. Moreover, the influence of solid-solid phase transformations, i.e. the peritectic transformation, is analyzed.</p>
 <h2 id="step-1-setup-the-thermodynamic-system-see-also-tutorial-t2">Step 1: Setup the thermodynamic system (see also Tutorial T2)</h2>
 <p>Create a new workspace file. From a suitable database (<strong>mc_fe.tdb</strong>) define the elements <strong>Fe</strong>, <strong>Mn</strong> and <strong>C</strong> and the phases <strong>liquid</strong>, <strong>BCC_A2</strong> (ferrite), <strong>FCC_A1</strong> (austenite) and <strong>Cementite</strong>.</p>
-<p><a href="/tutorials/t11/img/t11_database_6011003.png" title="tutorials/t11/img/t11_database_6011003.png"><img alt=" MatCalc Databases" src="/tutorials/t11/img/t11_database_6011003.png" title="MatCalc Databases" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t11/img/t11_database_6011003.png" title="tutorials:t11:img:t11_database_6011003.png"><img alt=" MatCalc Databases" src="/matcalc_docu/tutorials/t11/img/t11_database_6011003.png" title="MatCalc Databases" /></a></p>
 <p>Enter the system composition in weight percent as listed in the subsequent figure selecting <strong>'Global Composition …'</strong> or pressing the <strong>F7</strong> key.</p>
-<p><a href="/tutorials/t11/img/t11_composition_6050006.png" title="tutorials/t11/img/t11_composition_6050006.png"><img alt=" MatCalc Composition" src="/tutorials/t11/img/t11_composition_6050006.png" title="MatCalc Composition" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t11/img/t11_composition_6050006.png" title="tutorials:t11:img:t11_composition_6050006.png"><img alt=" MatCalc Composition" src="/matcalc_docu/tutorials/t11/img/t11_composition_6050006.png" title="MatCalc Composition" /></a></p>
 <p>Set initial values with <strong>'Calc'→'Set start values'</strong> or <strong>Ctrl+Shift+F</strong>. Calculate equilibrium at 1600°C. The results in the <strong>'Phase summary'</strong> window are</p>
 <pre><code>LIQUID  *           act 1,00000e+000 dfm: +0,00000e+000
 ### inactive ###
@@ -151,14 +151,14 @@ CEMENTITE       - OK -  0,00000e+000  dfm: -1,28107e+004
 </code></pre>
 <h2 id="step-2-carry-out-a-scheil-calculation">Step 2: Carry out a Scheil calculation</h2>
 <p>Since we expect austenite to be the first phase to form on solidification, let us first look for the solubility temperature of this phase. Select <strong>'Calc - Search phase boundary …'</strong> or press <strong>Ctrl+Shift+T</strong> and select <strong>FCC_A1</strong> as target phase.</p>
-<p><a href="/tutorials/t11/img/t11_search_boundary_2016.png" title="tutorials/t11/img/t11_search_boundary_2016.png"><img alt=" MatCalc search boundary" src="/tutorials/t11/img/t11_search_boundary_2016.png" title="MatCalc search boundary" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t11/img/t11_search_boundary_2016.png" title="tutorials:t11:img:t11_search_boundary_2016.png"><img alt=" MatCalc search boundary" src="/matcalc_docu/tutorials/t11/img/t11_search_boundary_2016.png" title="MatCalc search boundary" /></a></p>
 <p>Press <strong>'Go'</strong>:</p>
 <pre><code>Tsol 'FCC_A1': 1471,09 C (1744,24 K) iter: 4, time used: 0,02 s
 </code></pre>
 <p>The first solid phase becomes stable at <strong>1471.09°C</strong>. So let us start with the Scheil simulation at <strong>1500°C</strong> and go down to <strong>1000°C</strong> in steps of <strong>10</strong>. Open the Scheil-calculation dialog with <strong>'Calc - Scheil calculation …'</strong> or press <strong>Ctrl+Alt+T</strong>.</p>
-<p><a href="/tutorials/t11/img/t11_scheil_calculation_6011003.png" title="tutorials/t11/img/t11_scheil_calculation_6011003.png"><img alt=" MatCalc scheil calculation" src="/tutorials/t11/img/t11_scheil_calculation_6011003.png" title="MatCalc scheil calculation" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t11/img/t11_scheil_calculation_6011003.png" title="tutorials:t11:img:t11_scheil_calculation_6011003.png"><img alt=" MatCalc scheil calculation" src="/matcalc_docu/tutorials/t11/img/t11_scheil_calculation_6011003.png" title="MatCalc scheil calculation" /></a></p>
 <p>Press <strong>'Go'</strong> to start the simulation. In order to be able to remove the equilibrium content of solid phases from the system after each temperature step, MatCalc needs to create <strong>copies of all phases except the dependent</strong> (liquid) <strong>phase</strong>. MatCalc therefore asks</p>
-<p><a href="/tutorials/t11/img/t11_warning_2016.png" title="tutorials/t11/img/t11_warning_2016.png"><img alt=" MatCalc warning" src="/tutorials/t11/img/t11_warning_2016.png" title="MatCalc warning" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t11/img/t11_warning_2016.png" title="tutorials:t11:img:t11_warning_2016.png"><img alt=" MatCalc warning" src="/matcalc_docu/tutorials/t11/img/t11_warning_2016.png" title="MatCalc warning" /></a></p>
 <p>Click <strong>'Yes'</strong>. MatCalc then creates 3 new phases with the name of the original phase plus the suffix <strong>'_S'</strong>. This suffix denotes that the corresponding phase is a <strong>'solid'</strong> phase. The result in the <strong>'Output'</strong> window looks as follows</p>
 <pre><code>Checking solid phases ... - OK -
 Searching initial equilibrium ...
@@ -182,28 +182,28 @@ AktStepVal: 1383,150000
 <p>The current value of the fraction liquid at each temperature step is displayed with <strong>'f=xxx'</strong> in each line. The final eutectic is reached at T=1110°C. When the fraction liquid comes <strong>below 0,01 (minimum liquid fraction)</strong>, the dependent phase is dissolved and the calculation is finished.<br />
 Let's now look at the result.<br />
 Create a <strong>XY-data</strong> plot that shows the fraction of residual liquid as a function of temperature. The correct variable is <strong>F<span class="arithmatex">\(LIQUID**, you have to change the default x-data to **T\)</span>C</strong> in the options window to show °C instead of K. Rescale the <strong>x-axis</strong> from <strong>1100°C to 1500°C</strong>. A few other settings were made until the result looks as follows</p>
-<p><a href="/tutorials/t11/img/t11_plot1_result_scheil_2_2016.png" title="tutorials/t11/img/t11_plot1_result_scheil_2_2016.png"><img alt=" MatCalc plot" src="/tutorials/t11/img/t11_plot1_result_scheil_2_2016.png" title="MatCalc plot" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t11/img/t11_plot1_result_scheil_2_2016.png" title="tutorials:t11:img:t11_plot1_result_scheil_2_2016.png"><img alt=" MatCalc plot" src="/matcalc_docu/tutorials/t11/img/t11_plot1_result_scheil_2_2016.png" title="MatCalc plot" /></a></p>
 <h2 id="step-3-add-a-scheil-calculation-with-back-diffusion-of-carbon">Step 3: Add a Scheil calculation with back-diffusion of carbon</h2>
 <p>The solidification of the current steel as calculated by the Scheil model predicts final solidification at too low temperature. In reality, <strong>carbon atoms are fast enough</strong> not only in the liquid but also in the solid to be able <strong>to equilibrate between the solid and liquid phases</strong>. Therefore, to get more realistic simulation results, we must allow for <strong>back-diffusion of carbon</strong>. First, in order not to loose the results of the previous simulation, rename the current buffer to <strong>'Scheil'</strong> and create a new one with the name <strong>'Scheil with BD of C'</strong>. Open the Scheil calculation dialog with <strong>'Calc - Scheil calculation …'</strong> or press <strong>Ctrl+Alt+T</strong>. Highlight carbon in the list box and press <strong>'Toggle'</strong> or double-click directly on the relevant <strong>'no'</strong> text.</p>
-<p><a href="/tutorials/t11/img/t11_scheil_calc_toggle_2016.png" title="tutorials/t11/img/t11_scheil_calc_toggle_2016.png"><img alt=" MatCalc scheil calculation" src="/tutorials/t11/img/t11_scheil_calc_toggle_2016.png" title="MatCalc scheil calculation" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t11/img/t11_scheil_calc_toggle_2016.png" title="tutorials:t11:img:t11_scheil_calc_toggle_2016.png"><img alt=" MatCalc scheil calculation" src="/matcalc_docu/tutorials/t11/img/t11_scheil_calc_toggle_2016.png" title="MatCalc scheil calculation" /></a></p>
 <p>Press <strong>'Go'</strong> to start the simulation. After each temperature step, MatCalc sets up a paraequilibrium calculation, where all elements without back-diffusion have fixed composition variables and <strong>only the elements with back-diffusion are unconstrained</strong>. By that means, carbon is always brought back into equilibrium with regard to the <strong>solid and liquid</strong> phases after a regular Scheil simulation step is carried out.<br />
 We are going to display the Scheil curve with and without back-diffusion in one window. Therefore, first, lock the previous Scheil calculation, which is still displayed in the diagram window and name it <strong>'Scheil'</strong>.</p>
-<p><a href="/tutorials/t11/img/t11_options_window_6050006.png" title="tutorials/t11/img/t11_options_window_6050006.png"><img alt=" MatCalc options" src="/tutorials/t11/img/t11_options_window_6050006.png" title="MatCalc options" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t11/img/t11_options_window_6050006.png" title="tutorials:t11:img:t11_options_window_6050006.png"><img alt=" MatCalc options" src="/matcalc_docu/tutorials/t11/img/t11_options_window_6050006.png" title="MatCalc options" /></a></p>
 <p>Then, we make sure that the just created buffer (<strong>'Scheil with BD of C'</strong>) is selected as current buffer for the plot in the options window and drag and drop the <strong>'F$LIQUID'</strong> variable into the plot (note that alternatively you can use the 'Lock and duplicate series' option accessible via the right mouse button or the 'View' menu). Rename the new series to <strong>'Scheil with BD of C'</strong>. The new diagram looks like the following figure.</p>
-<p><a href="/tutorials/t11/img/t11_plot2_result_scheil_bd_2_2016.png" title="tutorials/t11/img/t11_plot2_result_scheil_bd_2_2016.png"><img alt=" MatCalc plot" src="/tutorials/t11/img/t11_plot2_result_scheil_bd_2_2016.png" title="MatCalc plot" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t11/img/t11_plot2_result_scheil_bd_2_2016.png" title="tutorials:t11:img:t11_plot2_result_scheil_bd_2_2016.png"><img alt=" MatCalc plot" src="/matcalc_docu/tutorials/t11/img/t11_plot2_result_scheil_bd_2_2016.png" title="MatCalc plot" /></a></p>
 <h2 id="step-4-add-the-equilibrium-solidification-path">Step 4: Add the equilibrium solidification path</h2>
 <p>Let us finally add the solidification temperatures for thermodynamic equilibrium conditions. To speed up the calculations, we <strong>suspend all 'solid' phases which were needed for the Scheil calculations</strong>. Open the <strong>'Phase status'</strong> dialog (<strong>F8</strong>). Set the <strong>'suspended'</strong> flag for each <strong>'solid'</strong> phase.</p>
-<p><a href="/tutorials/t11/img/t11_phase_status_2016.png" title="tutorials/t11/img/t11_phase_status_2016.png"><img alt=" MatCalc phase status" src="/tutorials/t11/img/t11_phase_status_2016.png" title="MatCalc phase status" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t11/img/t11_phase_status_2016.png" title="tutorials:t11:img:t11_phase_status_2016.png"><img alt=" MatCalc phase status" src="/matcalc_docu/tutorials/t11/img/t11_phase_status_2016.png" title="MatCalc phase status" /></a></p>
 <p>Create a new buffer with the name <strong>'Equilibrium'</strong>. Open the stepped calculation dialog (<strong>Ctrl+T</strong>). Calculate a stepped calculation with temperature as the variable between 1500°C and 1350°C in steps of 5. Press <strong>'Go'</strong> to start the calculation.</p>
-<p><a href="/tutorials/t11/img/t11_step_equilibrium_6011003.png" title="tutorials/t11/img/t11_step_equilibrium_6011003.png"><img alt=" MatCalc step equilibrium" src="/tutorials/t11/img/t11_step_equilibrium_6011003.png" title="MatCalc step equilibrium" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t11/img/t11_step_equilibrium_6011003.png" title="tutorials:t11:img:t11_step_equilibrium_6011003.png"><img alt=" MatCalc step equilibrium" src="/matcalc_docu/tutorials/t11/img/t11_step_equilibrium_6011003.png" title="MatCalc step equilibrium" /></a></p>
 <p>Lock the last series ('Scheil with BD of C'). Change the buffer to be used in the diagram window to <strong>'Equilibrium'</strong>and drag and drop the <strong>'F$LIQUID'</strong> variable into the plot. Rename the current series and the diagram looks like this:</p>
-<p><a href="/tutorials/t11/img/t11_plot3_scheil_calc_final_2_2016.png" title="tutorials/t11/img/t11_plot3_scheil_calc_final_2_2016.png"><img alt=" MatCalc plot" src="/tutorials/t11/img/t11_plot3_scheil_calc_final_2_2016.png" title="MatCalc plot" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t11/img/t11_plot3_scheil_calc_final_2_2016.png" title="tutorials:t11:img:t11_plot3_scheil_calc_final_2_2016.png"><img alt=" MatCalc plot" src="/matcalc_docu/tutorials/t11/img/t11_plot3_scheil_calc_final_2_2016.png" title="MatCalc plot" /></a></p>
 <p>On changing the <strong>'y-axis'</strong> type to <strong>'log'</strong> and scaling from 0.01, the results finally display as</p>
-<p><a href="/tutorials/t11/img/t11_plot4_scheil_calc_final_log_2_2016.png" title="tutorials/t11/img/t11_plot4_scheil_calc_final_log_2_2016.png"><img alt=" MatCalc plot" src="/tutorials/t11/img/t11_plot4_scheil_calc_final_log_2_2016.png" title="MatCalc plot" /></a></p>
+<p><a href="/matcalc_docu/tutorials/t11/img/t11_plot4_scheil_calc_final_log_2_2016.png" title="tutorials:t11:img:t11_plot4_scheil_calc_final_log_2_2016.png"><img alt=" MatCalc plot" src="/matcalc_docu/tutorials/t11/img/t11_plot4_scheil_calc_final_log_2_2016.png" title="MatCalc plot" /></a></p>
 <p>From this diagram, and with the assumption that all residual liquid freezes (solidifies) when 1% residual liquid is reached, the predicted solidification temperatures using the classical Scheil model, Scheil with back-diffusion and full thermodynamic equilibrium can be read as 1110, 1335 and 1380°C, respectively. Probably, 1335°C comes closest to the real, experimentally observed solidification temperature for this alloy composition.</p>
 <h2 id="consecutive-articles">Consecutive articles</h2>
-<p>The tutorial is continued in article  <a href="/tutorials/t12" title="tutorials/t12">T12 - Using the MatCalc console</a></p>
-<p>Go to <a href="/tutorials" title="tutorials">MatCalc tutorial index</a>.</p>
+<p>The tutorial is continued in article  <a href="/matcalc_docu/tutorials/t12" title="tutorials:t12">T12 - Using the MatCalc console</a></p>
+<p>Go to <a href="/matcalc_docu/tutorials" title="tutorials">MatCalc tutorial index</a>.</p>
 <p><a href="#fnt__1">1)</a></p>
 <p><strong>References</strong><br />
 [1] E. Kozeschnik, W. Rindler and B. Buchmayr, <em>„Scheil-Gulliver simulation with partial redistribution of fast diffusers and simultaneous solid-solid phase transformations“</em>, Int. J. Mater. Res., 98 (9), 2007, 826-831.<br />

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pfandl.github.io/matcalc_docu/howtosimulate/precipitation/initial_precipitates/" />
       <link rel="shortcut icon" href="../../../img/favicon.ico" />
     <title>Initial precipitates - MatCalc Documentation</title>
     <link rel="stylesheet" href="../../../css/theme.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "Initial precipitates";
         var mkdocs_page_input_path = "howtosimulate/precipitation/initial_precipitates.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_url = "/matcalc_docu/howtosimulate/precipitation/initial_precipitates/";
       </script>
     
     <!--[if lt IE 9]>
@@ -51,7 +51,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">MatCalc tutorial</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">Tutorials</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
                 </li>
@@ -136,8 +136,8 @@ Revisions:</p>
 <p>On several occasions, simulated microstructure contains some precipitates already in the initial state of kinetic calculation. This section describes the way to introduce these precipitates before the simulation.</p>
 <h2 id="related-documents">Related documents</h2>
 <ol>
-<li><a href="/howtosimulate/precipitation/primary_prec" title="howtosimulate/precipitation/primary_prec">Primary precipitates</a> - Treatment of primary precipitates in precipitation kinetics simulations</li>
-<li><a href="/examples/precipitation/p20/p20_1" title="examples/precipitation/p20/p20_1">Treatment of primary precipitates</a></li>
+<li><a href="/matcalc_docu/howtosimulate/precipitation/primary_prec" title="howtosimulate:precipitation:primary_prec">Primary precipitates</a> - Treatment of primary precipitates in precipitation kinetics simulations</li>
+<li><a href="/matcalc_docu/examples/precipitation/p20/p20_1" title="examples:precipitation:p20:p20_1">Treatment of primary precipitates</a></li>
 </ol>
 <h1 id="main-document">Main document</h1>
 <p>There are 2 points that are to be considered in this kind of simulation:</p>
@@ -148,9 +148,9 @@ Revisions:</p>
 <p>Note that this procedure can be applied also for the introduction of the primary precipitates into the kinetic simulation. In this case, the input data (phase fraction, chemical composition) can be taken from the Scheil-Gulliver simulation results.</p>
 <h2 id="definition-of-size-distribution-of-the-initial-precipitates">Definition of size distribution of the initial precipitates</h2>
 <p>MatCalc treats the precipitates as objects consisting of size classes, where each size class is characterized with the radius, number density and chemical composition (expressed with the site fractions for each sublattice). The set of these parameters is referred to as <em>precipitate size distribution</em>. The size distribution of the precipitates in the initial state needs to be defined by the user. Once a precipitate phase representing the phase in question is created and the number of size classes is set (by default 25 size classes are used), the definition of precipitate size distribution can be performed in <strong>“Phase status”</strong> window → <strong>“Precipitate”</strong> tab, by clicking on <strong>“Edit precipitate distribution”</strong> (once the relevant precipitate phase is selected).</p>
-<p><a href="/howtosimulate/precipitation/img/edit_precipitate_distribution_1_6021003.png" title="howtosimulate/precipitation/img/edit_precipitate_distribution_1_6021003.png"><img alt=" Edit precipitate distribution button" src="/howtosimulate/precipitation/img/edit_precipitate_distribution_1_6021003.png" title="Edit precipitate distribution button" /></a></p>
+<p><a href="/matcalc_docu/howtosimulate/precipitation/img/edit_precipitate_distribution_1_6021003.png" title="howtosimulate:precipitation:img:edit_precipitate_distribution_1_6021003.png"><img alt=" Edit precipitate distribution button" src="/matcalc_docu/howtosimulate/precipitation/img/edit_precipitate_distribution_1_6021003.png" title="Edit precipitate distribution button" /></a></p>
 <p>A new window <strong>“Edit…”</strong> appears which consist of a table and has some buttons and text boxes located on the right side. The number of table rows corresponds to the number of size classes used for this precipitate phase. The column headers describe the parameters, the values of which are stored for each size class. The radius and the number are placed in the first and second column accordingly. Next columns describe the site fractions of elements on the sublattices, as specified by the sublattice description used for this phase, eg. <em>“yx_TI(0)”</em> describes the site fraction of titanium on sublattice “0”. Initially, the table cells are empty – the precipitate is not present in the microstructure. It is necessary to fill these cells with the relevant information for the precipitates that are to be present in the initial state of the simulation.</p>
-<p><a href="/howtosimulate/precipitation/img/edit_precipitate_distribution_2_6021003.png" title="howtosimulate/precipitation/img/edit_precipitate_distribution_2_6021003.png"><img alt=" Edit precipitate distribution table" src="/howtosimulate/precipitation/img/edit_precipitate_distribution_2_6021003.png" title="Edit precipitate distribution table" /></a></p>
+<p><a href="/matcalc_docu/howtosimulate/precipitation/img/edit_precipitate_distribution_2_6021003.png" title="howtosimulate:precipitation:img:edit_precipitate_distribution_2_6021003.png"><img alt=" Edit precipitate distribution table" src="/matcalc_docu/howtosimulate/precipitation/img/edit_precipitate_distribution_2_6021003.png" title="Edit precipitate distribution table" /></a></p>
 <p>There are 3 ways to define the precipitate size distributions:</p>
 <ul>
 <li>Type in the required values</li>
@@ -168,9 +168,9 @@ Revisions:</p>
 </ul>
 <p>This method is a convenient way to transfer the MatCalc results from one workspace to the other.</p>
 <h3 id="read-the-required-values-from-a-text-file">Read the required values from a text file</h3>
-<p>Size distribution can be read from the text file. <a href="/howtosimulate/precipitation/script/size_dist_tin_primary.txt" title="howtosimulate/precipitation/script/size_dist_tin_primary.txt (3.3 KB)">Here</a> you will find the file with sample distribution of M23C6 phase which can be used as a template. The column order in the file relates to the column order in the MatCalc table. The first column in text file contains always the radius values (expressed in meters), the second column contains always the number density values (expressed in m-3) and the next columns contain the respective site fractions according to the sublattice description of the relevant phase. So be sure, that the order in the columns in the file correlates with the order of the columns in MatCalc! Moreover, keep in mind that the sum of the site fractions at the given sublattice needs to equal the stoichiometric contribution of this sublattice.</p>
+<p>Size distribution can be read from the text file. <a href="/matcalc_docu/howtosimulate/precipitation/script/size_dist_tin_primary.txt" title="howtosimulate:precipitation:script:size_dist_tin_primary.txt (3.3 KB)">Here</a> you will find the file with sample distribution of M23C6 phase which can be used as a template. The column order in the file relates to the column order in the MatCalc table. The first column in text file contains always the radius values (expressed in meters), the second column contains always the number density values (expressed in m-3) and the next columns contain the respective site fractions according to the sublattice description of the relevant phase. So be sure, that the order in the columns in the file correlates with the order of the columns in MatCalc! Moreover, keep in mind that the sum of the site fractions at the given sublattice needs to equal the stoichiometric contribution of this sublattice.</p>
 <p>In order to read the size distribution data from a file, klick on <strong>“Read”</strong> button and select the relevant data.</p>
-<p><a href="/howtosimulate/precipitation/img/read_precipitate_distribution_6021003.png" title="howtosimulate/precipitation/img/read_precipitate_distribution_6021003.png"><img alt=" Read precipitate distribution from file" src="/howtosimulate/precipitation/img/read_precipitate_distribution_6021003.png" title="Read precipitate distribution from file" /></a></p>
+<p><a href="/matcalc_docu/howtosimulate/precipitation/img/read_precipitate_distribution_6021003.png" title="howtosimulate:precipitation:img:read_precipitate_distribution_6021003.png"><img alt=" Read precipitate distribution from file" src="/matcalc_docu/howtosimulate/precipitation/img/read_precipitate_distribution_6021003.png" title="Read precipitate distribution from file" /></a></p>
 <h3 id="generate-the-required-values">Generate the required values</h3>
 <p>In order to use the functionality of size distribution generation, the user needs to define:</p>
 <ul>
@@ -186,10 +186,10 @@ Revisions:</p>
 <li>Click on <strong>“Set amount”</strong> button</li>
 <li>In the <strong>“Input…”</strong> window type in the phase fraction value and click on <strong>“OK”</strong> button</li>
 </ol>
-<p><a href="/howtosimulate/precipitation/img/set_phase_fraction_1_6021003.png" title="howtosimulate/precipitation/img/set_phase_fraction_1_6021003.png"><img alt=" Set phase fraction button" src="/howtosimulate/precipitation/img/set_phase_fraction_1_6021003.png" title="Set phase fraction button" /></a></p>
-<p><a href="/howtosimulate/precipitation/img/set_phase_fraction_2_6021003.png" title="howtosimulate/precipitation/img/set_phase_fraction_2_6021003.png"><img alt=" Set phase fraction window" src="/howtosimulate/precipitation/img/set_phase_fraction_2_6021003.png" title="Set phase fraction window" /></a></p>
+<p><a href="/matcalc_docu/howtosimulate/precipitation/img/set_phase_fraction_1_6021003.png" title="howtosimulate:precipitation:img:set_phase_fraction_1_6021003.png"><img alt=" Set phase fraction button" src="/matcalc_docu/howtosimulate/precipitation/img/set_phase_fraction_1_6021003.png" title="Set phase fraction button" /></a></p>
+<p><a href="/matcalc_docu/howtosimulate/precipitation/img/set_phase_fraction_2_6021003.png" title="howtosimulate:precipitation:img:set_phase_fraction_2_6021003.png"><img alt=" Set phase fraction window" src="/matcalc_docu/howtosimulate/precipitation/img/set_phase_fraction_2_6021003.png" title="Set phase fraction window" /></a></p>
 <p>Other parameters are to be set in the <strong>“Edit…”</strong> window. Afterwards, click on <strong>“Generate”</strong> button. The relevant values will be introduced into the table cells. Note that the provided information allows to calculate the number density for each individual size class. On the other side, the chemical composition of each size class is identical and equal to the one of the parent equilibrium phase.</p>
-<p><a href="/howtosimulate/precipitation/img/generate_precipitate_distribution_6021003.png" title="howtosimulate/precipitation/img/generate_precipitate_distribution_6021003.png"><img alt=" Generate precipitate distribution" src="/howtosimulate/precipitation/img/generate_precipitate_distribution_6021003.png" title="Generate precipitate distribution" /></a></p>
+<p><a href="/matcalc_docu/howtosimulate/precipitation/img/generate_precipitate_distribution_6021003.png" title="howtosimulate:precipitation:img:generate_precipitate_distribution_6021003.png"><img alt=" Generate precipitate distribution" src="/matcalc_docu/howtosimulate/precipitation/img/generate_precipitate_distribution_6021003.png" title="Generate precipitate distribution" /></a></p>
 <h2 id="selection-of-initial-state-condition">Selection of initial state condition</h2>
 <p>There 3 different options for the specification of the microstructure kinetics simulation initial state (Menu <strong>“Calc”</strong> → <strong>“Precipitation kinetics”</strong>). These are:</p>
 <ul>
@@ -197,7 +197,7 @@ Revisions:</p>
 <li>Resetting precipitates and microstructure</li>
 <li>Loading the previously defined calculation state as starting condition</li>
 </ul>
-<p><a href="/howtosimulate/precipitation/img/starting_conditions_kinetics_6021003.png" title="howtosimulate/precipitation/img/starting_conditions_kinetics_6021003.png"><img alt=" Starting conditions for kinetic simulation" src="/howtosimulate/precipitation/img/starting_conditions_kinetics_6021003.png" title="Starting conditions for kinetic simulation" /></a></p>
+<p><a href="/matcalc_docu/howtosimulate/precipitation/img/starting_conditions_kinetics_6021003.png" title="howtosimulate:precipitation:img:starting_conditions_kinetics_6021003.png"><img alt=" Starting conditions for kinetic simulation" src="/matcalc_docu/howtosimulate/precipitation/img/starting_conditions_kinetics_6021003.png" title="Starting conditions for kinetic simulation" /></a></p>
 <p>In principle, the default option of resetting the precipitates precludes the usage precipitates in the initial state. One possibility is to switch it to <strong>“no action”</strong> which just takes the current MatCalc state as the initial state for the upcoming simulation. However, it works only for the very first calculation, as every consecutive simulation starts with the final state of the previous one. In other words, the introduced size distribution is lost after the first simulation with this option selected.</p>
 <p>A recommended course of action is to create a calculation state right after the size distribution are introduced. This calculation state can be used next as the starting condition for the all the simulations (as long as this calculation state will not be overwritten by the user).</p>
 <p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=howtosimulate%3Aprecipitation%3Ainitial_precipitates&amp;1788352862" /></p>

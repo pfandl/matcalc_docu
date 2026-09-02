@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pfandl.github.io/matcalc_docu/examples/precipitation/p1/p1_1/" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
     <title>P1 1 - MatCalc Documentation</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "P1 1";
         var mkdocs_page_input_path = "examples/precipitation/p1/p1_1.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_url = "/matcalc_docu/examples/precipitation/p1/p1_1/";
       </script>
     
     <!--[if lt IE 9]>
@@ -51,7 +51,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/">MatCalc tutorial</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/">Tutorials</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
                 </li>
@@ -138,14 +138,14 @@ Revisions: Heinrich Buken 2014-03-20 (Updated to GUI v.5.6)</p>
 <p>This example demonstrates the basics of every precipitation simulation and thoroughly guides through setup and calculation. The precipitation of cementite in ferrite is of special interest in this example. Furthermore will be the grain size, nucleation rate and other general precipitation-related features. A comparison of the numerical simulation with the classical Lifshitz-Slyozov-Wagner (LSW) size distribution is also presented.</p>
 <h2 id="related-documents">Related documents</h2>
 <ul>
-<li><em>P1-2</em> -  <a href="/examples/precipitation/p1/p1_2" title="examples/precipitation/p1/p1_2">Setup of simulation for analysis of precipitate distributions</a></li>
+<li><em>P1-2</em> -  <a href="/matcalc_docu/examples/precipitation/p1/p1_2" title="examples:precipitation:p1:p1_2">Setup of simulation for analysis of precipitate distributions</a></li>
 <li>C. Wagner, Theorie der Alterung von Niederschlägen durch Umlösen, Zeitschrift für Elektrochemie, Bd 65 (1961) Nr. 7/8, 581-591.</li>
 <li>I. Lifshitz, V. V. Slyozov, The kinetics of precipitation from supersaturated solid solutions, J. Phys. Chem. Solids 19 (1961) 35-50.</li>
 <li>K. G. F. Janssens, D. Raabe, E. Kozeschnik, M. Miodownik, B. Nestler, Computational Materials Engineering - An Introduction to Microstructure Evolution, Elsevier Inc (2007) 206-209.</li>
 </ul>
 <h2 id="complementary-files">Complementary files</h2>
-<p>Click <a href="/examples/precipitation/p1/lsw_-_new-_25classes_2018.mcs" title="examples/precipitation/p1/lsw_-_new-_25classes_2018.mcs (6.8 KB)">here (25)</a> to view the script for this example with #25 size classes, and <a href="/examples/precipitation/p1/lsw_-_new_-_1000_classes_2018.mcs" title="examples/precipitation/p1/lsw_-_new_-_1000_classes_2018.mcs (7.3 KB)">here (1000)</a> for the script with #1000 size classes.</p>
-<p>Click <a href="/examples/precipitation/p1/p1_lsw-plot_2018.mcs" title="examples/precipitation/p1/p1_lsw-plot_2018.mcs (3.4 KB)">here</a> to view the script for the plots.</p>
+<p>Click <a href="/matcalc_docu/examples/precipitation/p1/lsw_-_new-_25classes_2018.mcs" title="examples:precipitation:p1:lsw_-_new-_25classes_2018.mcs (6.8 KB)">here (25)</a> to view the script for this example with #25 size classes, and <a href="/matcalc_docu/examples/precipitation/p1/lsw_-_new_-_1000_classes_2018.mcs" title="examples:precipitation:p1:lsw_-_new_-_1000_classes_2018.mcs (7.3 KB)">here (1000)</a> for the script with #1000 size classes.</p>
+<p>Click <a href="/matcalc_docu/examples/precipitation/p1/p1_lsw-plot_2018.mcs" title="examples:precipitation:p1:p1_lsw-plot_2018.mcs (3.4 KB)">here</a> to view the script for the plots.</p>
 <h1 id="main-document">Main document</h1>
 <h2 id="setup-thermodynamics">Setup thermodynamics</h2>
 <p>Set up the thermodynamics by loading the mc_sample_fe database. Select the following phases, elements and enter the chemical composition in wt-%:</p>
@@ -175,11 +175,11 @@ Revisions: Heinrich Buken 2014-03-20 (Updated to GUI v.5.6)</p>
 <p>To facilitate identification of a first thermodynamic equilibrium, set automatic start values. Then calculate an equilibrium at 700C.</p>
 <h2 id="precipitation-domain-and-precipitates">Precipitation domain and precipitates</h2>
 <p>Next, we enter the parameter settings for the precipitation domain. To do so, open the precipitation domain dialog and create a new domain. Select bcc_a2 as its matrix phase. No further settings need to be done here. The cementite_p0 precipitate will be created in the next step.</p>
-<p><a href="/examples/precipitation/p1/p1-1.png" title="examples/precipitation/p1/p1-1.png"><img alt="" src="/examples/precipitation/p1/p1-1.png" /></a></p>
+<p><a href="/wiki/lib/exe/detail.php?id=examples%3Aprecipitation%3Ap1%3Ap1_1&amp;media=examples/precipitation/p1/p1-1.png" title="examples:precipitation:p1:p1-1.png"><img alt="" src="/matcalc_docu/examples/precipitation/p1/p1-1.png" /></a></p>
 <p>Open the phase status dialog now and select the cementite phase on the left hand side. Press the 'Create' button on the left bottom side and select 'Precipitate (_Pnn)'.</p>
-<p><a href="/examples/precipitation/p1/p1_phasestatus_1.png" title="examples/precipitation/p1/p1_phasestatus_1.png"><img alt="Create a new precipitate" src="/examples/precipitation/p1/p1_phasestatus_1.png" title="Create a new precipitate" /></a></p>
+<p><a href="/matcalc_docu/examples/precipitation/p1/p1_phasestatus_1.png" title="examples:precipitation:p1:p1_phasestatus_1.png"><img alt="Create a new precipitate" src="/matcalc_docu/examples/precipitation/p1/p1_phasestatus_1.png" title="Create a new precipitate" /></a></p>
 <p>Switch to the precipitate tab and initialize the precipitate with #25 size classes. This is the number which is usually used for precipitation simulation. It is precise enough for a simulation of mean precipitate quantities such as mean radius or number density. As we will see in part 2, to reproduce the <em>precipitate size distribution</em> with good accuracy, many more classes are needed.</p>
-<p><a href="/examples/precipitation/p1/p1-2.png" title="examples/precipitation/p1/p1-2.png"><img alt="" src="/examples/precipitation/p1/p1-2.png" /></a></p>
+<p><a href="/wiki/lib/exe/detail.php?id=examples%3Aprecipitation%3Ap1%3Ap1_1&amp;media=examples/precipitation/p1/p1-2.png" title="examples:precipitation:p1:p1-2.png"><img alt="" src="/matcalc_docu/examples/precipitation/p1/p1-2.png" /></a></p>
 <p><strong><em>Important …</em></strong></p>
 <p>The number # of size classes is a parameter that determines how many radius, number and composition records are used maximally in the simulation. For typical precipitation kinetics calculations, <strong>25 size classes</strong> are sufficient and represent a reasonable compromise between computer time for simulation and accuracy. Less number of size classes is usually not beneficial for simulation time, because numerical fluctuations increase with decreasing number of size classes. More effort must then be directed towards stabilization of the numerical procedure, which increases computational time.</p>
 <p>As an example:</p>
@@ -187,9 +187,9 @@ Revisions: Heinrich Buken 2014-03-20 (Updated to GUI v.5.6)</p>
 <li>A system has 25 size classes. All precipitates in the system, typically <span class="arithmatex">\(10^{17}-10^{25}\)</span>, are grouped into maximum 25 size classes, with each class comprising of a certain number of precipitates of the same size and chemical composition. In each iteration step of the simulation, radius and composition evolution is evaluated for each precipitate size class sequentially. The <em>size distribution</em> of precipitates is coarse and its shape appears as a 'garden fence'. The computational effort is relatively small, still the evolution of mean precipitate parameters is reproduced well.</li>
 <li>A system has 1000 size classes. The evolution of precipitate classes must now be evaluated for all 1000 classes sequentially. This procedure is computationally expensive. Moreover, the maximum time increments in the simulations decrease because the evolution of each single precipitate class must be accurately controlled. As a benefit of a high number of size classes, the size distribution is much smoother. The precision in calculation of mean precipitate parameters increases slightly, however at an unproportional cost of calculation speed.</li>
 </ul>
-<p>In the actual simulation procedure, you do not have to think about the actual handling of the precipitate size distribution, as this is managed internally by <em>MatCalc</em>. However, if you are interested in this functionality in more detail, have a look at the  <a href="/howtosimulate/precipitation/primary_prec#manually_defined_size_distributions" title="howtosimulate/precipitation/primary_prec">primary precipitates HowTo</a>, especially the manually defined size distributions section.</p>
+<p>In the actual simulation procedure, you do not have to think about the actual handling of the precipitate size distribution, as this is managed internally by <em>MatCalc</em>. However, if you are interested in this functionality in more detail, have a look at the  <a href="/matcalc_docu/howtosimulate/precipitation/primary_prec#manually_defined_size_distributions" title="howtosimulate:precipitation:primary_prec">primary precipitates HowTo</a>, especially the manually defined size distributions section.</p>
 <p>As a last step, change the nucleation site from bulk to dislocation in the 'Nucleation' tab:</p>
-<p><a href="/examples/precipitation/p1/p1-3.png" title="examples/precipitation/p1/p1-3.png"><img alt="" src="/examples/precipitation/p1/p1-3.png" /></a></p>
+<p><a href="/wiki/lib/exe/detail.php?id=examples%3Aprecipitation%3Ap1%3Ap1_1&amp;media=examples/precipitation/p1/p1-3.png" title="examples:precipitation:p1:p1-3.png"><img alt="" src="/matcalc_docu/examples/precipitation/p1/p1-3.png" /></a></p>
 <p>The nucleation site is a major parameter determining the maximum number density of precipitates. Whereas selection of 'bulk' allows the nucleation events to occur everywhere in the material,<a href="#fn__1">1)</a> the other choices limit nucleation to certain heterogeneous sites by lowering the possible number density.<a href="#fn__2">2)</a></p>
 <h2 id="parameters-and-functions">Parameters and functions</h2>
 <p>In order to plot the LSW size distribution function, you need to enter the following expression for the user-defined function 'LSW' in the 'variables &amp; functions' dialog and name it accordingly:</p>
@@ -199,9 +199,9 @@ Revisions: Heinrich Buken 2014-03-20 (Updated to GUI v.5.6)</p>
 <pre><code>set-function-expression LSW x^2*(3/(3+x))^(7/3)*((3/2)/(3/2-x))^(11/3)
 *exp(-x/(3/2-x))*4/9
 </code></pre>
-<p><a href="/examples/precipitation/p1/p1_functions.png" title="examples/precipitation/p1/p1_functions.png"><img alt="LSW function" src="/examples/precipitation/p1/p1_functions.png" title="LSW function" /></a></p>
+<p><a href="/matcalc_docu/examples/precipitation/p1/p1_functions.png" title="examples:precipitation:p1:p1_functions.png"><img alt="LSW function" src="/matcalc_docu/examples/precipitation/p1/p1_functions.png" title="LSW function" /></a></p>
 <h2 id="setup-the-plots">Setup the plots</h2>
-<p>To display the results of this example, we need 3 windows with several plots. As a shortcut, feel free to download and execute the <a href="/examples/precipitation/p1/p1_lsw-plot.mcs" title="examples/precipitation/p1/p1_lsw-plot.mcs (3.5 KB)">'plot' script</a>. It should setup all 3 windows and name everything accordingly if you named all your variables as shown in this example.</p>
+<p>To display the results of this example, we need 3 windows with several plots. As a shortcut, feel free to download and execute the <a href="/matcalc_docu/examples/precipitation/p1/p1_lsw-plot.mcs" title="examples:precipitation:p1:p1_lsw-plot.mcs (3.5 KB)">'plot' script</a>. It should setup all 3 windows and name everything accordingly if you named all your variables as shown in this example.</p>
 <ul>
 <li>Create a new p1 (XY-data) window and add 3 more plots (4 in total)</li>
 </ul>
@@ -316,13 +316,13 @@ Revisions: Heinrich Buken 2014-03-20 (Updated to GUI v.5.6)</p>
 <h2 id="starting-the-calculation">Starting the calculation</h2>
 <p>Open the 'Precipitation simulation' dialog window to perform the last necessary settings. Set the simulation end time to 3.6e6 seconds and select an isothermal temperature control at 500C.</p>
 <p>Everything should be in place now and we are ready to start.</p>
-<p><a href="/examples/precipitation/p1/p1-4.png" title="examples/precipitation/p1/p1-4.png"><img alt="" src="/examples/precipitation/p1/p1-4.png" /></a></p>
+<p><a href="/wiki/lib/exe/detail.php?id=examples%3Aprecipitation%3Ap1%3Ap1_1&amp;media=examples/precipitation/p1/p1-4.png" title="examples:precipitation:p1:p1-4.png"><img alt="" src="/matcalc_docu/examples/precipitation/p1/p1-4.png" /></a></p>
 <h2 id="results-general">Results: General</h2>
 <p>After a short calculation, the figures below were calculated and show the final results. The LSW theory on the Ostwald ripening was reproduced to some degree, but not very smooth and accurately. A more detailed and accurate version, as well as a discussion on the different areas of nucleation and growth, re-distribution, and growth follows in part 2.</p>
-<p><a href="/examples/precipitation/p1/p1-final-fnjr-25classes.png" title="examples/precipitation/p1/p1-final-fnjr-25classes.png"><img alt=" Result of P1 showing: Phase fraction, number density, nucleation rate and precipitate radius" src="/examples/precipitation/p1/p1-final-fnjr-25classes.png" title="Result of P1 showing/ Phase fraction, number density, nucleation rate and precipitate radius" /></a></p>
-<p><a href="/examples/precipitation/p1/p1-distribution-25classes.png" title="examples/precipitation/p1/p1-distribution-25classes.png"><img alt=" Precipitate distribution calculated with #25 size classes" src="/examples/precipitation/p1/p1-distribution-25classes.png" title="Precipitate distribution calculated with #25 size classes" /></a></p>
+<p><a href="/matcalc_docu/examples/precipitation/p1/p1-final-fnjr-25classes.png" title="examples:precipitation:p1:p1-final-fnjr-25classes.png"><img alt=" Result of P1 showing: Phase fraction, number density, nucleation rate and precipitate radius" src="/matcalc_docu/examples/precipitation/p1/p1-final-fnjr-25classes.png" title="Result of P1 showing: Phase fraction, number density, nucleation rate and precipitate radius" /></a></p>
+<p><a href="/matcalc_docu/examples/precipitation/p1/p1-distribution-25classes.png" title="examples:precipitation:p1:p1-distribution-25classes.png"><img alt=" Precipitate distribution calculated with #25 size classes" src="/matcalc_docu/examples/precipitation/p1/p1-distribution-25classes.png" title="Precipitate distribution calculated with #25 size classes" /></a></p>
 <h1 id="consecutive-articles">Consecutive articles</h1>
-<p>The analysis of this example will be continued in  <a href="/examples/precipitation/p1/p1_2" title="examples/precipitation/p1/p1_2">Setup of simulation for analysis of precipitate distributions</a>.</p>
+<p>The analysis of this example will be continued in  <a href="/matcalc_docu/examples/precipitation/p1/p1_2" title="examples:precipitation:p1:p1_2">Setup of simulation for analysis of precipitate distributions</a>.</p>
 <p><a href="#fnt__1">1)</a></p>
 <p>The nucleation site density in bulk, homogeneous nucleation is identical to the number of atoms in unit volume.</p>
 <p><a href="#fnt__2">2)</a></p>

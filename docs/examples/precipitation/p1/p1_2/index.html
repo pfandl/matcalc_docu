@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pfandl.github.io/matcalc_docu/examples/precipitation/p1/p1_2/" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
     <title>P1 2 - MatCalc Documentation</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "P1 2";
         var mkdocs_page_input_path = "examples/precipitation/p1/p1_2.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_url = "/matcalc_docu/examples/precipitation/p1/p1_2/";
       </script>
     
     <!--[if lt IE 9]>
@@ -51,7 +51,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/">MatCalc tutorial</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/">Tutorials</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
                 </li>
@@ -130,7 +130,7 @@ Revisions:</p>
 <p>This example demonstrates the basics of every precipitation simulation and thoroughly guides through setup and calculation. The precipitation of cementite in ferrite is of special interest in this example. Furthermore will be the grain size, nucleation rate and other general precipitation-related features. A comparison of the numerical simulation with the classical Lifshitz-Slyozov-Wagner (LSW) size distribution is also presented.</p>
 <h2 id="related-documents">Related documents</h2>
 <ul>
-<li><em>P1-2</em> -  <a href="/examples/precipitation/p1/p1_1" title="examples/precipitation/p1/p1_1">A typical setup for a precipitation kinetics simulation</a></li>
+<li><em>P1-2</em> -  <a href="/matcalc_docu/examples/precipitation/p1/p1_1" title="examples:precipitation:p1:p1_1">A typical setup for a precipitation kinetics simulation</a></li>
 <li>C. Wagner, Theorie der Alterung von Niederschlägen durch Umlösen, Zeitschrift für Elektrochemie, Bd 65 (1961) Nr. 7/8, 581-591.</li>
 <li>I. Lifshitz, V. V. Slyozov, The kinetics of precipitation from supersaturated solid solutions, J. Phys. Chem. Solids 19 (1961) 35-50.</li>
 <li>K. G. F. Janssens, D. Raabe, E. Kozeschnik, M. Miodownik, B. Nestler, Computational Materials Engineering - An Introduction to Microstructure Evolution, Elsevier Inc (2007) 206-209.</li>
@@ -170,26 +170,26 @@ CEMENTITE_P0: (1000/+.g./2e+019/d)
 <p>Start the simulation like in part 1! <strong>Attention</strong>: This calculation is a bit time demanding due to the high amount of size classes. The calculation will take about 30 minutes on a strong, new computer bought in 2011. So, get yourself a coffee while you wait <img alt=":-)" src="/wiki/lib/images/smileys/smile.svg" /></p>
 <h2 id="results">Results</h2>
 <p>The results concerning phase fraction, number density, nucleation rate and precipitate radius look very alike to the ones of part 1.</p>
-<p><a href="/examples/precipitation/p1/p1-final-fnjr-1000classes.png" title="examples/precipitation/p1/p1-final-fnjr-1000classes.png"><img alt=" Final results with 1000 size classes showing: Phase fraction, number density, nucleation rate and precipitate radius" src="/examples/precipitation/p1/p1-final-fnjr-1000classes.png" title="Final results with 1000 size classes showing/ Phase fraction, number density, nucleation rate and precipitate radius" /></a></p>
+<p><a href="/matcalc_docu/examples/precipitation/p1/p1-final-fnjr-1000classes.png" title="examples:precipitation:p1:p1-final-fnjr-1000classes.png"><img alt=" Final results with 1000 size classes showing: Phase fraction, number density, nucleation rate and precipitate radius" src="/matcalc_docu/examples/precipitation/p1/p1-final-fnjr-1000classes.png" title="Final results with 1000 size classes showing: Phase fraction, number density, nucleation rate and precipitate radius" /></a></p>
 <p>However the precipitate distribution is what really changed due to the increased number of size classes. The figure below shows a diagram with 100 'averaged' size classes evaluated from the 1000 size class calculation. The LSW function is reproduced very accurately and smooth.</p>
-<p><a href="/examples/precipitation/p1/p1_result_distribution-100classesshown.png" title="examples/precipitation/p1/p1_result_distribution-100classesshown.png"><img alt=" Precipitate distribution with 1000 classes calculated, 100 classes shown" src="/examples/precipitation/p1/p1_result_distribution-100classesshown.png" title="Precipitate distribution with 1000 classes calculated, 100 classes shown" /></a></p>
+<p><a href="/matcalc_docu/examples/precipitation/p1/p1_result_distribution-100classesshown.png" title="examples:precipitation:p1:p1_result_distribution-100classesshown.png"><img alt=" Precipitate distribution with 1000 classes calculated, 100 classes shown" src="/matcalc_docu/examples/precipitation/p1/p1_result_distribution-100classesshown.png" title="Precipitate distribution with 1000 classes calculated, 100 classes shown" /></a></p>
 <h2 id="results-evolution-of-precipitate-distribution">Results: Evolution of precipitate distribution</h2>
 <p>In the initial stages of the precipitation process, the nucleation rate increases steadily due to the transient effect of incubation time. The number of precipitates continuously increases as well as the mean radius of the precipitates. If supersaturation decreases because the matrix is slowly depleted from solute atoms (or if all possible nucleation sites have been used) nucleation of new precipitates comes to a stop. At this point, the nucleation rate drops to zero (green curve)…</p>
-<p><a href="/examples/precipitation/p1/p1_result_nuclrate-buch.png" title="examples/precipitation/p1/p1_result_nuclrate-buch.png"><img alt="Nucleation rate and number density of precipitates" src="/examples/precipitation/p1/p1_result_nuclrate-buch.png" title="Nucleation rate and number density of precipitates" /></a></p>
+<p><a href="/matcalc_docu/examples/precipitation/p1/p1_result_nuclrate-buch.png" title="examples:precipitation:p1:p1_result_nuclrate-buch.png"><img alt="Nucleation rate and number density of precipitates" src="/matcalc_docu/examples/precipitation/p1/p1_result_nuclrate-buch.png" title="Nucleation rate and number density of precipitates" /></a></p>
 <p>… and the mean radius exhibits a linear increase due to the fact that only growth of a constant number of precipitates occurs. Since the growth kinetics are determined by a parabolic law (which is one of the ingredients of the numerical Kampmann-Wagner (NKW) model), the slope of the increase of the mean radius in the figure below is constant and equal to 1/2.</p>
-<p><a href="/examples/precipitation/p1/p1_result_slope_buch_abcd.png" title="examples/precipitation/p1/p1_result_slope_buch_abcd.png"><img alt="Evolution of precipitate size" src="/examples/precipitation/p1/p1_result_slope_buch_abcd.png" title="Evolution of precipitate size" /></a></p>
+<p><a href="/matcalc_docu/examples/precipitation/p1/p1_result_slope_buch_abcd.png" title="examples:precipitation:p1:p1_result_slope_buch_abcd.png"><img alt="Evolution of precipitate size" src="/matcalc_docu/examples/precipitation/p1/p1_result_slope_buch_abcd.png" title="Evolution of precipitate size" /></a></p>
 <p>Several important features of a solid-state precipitation reaction are readily observed in the calculation results.</p>
 <ul>
 <li><strong>A</strong>: Until approximately point A in the diagram, nucleation dominates the precipitate evolution. The number density of precipitates increases significantly while the other precipitation parameters do not.</li>
 <li>Between points A and B, the number density remains approximately constant, which means that nucleation has seized. in this regime, growth of precipitates dominates the reaction.</li>
 <li><strong>B</strong>: Shortly after point B, the matrix content of solute atoms approaches the equilibrium value, supersaturation approaches one and precipitate growth comes to a stop. At this point, the curve of the mean radius exhibits a plateau.</li>
 </ul>
-<p><a href="/examples/precipitation/p1/p1_result_slope_buch_abcd-ab.png" title="examples/precipitation/p1/p1_result_slope_buch_abcd-ab.png"><img alt="Distribution of precipitates at time A and B" src="/examples/precipitation/p1/p1_result_slope_buch_abcd-ab.png" title="Distribution of precipitates at time A and B" /></a></p>
+<p><a href="/matcalc_docu/examples/precipitation/p1/p1_result_slope_buch_abcd-ab.png" title="examples:precipitation:p1:p1_result_slope_buch_abcd-ab.png"><img alt="Distribution of precipitates at time A and B" src="/matcalc_docu/examples/precipitation/p1/p1_result_slope_buch_abcd-ab.png" title="Distribution of precipitates at time A and B" /></a></p>
 <ul>
 <li><strong>C</strong>: Within several orders of magnitude of time, the mean precipitate radius and the number density now remain constant. The major observable change in the precipitate population before coarsening starts is a transition from a left-shifted size distribution to a right-shifted size distribution (points A → B → C).</li>
 <li><strong>D</strong>: In the final stage of the precipitation reaction, the smallest precipitates dissolve in favor of the larger ones (Gibbs-Thomson effect). Consequently, the number density of precipitates slowly decreases. In the double logarithmic number density over time plot of the above shown figure, this decrease is linear with time and the slope of the decrease is equal to one. Simultaneously, it can be seen from the radius over time plot that the mean radius of the precipitate distribution increases continuously with a slope of 1/3. This is consistent with the theoretical value for the coarsening exponent as obtained from the Lifshitz-Slyozov-Wagner (LSW) theory of Ostwald ripening. In the asymptotic limit of coarsening, the precipitate size distribution approaches a stationary state, where the shape of the normalized size distribution is time invariant. In the representative size distribution for the coarsening regime (point D), the distribution obtained with the NKW model is compared to the theoretical distribution of the LSW theory (green line).</li>
 </ul>
-<p><a href="/examples/precipitation/p1/p1_result_slope_buch_abcd-cd.png" title="examples/precipitation/p1/p1_result_slope_buch_abcd-cd.png"><img alt="Distribution of precipitates at time C and D" src="/examples/precipitation/p1/p1_result_slope_buch_abcd-cd.png" title="Distribution of precipitates at time C and D" /></a></p>
+<p><a href="/matcalc_docu/examples/precipitation/p1/p1_result_slope_buch_abcd-cd.png" title="examples:precipitation:p1:p1_result_slope_buch_abcd-cd.png"><img alt="Distribution of precipitates at time C and D" src="/matcalc_docu/examples/precipitation/p1/p1_result_slope_buch_abcd-cd.png" title="Distribution of precipitates at time C and D" /></a></p>
 <p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=examples%3Aprecipitation%3Ap1%3Ap1_2&amp;1788352995" /></p>
               
             </div>

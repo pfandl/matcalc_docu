@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pfandl.github.io/matcalc_docu/examples/precipitation/p80/p80_3/" />
       <link rel="shortcut icon" href="../../../../img/favicon.ico" />
     <title>P80 3 - MatCalc Documentation</title>
     <link rel="stylesheet" href="../../../../css/theme.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "P80 3";
         var mkdocs_page_input_path = "examples/precipitation/p80/p80_3.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_url = "/matcalc_docu/examples/precipitation/p80/p80_3/";
       </script>
     
     <!--[if lt IE 9]>
@@ -51,7 +51,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/">MatCalc tutorial</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/">Tutorials</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
                 </li>
@@ -140,8 +140,8 @@ Revisions:</p>
 <p><strong>Note:</strong> This is an advanced example and will not cover basics like “How to create a plot”, etc… . Please consider earlier P-examples for instructional purpose.</p>
 <h2 id="related-documents">Related documents</h2>
 <ul>
-<li>P80-1 -  <a href="/examples/precipitation/p80/p80_1" title="examples/precipitation/p80/p80_1">Models and parameters for Fe-Cu simulation</a></li>
-<li>P80-2 -  <a href="/examples/precipitation/p80/p80_2" title="examples/precipitation/p80/p80_2">Precipitation of Cu in Fe-Cu</a></li>
+<li>P80-1 -  <a href="/matcalc_docu/examples/precipitation/p80/p80_1" title="examples:precipitation:p80:p80_1">Models and parameters for Fe-Cu simulation</a></li>
+<li>P80-2 -  <a href="/matcalc_docu/examples/precipitation/p80/p80_2" title="examples:precipitation:p80:p80_2">Precipitation of Cu in Fe-Cu</a></li>
 <li>M. Perez, F. Perrard, V. Massardier, X. Kleber, V. Schmitt, A. Deschamps, Low Temperature Solubility Limit of Copper in Iron, Materials Science Forum 500-501 (2005) 631-638.</li>
 </ul>
 <h2 id="complementary-files">Complementary files</h2>
@@ -151,7 +151,7 @@ Revisions:</p>
 <p>Set up the thermodynamics, precipitates, domains, … according to part 2. Or simply load your prior workspace <img alt=":-)" src="/wiki/lib/images/smileys/smile.svg" /></p>
 <h2 id="setup-ttp-plot">Setup TTP plot</h2>
 <p>Create a new P6 - TTP plot. Click into the plot, and navigate to the 'options…' window on the left side, and right click on 'series'. Select 'New Series –&gt;' and 'ttp-curve'.</p>
-<p><a href="/examples/precipitation/p80/p80_ttp-series.png" title="examples/precipitation/p80/p80_ttp-series.png"><img alt=" Setup a ttp plot" src="/examples/precipitation/p80/p80_ttp-series.png" title="Setup a ttp plot" /></a></p>
+<p><a href="/matcalc_docu/examples/precipitation/p80/p80_ttp-series.png" title="examples:precipitation:p80:p80_ttp-series.png"><img alt=" Setup a ttp plot" src="/matcalc_docu/examples/precipitation/p80/p80_ttp-series.png" title="Setup a ttp plot" /></a></p>
 <p>To display the sum-curve of all precipitates and to include the transformation, we need to choose 'use_x_data_string' as data. Otherwise we could only choose from one of the three present phases. Enter the sum as 'f<span class="arithmatex">\(cu\_bcc\_1\_p0+f\)</span>cu_bcc_2_p0+f$cu_fcc_p0' in the x-data field. Enter '0.10' for y-data, to display the 10% phase fraction line.
 In the general plot options, select 'relative' at 'refer to f'. This will consider the maximum phase fraction of each temperature as 100% and refer the 10 line to it.</p>
 <h2 id="using-the-gui">Using the GUI</h2>
@@ -190,7 +190,7 @@ endfor
 <p>This portion of code first creates a buffer, corresponding to the actual simulation temperature. After that, it quenches quickly to isothermal holding temperature, to consider the effect of quenched in vacancies. The last part actually starts the simulation and appends the results from the buffer to the ttp-buffer.</p>
 <h2 id="result">Result</h2>
 <p>The resulting TTP-Plot should look similar to this one. Errors and numerical problems can occur above the 650°C point with the automatic plot.</p>
-<p><a href="/examples/precipitation/p80/p80_results_of_ttp_with_all_fractions.png" title="examples/precipitation/p80/p80_results_of_ttp_with_all_fractions.png"><img alt=" Result of TTP-simulation" src="/examples/precipitation/p80/p80_results_of_ttp_with_all_fractions.png" title="Result of TTP-simulation" /></a></p>
+<p><a href="/matcalc_docu/examples/precipitation/p80/p80_results_of_ttp_with_all_fractions.png" title="examples:precipitation:p80:p80_results_of_ttp_with_all_fractions.png"><img alt=" Result of TTP-simulation" src="/matcalc_docu/examples/precipitation/p80/p80_results_of_ttp_with_all_fractions.png" title="Result of TTP-simulation" /></a></p>
 <h1 id="consecutive-articles">Consecutive articles</h1>
 <p>None</p>
 <p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=examples%3Aprecipitation%3Ap80%3Ap80_3&amp;1788352998" /></p>

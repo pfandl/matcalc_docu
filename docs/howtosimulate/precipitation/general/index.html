@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pfandl.github.io/matcalc_docu/howtosimulate/precipitation/general/" />
       <link rel="shortcut icon" href="../../../img/favicon.ico" />
     <title>General - MatCalc Documentation</title>
     <link rel="stylesheet" href="../../../css/theme.css" />
@@ -14,7 +14,7 @@
         // Current page data
         var mkdocs_page_name = "General";
         var mkdocs_page_input_path = "howtosimulate/precipitation/general.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_url = "/matcalc_docu/howtosimulate/precipitation/general/";
       </script>
     
     <!--[if lt IE 9]>
@@ -51,7 +51,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" >Tutorials</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">MatCalc tutorial</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/">Tutorials</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../../../tutorials/t1/">Introduction to the MatCalc graphical user interface (GUI)</a>
                 </li>
@@ -147,7 +147,7 @@ Revisions:</p>
 <p><em>MatCalc</em> is a simulation tool that follows a <em>physically-based</em> concept. <em>MatCalc</em> builds upon models that rely on well-known input parameters and the simulations can, and should!, be carried out in a parameter-free manner.</p>
 <p><strong><em>DO NOT use MatCalc as a fitting tool where you adjust the interfacial energy until the calculation fits your experiment!!!</em></strong></p>
 <p>The vision of <em>MatCalc</em> is to provide a <em>predictive</em> framework for precipitation kinetics simulations. In your simulations, identify the relevant physical mechanisms that are responsible for the behavior of the system. Use <em>MatCalc</em> as the tool by which you can test your ideas and conceptions.</p>
-<p>In the 'How to' manual section on alloy specific issues, you can find tips and tricks that are relevant for the particular system. This will certainly assist you in identifying the important processes that you have to account for. If you still have trouble, see whether you can find an appropriate <a href="/examples/index" title="examples/index">example</a>, consult the  <a href="http///matcalc.at/CustomerPortal" title="http///matcalc.at/CustomerPortal">MatCalc forum</a>, or contact  <a href="http///matcalc.at/CustomerPortal" title="http///matcalc.at/CustomerPortal">help desk</a>.</p>
+<p>In the 'How to' manual section on alloy specific issues, you can find tips and tricks that are relevant for the particular system. This will certainly assist you in identifying the important processes that you have to account for. If you still have trouble, see whether you can find an appropriate <a href="/matcalc_docu/examples/index" title="examples:index">example</a>, consult the  <a href="http://matcalc.at/CustomerPortal" title="http://matcalc.at/CustomerPortal">MatCalc forum</a>, or contact  <a href="http://matcalc.at/CustomerPortal" title="http://matcalc.at/CustomerPortal">help desk</a>.</p>
 <h1 id="the-representative-volume-element-rve">The representative volume element (RVE)</h1>
 <p>When designing and performing precipitation kinetics simulations, it is important to understand the conceptual framework of the precipitation kinetics module.</p>
 <p><em>MatCalc</em> <strong>precipitation kinetics simulations</strong> are carried out within a <strong><em>representative volume element</em></strong>, which means that one single simulation refers to</p>
@@ -157,7 +157,7 @@ Revisions:</p>
 <li>temperature, pressure and overall chemical composition are homogeneous inside the entire precipitation domain. There exist no gradients in these quantities inside the RVE.</li>
 </ul>
 <p>The following graphics shows a sketch of the RVE for precipitation kinetics simulations.</p>
-<p><a href="/howtosimulate/precipitation/img/matcalc_rve.png" title="howtosimulate/precipitation/img/matcalc_rve.png"><img alt=" //MatCalc// representative RVE" src="/howtosimulate/precipitation/img/matcalc_rve.png" title="//MatCalc// representative RVE" /></a></p>
+<p><a href="/matcalc_docu/howtosimulate/precipitation/img/matcalc_rve.png" title="howtosimulate:precipitation:img:matcalc_rve.png"><img alt=" //MatCalc// representative RVE" src="/matcalc_docu/howtosimulate/precipitation/img/matcalc_rve.png" title="//MatCalc// representative RVE" /></a></p>
 <p>The RVE in <em>MatCalc</em> contains unit volume of matter, with an arbitrary number of different atomic species. The atoms can form precipitates of different type and different chemical composition. The precipitates are considered to be spherical objects,<a href="#fn__2">2)</a> with a homogenous chemical composition, just like the matrix.</p>
 <h1 id="setting-up-a-precipitation-simulation">Setting up a precipitation simulation</h1>
 <p>When setting up a precipitation kinetics simulation, you commonly proceed with the following steps:</p>
@@ -180,8 +180,8 @@ Revisions:</p>
 </li>
 <li><strong>Dislocation density</strong> (important for dislocation precipitates as well as pipe diffusion)</li>
 <li><strong>Subgrain size</strong> (important for subgrain boundary precipitates, e.g., in martensitic microstructure)</li>
-<li>For dislocation density above the equilibrium values (<span class="arithmatex">\(10^{11}-10^{12}\)</span>), enter the <strong>dislocation diffusivity ratio</strong> in the special tab. See article  <a href="/techpapers/precipitation/diffusion" title="techpapers/precipitation/diffusion">Diffusion in heterogenous precipitation</a> for details.</li>
-<li>For grain boundary precipitates, enter the <strong>grain boundary diffusivity ratio</strong> in the special tab. See article  <a href="/techpapers/precipitation/diffusion" title="techpapers/precipitation/diffusion">Diffusion in heterogenous precipitation</a> for details.</li>
+<li>For dislocation density above the equilibrium values (<span class="arithmatex">\(10^{11}-10^{12}\)</span>), enter the <strong>dislocation diffusivity ratio</strong> in the special tab. See article  <a href="/matcalc_docu/techpapers/precipitation/diffusion" title="techpapers:precipitation:diffusion">Diffusion in heterogenous precipitation</a> for details.</li>
+<li>For grain boundary precipitates, enter the <strong>grain boundary diffusivity ratio</strong> in the special tab. See article  <a href="/matcalc_docu/techpapers/precipitation/diffusion" title="techpapers:precipitation:diffusion">Diffusion in heterogenous precipitation</a> for details.</li>
 </ul>
 <h2 id="create-precipitates">Create precipitates</h2>
 <p>For each desired precipitate, select the <strong>precipitate parent phase</strong> and create a new precipitate with the 'Create' button. Select 'precipitate' as phase type.</p>
@@ -189,12 +189,12 @@ Revisions:</p>
 <li>Define the desired <strong>number of size classes</strong> to use in the simulations. This quantity determines, which maximum number of size classes <em>MatCalc</em> will maintain during the simulations. Practically, values between 15 and 25 have proven to be reasonable values, if you are interested in the evolution of mean quantities, such as number density or mean radius. A value of 20 delivers a good compromise for calculation speed an accuracy.</li>
 <li>Attach the precipitate to a <strong>precipitation domain</strong>.</li>
 <li>Do <em>not</em> change the automatic setting for the interfacial energy. The estimates delivered by <em>MatCalc</em> have shown to be quite reasonable in the majority of cases, and no significant changes are usually necessary at this stage.</li>
-<li>On the 'nucleation' tab, select the desired homogeneous of heterogeneous <strong>nucleation site</strong>. See the article on  <a href="/techpapers/nucleation/het_nucl_sites" title="techpapers/nucleation/het_nucl_sites">Heterogeneous nucleation</a> for additional information.</li>
+<li>On the 'nucleation' tab, select the desired homogeneous of heterogeneous <strong>nucleation site</strong>. See the article on  <a href="/matcalc_docu/techpapers/nucleation/het_nucl_sites" title="techpapers:nucleation:het_nucl_sites">Heterogeneous nucleation</a> for additional information.</li>
 </ul>
 <p><a href="#fnt__1">1)</a></p>
 <p>J. <strong>S</strong>voboda, F. D. <strong>F</strong>ischer, P. <strong>F</strong>ratzl and E. <strong>K</strong>ozeschnik, „Modelling of kinetics in multi-component multi-phase systems with spherical precipitates I. – Theory“, Mater. Sci. Eng. A, 2004, 385 (1-2) 166-174.</p>
 <p><a href="#fnt__2">2)</a></p>
-<p>In reality, the precipitates in <em>MatCalc</em> can have non-spherical shapes also. This is described in the article about  <a href="/techpapers/precipitation/prec_shape" title="techpapers/precipitation/prec_shape">The precipitate shape</a></p>
+<p>In reality, the precipitates in <em>MatCalc</em> can have non-spherical shapes also. This is described in the article about  <a href="/matcalc_docu/techpapers/precipitation/prec_shape" title="techpapers:precipitation:prec_shape">The precipitate shape</a></p>
 <p><img alt="" src="/wiki/lib/exe/taskrunner.php?id=howtosimulate%3Aprecipitation%3Ageneral&amp;1788352862" /></p>
               
             </div>
