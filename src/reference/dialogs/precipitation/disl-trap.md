@@ -15,5 +15,3 @@ Dislocation traps
 6. **Initialize solute trapping phase composition**:
 7. **Reset trapping phase composition**
 8. **Evolve solute trapping phase composition**:
-
-![](/wiki/lib/exe/taskrunner.php?id=reference%3Adialogs%3Aprecipitation%3Adisl-trap&1788353215)

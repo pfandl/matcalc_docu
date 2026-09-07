@@ -14,5 +14,3 @@ Tables and arrays
 5. **Remove**:
 6. **Rename**:
 7. **Duplicate**:
-
-![](/wiki/lib/exe/taskrunner.php?id=reference%3Adialogs%3Atables&1788353002)

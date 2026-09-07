@@ -204,5 +204,3 @@ $ (Duration time is calculated from "absolute time" column)
 segment-code=3
 [/variables]
 ```
-
-![](/wiki/lib/exe/taskrunner.php?id=howtosimulate%3Aprecipitation%3Aexport_import_tmt&1788352863)

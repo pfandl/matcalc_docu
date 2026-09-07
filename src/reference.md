@@ -16,5 +16,3 @@ Follow these links to get information on …
 * [Thermo-mechanical treatment file structure](/matcalc_docu/reference/tmt_file "reference:tmt_file")
 
 Note: Typing a question mark '?' in the console on most input will display a list of possible choices.
-
-![](/wiki/lib/exe/taskrunner.php?id=reference&1788352848)

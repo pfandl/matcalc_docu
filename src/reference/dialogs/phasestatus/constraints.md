@@ -13,5 +13,3 @@ This tab allow you to set constraints to a certain phase. With setting a constra
 2. **Set para-equil.:** Set a constraint for the selected phase.
 3. **Set orto-equil.:** Undo the constraint for the selected phase.
 4. **[Edit ...:](/matcalc_docu/reference/dialogs/phasestatus/constraints/edit "reference:dialogs:phasestatus:constraints:edit")** Edit constraints within the dialog box.
-
-![](/wiki/lib/exe/taskrunner.php?id=reference%3Adialogs%3Aphasestatus%3Aconstraints&1788353213)

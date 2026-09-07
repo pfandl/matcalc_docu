@@ -11,5 +11,3 @@ Nucleation model [MatCalc Documentation]
 * Becker/Doering time-dep.:
 * direct particle transformation:
 * non-classical SvoKoz:
-
-![](/wiki/lib/exe/taskrunner.php?id=reference%3Adialogs%3Aphasestatus%3Anucleation%3Amodel&1788353330)

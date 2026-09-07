@@ -292,5 +292,3 @@ External links
 
 1. [Mathematica homepage](http://www.wolfram.com/mathematica/ "http://www.wolfram.com/mathematica/")
 2. [Mathematica documentation for MathLink](http://reference.wolfram.com/mathematica/tutorial/MathLinkAndExternalProgramCommunicationOverview.html "http://reference.wolfram.com/mathematica/tutorial/MathLinkAndExternalProgramCommunicationOverview.html")
-
-![](/wiki/lib/exe/taskrunner.php?id=techpapers%3Asoftware%3Alink_external&1788353010)

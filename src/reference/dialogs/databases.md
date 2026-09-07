@@ -48,5 +48,3 @@ The thermodynamic setup is the starting point of every calculation performed wit
    * *comment*: Gives additional information and important features for each phase. The comment is also displayed if you move the mouse over the list item.
 7. **Close**: Closes the dialog window, without applying any saves or changes. Use this button also if you have manually read the database and want to close the dialog window without reading the database again.
 8. **Read & Close**: Reads the selected database values and subsequently closes the database selection window.
-
-![](/wiki/lib/exe/taskrunner.php?id=reference%3Adialogs%3Adatabases&1788353002)

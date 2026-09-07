@@ -17,5 +17,3 @@ Special
 8. **Excess vacancy trapping fraction**:
 9. **No precipitation coalescence**:
 10. **Phenomenological, coalescence factor**:
-
-![](/wiki/lib/exe/taskrunner.php?id=reference%3Adialogs%3Aphasestatus%3Aspecial&1788353213)

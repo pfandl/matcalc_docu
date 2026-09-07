@@ -43,5 +43,3 @@ Below, the dialog options are described in more detail.
 19. **Start temperature**: Apply transformation only below the start temperature.
 20. **Stop temperature**: Finish transformation at the stop temperature.
 21. **Temperature in Celsius**: C ↔ K.
-
-![](/wiki/lib/exe/taskrunner.php?id=reference%3Adialogs%3Atransformations&1788353003)

@@ -11,5 +11,3 @@ Phases
 2. **Attached precipitates**:
 3. **Detach**:
 4. **Attach**:
-
-![](/wiki/lib/exe/taskrunner.php?id=reference%3Adialogs%3Aprecipitation%3Aphases&1788353214)

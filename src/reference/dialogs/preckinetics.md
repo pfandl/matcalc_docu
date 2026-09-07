@@ -29,5 +29,3 @@ Precipitation kinetics
 20. **Reset precipitates**:
 21. **Load from state**:
 22. **Convergence control**:
-
-![](/wiki/lib/exe/taskrunner.php?id=reference%3Adialogs%3Apreckinetics&1788353003)

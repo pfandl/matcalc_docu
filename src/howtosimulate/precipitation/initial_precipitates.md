@@ -127,5 +127,3 @@ There 3 different options for the specification of the microstructure kinetics s
 In principle, the default option of resetting the precipitates precludes the usage precipitates in the initial state. One possibility is to switch it to **“no action”** which just takes the current MatCalc state as the initial state for the upcoming simulation. However, it works only for the very first calculation, as every consecutive simulation starts with the final state of the previous one. In other words, the introduced size distribution is lost after the first simulation with this option selected.
 
 A recommended course of action is to create a calculation state right after the size distribution are introduced. This calculation state can be used next as the starting condition for the all the simulations (as long as this calculation state will not be overwritten by the user).
-
-![](/wiki/lib/exe/taskrunner.php?id=howtosimulate%3Aprecipitation%3Ainitial_precipitates&1788352862)

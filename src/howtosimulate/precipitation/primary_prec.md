@@ -176,5 +176,3 @@ It is recommended that you perform this step at a sufficiently low temperature, 
 [4)](#fnt__4)
 
 You ought to control the progress of your simulation in the corresponding plots and make sure you have really reached equilibrium
-
-![](/wiki/lib/exe/taskrunner.php?id=howtosimulate%3Aprecipitation%3Aprimary_prec&1788352863)

@@ -29,5 +29,3 @@ Create new phase [MatCalc Documentation]
   ```
   create-new-phase fcc_a1 s
   ```
-
-![](/wiki/lib/exe/taskrunner.php?id=reference%3Adialogs%3Aphasestatus%3Acreate&1788353212)

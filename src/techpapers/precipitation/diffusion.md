@@ -171,5 +171,3 @@ J. Svoboda, F. D. Fischer, P. Fratzl and E. Kozeschnik, „Modelling of kinetics
 [2)](#fnt__2)
 
 E. Kozeschnik, J. Svoboda, R. Radis and F.D. Fischer, “Mean-field model for the growth and coarsening of stoichiometric precipitates at grain boundaries”, Model. Simul. Mater. Sci. Eng. 18 (2010) 015011 (19pp).
-
-![](/wiki/lib/exe/taskrunner.php?id=techpapers%3Aprecipitation%3Adiffusion&1788352980)

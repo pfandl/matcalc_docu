@@ -17,5 +17,3 @@ Structure
 8. **Frank loop decay constant**:
 9. **Taylor factor**:
 10. **Strength superposition exponent**:
-
-![](/wiki/lib/exe/taskrunner.php?id=reference%3Adialogs%3Aprecipitation%3Astructure&1788353214)

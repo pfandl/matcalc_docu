@@ -351,5 +351,3 @@ Consecutive articles
 ====================
 
 In order to visualize the obtained data, either use your own plotting tool of choice, or go to [part II](/matcalc_docu/howtosimulate/physical/mingstar/vis "howtosimulate:physical:mingstar:vis"), where the procedure of plotting will be shown using opensource software GNUPlot.
-
-![](/wiki/lib/exe/taskrunner.php?id=howtosimulate%3Aphysical%3Amingstar%3Acalc&1788352992)

@@ -15,5 +15,3 @@ SFK-traps
    * delta H:
 2. **Add**:
 3. **Remove**:
-
-![](/wiki/lib/exe/taskrunner.php?id=reference%3Adialogs%3Aprecipitation%3Asfk-traps&1788353215)

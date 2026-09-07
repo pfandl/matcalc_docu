@@ -28,5 +28,3 @@ Variables and functions
 9. **Expression of selected data**:
 10. **Set**:
 11. **Current value of selected data**:
-
-![](/wiki/lib/exe/taskrunner.php?id=reference%3Adialogs%3Avariables&1788353003)

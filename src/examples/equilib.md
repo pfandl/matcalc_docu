@@ -19,5 +19,3 @@ The examples provided in this section demonstrate the functionality of MatCalc f
   + *E20-3* -  [Accounting for the peritectic reaction](/matcalc_docu/examples/equilib/e20/e20_3 "examples:equilib:e20:e20_3")
   + *E20-4* -  [Scheil-Gulliver analysis of microsegregation](/matcalc_docu/examples/equilib/e20/e20_4 "examples:equilib:e20:e20_4")
 * **E31** -  [Segregation kinetics of P and S at grain boundaries](/matcalc_docu/examples/equilib/e31 "examples:equilib:e31")
-
-![](/wiki/lib/exe/taskrunner.php?id=examples%3Aequilib&1788352864)

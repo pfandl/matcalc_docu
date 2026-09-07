@@ -37,5 +37,3 @@ Heat Treatment
 14. **Insert segment**:
 15. **Remove**:
 16. **[Edit](/matcalc_docu/reference/dialogs/heattreatments/edit "reference:dialogs:heattreatments:edit")**: Edit heat treatment segment.
-
-![](/wiki/lib/exe/taskrunner.php?id=reference%3Adialogs%3Aheattreatments&1788353002)

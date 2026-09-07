@@ -15,5 +15,3 @@ Precipitation kinetics
 * Complex heat treatment / multiple precipitation domains
 * Thermo-mechanical treatment
 * Precipitation strengthening
-
-![](/wiki/lib/exe/taskrunner.php?id=howtosimulate%3Aprecipitation%3Adocumentation&1788352980)

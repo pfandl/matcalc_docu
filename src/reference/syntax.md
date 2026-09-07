@@ -152,5 +152,3 @@ $ The values of i are therefore: 1, 8, 15, 22, 29, ..., 85, 92, 99.
 [1)](#fnt__1)
 
 if you want to generate a **distribution of natural numbers** using floor or ceil functions, you must use **rand** or **randz** (with floor) instead, which exclude the upper limit of 1. E.g. for a distribution of numbers between 2 and 10 you can use: *2+floor(randz\*9)*
-
-![](/wiki/lib/exe/taskrunner.php?id=reference%3Asyntax&1788352868)

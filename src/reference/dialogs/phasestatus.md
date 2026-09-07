@@ -28,5 +28,3 @@ Dialog window to change all settings related to phases as well as creation of ne
    * [Nucleation:](/matcalc_docu/reference/dialogs/phasestatus/nucleation "reference:dialogs:phasestatus:nucleation") All settings concerning the nucleation of precipitates can be found here. Inactive if phase is not initialized as precipitate.
    * [Structure:](/matcalc_docu/reference/dialogs/phasestatus/structure "reference:dialogs:phasestatus:structure") Change structural settings for precipitates. Inactive if phase is not initialized as precipitate.
    * [Special:](/matcalc_docu/reference/dialogs/phasestatus/special "reference:dialogs:phasestatus:special") Change specialized settings for precipitates. Inactive if phase is not initialized as precipitate.
-
-![](/wiki/lib/exe/taskrunner.php?id=reference%3Adialogs%3Aphasestatus&1788353002)

@@ -23,5 +23,3 @@ Scheil calculation
 14. **Add**:
 15. **Remove**:
 16. **Edit**:
-
-![](/wiki/lib/exe/taskrunner.php?id=reference%3Adialogs%3Ascheil&1788353003)

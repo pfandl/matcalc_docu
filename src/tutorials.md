@@ -34,5 +34,3 @@ The following links will bring you to the tutorial documents.
 * [T21 - Strain induced precipitates](/matcalc_docu/tutorials/t21 "tutorials:t21")
 * [T22 - Recrystallization on subgrain boundaries](/matcalc_docu/tutorials/t22 "tutorials:t22")
 * [T23 - Introduction to cell simulations: long-range diffusion](/matcalc_docu/tutorials/t23 "tutorials:t23")
-
-![](/wiki/lib/exe/taskrunner.php?id=tutorials&1788352847)

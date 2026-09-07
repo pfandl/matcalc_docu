@@ -51,5 +51,3 @@ After setting up the system in the database dialog, the chemical composition is 
 9. **View file**: not yet implemented.
 
 This dialog can also be utilized to convert from one unit to another. Simply enter the nominal composition on one unit and select another unit. *MatCalc* automatically converts to the new units and displays the values in the dialog.
-
-![](/wiki/lib/exe/taskrunner.php?id=reference%3Adialogs%3Acomposition&1788353002)

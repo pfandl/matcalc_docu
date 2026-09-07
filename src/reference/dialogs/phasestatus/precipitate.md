@@ -20,5 +20,3 @@ This tab is prime to the creation of precipitates. Only after initializing them 
 9. **Use interfacial energy size correction**:
 10. **Use diffuse interface correction**:
 11. **Interface mobility**:
-
-![](/wiki/lib/exe/taskrunner.php?id=reference%3Adialogs%3Aphasestatus%3Aprecipitate&1788353213)

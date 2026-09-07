@@ -98,5 +98,3 @@ References
 [1] J. Svoboda, I. Turek, F.D. Fischer, Application of the thermodynamic extremal principle to modelling of thermodynamic processes in material science, Phil. Mag. 85 (2005) 3699-3707.
 
 [2] J. Svoboda, G.A. Zickler, E. Kozeschnik, F.D. Fischer, Kinetics of interstitial segregation in Cottrell atmospheres and grain boundaries, Phil. Mag. Lett. 95 (2015) 458-465.
-
-![](/wiki/lib/exe/taskrunner.php?id=techpapers%3Aprecipitation%3Atrapping&1788353011)

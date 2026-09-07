@@ -171,5 +171,3 @@ E. Kozeschnik, J. Svoboda, and F.D. Fischer, „Shape factors in modeling of pre
 [3)](#fnt__3)
 
 B. Sonderegger and E. Kozeschnik, “Particle strengthening in fcc crystals with prolate- and oblate-shaped precipitates”, Scripta Mater 66 (2012) 52-55
-
-![](/wiki/lib/exe/taskrunner.php?id=techpapers%3Aprecipitation%3Aprec_shape&1788352981)

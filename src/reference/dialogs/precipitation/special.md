@@ -20,5 +20,3 @@ Special
 9. **Interstitial dislocation diffusion as ratio from matrix**:
 10. **Substitutional matrix diffusion enhancement**:
 11. **Interstitial matrix diffusion enhancement**:
-
-![](/wiki/lib/exe/taskrunner.php?id=reference%3Adialogs%3Aprecipitation%3Aspecial&1788353215)

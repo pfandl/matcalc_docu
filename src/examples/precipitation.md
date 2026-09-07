@@ -39,5 +39,3 @@ The precipitation kinetics module of MatCalc provides a powerful means of evalua
   + *P80-2* -  [Precipitation of Cu in Fe-Cu](/matcalc_docu/examples/precipitation/p80/p80_2 "examples:precipitation:p80:p80_2")
   + *P80-3* -  [TTP plot in Fe-Cu system](/matcalc_docu/examples/precipitation/p80/p80_3 "examples:precipitation:p80:p80_3")
 * [Placeholder](/matcalc_docu/examples/precipitation/test "examples:precipitation:test")
-
-![](/wiki/lib/exe/taskrunner.php?id=examples%3Aprecipitation&1788352864)

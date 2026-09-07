@@ -87,5 +87,3 @@ Maximum nucleation rate (J)
 ---------------------------
 
 Nucleus composition appears in the nucleation rate formula at the critical nucleation energy ($G^\*$) and atomic attachment rate ($ß^\*$). With this option, the composition which yields the maximal value of $J$ is evaluated and taken for the nucleus.
-
-![](/wiki/lib/exe/taskrunner.php?id=techpapers%3Anucleation%3Anucleus_composition&1788353012)

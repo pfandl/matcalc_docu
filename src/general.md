@@ -71,5 +71,3 @@ Use the following external links to learn more about …
 * [The MatCalc team](http://matcalc.tuwien.ac.at/index.php/about/the-team "http://matcalc.tuwien.ac.at/index.php/about/the-team")
 * [MatCalc relevant publications](http://matcalc.tuwien.ac.at/index.php/about/publications "http://matcalc.tuwien.ac.at/index.php/about/publications")
 * [MatCalc screenshots](http://matcalc.tuwien.ac.at/index.php/about/screenshots "http://matcalc.tuwien.ac.at/index.php/about/screenshots")
-
-![](/wiki/lib/exe/taskrunner.php?id=general&1788352847)

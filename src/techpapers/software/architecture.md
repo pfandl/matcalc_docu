@@ -66,5 +66,3 @@ The *MatCalc* package provides two front ends to the user to control the softwar
 Both file versions (mcg and mcc) are delivered with the software package. Typically, the GUI version is used by most users for routine calculations because you can setup simulations and evaluate the results in one program. The command-line implementation of *MatCalc* is ideal for batch processing of lengthy simulations, where you can start the simulations on some server, run the jobs in the background and evaluate the results later with 'mcg'.
 
 *MatCalc* also provides several features for exporting data to external software. See the corresponding article [techpapers:software:export | Exporting for external post-processing]].
-
-![](/wiki/lib/exe/taskrunner.php?id=techpapers%3Asoftware%3Aarchitecture&1788353009)

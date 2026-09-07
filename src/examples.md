@@ -20,5 +20,3 @@ Follow these links to specific examples for …
 * [Thermal simulations](/matcalc_docu/examples/therm_sims "examples:therm_sims")
 
 Whereas the examples give instructions on how to perform your desired calculations with *MatCalc*, the  [How-to manual](/matcalc_docu/howtosimulate "howtosimulate") provides additional and complementary information.
-
-![](/wiki/lib/exe/taskrunner.php?id=examples&1788352847)

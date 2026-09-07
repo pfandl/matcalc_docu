@@ -122,5 +122,3 @@ J. **S**voboda, F. D. **F**ischer, P. **F**ratzl and E. **K**ozeschnik, „Model
 [2)](#fnt__2)
 
 In reality, the precipitates in *MatCalc* can have non-spherical shapes also. This is described in the article about  [The precipitate shape](/matcalc_docu/techpapers/precipitation/prec_shape "techpapers:precipitation:prec_shape")
-
-![](/wiki/lib/exe/taskrunner.php?id=howtosimulate%3Aprecipitation%3Ageneral&1788352862)

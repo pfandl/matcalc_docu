@@ -99,5 +99,3 @@ Version 5.xx
 * [MatCalc 5.13](/matcalc_docu/versioninfo/5.13 "versioninfo:5.13") - online 2007-01-07
 
 ---
-
-![](/wiki/lib/exe/taskrunner.php?id=versioninfo&1788352848)

@@ -206,5 +206,3 @@ Consecutive articles
 For detailed commands and more information on GNUPlot, please visit their Homepage on demo files: [http://www.gnuplot.info/demo/](http://www.gnuplot.info/demo/ "http://www.gnuplot.info/demo/")
 
 Other tutorials can be found on: [http://www.gnuplot.info/help.html](http://www.gnuplot.info/help.html "http://www.gnuplot.info/help.html")
-
-![](/wiki/lib/exe/taskrunner.php?id=howtosimulate%3Aphysical%3Amingstar%3Avis&1788352992)

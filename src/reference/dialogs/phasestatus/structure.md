@@ -82,5 +82,3 @@ Structure
     ```
     SET_PRECIPITATION_PARAMETER fcc_a1_p0 T S B
     ```
-
-![](/wiki/lib/exe/taskrunner.php?id=reference%3Adialogs%3Aphasestatus%3Astructure&1788353213)

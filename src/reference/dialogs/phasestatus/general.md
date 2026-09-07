@@ -27,5 +27,3 @@ General
 8. **Normalize all**:
 9. **Display for constituents**: Displays all constituents of the selected phase. Sub-Lattices are separated by colons (:).
 10. **Major constituents**: Both display and dialog box to manually set the major constituents. Sub-Lattices are separated by colons. Press 'Set now' to save the major constituents. In the dialog box that opens, choose between resetting and initializing the phase now, or do it later manually. DO NOT forget to set the major constituents, or else any changes made will be lost!
-
-![](/wiki/lib/exe/taskrunner.php?id=reference%3Adialogs%3Aphasestatus%3Ageneral&1788353212)

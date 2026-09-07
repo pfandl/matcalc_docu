@@ -10,5 +10,3 @@ Precipitation kinetics
 * [Diffusion in heterogenous precipitation (#2011004)](/matcalc_docu/techpapers/precipitation/diffusion "techpapers:precipitation:diffusion")
 * [Excess vacancies](/matcalc_docu/techpapers/precipitation/excess_va "techpapers:precipitation:excess_va")
 * [Trapping](/matcalc_docu/techpapers/precipitation/trapping "techpapers:precipitation:trapping")
-
-![](/wiki/lib/exe/taskrunner.php?id=techpapers%3Aprecipitation&1788352870)

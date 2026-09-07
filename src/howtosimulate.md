@@ -35,5 +35,3 @@ Physical parameter calculation
 ------------------------------
 
 * [Calculation and visualization of minimum G\* energies and nucleation probability P](/matcalc_docu/howtosimulate/physical/mingstar "howtosimulate:physical:mingstar")
-
-![](/wiki/lib/exe/taskrunner.php?id=howtosimulate&1788352847)

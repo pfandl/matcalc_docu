@@ -11,5 +11,3 @@ Nucleus composition [MatCalc Documentation]
 * maximum nucleation rate:
 * minimum G\*
 * fixed molar site fractions:
-
-![](/wiki/lib/exe/taskrunner.php?id=reference%3Adialogs%3Aphasestatus%3Anucleation%3Acomposition&1788353330)

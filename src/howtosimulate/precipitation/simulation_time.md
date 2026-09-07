@@ -97,5 +97,3 @@ Hence, a review of the last iteration data with the scope of the occurring limit
 3. Cautious modification of the numerical constraint.
 
 While the numerical constraints set within MatCalc algorithm are intended to assure the simulation result convergence, a cautious modification of these can have little effect on the result quality but a profound one on the simulation length. The changes can be performed in the console with the “set-simulation-parameter convergence-control numerical-limits-precipitation #constraint=” or “set-simulation-parameter convergence-control numerical-limits-microstructure-evolution #constraint=” command. Once such a modification is performed, some test runs for various modification magnitudes are recommended to recognize the effect on the simulation result.
-
-![](/wiki/lib/exe/taskrunner.php?id=howtosimulate%3Aprecipitation%3Asimulation_time&1788352863)

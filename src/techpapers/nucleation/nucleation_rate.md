@@ -92,5 +92,3 @@ It is important, now, to realize that all quantities in the nucleation rate expr
 | $\gamma$ | \[ \frac{n\_\text{S} \cdot z\_\text{S,eff}}{N\_\text{A} \cdot z\_\text{L,eff}} \cdot \Delta H\] | Interfacial energy, see document  [Evaluation of interfacial energies](/matcalc_docu/techpapers/nucleation/interfacial_energy "techpapers:nucleation:interfacial_energy") for details |
 
 The expressions above are valid for spherical precipitates.
-
-![](/wiki/lib/exe/taskrunner.php?id=techpapers%3Anucleation%3Anucleation_rate&1788352986)

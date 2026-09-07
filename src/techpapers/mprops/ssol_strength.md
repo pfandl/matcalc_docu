@@ -83,5 +83,3 @@ $k\_{i,wt\%}$ - strengthening coefficient for $c\_i$ expressed in wt.%
 $M\_i$ - Molar mass of the element i
 
 $M\_{mx}$ - Molar mass of the matrix host element
-
-![](/wiki/lib/exe/taskrunner.php?id=techpapers%3Amprops%3Assol_strength&1788353012)

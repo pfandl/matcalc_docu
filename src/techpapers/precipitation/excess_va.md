@@ -123,5 +123,3 @@ Springer-Verlag, Heidelberg, 1991.
 Y. Kraftmakher.
 Equilibrium vacancies and thermophysical properties of metals.
 Physics reports. North-Holland, 1998.
-
-![](/wiki/lib/exe/taskrunner.php?id=techpapers%3Aprecipitation%3Aexcess_va&1788353011)

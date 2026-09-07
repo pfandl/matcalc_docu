@@ -105,5 +105,3 @@ last\_bc\_index
 ---------------
 
 Comparable to 'last\_plot\_id', this variable represents the most recent boundary-condition index. Can be used in MC simulations, in a similar way as shown above.
-
-![](/wiki/lib/exe/taskrunner.php?id=reference%3Ainternal&1788352869)

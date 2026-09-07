@@ -85,5 +85,3 @@ References
 [1] J. Svoboda, F. D. Fischer, Modelling for hydrogen diffusion in metals with traps revisited, Acta Mater. 60 (2012) 1211-1220.
 
 [2] F. D. Fischer, J. Svoboda, E. Kozeschnik, Interstitial diffusion in systems with multiple sorts of traps, Model. Simul. Mater. Sci. Eng. 21 (2013) 025008/1-13.
-
-![](/wiki/lib/exe/taskrunner.php?id=techpapers%3Aequilib%3Atrapping&1788353010)

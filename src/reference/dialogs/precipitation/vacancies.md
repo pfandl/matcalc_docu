@@ -16,5 +16,3 @@ Vacancies
 7. **Automatic mean vacancy diffusion distance**:
 8. **Manual mean vacancy diffusion distance**:
 9. **Vacancy diffusion correction factor**:
-
-![](/wiki/lib/exe/taskrunner.php?id=reference%3Adialogs%3Aprecipitation%3Avacancies&1788353215)

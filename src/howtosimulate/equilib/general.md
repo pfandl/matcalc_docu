@@ -121,5 +121,3 @@ Further information
 [1)](#fnt__1)
 
 In the present MatCalc databases, no pressure-dependent data are included. This parameter is thus ignored.
-
-![](/wiki/lib/exe/taskrunner.php?id=howtosimulate%3Aequilib%3Ageneral&1788352862)

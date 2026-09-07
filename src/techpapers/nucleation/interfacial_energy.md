@@ -121,5 +121,3 @@ B. Sonderegger, E. Kozeschnik, “Size dependence of the interfacial energy in t
 [3)](#fnt__3)
 
 B. Sonderegger, E. Kozeschnik, “Interfacial energy of diffuse phase boundaries in the generalized broken-bond approach”, Metall. Mater. Trans. A, 2010, 41 (12) 3262-3269
-
-![](/wiki/lib/exe/taskrunner.php?id=techpapers%3Anucleation%3Ainterfacial_energy&1788353012)

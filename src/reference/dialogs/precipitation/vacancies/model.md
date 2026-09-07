@@ -9,5 +9,3 @@ Vacancy evolution model [MatCalc Documentation]
 * no vacancy annihilation/generation:
 * mean diffusion distance:
 * FSK vacancy dynamics:
-
-![](/wiki/lib/exe/taskrunner.php?id=reference%3Adialogs%3Aprecipitation%3Avacancies%3Amodel&1788353334)

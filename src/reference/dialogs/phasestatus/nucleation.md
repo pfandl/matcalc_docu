@@ -107,5 +107,3 @@ SET\_PRECIPITATION\_PARAMETER fcc\_a1\_p0 N O R min max
 [18)](#fnt__18)
 
 SET\_PRECIPITATION\_PARAMETER fcc\_a1\_p0 N O I
-
-![](/wiki/lib/exe/taskrunner.php?id=reference%3Adialogs%3Aphasestatus%3Anucleation&1788353213)

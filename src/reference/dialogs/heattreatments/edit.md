@@ -21,5 +21,3 @@ Edit heat treatment segment
 12. **Pre/Post-Segment**:
 13. **Clear**:
 14. **Comment**:
-
-![](/wiki/lib/exe/taskrunner.php?id=reference%3Adialogs%3Aheattreatments%3Aedit&1788353216)

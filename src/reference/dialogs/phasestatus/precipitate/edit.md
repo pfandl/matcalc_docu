@@ -21,5 +21,3 @@ Edit precipitate distribution [MatCalc Documentation]
 9. **Insert col**: Not implemented yet.
 10. **Delete rows/cols**: Not implemented yet.
 11. **Export**: Removed in newer versions.
-
-![](/wiki/lib/exe/taskrunner.php?id=reference%3Adialogs%3Aphasestatus%3Aprecipitate%3Aedit&1788353329)

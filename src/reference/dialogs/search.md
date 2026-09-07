@@ -16,5 +16,3 @@ Search phase boundary
 7. **DFM offset**:
 8. **Debug calculation**:
 9. **Force parent composition**:
-
-![](/wiki/lib/exe/taskrunner.php?id=reference%3Adialogs%3Asearch&1788353003)

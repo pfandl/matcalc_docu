@@ -103,5 +103,3 @@ flags |= FLAG\_PHASEISFIXED
 [2)](#fnt__2)
 
 If you want to suppress a precipitate from being formed in your simulation, uncheck all possible nucleation sites. This is the safest way of ignoring a certain phase
-
-![](/wiki/lib/exe/taskrunner.php?id=techpapers%3Aprecipitation%3Aprec_objects&1788353011)

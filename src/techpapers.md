@@ -13,5 +13,3 @@ This document provides background information on the models, algorithms and appr
 * [Multi-component nucleation](/matcalc_docu/techpapers/nucleation "techpapers:nucleation")
 * [Microstructure - property relationship](/matcalc_docu/techpapers/mprops "techpapers:mprops")
 * [Special topic presentations](https://www.matcalc-engineering.com/index.php/matcalc-software/tutorials/matcalc-approach "https://www.matcalc-engineering.com/index.php/matcalc-software/tutorials/matcalc-approach")
-
-![](/wiki/lib/exe/taskrunner.php?id=techpapers&1788352848)

@@ -19,5 +19,3 @@ Precipitation domain
    * [SFK-Traps:](/matcalc_docu/reference/dialogs/precipitation/sfk-traps "reference:dialogs:precipitation:sfk-traps")
    * [Disl-trap:](/matcalc_docu/reference/dialogs/precipitation/disl-trap "reference:dialogs:precipitation:disl-trap")
    * [Special:](/matcalc_docu/reference/dialogs/precipitation/special "reference:dialogs:precipitation:special")
-
-![](/wiki/lib/exe/taskrunner.php?id=reference%3Adialogs%3Aprecipitation&1788353002)

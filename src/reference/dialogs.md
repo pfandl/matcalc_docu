@@ -23,5 +23,3 @@ This page contains in-depth information on the **most important dialog windows**
 * …
 
 In many cases, the description of the dialog items also displays the corresponding command line options for convenience.
-
-![](/wiki/lib/exe/taskrunner.php?id=reference%3Adialogs&1788352868)

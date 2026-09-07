@@ -400,5 +400,3 @@ E. Kozeschnik and E. Gamsjäger, „High-Speed Quenching Dilatometer Investigati
 [13)](#fnt__13)
 
 E. Kozeschnik, B. Sonderegger and H. Danielsen, unpublished research (2005).
-
-![](/wiki/lib/exe/taskrunner.php?id=techpapers%3Anucleation%3Ahet_nucl_sites&1788352981)

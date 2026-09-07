@@ -30,5 +30,3 @@ Stepped equilibrium calculation
 21. **Add transformation**:
 22. **Remove**:
 23. **Edit**:
-
-![](/wiki/lib/exe/taskrunner.php?id=reference%3Adialogs%3Astepped&1788353003)

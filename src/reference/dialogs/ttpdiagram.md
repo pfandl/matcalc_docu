@@ -18,5 +18,3 @@ TTP-diagram
 9. **Delta T-dot factor**:
 10. **Append**:
 11. **Stop if number of precipitates has decreased to fraction**:
-
-![](/wiki/lib/exe/taskrunner.php?id=reference%3Adialogs%3Attpdiagram&1788353004)

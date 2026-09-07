@@ -1,23 +1,19 @@
-1MatCalc examples [MatCalc Documentation]
+MatCalc examples [MatCalc Documentation]
 
 
 
 ### Table of Contents
 
-* [1MatCalc examples](#matcalc_examples)
+* [MatCalc examples](#matcalc_examples)
 
   + [Equilibrium and non-equilibrium analysis](#equilibrium_and_non-equilibrium_analysis)
   + [Multi-component multi-phase precipitation](#multi-component_multi-phase_precipitation)
   + [Microstructure - property relationship](#microstructure_-_property_relationship)
   + [Long-range diffusion, and diffusion coupled with precipitation](#long-range_diffusion_and_diffusion_coupled_with_precipitation)
-
-    - [Single-phase problems](#single-phase_problems)
-    - [Diffusion in dispersed systems - Local equilibrium approach](#diffusion_in_dispersed_systems_-_local_equilibrium_approach)
-    - [Simultaneous long-range diffusion and precipitation](#simultaneous_long-range_diffusion_and_precipitation)
   + [Moving phase boundary problems](#moving_phase_boundary_problems)
   + [Thermal simulations](#thermal_simulations)
 
-1MatCalc examples
+MatCalc examples
 =================
 
 The example documents of this sections are aimed at *introducing you to typical simulation problems* that can be solved with MatCalc. The examples demonstrate how these problems can be treated and which issues need to be accounted for to obtain reasonable simulation results.
@@ -96,5 +92,3 @@ Thermal simulations
 * **H3** -  [Temperature profile in the Gleeble thermo-dynamical-testing machine](/matcalc_docu/thermal/t3 "thermal:t3")
 
 bla bla bla
-
-![](/wiki/lib/exe/taskrunner.php?id=examples%3Aindex&1788352980)

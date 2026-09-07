@@ -152,5 +152,3 @@ The following commands only work properly in a script file editor. All their fun
 3. **Software Updates**: Functionality not implemented yet!
 4. **About**: Opens a message dialog with information on the installed MatCalc version and licenses.
 5. **Report a problem / suggest a feature**: Opens the window allowing message & file submission to Support service
-
-![](/wiki/lib/exe/taskrunner.php?id=reference%3Amenu&1788352868)
