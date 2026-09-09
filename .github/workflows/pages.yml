@@ -48,6 +48,10 @@ jobs:
           for v in current handbook companion atlas; do
             echo "::group::preview: $v"
             mkdocs build --clean -f "mkdocs.$v.yml" -d "public/preview/$v"
+            # overlay the Tutorial-1 screenshots recoloured for this direction
+            if [ -d "preview-assets/t1/$v" ]; then
+              cp preview-assets/t1/"$v"/*.png "public/preview/$v/tutorials/t1/img/"
+            fi
             echo "::endgroup::"
           done
           cp previews-landing.html public/preview/index.html
