@@ -1,0 +1,8 @@
+# Variant 0 - STATUS QUO. The site exactly as it is today (readthedocs theme
+# + the section-index fix already on main). The baseline to compare against.
+INHERIT: mkdocs.base.yml
+
+site_url: https://pfandl.github.io/matcalc_docu/preview/current/
+
+theme:
+  name: readthedocs

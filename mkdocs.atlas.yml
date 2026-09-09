@@ -1,0 +1,25 @@
+# Proposal C - "Atlas". Bright, teaching-forward; top-level sections as tabs.
+# Material base, top nav tabs, TOC folded into the left nav, generous reading column.
+INHERIT: mkdocs.base.yml
+
+site_url: https://pfandl.github.io/matcalc_docu/preview/atlas/
+
+theme:
+  name: material
+  font:
+    text: Literata
+    code: IBM Plex Mono
+  palette:
+    scheme: default
+    primary: custom
+    accent: custom
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - toc.integrate
+    - navigation.top
+    - content.code.copy
+    - search.suggest
+
+extra_css:
+  - css/preview-atlas.css

@@ -1,0 +1,24 @@
+/* Handbook - STARTER palette. Tune before showing anyone.
+   Cool and precise: navy accent, warm-neutral off-white, serif headings. */
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@600&display=swap');
+
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color:        #2B4C7E;
+  --md-primary-fg-color--light: #3E5F92;
+  --md-primary-fg-color--dark:  #1F3A63;
+  --md-accent-fg-color:         #23608F;
+  --md-typeset-a-color:         #2B4C7E;
+  --md-default-bg-color:        #FCFCFD;
+  --md-default-fg-color:        #191C21;
+  --md-default-fg-color--light: #33383F;
+  --md-code-bg-color:           #F5F6F8;
+}
+
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3 {
+  font-family: "IBM Plex Serif", Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -.005em;
+}

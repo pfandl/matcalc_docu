@@ -1,0 +1,24 @@
+# Proposal B - "Companion". Warm, roomy, plain-spoken; for occasional users.
+# Material base, one rail (TOC folded into the left nav), big prev/next footer.
+INHERIT: mkdocs.base.yml
+
+site_url: https://pfandl.github.io/matcalc_docu/preview/companion/
+
+theme:
+  name: material
+  font:
+    text: Hanken Grotesk
+    code: IBM Plex Mono
+  palette:
+    scheme: default
+    primary: custom
+    accent: custom
+  features:
+    - navigation.expand
+    - toc.integrate
+    - navigation.footer
+    - content.code.copy
+    - search.suggest
+
+extra_css:
+  - css/preview-companion.css

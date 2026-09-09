@@ -1,0 +1,84 @@
+# Shared configuration for the layout-comparison preview builds.
+# Do NOT build this file directly - use one of:
+#   mkdocs.current.yml    (status quo: readthedocs theme)
+#   mkdocs.handbook.yml   (proposal A)
+#   mkdocs.companion.yml  (proposal B)
+#   mkdocs.atlas.yml      (proposal C)
+# Build all four with ./build-previews.sh
+
+site_name: MatCalc Documentation
+
+docs_dir: src
+
+nav:
+  - Home: index.md
+  - General information: general.md
+  - Guides:
+    - Tutorials:
+      - tutorials.md
+      - T1 - Introduction to the MatCalc graphical user interface (GUI): tutorials/t1.md
+      - T2 - Calculating a single equilibrium: tutorials/t2.md
+      - T3 - Stepped equilibrium calculations: tutorials/t3.md
+      - T4 - Graphical presentation and export of results: tutorials/t4.md
+      - T5 - MatCalc built-in variables; graphical output: tutorials/t5.md
+      - T6 - Introduction to user-defined functions: tutorials/t6.md
+      - T7 - Calculating transformation temperatures and phase boundaries: tutorials/t7.md
+      - T8 - Calculating a phase diagram in a binary system: tutorials/t8.md
+      - T9 - Calculating a pseudobinary phase diagram: tutorials/t9.md
+      - T10 - T0-temperature in Fe-Cr-C: tutorials/t10.md
+      - T11 - Simulation of solidification of 0.7C 3Mn steel: tutorials/t11.md
+      - T12 - Using the MatCalc console: tutorials/t12.md
+      - T13 - Introduction to scripting - Equilibrium calculations: tutorials/t13.md
+      - T14 - Introduction to precipitation calculations: tutorials/t14.md
+      - T15 - Effect of microstructure and conditions (Part 1): tutorials/t15.md
+      - T16 - Effect of microstructure and conditions (Part 2 - simultaneous precipitation): tutorials/t16.md
+      - T17 - Multi-stage heat treatment: tutorials/t17.md
+      - T18 - TTP (time-temperature-precipitation) diagrams: tutorials/t18.md
+      - T19 - Scripting precipitation calculations: tutorials/t19.md
+      - T20 - Simulating grain growth: tutorials/t20.md
+      - T21 - Strain induced precipitates: tutorials/t21.md
+      - T22 - Recrystallization on subgrain boundaries: tutorials/t22.md
+      - T23 - Introduction to cell simulations - long-range diffusion simulation: tutorials/t23.md
+    - How to ... manual:
+      - howtosimulate.md
+      - Equilibrium and non-equilibrium thermodynamics: howtosimulate/hts_thermodynamics.md
+      - Kinetic simulation: howtosimulate/hts_precipitationkinetics.md
+      - Physical parameter calculation: howtosimulate/hts_physical.md
+    - Examples:
+      - examples/index.md
+      - Equilibrium and non-equilibrium analysis: examples/equilib.md
+      - Multi-component multi-phase precipitation: examples/precipitation.md
+      - Thermo-physical property simulation: examples/tprops.md
+      - Long-range diffusion and diffusion coupled with precipitation: examples/diffusion.md
+      - Thermal simulations: examples/therm_sims.md
+  - References:
+    - Scripts: scripts.md
+    - Reference book:
+      - reference.md
+      - Dialogs and dialog items: reference/dialogs.md
+      - Contents of the menu bar: reference/menu.md
+      - Syntax of functions, conditions, loops, etc.: reference/syntax.md
+      - MatCalc internal variables: reference/internal.md
+      - Thermo-mechanical treatment file structure: reference/tmt_file.md
+    - Technical Papers:
+      - techpapers.md
+      - Software architecture, algorithms and background: techpapers/software.md
+      - Equilibrium simulations: techpapers/equilib.md
+      - Precipitation kinetics: techpapers/precipitation.md
+      - Multi-component nucleation: techpapers/nucleation.md
+      - Microstructure - property relationship: techpapers/mprops.md
+    - Version info:
+      - versioninfo.md
+      - MatCalc 6: versioninfo/matcalc_6.md
+      - MatCalc 5: versioninfo/matcalc_5.md
+
+plugins:
+  - search
+  - section-index
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js

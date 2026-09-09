@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MatCalc Documentation — layout comparison</title>
+<style>
+  :root { color-scheme: light dark; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 56px 24px 80px;
+    font: 16px/1.6 "Segoe UI", system-ui, sans-serif;
+    background: #f4f5f7; color: #1b1e23;
+    display: flex; flex-direction: column; align-items: center;
+  }
+  @media (prefers-color-scheme: dark) {
+    body { background: #0f1114; color: #e7e9ed; }
+    .card { background: #17191e; border-color: #2a2f36; }
+    .card:hover { border-color: #55607a; }
+    .tag { background: #22262d; }
+  }
+  header { max-width: 720px; width: 100%; margin-bottom: 36px; }
+  h1 { font-size: 1.5rem; margin: 0 0 8px; }
+  p.lede { margin: 0; opacity: .7; }
+  .grid {
+    display: grid; gap: 16px; width: 100%; max-width: 720px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  }
+  .card {
+    display: block; text-decoration: none; color: inherit;
+    background: #fff; border: 1px solid #e0e3e9; border-radius: 12px;
+    padding: 20px 22px; transition: border-color .15s, transform .15s;
+  }
+  .card:hover { border-color: #8a97b5; transform: translateY(-2px); }
+  .card h2 { font-size: 1.1rem; margin: 0 0 6px; display: flex; align-items: center; gap: 10px; }
+  .card p { margin: 0; font-size: .92rem; opacity: .72; }
+  .tag {
+    font-size: .68rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+    background: #eef0f3; border-radius: 999px; padding: 3px 9px; opacity: .8;
+  }
+  footer { max-width: 720px; width: 100%; margin-top: 40px; font-size: .82rem; opacity: .55; }
+</style>
+</head>
+<body>
+  <header>
+    <h1>MatCalc Documentation — layout comparison</h1>
+    <p class="lede">Same content, four presentations. Click through each; the nav,
+      search and every page are real. These are drafts — colours and spacing still
+      need tuning.</p>
+  </header>
+
+  <div class="grid">
+    <a class="card" href="current/">
+      <h2>Current <span class="tag">baseline</span></h2>
+      <p>The site as it is today — <code>readthedocs</code> theme. What everything else is measured against.</p>
+    </a>
+    <a class="card" href="handbook/">
+      <h2>Handbook <span class="tag">proposal A</span></h2>
+      <p>Cool, precise engineering reference. Left nav + right “on this page”, navy accent, serif headings.</p>
+    </a>
+    <a class="card" href="companion/">
+      <h2>Companion <span class="tag">proposal B</span></h2>
+      <p>Warm and roomy, for occasional users. One rail, brick accent, larger friendly type.</p>
+    </a>
+    <a class="card" href="atlas/">
+      <h2>Atlas <span class="tag">proposal C</span></h2>
+      <p>Bright and teaching-forward. Top-level sections as tabs, green accent, generous reading column.</p>
+    </a>
+  </div>
+
+  <footer>
+    Built with <code>./build-previews.sh</code> from <code>mkdocs.&lt;variant&gt;.yml</code>.
+    Placement here is approximated with Material for MkDocs feature flags; the full custom
+    placement from the design study would be built only for whichever direction wins.
+  </footer>
+</body>
+</html>

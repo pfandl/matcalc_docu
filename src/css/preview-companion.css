@@ -1,0 +1,27 @@
+/* Companion - STARTER palette. Tune before showing anyone.
+   Warm and roomy: brick accent, barely-warm white, grotesque display face. */
+
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&display=swap');
+
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color:        #C05437;
+  --md-primary-fg-color--light: #CD6A4E;
+  --md-primary-fg-color--dark:  #A5442B;
+  --md-accent-fg-color:         #B0472E;
+  --md-typeset-a-color:         #B0472E;
+  --md-default-bg-color:        #FCFBF9;
+  --md-default-fg-color:        #2A2620;
+  --md-default-fg-color--light: #4B453C;
+  --md-code-bg-color:           #F6F3EE;
+}
+
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3 {
+  font-family: "Bricolage Grotesque", "Hanken Grotesk", sans-serif;
+  font-weight: 700;
+  letter-spacing: -.01em;
+}
+
+/* a touch more air, matching the "roomy" idea */
+.md-typeset { line-height: 1.7; }

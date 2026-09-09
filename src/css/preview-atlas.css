@@ -1,0 +1,26 @@
+/* Atlas - STARTER palette. Tune before showing anyone.
+   Bright and teaching-forward: green accent, pure white, Nordic grotesque display. */
+
+@import url('https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@600;700&display=swap');
+
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color:        #1F7A5A;
+  --md-primary-fg-color--light: #2E8C6B;
+  --md-primary-fg-color--dark:  #186349;
+  --md-accent-fg-color:         #1B6E51;
+  --md-typeset-a-color:         #1B6E51;
+  --md-default-bg-color:        #FFFFFF;
+  --md-default-fg-color:        #1E232B;
+  --md-default-fg-color--light: #3B434E;
+  --md-code-bg-color:           #F4F6F4;
+}
+
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3 {
+  font-family: "Familjen Grotesk", "Segoe UI", sans-serif;
+  font-weight: 600;
+}
+
+/* wider, calmer reading measure */
+.md-grid { max-width: 68rem; }

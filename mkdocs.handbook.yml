@@ -1,0 +1,24 @@
+# Proposal A - "Handbook". Cool, precise engineering reference.
+# Material base, three-pane (left nav + right TOC), serif headings.
+INHERIT: mkdocs.base.yml
+
+site_url: https://pfandl.github.io/matcalc_docu/preview/handbook/
+
+theme:
+  name: material
+  font:
+    text: IBM Plex Sans
+    code: IBM Plex Mono
+  palette:
+    scheme: default
+    primary: custom
+    accent: custom
+  features:
+    - navigation.sections
+    - navigation.top
+    - toc.follow
+    - content.code.copy
+    - search.suggest
+
+extra_css:
+  - css/preview-handbook.css
