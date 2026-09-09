@@ -2,5 +2,6 @@ dokuwiki/
 .venv/
 *.py
 
-# layout-preview builds (throwaway; do not commit to main)
+# layout-preview builds (throwaway; do not commit)
 site/
+public/

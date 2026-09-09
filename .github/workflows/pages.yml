@@ -1,0 +1,67 @@
+name: Deploy site + layout previews
+
+# Builds the live site from mkdocs.yml AND the four layout-comparison
+# variants, then publishes everything to GitHub Pages:
+#
+#   https://pfandl.github.io/matcalc_docu/                  - live site (unchanged)
+#   https://pfandl.github.io/matcalc_docu/preview/          - comparison landing page
+#   https://pfandl.github.io/matcalc_docu/preview/current/  - baseline (readthedocs)
+#   https://pfandl.github.io/matcalc_docu/preview/handbook/ - proposal A
+#   https://pfandl.github.io/matcalc_docu/preview/companion/- proposal B
+#   https://pfandl.github.io/matcalc_docu/preview/atlas/    - proposal C
+#
+# One-time setup: repo Settings -> Pages -> Source -> "GitHub Actions".
+# (That replaces the current "deploy from branch /docs" mode; the committed
+#  docs/ folder is then no longer used for serving.)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - run: pip install -r requirements.txt
+
+      - name: Build live site
+        run: mkdocs build --clean -f mkdocs.yml -d public
+
+      - name: Build layout previews
+        run: |
+          for v in current handbook companion atlas; do
+            echo "::group::preview: $v"
+            mkdocs build --clean -f "mkdocs.$v.yml" -d "public/preview/$v"
+            echo "::endgroup::"
+          done
+          cp previews-landing.html public/preview/index.html
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
