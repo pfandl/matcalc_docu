@@ -48,9 +48,14 @@ jobs:
           for v in current handbook companion atlas; do
             echo "::group::preview: $v"
             mkdocs build --clean -f "mkdocs.$v.yml" -d "public/preview/$v"
-            # overlay the Tutorial-1 screenshots recoloured for this direction
             if [ -d "preview-assets/t1/$v" ]; then
+              # overlay the Tutorial-1 screenshots recoloured for this direction
               cp preview-assets/t1/"$v"/*.png "public/preview/$v/tutorials/t1/img/"
+              # t1.md uses absolute /matcalc_docu/... image paths (DokuWiki scrape)
+              # which would load the LIVE site's originals - repoint the T1 page
+              # at this build's recoloured copies
+              sed -i "s#/matcalc_docu/tutorials/t1/img/#/matcalc_docu/preview/$v/tutorials/t1/img/#g" \
+                "public/preview/$v/tutorials/t1/index.html"
             fi
             echo "::endgroup::"
           done
