@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://pfandl.github.io/matcalc_docu/examples/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Index - MatCalc Documentation</title>
+    <title>Examples - MatCalc Documentation</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Index";
+        var mkdocs_page_name = "Examples";
         var mkdocs_page_input_path = "examples\\index.md";
         var mkdocs_page_url = "/matcalc_docu/examples/";
       </script>
@@ -48,7 +48,7 @@
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Guides</span></p>
-              <ul>
+              <ul class="current">
                   <li class="toctree-l1"><a class="reference internal" href="../tutorials/">Tutorials</a>
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../tutorials/t1/">T1 - Introduction to the MatCalc graphical user interface (GUI)</a>
@@ -109,7 +109,19 @@
                 </li>
     </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="./">Examples</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Examples</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="equilib/">Equilibrium and non-equilibrium analysis</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="precipitation/">Multi-component multi-phase precipitation</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="tprops/">Thermo-physical property simulation</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="diffusion/">Long-range diffusion and diffusion coupled with precipitation</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="therm_sims/">Thermal simulations</a>
+                </li>
+    </ul>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">References</span></p>
@@ -117,10 +129,40 @@
                   <li class="toctree-l1"><a class="reference internal" href="../scripts/">Scripts</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../reference/">Reference book</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../reference/dialogs/">Dialogs and dialog items</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../reference/menu/">Contents of the menu bar</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../reference/syntax/">Syntax of functions, conditions, loops, etc.</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../reference/internal/">MatCalc internal variables</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../reference/tmt_file/">Thermo-mechanical treatment file structure</a>
+                </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../techpapers/">Technical Papers</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../techpapers/software/">Software architecture, algorithms and background</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../techpapers/equilib/">Equilibrium simulations</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../techpapers/precipitation/">Precipitation kinetics</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../techpapers/nucleation/">Multi-component nucleation</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../techpapers/mprops/">Microstructure - property relationship</a>
+                </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../versioninfo/">Version info</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../versioninfo/matcalc_6/">MatCalc 6</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../versioninfo/matcalc_5/">MatCalc 5</a>
+                </li>
+    </ul>
                   </li>
               </ul>
       </div>
@@ -137,7 +179,8 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Index</li>
+          <li class="breadcrumb-item">Guides</li>
+      <li class="breadcrumb-item active">Examples</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -146,7 +189,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <p>1MatCalc examples [MatCalc Documentation]</p>
+                <p>MatCalc examples [MatCalc Documentation]</p>
 <h3 id="table-of-contents">Table of Contents</h3>
 <ul>
 <li>
@@ -157,16 +200,9 @@
 </li>
 <li><a href="#multi-component_multi-phase_precipitation">Multi-component multi-phase precipitation</a></li>
 <li><a href="#microstructure_-_property_relationship">Microstructure - property relationship</a></li>
-<li>
-<p><a href="#long-range_diffusion_and_diffusion_coupled_with_precipitation">Long-range diffusion, and diffusion coupled with precipitation</a></p>
-<ul>
-<li><a href="#single-phase_problems">Single-phase problems</a></li>
-<li><a href="#diffusion_in_dispersed_systems_-_local_equilibrium_approach">Diffusion in dispersed systems - Local equilibrium approach</a></li>
-<li><a href="#simultaneous_long-range_diffusion_and_precipitation">Simultaneous long-range diffusion and precipitation</a></li>
+<li><a href="#long-range_diffusion_and_diffusion_coupled_with_precipitation">Long-range diffusion, and diffusion coupled with precipitation</a></li>
 <li><a href="#moving_phase_boundary_problems">Moving phase boundary problems</a></li>
 <li><a href="#thermal_simulations">Thermal simulations</a></li>
-</ul>
-</li>
 </ul>
 <h1 id="matcalc-examples">MatCalc examples</h1>
 <p>The example documents of this sections are aimed at <em>introducing you to typical simulation problems</em> that can be solved with MatCalc. The examples demonstrate how these problems can be treated and which issues need to be accounted for to obtain reasonable simulation results.</p>
@@ -232,6 +268,10 @@
               
             </div>
           </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../howtosimulate/hts_physical/" class="btn btn-neutral float-left" title="Physical parameter calculation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="equilib/" class="btn btn-neutral float-right" title="Equilibrium and non-equilibrium analysis">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
 
   <hr/>
 
@@ -253,6 +293,10 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
+      <span><a href="../howtosimulate/hts_physical/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="equilib/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
