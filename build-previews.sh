@@ -22,11 +22,12 @@ for v in current handbook companion atlas; do
     # overlay the Tutorial-1 screenshots recoloured for this direction
     # (regenerate with: python tools/gen-preview-images.py)
     cp preview-assets/t1/"$v"/*.png "$OUT/$v/tutorials/t1/img/"
-    # t1.md uses absolute /matcalc_docu/... image paths (DokuWiki scrape) which
-    # would load the LIVE site's originals - repoint the T1 page at this build
-    sed -i "s#/matcalc_docu/tutorials/t1/img/#/matcalc_docu/preview/$v/tutorials/t1/img/#g" \
-      "$OUT/$v/tutorials/t1/index.html"
   fi
+  # the DokuWiki scrape left absolute /matcalc_docu/... links all through the
+  # page content (cross-refs and images); without this they jump out to the
+  # live site. keep them inside this preview.
+  find "$OUT/$v" -name '*.html' -exec \
+    sed -i "s#\([\"'( ]\)/matcalc_docu/#\1/matcalc_docu/preview/$v/#g" {} +
 done
 
 cp previews-landing.html "$OUT/index.html"
